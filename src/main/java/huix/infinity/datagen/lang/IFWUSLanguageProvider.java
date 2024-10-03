@@ -15,8 +15,5 @@ public class IFWUSLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add(IFWBlocks.adamantium_block_item.get(), "Adamantium Block");
         add(IFWItems.adamantium_ingot.get(), "Adamantium Ingot");
-        add(IFWItems.adamantium_ingot.get(), "Adamantium Ingot");
-        add(IFWItems.adamantium_ingot.get(), "Adamantium Ingot");
-        add(IFWItems.adamantium_ingot.get(), "Adamantium Ingot");
     }
 }

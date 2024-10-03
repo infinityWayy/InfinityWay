@@ -1,6 +1,7 @@
 package huix.infinity;
 
 import com.mojang.logging.LogUtils;
+import huix.infinity.event.IFWEventHandler;
 import huix.infinity.gameobjs.block.IFWBlocks;
 import huix.infinity.gameobjs.item.IFWItems;
 import huix.infinity.gameobjs.item.group.IFWItemGroup;
@@ -23,5 +24,4 @@ public final class InfinityWay {
 
         IFWEventHandler.init();
     }
-
 }

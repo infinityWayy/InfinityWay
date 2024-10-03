@@ -1,6 +1,7 @@
 package huix.infinity.datagen;
 
 import huix.infinity.InfinityWay;
+import huix.infinity.gameobjs.block.IFWBlocks;
 import huix.infinity.gameobjs.item.IFWItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -17,5 +18,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.ancient_metal_ingot.get());
         basicItem(IFWItems.mithril_ingot.get());
         basicItem(IFWItems.silver_ingot.get());
+
+        basicItem(IFWBlocks.adamantium_door_item.get());
     }
 }

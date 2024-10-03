@@ -1,0 +1,66 @@
+package huix.infinity.datagen.tag;
+
+import huix.infinity.InfinityWay;
+import huix.infinity.gameobjs.block.IFWBlocks;
+import huix.infinity.gameobjs.tag.IFWBlockTags;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.concurrent.CompletableFuture;
+
+public class IFWBlockTagsProvider extends BlockTagsProvider {
+    public IFWBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, InfinityWay.MOD_ID, existingFileHelper);
+    }
+
+    @Override
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
+        tag(IFWBlockTags.NEEDS_LEVEL_2_TOOL).add(
+                Blocks.RAW_IRON_BLOCK, Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.LAPIS_BLOCK, Blocks.LAPIS_ORE,
+                Blocks.DEEPSLATE_LAPIS_ORE, Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE,
+                Blocks.CUT_COPPER_SLAB
+        );
+        tag(IFWBlockTags.NEEDS_LEVEL_2_TOOL).add(
+                Blocks.COPPER_BLOCK, Blocks.CUT_COPPER_STAIRS, Blocks.CUT_COPPER, Blocks.WEATHERED_COPPER, Blocks.WEATHERED_CUT_COPPER_SLAB,
+                Blocks.WEATHERED_CUT_COPPER_STAIRS, Blocks.WEATHERED_CUT_COPPER, Blocks.OXIDIZED_COPPER, Blocks.OXIDIZED_CUT_COPPER_SLAB,
+                Blocks.OXIDIZED_CUT_COPPER_STAIRS, Blocks.OXIDIZED_CUT_COPPER, Blocks.EXPOSED_COPPER, Blocks.EXPOSED_CUT_COPPER_SLAB, Blocks.EXPOSED_CUT_COPPER_STAIRS,
+                Blocks.EXPOSED_CUT_COPPER, Blocks.WAXED_COPPER_BLOCK, Blocks.WAXED_CUT_COPPER_SLAB, Blocks.WAXED_CUT_COPPER_STAIRS, Blocks.WAXED_CUT_COPPER,
+                Blocks.WAXED_WEATHERED_COPPER, Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB, Blocks.WAXED_WEATHERED_CUT_COPPER_STAIRS, Blocks.WAXED_WEATHERED_CUT_COPPER,
+                Blocks.WAXED_EXPOSED_COPPER, Blocks.WAXED_EXPOSED_CUT_COPPER_SLAB, Blocks.WAXED_EXPOSED_CUT_COPPER_STAIRS, Blocks.WAXED_EXPOSED_CUT_COPPER,
+                Blocks.WAXED_OXIDIZED_COPPER, Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB, Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS, Blocks.WAXED_OXIDIZED_CUT_COPPER,
+                Blocks.LIGHTNING_ROD, Blocks.CRAFTER, Blocks.CHISELED_COPPER, Blocks.EXPOSED_CHISELED_COPPER, Blocks.WEATHERED_CHISELED_COPPER,
+                Blocks.OXIDIZED_CHISELED_COPPER, Blocks.WAXED_CHISELED_COPPER, Blocks.WAXED_EXPOSED_CHISELED_COPPER, Blocks.WAXED_WEATHERED_CHISELED_COPPER,
+                Blocks.WAXED_OXIDIZED_CHISELED_COPPER, Blocks.COPPER_GRATE, Blocks.EXPOSED_COPPER_GRATE, Blocks.WEATHERED_COPPER_GRATE,
+                Blocks.OXIDIZED_COPPER_GRATE, Blocks.WAXED_COPPER_GRATE, Blocks.WAXED_EXPOSED_COPPER_GRATE, Blocks.WAXED_WEATHERED_COPPER_GRATE,
+                Blocks.WAXED_OXIDIZED_COPPER_GRATE, Blocks.COPPER_BULB, Blocks.EXPOSED_COPPER_BULB, Blocks.WEATHERED_COPPER_BULB, Blocks.OXIDIZED_COPPER_BULB,
+                Blocks.WAXED_COPPER_BULB, Blocks.WAXED_EXPOSED_COPPER_BULB, Blocks.WAXED_WEATHERED_COPPER_BULB, Blocks.WAXED_OXIDIZED_COPPER_BULB,
+                Blocks.COPPER_TRAPDOOR, Blocks.EXPOSED_COPPER_TRAPDOOR, Blocks.WEATHERED_COPPER_TRAPDOOR, Blocks.OXIDIZED_COPPER_TRAPDOOR, Blocks.WAXED_COPPER_TRAPDOOR,
+                Blocks.WAXED_EXPOSED_COPPER_TRAPDOOR, Blocks.WAXED_WEATHERED_COPPER_TRAPDOOR, Blocks.WAXED_OXIDIZED_COPPER_TRAPDOOR, Blocks.COPPER_DOOR, Blocks.EXPOSED_COPPER_DOOR,
+                Blocks.WEATHERED_COPPER_DOOR, Blocks.OXIDIZED_COPPER_DOOR, Blocks.WAXED_COPPER_DOOR, Blocks.WAXED_EXPOSED_COPPER_DOOR, Blocks.WAXED_WEATHERED_COPPER_DOOR, Blocks.WAXED_OXIDIZED_COPPER_DOOR, Blocks.EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE,
+                Blocks.RAW_GOLD_BLOCK, Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE,
+                Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN
+        );
+        tag(IFWBlockTags.NEEDS_LEVEL_3_TOOL).add(
+                Blocks.IRON_BLOCK, Blocks.DIAMOND_ORE, Blocks.DIAMOND_BLOCK, Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.EMERALD_BLOCK,
+                Blocks.GOLD_BLOCK, Blocks.RESPAWN_ANCHOR, Blocks.ANCIENT_DEBRIS
+        );
+        tag(IFWBlockTags.NEEDS_LEVEL_4_TOOL).add(
+                Blocks.DIAMOND_BLOCK, Blocks.EMERALD_BLOCK
+        );
+
+        tag(IFWBlockTags.NEEDS_LEVEL_4_TOOL);
+        tag(IFWBlockTags.NEEDS_LEVEL_3_TOOL).addTag(IFWBlockTags.NEEDS_LEVEL_4_TOOL);
+        tag(IFWBlockTags.NEEDS_LEVEL_2_TOOL).addTag(IFWBlockTags.NEEDS_LEVEL_4_TOOL).addTag(IFWBlockTags.NEEDS_LEVEL_3_TOOL);
+        tag(IFWBlockTags.NEEDS_LEVEL_2_TOOL)
+                .addTag(IFWBlockTags.NEEDS_LEVEL_4_TOOL).addTag(IFWBlockTags.NEEDS_LEVEL_3_TOOL).addTag(IFWBlockTags.NEEDS_LEVEL_2_TOOL);
+
+        tag(BlockTags.DOORS).add(IFWBlocks.adamantium_door.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IFWBlocks.adamantium_door.get());
+    }
+}

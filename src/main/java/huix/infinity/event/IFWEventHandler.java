@@ -1,4 +1,4 @@
-package huix.infinity;
+package huix.infinity.event;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;

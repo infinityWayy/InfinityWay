@@ -24,5 +24,9 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(IFWBlocks.adamantium_block.get());;
+        dropSelf(IFWBlocks.adamantium_ore.get());;
+        dropSelf(IFWBlocks.adamantium_bars.get());;
+
+        add(IFWBlocks.adamantium_door.get(), this::createDoorTable);
     }
 }
