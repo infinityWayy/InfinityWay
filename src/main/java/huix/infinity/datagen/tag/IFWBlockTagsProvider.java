@@ -2,10 +2,12 @@ package huix.infinity.datagen.tag;
 
 import huix.infinity.InfinityWay;
 import huix.infinity.gameobjs.block.IFWBlocks;
+import huix.infinity.gameobjs.item.IFWItems;
 import huix.infinity.gameobjs.tag.IFWBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -59,6 +61,7 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
         tag(IFWBlockTags.NEEDS_LEVEL_2_TOOL).addTag(IFWBlockTags.NEEDS_LEVEL_4_TOOL).addTag(IFWBlockTags.NEEDS_LEVEL_3_TOOL);
         tag(IFWBlockTags.NEEDS_LEVEL_2_TOOL)
                 .addTag(IFWBlockTags.NEEDS_LEVEL_4_TOOL).addTag(IFWBlockTags.NEEDS_LEVEL_3_TOOL).addTag(IFWBlockTags.NEEDS_LEVEL_2_TOOL);
+
 
         tag(BlockTags.DOORS).add(IFWBlocks.adamantium_door.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IFWBlocks.adamantium_door.get());

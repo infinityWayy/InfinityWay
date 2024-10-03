@@ -1,7 +1,12 @@
 package huix.infinity.gameobjs.item;
 
 import huix.infinity.InfinityWay;
+import huix.infinity.gameobjs.item.tier.EnumTier;
+import huix.infinity.gameobjs.item.tool.IFWPickaxeItem;
+import huix.infinity.gameobjs.item.tool.interfaces.IFWDiggerItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.Tiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -31,6 +36,10 @@ public class IFWItems {
 
     public static final DeferredItem<Item> copper_nugget =
             ITEMS.registerSimpleItem("copper_nugget", new Item.Properties());
+
+    public static final DeferredItem<Item> adamantium_pickaxe =
+            ITEMS.register("adamantium_pickaxe", item -> new IFWPickaxeItem(EnumTier.ADAMANTIUM,
+                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.ADAMANTIUM, 1.0F, -2.8F))));
 
 
 }

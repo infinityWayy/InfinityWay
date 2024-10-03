@@ -15,6 +15,8 @@ public class IFWItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(IFWItems.adamantium_ingot.get());
+        basicItem(IFWItems.adamantium_pickaxe.get());
+
         basicItem(IFWItems.ancient_metal_ingot.get());
         basicItem(IFWItems.mithril_ingot.get());
         basicItem(IFWItems.silver_ingot.get());

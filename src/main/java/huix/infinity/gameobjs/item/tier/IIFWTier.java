@@ -1,7 +1,10 @@
 package huix.infinity.gameobjs.item.tier;
 
-public interface IIFWTier {
+import net.minecraft.world.item.Tier;
+
+public interface IIFWTier extends Tier {
 
     int getDurability();
+
     EnumQuality getQuality();
 }

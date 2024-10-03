@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-public enum EnumTier implements Tier, IIFWTier {
+public enum EnumTier implements IIFWTier {
     FLINT(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL, 1, 1.25F, 1.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
     OBSIDIAN(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL, 2, 1.5F, 2.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
     RUSTED_IRON(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.25F, 2.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
