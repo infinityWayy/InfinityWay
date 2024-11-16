@@ -1,8 +1,8 @@
-package huix.infinity.gameobjs.item.group;
+package huix.infinity.common.item.group;
 
 import huix.infinity.InfinityWay;
-import huix.infinity.gameobjs.block.IFWBlocks;
-import huix.infinity.gameobjs.item.IFWItems;
+import huix.infinity.common.block.IFWBlocks;
+import huix.infinity.common.item.IFWItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

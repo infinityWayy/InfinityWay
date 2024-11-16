@@ -1,12 +1,10 @@
-package huix.infinity.gameobjs.item;
+package huix.infinity.common.item;
 
 import huix.infinity.InfinityWay;
-import huix.infinity.gameobjs.item.tier.EnumTier;
-import huix.infinity.gameobjs.item.tool.IFWPickaxeItem;
-import huix.infinity.gameobjs.item.tool.interfaces.IFWDiggerItem;
+import huix.infinity.common.item.tier.EnumTier;
+import huix.infinity.common.item.tool.IFWPickaxeItem;
+import huix.infinity.common.item.tool.impl.IFWDiggerItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.Tiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 

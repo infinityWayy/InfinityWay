@@ -1,4 +1,4 @@
-package huix.infinity.mixin;
+package huix.infinity.mixin.world.item;
 
 import net.minecraft.world.item.Tiers;
 import org.spongepowered.asm.mixin.Mixin;
@@ -9,7 +9,7 @@ public class TiersMixin {
 
     @Overwrite
     public int getUses() {
-        return -1;
+        return -10;
     }
 
     @Overwrite
@@ -22,10 +22,6 @@ public class TiersMixin {
         return -10;
     }
 
-    @Overwrite
-    public int getEnchantmentValue() {
-        return 0;
-    }
 
 
 }

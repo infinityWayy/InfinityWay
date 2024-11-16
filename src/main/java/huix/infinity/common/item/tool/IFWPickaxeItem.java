@@ -1,8 +1,7 @@
-package huix.infinity.gameobjs.item.tool;
+package huix.infinity.common.item.tool;
 
-import huix.infinity.gameobjs.item.tier.IIFWTier;
-import huix.infinity.gameobjs.item.tool.interfaces.IFWDiggerItem;
-import huix.infinity.util.DamageableItemHelper;
+import huix.infinity.common.item.tier.IIFWTier;
+import huix.infinity.common.item.tool.impl.IFWDiggerItem;
 import net.minecraft.tags.BlockTags;
 
 public class IFWPickaxeItem extends IFWDiggerItem {

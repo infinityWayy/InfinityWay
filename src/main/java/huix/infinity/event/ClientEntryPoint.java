@@ -1,7 +1,7 @@
 package huix.infinity.event;
 
 import huix.infinity.InfinityWay;
-import huix.infinity.gameobjs.block.IFWBlocks;
+import huix.infinity.common.block.IFWBlocks;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.neoforged.bus.api.SubscribeEvent;

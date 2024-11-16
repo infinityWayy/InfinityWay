@@ -1,17 +1,17 @@
-package huix.infinity.gameobjs.item.tool.interfaces;
+package huix.infinity.common.item.tool.impl;
 
-import huix.infinity.gameobjs.item.tier.IIFWTier;
-import huix.infinity.util.DamageableItemHelper;
+import huix.infinity.common.item.tier.IIFWTier;
+import huix.infinity.util.DurationHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 
-public class IFWTieredItem extends Item {
+public class IFWTieredItem extends Item implements IRepairableItem {
     private final IIFWTier tier;
     private final int numComponents;
 
     public IFWTieredItem(IIFWTier tier, int numComponents, Properties properties) {
-        super(properties.durability(DamageableItemHelper.getMultipliedDurability(numComponents, tier.getDurability())));
+        super(properties.durability(DurationHelper.getMultipliedDurability(numComponents, tier.getDurability())));
         this.tier = tier;
         this.numComponents = numComponents;
     }
@@ -30,6 +30,7 @@ public class IFWTieredItem extends Item {
         return this.tier.getRepairIngredient().test(repair) || super.isValidRepairItem(toRepair, repair);
     }
 
+    @Override
     public int getRepairCost() {
         return this.numComponents * 2;
     }

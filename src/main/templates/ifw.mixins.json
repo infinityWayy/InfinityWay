@@ -5,9 +5,12 @@
   "refmap": "ifw.refmap.json",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "TiersMixin"
+    "world.item.TiersMixin",
+    "world.item.EnchantmentMixin",
+    "inventory.EnchantmentMenuMixin"
   ],
   "client": [
+    "client.EnchantmentScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

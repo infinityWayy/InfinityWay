@@ -1,7 +1,7 @@
 package huix.infinity.datagen.recipe;
 
-import huix.infinity.gameobjs.block.IFWBlocks;
-import huix.infinity.gameobjs.item.IFWItems;
+import huix.infinity.common.block.IFWBlocks;
+import huix.infinity.common.item.IFWItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;

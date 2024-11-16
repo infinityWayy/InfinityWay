@@ -1,8 +1,8 @@
 package huix.infinity.datagen;
 
 import huix.infinity.InfinityWay;
-import huix.infinity.gameobjs.block.IFWBlocks;
-import huix.infinity.gameobjs.item.IFWItems;
+import huix.infinity.common.block.IFWBlocks;
+import huix.infinity.common.item.IFWItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;

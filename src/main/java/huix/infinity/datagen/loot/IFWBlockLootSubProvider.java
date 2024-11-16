@@ -1,6 +1,6 @@
 package huix.infinity.datagen.loot;
 
-import huix.infinity.gameobjs.block.IFWBlocks;
+import huix.infinity.common.block.IFWBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;

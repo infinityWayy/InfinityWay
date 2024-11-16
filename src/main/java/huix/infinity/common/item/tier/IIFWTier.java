@@ -1,4 +1,4 @@
-package huix.infinity.gameobjs.item.tier;
+package huix.infinity.common.item.tier;
 
 import net.minecraft.world.item.Tier;
 

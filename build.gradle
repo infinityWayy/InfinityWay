@@ -47,11 +47,11 @@ repositories {
 }
 
 dependencies {
-    implementation "dev.shadowsoffire:Placebo:${minecraft_version}-${placebo_version}"
+    //implementation "dev.shadowsoffire:Placebo:${minecraft_version}-${placebo_version}"
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
     runtimeOnly "curse.maven:jade-324717:${jade_id}"
-    runtimeOnly "curse.maven:modern-ui-352491:${modernui_id}"
-    runtimeOnly "maven.modrinth:sodium:${sodium_version}-neoforge"
+//    runtimeOnly "curse.maven:modern-ui-352491:${modernui_id}"
+//    runtimeOnly "maven.modrinth:sodium:${sodium_version}-neoforge"
 
 }
 
@@ -72,13 +72,10 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
 
     inputs.properties replaceProperties
 
-    def resourceTargets = [
-            'META-INF/neoforge.mods.toml',
-            'pack.mcmeta'
-    ]
 
-    filesMatching(resourceTargets) {
+    filesMatching('neoforge.mods.toml') {
         expand replaceProperties
+        name 'META-INF/neoforge.mods.toml'
     }
 
     from "src/main/templates"
@@ -104,8 +101,9 @@ neoForge {
         minecraftVersion = project.parchment_minecraft_version
     }
 
+    interfaceInjectionData.from "src/main/templates/interface_injection.json"
     validateAccessTransformers = true
-    accessTransformers = project.files('src/main/templates/META-INF/accesstransformer.cfg')
+    accessTransformers.from 'src/main/resources/META-INF/accesstransformer.cfg'
 
     runs {
         client {

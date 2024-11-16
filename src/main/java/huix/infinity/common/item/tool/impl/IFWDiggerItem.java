@@ -1,6 +1,6 @@
-package huix.infinity.gameobjs.item.tool.interfaces;
+package huix.infinity.common.item.tool.impl;
 
-import huix.infinity.gameobjs.item.tier.IIFWTier;
+import huix.infinity.common.item.tier.IIFWTier;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -18,16 +18,16 @@ public abstract class IFWDiggerItem extends IFWTieredItem {
         super(tier, numComponents, properties.component(DataComponents.TOOL, tier.createToolProperties(blocks)));
     }
 
-    public static ItemAttributeModifiers createAttributes(Tier p_330688_, float p_330237_, float p_332017_) {
+    public static ItemAttributeModifiers createAttributes(Tier tier, float damage, float speed) {
         return ItemAttributeModifiers.builder()
                 .add(
                         Attributes.ATTACK_DAMAGE,
-                        new AttributeModifier(BASE_ATTACK_DAMAGE_ID, p_330237_ + p_330688_.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
+                        new AttributeModifier(BASE_ATTACK_DAMAGE_ID, damage + tier.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
                         EquipmentSlotGroup.MAINHAND
                 )
                 .add(
                         Attributes.ATTACK_SPEED,
-                        new AttributeModifier(BASE_ATTACK_SPEED_ID, (double)p_332017_, AttributeModifier.Operation.ADD_VALUE),
+                        new AttributeModifier(BASE_ATTACK_SPEED_ID, speed, AttributeModifier.Operation.ADD_VALUE),
                         EquipmentSlotGroup.MAINHAND
                 )
                 .build();

@@ -1,7 +1,7 @@
-package huix.infinity.gameobjs.block;
+package huix.infinity.common.block;
 
 import huix.infinity.InfinityWay;
-import huix.infinity.gameobjs.item.IFWItems;
+import huix.infinity.common.item.IFWItems;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;

@@ -1,6 +1,6 @@
 package huix.infinity.util;
 
-public class DamageableItemHelper {
+public class DurationHelper {
 
 
     public static int getMultipliedDurability(int numComponents, int durability) {

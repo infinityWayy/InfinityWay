@@ -2,9 +2,9 @@ package huix.infinity;
 
 import com.mojang.logging.LogUtils;
 import huix.infinity.event.IFWEventHandler;
-import huix.infinity.gameobjs.block.IFWBlocks;
-import huix.infinity.gameobjs.item.IFWItems;
-import huix.infinity.gameobjs.item.group.IFWItemGroup;
+import huix.infinity.common.block.IFWBlocks;
+import huix.infinity.common.item.IFWItems;
+import huix.infinity.common.item.group.IFWItemGroup;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;

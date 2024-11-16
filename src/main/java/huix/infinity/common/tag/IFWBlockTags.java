@@ -1,4 +1,4 @@
-package huix.infinity.gameobjs.tag;
+package huix.infinity.common.tag;
 
 
 import net.minecraft.core.registries.Registries;

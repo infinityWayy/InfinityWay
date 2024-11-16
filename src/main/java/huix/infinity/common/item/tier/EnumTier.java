@@ -1,10 +1,9 @@
-package huix.infinity.gameobjs.item.tier;
+package huix.infinity.common.item.tier;
 
 import com.google.common.base.Suppliers;
-import huix.infinity.gameobjs.tag.IFWBlockTags;
+import huix.infinity.common.tag.IFWBlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
@@ -13,16 +12,16 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 public enum EnumTier implements IIFWTier {
-    FLINT(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL, 1, 1.25F, 1.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
-    OBSIDIAN(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL, 2, 1.5F, 2.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
-    RUSTED_IRON(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.25F, 2.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
-    COPPER(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.75F, 3.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
-    SILVER(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.75F, 3.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
-    GOLD(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.75F, 2.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
-    IRON(IFWBlockTags.INCORRECT_FOR_LEVEL_2_TOOL, 8, 2.0F, 4.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
-    ANCIENT_METAL(IFWBlockTags.INCORRECT_FOR_LEVEL_2_TOOL, 16, 2.0F, 4.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
-    MITHRIL(IFWBlockTags.INCORRECT_FOR_LEVEL_3_TOOL, 64, 2.5F, 5.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
-    ADAMANTIUM(IFWBlockTags.INCORRECT_FOR_LEVEL_4_TOOL, 256, 3.0F, 6.0F, 15, () -> Ingredient.of(ItemTags.PLANKS));
+    FLINT(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL, 1, 1.25F, 1.0F, 0, () -> Ingredient.of(ItemTags.PLANKS)),
+    OBSIDIAN(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL, 2, 1.5F, 2.0F, 0, () -> Ingredient.of(ItemTags.PLANKS)),
+    RUSTED_IRON(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.25F, 2.0F, 0, () -> Ingredient.of(ItemTags.PLANKS)),
+    COPPER(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.75F, 3.0F, 30, () -> Ingredient.of(ItemTags.PLANKS)),
+    SILVER(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.75F, 3.0F, 30, () -> Ingredient.of(ItemTags.PLANKS)),
+    GOLD(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.75F, 2.0F, 50, () -> Ingredient.of(ItemTags.PLANKS)),
+    IRON(IFWBlockTags.INCORRECT_FOR_LEVEL_2_TOOL, 8, 2.0F, 4.0F, 30, () -> Ingredient.of(ItemTags.PLANKS)),
+    ANCIENT_METAL(IFWBlockTags.INCORRECT_FOR_LEVEL_2_TOOL, 16, 2.0F, 4.0F, 40, () -> Ingredient.of(ItemTags.PLANKS)),
+    MITHRIL(IFWBlockTags.INCORRECT_FOR_LEVEL_3_TOOL, 64, 2.5F, 5.0F, 100, () -> Ingredient.of(ItemTags.PLANKS)),
+    ADAMANTIUM(IFWBlockTags.INCORRECT_FOR_LEVEL_4_TOOL, 256, 3.0F, 6.0F, 40, () -> Ingredient.of(ItemTags.PLANKS));
 
     private final TagKey<Block> incorrectBlocksForDrops;
     private final int durability;
