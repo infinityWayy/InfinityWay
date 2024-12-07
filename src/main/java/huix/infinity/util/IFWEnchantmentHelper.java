@@ -79,7 +79,7 @@ public class IFWEnchantmentHelper {
         int i = stack.getEnchantmentValue();
         if (i > 0) {
             float levelFactor = 1.0F + (random.nextFloat() - 0.5F) * 0.5F;
-            cost /= 100;
+            cost = getExperienceLevel(cost);
             cost = Mth.clamp(Math.round((float)cost * levelFactor), 1, Integer.MAX_VALUE);
             List<Holder<Enchantment>> streamList = possibleEnchantments.toList();
             List<EnchantmentInstance> possibleEntries = getAvailableEnchantmentResults(cost, stack, streamList.stream());

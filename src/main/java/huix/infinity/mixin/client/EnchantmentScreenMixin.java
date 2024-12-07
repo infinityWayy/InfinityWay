@@ -1,20 +1,30 @@
 package huix.infinity.mixin.client;
 
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.EnchantmentNames;
 import net.minecraft.client.gui.screens.inventory.EnchantmentScreen;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.EnchantmentMenu;
+import net.minecraft.world.item.enchantment.Enchantment;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+
+import java.util.List;
+import java.util.Optional;
 
 @Mixin( EnchantmentScreen.class )
 public class EnchantmentScreenMixin extends AbstractContainerScreen<EnchantmentMenu> {
@@ -36,12 +46,6 @@ public class EnchantmentScreenMixin extends AbstractContainerScreen<EnchantmentM
     @Shadow
     @Final
     private static ResourceLocation ENCHANTING_TABLE_LOCATION;
-    @Shadow
-    @Final
-    private static ResourceLocation ENCHANTING_BOOK_LOCATION;
-    @Shadow
-    @Final
-    private RandomSource random = RandomSource.create();
 
     public EnchantmentScreenMixin(EnchantmentMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -95,6 +99,59 @@ public class EnchantmentScreenMixin extends AbstractContainerScreen<EnchantmentM
                 }
 
                 guiGraphics.drawString(this.font, s, j1 + 86 - this.font.width(s), j + 16 + 19 * l + 7, i2);
+            }
+        }
+    }
+
+    @Overwrite
+    @Override
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        this.renderTooltip(guiGraphics, mouseX, mouseY);
+        boolean flag = this.minecraft.player.getAbilities().instabuild;
+        int i = this.menu.getGoldCount();
+
+        for (int j = 0; j < 3; j++) {
+            int k = this.menu.costs[j];
+            Optional<Holder.Reference<Enchantment>> optional = this.minecraft
+                    .level
+                    .registryAccess()
+                    .registryOrThrow(Registries.ENCHANTMENT)
+                    .getHolder(this.menu.enchantClue[j]);
+            int l = this.menu.levelClue[j];
+            int i1 = j + 1;
+            if (this.isHovering(60, 14 + 19 * j, 108, 17, (double)mouseX, (double)mouseY) && k > 0) {
+                List<Component> list = Lists.newArrayList();
+                list.add(Component.translatable("container.enchant.clue", optional.isEmpty() ? "" : Enchantment.getFullname(optional.get(), l)).withStyle(ChatFormatting.WHITE));
+                if (optional.isEmpty()) {
+                    list.add(Component.literal(""));
+                    list.add(Component.translatable("neoforge.container.enchant.limitedEnchantability").withStyle(ChatFormatting.RED));
+                } else if (!flag) {
+                    list.add(CommonComponents.EMPTY);
+                    if (this.minecraft.player.totalExperience < k) {
+                        list.add(Component.translatable("container.enchant.level.requirement", this.menu.costs[j]).withStyle(ChatFormatting.RED));
+                    } else {
+                        MutableComponent mutablecomponent;
+                        if (i1 == 1) {
+                            mutablecomponent = Component.translatable("container.enchant.lapis.one");
+                        } else {
+                            mutablecomponent = Component.translatable("container.enchant.lapis.many", i1);
+                        }
+
+                        list.add(mutablecomponent.withStyle(i >= i1 ? ChatFormatting.GRAY : ChatFormatting.RED));
+                        MutableComponent mutablecomponent1;
+                        if (i1 == 1) {
+                            mutablecomponent1 = Component.translatable("container.enchant.level.one");
+                        } else {
+                            mutablecomponent1 = Component.translatable("container.enchant.level.many", i1);
+                        }
+
+                        list.add(mutablecomponent1.withStyle(ChatFormatting.GRAY));
+                    }
+                }
+
+                guiGraphics.renderComponentTooltip(this.font, list, mouseX, mouseY);
+                break;
             }
         }
     }

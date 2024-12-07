@@ -1,3 +1,5 @@
 {
-  "net/minecraft/world/item/enchantment/Enchantment": "huix/infinity/funextension/EnchantmentExtension"
+  "net/minecraft/world/item/enchantment/Enchantment": "huix/infinity/funextension/EnchantmentExtension",
+  "net/minecraft/world/food/FoodData": "huix/infinity/funextension/FoodDataExtension",
+  "net/minecraft/world/level/block/state/BlockBehaviour/BlockStateBase": "huix/infinity/funextension/BlockStateBaseExtension"
 }
