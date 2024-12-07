@@ -5,5 +5,5 @@ import net.minecraft.world.food.FoodData;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin( FoodData.class )
-public class FoodDataMixin implements FoodDataExtension {
+public class FoodDataMixin {
 }

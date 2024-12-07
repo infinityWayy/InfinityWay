@@ -37,4 +37,23 @@ public class EnchantmentMenuMixin {
     private int redirectEnchantmentLevel(Player instance) {
         return instance.totalExperience;
     }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;isEmpty()Z"), method = "clickMenuButton")
+    private boolean redirectLapisStack(ItemStack instance) {
+        return false;
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;getCount()I"), method = "clickMenuButton")
+    private int redirectLapisCount(ItemStack instance) {
+        return 5;
+    }
+
+    @Shadow
+    @Final
+    public int[] costs;
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;onEnchantmentPerformed(Lnet/minecraft/world/item/ItemStack;I)V"), method = "lambda$clickMenuButton$1")
+    private void redirectXPCost(Player instance, ItemStack enchantedItem, int levelCost) {
+        instance.onEnchantmentPerformedPoints(enchantedItem, this.costs[levelCost - 1]);
+    }
 }

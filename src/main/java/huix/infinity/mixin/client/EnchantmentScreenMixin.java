@@ -16,12 +16,15 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.EnchantmentMenu;
 import net.minecraft.world.item.enchantment.Enchantment;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.List;
 import java.util.Optional;
@@ -57,8 +60,8 @@ public class EnchantmentScreenMixin extends AbstractContainerScreen<EnchantmentM
         int j = (this.height - this.imageHeight) / 2;
         guiGraphics.blit(ENCHANTING_TABLE_LOCATION, i, j, 0, 0, this.imageWidth, this.imageHeight);
         this.renderBook(guiGraphics, i, j, partialTick);
-        EnchantmentNames.getInstance().initSeed((long)this.menu.getEnchantmentSeed());
-        int k = this.menu.getGoldCount();
+        EnchantmentNames.getInstance().initSeed(this.menu.getEnchantmentSeed());
+//        int k = this.menu.getGoldCount();
 
         for (int l = 0; l < 3; l++) {
             int i1 = i + 60;
@@ -104,56 +107,53 @@ public class EnchantmentScreenMixin extends AbstractContainerScreen<EnchantmentM
     }
 
     @Overwrite
-    @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
         boolean flag = this.minecraft.player.getAbilities().instabuild;
-        int i = this.menu.getGoldCount();
+//        int i = this.menu.getGoldCount();
 
-        for (int j = 0; j < 3; j++) {
+        for(int j = 0; j < 3; ++j) {
             int k = this.menu.costs[j];
-            Optional<Holder.Reference<Enchantment>> optional = this.minecraft
-                    .level
-                    .registryAccess()
-                    .registryOrThrow(Registries.ENCHANTMENT)
-                    .getHolder(this.menu.enchantClue[j]);
-            int l = this.menu.levelClue[j];
-            int i1 = j + 1;
-            if (this.isHovering(60, 14 + 19 * j, 108, 17, (double)mouseX, (double)mouseY) && k > 0) {
+            Optional<Holder.Reference<Enchantment>> optional = this.minecraft.level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolder(((EnchantmentMenu)this.menu).enchantClue[j]);
+//            int l = this.menu.levelClue[j];
+//            int i1 = j + 1;
+            if (this.isHovering(60, 14 + 19 * j, 108, 17, mouseX, mouseY) && k > 0) {
                 List<Component> list = Lists.newArrayList();
-                list.add(Component.translatable("container.enchant.clue", optional.isEmpty() ? "" : Enchantment.getFullname(optional.get(), l)).withStyle(ChatFormatting.WHITE));
+                //list.add(Component.translatable("container.enchant.clue", optional.isEmpty() ? "" : Enchantment.getFullname(optional.get(), l)).withStyle(ChatFormatting.WHITE));
                 if (optional.isEmpty()) {
                     list.add(Component.literal(""));
                     list.add(Component.translatable("neoforge.container.enchant.limitedEnchantability").withStyle(ChatFormatting.RED));
                 } else if (!flag) {
-                    list.add(CommonComponents.EMPTY);
+//                    list.add(CommonComponents.EMPTY);
                     if (this.minecraft.player.totalExperience < k) {
                         list.add(Component.translatable("container.enchant.level.requirement", this.menu.costs[j]).withStyle(ChatFormatting.RED));
-                    } else {
-                        MutableComponent mutablecomponent;
-                        if (i1 == 1) {
-                            mutablecomponent = Component.translatable("container.enchant.lapis.one");
-                        } else {
-                            mutablecomponent = Component.translatable("container.enchant.lapis.many", i1);
-                        }
-
-                        list.add(mutablecomponent.withStyle(i >= i1 ? ChatFormatting.GRAY : ChatFormatting.RED));
-                        MutableComponent mutablecomponent1;
-                        if (i1 == 1) {
-                            mutablecomponent1 = Component.translatable("container.enchant.level.one");
-                        } else {
-                            mutablecomponent1 = Component.translatable("container.enchant.level.many", i1);
-                        }
-
-                        list.add(mutablecomponent1.withStyle(ChatFormatting.GRAY));
                     }
+//                    else {
+//                        MutableComponent mutablecomponent;
+//                        if (i1 == 1) {
+//                            mutablecomponent = Component.translatable("container.enchant.lapis.one");
+//                        } else {
+//                            mutablecomponent = Component.translatable("container.enchant.lapis.many", new Object[]{i1});
+//                        }
+//
+//                        list.add(mutablecomponent.withStyle(i >= i1 ? ChatFormatting.GRAY : ChatFormatting.RED));
+//                        MutableComponent mutablecomponent1;
+//                        if (i1 == 1) {
+//                            mutablecomponent1 = Component.translatable("container.enchant.level.one");
+//                        } else {
+//                            mutablecomponent1 = Component.translatable("container.enchant.level.many", new Object[]{i1});
+//                        }
+//
+//                        list.add(mutablecomponent1.withStyle(ChatFormatting.GRAY));
+//                    }
                 }
 
                 guiGraphics.renderComponentTooltip(this.font, list, mouseX, mouseY);
                 break;
             }
         }
+
     }
 
     @Shadow

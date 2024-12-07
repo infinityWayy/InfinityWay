@@ -10,8 +10,8 @@
     "world.block.BlocksMixin",
     "world.block.BlockStateBaseMixin",
     "world.block.PropertiesMixin",
+    "world.entity.PlayerMixin",
     "world.food.FoodDataMixin",
-    "world.item.EnchantmentMixin",
     "world.item.TiersMixin"
   ],
   "client": [
