@@ -13,7 +13,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.block.Block;
 
-public abstract class IFWDiggerItem extends IFWTieredItem {
+public class IFWDiggerItem extends IFWTieredItem {
     public IFWDiggerItem(IIFWTier tier, int numComponents, TagKey<Block> blocks,Properties properties) {
         super(tier, numComponents, properties.component(DataComponents.TOOL, tier.createToolProperties(blocks)));
     }
@@ -41,5 +41,10 @@ public abstract class IFWDiggerItem extends IFWTieredItem {
     @Override
     public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         stack.hurtAndBreak(2, attacker, EquipmentSlot.MAINHAND);
+    }
+
+    @Override
+    public float getReachBonus() {
+        return 0.75F;
     }
 }

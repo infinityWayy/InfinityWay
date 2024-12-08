@@ -19,9 +19,8 @@ public class BlockBehaviourMixin {
         float f = state.getDestroySpeed(level, pos) * 100;
         if (f != -1.0F && player.getFoodData().ifw_hasAnyEnergy()) {
             int i = net.neoforged.neoforge.event.EventHooks.doPlayerHarvestCheck(player, state, level, pos) ? 4 : -1;
-            if (state.getBlock() instanceof BlockStateBaseExtension) {
+            if (((BlockStateBaseExtension) state).ifw_isPortable())
                 i = (int)((float)i / 20.0F);
-            }
 
             return player.getDigSpeed(state, pos) / f / (float)i;
         }

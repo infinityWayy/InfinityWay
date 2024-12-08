@@ -12,6 +12,7 @@
     "world.block.PropertiesMixin",
     "world.entity.PlayerMixin",
     "world.food.FoodDataMixin",
+    "world.item.ItemMixin",
     "world.item.TiersMixin"
   ],
   "client": [

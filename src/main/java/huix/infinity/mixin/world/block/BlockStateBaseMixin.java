@@ -2,6 +2,7 @@ package huix.infinity.mixin.world.block;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.serialization.MapCodec;
+import huix.infinity.funextension.BlockStateBaseExtension;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -12,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin( BlockStateBase.class )
-public class BlockStateBaseMixin {
+public class BlockStateBaseMixin implements BlockStateBaseExtension {
 //    @Unique
 //    @Final
 //    @Mutable
