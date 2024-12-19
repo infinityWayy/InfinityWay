@@ -24,4 +24,6 @@ public class IFWBlockTags {
     //adamantium
     public static final TagKey<Block> HARVEST_LEVEL_4_TOOL = create("harvest_level_4_tool");
     public static final TagKey<Block> INCORRECT_FOR_LEVEL_4_TOOL = create("incorrect_for_level_4_tool");
+
+    public static final TagKey<Block> SCYTHE_EFFECTIVE = create("scythe_effective");
 }

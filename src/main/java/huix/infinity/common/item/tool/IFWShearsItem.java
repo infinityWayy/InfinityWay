@@ -38,7 +38,7 @@ public class IFWShearsItem extends IFWTieredItem {
                 Tool.Rule.overrideSpeed(List.of(Blocks.VINE, Blocks.GLOW_LICHEN), 2.0F)
             ),
             1.0F,
-            1
+            20
         );
     }
 
@@ -81,7 +81,7 @@ public class IFWShearsItem extends IFWTieredItem {
             level.setBlockAndUpdate(blockpos, blockstate1);
             level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(context.getPlayer(), blockstate1));
             if (player != null) {
-                itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+                itemstack.hurtAndBreak(20, player, LivingEntity.getSlotForHand(context.getHand()));
             }
 
             return InteractionResult.sidedSuccess(level.isClientSide);

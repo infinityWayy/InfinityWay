@@ -2,9 +2,16 @@ package huix.infinity.common.item.tool.impl;
 
 import huix.infinity.common.item.tier.IIFWTier;
 import huix.infinity.util.DurationHelper;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.component.Tool;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class IFWTieredItem extends Item implements IRepairableItem {
     private final IIFWTier tier;
@@ -34,4 +41,5 @@ public class IFWTieredItem extends Item implements IRepairableItem {
     public int getRepairCost() {
         return this.numComponents * 2;
     }
+
 }

@@ -56,6 +56,10 @@ public class IFWAxeItem extends IFWDiggerItem {
         super(tier, 3, BlockTags.MINEABLE_WITH_AXE, properties);
     }
 
+    public IFWAxeItem(IIFWTier tier, int c, Properties properties) {
+        super(tier, c, BlockTags.MINEABLE_WITH_AXE, properties);
+    }
+
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();

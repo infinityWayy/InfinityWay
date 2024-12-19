@@ -9,4 +9,8 @@ public class IFWPickaxeItem extends IFWDiggerItem {
         super(tier, 3, BlockTags.MINEABLE_WITH_PICKAXE, properties);
     }
 
+    public IFWPickaxeItem(IIFWTier tier, int c, Properties properties) {
+        super(tier, c, BlockTags.MINEABLE_WITH_PICKAXE, properties);
+    }
+
 }
