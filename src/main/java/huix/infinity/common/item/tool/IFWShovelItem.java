@@ -35,7 +35,7 @@ public class IFWShovelItem extends IFWDiggerItem {
             Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.defaultBlockState()).build());
 
     public IFWShovelItem(IIFWTier tier, Item.Properties properties) {
-        super(tier, 1,BlockTags.MINEABLE_WITH_SHOVEL, properties);
+        super(tier, 1, BlockTags.MINEABLE_WITH_SHOVEL, properties);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class IFWShovelItem extends IFWDiggerItem {
                     level.setBlock(blockpos, blockstate2, 11);
                     level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, blockstate2));
                     if (player != null) {
-                        context.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+                        context.getItemInHand().hurtAndBreak(20, player, LivingEntity.getSlotForHand(context.getHand()));
                     }
                 }
 

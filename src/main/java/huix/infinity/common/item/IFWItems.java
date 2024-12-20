@@ -36,7 +36,7 @@ public class IFWItems {
             ITEMS.register("adamantium_axe", item -> new IFWAxeItem(EnumTier.ADAMANTIUM,
                     new Item.Properties().attributes(IFWAxeItem.createAttributes(EnumTier.ADAMANTIUM,3.0F, -3.1F))));
     public static final DeferredItem<Item> adamantium_scythe =
-            ITEMS.register("adamantium_axe", item -> new IFWScytheItem(EnumTier.ADAMANTIUM,
+            ITEMS.register("adamantium_scythe", item -> new IFWScytheItem(EnumTier.ADAMANTIUM,
                     new Item.Properties().attributes(IFWScytheItem.createAttributes(EnumTier.ADAMANTIUM,1.0F, -2.6F))));
     public static final DeferredItem<Item> adamantium_mattock =
             ITEMS.register("adamantium_mattock", item -> new IFWMattockItem(EnumTier.ADAMANTIUM,

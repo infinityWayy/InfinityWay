@@ -1,6 +1,7 @@
 package huix.infinity.common.item.tool.impl;
 
 import huix.infinity.common.item.tier.IIFWTier;
+import huix.infinity.funextension.BlockStateBaseExtension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.TagKey;
@@ -53,7 +54,7 @@ public class IFWDiggerItem extends IFWTieredItem {
         } else {
             float destroySpeed = state.getDestroySpeed(level, pos);
             //!state.isPortable()
-            if (!level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F && tool.damagePerBlock() > 0 && destroySpeed != 0.0F) {
+            if (!level.isClientSide && tool.damagePerBlock() > 0 && destroySpeed != 0.0F && !((BlockStateBaseExtension) state).ifw_isPortable()) {
                 if (state.is(this.effectiveBlocks)) {
                     stack.hurtAndBreak(Math.round(destroySpeed * 15.0F), miningEntity, EquipmentSlot.MAINHAND);
                 } else if (!state.requiresCorrectToolForDrops()) {

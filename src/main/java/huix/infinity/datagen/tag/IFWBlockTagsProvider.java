@@ -22,7 +22,8 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         tag(IFWBlockTags.HARVEST_LEVEL_0_TOOL).add(Blocks.OAK_LOG);
-        tag(IFWBlockTags.HARVEST_LEVEL_1_TOOL).add(Blocks.STONE);
+        tag(IFWBlockTags.HARVEST_LEVEL_1_TOOL).add(Blocks.STONE, Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.COPPER_ORE
+                , Blocks.DEEPSLATE_COPPER_ORE, Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE);
         tag(IFWBlockTags.HARVEST_LEVEL_2_TOOL).add(
                 Blocks.COPPER_BLOCK, Blocks.CUT_COPPER_STAIRS, Blocks.CUT_COPPER, Blocks.WEATHERED_COPPER, Blocks.WEATHERED_CUT_COPPER_SLAB,
                 Blocks.WEATHERED_CUT_COPPER_STAIRS, Blocks.WEATHERED_CUT_COPPER, Blocks.OXIDIZED_COPPER, Blocks.OXIDIZED_CUT_COPPER_SLAB,
@@ -40,12 +41,12 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
                 Blocks.COPPER_TRAPDOOR, Blocks.EXPOSED_COPPER_TRAPDOOR, Blocks.WEATHERED_COPPER_TRAPDOOR, Blocks.OXIDIZED_COPPER_TRAPDOOR, Blocks.WAXED_COPPER_TRAPDOOR,
                 Blocks.WAXED_EXPOSED_COPPER_TRAPDOOR, Blocks.WAXED_WEATHERED_COPPER_TRAPDOOR, Blocks.WAXED_OXIDIZED_COPPER_TRAPDOOR, Blocks.COPPER_DOOR, Blocks.EXPOSED_COPPER_DOOR,
                 Blocks.WEATHERED_COPPER_DOOR, Blocks.OXIDIZED_COPPER_DOOR, Blocks.WAXED_COPPER_DOOR, Blocks.WAXED_EXPOSED_COPPER_DOOR, Blocks.WAXED_WEATHERED_COPPER_DOOR, Blocks.WAXED_OXIDIZED_COPPER_DOOR, Blocks.EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE,
-                Blocks.RAW_GOLD_BLOCK, Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE,
-                Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, Blocks.RAW_IRON_BLOCK, Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.LAPIS_BLOCK, Blocks.LAPIS_ORE,
-                Blocks.DEEPSLATE_LAPIS_ORE, Blocks.RAW_COPPER_BLOCK, Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE, Blocks.CUT_COPPER_SLAB, Blocks.GOLD_BLOCK, Blocks.RESPAWN_ANCHOR
+                Blocks.RAW_GOLD_BLOCK, Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE,
+                Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, Blocks.RAW_IRON_BLOCK, Blocks.LAPIS_BLOCK, Blocks.LAPIS_ORE,
+                Blocks.DEEPSLATE_LAPIS_ORE, Blocks.RAW_COPPER_BLOCK, Blocks.CUT_COPPER_SLAB, Blocks.RESPAWN_ANCHOR
         );
         tag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).add(
-                Blocks.IRON_BLOCK, Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.EMERALD_BLOCK, Blocks.ANCIENT_DEBRIS
+                Blocks.IRON_BLOCK, Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.EMERALD_BLOCK, Blocks.GOLD_BLOCK, Blocks.ANCIENT_DEBRIS, IFWBlocks.adamantium_ore.get()
         );
         tag(IFWBlockTags.HARVEST_LEVEL_4_TOOL).add(
                 Blocks.DIAMOND_BLOCK
@@ -61,6 +62,6 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
 
 
         tag(BlockTags.DOORS).add(IFWBlocks.adamantium_door.get());
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IFWBlocks.adamantium_door.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IFWBlocks.adamantium_door.get()).add(Blocks.STONE);
     }
 }

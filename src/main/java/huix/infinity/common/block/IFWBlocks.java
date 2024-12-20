@@ -39,6 +39,7 @@ public class IFWBlocks {
             block -> new DoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops()
                     .strength(5.0F).noOcclusion().pushReaction(PushReaction.DESTROY)),
             BlockBehaviour.Properties.of());
+
     public static final DeferredItem<BlockItem> adamantium_door_item = ITEM_BLOCKS.register("adamantium_door",
                     item -> new DoubleHighBlockItem(adamantium_door.get(), new Item.Properties()));
 

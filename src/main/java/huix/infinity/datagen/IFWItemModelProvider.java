@@ -14,13 +14,25 @@ public class IFWItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        basicItem(IFWBlocks.adamantium_door_item.get());
+
         basicItem(IFWItems.adamantium_ingot.get());
         basicItem(IFWItems.adamantium_pickaxe.get());
+        basicItem(IFWItems.adamantium_nugget.get());
+        basicItem(IFWItems.adamantium_shears.get());
+        basicItem(IFWItems.adamantium_shovel.get());
+        basicItem(IFWItems.adamantium_hoe.get());
+        basicItem(IFWItems.adamantium_sword.get());
+        basicItem(IFWItems.adamantium_axe.get());
+        basicItem(IFWItems.adamantium_scythe.get());
+        basicItem(IFWItems.adamantium_mattock.get());
+        basicItem(IFWItems.adamantium_battle_axe.get());
+        basicItem(IFWItems.adamantium_war_hammer.get());
+        basicItem(IFWItems.adamantium_dagger.get());
 
         basicItem(IFWItems.ancient_metal_ingot.get());
         basicItem(IFWItems.mithril_ingot.get());
         basicItem(IFWItems.silver_ingot.get());
 
-        basicItem(IFWBlocks.adamantium_door_item.get());
     }
 }
