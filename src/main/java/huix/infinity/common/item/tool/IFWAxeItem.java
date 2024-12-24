@@ -61,6 +61,16 @@ public class IFWAxeItem extends IFWDiggerItem {
     }
 
     @Override
+    public float getDecayRateForBreakingBlock(BlockState state) {
+        return state.getBlock() == Blocks.SANDSTONE ? 1.875F : 1.0F;
+    }
+
+    @Override
+    public float getDecayRateForAttackingEntity(ItemStack stack) {
+        return 1.0F;
+    }
+
+    @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         BlockPos blockpos = context.getClickedPos();
@@ -79,9 +89,9 @@ public class IFWAxeItem extends IFWDiggerItem {
 
                 level.setBlock(blockpos, optional.get(), 11);
                 level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, optional.get()));
-                if (player != null) {
-                    itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
-                }
+//                if (player != null) {
+//                    itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+//                }
 
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }

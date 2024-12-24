@@ -14,22 +14,10 @@ public class IFWMattockItem extends IFWHoeItem {
     public IFWMattockItem(IIFWTier tier, Properties properties) {
         super(tier, 4 ,properties);
     }
-    
+
     @Override
-    public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
-        float destroySpeed = state.getDestroySpeed(level, pos);
-        if (!level.isClientSide() && destroySpeed != 0.0F) {
-            if (!state.isSolid()) {
-                stack.hurtAndBreak(Math.round(destroySpeed * 100.0F), miningEntity, EquipmentSlot.MAINHAND);
-            } else if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
-                stack.hurtAndBreak(Math.round(destroySpeed * 40.0F), miningEntity, EquipmentSlot.MAINHAND);
-            } else {
-                stack.hurtAndBreak(Math.round(destroySpeed * 10.0F), miningEntity, EquipmentSlot.MAINHAND);
-            }
-        }
-
-        return true;
-
+    public float getDecayRateForBreakingBlock(BlockState state) {
+        return super.getDecayRateForBreakingBlock(state) * 0.8F;
     }
 
 

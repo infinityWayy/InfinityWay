@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IFWDiggerItem extends IFWTieredItem {
+public abstract class IFWDiggerItem extends IFWTieredItem {
     protected final TagKey<Block> effectiveBlocks;
 
     public IFWDiggerItem(IIFWTier tier, int numComponents, TagKey<Block> blocks,Properties properties) {
@@ -42,35 +42,13 @@ public class IFWDiggerItem extends IFWTieredItem {
     }
 
     @Override
+    public boolean isDamageable(BlockState state) {
+        return state.is(effectiveBlocks);
+    }
+
+    @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         return true;
-    }
-
-    @Override
-    public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
-        Tool tool = stack.get(DataComponents.TOOL);
-        if (tool == null) {
-            return false;
-        } else {
-            float destroySpeed = state.getDestroySpeed(level, pos);
-            //!state.isPortable()
-            if (!level.isClientSide && tool.damagePerBlock() > 0 && destroySpeed != 0.0F && !((BlockStateBaseExtension) state).ifw_isPortable()) {
-                if (state.is(this.effectiveBlocks)) {
-                    stack.hurtAndBreak(Math.round(destroySpeed * 15.0F), miningEntity, EquipmentSlot.MAINHAND);
-                } else if (!state.requiresCorrectToolForDrops()) {
-                    stack.hurtAndBreak(Math.round(destroySpeed * 5.0F), miningEntity, EquipmentSlot.MAINHAND);
-                } else {
-                    stack.hurtAndBreak(Math.round(destroySpeed * 50.0F), miningEntity, EquipmentSlot.MAINHAND);
-                }
-            }
-
-            return true;
-        }
-    }
-
-    @Override
-    public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.hurtAndBreak(40, attacker, EquipmentSlot.MAINHAND);
     }
 
     @Override

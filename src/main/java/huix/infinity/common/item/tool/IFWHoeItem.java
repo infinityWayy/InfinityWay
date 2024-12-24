@@ -57,6 +57,16 @@ public class IFWHoeItem extends IFWDiggerItem {
     }
 
     @Override
+    public float getDecayRateForBreakingBlock(BlockState state) {
+        return 2.0F;
+    }
+
+    @Override
+    public float getDecayRateForAttackingEntity(ItemStack stack) {
+        return 2.0F;
+    }
+
+    @Override
     public InteractionResult useOn(UseOnContext p_41341_) {
         Level level = p_41341_.getLevel();
         BlockPos blockpos = p_41341_.getClickedPos();
@@ -73,7 +83,7 @@ public class IFWHoeItem extends IFWDiggerItem {
                 if (!level.isClientSide) {
                     consumer.accept(p_41341_);
                     if (player != null) {
-                        p_41341_.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(p_41341_.getHand()));
+                        p_41341_.getItemInHand().hurtAndBreak(40, player, LivingEntity.getSlotForHand(p_41341_.getHand()));
                     }
                 }
 

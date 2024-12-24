@@ -48,6 +48,16 @@ public class IFWShearsItem extends IFWTieredItem {
     }
 
     @Override
+    public float getDecayRateForBreakingBlock(BlockState state) {
+        return 1.0F;
+    }
+
+    @Override
+    public float getDecayRateForAttackingEntity(ItemStack stack) {
+        return 2.0F;
+    }
+
+    @Override
     public boolean mineBlock(ItemStack itemStack, Level level, BlockState blockState, BlockPos pos, LivingEntity livingEntity) {
         if (!level.isClientSide && !blockState.is(BlockTags.FIRE)) {
             itemStack.hurtAndBreak(1, livingEntity, EquipmentSlot.MAINHAND);

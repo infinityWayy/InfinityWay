@@ -31,6 +31,16 @@ public class IFWSwordItem extends IFWTieredItem {
         super(p_43269_, c,  p_43272_.component(DataComponents.TOOL, createToolProperties()));
     }
 
+    @Override
+    public float getDecayRateForBreakingBlock(BlockState state) {
+        return 2.0F;
+    }
+
+    @Override
+    public float getDecayRateForAttackingEntity(ItemStack stack) {
+        return 0.5F;
+    }
+
     /**
      * Neo: Allow modded Swords to set exactly what Tool data component to use for their sword.
      */
@@ -74,21 +84,6 @@ public class IFWSwordItem extends IFWTieredItem {
     @Override
     public boolean hurtEnemy(ItemStack p_43278_, LivingEntity p_43279_, LivingEntity p_43280_) {
         return true;
-    }
-
-    @Override
-    public void postHurtEnemy(ItemStack p_345553_, LivingEntity p_345771_, LivingEntity p_346282_) {
-        p_345553_.hurtAndBreak(35, p_346282_, EquipmentSlot.MAINHAND);
-    }
-
-    @Override
-    public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
-        float destroySpeed = state.getDestroySpeed(level, pos);
-        if (destroySpeed != 0.0F)
-            stack.hurtAndBreak(Math.round(destroySpeed * 20.0F), miningEntity, EquipmentSlot.MAINHAND);
-
-        return true;
-
     }
 
     @Override

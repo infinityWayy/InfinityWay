@@ -39,6 +39,16 @@ public class IFWShovelItem extends IFWDiggerItem {
     }
 
     @Override
+    public float getDecayRateForBreakingBlock(BlockState state) {
+        return 0.5F;
+    }
+
+    @Override
+    public float getDecayRateForAttackingEntity(ItemStack stack) {
+        return 1.0F;
+    }
+
+    @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         BlockPos blockpos = context.getClickedPos();

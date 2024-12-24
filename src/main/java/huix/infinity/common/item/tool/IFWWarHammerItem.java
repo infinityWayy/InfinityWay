@@ -10,6 +10,16 @@ public class IFWWarHammerItem extends IFWPickaxeItem {
     }
 
     @Override
+    public float getDecayRateForAttackingEntity(ItemStack stack) {
+        return super.getDecayRateForAttackingEntity(stack) * 2.0F / 3.0F;
+    }
+
+    @Override
+    public float getDecayRateForBreakingBlock(BlockState state) {
+        return super.getDecayRateForBreakingBlock(state) * 2.0F / 3.0F;
+    }
+
+    @Override
     public float getDestroySpeed(ItemStack itemStack, BlockState state) {
         return super.getDestroySpeed(itemStack, state) * 0.75F;
     }

@@ -6,6 +6,7 @@ import huix.infinity.datagen.lang.IFWUSLanguageProvider;
 import huix.infinity.datagen.loot.IFWLootTableProvider;
 import huix.infinity.datagen.recipe.IFWRecipeProvider;
 import huix.infinity.datagen.tag.IFWBlockTagsProvider;
+import huix.infinity.datagen.tag.IFWEnchantmentTagsProvider;
 import huix.infinity.datagen.tag.IFWItemTagsProvider;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -32,6 +33,8 @@ public final class DataEntryPoint {
         generator.addProvider(event.includeServer(), new IFWLootTableProvider(output, lookupProvider));
 
         generator.addProvider(event.includeServer(), new IFWRecipeProvider(output, lookupProvider));
+
+        generator.addProvider(event.includeServer(), new IFWEnchantmentTagsProvider(output, lookupProvider));
 
         IFWBlockTagsProvider blockTags = new IFWBlockTagsProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTags);

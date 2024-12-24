@@ -2,10 +2,15 @@ package huix.infinity.common.item.tool;
 
 import huix.infinity.common.item.tier.IIFWTier;
 
-public class IFWDaggerItem extends IFWSwordItem{
-    public IFWDaggerItem(IIFWTier p_43269_, Properties p_43272_) {
-        super(p_43269_,  1, p_43272_);
+public class IFWDaggerItem extends IFWSwordItem {
+    public IFWDaggerItem(IIFWTier tier, Properties properties) {
+        super(tier,  1, properties);
     }
+
+    public IFWDaggerItem(IIFWTier tier, int c, Properties properties) {
+        super(tier,  c, properties);
+    }
+
 
     @Override
     public float getReachBonus() {

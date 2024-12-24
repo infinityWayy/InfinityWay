@@ -10,10 +10,11 @@
     "world.block.BlocksMixin",
     "world.block.BlockStateBaseMixin",
     "world.block.PropertiesMixin",
+    "world.enchantment.EnchantmentsMixin",
+    "world.enchantment.RemoveBinomialMixin",
     "world.entity.PlayerMixin",
     "world.food.FoodDataMixin",
-    "world.item.ItemMixin",
-    "world.item.TiersMixin"
+    "world.item.ItemMixin"
   ],
   "client": [
     "client.EnchantmentScreenMixin"
