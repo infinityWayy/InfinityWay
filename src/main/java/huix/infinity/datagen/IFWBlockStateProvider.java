@@ -1,7 +1,7 @@
 package huix.infinity.datagen;
 
 
-import huix.infinity.InfinityWay;
+import huix.infinity.init.InfinityWay;
 import huix.infinity.common.block.IFWBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

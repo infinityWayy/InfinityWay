@@ -1,6 +1,6 @@
 package huix.infinity.common.item;
 
-import huix.infinity.InfinityWay;
+import huix.infinity.init.InfinityWay;
 import huix.infinity.common.item.tier.EnumTier;
 import huix.infinity.common.item.tool.*;
 import huix.infinity.common.item.tool.impl.IFWDiggerItem;

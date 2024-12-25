@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#minecraft:harvest_level_0_tool",
+    "#minecraft:harvest_level_1_tool",
+    "#minecraft:harvest_level_2_tool",
+    "#minecraft:harvest_level_3_tool",
+    "#minecraft:harvest_level_4_tool"
+  ]
+}

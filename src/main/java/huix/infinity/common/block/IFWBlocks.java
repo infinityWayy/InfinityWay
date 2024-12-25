@@ -1,6 +1,6 @@
 package huix.infinity.common.block;
 
-import huix.infinity.InfinityWay;
+import huix.infinity.init.InfinityWay;
 import huix.infinity.common.item.IFWItems;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.BlockItem;

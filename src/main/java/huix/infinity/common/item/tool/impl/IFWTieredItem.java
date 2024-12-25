@@ -1,7 +1,6 @@
 package huix.infinity.common.item.tool.impl;
 
 import huix.infinity.common.item.tier.IIFWTier;
-import huix.infinity.funextension.BlockStateBaseExtension;
 import huix.infinity.util.DurationHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
@@ -12,7 +11,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 public abstract class IFWTieredItem extends Item implements IRepairableItem {
@@ -36,7 +34,7 @@ public abstract class IFWTieredItem extends Item implements IRepairableItem {
     public final int getToolDecayFromBreakingBlock(Level level, BlockState state, BlockPos pos) {
         float destroySpeed = state.getDestroySpeed(level, pos);
 
-        if (!level.isClientSide && destroySpeed != 0.0F && !((BlockStateBaseExtension) state).ifw_isPortable()) {
+        if (!level.isClientSide && destroySpeed != 0.0F && !state.ifw_isPortable()) {
             float decay = 100.0F * this.getDecayRateForBreakingBlock(state);
             return Math.max(Math.max((int)(destroySpeed * decay), (int)(decay / 20.0F)), 1);
         }

@@ -1,0 +1,5 @@
+// 1.21.1	2024-10-02T19:00:37.7829827	Recipes
+a9b8907bfd52945202a8d3f6852ce350bf5f7d7e data/minecraft/advancement/recipes/building_blocks/adamantium_block_from_ingot.json
+97185a24721edb8abe2880d2877f49cedb72ca3a data/minecraft/advancement/recipes/misc/adamantium_ingot.json
+8016342e3dc56bf6a6b743b88d5ac3f3eea7726b data/minecraft/recipe/adamantium_block_from_ingot.json
+cc90aab0622037381813827575687b9bba3c91a0 data/minecraft/recipe/adamantium_ingot.json

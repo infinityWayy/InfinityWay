@@ -6,18 +6,17 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "inventory.EnchantmentMenuMixin",
+    "server.PlayerListMixin",
     "world.block.BlockBehaviourMixin",
     "world.block.BlocksMixin",
-    "world.block.BlockStateBaseMixin",
-    "world.block.PropertiesMixin",
-    "world.enchantment.EnchantmentsMixin",
     "world.enchantment.RemoveBinomialMixin",
     "world.entity.PlayerMixin",
-    "world.food.FoodDataMixin",
-    "world.item.ItemMixin"
+    "world.entity.ServerPlayerMixin",
+    "world.food.FoodDataMixin"
   ],
   "client": [
-    "client.EnchantmentScreenMixin"
+    "client.EnchantmentScreenMixin",
+    "client.GuiMixin"
   ],
   "injectors": {
     "defaultRequire": 1

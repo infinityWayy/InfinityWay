@@ -1,0 +1,11 @@
+{
+  "values": [
+    "minecraft:iron_block",
+    "minecraft:diamond_ore",
+    "minecraft:deepslate_diamond_ore",
+    "minecraft:emerald_block",
+    "minecraft:gold_block",
+    "minecraft:ancient_debris",
+    "ifw:adamantium_ore"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "block.ifw.adamantium_bars": "Adamantium Bars",
+  "block.ifw.adamantium_block": "Adamantium Block",
+  "block.ifw.adamantium_door": "Adamantium Door",
+  "block.ifw.adamantium_ore": "Adamantium Ore",
+  "item.ifw.adamantium_axe": "Adamantium Axe",
+  "item.ifw.adamantium_battle_axe": "Adamantium Battle Axe",
+  "item.ifw.adamantium_dagger": "Adamantium Dagger",
+  "item.ifw.adamantium_hoe": "Adamantium Hoe",
+  "item.ifw.adamantium_ingot": "Adamantium Ingot",
+  "item.ifw.adamantium_mattock": "Adamantium Mattock",
+  "item.ifw.adamantium_nugget": "Adamantium Nugget",
+  "item.ifw.adamantium_pickaxe": "Adamantium Pickaxe",
+  "item.ifw.adamantium_scythe": "Adamantium Scythe",
+  "item.ifw.adamantium_shears": "Adamantium Shears",
+  "item.ifw.adamantium_shovel": "Adamantium Shovel",
+  "item.ifw.adamantium_sword": "Adamantium Sword",
+  "item.ifw.adamantium_war_hammer": "Adamantium War Hammer",
+  "item.ifw.ancient_metal_ingot": "Ancient Metal Ingot",
+  "item.ifw.mithril_ingot": "Mithril Ingot",
+  "item.ifw.silver_ingot": "Silver Ingot"
+}

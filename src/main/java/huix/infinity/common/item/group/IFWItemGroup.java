@@ -1,6 +1,7 @@
 package huix.infinity.common.item.group;
 
-import huix.infinity.InfinityWay;
+import huix.infinity.init.InfinityWay;
+import huix.infinity.init.InfinityWayData;
 import huix.infinity.common.block.IFWBlocks;
 import huix.infinity.common.item.IFWItems;
 import net.minecraft.core.registries.Registries;

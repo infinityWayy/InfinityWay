@@ -1,6 +1,6 @@
 package huix.infinity.datagen.tag;
 
-import huix.infinity.InfinityWay;
+import huix.infinity.init.InfinityWay;
 import huix.infinity.common.block.IFWBlocks;
 import huix.infinity.common.tag.IFWBlockTags;
 import net.minecraft.core.HolderLookup;
