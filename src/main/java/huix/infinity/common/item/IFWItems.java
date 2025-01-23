@@ -184,6 +184,8 @@ public class IFWItems {
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.SILVER,4.0F, -1.5F))));
 
 
+    public static final DeferredItem<Item> copper_ingot =
+            ITEMS.registerSimpleItem("copper_ingot", new Item.Properties());
     public static final DeferredItem<Item> copper_nugget =
             ITEMS.registerSimpleItem("copper_nugget", new Item.Properties());
     public static final DeferredItem<Item> copper_shears =

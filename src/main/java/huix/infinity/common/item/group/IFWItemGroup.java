@@ -25,6 +25,7 @@ public class IFWItemGroup {
                 output.accept(IFWItems.adamantium_nugget.get());
                 output.accept(IFWItems.ancient_metal_nugget.get());
                 output.accept(IFWItems.mithril_nugget.get());
+                output.accept(IFWItems.copper_ingot.get());
                 output.accept(IFWItems.copper_nugget.get());
                 output.accept(IFWItems.diamond_shard.get());
                 output.accept(IFWItems.emerald_shard.get());
@@ -151,6 +152,8 @@ public class IFWItemGroup {
                         output.accept(IFWBlocks.silver_ore_item.get());
                         output.accept(IFWBlocks.silver_bars_item.get());
                         output.accept(IFWBlocks.silver_door_item.get());
+                        output.accept(IFWBlocks.copper_block_item.get());
+                        output.accept(IFWBlocks.copper_ore_item.get());
                         output.accept(IFWBlocks.copper_bars_item.get());
                         output.accept(IFWBlocks.copper_door_item.get());
 

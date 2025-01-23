@@ -84,6 +84,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.silver_war_hammer.get());
         handheldItem(IFWItems.silver_dagger.get());
 
+        handheldItem(IFWItems.copper_ingot.get());
         handheldItem(IFWItems.copper_pickaxe.get());
         handheldItem(IFWItems.copper_nugget.get());
         handheldItem(IFWItems.copper_shears.get());

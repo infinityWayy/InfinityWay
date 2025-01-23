@@ -109,6 +109,14 @@ public class IFWBlocks {
             item -> new DoubleHighBlockItem(silver_door.get(), new Item.Properties()));
 
 
+    public static final DeferredBlock<Block> copper_block = BLOCKS.registerSimpleBlock("copper_block",
+            BlockBehaviour.Properties.of().mapColor(MapColor.METAL).instrument(NoteBlockInstrument.XYLOPHONE).requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> copper_block_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_block", copper_block);
+    public static final DeferredBlock<Block> copper_ore = BLOCKS.registerBlock("copper_ore",
+            block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)), BlockBehaviour.Properties.of());
+    public static final DeferredItem<BlockItem> copper_ore_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_ore", copper_ore);
     public static final DeferredBlock<Block> copper_bars = BLOCKS.registerBlock("copper_bars",
             block -> new IronBarsBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F)
                     .sound(SoundType.METAL).noOcclusion()), BlockBehaviour.Properties.of());
