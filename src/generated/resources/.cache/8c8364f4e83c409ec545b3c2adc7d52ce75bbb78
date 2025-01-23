@@ -1,2 +1,12 @@
-// 1.21.1	2024-10-03T16:30:47.6560268	Tags for minecraft:item mod id vanilla
-2c8a30288fc847f442ed4f8bb317c2cdf0ab41aa data/minecraft/tags/item/pickaxes.json
+// 1.21.1	2025-01-23T21:08:05.3777159	Tags for minecraft:item mod id vanilla
+f30408fdf78651549d0890d377ea8e517cd2989c data/minecraft/tags/item/axes.json
+d139013ec7df8939ac63b4081bc4578676ba1d39 data/minecraft/tags/item/battle_axe.json
+98bef6a7b410678e73ba57955d8220b72a55ed91 data/minecraft/tags/item/dagger.json
+2f494e156a7e5a7eb4e2c86a6efb1907181eb6de data/minecraft/tags/item/hoes.json
+442f32b7068a3b9b2975ffc8168c12060c5d2375 data/minecraft/tags/item/mattock.json
+251c00fff77f313ba8727f6ef8dc38f24a02d938 data/minecraft/tags/item/pickaxes.json
+adf0eae89f264e7762a5dc818e4661c36d4adbb7 data/minecraft/tags/item/scythe.json
+457e92af9615b48050368157dface57bfdef0fbf data/minecraft/tags/item/shears.json
+18f177d79198562700e9278a5500c47a79a80190 data/minecraft/tags/item/shovels.json
+672486f7f67d157ff3601f55a841aadd0b4fcbbd data/minecraft/tags/item/swords.json
+cb9d6e37c10fbfe183d58b83fb23d2bebdfe255f data/minecraft/tags/item/war_hammer.json

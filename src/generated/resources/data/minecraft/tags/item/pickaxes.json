@@ -1,5 +1,12 @@
 {
   "values": [
-    "ifw:adamantium_pickaxe"
+    "ifw:adamantium_pickaxe",
+    "ifw:mithril_pickaxe",
+    "ifw:ancient_metal_pickaxe",
+    "ifw:iron_pickaxe",
+    "ifw:copper_pickaxe",
+    "ifw:gold_pickaxe",
+    "ifw:silver_pickaxe",
+    "ifw:rusted_iron_pickaxe"
   ]
 }

@@ -1,6 +1,10 @@
 package huix.infinity.mixin.world.block;
 
+import huix.infinity.common.block.GravelBlock;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ColoredFallingBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -39,5 +43,11 @@ public class BlocksMixin {
             , method = "log(Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/block/SoundType;)Lnet/minecraft/world/level/block/Block;")
     private static BlockBehaviour.Properties ifw_logWithTool_1(BlockBehaviour.Properties instance, float strength) {
         return instance.strength(1.2F).requiresCorrectToolForDrops();
+    }
+
+    @Redirect(at = @At(value = "NEW", target = "(Lnet/minecraft/util/ColorRGBA;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/ColoredFallingBlock;"
+            , ordinal = 2), method = "<clinit>")
+    private static ColoredFallingBlock ifw_rebuildGravel(ColorRGBA dustColor, BlockBehaviour.Properties properties) {
+        return new GravelBlock(dustColor, properties);
     }
 }

@@ -48,25 +48,25 @@ public class SwordWeapon extends IFWTieredItem {
         return new Tool(List.of(Tool.Rule.minesAndDrops(List.of(Blocks.COBWEB), 15.0F), Tool.Rule.overrideSpeed(BlockTags.SWORD_EFFICIENT, 1.5F)), 1.0F, 2);
     }
 
-    public static ItemAttributeModifiers createAttributes(IIFWTier p_330371_, int p_331976_, float p_332104_) {
-        return createAttributes(p_330371_, (float)p_331976_, p_332104_);
+    public static ItemAttributeModifiers createAttributes(IIFWTier tier, int p_331976_, float p_332104_) {
+        return createAttributes(tier, (float)p_331976_, p_332104_);
     }
 
     /**
      * Neo: Method overload to allow giving a float for damage instead of an int.
      */
-    public static ItemAttributeModifiers createAttributes(IIFWTier p_330371_, float p_331976_, float p_332104_) {
+    public static ItemAttributeModifiers createAttributes(IIFWTier tier, float damage, float speed) {
         return ItemAttributeModifiers.builder()
             .add(
                 Attributes.ATTACK_DAMAGE,
                 new AttributeModifier(
-                    BASE_ATTACK_DAMAGE_ID, (double)((float)p_331976_ + p_330371_.getAttackDamageBonus()), AttributeModifier.Operation.ADD_VALUE
+                    BASE_ATTACK_DAMAGE_ID, damage + tier.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE
                 ),
                 EquipmentSlotGroup.MAINHAND
             )
             .add(
                 Attributes.ATTACK_SPEED,
-                new AttributeModifier(BASE_ATTACK_SPEED_ID, (double)p_332104_, AttributeModifier.Operation.ADD_VALUE),
+                new AttributeModifier(BASE_ATTACK_SPEED_ID, speed, AttributeModifier.Operation.ADD_VALUE),
                 EquipmentSlotGroup.MAINHAND
             )
             .build();

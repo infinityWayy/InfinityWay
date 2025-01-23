@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/door_bottom_left",
   "textures": {
-    "bottom": "ifw:block/door_adamantium_lower",
+    "bottom": "ifw:block/door_adamantium_upper",
     "top": "ifw:block/door_adamantium_upper"
   }
 }

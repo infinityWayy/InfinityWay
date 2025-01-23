@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "ifw:item/ancient_metal_hoe"
+  }
+}
