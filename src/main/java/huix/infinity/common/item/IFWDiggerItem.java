@@ -1,4 +1,4 @@
-package huix.infinity.common.item.tool.impl;
+package huix.infinity.common.item;
 
 import huix.infinity.common.item.tier.IIFWTier;
 import net.minecraft.core.component.DataComponents;

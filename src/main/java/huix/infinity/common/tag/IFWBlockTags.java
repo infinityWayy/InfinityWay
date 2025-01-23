@@ -26,4 +26,7 @@ public class IFWBlockTags {
     public static final TagKey<Block> INCORRECT_FOR_LEVEL_4_TOOL = create("incorrect_for_level_4_tool");
 
     public static final TagKey<Block> SCYTHE_EFFECTIVE = create("scythe_effective");
+
+    public static final TagKey<Block> PORTABLE_BLOCK = create("portable_block");
+
 }

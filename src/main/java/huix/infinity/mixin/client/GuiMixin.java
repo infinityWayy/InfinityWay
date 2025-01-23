@@ -10,6 +10,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
+import java.awt.*;
+
 @Mixin( Gui.class )
 public class GuiMixin {
     @Shadow
@@ -37,7 +39,7 @@ public class GuiMixin {
             guiGraphics.drawString(this.getFont(), s, j - 1, k, 0, false);
             guiGraphics.drawString(this.getFont(), s, j, k + 1, 0, false);
             guiGraphics.drawString(this.getFont(), s, j, k - 1, 0, false);
-            guiGraphics.drawString(this.getFont(), s, j, k, 8453920, false);
+            guiGraphics.drawString(this.getFont(), s, j, k, i >= 0 ? 8453920 : new Color(200, 50, 80).getRGB(), false);
             this.minecraft.getProfiler().pop();
         }
 

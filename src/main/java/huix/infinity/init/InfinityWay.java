@@ -1,6 +1,7 @@
 package huix.infinity.init;
 
 import com.mojang.logging.LogUtils;
+import huix.infinity.common.attachment.IFWAttachment;
 import huix.infinity.common.block.IFWBlocks;
 import huix.infinity.common.item.IFWItems;
 import huix.infinity.common.item.group.IFWItemGroup;
@@ -20,6 +21,7 @@ public final class InfinityWay {
         IFWBlocks.BLOCKS.register(bus);
         IFWItems.ITEMS.register(bus);
         IFWItemGroup.CREATIVE_TABS.register(bus);
+        IFWAttachment.ATTACHMENT_TYPES.register(bus);
 
         InfinityWayEvent.init();
     }

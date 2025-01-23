@@ -1,4 +1,4 @@
-package huix.infinity.common.item.tool.impl;
+package huix.infinity.common.item;
 
 public interface IRepairableItem {
 

@@ -25,15 +25,5 @@ public enum LevelBonusStats {
       return this.calcBonusFor(player.experienceLevel);
    }
 
-   public static Function createCraftingModifier(Player player) {
-      return (time) -> {
-         time = (int)((float)time / (1.0F + CRAFTING.calcBonusFor(player)));
-//         if (player.hasCurse(CurseType.INTELLECTUAL_DECLINE)) {
-//            time = time * 2;
-//         }
-
-         return time;
-      };
-   }
 
 }

@@ -1,17 +1,12 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import huix.infinity.common.item.tier.IIFWTier;
-import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IFWMattockItem extends IFWHoeItem {
-    public IFWMattockItem(IIFWTier tier, Properties properties) {
+public class MattockTool extends HoeTool {
+    public MattockTool(IIFWTier tier, Properties properties) {
         super(tier, 4 ,properties);
     }
 

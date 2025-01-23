@@ -1,12 +1,11 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import huix.infinity.common.item.tier.IIFWTier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IFWHatchetItem extends IFWAxeItem {
-    public IFWHatchetItem(IIFWTier tier, Properties properties) {
+public class HatchetTool extends AxeTool {
+    public HatchetTool(IIFWTier tier, Properties properties) {
         super(tier, 1, properties);
     }
 

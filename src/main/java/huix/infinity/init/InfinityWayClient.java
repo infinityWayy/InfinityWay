@@ -10,7 +10,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.ChunkRenderTypeSet;
 
 @EventBusSubscriber(modid = InfinityWay.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
-public final class ClientEntryPoint {
+public final class InfinityWayClient {
 
     @SubscribeEvent
     @SuppressWarnings("deprecation")

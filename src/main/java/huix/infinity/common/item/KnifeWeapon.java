@@ -1,14 +1,11 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import huix.infinity.common.item.tier.IIFWTier;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IFWKnifeItem extends IFWDaggerItem {
-    public IFWKnifeItem(IIFWTier tier, Properties properties) {
+public class KnifeWeapon extends DaggerWeapon {
+    public KnifeWeapon(IIFWTier tier, Properties properties) {
         super(tier, properties);
     }
 

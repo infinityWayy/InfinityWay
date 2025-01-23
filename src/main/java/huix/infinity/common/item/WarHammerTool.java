@@ -1,11 +1,11 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import huix.infinity.common.item.tier.IIFWTier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IFWWarHammerItem extends IFWPickaxeItem {
-    public IFWWarHammerItem(IIFWTier tier, Properties properties) {
+public class WarHammerTool extends PickaxeTool {
+    public WarHammerTool(IIFWTier tier, Properties properties) {
         super(tier, 5, properties);
     }
 

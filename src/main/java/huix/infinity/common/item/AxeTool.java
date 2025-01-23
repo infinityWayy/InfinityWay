@@ -1,8 +1,7 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import com.google.common.collect.ImmutableMap.Builder;
 import huix.infinity.common.item.tier.IIFWTier;
-import huix.infinity.common.item.tool.impl.IFWDiggerItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,7 +10,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
@@ -27,7 +25,7 @@ import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-public class IFWAxeItem extends IFWDiggerItem {
+public class AxeTool extends IFWDiggerItem {
     protected static final Map<Block, Block> STRIPPABLES = new Builder<Block, Block>()
         .put(Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD)
         .put(Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG)
@@ -52,11 +50,11 @@ public class IFWAxeItem extends IFWDiggerItem {
         .put(Blocks.BAMBOO_BLOCK, Blocks.STRIPPED_BAMBOO_BLOCK)
         .build();
 
-    public IFWAxeItem(IIFWTier tier, Properties properties) {
+    public AxeTool(IIFWTier tier, Properties properties) {
         super(tier, 3, BlockTags.MINEABLE_WITH_AXE, properties);
     }
 
-    public IFWAxeItem(IIFWTier tier, int c, Properties properties) {
+    public AxeTool(IIFWTier tier, int c, Properties properties) {
         super(tier, c, BlockTags.MINEABLE_WITH_AXE, properties);
     }
 

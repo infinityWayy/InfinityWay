@@ -1,14 +1,12 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import huix.infinity.common.item.tier.IIFWTier;
-import huix.infinity.common.item.tool.impl.IFWTieredItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IFWCudgelItem extends IFWTieredItem {
+public class CudgelWeapon extends IFWTieredItem {
 
-    public IFWCudgelItem(IIFWTier tier, Properties properties) {
+    public CudgelWeapon(IIFWTier tier, Properties properties) {
         super(tier, 2, properties);
     }
 

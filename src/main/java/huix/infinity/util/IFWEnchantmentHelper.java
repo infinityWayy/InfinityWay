@@ -80,28 +80,28 @@ public class IFWEnchantmentHelper {
         if (i > 0) {
             float levelFactor = 1.0F + (random.nextFloat() - 0.5F) * 0.5F;
             cost = getExperienceLevel(cost);
-            cost = Mth.clamp(Math.round((float)cost * levelFactor), 1, Integer.MAX_VALUE);
             List<Holder<Enchantment>> streamList = possibleEnchantments.toList();
-            List<EnchantmentInstance> possibleEntries = getAvailableEnchantmentResults(cost, stack, streamList.stream());
+            List<EnchantmentInstance>  possibleInstances = getAvailableEnchantmentResults(cost, stack, streamList.stream());
+            cost = Mth.clamp(Math.round((float)cost * levelFactor), 1, Integer.MAX_VALUE);
 
-            while(cost > 0 && enchantmentsToAdd.size() <= 2 && !possibleEntries.isEmpty()) {
-                possibleEntries = getAvailableEnchantmentResults(cost, stack, streamList.stream());
+            while(cost > 0 && enchantmentsToAdd.size() <= 2 && !possibleInstances.isEmpty()) {
+                possibleInstances = getAvailableEnchantmentResults(cost, stack, streamList.stream());
 
                 Iterator<EnchantmentInstance> iterator = enchantmentsToAdd.iterator();
                 EnchantmentInstance e;
                 while(iterator.hasNext()) {
                     e = iterator.next();
-                    EnchantmentHelper.filterCompatibleEnchantments(possibleEntries, e);
+                    EnchantmentHelper.filterCompatibleEnchantments(possibleInstances, e);
                 }
 
-                if (possibleEntries.isEmpty()) {
+                if (possibleInstances.isEmpty()) {
                     break;
                 }
 
-                Optional<EnchantmentInstance> entry = WeightedRandom.getRandomItem(random, possibleEntries);
-                if (entry.isPresent()) {
-                    e = entry.get();
-                    if (enchantmentsToAdd.size() < 2 && possibleEntries.size() > 1 && e.enchantment.value().ifw_hasLevels() && random.nextInt(2) == 0) {
+                Optional<EnchantmentInstance> instance = WeightedRandom.getRandomItem(random, possibleInstances);
+                if (instance.isPresent()) {
+                    e = instance.get();
+                    if (enchantmentsToAdd.size() < 2 && possibleInstances.size() > 1 && e.enchantment.value().ifw_hasLevels() && random.nextInt(2) == 0) {
                         e.level = random.nextInt(e.level) + 1;
                     }
 

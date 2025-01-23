@@ -1,10 +1,8 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import huix.infinity.common.item.tier.IIFWTier;
-import huix.infinity.common.item.tool.impl.IFWDiggerItem;
-import huix.infinity.util.DurationHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -15,7 +13,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -25,16 +22,15 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
-import java.util.Map;
 
-public class IFWShovelItem extends IFWDiggerItem {
+public class ShovelTool extends IFWDiggerItem {
 
     protected static final HashMap<Block, BlockState> FLATTENABLES = Maps.newHashMap((new ImmutableMap.Builder()).put(Blocks.GRASS_BLOCK,
             Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.DIRT, Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.PODZOL,
             Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.MYCELIUM,
             Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.defaultBlockState()).build());
 
-    public IFWShovelItem(IIFWTier tier, Item.Properties properties) {
+    public ShovelTool(IIFWTier tier, Item.Properties properties) {
         super(tier, 1, BlockTags.MINEABLE_WITH_SHOVEL, properties);
     }
 

@@ -1,11 +1,9 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import huix.infinity.common.item.tier.IIFWTier;
-import huix.infinity.common.item.tool.impl.IFWDiggerItem;
 import huix.infinity.common.tag.IFWBlockTags;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -14,14 +12,11 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.Tags;
 
-public class IFWScytheItem extends IFWDiggerItem {
-    public IFWScytheItem(IIFWTier tier, Properties properties) {
+public class ScytheTool extends IFWDiggerItem {
+    public ScytheTool(IIFWTier tier, Properties properties) {
         super(tier, 2, IFWBlockTags.SCYTHE_EFFECTIVE, properties);
     }
 

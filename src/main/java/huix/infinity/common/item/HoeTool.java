@@ -1,10 +1,9 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import huix.infinity.common.item.tier.IIFWTier;
-import huix.infinity.common.item.tool.impl.IFWDiggerItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -26,7 +25,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class IFWHoeItem extends IFWDiggerItem {
+public class HoeTool extends IFWDiggerItem {
     /**
      * @deprecated Forge: This map is patched out of vanilla code.
      * Listen to {@link net.neoforged.neoforge.event.level.BlockEvent.BlockToolModificationEvent}
@@ -48,11 +47,11 @@ public class IFWHoeItem extends IFWDiggerItem {
         )
     );
 
-    public IFWHoeItem(IIFWTier p_41336_, Properties p_41339_) {
+    public HoeTool(IIFWTier p_41336_, Properties p_41339_) {
         super(p_41336_, 2, BlockTags.MINEABLE_WITH_HOE, p_41339_);
     }
 
-    public IFWHoeItem(IIFWTier p_41336_, int c, Properties p_41339_) {
+    public HoeTool(IIFWTier p_41336_, int c, Properties p_41339_) {
         super(p_41336_, c, BlockTags.MINEABLE_WITH_HOE, p_41339_);
     }
 

@@ -1,19 +1,15 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import huix.infinity.common.item.tier.IIFWTier;
-import huix.infinity.common.item.tool.impl.IFWTieredItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
@@ -22,12 +18,12 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
-public class IFWSwordItem extends IFWTieredItem {
-    public IFWSwordItem(IIFWTier p_43269_, Properties p_43272_) {
+public class SwordWeapon extends IFWTieredItem {
+    public SwordWeapon(IIFWTier p_43269_, Properties p_43272_) {
         super(p_43269_, 2,  p_43272_.component(DataComponents.TOOL, createToolProperties()));
     }
 
-    public IFWSwordItem(IIFWTier p_43269_, int c, Properties p_43272_) {
+    public SwordWeapon(IIFWTier p_43269_, int c, Properties p_43272_) {
         super(p_43269_, c,  p_43272_.component(DataComponents.TOOL, createToolProperties()));
     }
 
@@ -44,7 +40,7 @@ public class IFWSwordItem extends IFWTieredItem {
     /**
      * Neo: Allow modded Swords to set exactly what Tool data component to use for their sword.
      */
-    public IFWSwordItem(IIFWTier tier, Properties properties, Tool toolComponentData) {
+    public SwordWeapon(IIFWTier tier, Properties properties, Tool toolComponentData) {
         super(tier, 2, properties.component(DataComponents.TOOL, toolComponentData));
     }
 

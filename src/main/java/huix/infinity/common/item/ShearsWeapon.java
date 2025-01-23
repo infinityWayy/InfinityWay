@@ -1,7 +1,6 @@
-package huix.infinity.common.item.tool;
+package huix.infinity.common.item;
 
 import huix.infinity.common.item.tier.IIFWTier;
-import huix.infinity.common.item.tool.impl.IFWTieredItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -12,7 +11,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.context.UseOnContext;
@@ -24,8 +22,8 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 import java.util.List;
 
-public class IFWShearsItem extends IFWTieredItem {
-    public IFWShearsItem(IIFWTier tier, Properties properties) {
+public class ShearsWeapon extends IFWTieredItem {
+    public ShearsWeapon(IIFWTier tier, Properties properties) {
         super(tier, 2, properties);
     }
 

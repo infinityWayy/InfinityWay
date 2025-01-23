@@ -1,5 +1,6 @@
 package huix.infinity.mixin.world.block;
 
+import huix.infinity.common.tag.IFWBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -16,7 +17,7 @@ public class BlockBehaviourMixin {
         float f = state.getDestroySpeed(level, pos) * 100;
         if (f != -1.0F && player.getFoodData().ifw_hasAnyEnergy()) {
             int i = net.neoforged.neoforge.event.EventHooks.doPlayerHarvestCheck(player, state, level, pos) ? 4 : -1;
-            if (state.ifw_isPortable())
+            if ( state.is(IFWBlockTags.PORTABLE_BLOCK))
                 i = (int)((float)i / 20.0F);
 
             return player.getDigSpeed(state, pos) / f / (float)i;

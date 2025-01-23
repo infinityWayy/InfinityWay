@@ -1,9 +1,9 @@
-package huix.infinity.util;
+package huix.infinity.common.item;
 
 public class DurationHelper {
 
 
-    public static int getMultipliedDurability(int numComponents, int durability) {
+    protected static int getMultipliedDurability(int numComponents, int durability) {
         return (int) (getBaseDurability() * numComponents * durability * 100);
     }
 
