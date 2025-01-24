@@ -48,5 +48,12 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.copper_bars.get());
         add(IFWBlocks.copper_door.get(), this::createDoorTable);
 
+        dropSelf(IFWBlocks.raw_adamantium_block.get());
+        dropSelf(IFWBlocks.raw_mithril_block.get());
+        dropSelf(IFWBlocks.raw_silver_block.get());
+        dropSelf(IFWBlocks.deepslate_adamantium_ore.get());
+        dropSelf(IFWBlocks.deepslate_mithril_ore.get());
+        dropSelf(IFWBlocks.deepslate_silver_ore.get());
+
     }
 }

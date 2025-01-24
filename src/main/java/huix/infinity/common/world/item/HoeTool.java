@@ -3,7 +3,7 @@ package huix.infinity.common.world.item;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
-import huix.infinity.common.world.item.tier.IIFWTier;
+import huix.infinity.common.world.item.tier.IFWTier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -47,11 +47,11 @@ public class HoeTool extends IFWDiggerItem {
         )
     );
 
-    public HoeTool(IIFWTier p_41336_, Properties p_41339_) {
+    public HoeTool(IFWTier p_41336_, Properties p_41339_) {
         super(p_41336_, 2, BlockTags.MINEABLE_WITH_HOE, p_41339_);
     }
 
-    public HoeTool(IIFWTier p_41336_, int c, Properties p_41339_) {
+    public HoeTool(IFWTier p_41336_, int c, Properties p_41339_) {
         super(p_41336_, c, BlockTags.MINEABLE_WITH_HOE, p_41339_);
     }
 

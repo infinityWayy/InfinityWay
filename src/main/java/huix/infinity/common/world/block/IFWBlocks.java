@@ -120,5 +120,31 @@ public class IFWBlocks {
     public static final DeferredItem<BlockItem> copper_door_item = ITEM_BLOCKS.register("copper_door",
             item -> new DoubleHighBlockItem(copper_door.get(), new Item.Properties()));
 
+    public static final DeferredBlock<Block> raw_adamantium_block = BLOCKS.registerBlock("raw_adamantium_block",
+            block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)), BlockBehaviour.Properties.of());
+    public static final DeferredItem<BlockItem> raw_adamantium_block_item = ITEM_BLOCKS.registerSimpleBlockItem("raw_adamantium_block", raw_adamantium_block);
+    public static final DeferredBlock<Block> raw_mithril_block = BLOCKS.registerBlock("raw_mithril_block",
+            block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)), BlockBehaviour.Properties.of());
+    public static final DeferredItem<BlockItem> raw_mithril_block_item = ITEM_BLOCKS.registerSimpleBlockItem("raw_mithril_block", raw_adamantium_block);
+    public static final DeferredBlock<Block> raw_silver_block = BLOCKS.registerBlock("raw_silver_block",
+            block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)), BlockBehaviour.Properties.of());
+    public static final DeferredItem<BlockItem> raw_silver_block_item = ITEM_BLOCKS.registerSimpleBlockItem("raw_silver_block", raw_silver_block);
+
+    public static final DeferredBlock<Block> deepslate_adamantium_ore = BLOCKS.registerBlock("deepslate_adamantium_ore",
+            block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(4.5F, 3.0F)), BlockBehaviour.Properties.of());
+    public static final DeferredItem<BlockItem> deepslate_adamantium_ore_item = ITEM_BLOCKS.registerSimpleBlockItem("deepslate_adamantium_ore", deepslate_adamantium_ore);
+    public static final DeferredBlock<Block> deepslate_mithril_ore = BLOCKS.registerBlock("deepslate_mithril_ore",
+            block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(4.5F, 3.0F)), BlockBehaviour.Properties.of());
+    public static final DeferredItem<BlockItem> deepslate_mithril_ore_item = ITEM_BLOCKS.registerSimpleBlockItem("deepslate_mithril_ore", deepslate_mithril_ore);
+    public static final DeferredBlock<Block> deepslate_silver_ore = BLOCKS.registerBlock("deepslate_silver_ore",
+            block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(4.5F, 3.0F)), BlockBehaviour.Properties.of());
+    public static final DeferredItem<BlockItem> deepslate_silver_ore_ore_item = ITEM_BLOCKS.registerSimpleBlockItem("deepslate_silver_ore", deepslate_silver_ore);
+
 }
 

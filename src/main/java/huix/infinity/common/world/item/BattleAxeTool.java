@@ -1,11 +1,11 @@
 package huix.infinity.common.world.item;
 
-import huix.infinity.common.world.item.tier.IIFWTier;
+import huix.infinity.common.world.item.tier.IFWTier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BattleAxeTool extends AxeTool {
-    public BattleAxeTool(IIFWTier tier, Properties properties) {
+    public BattleAxeTool(IFWTier tier, Properties properties) {
         super(tier, 5, properties);
     }
 

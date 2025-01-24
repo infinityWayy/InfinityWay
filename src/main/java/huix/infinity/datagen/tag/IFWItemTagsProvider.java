@@ -7,6 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -45,5 +46,6 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
         tag(IFWItemTags.war_hammer).add(IFWItems.adamantium_war_hammer.get(), IFWItems.mithril_war_hammer.get(), IFWItems.ancient_metal_war_hammer.get(),
                 IFWItems.iron_war_hammer.get(), IFWItems.copper_war_hammer.get(), IFWItems.gold_war_hammer.get(), IFWItems.silver_war_hammer.get(), IFWItems.rusted_iron_war_hammer.get());
 
+        tag(IFWItemTags.string).add(IFWItems.sinew.get(), Items.STRING);
     }
 }

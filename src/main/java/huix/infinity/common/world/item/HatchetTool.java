@@ -1,12 +1,17 @@
 package huix.infinity.common.world.item;
 
-import huix.infinity.common.world.item.tier.IIFWTier;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockState;
+import huix.infinity.common.world.item.tier.IFWTier;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.context.UseOnContext;
 
 public class HatchetTool extends AxeTool {
-    public HatchetTool(IIFWTier tier, Properties properties) {
+    public HatchetTool(IFWTier tier, Properties properties) {
         super(tier, 1, properties);
+    }
+
+    public HatchetTool(IFWTier tier, float durability, Properties properties) {
+        super(tier, durability, properties);
     }
 
     @Override
@@ -15,12 +20,7 @@ public class HatchetTool extends AxeTool {
     }
 
     @Override
-    public float getDecayRateForBreakingBlock(BlockState state) {
-        return super.getDecayRateForBreakingBlock(state) * 4.0F / 3.0F;
-    }
-
-    @Override
-    public float getDecayRateForAttackingEntity(ItemStack stack) {
-        return super.getDecayRateForAttackingEntity(stack) * 4.0F / 3.0F;
+    public InteractionResult useOn(UseOnContext context) {
+        return InteractionResult.PASS;
     }
 }

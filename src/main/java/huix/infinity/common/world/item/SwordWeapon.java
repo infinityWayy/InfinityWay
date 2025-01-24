@@ -1,6 +1,6 @@
 package huix.infinity.common.world.item;
 
-import huix.infinity.common.world.item.tier.IIFWTier;
+import huix.infinity.common.world.item.tier.IFWTier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.BlockTags;
@@ -19,12 +19,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.List;
 
 public class SwordWeapon extends IFWTieredItem {
-    public SwordWeapon(IIFWTier p_43269_, Properties p_43272_) {
-        super(p_43269_, 2,  p_43272_.component(DataComponents.TOOL, createToolProperties()));
+    public SwordWeapon(IFWTier tier, Properties properties) {
+        super(tier, 2,  properties.component(DataComponents.TOOL, createToolProperties()));
     }
 
-    public SwordWeapon(IIFWTier p_43269_, int c, Properties p_43272_) {
-        super(p_43269_, c,  p_43272_.component(DataComponents.TOOL, createToolProperties()));
+    public SwordWeapon(IFWTier tier, int c, Properties properties) {
+        super(tier, c,  properties.component(DataComponents.TOOL, createToolProperties()));
+    }
+
+    public SwordWeapon(IFWTier tier, float durability, Properties properties) {
+        super(tier, durability,  properties.component(DataComponents.TOOL, createToolProperties()));
     }
 
     @Override
@@ -40,7 +44,7 @@ public class SwordWeapon extends IFWTieredItem {
     /**
      * Neo: Allow modded Swords to set exactly what Tool data component to use for their sword.
      */
-    public SwordWeapon(IIFWTier tier, Properties properties, Tool toolComponentData) {
+    public SwordWeapon(IFWTier tier, Properties properties, Tool toolComponentData) {
         super(tier, 2, properties.component(DataComponents.TOOL, toolComponentData));
     }
 
@@ -48,14 +52,14 @@ public class SwordWeapon extends IFWTieredItem {
         return new Tool(List.of(Tool.Rule.minesAndDrops(List.of(Blocks.COBWEB), 15.0F), Tool.Rule.overrideSpeed(BlockTags.SWORD_EFFICIENT, 1.5F)), 1.0F, 2);
     }
 
-    public static ItemAttributeModifiers createAttributes(IIFWTier tier, int p_331976_, float p_332104_) {
-        return createAttributes(tier, (float)p_331976_, p_332104_);
+    public static ItemAttributeModifiers createAttributes(IFWTier tier, int damage, float speed) {
+        return createAttributes(tier, (float)damage, speed);
     }
 
     /**
      * Neo: Method overload to allow giving a float for damage instead of an int.
      */
-    public static ItemAttributeModifiers createAttributes(IIFWTier tier, float damage, float speed) {
+    public static ItemAttributeModifiers createAttributes(IFWTier tier, float damage, float speed) {
         return ItemAttributeModifiers.builder()
             .add(
                 Attributes.ATTACK_DAMAGE,
@@ -86,4 +90,5 @@ public class SwordWeapon extends IFWTieredItem {
     public boolean canPerformAction(ItemStack stack, net.neoforged.neoforge.common.ItemAbility itemAbility) {
         return net.neoforged.neoforge.common.ItemAbilities.DEFAULT_SWORD_ACTIONS.contains(itemAbility);
     }
+
 }

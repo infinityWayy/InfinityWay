@@ -1,12 +1,12 @@
-// 1.21.1	2025-01-24T08:56:32.6071251	Item Models: ifw
+// 1.21.1	2025-01-24T18:24:39.9879734	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 dc8055a3db02f6681f481fb673307b18c3dc655c assets/ifw/models/item/adamantium_dagger.json
 c8a6b48b298ee9d29b6aaaabaef19e0b8a3f453c assets/ifw/models/item/adamantium_door.json
 219d1e7704ea0d2d957a44b4f16675417076cbda assets/ifw/models/item/adamantium_hoe.json
-5e21f2e4788d0818499acc4e703cd74e1bd3596f assets/ifw/models/item/adamantium_ingot.json
+25987a8313dc5f72acbff0ffde735f1ee9dfa7e0 assets/ifw/models/item/adamantium_ingot.json
 0f699535fa91d46579b8e89447ef102adad22089 assets/ifw/models/item/adamantium_mattock.json
-d6e2cc2de9365c934b87e1877bf336676ba5f3ae assets/ifw/models/item/adamantium_nugget.json
+1ed65a01eabbbbff87019a62190fba0969f252e8 assets/ifw/models/item/adamantium_nugget.json
 c7cec22c49b51252cf0ea7e975384ccba4cc0a4d assets/ifw/models/item/adamantium_pickaxe.json
 77d04f928118c291c0f71be441486448e51a841a assets/ifw/models/item/adamantium_scythe.json
 7bae4ec8f94379cbfeaea02f0cb1f6900c939501 assets/ifw/models/item/adamantium_shears.json
@@ -18,9 +18,9 @@ ab8cf625cab344bbbded0c0ef8632ba1dd7f475a assets/ifw/models/item/adamantium_war_h
 c9a187449055c71d108567a3f72ae0dcf9460507 assets/ifw/models/item/ancient_metal_dagger.json
 ab896c79a3fcf6798b6345b0ba21df4159986406 assets/ifw/models/item/ancient_metal_door.json
 bb66eb2f1f2056f58dcbd699e7639e31d67558ff assets/ifw/models/item/ancient_metal_hoe.json
-a899653e58c012587cdb1a7ef86c39f21c469bff assets/ifw/models/item/ancient_metal_ingot.json
+0439e99dbf6100c129dcb65146094cbe4206bcdf assets/ifw/models/item/ancient_metal_ingot.json
 9f247b9246ac86fe654ff027153de1ffd9901b0f assets/ifw/models/item/ancient_metal_mattock.json
-c025882ea82e8a24675a24723e2f4ab7eef3f3b0 assets/ifw/models/item/ancient_metal_nugget.json
+3ba1b3405d6df733a1d711de48ddbab61548961c assets/ifw/models/item/ancient_metal_nugget.json
 51b9bf9a256094a2b1603992b6c0becce5a79191 assets/ifw/models/item/ancient_metal_pickaxe.json
 da6d2d919a37b255d230757a78693b434413eda1 assets/ifw/models/item/ancient_metal_scythe.json
 bb8b0c97a5c7bc47de98ad831465ef8111a65b5a assets/ifw/models/item/ancient_metal_shears.json
@@ -33,7 +33,7 @@ c4d3a1f9e163a0dd74194aada7729571c0d1aa03 assets/ifw/models/item/copper_dagger.js
 d0b53ad9c82a132ef965c195e91113a57f5cb8f1 assets/ifw/models/item/copper_door.json
 d86c2db79d04cfbbe7513a840ab719fca0a3c0dc assets/ifw/models/item/copper_hoe.json
 d08ebf266731bc04ddd4daee055639064e5ce9c3 assets/ifw/models/item/copper_mattock.json
-9b3170d8ffb088104b63e689ab4f55f57bac7a65 assets/ifw/models/item/copper_nugget.json
+19b9572f513ea1f2286e22339a447968609a29a8 assets/ifw/models/item/copper_nugget.json
 0d105c2ef5fa2a061a203a08cfe45a6722e9058e assets/ifw/models/item/copper_pickaxe.json
 536a99f3d82b99401a4168a20bd4dccb29dc0a8f assets/ifw/models/item/copper_scythe.json
 68726389e936be2821cf7bf58cbbc8dc9760fe0d assets/ifw/models/item/copper_shears.json
@@ -42,7 +42,11 @@ d08ebf266731bc04ddd4daee055639064e5ce9c3 assets/ifw/models/item/copper_mattock.j
 9bddf1230fd1b6e5dfd5eb70a707ee0a6657db47 assets/ifw/models/item/copper_war_hammer.json
 0955c32d3a2cc0cf31a008e92cb33d5343ef2eb5 assets/ifw/models/item/diamond_shard.json
 def1fa39cdc255f8288f173b3bf26d5754a443ce assets/ifw/models/item/emerald_shard.json
+3825f2f59ec7df9bfee134e0bd03f00b282e3189 assets/ifw/models/item/flint_axe.json
+b4b8caad10fc5d851f534b9ebb4b46e12783b9ad assets/ifw/models/item/flint_hatchet.json
+cb414e841673adbd3efae70839c2905968c6618e assets/ifw/models/item/flint_knife.json
 33513bb693bfb4e90a3746f419fdb289bf0d250d assets/ifw/models/item/flint_shard.json
+a1e0d77948f528e09e69d1dde3c9375abe845732 assets/ifw/models/item/flint_shovel.json
 507aecd05385c0f3f9087233c7fc2aa5dd269150 assets/ifw/models/item/glass_shard.json
 0b1e9be485e5fed172fe91ecd04f9008f9af17c2 assets/ifw/models/item/gold_axe.json
 7a041f3bb09f12fceb7d4416728dde0621f4b556 assets/ifw/models/item/gold_battle_axe.json
@@ -72,9 +76,9 @@ c21d3c23f13cb4e92f4e0efd89ed9b0b275200c6 assets/ifw/models/item/iron_war_hammer.
 ea29e0760f06de034b10e3aa768baff9b3546647 assets/ifw/models/item/mithril_dagger.json
 2ab914792711bdd369e2eb6c618df788d3a2ec0f assets/ifw/models/item/mithril_door.json
 b05c29ef96c946c88a630a3cc037a613d136b0a5 assets/ifw/models/item/mithril_hoe.json
-66ea2cd1cdba09e371eec684ea47875ae3b409ed assets/ifw/models/item/mithril_ingot.json
+e5002a3f2708413b132b2308d796b242d8905728 assets/ifw/models/item/mithril_ingot.json
 e5c6ceeecca120d4f3e25381549f21382da76958 assets/ifw/models/item/mithril_mattock.json
-2b327842cf1fa7db42817431e2342b79f90bdf19 assets/ifw/models/item/mithril_nugget.json
+8afb6f5b40619399b7a7d8d908f06fb783853dda assets/ifw/models/item/mithril_nugget.json
 e20364f5acc17798c7293e795360d2d11ffe376f assets/ifw/models/item/mithril_pickaxe.json
 8416d3f7d1c85f556cb2b643d6fa785c5d837919 assets/ifw/models/item/mithril_scythe.json
 f3af0c4afda1b5cac3ac9b0e330f327ed060e476 assets/ifw/models/item/mithril_shears.json
@@ -83,6 +87,9 @@ e7e5e99b90e689830029c1329d84dc8b2f584384 assets/ifw/models/item/mithril_sword.js
 0b0da527055273db8644826d3a44aef2a23031f1 assets/ifw/models/item/mithril_war_hammer.json
 4cb0fc2b77fa53b56d5ec1355a47c62ca7cb6832 assets/ifw/models/item/obsidian_shard.json
 df19fe4d3f6abe854cbb1b0fc131ea3ffaf00d53 assets/ifw/models/item/quartz_shard.json
+37262825f20df29508d85a653f55e71651fa2edb assets/ifw/models/item/raw_adamantium.json
+da1777edae0cfa7375c7bc5e64753ae6dd0f3455 assets/ifw/models/item/raw_mithril.json
+50aff0935e8994cdb473b1bc7941ba86f5a6b100 assets/ifw/models/item/raw_silver.json
 90fde3a986bcf6b72b17030050ea1f38e7e236ea assets/ifw/models/item/rusted_iron_axe.json
 c784af18012aef31eb2ffff2e7fd435b52f2c234 assets/ifw/models/item/rusted_iron_battle_axe.json
 1470158f3dfdc090a6a988a574233dbc70b49f11 assets/ifw/models/item/rusted_iron_dagger.json
@@ -99,12 +106,15 @@ f20bfa275c6daaea86bdb41049033dc700e4e0a5 assets/ifw/models/item/rusted_iron_war_
 9c044f73e389613cbf120e17710e90acbd0b74e6 assets/ifw/models/item/silver_dagger.json
 75c17d61a1a75564377baa8730a57698bad7bc24 assets/ifw/models/item/silver_door.json
 30b1c9c1ce1d5fe23bf93a8f65c2472d3ae7420b assets/ifw/models/item/silver_hoe.json
-e71b5c48f87f00b793023a8e2f229a5134ddb2eb assets/ifw/models/item/silver_ingot.json
+b6616ed87f975f8d01e61e462451dd3dfd9dbb74 assets/ifw/models/item/silver_ingot.json
 7e14689354485d4b1d38740acf70f15b31b5167c assets/ifw/models/item/silver_mattock.json
-ba34082554da2851eb117f1f501a2e1a1634eab5 assets/ifw/models/item/silver_nugget.json
+261c21e7ac264df1f5f9ec9a32ce62fad86b46f0 assets/ifw/models/item/silver_nugget.json
 8d893ed8326f7273ac5cba38c8d6af5957c3c52d assets/ifw/models/item/silver_pickaxe.json
 5ec96bae399800c3e3cf0c9e62738214e99afc54 assets/ifw/models/item/silver_scythe.json
 261049f3a2c57e757ec3e474295c380e2157603c assets/ifw/models/item/silver_shears.json
 8562a4f8a214967df5d65f8b293417f91fbe4db8 assets/ifw/models/item/silver_shovel.json
 a6134b0c228ea1fcedfd2af9527535dc5a4cbfeb assets/ifw/models/item/silver_sword.json
 e2836533d26188c92350608a705bc0340ce4c0a0 assets/ifw/models/item/silver_war_hammer.json
+3b2b2e0a567d7b6e59a122e11f2613ba515f316b assets/ifw/models/item/sinew.json
+e8b514a3cca57b8a9458b8ed8b5e0faf54c9589e assets/ifw/models/item/wooden_cudgel.json
+800bb34bc00e80a6084e66e54dfcab075dc08d9a assets/ifw/models/item/wooden_shovel.json

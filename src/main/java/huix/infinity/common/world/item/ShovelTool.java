@@ -2,7 +2,7 @@ package huix.infinity.common.world.item;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import huix.infinity.common.world.item.tier.IIFWTier;
+import huix.infinity.common.world.item.tier.IFWTier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -30,8 +30,12 @@ public class ShovelTool extends IFWDiggerItem {
             Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.MYCELIUM,
             Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.defaultBlockState()).build());
 
-    public ShovelTool(IIFWTier tier, Item.Properties properties) {
+    public ShovelTool(IFWTier tier, Item.Properties properties) {
         super(tier, 1, BlockTags.MINEABLE_WITH_SHOVEL, properties);
+    }
+
+    public ShovelTool(IFWTier tier, float durability, Item.Properties properties) {
+        super(tier, durability, BlockTags.MINEABLE_WITH_SHOVEL, properties);
     }
 
     @Override

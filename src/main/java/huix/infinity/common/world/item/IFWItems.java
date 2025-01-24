@@ -23,9 +23,37 @@ public class IFWItems {
             ITEMS.registerSimpleItem("glass_shard", new Item.Properties());
     public static final DeferredItem<Item> quartz_shard =
             ITEMS.registerSimpleItem("quartz_shard", new Item.Properties());
+    public static final DeferredItem<Item> sinew =
+            ITEMS.registerSimpleItem("sinew", new Item.Properties());
 //    public static final DeferredItem<Item> flint_shard =
 //            ITEMS.registerSimpleItem("flint_shard", new Item.Properties());
 
+    public static final DeferredItem<Item> wooden_shovel =
+            ITEMS.register("wooden_shovel", item -> new ShovelTool(EnumTier.WOOD, 400,
+                    new Item.Properties().attributes(ShovelTool.createAttributes(EnumTier.WOOD,1.0F, -3.0F))));
+    public static final DeferredItem<Item> wooden_cudgel =
+            ITEMS.register("wooden_cudgel", item -> new ClubWeapon(EnumTier.WOOD, 1000,
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(EnumTier.WOOD,3.0F, -2.4F))));
+
+    public static final DeferredItem<Item> flint_hatchet =
+            ITEMS.register("flint_hatchet", item -> new HatchetTool(EnumTier.FLINT, 360,
+                    new Item.Properties().attributes(ShovelTool.createAttributes(EnumTier.FLINT,1.5F, -3.0F))));
+    public static final DeferredItem<Item> flint_knife =
+            ITEMS.register("flint_knife", item -> new KnifeWeapon(EnumTier.FLINT, 400,
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(EnumTier.FLINT,2.5F, 0.0F))));
+    public static final DeferredItem<Item> flint_shovel =
+            ITEMS.register("flint_shovel", item -> new ShovelTool(EnumTier.FLINT, 400,
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(EnumTier.FLINT,1.5F, -3.0F))));
+    public static final DeferredItem<Item> flint_axe =
+            ITEMS.register("flint_axe", item -> new AxeTool(EnumTier.FLINT, 1200.0F,
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(EnumTier.FLINT,2.0F, -3.0F))));
+
+    public static final DeferredItem<Item> raw_adamantium =
+            ITEMS.registerSimpleItem("raw_adamantium", new Item.Properties());
+    public static final DeferredItem<Item> raw_mithril =
+            ITEMS.registerSimpleItem("raw_mithril", new Item.Properties());
+    public static final DeferredItem<Item> raw_silver =
+            ITEMS.registerSimpleItem("raw_silver", new Item.Properties());
 
 
     public static final DeferredItem<Item> adamantium_ingot =

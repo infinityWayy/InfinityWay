@@ -31,6 +31,10 @@ public class IFWItemGroup {
                 output.accept(IFWItems.obsidian_shard.get());
                 output.accept(IFWItems.glass_shard.get());
                 output.accept(IFWItems.quartz_shard.get());
+                output.accept(IFWItems.raw_adamantium.get());
+                output.accept(IFWItems.raw_mithril.get());
+                output.accept(IFWItems.raw_silver.get());
+                output.accept(IFWItems.sinew.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tool_tab =
@@ -127,6 +131,13 @@ public class IFWItemGroup {
                         output.accept(IFWItems.rusted_iron_mattock.get());
                         output.accept(IFWItems.rusted_iron_battle_axe.get());
                         output.accept(IFWItems.rusted_iron_war_hammer.get());
+
+                        output.accept(IFWItems.flint_hatchet.get());
+                        output.accept(IFWItems.flint_knife.get());
+                        output.accept(IFWItems.flint_shovel.get());
+                        output.accept(IFWItems.flint_axe.get());
+                        output.accept(IFWItems.wooden_shovel.get());
+                        output.accept(IFWItems.wooden_cudgel.get());
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> block_tab =
@@ -153,6 +164,12 @@ public class IFWItemGroup {
                         output.accept(IFWBlocks.copper_bars_item.get());
                         output.accept(IFWBlocks.copper_door_item.get());
 
+                        output.accept(IFWBlocks.raw_adamantium_block_item.get());
+                        output.accept(IFWBlocks.raw_mithril_block_item.get());
+                        output.accept(IFWBlocks.raw_silver_block_item.get());
+                        output.accept(IFWBlocks.deepslate_adamantium_ore_item.get());
+                        output.accept(IFWBlocks.deepslate_mithril_ore_item.get());
+                        output.accept(IFWBlocks.deepslate_silver_ore_ore_item.get());
                     }).build());
 
 

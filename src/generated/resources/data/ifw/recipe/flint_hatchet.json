@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "minecraft:flint"
+    },
+    "Y": {
+      "item": "minecraft:stick"
+    },
+    "Z": {
+      "tag": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "XZ",
+    "Y "
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:flint_hatchet"
+  }
+}

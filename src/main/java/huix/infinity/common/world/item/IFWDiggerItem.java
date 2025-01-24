@@ -1,6 +1,6 @@
 package huix.infinity.common.world.item;
 
-import huix.infinity.common.world.item.tier.IIFWTier;
+import huix.infinity.common.world.item.tier.IFWTier;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -16,8 +16,13 @@ import net.minecraft.world.level.block.state.BlockState;
 public abstract class IFWDiggerItem extends IFWTieredItem {
     protected final TagKey<Block> effectiveBlocks;
 
-    public IFWDiggerItem(IIFWTier tier, int numComponents, TagKey<Block> blocks,Properties properties) {
+    public IFWDiggerItem(IFWTier tier, int numComponents, TagKey<Block> blocks, Properties properties) {
         super(tier, numComponents, properties.component(DataComponents.TOOL, tier.createToolProperties(blocks)));
+        this.effectiveBlocks = blocks;
+    }
+
+    public IFWDiggerItem(IFWTier tier, float durability, TagKey<Block> blocks, Properties properties) {
+        super(tier, durability, properties.component(DataComponents.TOOL, tier.createToolProperties(blocks)));
         this.effectiveBlocks = blocks;
     }
 

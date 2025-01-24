@@ -21,6 +21,8 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.quartz_shard.get());
         basicItem(IFWItems.glass_shard.get());
 
+        basicItem(IFWItems.sinew.get());
+
         basicItem(IFWBlocks.adamantium_door_item.get());
         basicItem(IFWBlocks.mithril_door_item.get());
         basicItem(IFWBlocks.ancient_metal_door_item.get());
@@ -28,9 +30,29 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWBlocks.silver_door_item.get());
         basicItem(IFWBlocks.gold_door_item.get());
 
-        handheldItem(IFWItems.adamantium_ingot.get());
+        basicItem(IFWItems.adamantium_ingot.get());
+        basicItem(IFWItems.adamantium_nugget.get());
+        basicItem(IFWItems.ancient_metal_ingot.get());
+        basicItem(IFWItems.ancient_metal_nugget.get());
+        basicItem(IFWItems.mithril_ingot.get());
+        basicItem(IFWItems.mithril_nugget.get());
+        basicItem(IFWItems.copper_nugget.get());
+        basicItem(IFWItems.silver_ingot.get());
+        basicItem(IFWItems.silver_nugget.get());
+
+        basicItem(IFWItems.raw_adamantium.get());
+        basicItem(IFWItems.raw_mithril.get());
+        basicItem(IFWItems.raw_silver.get());
+
+        handheldItem(IFWItems.flint_axe.get());
+        handheldItem(IFWItems.flint_shovel.get());
+        handheldItem(IFWItems.flint_knife.get());
+        handheldItem(IFWItems.adamantium_hoe.get());
+        handheldItem(IFWItems.flint_hatchet.get());
+        handheldItem(IFWItems.wooden_cudgel.get());
+        handheldItem(IFWItems.wooden_shovel.get());
+
         handheldItem(IFWItems.adamantium_pickaxe.get());
-        handheldItem(IFWItems.adamantium_nugget.get());
         handheldItem(IFWItems.adamantium_shears.get());
         handheldItem(IFWItems.adamantium_shovel.get());
         handheldItem(IFWItems.adamantium_hoe.get());
@@ -42,9 +64,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.adamantium_war_hammer.get());
         handheldItem(IFWItems.adamantium_dagger.get());
 
-        handheldItem(IFWItems.ancient_metal_ingot.get());
         handheldItem(IFWItems.ancient_metal_pickaxe.get());
-        handheldItem(IFWItems.ancient_metal_nugget.get());
         handheldItem(IFWItems.ancient_metal_shears.get());
         handheldItem(IFWItems.ancient_metal_shovel.get());
         handheldItem(IFWItems.ancient_metal_hoe.get());
@@ -56,9 +76,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.ancient_metal_war_hammer.get());
         handheldItem(IFWItems.ancient_metal_dagger.get());
 
-        handheldItem(IFWItems.mithril_ingot.get());
         handheldItem(IFWItems.mithril_pickaxe.get());
-        handheldItem(IFWItems.mithril_nugget.get());
         handheldItem(IFWItems.mithril_shears.get());
         handheldItem(IFWItems.mithril_shovel.get());
         handheldItem(IFWItems.mithril_hoe.get());
@@ -70,9 +88,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.mithril_war_hammer.get());
         handheldItem(IFWItems.mithril_dagger.get());
 
-        handheldItem(IFWItems.silver_ingot.get());
         handheldItem(IFWItems.silver_pickaxe.get());
-        handheldItem(IFWItems.silver_nugget.get());
         handheldItem(IFWItems.silver_shears.get());
         handheldItem(IFWItems.silver_shovel.get());
         handheldItem(IFWItems.silver_hoe.get());
@@ -85,7 +101,6 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.silver_dagger.get());
 
         handheldItem(IFWItems.copper_pickaxe.get());
-        handheldItem(IFWItems.copper_nugget.get());
         handheldItem(IFWItems.copper_shears.get());
         handheldItem(IFWItems.copper_shovel.get());
         handheldItem(IFWItems.copper_hoe.get());

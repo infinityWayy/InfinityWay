@@ -13,5 +13,6 @@ public class IFWItemTags {
     public static final TagKey<Item> war_hammer = ItemTags.bind("war_hammer");
     public static final TagKey<Item> dagger = ItemTags.bind("dagger");
 
+    public static final TagKey<Item> string = ItemTags.bind("string");
 
 }

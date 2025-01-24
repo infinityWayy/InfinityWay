@@ -1,6 +1,6 @@
 package huix.infinity.common.world.item;
 
-import huix.infinity.common.world.item.tier.IIFWTier;
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.tag.IFWBlockTags;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ScytheTool extends IFWDiggerItem {
-    public ScytheTool(IIFWTier tier, Properties properties) {
+    public ScytheTool(IFWTier tier, Properties properties) {
         super(tier, 2, IFWBlockTags.SCYTHE_EFFECTIVE, properties);
     }
 

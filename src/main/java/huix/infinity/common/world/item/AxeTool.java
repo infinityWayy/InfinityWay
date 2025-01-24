@@ -1,13 +1,15 @@
 package huix.infinity.common.world.item;
 
 import com.google.common.collect.ImmutableMap.Builder;
-import huix.infinity.common.world.item.tier.IIFWTier;
+import huix.infinity.common.world.item.tier.IFWTier;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -50,12 +52,16 @@ public class AxeTool extends IFWDiggerItem {
         .put(Blocks.BAMBOO_BLOCK, Blocks.STRIPPED_BAMBOO_BLOCK)
         .build();
 
-    public AxeTool(IIFWTier tier, Properties properties) {
+    public AxeTool(IFWTier tier, Properties properties) {
         super(tier, 3, BlockTags.MINEABLE_WITH_AXE, properties);
     }
 
-    public AxeTool(IIFWTier tier, int c, Properties properties) {
+    public AxeTool(IFWTier tier, int c, Properties properties) {
         super(tier, c, BlockTags.MINEABLE_WITH_AXE, properties);
+    }
+
+    public AxeTool(IFWTier tier, float durability, Properties properties) {
+        super(tier, durability, BlockTags.MINEABLE_WITH_AXE, properties);
     }
 
     @Override

@@ -1,4 +1,8 @@
-// 1.21.1	2024-10-02T19:00:37.7829827	Recipes
+// 1.21.1	2025-01-24T18:22:39.8109987	Recipes
+8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
+2004898ab7ccab86ef06a3f22ee5e08723737b00 data/ifw/advancement/recipes/tools/flint_hatchet.json
+5267b5bf27fc062dc498b959461702b541a545dd data/ifw/recipe/adamantium_bars.json
+375e0eb39e51c8dea7a12c430b64df8d2a08e623 data/ifw/recipe/flint_hatchet.json
 a9b8907bfd52945202a8d3f6852ce350bf5f7d7e data/minecraft/advancement/recipes/building_blocks/adamantium_block_from_ingot.json
 97185a24721edb8abe2880d2877f49cedb72ca3a data/minecraft/advancement/recipes/misc/adamantium_ingot.json
 8016342e3dc56bf6a6b743b88d5ac3f3eea7726b data/minecraft/recipe/adamantium_block_from_ingot.json

@@ -1,6 +1,6 @@
 package huix.infinity.common.world.item;
 
-import huix.infinity.common.world.item.tier.IIFWTier;
+import huix.infinity.common.world.item.tier.IFWTier;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -23,7 +23,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import java.util.List;
 
 public class ShearsWeapon extends IFWTieredItem {
-    public ShearsWeapon(IIFWTier tier, Properties properties) {
+    public ShearsWeapon(IFWTier tier, Properties properties) {
         super(tier, 2, properties);
     }
 

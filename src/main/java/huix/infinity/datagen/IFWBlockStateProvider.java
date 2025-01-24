@@ -44,6 +44,13 @@ public class IFWBlockStateProvider extends BlockStateProvider {
         paneBlock((IronBarsBlock) IFWBlocks.silver_bars.get(), modLoc("block/silver_bars") , modLoc("block/silver_bars"));
         doorBlock((DoorBlock) IFWBlocks.silver_door.get(), "silver", modLoc("block/door_silver_upper"), modLoc("block/door_silver_upper"));
 
+        ifw_simpleBlockWithItem(IFWBlocks.raw_adamantium_block.get());
+        ifw_simpleBlockWithItem(IFWBlocks.raw_mithril_block.get());
+        ifw_simpleBlockWithItem(IFWBlocks.raw_silver_block.get());
+        ifw_simpleBlockWithItem(IFWBlocks.deepslate_adamantium_ore.get());
+        ifw_simpleBlockWithItem(IFWBlocks.deepslate_mithril_ore.get());
+        ifw_simpleBlockWithItem(IFWBlocks.deepslate_silver_ore.get());
+
     }
 
     private void ifw_simpleBlockWithItem(Block block) {

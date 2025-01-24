@@ -1,13 +1,13 @@
 package huix.infinity.common.world.item;
 
-import huix.infinity.common.world.item.tier.IIFWTier;
+import huix.infinity.common.world.item.tier.IFWTier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class CudgelWeapon extends IFWTieredItem {
+public class ClubWeapon extends IFWTieredItem {
 
-    public CudgelWeapon(IIFWTier tier, Properties properties) {
-        super(tier, 2, properties);
+    public ClubWeapon(IFWTier tier, float durability, Properties properties) {
+        super(tier, durability, properties);
     }
 
     @Override
