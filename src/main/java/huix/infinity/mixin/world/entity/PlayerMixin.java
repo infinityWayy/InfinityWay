@@ -1,37 +1,26 @@
 package huix.infinity.mixin.world.entity;
 
-import huix.infinity.funextension.PlayerExtension;
+import huix.infinity.func_extension.PlayerExtension;
 import huix.infinity.util.ReflectHelper;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.*;
 
-import javax.annotation.Nullable;
+import java.util.Objects;
 
 @Mixin( Player.class )
 public class PlayerMixin extends LivingEntity implements PlayerExtension {
-    @Shadow
-    public int experienceLevel;
-    @Shadow
-    public int totalExperience;
-    @Shadow
-    private int lastLevelUpTime;
-    @Shadow
-    public float experienceProgress;
 
+    @Shadow protected FoodData foodData;
 
     @Overwrite
     public int getXpNeededForNextLevel() {
@@ -68,13 +57,8 @@ public class PlayerMixin extends LivingEntity implements PlayerExtension {
                 }
             }
 
-            this.updateTotalExperience();
+            this.ifw_updateTotalExperience();
         }
-    }
-
-    @Overwrite
-    public void onEnchantmentPerformed(ItemStack enchantedItem, int levelCost) {
-        this.giveExperienceLevels(-levelCost);
     }
 
     @Overwrite
@@ -91,9 +75,8 @@ public class PlayerMixin extends LivingEntity implements PlayerExtension {
             }
 
         }
-        this.updateTotalExperience();
+        this.ifw_updateTotalExperience();
     }
-
 
     @Overwrite
     protected int getBaseExperienceReward() {
@@ -104,20 +87,9 @@ public class PlayerMixin extends LivingEntity implements PlayerExtension {
         }
     }
 
-    @Unique
-    public void updateTotalExperience() {
-        if (this.experienceLevel >= 0) {
-            this.totalExperience = (int)(5.0 * Math.pow(this.experienceLevel, 2.0) + (double)(15 * this.experienceLevel)) +
-                    Mth.ceil(this.experienceProgress * (float)this.getXpNeededForNextLevel());
-        } else {
-            this.totalExperience = this.experienceLevel * 20;
-        }
-
-    }
-
     @Overwrite
     public double blockInteractionRange() {
-        double i = this.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE);
+        final double i = this.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE);
         if (!this.getMainHandItem().isEmpty())
             return i + this.getMainHandItem().getItem().getReachBonus();
         return i;
@@ -125,11 +97,43 @@ public class PlayerMixin extends LivingEntity implements PlayerExtension {
 
     @Overwrite
     public double entityInteractionRange() {
-        double i = this.getAttributeValue(Attributes.ENTITY_INTERACTION_RANGE);
+        final double i = this.getAttributeValue(Attributes.ENTITY_INTERACTION_RANGE);
         if (!this.getMainHandItem().isEmpty())
             return i + this.getMainHandItem().getItem().getReachBonus();
         return i;
     }
+
+
+    @Unique
+    @Override
+    public void ifw_updateTotalExperience() {
+        if (this.experienceLevel >= 0) {
+            this.totalExperience = (int)(5.0 * Math.pow(this.experienceLevel, 2.0) + (double)(15 * this.experienceLevel)) +
+                    Mth.ceil(this.experienceProgress * (float)this.getXpNeededForNextLevel());
+        } else {
+            this.totalExperience = this.experienceLevel * 20;
+        }
+        this.ifw_levelUpdate();
+    }
+
+    @Unique
+    public void ifw_levelUpdate() {
+        final float modifyValue = this.ifw_modifyValue();
+        this.ifw_maxHealth(modifyValue);
+        this.foodData.ifw_maxFoodLevel((int) modifyValue);
+    }
+
+    @Unique
+    private float ifw_modifyValue() {
+        final int max_level = this.experienceLevel >= 35 ? 35 : this.experienceLevel;
+        return (float) max_level / 5 * 2 + 6.0F;
+    }
+
+    @Unique
+    public void ifw_maxHealth(final float health) {
+        Objects.requireNonNull(this.getAttributes().getInstance(Attributes.MAX_HEALTH)).setBaseValue(health);
+    }
+
 
 
 
@@ -137,6 +141,14 @@ public class PlayerMixin extends LivingEntity implements PlayerExtension {
         super(entityType, level);
     }
 
+    @Shadow
+    public int experienceLevel;
+    @Shadow
+    public int totalExperience;
+    @Shadow
+    private int lastLevelUpTime;
+    @Shadow
+    public float experienceProgress;
     @Shadow
     public void increaseScore(int score) {
     }

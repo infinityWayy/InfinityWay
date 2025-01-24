@@ -1,0 +1,35 @@
+package huix.infinity.func_extension;
+
+import huix.infinity.common.world.entity.player.NutritionalStatus;
+import net.minecraft.world.food.FoodData;
+
+public interface FoodDataExtension {
+
+    default boolean ifw_hasAnyEnergy() {
+        FoodData instance = (FoodData) this;
+        return instance.getSaturationLevel() > 0.0F || instance.getFoodLevel() > 0;
+    }
+
+    default void ifw_maxFoodLevel(int maxFoodLevel) {}
+    default int ifw_maxFoodLevel() {
+        return 0;
+    }
+
+    default void ifw_phytonutrients(int phytontrients) {}
+    default int ifw_phytonutrients() {
+        return 0;
+    }
+
+    default void ifw_protein(int protein) {}
+    default int ifw_protein() {
+        return 0;
+    }
+
+    default void ifw_nutritionalStatusByINT(int nutritionalStatus) {}
+    default int ifw_nutritionalStatusByINT() {
+        return 0;
+    }
+    default NutritionalStatus ifw_nutritionalStatus() {
+        return null;
+    }
+}

@@ -1,6 +1,6 @@
 package huix.infinity.datagen.tag;
 
-import huix.infinity.common.item.IFWItems;
+import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.tag.IFWItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -20,7 +20,7 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.@NotNull Provider provider) {
+    protected void addTags(final HolderLookup.@NotNull Provider provider) {
         tag(ItemTags.PICKAXES).add(IFWItems.adamantium_pickaxe.get(), IFWItems.mithril_pickaxe.get(), IFWItems.ancient_metal_pickaxe.get(),
                 IFWItems.iron_pickaxe.get(), IFWItems.copper_pickaxe.get(), IFWItems.gold_pickaxe.get(), IFWItems.silver_pickaxe.get(), IFWItems.rusted_iron_pickaxe.get());
         tag(ItemTags.AXES).add(IFWItems.adamantium_axe.get(), IFWItems.mithril_axe.get(), IFWItems.ancient_metal_axe.get(),

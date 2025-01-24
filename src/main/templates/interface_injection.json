@@ -1,7 +1,7 @@
 {
-  "net/minecraft/world/item/enchantment/Enchantment": "huix/infinity/funextension/EnchantmentExtension",
-  "net/minecraft/world/food/FoodData": "huix/infinity/funextension/FoodDataExtension",
-  "net/minecraft/world/entity/player/Player": "huix/infinity/funextension/PlayerExtension",
-  "net/minecraft/world/item/Item": "huix/infinity/funextension/ItemExtension",
-  "net/minecraft/world/level/block/Block": "huix/infinity/funextension/BlockExtension"
+  "net/minecraft/world/item/enchantment/Enchantment": "huix/infinity/func_extension/EnchantmentExtension",
+  "net/minecraft/world/food/FoodData": "huix/infinity/func_extension/FoodDataExtension",
+  "net/minecraft/world/entity/player/Player": "huix/infinity/func_extension/PlayerExtension",
+  "net/minecraft/world/item/Item": "huix/infinity/func_extension/ItemExtension",
+  "net/minecraft/world/level/block/Block": "huix/infinity/func_extension/BlockExtension"
 }

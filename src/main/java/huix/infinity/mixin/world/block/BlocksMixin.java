@@ -1,10 +1,9 @@
 package huix.infinity.mixin.world.block;
 
-import huix.infinity.common.block.GravelBlock;
+import huix.infinity.common.world.block.GravelBlock;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ColoredFallingBlock;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;

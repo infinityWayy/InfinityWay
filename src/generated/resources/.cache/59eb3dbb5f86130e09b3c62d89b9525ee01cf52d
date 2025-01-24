@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-23T23:42:19.3834037	Loot Tables
+// 1.21.1	2025-01-24T08:56:32.6058977	Loot Tables
 e83ac5ba844b67d2d69c691887b951b8f7166f9d data/ifw/loot_table/blocks/adamantium_bars.json
 b75574a0827bdf12669b4631f5e8a591ffe3b2db data/ifw/loot_table/blocks/adamantium_block.json
 b7ab973a031782a3653f2f5505b20d10f85d9f39 data/ifw/loot_table/blocks/adamantium_door.json
@@ -7,9 +7,7 @@ e874b9a955e58ca052b8d2ea8dc91d72103f8b52 data/ifw/loot_table/blocks/ancient_meta
 5a8c707b43540d4775162840255495a4e8b59686 data/ifw/loot_table/blocks/ancient_metal_block.json
 13a5a58b473f839ab0ad28cb8b42011d5ba8d2b8 data/ifw/loot_table/blocks/ancient_metal_door.json
 d2a0e828934ec26ca3dbec1e4380f602c1224ddc data/ifw/loot_table/blocks/copper_bars.json
-bfbb60eb7e58bf72e3a5e7e6a51c8c1c2bd88ec0 data/ifw/loot_table/blocks/copper_block.json
 af542bc09bc74c7c38666396f46f42742f516e31 data/ifw/loot_table/blocks/copper_door.json
-f03f5cd37c22ffcb8247f76ee4ef27acc890751c data/ifw/loot_table/blocks/copper_ore.json
 809b8708cec911a2c2e744d29b4af8e84f40bf69 data/ifw/loot_table/blocks/gold_bars.json
 7cba7be2019e08f3a633ad62810166f9a9bfedf2 data/ifw/loot_table/blocks/gold_door.json
 2eb5895320afe7ee464dcb1dcfb14622a987be50 data/ifw/loot_table/blocks/mithril_bars.json

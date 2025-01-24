@@ -1,7 +1,7 @@
 package huix.infinity.datagen.tag;
 
 import huix.infinity.init.InfinityWay;
-import huix.infinity.common.block.IFWBlocks;
+import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.tag.IFWBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -20,7 +20,7 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.@NotNull Provider provider) {
+    protected void addTags(final HolderLookup.@NotNull Provider provider) {
         tag(IFWBlockTags.HARVEST_LEVEL_0_TOOL).add(Blocks.OAK_LOG);
         tag(IFWBlockTags.HARVEST_LEVEL_1_TOOL).add(Blocks.STONE, Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.COPPER_ORE
                 , Blocks.DEEPSLATE_COPPER_ORE, Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE);

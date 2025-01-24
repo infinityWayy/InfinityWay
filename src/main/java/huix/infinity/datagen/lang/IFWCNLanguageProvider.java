@@ -1,8 +1,8 @@
 package huix.infinity.datagen.lang;
 
 import huix.infinity.init.InfinityWay;
-import huix.infinity.common.block.IFWBlocks;
-import huix.infinity.common.item.IFWItems;
+import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -30,8 +30,6 @@ public class IFWCNLanguageProvider extends LanguageProvider {
         add(IFWBlocks.silver_ore_item.get(), "银矿石");
         add(IFWBlocks.silver_bars_item.get(), "银栏杆");
         add(IFWBlocks.silver_door_item.get(), "银门");
-        add(IFWBlocks.copper_block_item.get(), "铜块");
-        add(IFWBlocks.copper_ore_item.get(), "铜矿石");
         add(IFWBlocks.copper_bars_item.get(), "铜栏杆");
         add(IFWBlocks.copper_door_item.get(), "铜门");
 
@@ -93,7 +91,6 @@ public class IFWCNLanguageProvider extends LanguageProvider {
         add(IFWItems.silver_battle_axe.get(), "银战斧");
         add(IFWItems.silver_war_hammer.get(), "银战锤");
         add(IFWItems.silver_dagger.get(), "银短剑");
-        add(IFWItems.copper_ingot.get(), "铜锭");
         add(IFWItems.copper_pickaxe.get(), "铜镐");
         add(IFWItems.copper_nugget.get(), "铜粒");
         add(IFWItems.copper_shears.get(), "铜剪刀");

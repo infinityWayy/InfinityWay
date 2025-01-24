@@ -7,7 +7,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.WeightedRandom;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
@@ -15,41 +14,41 @@ import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class IFWEnchantmentHelper {
 
-    public static int getExperienceCost(int enchantmentLevels) {
+    public static int getExperienceCost(final int enchantmentLevels) {
         return enchantmentLevels * 100;
     }
 
-    public static int getExperienceLevel(int enchantmentCost) {
+    public static int getExperienceLevel(final int enchantmentCost) {
         return enchantmentCost / 100;
     }
 
-    public static int calculateRequiredExperienceLevel(RandomSource pRandom, int pSlotIndex, int pBookshelfCount, ItemStack pStack, int enchantingMultiplier) {
-        Item item = pStack.getItem();
+    public static int calculateRequiredExperienceLevel(final RandomSource random, final int slot,
+                                                       int bookshelfCount, final ItemStack stack, final int enchantingMultiplier) {
+        Item item = stack.getItem();
         int i = item.getEnchantmentValue();
         if (i <= 0) {
             return 0;
         } else {
-            if (pBookshelfCount > 24) {
-                pBookshelfCount = 24;
+            if (bookshelfCount > 24) {
+                bookshelfCount = 24;
             }
 
-            int enchantment_table_power = (1 + pBookshelfCount) * 2 * enchantingMultiplier;
-            int enchantment_levels = getEnchantmentLevelsAlteredByItemEnchantability(enchantment_table_power, item);
-            float fraction = (1.0F + (float)pSlotIndex) / 3.0F;
-            if (pSlotIndex < 2) {
-                fraction += (pRandom.nextFloat() - 0.5F) * 0.2F;
+            int enchantment_table_power = (1 + bookshelfCount) * 2 * enchantingMultiplier;
+            int enchantment_levels = getEnchantmentLevelsAlteredByItem(enchantment_table_power, item);
+            float fraction = (1.0F + (float)slot) / 3.0F;
+            if (slot < 2) {
+                fraction += (random.nextFloat() - 0.5F) * 0.2F;
             }
 
             return Math.max(Math.round((float)enchantment_levels * fraction), 1);
         }
     }
 
-    public static int getEnchantmentLevelsAlteredByItemEnchantability(int enchantment_table_power, Item item) {
+    public static int getEnchantmentLevelsAlteredByItem(final int enchantment_table_power, final Item item) {
         int enchantability = item.getEnchantmentValue();
         if (enchantability < 1) {
             return 0;
@@ -74,7 +73,8 @@ public class IFWEnchantmentHelper {
         }
     }
 
-    public static List<EnchantmentInstance> selectEnchantment(RandomSource random, ItemStack stack, int cost, Stream<Holder<Enchantment>> possibleEnchantments) {
+    public static List<EnchantmentInstance> selectEnchantment(final RandomSource random, final ItemStack stack, int cost,
+                                                              final Stream<Holder<Enchantment>> possibleEnchantments) {
         List<EnchantmentInstance> enchantmentsToAdd = Lists.newArrayList();
         int i = stack.getEnchantmentValue();
         if (i > 0) {

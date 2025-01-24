@@ -2,9 +2,10 @@ package huix.infinity.init;
 
 import com.mojang.logging.LogUtils;
 import huix.infinity.common.attachment.IFWAttachment;
-import huix.infinity.common.block.IFWBlocks;
-import huix.infinity.common.item.IFWItems;
-import huix.infinity.common.item.group.IFWItemGroup;
+import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.common.world.item.group.IFWItemGroup;
+import huix.infinity.common.world.entity.IFWAttributes;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -17,12 +18,13 @@ public final class InfinityWay {
     private static final Logger LOGGER = LogUtils.getLogger();
 
 
-    public InfinityWay(ModContainer mod, IEventBus bus) {
+    public InfinityWay(final ModContainer mod, final IEventBus bus) {
         IFWBlocks.BLOCKS.register(bus);
         IFWItems.ITEMS.register(bus);
         IFWItemGroup.CREATIVE_TABS.register(bus);
         IFWAttachment.ATTACHMENT_TYPES.register(bus);
+        IFWAttributes.ATTRIBUTES.register(bus);
 
-        InfinityWayEvent.init();
+        IFWEvent.init();
     }
 }

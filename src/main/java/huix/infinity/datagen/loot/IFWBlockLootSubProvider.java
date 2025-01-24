@@ -1,6 +1,6 @@
 package huix.infinity.datagen.loot;
 
-import huix.infinity.common.block.IFWBlocks;
+import huix.infinity.common.world.block.IFWBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -45,8 +45,6 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.silver_bars.get());
         add(IFWBlocks.silver_door.get(), this::createDoorTable);
 
-        dropSelf(IFWBlocks.copper_block.get());
-        dropSelf(IFWBlocks.copper_ore.get());
         dropSelf(IFWBlocks.copper_bars.get());
         add(IFWBlocks.copper_door.get(), this::createDoorTable);
 

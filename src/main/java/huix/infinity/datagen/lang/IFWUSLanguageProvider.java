@@ -1,8 +1,8 @@
 package huix.infinity.datagen.lang;
 
 import huix.infinity.init.InfinityWay;
-import huix.infinity.common.block.IFWBlocks;
-import huix.infinity.common.item.IFWItems;
+import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -31,8 +31,6 @@ public class IFWUSLanguageProvider extends LanguageProvider {
         add(IFWBlocks.silver_ore_item.get(), "Silver Ore");
         add(IFWBlocks.silver_bars_item.get(), "Silver Bars");
         add(IFWBlocks.silver_door_item.get(), "Silver Door");
-        add(IFWBlocks.copper_block_item.get(), "Copper Block");
-        add(IFWBlocks.copper_ore_item.get(), "Copper Ore");
         add(IFWBlocks.copper_bars_item.get(), "Copper Bars");
         add(IFWBlocks.copper_door_item.get(), "Copper Door");
 
@@ -95,7 +93,6 @@ public class IFWUSLanguageProvider extends LanguageProvider {
         add(IFWItems.silver_battle_axe.get(), "Silver Battle Axe");
         add(IFWItems.silver_war_hammer.get(), "Silver War Hammer");
         add(IFWItems.silver_dagger.get(), "Silver Dagger");
-        add(IFWItems.copper_ingot.get(), "Copper Ingot");
         add(IFWItems.copper_pickaxe.get(), "Copper Pickaxe");
         add(IFWItems.copper_nugget.get(), "Copper Nugget");
         add(IFWItems.copper_shears.get(), "Copper Shears");

@@ -2,9 +2,8 @@ package huix.infinity.datagen;
 
 
 import huix.infinity.init.InfinityWay;
-import huix.infinity.common.block.IFWBlocks;
+import huix.infinity.common.world.block.IFWBlocks;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.IronBarsBlock;
@@ -34,8 +33,6 @@ public class IFWBlockStateProvider extends BlockStateProvider {
         paneBlock((IronBarsBlock) IFWBlocks.ancient_metal_bars.get(), modLoc("block/ancient_metal_bars") , modLoc("block/ancient_metal_bars"));
         doorBlock((DoorBlock) IFWBlocks.ancient_metal_door.get(), "ancient_metal", modLoc("block/door_ancient_metal_upper"), modLoc("block/door_ancient_metal_upper"));
 
-        ifw_simpleBlockWithItem(IFWBlocks.copper_block.get());
-        ifw_simpleBlockWithItem(IFWBlocks.copper_ore.get());
         paneBlock((IronBarsBlock) IFWBlocks.copper_bars.get(), modLoc("block/copper_bars") , modLoc("block/copper_bars"));
         doorBlock((DoorBlock) IFWBlocks.copper_door.get(), "copper", modLoc("block/door_copper_upper"), modLoc("block/door_copper_upper"));
 

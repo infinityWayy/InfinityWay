@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-23T23:42:19.3724113	Block States: ifw
+// 1.21.1	2025-01-24T08:56:32.6036881	Block States: ifw
 946d1ee0e16e6764047acdb20e22d0390e68eed9 assets/ifw/blockstates/adamantium_bars.json
 5d74aec16c1765c863c3b307aa12c18dbcf03f7a assets/ifw/blockstates/adamantium_block.json
 036c9e415fb102a067f89aa8005a23ced7df8929 assets/ifw/blockstates/adamantium_door.json
@@ -7,9 +7,7 @@ c243a9512d1ee7e4c938b828b5d29da06e96ea6f assets/ifw/blockstates/ancient_metal_ba
 e3106f184717deb5ce69ac2055da170fbd190d15 assets/ifw/blockstates/ancient_metal_block.json
 3f0c3c37a26e592ffd1015438b90262992f07523 assets/ifw/blockstates/ancient_metal_door.json
 e306ad924c6ce04068778138681c09925ff3200b assets/ifw/blockstates/copper_bars.json
-81e0ea5e47fbd22824d91dd344ae074de4174e91 assets/ifw/blockstates/copper_block.json
 18f1429a6cd5750b03e3a96eee6f218629c116a4 assets/ifw/blockstates/copper_door.json
-068d731b030a1d52d05f71d3fd2e7484d7190c9b assets/ifw/blockstates/copper_ore.json
 a9aee237b9ca2405a35845003f4da7002893dfc1 assets/ifw/blockstates/gold_bars.json
 095b97f9bd1cc9327267385f092855eaf7f37632 assets/ifw/blockstates/gold_door.json
 99b5477f9dfd399d4fdbed4fab97f5dbc9ebe627 assets/ifw/blockstates/mithril_bars.json
@@ -54,7 +52,6 @@ dcde7ff722823757ee4e41578652d294b62ce1a1 assets/ifw/models/block/ancient_metal_d
 46767ba7223fd980974fcda25805323e6a87087c assets/ifw/models/block/copper_bars_post.json
 beb3ba078ae8b5ada1412d371f4d9ed337c5b4f5 assets/ifw/models/block/copper_bars_side.json
 7ea69df0f81c8d1fe4600d1b78e7e10c03d83d92 assets/ifw/models/block/copper_bars_side_alt.json
-8925eda2b04a2d3c3b4ad1790db7a3e951df5679 assets/ifw/models/block/copper_block.json
 bd05d103154837ed4e3259e97841a6019e329e2e assets/ifw/models/block/copper_door_bottom_left.json
 e4bcbdddd197f5a6dfd38912606a3b6f69d0c1dd assets/ifw/models/block/copper_door_bottom_left_open.json
 cfe686ce96e884dfe0b65ffd0edb5204ef796681 assets/ifw/models/block/copper_door_bottom_right.json
@@ -63,7 +60,6 @@ b331808630d5e4cd7450f63d2891b48296a7e153 assets/ifw/models/block/copper_door_top
 48739ee35aa8c263ad7cf5e7b7f97924c7096cb0 assets/ifw/models/block/copper_door_top_left_open.json
 cc7ba5baddf26fc1c0c42da6598764b445e27e86 assets/ifw/models/block/copper_door_top_right.json
 9babf672fdcc97c96f38a64526bb7168d52f6c25 assets/ifw/models/block/copper_door_top_right_open.json
-f9e3e17a4c68172575ab69bc254d41e88ed8afc5 assets/ifw/models/block/copper_ore.json
 bbe8fa2d80b8f7a12347463423cc4e1fcbf3dc7c assets/ifw/models/block/gold_bars_noside.json
 eae470e8aecc8dae062ed7bb18c042654144dca1 assets/ifw/models/block/gold_bars_noside_alt.json
 1adad6c9d9ef1b7331057cd93390b924779f2337 assets/ifw/models/block/gold_bars_post.json
@@ -110,8 +106,6 @@ c8d315ac641ffeff0322bf0c68905a4457a2b287 assets/ifw/models/block/silver_ore.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
 64475cda8e30547c4dd4a9fd3db5846c837a6e02 assets/ifw/models/item/adamantium_ore.json
 009824db9c5aea0a93a2ce0e56144e45a7edba2b assets/ifw/models/item/ancient_metal_block.json
-a6309a3914713561526ec9d89867cea22cacf540 assets/ifw/models/item/copper_block.json
-ec8fb0c8d88d3a6bf957a7bfe55e2fe3b6b65a95 assets/ifw/models/item/copper_ore.json
 165ea1fb7d808d8031deedbd43b6fa8ca6dba71f assets/ifw/models/item/mithril_block.json
 ced196a0afc5feb514d967c9b6c52277d8d3b6eb assets/ifw/models/item/mithril_ore.json
 f4d5c6928fb20b6548b9711ee31fa24511b084e7 assets/ifw/models/item/silver_block.json

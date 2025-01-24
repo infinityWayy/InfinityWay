@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-23T23:42:19.3864019	Item Models: ifw
+// 1.21.1	2025-01-24T08:56:32.6071251	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 dc8055a3db02f6681f481fb673307b18c3dc655c assets/ifw/models/item/adamantium_dagger.json
@@ -32,7 +32,6 @@ ff6ebfb7565315f78f6e6dee61d653833837613d assets/ifw/models/item/copper_battle_ax
 c4d3a1f9e163a0dd74194aada7729571c0d1aa03 assets/ifw/models/item/copper_dagger.json
 d0b53ad9c82a132ef965c195e91113a57f5cb8f1 assets/ifw/models/item/copper_door.json
 d86c2db79d04cfbbe7513a840ab719fca0a3c0dc assets/ifw/models/item/copper_hoe.json
-4cfdf8d2951afc44238d89e77391c531d57b5e56 assets/ifw/models/item/copper_ingot.json
 d08ebf266731bc04ddd4daee055639064e5ce9c3 assets/ifw/models/item/copper_mattock.json
 9b3170d8ffb088104b63e689ab4f55f57bac7a65 assets/ifw/models/item/copper_nugget.json
 0d105c2ef5fa2a061a203a08cfe45a6722e9058e assets/ifw/models/item/copper_pickaxe.json
