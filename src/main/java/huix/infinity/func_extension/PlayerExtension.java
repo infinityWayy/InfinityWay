@@ -11,7 +11,9 @@ public interface PlayerExtension {
     }
 
     default void ifw_updateTotalExperience() {
-
     }
 
+    default boolean canResetTimeBySleeping() {
+        return false;
+    }
 }

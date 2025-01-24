@@ -6,6 +6,7 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
 import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
@@ -18,6 +19,7 @@ public class IFWEvent {
         bus.addListener(IFWEvent::playerAttacklHit);
         bus.addListener(IFWEvent::playerDie);
         bus.addListener(IFWEvent::playerClone);
+        bus.addListener(IFWEvent::daySleep);
     }
 
     public static void onBreakSpeed(final PlayerEvent.BreakSpeed event) {
@@ -50,6 +52,12 @@ public class IFWEvent {
         final Player original = event.getOriginal();
         cloned.giveExperiencePoints(original.getData(IFWAttachment.respawn_xp));
     }
+
+    public static void daySleep(final CanContinueSleepingEvent event) {
+        event.setContinueSleeping(true);
+    }
+
+
 
 
 }
