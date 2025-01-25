@@ -1,6 +1,7 @@
 package huix.infinity.mixin.world.food;
 
 import huix.infinity.common.world.entity.player.NutritionalStatus;
+import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.func_extension.FoodDataExtension;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
@@ -90,6 +91,19 @@ public class FoodDataMixin implements FoodDataExtension {
         this.add(foodProperties.nutrition(), foodProperties.saturation());
     }
 
+    @Unique
+    @Override
+    public void eat(IFWFoodProperties foodProperties) {
+        this.addNutrition(foodProperties.phytonutrients(), foodProperties.protein(), foodProperties.insulinResponse());
+    }
+
+    @Unique
+    public void addNutrition(int phytonutrients, int protein, int IR) {
+        this.ifw_phytonutrients(Math.min(this.phytonutrients + phytonutrients, 160000));
+        this.ifw_protein(Math.min(this.protein + protein, 160000));
+        this.ifw_insulinResponse(this.insulinResponse + IR);
+    }
+
     @Overwrite
     public void tick(Player player) {
         Difficulty difficulty = player.level().getDifficulty();
@@ -132,9 +146,7 @@ public class FoodDataMixin implements FoodDataExtension {
                 this.nutritionalStatus(NutritionalStatus.SERIOUS);
             }
         }
-
-
-
+        //insulinResponsea
 
 
 
@@ -188,6 +200,16 @@ public class FoodDataMixin implements FoodDataExtension {
     @Override
     public int ifw_phytonutrients() {
         return this.phytonutrients;
+    }
+
+    @Unique
+    public void ifw_insulinResponse(int insulinResponse) {
+        this.insulinResponse = insulinResponse;
+    }
+
+    @Unique
+    public int ifw_insulinResponse() {
+        return this.insulinResponse;
     }
 
     @Override

@@ -9,13 +9,19 @@
     "server.PlayerListMixin",
     "server.player.SleepStatusMixin",
     "world.block.BlockBehaviourMixin",
-    "world.block.BlocksMixin",
+    "world.block.BlocksInjected",
     "world.enchantment.RemoveBinomialMixin",
     "world.entity.LivingEntityMixin",
     "world.entity.PlayerMixin",
     "world.entity.ServerPlayerMixin",
     "world.entity.ai.attribute.AttributesMixin",
-    "world.food.FoodDataMixin"
+    "world.entity.animal.AnimalMixin",
+    "world.entity.animal.ChickenMixin",
+    "world.entity.animal.LivestockInjected",
+    "world.food.FoodDataMixin",
+    "world.food.FoodsMixin",
+    "world.item.ItemMixin",
+    "world.item.ItemStackMixin"
   ],
   "client": [
     "client.EnchantmentScreenMixin",

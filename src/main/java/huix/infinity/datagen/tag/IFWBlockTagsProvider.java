@@ -2,7 +2,7 @@ package huix.infinity.datagen.tag;
 
 import huix.infinity.init.InfinityWay;
 import huix.infinity.common.world.block.IFWBlocks;
-import huix.infinity.common.tag.IFWBlockTags;
+import huix.infinity.common.core.tag.IFWBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;

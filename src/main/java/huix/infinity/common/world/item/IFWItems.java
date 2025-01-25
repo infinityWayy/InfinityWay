@@ -25,6 +25,9 @@ public class IFWItems {
             ITEMS.registerSimpleItem("quartz_shard", new Item.Properties());
     public static final DeferredItem<Item> sinew =
             ITEMS.registerSimpleItem("sinew", new Item.Properties());
+
+    public static final DeferredItem<Item> dimania =
+            ITEMS.registerSimpleItem("dimania", new Item.Properties());
 //    public static final DeferredItem<Item> flint_shard =
 //            ITEMS.registerSimpleItem("flint_shard", new Item.Properties());
 

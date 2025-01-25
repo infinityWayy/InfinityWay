@@ -1,4 +1,9 @@
 {
+  "foodtips.saturation": "+%s 饱和度",
+  "foodtips.nutrition": "+%s 营养",
+  "foodtips.protein": "  +%s 蛋白质",
+  "foodtips.phytonutrients": "  +%s 植物营养素",
+  "foodtips.insulinresponse": "  +%s 胰岛素",
   "block.ifw.adamantium_bars": "艾德曼栏杆",
   "block.ifw.adamantium_block": "艾德曼块",
   "block.ifw.adamantium_door": "艾德曼门",

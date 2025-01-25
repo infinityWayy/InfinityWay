@@ -2,6 +2,7 @@ package huix.infinity.mixin.world.block;
 
 import huix.infinity.common.world.block.GravelBlock;
 import net.minecraft.util.ColorRGBA;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ColoredFallingBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -12,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin( Blocks.class )
-public class BlocksMixin {
+public class BlocksInjected {
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
             , ordinal = 0), method = "<clinit>")
@@ -48,5 +49,15 @@ public class BlocksMixin {
             , ordinal = 2), method = "<clinit>")
     private static ColoredFallingBlock ifw_rebuildGravel(ColorRGBA dustColor, BlockBehaviour.Properties properties) {
         return new GravelBlock(dustColor, properties);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/util/valueproviders/UniformInt;of(II)Lnet/minecraft/util/valueproviders/UniformInt;", ordinal = 0), method = "<clinit>")
+    private static UniformInt ifw_noCoalDropXp_0(int minInclusive, int maxInclusive) {
+        return UniformInt.of(0, 0);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/util/valueproviders/UniformInt;of(II)Lnet/minecraft/util/valueproviders/UniformInt;", ordinal = 1), method = "<clinit>")
+    private static UniformInt ifw_noCoalDropXp_1(int minInclusive, int maxInclusive) {
+        return UniformInt.of(0, 0);
     }
 }

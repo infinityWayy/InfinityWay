@@ -1,6 +1,6 @@
 package huix.infinity.mixin.world.block;
 
-import huix.infinity.common.tag.IFWBlockTags;
+import huix.infinity.common.core.tag.IFWBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;

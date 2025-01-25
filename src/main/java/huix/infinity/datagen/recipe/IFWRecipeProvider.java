@@ -1,6 +1,6 @@
 package huix.infinity.datagen.recipe;
 
-import huix.infinity.common.tag.IFWItemTags;
+import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.core.HolderLookup;
@@ -69,7 +69,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .pattern("XX")
                 .pattern("YX")
                 .pattern("Y ")
-//                .unlockedBy("has_flint", has(Items.FLINT))
+                .unlockedBy("has_adamantium_ingot", has(IFWItems.adamantium_ingot))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.mithril_axe)
                 .define('X', IFWItems.mithril_ingot)
@@ -77,7 +77,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .pattern("XX")
                 .pattern("YX")
                 .pattern("Y ")
-//                .unlockedBy("has_flint", has(Items.FLINT))
+                .unlockedBy("has_mithril_ingot", has(IFWItems.mithril_ingot))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.silver_axe)
                 .define('X', IFWItems.silver_ingot)
@@ -85,7 +85,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .pattern("XX")
                 .pattern("YX")
                 .pattern("Y ")
-//                .unlockedBy("has_flint", has(Items.FLINT))
+                .unlockedBy("has_silver_ingot", has(IFWItems.silver_ingot))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.copper_axe)
                 .define('X', Items.COPPER_INGOT)
@@ -93,7 +93,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .pattern("XX")
                 .pattern("YX")
                 .pattern("Y ")
-//                .unlockedBy("has_flint", has(Items.FLINT))
+                .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.gold_axe)
                 .define('X', Items.GOLD_INGOT)
@@ -101,7 +101,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .pattern("XX")
                 .pattern("YX")
                 .pattern("Y ")
-//                .unlockedBy("has_flint", has(Items.FLINT))
+                .unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT))
                 .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.iron_axe)
                 .define('X', Items.IRON_AXE)
@@ -109,7 +109,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .pattern("XX")
                 .pattern("YX")
                 .pattern("Y ")
-//                .unlockedBy("has_flint", has(Items.FLINT))
+                .unlockedBy("has_iron_axe", has(Items.IRON_AXE))
                 .save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.adamantium_bars, 6)
                 .requires(IFWItems.adamantium_ingot, 6)

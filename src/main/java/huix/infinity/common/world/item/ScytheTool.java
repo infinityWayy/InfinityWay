@@ -1,7 +1,7 @@
 package huix.infinity.common.world.item;
 
 import huix.infinity.common.world.item.tier.IFWTier;
-import huix.infinity.common.tag.IFWBlockTags;
+import huix.infinity.common.core.tag.IFWBlockTags;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;

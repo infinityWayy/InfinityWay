@@ -44,6 +44,7 @@ repositories {
         url 'https://maven.blamejared.com/'
         content {includeGroup "mezz.jei"}
     }
+    mavenCentral()
 }
 
 dependencies {
@@ -130,8 +131,7 @@ neoForge {
         }
 
         configureEach {
-            jvmArguments.addAll("-XX:+IgnoreUnrecognizedVMOptions", "-XX:+AllowEnhancedClassRedefinition", "-javaagent")
-            systemProperty("tfc.enableDebugSelfTests", "true")
+            jvmArguments.addAll("-XX:+IgnoreUnrecognizedVMOptions", "-XX:+AllowEnhancedClassRedefinition")
         }
     }
 

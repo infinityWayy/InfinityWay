@@ -1,5 +1,7 @@
 package huix.infinity.mixin.world.entity;
 
+import huix.infinity.common.core.component.IFWDataComponents;
+import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.func_extension.PlayerExtension;
 import huix.infinity.util.ReflectHelper;
 import net.minecraft.sounds.SoundEvents;
@@ -8,6 +10,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
@@ -15,12 +18,17 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Objects;
 
 @Mixin( Player.class )
-public class PlayerMixin extends LivingEntity implements PlayerExtension {
+public abstract class PlayerMixin extends LivingEntity implements PlayerExtension {
+
+    @Shadow public abstract FoodData getFoodData();
 
     @Shadow protected FoodData foodData;
 
@@ -126,6 +134,11 @@ public class PlayerMixin extends LivingEntity implements PlayerExtension {
         Objects.requireNonNull(this.getAttributes().getInstance(Attributes.MAX_HEALTH)).setBaseValue(health);
     }
 
+    @Inject(at = @At("HEAD"), method = "eat")
+    private void playerEat(Level level, ItemStack food, FoodProperties foodProperties, CallbackInfoReturnable<ItemStack> cir){
+        if (food.get(IFWDataComponents.ifw_food_data.get()) != null)
+            this.getFoodData().eat(food.get(IFWDataComponents.ifw_food_data.get()));
+    }
 
 
     @Shadow

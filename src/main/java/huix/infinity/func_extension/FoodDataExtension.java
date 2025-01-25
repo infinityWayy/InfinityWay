@@ -1,6 +1,7 @@
 package huix.infinity.func_extension;
 
 import huix.infinity.common.world.entity.player.NutritionalStatus;
+import huix.infinity.common.world.food.IFWFoodProperties;
 import net.minecraft.world.food.FoodData;
 
 public interface FoodDataExtension {
@@ -32,4 +33,5 @@ public interface FoodDataExtension {
     default NutritionalStatus ifw_nutritionalStatus() {
         return null;
     }
+    default void eat(IFWFoodProperties foodProperties){}
 }

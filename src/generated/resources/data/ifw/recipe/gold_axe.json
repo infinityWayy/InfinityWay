@@ -3,21 +3,19 @@
   "category": "equipment",
   "key": {
     "X": {
-      "item": "minecraft:flint"
+      "item": "minecraft:gold_ingot"
     },
     "Y": {
       "item": "minecraft:stick"
-    },
-    "Z": {
-      "tag": "minecraft:string"
     }
   },
   "pattern": [
+    "XX",
     "YX",
-    "YZ"
+    "Y "
   ],
   "result": {
     "count": 1,
-    "id": "ifw:flint_hatchet"
+    "id": "ifw:gold_axe"
   }
 }

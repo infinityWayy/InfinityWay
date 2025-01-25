@@ -1,8 +1,28 @@
-// 1.21.1	2025-01-24T18:22:39.8109987	Recipes
+// 1.21.1	2025-01-25T17:20:34.0929914	Recipes
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
+b3d2b27e813bdc906797d6ddf88c189926cf929f data/ifw/advancement/recipes/tools/adamantium_axe.json
+46d4074c1459f626529609b7dc84e3bed71689ae data/ifw/advancement/recipes/tools/ancient_metal_axe.json
+cca74a4231ad93850d0320458e58be59fbb36ad7 data/ifw/advancement/recipes/tools/copper_axe.json
+ed1604596862dbb9c35bd1cf243cf4ec528d2831 data/ifw/advancement/recipes/tools/flint_axe.json
 2004898ab7ccab86ef06a3f22ee5e08723737b00 data/ifw/advancement/recipes/tools/flint_hatchet.json
+a3cafe6b69836f608d0f4255b225434c2868dfd6 data/ifw/advancement/recipes/tools/flint_knife.json
+5f857c84c645ce8c3942eac61013839a88cf89ef data/ifw/advancement/recipes/tools/flint_shovel.json
+ec5c66e25ef83ea5524161c08202a4b1cb233da6 data/ifw/advancement/recipes/tools/gold_axe.json
+6faff4838b51a0a1c8cb1d7457444b0f19134bd6 data/ifw/advancement/recipes/tools/iron_axe.json
+6696a496f9c56e8a1e37bb7b2c7fd2ff86db4b80 data/ifw/advancement/recipes/tools/mithril_axe.json
+62f04945c35bae879b9b4c741e49514f9a309347 data/ifw/advancement/recipes/tools/silver_axe.json
+a9f48f57a1a9ab145a2861d4669959e42d010beb data/ifw/recipe/adamantium_axe.json
 5267b5bf27fc062dc498b959461702b541a545dd data/ifw/recipe/adamantium_bars.json
-375e0eb39e51c8dea7a12c430b64df8d2a08e623 data/ifw/recipe/flint_hatchet.json
+2b1cabe5175092f9da9819e843ddc75818709299 data/ifw/recipe/ancient_metal_axe.json
+1499ac32d06fa5f1dbc3972e804726d9be7bcbe9 data/ifw/recipe/copper_axe.json
+9e85f96d625d80cc3beed1a8aa5b532fe4704549 data/ifw/recipe/flint_axe.json
+5cb3b7d13f9d792ca90e8df00bcd873335deccdf data/ifw/recipe/flint_hatchet.json
+837cf72fcdd81adb5cbf585757fe36615b306ccc data/ifw/recipe/flint_knife.json
+a855627f73eac9523753d012ef07ee8db974551b data/ifw/recipe/flint_shovel.json
+e8ba1760fe17f679a2c390abe82e24342cb3ee87 data/ifw/recipe/gold_axe.json
+d9bffb2d4f002a9d8bb3285b480d2a37460be18f data/ifw/recipe/iron_axe.json
+5a7db7fe44473d2c3918056208d24bb6b578cdd2 data/ifw/recipe/mithril_axe.json
+ea8944ef562be9971158ded89f6108b89eb8fce3 data/ifw/recipe/silver_axe.json
 a9b8907bfd52945202a8d3f6852ce350bf5f7d7e data/minecraft/advancement/recipes/building_blocks/adamantium_block_from_ingot.json
 97185a24721edb8abe2880d2877f49cedb72ca3a data/minecraft/advancement/recipes/misc/adamantium_ingot.json
 8016342e3dc56bf6a6b743b88d5ac3f3eea7726b data/minecraft/recipe/adamantium_block_from_ingot.json

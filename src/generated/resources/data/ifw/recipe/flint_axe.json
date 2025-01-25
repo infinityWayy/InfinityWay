@@ -13,11 +13,12 @@
     }
   },
   "pattern": [
+    "XX",
     "YX",
     "YZ"
   ],
   "result": {
     "count": 1,
-    "id": "ifw:flint_hatchet"
+    "id": "ifw:flint_axe"
   }
 }

@@ -38,6 +38,7 @@ public class ServerPlayerMixin extends Player {
             this.lastMaxFoodLevel = this.foodData.ifw_maxFoodLevel();
             this.lastStats = foodData.ifw_nutritionalStatus();
         }
+
     }
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;isDay()Z")

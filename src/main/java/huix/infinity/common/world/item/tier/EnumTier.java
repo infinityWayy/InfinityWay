@@ -1,7 +1,7 @@
 package huix.infinity.common.world.item.tier;
 
 import com.google.common.base.Suppliers;
-import huix.infinity.common.tag.IFWBlockTags;
+import huix.infinity.common.core.tag.IFWBlockTags;
 import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;

@@ -1,7 +1,9 @@
-package huix.infinity.common.attachment;
+package huix.infinity.common.core.attachment;
 
 import com.mojang.serialization.Codec;
 import huix.infinity.init.InfinityWay;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;

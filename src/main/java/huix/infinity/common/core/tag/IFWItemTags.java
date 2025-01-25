@@ -1,4 +1,4 @@
-package huix.infinity.common.tag;
+package huix.infinity.common.core.tag;
 
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;

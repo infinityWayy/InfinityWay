@@ -1,7 +1,7 @@
 package huix.infinity.datagen.tag;
 
 import huix.infinity.common.world.item.IFWItems;
-import huix.infinity.common.tag.IFWItemTags;
+import huix.infinity.common.core.tag.IFWItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
