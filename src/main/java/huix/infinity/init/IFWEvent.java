@@ -1,6 +1,6 @@
 package huix.infinity.init;
 
-import huix.infinity.common.core.attachment.IFWAttachment;
+import huix.infinity.common.attachment.IFWAttachment;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;

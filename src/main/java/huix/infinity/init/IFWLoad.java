@@ -112,10 +112,10 @@ public class IFWLoad {
         ReplaceHelper.foodAdd(IFWItems.cooked_worm.get(), IFWFoods.ifw_cooked_worm);
         ReplaceHelper.foodAdd(IFWItems.worm.get(), IFWFoods.ifw_worm);
 
-        ReplaceHelper.stackSize(Items.BOOK, 16);
-        ReplaceHelper.stackSize(Items.IRON_INGOT, 8);
-        ReplaceHelper.stackSize(Items.GOLD_INGOT, 8);
-        ReplaceHelper.stackSize(Items.COPPER_INGOT, 8);
-        ReplaceHelper.stackSize(Items.NETHERITE_INGOT, 8);
+//        ReplaceHelper.stackSize(Items.BOOK, 16);
+//        ReplaceHelper.stackSize(Items.IRON_INGOT, 8);
+//        ReplaceHelper.stackSize(Items.GOLD_INGOT, 8);
+//        ReplaceHelper.stackSize(Items.COPPER_INGOT, 8);
+//        ReplaceHelper.stackSize(Items.NETHERITE_INGOT, 8);
     }
 }

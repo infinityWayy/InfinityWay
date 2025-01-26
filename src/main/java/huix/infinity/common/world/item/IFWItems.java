@@ -1,9 +1,11 @@
 package huix.infinity.common.world.item;
 
 import huix.infinity.common.world.food.IFWFoods;
+import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.common.world.item.tier.EnumTier;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -11,7 +13,198 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class IFWItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(InfinityWay.MOD_ID);
 
-
+    public static final DeferredItem<Item> copper_helmet =
+            ITEMS.register("copper_helmet", item -> new ArmorItem(IFWArmorMaterials.copper, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(4))));
+    public static final DeferredItem<Item> copper_chestplate =
+            ITEMS.register("copper_chestplate", item -> new ArmorItem(IFWArmorMaterials.copper, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(4))));
+    public static final DeferredItem<Item> copper_leggings =
+            ITEMS.register("copper_leggings", item -> new ArmorItem(IFWArmorMaterials.copper, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(4))));
+    public static final DeferredItem<Item> copper_boots =
+            ITEMS.register("copper_boots", item -> new ArmorItem(IFWArmorMaterials.copper, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(4))));
+    public static final DeferredItem<Item> silver_helmet =
+            ITEMS.register("silver_helmet", item -> new ArmorItem(IFWArmorMaterials.silver, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(4))));
+    public static final DeferredItem<Item> silver_chestplate =
+            ITEMS.register("silver_chestplate", item -> new ArmorItem(IFWArmorMaterials.silver, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(4))));
+    public static final DeferredItem<Item> silver_leggings =
+            ITEMS.register("silver_leggings", item -> new ArmorItem(IFWArmorMaterials.silver, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(4))));
+    public static final DeferredItem<Item> silver_boots =
+            ITEMS.register("silver_boots", item -> new ArmorItem(IFWArmorMaterials.silver, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(4))));
+    public static final DeferredItem<Item> rusted_iron_helmet =
+            ITEMS.register("rusted_iron_helmet", item -> new ArmorItem(IFWArmorMaterials.rusted_iron, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(3))));
+    public static final DeferredItem<Item> rusted_iron_chestplate =
+            ITEMS.register("rusted_iron_chestplate", item -> new ArmorItem(IFWArmorMaterials.rusted_iron, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(3))));
+    public static final DeferredItem<Item> rusted_iron_leggings =
+            ITEMS.register("rusted_iron_leggings", item -> new ArmorItem(IFWArmorMaterials.rusted_iron, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(3))));
+    public static final DeferredItem<Item> rusted_iron_boots =
+            ITEMS.register("rusted_iron_boots", item -> new ArmorItem(IFWArmorMaterials.rusted_iron, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(3))));
+    public static final DeferredItem<Item> iron_helmet =
+            ITEMS.register("iron_helmet", item -> new ArmorItem(IFWArmorMaterials.iron, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(8))));
+    public static final DeferredItem<Item> iron_chestplate =
+            ITEMS.register("iron_chestplate", item -> new ArmorItem(IFWArmorMaterials.iron, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(8))));
+    public static final DeferredItem<Item> iron_leggings =
+            ITEMS.register("iron_leggings", item -> new ArmorItem(IFWArmorMaterials.iron, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(8))));
+    public static final DeferredItem<Item> iron_boots =
+            ITEMS.register("iron_boots", item -> new ArmorItem(IFWArmorMaterials.iron, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(8))));
+    public static final DeferredItem<Item> gold_helmet =
+            ITEMS.register("gold_helmet", item -> new ArmorItem(IFWArmorMaterials.gold, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(4))));
+    public static final DeferredItem<Item> gold_chestplate =
+            ITEMS.register("gold_chestplate", item -> new ArmorItem(IFWArmorMaterials.gold, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(4))));
+    public static final DeferredItem<Item> gold_leggings =
+            ITEMS.register("gold_leggings", item -> new ArmorItem(IFWArmorMaterials.gold, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(4))));
+    public static final DeferredItem<Item> gold_boots =
+            ITEMS.register("gold_boots", item -> new ArmorItem(IFWArmorMaterials.gold, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(4))));
+    public static final DeferredItem<Item> ancient_metal_helmet =
+            ITEMS.register("ancient_metal_helmet", item -> new ArmorItem(IFWArmorMaterials.ancient_metal, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(16))));
+    public static final DeferredItem<Item> ancient_metal_chestplate =
+            ITEMS.register("ancient_metal_chestplate", item -> new ArmorItem(IFWArmorMaterials.ancient_metal, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(16))));
+    public static final DeferredItem<Item> ancient_metal_leggings =
+            ITEMS.register("ancient_metal_leggings", item -> new ArmorItem(IFWArmorMaterials.ancient_metal, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(16))));
+    public static final DeferredItem<Item> ancient_metal_boots =
+            ITEMS.register("ancient_metal_boots", item -> new ArmorItem(IFWArmorMaterials.ancient_metal, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(16))));
+    public static final DeferredItem<Item> mithril_helmet =
+            ITEMS.register("mithril_helmet", item -> new ArmorItem(IFWArmorMaterials.mithril, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(48))));
+    public static final DeferredItem<Item> mithril_chestplate =
+            ITEMS.register("mithril_chestplate", item -> new ArmorItem(IFWArmorMaterials.mithril, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(48))));
+    public static final DeferredItem<Item> mithril_leggings =
+            ITEMS.register("mithril_leggings", item -> new ArmorItem(IFWArmorMaterials.mithril, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(48))));
+    public static final DeferredItem<Item> mithril_boots =
+            ITEMS.register("mithril_boots", item -> new ArmorItem(IFWArmorMaterials.mithril, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(48))));
+    public static final DeferredItem<Item> adamantium_helmet =
+            ITEMS.register("adamantium_helmet", item -> new ArmorItem(IFWArmorMaterials.adamantium, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(192))));
+    public static final DeferredItem<Item> adamantium_chestplate =
+            ITEMS.register("adamantium_chestplate", item -> new ArmorItem(IFWArmorMaterials.adamantium, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(192))));
+    public static final DeferredItem<Item> adamantium_leggings =
+            ITEMS.register("adamantium_leggings", item -> new ArmorItem(IFWArmorMaterials.adamantium, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(192))));
+    public static final DeferredItem<Item> adamantium_boots =
+            ITEMS.register("adamantium_boots", item -> new ArmorItem(IFWArmorMaterials.adamantium, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(192))));
+    public static final DeferredItem<Item> copper_chainmail_helmet =
+            ITEMS.register("copper_chainmail_helmet", item -> new ArmorItem(IFWArmorMaterials.copper_chainmail, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(2))));
+    public static final DeferredItem<Item> copper_chainmail_chestplate =
+            ITEMS.register("copper_chainmail_chestplate", item -> new ArmorItem(IFWArmorMaterials.copper_chainmail, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(2))));
+    public static final DeferredItem<Item> copper_chainmail_leggings =
+            ITEMS.register("copper_chainmail_leggings", item -> new ArmorItem(IFWArmorMaterials.copper_chainmail, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(2))));
+    public static final DeferredItem<Item> copper_chainmail_boots =
+            ITEMS.register("copper_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.copper_chainmail, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(2))));
+    public static final DeferredItem<Item> silver_chainmail_helmet =
+            ITEMS.register("silver_chainmail_helmet", item -> new ArmorItem(IFWArmorMaterials.silver_chainmail, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(2))));
+    public static final DeferredItem<Item> silver_chainmail_chestplate =
+            ITEMS.register("silver_chainmail_chestplate", item -> new ArmorItem(IFWArmorMaterials.silver_chainmail, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(2))));
+    public static final DeferredItem<Item> silver_chainmail_leggings =
+            ITEMS.register("silver_chainmail_leggings", item -> new ArmorItem(IFWArmorMaterials.silver_chainmail, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(2))));
+    public static final DeferredItem<Item> silver_chainmail_boots =
+            ITEMS.register("silver_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.silver_chainmail, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(2))));
+    public static final DeferredItem<Item> iron_chainmail_helmet =
+            ITEMS.register("iron_chainmail_helmet", item -> new ArmorItem(IFWArmorMaterials.iron_chainmail, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(4))));
+    public static final DeferredItem<Item> iron_chainmail_chestplate =
+            ITEMS.register("iron_chainmail_chestplate", item -> new ArmorItem(IFWArmorMaterials.iron_chainmail, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(4))));
+    public static final DeferredItem<Item> iron_chainmail_leggings =
+            ITEMS.register("iron_chainmail_leggings", item -> new ArmorItem(IFWArmorMaterials.iron_chainmail, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(4))));
+    public static final DeferredItem<Item> iron_chainmail_boots =
+            ITEMS.register("iron_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.iron_chainmail, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(4))));
+    public static final DeferredItem<Item> rusted_iron_chainmail_helmet =
+            ITEMS.register("rusted_iron_chainmail_helmet", item -> new ArmorItem(IFWArmorMaterials.rusted_iron_chainmail, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(1.5F))));
+    public static final DeferredItem<Item> rusted_iron_chainmail_chestplate =
+            ITEMS.register("rusted_iron_chainmail_chestplate", item -> new ArmorItem(IFWArmorMaterials.rusted_iron_chainmail, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(1.5F))));
+    public static final DeferredItem<Item> rusted_iron_chainmail_leggings =
+            ITEMS.register("rusted_iron_chainmail_leggings", item -> new ArmorItem(IFWArmorMaterials.rusted_iron_chainmail, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(1.5F))));
+    public static final DeferredItem<Item> rusted_iron_chainmail_boots =
+            ITEMS.register("rusted_iron_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.rusted_iron_chainmail, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(1.5F))));
+    public static final DeferredItem<Item> gold_chainmail_helmet =
+            ITEMS.register("gold_chainmail_helmet", item -> new ArmorItem(IFWArmorMaterials.gold_chainmail, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(4))));
+    public static final DeferredItem<Item> gold_chainmail_chestplate =
+            ITEMS.register("gold_chainmail_chestplate", item -> new ArmorItem(IFWArmorMaterials.gold_chainmail, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(4))));
+    public static final DeferredItem<Item> gold_chainmail_leggings =
+            ITEMS.register("gold_chainmail_leggings", item -> new ArmorItem(IFWArmorMaterials.gold_chainmail, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(4))));
+    public static final DeferredItem<Item> gold_chainmail_boots =
+            ITEMS.register("gold_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.gold_chainmail, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(4))));
+    public static final DeferredItem<Item> ancient_metal_chainmail_helmet =
+            ITEMS.register("ancient_metal_chainmail_helmet", item -> new ArmorItem(IFWArmorMaterials.ancient_metal_chainmail, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(8))));
+    public static final DeferredItem<Item> ancient_metal_chainmail_chestplate =
+            ITEMS.register("ancient_metal_chainmail_chestplate", item -> new ArmorItem(IFWArmorMaterials.ancient_metal_chainmail, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(8))));
+    public static final DeferredItem<Item> ancient_metal_chainmail_leggings =
+            ITEMS.register("ancient_metal_chainmail_leggings", item -> new ArmorItem(IFWArmorMaterials.ancient_metal_chainmail, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(8))));
+    public static final DeferredItem<Item> ancient_metal_chainmail_boots =
+            ITEMS.register("ancient_metal_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.ancient_metal_chainmail, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(8))));
+    public static final DeferredItem<Item> mithril_chainmail_helmet =
+            ITEMS.register("mithril_chainmail_helmet", item -> new ArmorItem(IFWArmorMaterials.mithril_chainmail, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(32))));
+    public static final DeferredItem<Item> mithril_chainmail_chestplate =
+            ITEMS.register("mithril_chainmail_chestplate", item -> new ArmorItem(IFWArmorMaterials.mithril_chainmail, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(32))));
+    public static final DeferredItem<Item> mithril_chainmail_leggings =
+            ITEMS.register("mithril_chainmail_leggings", item -> new ArmorItem(IFWArmorMaterials.mithril_chainmail, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(32))));
+    public static final DeferredItem<Item> mithril_chainmail_boots =
+            ITEMS.register("mithril_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.mithril_chainmail, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(32))));
+    public static final DeferredItem<Item> adamantium_chainmail_helmet =
+            ITEMS.register("adamantium_chainmail_helmet", item -> new ArmorItem(IFWArmorMaterials.adamantium_chainmail, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(96))));
+    public static final DeferredItem<Item> adamantium_chainmail_chestplate =
+            ITEMS.register("adamantium_chainmail_chestplate", item -> new ArmorItem(IFWArmorMaterials.adamantium_chainmail, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(96))));
+    public static final DeferredItem<Item> adamantium_chainmail_leggings =
+            ITEMS.register("adamantium_chainmail_leggings", item -> new ArmorItem(IFWArmorMaterials.adamantium_chainmail, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(96))));
+    public static final DeferredItem<Item> adamantium_chainmail_boots =
+            ITEMS.register("adamantium_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.adamantium_chainmail, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(96))));
 
     public static final DeferredItem<Item> flint_shard =
             ITEMS.registerSimpleItem("flint_shard", new Item.Properties().stacksTo(16));
@@ -52,7 +245,7 @@ public class IFWItems {
     public static final DeferredItem<Item> raw_silver =
             ITEMS.registerSimpleItem("raw_silver", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> adamantium_ingot =
-            ITEMS.registerSimpleItem("adamantium_ingot", new Item.Properties().stacksTo(8));
+            ITEMS.registerSimpleItem("adamantium_ingot", new Item.Properties());
     public static final DeferredItem<Item> adamantium_nugget =
             ITEMS.registerSimpleItem("adamantium_nugget", new Item.Properties());
     public static final DeferredItem<Item> adamantium_shears =
@@ -89,7 +282,7 @@ public class IFWItems {
             ITEMS.register("adamantium_dagger", item -> new DaggerWeapon(EnumTier.ADAMANTIUM,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.ADAMANTIUM,4.0F, -1.5F))));
     public static final DeferredItem<Item> ancient_metal_ingot =
-            ITEMS.registerSimpleItem("ancient_metal_ingot", new Item.Properties().stacksTo(8));
+            ITEMS.registerSimpleItem("ancient_metal_ingot", new Item.Properties());
     public static final DeferredItem<Item> ancient_metal_nugget =
             ITEMS.registerSimpleItem("ancient_metal_nugget", new Item.Properties());
     public static final DeferredItem<Item> ancient_metal_shears =
@@ -126,7 +319,7 @@ public class IFWItems {
             ITEMS.register("ancient_metal_dagger", item -> new DaggerWeapon(EnumTier.ANCIENT_METAL,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.ANCIENT_METAL,4.0F, -1.5F))));
     public static final DeferredItem<Item> mithril_ingot =
-            ITEMS.registerSimpleItem("mithril_ingot", new Item.Properties().stacksTo(8));
+            ITEMS.registerSimpleItem("mithril_ingot", new Item.Properties());
     public static final DeferredItem<Item> mithril_nugget =
             ITEMS.registerSimpleItem("mithril_nugget", new Item.Properties());
     public static final DeferredItem<Item> mithril_shears =
@@ -163,7 +356,7 @@ public class IFWItems {
             ITEMS.register("mithril_dagger", item -> new DaggerWeapon(EnumTier.MITHRIL,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.MITHRIL,4.0F, -1.5F))));
     public static final DeferredItem<Item> silver_ingot =
-            ITEMS.registerSimpleItem("silver_ingot", new Item.Properties().stacksTo(8));
+            ITEMS.registerSimpleItem("silver_ingot", new Item.Properties());
     public static final DeferredItem<Item> silver_nugget =
             ITEMS.registerSimpleItem("silver_nugget", new Item.Properties());
     public static final DeferredItem<Item> silver_shears =
