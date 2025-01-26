@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-24T18:24:39.9879734	Item Models: ifw
+// 1.21.1	2025-01-26T12:37:06.7358418	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 dc8055a3db02f6681f481fb673307b18c3dc655c assets/ifw/models/item/adamantium_dagger.json
@@ -27,6 +27,13 @@ bb8b0c97a5c7bc47de98ad831465ef8111a65b5a assets/ifw/models/item/ancient_metal_sh
 f5badf213ce4584b5747fd2e8df0794dde78c251 assets/ifw/models/item/ancient_metal_shovel.json
 58ebed23591a2cbac382ef64380fe6a9b6757def assets/ifw/models/item/ancient_metal_sword.json
 cc4c33eac0b090637a3dc11a2307c643ab2b3403 assets/ifw/models/item/ancient_metal_war_hammer.json
+1d415568d47cf8a4977eabd5219d29794d4524bf assets/ifw/models/item/banana.json
+aa50639a2f49d36eff86485122cb855251407d54 assets/ifw/models/item/beef_stew.json
+4d4b4c3bf529abe5e355c9810cffb05df656bbb9 assets/ifw/models/item/cereal.json
+c94008cfc66a738ab0539be5f54fbee69cbf4b76 assets/ifw/models/item/cheese.json
+9594a7d630775e629e5f6f76d9bf0114463d2a9f assets/ifw/models/item/chicken_soup.json
+52e9de6458fee9cfca685285482933b87cc4a324 assets/ifw/models/item/chocolate.json
+72161759e2930a6fb12b25b5dddec70c0686251d assets/ifw/models/item/cooked_worm.json
 516226159ab0f0158c30e9a54fd1d6255f0649da assets/ifw/models/item/copper_axe.json
 ff6ebfb7565315f78f6e6dee61d653833837613d assets/ifw/models/item/copper_battle_axe.json
 c4d3a1f9e163a0dd74194aada7729571c0d1aa03 assets/ifw/models/item/copper_dagger.json
@@ -41,6 +48,7 @@ d08ebf266731bc04ddd4daee055639064e5ce9c3 assets/ifw/models/item/copper_mattock.j
 0dacd6c50c76bbdf64e24488be3d212d6075643f assets/ifw/models/item/copper_sword.json
 9bddf1230fd1b6e5dfd5eb70a707ee0a6657db47 assets/ifw/models/item/copper_war_hammer.json
 0955c32d3a2cc0cf31a008e92cb33d5343ef2eb5 assets/ifw/models/item/diamond_shard.json
+daf6346ca531b34d4767b2afbcfc25245933aa70 assets/ifw/models/item/dough.json
 def1fa39cdc255f8288f173b3bf26d5754a443ce assets/ifw/models/item/emerald_shard.json
 3825f2f59ec7df9bfee134e0bd03f00b282e3189 assets/ifw/models/item/flint_axe.json
 b4b8caad10fc5d851f534b9ebb4b46e12783b9ad assets/ifw/models/item/flint_hatchet.json
@@ -60,6 +68,7 @@ ce68e65cd293c15855ab6e01371da6ae6633227e assets/ifw/models/item/gold_pickaxe.jso
 d473fc0a08fcfa2115f38acb03baf51bea1ecc0a assets/ifw/models/item/gold_shovel.json
 b4f2c4c5d4d33cb52c21fcab1cf51fca654d6687 assets/ifw/models/item/gold_sword.json
 59c4276dd8dae021d34bb5428d0676cd6566cacb assets/ifw/models/item/gold_war_hammer.json
+6e1b24d388884ee48afb4e19595cad3003885c1a assets/ifw/models/item/ice_cream.json
 300083a89aac3816b28fb60d23aa2cfe3d102ade assets/ifw/models/item/iron_axe.json
 ae20e8de7408f01fb71649a24b74b4e2cc7134ed assets/ifw/models/item/iron_battle_axe.json
 6a37940deecacc4b56da893d580e567066fba8fa assets/ifw/models/item/iron_dagger.json
@@ -71,6 +80,8 @@ bf7de59da97791a0c8f20311574e5773be76b904 assets/ifw/models/item/iron_shears.json
 4b1d4353cc6cdc7006b1c07a39e98bfc7b2c08b4 assets/ifw/models/item/iron_shovel.json
 32a4a0feb2e2ca51a95688025e904dd19f6e2d9f assets/ifw/models/item/iron_sword.json
 c21d3c23f13cb4e92f4e0efd89ed9b0b275200c6 assets/ifw/models/item/iron_war_hammer.json
+a516bc79b03c09a5f7857ad7582ceb3dc5fb2f4b assets/ifw/models/item/mashed_potato.json
+49517abfc45daf2269b51b5e8767b63392eee9c4 assets/ifw/models/item/milk_bowl.json
 37d7d29a31035ab123b90c73e8d03210ab5a8301 assets/ifw/models/item/mithril_axe.json
 9280d426f94282457d479e8da030c2b0b65756ff assets/ifw/models/item/mithril_battle_axe.json
 ea29e0760f06de034b10e3aa768baff9b3546647 assets/ifw/models/item/mithril_dagger.json
@@ -85,7 +96,11 @@ f3af0c4afda1b5cac3ac9b0e330f327ed060e476 assets/ifw/models/item/mithril_shears.j
 52e620ad2b4bae6cf30b5c746c4366ed9be91395 assets/ifw/models/item/mithril_shovel.json
 e7e5e99b90e689830029c1329d84dc8b2f584384 assets/ifw/models/item/mithril_sword.json
 0b0da527055273db8644826d3a44aef2a23031f1 assets/ifw/models/item/mithril_war_hammer.json
+64ce3ba5dc98a947e871808aa0cc25bd0c2bf50b assets/ifw/models/item/mushroom_soup_cream.json
 4cb0fc2b77fa53b56d5ec1355a47c62ca7cb6832 assets/ifw/models/item/obsidian_shard.json
+c9539f0edf9c64c651341986f29a904bb6d1479c assets/ifw/models/item/orange.json
+6c3b875b743da5b59c159e526f72315ed5dad45d assets/ifw/models/item/porridge.json
+e5c714ce9b5bc3e070fdc0d34702b68d7edbd81a assets/ifw/models/item/pumpkin_soup.json
 df19fe4d3f6abe854cbb1b0fc131ea3ffaf00d53 assets/ifw/models/item/quartz_shard.json
 37262825f20df29508d85a653f55e71651fa2edb assets/ifw/models/item/raw_adamantium.json
 da1777edae0cfa7375c7bc5e64753ae6dd0f3455 assets/ifw/models/item/raw_mithril.json
@@ -101,6 +116,7 @@ e6b3006a04120d199b73f8268c3e739c61b1d44a assets/ifw/models/item/rusted_iron_matt
 ef48fd8178ac67b1fee5a69e9647d139b58f72ea assets/ifw/models/item/rusted_iron_shovel.json
 fcddfad75b0919f87e4e9b94bd9b55677d7017e7 assets/ifw/models/item/rusted_iron_sword.json
 f20bfa275c6daaea86bdb41049033dc700e4e0a5 assets/ifw/models/item/rusted_iron_war_hammer.json
+6fce8ad773ae5f1aa5ab95401ed8f0fcd6d75a5d assets/ifw/models/item/salad.json
 3b144bd649516418923ed6d664b0b0c8f8b32956 assets/ifw/models/item/silver_axe.json
 7b001dc7aab0f1f7148ba284cd150d36e469f197 assets/ifw/models/item/silver_battle_axe.json
 9c044f73e389613cbf120e17710e90acbd0b74e6 assets/ifw/models/item/silver_dagger.json
@@ -116,5 +132,10 @@ b6616ed87f975f8d01e61e462451dd3dfd9dbb74 assets/ifw/models/item/silver_ingot.jso
 a6134b0c228ea1fcedfd2af9527535dc5a4cbfeb assets/ifw/models/item/silver_sword.json
 e2836533d26188c92350608a705bc0340ce4c0a0 assets/ifw/models/item/silver_war_hammer.json
 3b2b2e0a567d7b6e59a122e11f2613ba515f316b assets/ifw/models/item/sinew.json
+c54213e738fe51df3a1c5b4c2923764a45623424 assets/ifw/models/item/sorbet.json
+e5c8a514e54c5724c4f735b05f02c174d2814ef4 assets/ifw/models/item/vegetable_soup.json
+f8893cd0eac291b1c26a809404cba152d5937a91 assets/ifw/models/item/vegetable_soup_cream.json
+680bf9cb149abc9cca8c5a0465122ff4ca6dcd8c assets/ifw/models/item/water_bowl.json
 e8b514a3cca57b8a9458b8ed8b5e0faf54c9589e assets/ifw/models/item/wooden_cudgel.json
 800bb34bc00e80a6084e66e54dfcab075dc08d9a assets/ifw/models/item/wooden_shovel.json
+06f6d430d39c6b02346ba55b15e7fc8d1e6d7353 assets/ifw/models/item/worm.json

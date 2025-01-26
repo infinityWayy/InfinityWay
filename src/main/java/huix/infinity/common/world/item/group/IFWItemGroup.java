@@ -35,6 +35,28 @@ public class IFWItemGroup {
                 output.accept(IFWItems.raw_mithril.get());
                 output.accept(IFWItems.raw_silver.get());
                 output.accept(IFWItems.sinew.get());
+
+                output.accept(IFWItems.salad.get());
+                output.accept(IFWItems.milk_bowl.get());
+                output.accept(IFWItems.water_bowl.get());
+                output.accept(IFWItems.cheese.get());
+                output.accept(IFWItems.dough.get());
+                output.accept(IFWItems.chocolate.get());
+                output.accept(IFWItems.cereal.get());
+                output.accept(IFWItems.pumpkin_soup.get());
+                output.accept(IFWItems.mushroom_soup_cream.get());
+                output.accept(IFWItems.vegetable_soup.get());
+                output.accept(IFWItems.vegetable_soup_cream.get());
+                output.accept(IFWItems.chicken_soup.get());
+                output.accept(IFWItems.beef_stew.get());
+                output.accept(IFWItems.porridge.get());
+                output.accept(IFWItems.sorbet.get());
+                output.accept(IFWItems.mashed_potato.get());
+                output.accept(IFWItems.ice_cream.get());
+                output.accept(IFWItems.orange.get());
+                output.accept(IFWItems.banana.get());
+                output.accept(IFWItems.cooked_worm.get());
+                output.accept(IFWItems.worm.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tool_tab =

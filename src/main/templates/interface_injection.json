@@ -3,5 +3,6 @@
   "net/minecraft/world/food/FoodData": "huix/infinity/func_extension/FoodDataExtension",
   "net/minecraft/world/entity/player/Player": "huix/infinity/func_extension/PlayerExtension",
   "net/minecraft/world/item/Item": "huix/infinity/func_extension/ItemExtension",
+  "net/minecraft/world/item/Item$Properties": "huix/infinity/func_extension/ItemPropertiesExtension",
   "net/minecraft/world/level/block/Block": "huix/infinity/func_extension/BlockExtension"
 }

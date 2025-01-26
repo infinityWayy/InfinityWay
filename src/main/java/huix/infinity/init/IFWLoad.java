@@ -2,6 +2,7 @@ package huix.infinity.init;
 
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
+import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.util.ReplaceHelper;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -69,10 +70,52 @@ public class IFWLoad {
         ReplaceHelper.foodAdd(Items.SWEET_BERRIES, IFWFoods.sweet_berries);
         ReplaceHelper.foodOverride(Items.HONEY_BOTTLE, RebuildFoods.HONEY_BOTTLE);
         ReplaceHelper.foodAdd(Items.HONEY_BOTTLE, IFWFoods.honey_bottle);
-
         ReplaceHelper.foodOverride(Items.POTATO, RebuildFoods.POTATO);
         ReplaceHelper.foodOverride(Items.GOLDEN_APPLE, RebuildFoods.GOLDEN_APPLE);
         ReplaceHelper.foodAdd(Items.GOLDEN_APPLE, IFWFoods.golden_apple);
         ReplaceHelper.foodOverride(Items.GLOW_BERRIES, RebuildFoods.GLOW_BERRIES);
+        ReplaceHelper.foodOverride(Items.WHEAT_SEEDS, IFWFoods.wheat_seeds);
+        ReplaceHelper.foodAdd(Items.MILK_BUCKET, IFWFoods.ifw_milk_bucket);
+        ReplaceHelper.foodOverride(Items.MILK_BUCKET, IFWFoods.milk_bucket);
+        ReplaceHelper.foodOverride(Items.BROWN_MUSHROOM, IFWFoods.brown_mushroom);
+        ReplaceHelper.foodOverride(Items.RED_MUSHROOM, IFWFoods.red_mushroom);
+        ReplaceHelper.foodOverride(Items.PUMPKIN_SEEDS, IFWFoods.pumpkin_seed);
+        ReplaceHelper.foodAdd(Items.SUGAR, IFWFoods.ifw_sugar);
+        ReplaceHelper.foodOverride(Items.SUGAR, IFWFoods.sugar);
+        ReplaceHelper.foodOverride(Items.EGG, IFWFoods.egg);
+        ReplaceHelper.foodAdd(Items.EGG, IFWFoods.ifw_egg);
+        ReplaceHelper.foodOverride(Items.WHEAT_SEEDS, IFWFoods.wheat_seeds);
+        ReplaceHelper.foodAdd(Items.MILK_BUCKET, IFWFoods.ifw_milk_bucket);
+        ReplaceHelper.foodOverride(Items.WHEAT_SEEDS, IFWFoods.wheat_seeds);
+        ReplaceHelper.foodAdd(Items.MILK_BUCKET, IFWFoods.ifw_milk_bucket);
+        ReplaceHelper.foodOverride(Items.NETHER_WART, IFWFoods.nether_wart);
+        ReplaceHelper.foodOverride(Items.MELON_SEEDS, IFWFoods.melon_seed);
+        ReplaceHelper.foodOverride(Items.BEETROOT_SEEDS, IFWFoods.beetroot_seeds);
+        ReplaceHelper.foodAdd(IFWItems.salad.get(), IFWFoods.ifw_salad);
+        ReplaceHelper.foodAdd(IFWItems.milk_bowl.get(), IFWFoods.ifw_milk_bowl);
+        ReplaceHelper.foodAdd(IFWItems.water_bowl.get(), IFWFoods.ifw_bowl_water);
+        ReplaceHelper.foodAdd(IFWItems.cheese.get(), IFWFoods.ifw_cheese);
+        ReplaceHelper.foodAdd(IFWItems.chocolate.get(), IFWFoods.ifw_chocolate);
+        ReplaceHelper.foodAdd(IFWItems.cereal.get(), IFWFoods.ifw_cereal);
+        ReplaceHelper.foodAdd(IFWItems.pumpkin_soup.get(), IFWFoods.ifw_pumpkin_soup);
+        ReplaceHelper.foodAdd(IFWItems.mushroom_soup_cream.get(), IFWFoods.ifw_mushroom_soup_cream);
+        ReplaceHelper.foodAdd(IFWItems.vegetable_soup.get(), IFWFoods.ifw_vegetable_soup);
+        ReplaceHelper.foodAdd(IFWItems.vegetable_soup_cream.get(), IFWFoods.ifw_vegetable_soup_cream);
+        ReplaceHelper.foodAdd(IFWItems.chicken_soup.get(), IFWFoods.ifw_chicken_soup);
+        ReplaceHelper.foodAdd(IFWItems.beef_stew.get(), IFWFoods.ifw_beef_stew);
+        ReplaceHelper.foodAdd(IFWItems.porridge.get(), IFWFoods.ifw_porridge);
+        ReplaceHelper.foodAdd(IFWItems.sorbet.get(), IFWFoods.ifw_sorbet);
+        ReplaceHelper.foodAdd(IFWItems.mashed_potato.get(), IFWFoods.ifw_mashed_potato);
+        ReplaceHelper.foodAdd(IFWItems.ice_cream.get(), IFWFoods.ifw_ice_cream);
+        ReplaceHelper.foodAdd(IFWItems.orange.get(), IFWFoods.ifw_orange);
+        ReplaceHelper.foodAdd(IFWItems.banana.get(), IFWFoods.ifw_banana);
+        ReplaceHelper.foodAdd(IFWItems.cooked_worm.get(), IFWFoods.ifw_cooked_worm);
+        ReplaceHelper.foodAdd(IFWItems.worm.get(), IFWFoods.ifw_worm);
+
+        ReplaceHelper.stackSize(Items.BOOK, 16);
+        ReplaceHelper.stackSize(Items.IRON_INGOT, 8);
+        ReplaceHelper.stackSize(Items.GOLD_INGOT, 8);
+        ReplaceHelper.stackSize(Items.COPPER_INGOT, 8);
+        ReplaceHelper.stackSize(Items.NETHERITE_INGOT, 8);
     }
 }

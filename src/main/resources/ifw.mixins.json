@@ -20,8 +20,11 @@
     "world.entity.animal.ChickenMixin",
     "world.entity.animal.LivestockInjected",
     "world.food.FoodDataMixin",
+    "world.food.FoodProperties$BuilderMixin",
     "world.food.FoodsMixin",
+    "world.item.Item$PropertiesMixin",
     "world.item.ItemMixin",
+    "world.item.ItemsInjected",
     "world.item.ItemStackMixin"
   ],
   "client": [

@@ -4,13 +4,10 @@ import com.mojang.logging.LogUtils;
 import huix.infinity.common.core.attachment.IFWAttachment;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.block.IFWBlocks;
-import huix.infinity.common.world.food.IFWFoods;
+import huix.infinity.common.world.effect.IFWMobEffects;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.world.item.group.IFWItemGroup;
 import huix.infinity.common.world.entity.IFWAttributes;
-import huix.infinity.util.ReplaceHelper;
-import net.minecraft.world.food.Foods;
-import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -24,12 +21,13 @@ public final class InfinityWay {
 
 
     public InfinityWay(final ModContainer mod, final IEventBus bus) {
-        IFWBlocks.BLOCKS.register(bus);
-        IFWItems.ITEMS.register(bus);
+        IFWDataComponents.DATA_COMPONENTS.register(bus);
         IFWItemGroup.CREATIVE_TABS.register(bus);
         IFWAttachment.ATTACHMENT_TYPES.register(bus);
         IFWAttributes.ATTRIBUTES.register(bus);
-        IFWDataComponents.DATA_COMPONENTS.register(bus);
+        IFWMobEffects.MOB_EFFECTS.register(bus);
+        IFWItems.ITEMS.register(bus);
+        IFWBlocks.BLOCKS.register(bus);
 
 
         IFWEvent.init();
