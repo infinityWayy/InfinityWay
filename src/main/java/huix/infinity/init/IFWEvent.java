@@ -2,26 +2,20 @@ package huix.infinity.init;
 
 import huix.infinity.common.core.attachment.IFWAttachment;
 import huix.infinity.common.core.component.IFWDataComponents;
+import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.food.IFWFoodProperties;
-import huix.infinity.common.world.food.IFWFoods;
-import huix.infinity.util.ReplaceHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.food.Foods;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
 import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
@@ -40,6 +34,7 @@ public class IFWEvent {
         bus.addListener(IFWEvent::playerClone);
         bus.addListener(IFWEvent::daySleep);
         bus.addListener(IFWEvent::addFoodInfo);
+        bus.addListener(IFWEvent::nonRemoveUnClearEffect);
     }
 
     public static void onBreakSpeed(final PlayerEvent.BreakSpeed event) {
@@ -79,27 +74,35 @@ public class IFWEvent {
 
     public static void addFoodInfo(final ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
-        List<Component> list = event.getToolTip();
         if (stack.getItem().ifw_isFood()) {
-            FoodProperties foodProperties = stack.get(DataComponents.FOOD);
-            if (showFoodInfo(foodProperties)) {
-                list.add(Component.translatable("foodtips.nutrition", foodProperties.nutrition()).withStyle(ChatFormatting.RED));
-                list.add(Component.translatable("foodtips.saturation", foodProperties.saturation()).withStyle(ChatFormatting.RED));
-                IFWFoodProperties properties = stack.get(IFWDataComponents.ifw_food_data);
-                if (showMoreFoodInfo(properties)) {
-                    list.add(Component.translatable("foodtips.protein", properties.protein()).withStyle(ChatFormatting.GREEN));
-                    list.add(Component.translatable("foodtips.phytonutrients", properties.phytonutrients()).withStyle(ChatFormatting.GREEN));
-                    if (properties.insulinResponse() != 0)
-                        list.add(Component.translatable("foodtips.insulinresponse", properties.insulinResponse()).withStyle(ChatFormatting.YELLOW));
-                }
-            }
+            showFoodInfo(stack.get(DataComponents.FOOD), event.getToolTip());
+            showMoreFoodInfo(stack.get(IFWDataComponents.ifw_food_data), event.getToolTip());
+        }
+    }
+    private static void showFoodInfo(final FoodProperties food, final List<Component> list) {
+        if (food != null && Screen.hasShiftDown()) {
+            if (food.nutrition() != 0)
+                list.add(Component.translatable("foodtips.nutrition", food.nutrition()).withStyle(ChatFormatting.RED));
+            if (food.saturation() != 0)
+                list.add(Component.translatable("foodtips.saturation", food.saturation()).withStyle(ChatFormatting.RED));
+        }
+    }
+    private static void showMoreFoodInfo(final IFWFoodProperties extraFood, final List<Component> list) {
+        if (extraFood != null && Screen.hasAltDown())  {
+            if (extraFood.protein() != 0)
+                list.add(Component.translatable("foodtips.protein", extraFood.protein()).withStyle(ChatFormatting.GREEN));
+            if (extraFood.phytonutrients() != 0)
+                list.add(Component.translatable("foodtips.phytonutrients", extraFood.phytonutrients()).withStyle(ChatFormatting.GREEN));
+            if (extraFood.insulinResponse() != 0)
+                list.add(Component.translatable("foodtips.insulinresponse", extraFood.insulinResponse()).withStyle(ChatFormatting.YELLOW));
         }
     }
 
-    private static boolean showFoodInfo(final FoodProperties foodProperties) {
-        return Screen.hasShiftDown() && foodProperties.nutrition() >= 0 || foodProperties.saturation() >= 0.0F;
+
+    public static void nonRemoveUnClearEffect(final MobEffectEvent.Remove event) {
+        if (event.getEffect().value() instanceof UnClearEffect)
+            event.setCanceled(true);
     }
-    private static boolean showMoreFoodInfo(final IFWFoodProperties foodProperties) {
-        return Screen.hasAltDown() && foodProperties != null && (foodProperties.protein() != 0 || foodProperties.phytonutrients() != 0.0F);
-    }
+
+
 }
