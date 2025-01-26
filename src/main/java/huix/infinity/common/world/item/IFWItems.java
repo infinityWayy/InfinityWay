@@ -245,7 +245,7 @@ public class IFWItems {
     public static final DeferredItem<Item> raw_silver =
             ITEMS.registerSimpleItem("raw_silver", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> adamantium_ingot =
-            ITEMS.registerSimpleItem("adamantium_ingot", new Item.Properties());
+            ITEMS.registerSimpleItem("adamantium_ingot", new Item.Properties().stacksTo(10));
     public static final DeferredItem<Item> adamantium_nugget =
             ITEMS.registerSimpleItem("adamantium_nugget", new Item.Properties());
     public static final DeferredItem<Item> adamantium_shears =
@@ -282,7 +282,7 @@ public class IFWItems {
             ITEMS.register("adamantium_dagger", item -> new DaggerWeapon(EnumTier.ADAMANTIUM,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.ADAMANTIUM,4.0F, -1.5F))));
     public static final DeferredItem<Item> ancient_metal_ingot =
-            ITEMS.registerSimpleItem("ancient_metal_ingot", new Item.Properties());
+            ITEMS.registerSimpleItem("ancient_metal_ingot", new Item.Properties().stacksTo(10));
     public static final DeferredItem<Item> ancient_metal_nugget =
             ITEMS.registerSimpleItem("ancient_metal_nugget", new Item.Properties());
     public static final DeferredItem<Item> ancient_metal_shears =
@@ -319,7 +319,7 @@ public class IFWItems {
             ITEMS.register("ancient_metal_dagger", item -> new DaggerWeapon(EnumTier.ANCIENT_METAL,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.ANCIENT_METAL,4.0F, -1.5F))));
     public static final DeferredItem<Item> mithril_ingot =
-            ITEMS.registerSimpleItem("mithril_ingot", new Item.Properties());
+            ITEMS.registerSimpleItem("mithril_ingot", new Item.Properties().stacksTo(10));
     public static final DeferredItem<Item> mithril_nugget =
             ITEMS.registerSimpleItem("mithril_nugget", new Item.Properties());
     public static final DeferredItem<Item> mithril_shears =
@@ -356,7 +356,7 @@ public class IFWItems {
             ITEMS.register("mithril_dagger", item -> new DaggerWeapon(EnumTier.MITHRIL,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.MITHRIL,4.0F, -1.5F))));
     public static final DeferredItem<Item> silver_ingot =
-            ITEMS.registerSimpleItem("silver_ingot", new Item.Properties());
+            ITEMS.registerSimpleItem("silver_ingot", new Item.Properties().stacksTo(10));
     public static final DeferredItem<Item> silver_nugget =
             ITEMS.registerSimpleItem("silver_nugget", new Item.Properties());
     public static final DeferredItem<Item> silver_shears =

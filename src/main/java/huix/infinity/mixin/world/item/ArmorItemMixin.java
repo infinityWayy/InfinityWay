@@ -23,8 +23,8 @@ public class ArmorItemMixin implements ArmorExtension {
             , ordinal = 0), method = "lambda$new$0")
     private static AttributeModifier ifw_rebuildDefense(ResourceLocation id, double amount, AttributeModifier.Operation operation,
                                                         @Local(argsOnly = true) Holder<ArmorMaterial> material, @Local(argsOnly = true) ArmorItem.Type type) {
-        return material.value().ifw_defense() != null ? new AttributeModifier(id, (material.value()).float_defense(type), AttributeModifier.Operation.ADD_VALUE)
-                : new AttributeModifier(id, amount, AttributeModifier.Operation.ADD_VALUE);
+        double i = material.value().ifw_defense() != null ? (material.value()).float_defense(type) : amount;
+        return  new AttributeModifier(id, i, AttributeModifier.Operation.ADD_VALUE);
     }
 
     @Shadow
