@@ -91,15 +91,12 @@ public class IFWLoad {
         ReplaceHelper.foodOverride(Items.NETHER_WART, IFWFoods.nether_wart);
         ReplaceHelper.foodOverride(Items.MELON_SEEDS, IFWFoods.melon_seed);
         ReplaceHelper.foodOverride(Items.BEETROOT_SEEDS, IFWFoods.beetroot_seeds);
-
-
         ReplaceHelper.foodAdd(IFWItems.salad.get(), IFWFoods.ifw_salad);
         ReplaceHelper.foodAdd(IFWItems.milk_bowl.get(), IFWFoods.ifw_milk_bowl);
         ReplaceHelper.foodAdd(IFWItems.water_bowl.get(), IFWFoods.ifw_bowl_water);
         ReplaceHelper.foodAdd(IFWItems.cheese.get(), IFWFoods.ifw_cheese);
         ReplaceHelper.foodAdd(IFWItems.chocolate.get(), IFWFoods.ifw_chocolate);
         ReplaceHelper.foodAdd(IFWItems.cereal.get(), IFWFoods.ifw_cereal);
-
         ReplaceHelper.foodAdd(IFWItems.pumpkin_soup.get(), IFWFoods.ifw_pumpkin_soup);
         ReplaceHelper.foodAdd(IFWItems.mushroom_soup_cream.get(), IFWFoods.ifw_mushroom_soup_cream);
         ReplaceHelper.foodAdd(IFWItems.vegetable_soup.get(), IFWFoods.ifw_vegetable_soup);
@@ -114,5 +111,11 @@ public class IFWLoad {
         ReplaceHelper.foodAdd(IFWItems.banana.get(), IFWFoods.ifw_banana);
         ReplaceHelper.foodAdd(IFWItems.cooked_worm.get(), IFWFoods.ifw_cooked_worm);
         ReplaceHelper.foodAdd(IFWItems.worm.get(), IFWFoods.ifw_worm);
+
+        ReplaceHelper.stackSize(Items.BOOK, 16);
+        ReplaceHelper.stackSize(Items.IRON_INGOT, 8);
+        ReplaceHelper.stackSize(Items.GOLD_INGOT, 8);
+        ReplaceHelper.stackSize(Items.COPPER_INGOT, 8);
+        ReplaceHelper.stackSize(Items.NETHERITE_INGOT, 8);
     }
 }

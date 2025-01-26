@@ -23,6 +23,7 @@
     "world.food.FoodsMixin",
     "world.item.Item$PropertiesMixin",
     "world.item.ItemMixin",
+    "world.item.ItemsInjected",
     "world.item.ItemStackMixin"
   ],
   "client": [
