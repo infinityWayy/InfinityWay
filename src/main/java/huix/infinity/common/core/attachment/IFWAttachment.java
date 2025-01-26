@@ -2,8 +2,6 @@ package huix.infinity.common.core.attachment;
 
 import com.mojang.serialization.Codec;
 import huix.infinity.init.InfinityWay;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -26,14 +24,14 @@ public class IFWAttachment {
     public static final Supplier<AttachmentType<Float>> freedom = ATTACHMENT_TYPES.register(
             "freedom", () -> AttachmentType.builder(() -> 0.0F).serialize(Codec.FLOAT).build()
     );
-    public static final Supplier<AttachmentType<Integer>> productionCounter = ATTACHMENT_TYPES.register(
-            "productionCounter", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+    public static final Supplier<AttachmentType<Integer>> production_counter = ATTACHMENT_TYPES.register(
+            "production_counter", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
     );
-    public static final Supplier<AttachmentType<Integer>> manurePeriod = ATTACHMENT_TYPES.register(
-            "manurePeriod", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+    public static final Supplier<AttachmentType<Integer>> manure_period = ATTACHMENT_TYPES.register(
+            "manure_period", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
     );
-    public static final Supplier<AttachmentType<Integer>> manureCountdown = ATTACHMENT_TYPES.register(
-            "manureCountdown", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+    public static final Supplier<AttachmentType<Integer>> manure_countdown = ATTACHMENT_TYPES.register(
+            "manure_countdown", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
     );
 
 

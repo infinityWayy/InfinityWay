@@ -13,6 +13,12 @@ public class IFWCNLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("foodtips.saturation", "+%s 饱和度");
+        add("foodtips.nutrition", "+%s  营养");
+        add("foodtips.protein", "+%s 蛋白质");
+        add("foodtips.phytonutrients", "+%s 植物营养素");
+        add("foodtips.insulinresponse", "+%s 胰岛素");
+
         add(IFWBlocks.adamantium_block_item.get(), "艾德曼块");
         add(IFWBlocks.adamantium_ore_item.get(), "艾德曼矿石");
         add(IFWBlocks.adamantium_bars_item.get(), "艾德曼栏杆");

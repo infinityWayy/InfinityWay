@@ -49,8 +49,8 @@ public interface Livestock {
     }
 
     default void manurePeriod(int manure_period) {
-        this.animal().setData(IFWAttachment.manurePeriod, manure_period);
-        this.animal().setData(IFWAttachment.manureCountdown, (int)(Math.random() * (double)manure_period));
+        this.animal().setData(IFWAttachment.manure_period, manure_period);
+        this.animal().setData(IFWAttachment.manure_countdown, (int)(Math.random() * (double)manure_period));
     }
 
     default float water() {
@@ -63,6 +63,10 @@ public interface Livestock {
 
     default float freedom() {
         return this.animal().getData(IFWAttachment.freedom);
+    }
+
+    default int productionCounter() {
+        return this.animal().getData(IFWAttachment.production_counter);
     }
 
     default void addFood(float food) {

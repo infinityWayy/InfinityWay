@@ -13,6 +13,12 @@ public class IFWUSLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("foodtips.saturation", "+%s Saturation Value");
+        add("foodtips.nutrition", "+%s  Food Value");
+        add("foodtips.protein", "+%s Protein Value");
+        add("foodtips.phytonutrients", "+%s Phytonutrients Value");
+        add("foodtips.insulinresponse", "+%s Insulin Response");
+
         //Blocks
         add(IFWBlocks.adamantium_block_item.get(), "Adamantium Block");
         add(IFWBlocks.adamantium_ore_item.get(), "Adamantium Ore");
