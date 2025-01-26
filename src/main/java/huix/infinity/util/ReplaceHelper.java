@@ -20,4 +20,8 @@ public class ReplaceHelper {
     public static void foodAdd(Item patchItem, IFWFoodProperties add) {
         patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(IFWDataComponents.ifw_food_data.get(), add).build());
     }
+
+    public static void stackSize(Item patchItem, int add) {
+        patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(DataComponents.MAX_STACK_SIZE, add).build());
+    }
 }

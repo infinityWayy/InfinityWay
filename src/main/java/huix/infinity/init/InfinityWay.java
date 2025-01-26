@@ -21,13 +21,13 @@ public final class InfinityWay {
 
 
     public InfinityWay(final ModContainer mod, final IEventBus bus) {
-        IFWBlocks.BLOCKS.register(bus);
-        IFWItems.ITEMS.register(bus);
+        IFWDataComponents.DATA_COMPONENTS.register(bus);
         IFWItemGroup.CREATIVE_TABS.register(bus);
         IFWAttachment.ATTACHMENT_TYPES.register(bus);
         IFWAttributes.ATTRIBUTES.register(bus);
-        IFWDataComponents.DATA_COMPONENTS.register(bus);
         IFWMobEffects.MOB_EFFECTS.register(bus);
+        IFWItems.ITEMS.register(bus);
+        IFWBlocks.BLOCKS.register(bus);
 
 
         IFWEvent.init();

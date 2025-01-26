@@ -38,13 +38,13 @@ public class IFWFoods {
 
 
 
-    public static final FoodProperties seed = (new FoodProperties.Builder()).saturationModifier(0.3F).build();
+    public static final FoodProperties wheat_seeds = (new FoodProperties.Builder()).saturationModifier(0.3F).build();
     public static final FoodProperties salad = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.3F).build();
     public static final IFWFoodProperties ifw_salad = (new IFWFoodProperties.Builder()).phytonutrients(8000).build();
-    public static final FoodProperties bowl_milk = (new FoodProperties.Builder()).nutrition(1).build();
-    public static final IFWFoodProperties ifw_bowl_milk = (new IFWFoodProperties.Builder()).protein(8000).soup().build();
-    public static final FoodProperties bucket_milk = (new FoodProperties.Builder()).nutrition(4).build();
-    public static final IFWFoodProperties ifw_bucket_milk = (new IFWFoodProperties.Builder()).protein(32000).build();
+    public static final FoodProperties milk_bowl = (new FoodProperties.Builder()).nutrition(1).build();
+    public static final IFWFoodProperties ifw_milk_bowl = (new IFWFoodProperties.Builder()).protein(8000).soup().build();
+    public static final FoodProperties milk_bucket = (new FoodProperties.Builder()).nutrition(4).build();
+    public static final IFWFoodProperties ifw_milk_bucket = (new IFWFoodProperties.Builder()).protein(32000).build();
     public static final FoodProperties brown_mushroom = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.1F).build();
     public static final FoodProperties red_mushroom = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.1F)
             .effect(() -> new MobEffectInstance(MobEffects.POISON, 200, 1), 1.0F)

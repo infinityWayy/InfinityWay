@@ -1,5 +1,6 @@
 package huix.infinity.common.world.item;
 
+import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.common.world.item.tier.EnumTier;
 import net.minecraft.core.component.DataComponents;
@@ -11,33 +12,27 @@ public class IFWItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(InfinityWay.MOD_ID);
 
 
+
     public static final DeferredItem<Item> flint_shard =
-            ITEMS.registerSimpleItem("flint_shard", new Item.Properties());
+            ITEMS.registerSimpleItem("flint_shard", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> obsidian_shard =
-            ITEMS.registerSimpleItem("obsidian_shard", new Item.Properties());
+            ITEMS.registerSimpleItem("obsidian_shard", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> emerald_shard =
-            ITEMS.registerSimpleItem("emerald_shard", new Item.Properties());
+            ITEMS.registerSimpleItem("emerald_shard", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> diamond_shard =
-            ITEMS.registerSimpleItem("diamond_shard", new Item.Properties());
+            ITEMS.registerSimpleItem("diamond_shard", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> glass_shard =
-            ITEMS.registerSimpleItem("glass_shard", new Item.Properties());
+            ITEMS.registerSimpleItem("glass_shard", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> quartz_shard =
-            ITEMS.registerSimpleItem("quartz_shard", new Item.Properties());
+            ITEMS.registerSimpleItem("quartz_shard", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> sinew =
-            ITEMS.registerSimpleItem("sinew", new Item.Properties());
-
-    public static final DeferredItem<Item> dimania =
-            ITEMS.registerSimpleItem("dimania", new Item.Properties());
-//    public static final DeferredItem<Item> flint_shard =
-//            ITEMS.registerSimpleItem("flint_shard", new Item.Properties());
-
+            ITEMS.registerSimpleItem("sinew", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> wooden_shovel =
             ITEMS.register("wooden_shovel", item -> new ShovelTool(EnumTier.WOOD, 400,
                     new Item.Properties().attributes(ShovelTool.createAttributes(EnumTier.WOOD,1.0F, -3.0F))));
     public static final DeferredItem<Item> wooden_cudgel =
             ITEMS.register("wooden_cudgel", item -> new ClubWeapon(EnumTier.WOOD, 1000,
                     new Item.Properties().attributes(SwordWeapon.createAttributes(EnumTier.WOOD,3.0F, -2.4F))));
-
     public static final DeferredItem<Item> flint_hatchet =
             ITEMS.register("flint_hatchet", item -> new HatchetTool(EnumTier.FLINT, 360,
                     new Item.Properties().attributes(ShovelTool.createAttributes(EnumTier.FLINT,1.5F, -3.0F))));
@@ -50,17 +45,14 @@ public class IFWItems {
     public static final DeferredItem<Item> flint_axe =
             ITEMS.register("flint_axe", item -> new AxeTool(EnumTier.FLINT, 1200.0F,
                     new Item.Properties().attributes(SwordWeapon.createAttributes(EnumTier.FLINT,2.0F, -3.0F))));
-
     public static final DeferredItem<Item> raw_adamantium =
-            ITEMS.registerSimpleItem("raw_adamantium", new Item.Properties());
+            ITEMS.registerSimpleItem("raw_adamantium", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> raw_mithril =
-            ITEMS.registerSimpleItem("raw_mithril", new Item.Properties());
+            ITEMS.registerSimpleItem("raw_mithril", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> raw_silver =
-            ITEMS.registerSimpleItem("raw_silver", new Item.Properties());
-
-
+            ITEMS.registerSimpleItem("raw_silver", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> adamantium_ingot =
-            ITEMS.registerSimpleItem("adamantium_ingot", new Item.Properties());
+            ITEMS.registerSimpleItem("adamantium_ingot", new Item.Properties().stacksTo(8));
     public static final DeferredItem<Item> adamantium_nugget =
             ITEMS.registerSimpleItem("adamantium_nugget", new Item.Properties());
     public static final DeferredItem<Item> adamantium_shears =
@@ -96,10 +88,8 @@ public class IFWItems {
     public static final DeferredItem<Item> adamantium_dagger =
             ITEMS.register("adamantium_dagger", item -> new DaggerWeapon(EnumTier.ADAMANTIUM,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.ADAMANTIUM,4.0F, -1.5F))));
-
-
     public static final DeferredItem<Item> ancient_metal_ingot =
-            ITEMS.registerSimpleItem("ancient_metal_ingot", new Item.Properties());
+            ITEMS.registerSimpleItem("ancient_metal_ingot", new Item.Properties().stacksTo(8));
     public static final DeferredItem<Item> ancient_metal_nugget =
             ITEMS.registerSimpleItem("ancient_metal_nugget", new Item.Properties());
     public static final DeferredItem<Item> ancient_metal_shears =
@@ -135,10 +125,8 @@ public class IFWItems {
     public static final DeferredItem<Item> ancient_metal_dagger =
             ITEMS.register("ancient_metal_dagger", item -> new DaggerWeapon(EnumTier.ANCIENT_METAL,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.ANCIENT_METAL,4.0F, -1.5F))));
-
-
     public static final DeferredItem<Item> mithril_ingot =
-            ITEMS.registerSimpleItem("mithril_ingot", new Item.Properties());
+            ITEMS.registerSimpleItem("mithril_ingot", new Item.Properties().stacksTo(8));
     public static final DeferredItem<Item> mithril_nugget =
             ITEMS.registerSimpleItem("mithril_nugget", new Item.Properties());
     public static final DeferredItem<Item> mithril_shears =
@@ -174,10 +162,8 @@ public class IFWItems {
     public static final DeferredItem<Item> mithril_dagger =
             ITEMS.register("mithril_dagger", item -> new DaggerWeapon(EnumTier.MITHRIL,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.MITHRIL,4.0F, -1.5F))));
-
-
     public static final DeferredItem<Item> silver_ingot =
-            ITEMS.registerSimpleItem("silver_ingot", new Item.Properties());
+            ITEMS.registerSimpleItem("silver_ingot", new Item.Properties().stacksTo(8));
     public static final DeferredItem<Item> silver_nugget =
             ITEMS.registerSimpleItem("silver_nugget", new Item.Properties());
     public static final DeferredItem<Item> silver_shears =
@@ -213,10 +199,8 @@ public class IFWItems {
     public static final DeferredItem<Item> silver_dagger =
             ITEMS.register("silver_dagger", item -> new DaggerWeapon(EnumTier.SILVER,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.SILVER,4.0F, -1.5F))));
-
-
     public static final DeferredItem<Item> copper_nugget =
-            ITEMS.registerSimpleItem("copper_nugget", new Item.Properties());
+            ITEMS.registerSimpleItem("copper_nugget", new Item.Properties().stacksTo(64));
     public static final DeferredItem<Item> copper_shears =
             ITEMS.register("copper_shears", item -> new ShearsWeapon(EnumTier.COPPER,
                     new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
@@ -250,8 +234,6 @@ public class IFWItems {
     public static final DeferredItem<Item> copper_dagger =
             ITEMS.register("copper_dagger", item -> new DaggerWeapon(EnumTier.COPPER,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.COPPER,4.0F, -1.5F))));
-
-
     public static final DeferredItem<Item> iron_shears =
             ITEMS.register("iron_shears", item -> new ShearsWeapon(EnumTier.IRON,
                     new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
@@ -285,8 +267,6 @@ public class IFWItems {
     public static final DeferredItem<Item> iron_dagger =
             ITEMS.register("iron_dagger", item -> new DaggerWeapon(EnumTier.IRON,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.IRON,4.0F, -1.5F))));
-
-
     public static final DeferredItem<Item> gold_shears =
             ITEMS.register("gold_shears", item -> new ShearsWeapon(EnumTier.GOLD,
                     new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
@@ -320,8 +300,6 @@ public class IFWItems {
     public static final DeferredItem<Item> gold_dagger =
             ITEMS.register("gold_dagger", item -> new DaggerWeapon(EnumTier.GOLD,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.GOLD,4.0F, -1.5F))));
-
-
     public static final DeferredItem<Item> rusted_iron_shears =
             ITEMS.register("rusted_iron_shears", item -> new ShearsWeapon(EnumTier.RUSTED_IRON,
                     new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
@@ -356,7 +334,47 @@ public class IFWItems {
             ITEMS.register("rusted_iron_dagger", item -> new DaggerWeapon(EnumTier.RUSTED_IRON,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(EnumTier.RUSTED_IRON,4.0F, -1.5F))));
 
-
-    
-
+    //Food
+    public static final DeferredItem<Item> salad =
+            ITEMS.registerSimpleItem("salad", new Item.Properties().stacksTo(4).food(IFWFoods.salad));
+    public static final DeferredItem<Item> milk_bowl =
+            ITEMS.registerSimpleItem("milk_bowl", new Item.Properties().stacksTo(4).food(IFWFoods.milk_bowl));
+    public static final DeferredItem<Item> water_bowl =
+            ITEMS.registerSimpleItem("water_bowl", new Item.Properties().stacksTo(4));
+    public static final DeferredItem<Item> cheese =
+            ITEMS.registerSimpleItem("cheese", new Item.Properties().stacksTo(8).food(IFWFoods.cheese));
+    public static final DeferredItem<Item> dough =
+            ITEMS.registerSimpleItem("dough", new Item.Properties().stacksTo(8).food(IFWFoods.dough));
+    public static final DeferredItem<Item> chocolate =
+            ITEMS.registerSimpleItem("chocolate", new Item.Properties().stacksTo(16).food(IFWFoods.chocolate));
+    public static final DeferredItem<Item> cereal =
+            ITEMS.registerSimpleItem("cereal", new Item.Properties().stacksTo(4).food(IFWFoods.cereal));
+    public static final DeferredItem<Item> pumpkin_soup =
+            ITEMS.registerSimpleItem("pumpkin_soup", new Item.Properties().stacksTo(4).food(IFWFoods.pumpkin_soup));
+    public static final DeferredItem<Item> mushroom_soup_cream =
+            ITEMS.registerSimpleItem("mushroom_soup_cream", new Item.Properties().stacksTo(4).food(IFWFoods.mushroom_soup_cream));
+    public static final DeferredItem<Item> vegetable_soup =
+            ITEMS.registerSimpleItem("vegetable_soup", new Item.Properties().stacksTo(4).food(IFWFoods.vegetable_soup));
+    public static final DeferredItem<Item> vegetable_soup_cream =
+            ITEMS.registerSimpleItem("vegetable_soup_cream", new Item.Properties().stacksTo(4).food(IFWFoods.vegetable_soup_cream));
+    public static final DeferredItem<Item> chicken_soup =
+            ITEMS.registerSimpleItem("chicken_soup", new Item.Properties().stacksTo(4).food(IFWFoods.chicken_soup));
+    public static final DeferredItem<Item> beef_stew =
+            ITEMS.registerSimpleItem("beef_stew", new Item.Properties().stacksTo(4).food(IFWFoods.beef_stew));
+    public static final DeferredItem<Item> porridge =
+            ITEMS.registerSimpleItem("porridge", new Item.Properties().stacksTo(4).food(IFWFoods.porridge));
+    public static final DeferredItem<Item> sorbet =
+            ITEMS.registerSimpleItem("sorbet", new Item.Properties().stacksTo(4).food(IFWFoods.sorbet));
+    public static final DeferredItem<Item> mashed_potato =
+            ITEMS.registerSimpleItem("mashed_potato", new Item.Properties().stacksTo(4).food(IFWFoods.mashed_potato));
+    public static final DeferredItem<Item> ice_cream =
+            ITEMS.registerSimpleItem("ice_cream", new Item.Properties().stacksTo(4).food(IFWFoods.ice_cream));
+    public static final DeferredItem<Item> orange =
+            ITEMS.registerSimpleItem("orange", new Item.Properties().stacksTo(16).food(IFWFoods.orange));
+    public static final DeferredItem<Item> banana =
+            ITEMS.registerSimpleItem("banana", new Item.Properties().stacksTo(16).food(IFWFoods.banana));
+    public static final DeferredItem<Item> cooked_worm =
+            ITEMS.registerSimpleItem("cooked_worm", new Item.Properties().stacksTo(16).food(IFWFoods.cooked_worm));
+    public static final DeferredItem<Item> worm =
+            ITEMS.registerSimpleItem("worm", new Item.Properties().stacksTo(16).food(IFWFoods.worm));
 }
