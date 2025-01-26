@@ -17,6 +17,25 @@ public class IFWAttachment {
             "respawn_xp", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
     );
 
+    public static final Supplier<AttachmentType<Float>> food = ATTACHMENT_TYPES.register(
+            "food", () -> AttachmentType.builder(() -> 0.0F).serialize(Codec.FLOAT).build()
+    );
+    public static final Supplier<AttachmentType<Float>> water = ATTACHMENT_TYPES.register(
+            "water", () -> AttachmentType.builder(() -> 0.0F).serialize(Codec.FLOAT).build()
+    );
+    public static final Supplier<AttachmentType<Float>> freedom = ATTACHMENT_TYPES.register(
+            "freedom", () -> AttachmentType.builder(() -> 0.0F).serialize(Codec.FLOAT).build()
+    );
+    public static final Supplier<AttachmentType<Integer>> productionCounter = ATTACHMENT_TYPES.register(
+            "productionCounter", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+    );
+    public static final Supplier<AttachmentType<Integer>> manurePeriod = ATTACHMENT_TYPES.register(
+            "manurePeriod", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+    );
+    public static final Supplier<AttachmentType<Integer>> manureCountdown = ATTACHMENT_TYPES.register(
+            "manureCountdown", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+    );
+
 
 
 }
