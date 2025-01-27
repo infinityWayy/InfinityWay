@@ -7,6 +7,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -18,6 +20,11 @@ public class IFWRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(final @NotNull RecipeOutput recipeOutput) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.KELP), RecipeCategory.FOOD, Items.DRIED_KELP, 0.1F, 200)
+                .unlockedBy("has_kelp", has(Blocks.KELP)).cookingLevel(5)
+                .save(recipeOutput, "dried_kelp_smelting");
+
+
         nineBlockStorageRecipesWithCustomPacking(
                 recipeOutput, RecipeCategory.MISC, IFWItems.adamantium_ingot, RecipeCategory.BUILDING_BLOCKS,
                 IFWBlocks.adamantium_block, "adamantium_block_from_ingot", "adamantium_block");
