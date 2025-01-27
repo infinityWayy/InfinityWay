@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-27T12:50:46.8561707	Recipes
+// 1.21.1	2025-01-27T14:26:24.0076776	Recipes
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 b3d2b27e813bdc906797d6ddf88c189926cf929f data/ifw/advancement/recipes/tools/adamantium_axe.json
 46d4074c1459f626529609b7dc84e3bed71689ae data/ifw/advancement/recipes/tools/ancient_metal_axe.json
@@ -24,8 +24,8 @@ d9bffb2d4f002a9d8bb3285b480d2a37460be18f data/ifw/recipe/iron_axe.json
 5a7db7fe44473d2c3918056208d24bb6b578cdd2 data/ifw/recipe/mithril_axe.json
 ea8944ef562be9971158ded89f6108b89eb8fce3 data/ifw/recipe/silver_axe.json
 a9b8907bfd52945202a8d3f6852ce350bf5f7d7e data/minecraft/advancement/recipes/building_blocks/adamantium_block_from_ingot.json
-3e99666b2d14161352311b2e50be585cce251f6f data/minecraft/advancement/recipes/food/dried_kelp_smelting.json
 97185a24721edb8abe2880d2877f49cedb72ca3a data/minecraft/advancement/recipes/misc/adamantium_ingot.json
+26b8bda778435d78aa223820a104ea0f9671bc08 data/minecraft/advancement/recipes/misc/raw_adamantium_smelting.json
 8016342e3dc56bf6a6b743b88d5ac3f3eea7726b data/minecraft/recipe/adamantium_block_from_ingot.json
 cc90aab0622037381813827575687b9bba3c91a0 data/minecraft/recipe/adamantium_ingot.json
-7b998913ae0b2acc7c7fd2bf8262bbd7d909ec94 data/minecraft/recipe/dried_kelp_smelting.json
+89377842d98832bdda3c10876c38019c8d8f2425 data/minecraft/recipe/raw_adamantium_smelting.json

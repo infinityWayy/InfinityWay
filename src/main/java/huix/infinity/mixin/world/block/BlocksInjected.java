@@ -1,11 +1,15 @@
 package huix.infinity.mixin.world.block;
 
 import huix.infinity.common.world.block.GravelBlock;
+import huix.infinity.common.world.block.IFWFurnaceBlock;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ColoredFallingBlock;
+import net.minecraft.world.level.block.FurnaceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -77,6 +81,13 @@ public class BlocksInjected {
             , ordinal = 2), method = "<clinit>")
     private static ColoredFallingBlock ifw_rebuildGravel(ColorRGBA dustColor, BlockBehaviour.Properties properties) {
         return new GravelBlock(dustColor, properties);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "register")
+            , method = "<clinit>")
+    private static FurnaceBlock ifw_rebuildFurnace(BlockBehaviour.Properties properties) {
+        return new IFWFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13)));
     }
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/util/valueproviders/UniformInt;of(II)Lnet/minecraft/util/valueproviders/UniformInt;", ordinal = 0), method = "<clinit>")

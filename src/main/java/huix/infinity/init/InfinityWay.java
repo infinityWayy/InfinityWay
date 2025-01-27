@@ -5,6 +5,7 @@ import huix.infinity.common.attachment.IFWAttachment;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.effect.IFWMobEffects;
+import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.world.item.crafting.IFWRecipeSerializer;
 import huix.infinity.common.world.item.crafting.IFWRecipeType;
@@ -24,12 +25,13 @@ public final class InfinityWay {
 
 
     public InfinityWay(final ModContainer mod, final IEventBus bus) {
+        IFWAttachment.ATTACHMENT_TYPES.register(bus);
+        IFWBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
         IFWRecipeType.RECIPES.register(bus);
         IFWRecipeSerializer.RECIPE_SERIALIZERS.register(bus);
         IFWArmorMaterials.ARMOR_MATERIALS.register(bus);
         IFWDataComponents.DATA_COMPONENTS.register(bus);
         IFWItemGroup.CREATIVE_TABS.register(bus);
-        IFWAttachment.ATTACHMENT_TYPES.register(bus);
         IFWAttributes.ATTRIBUTES.register(bus);
         IFWMobEffects.MOB_EFFECTS.register(bus);
         IFWItems.ITEMS.register(bus);

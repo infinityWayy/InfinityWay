@@ -15,6 +15,10 @@ public class IFWAttachment {
             "respawn_xp", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
     );
 
+    public static final Supplier<AttachmentType<Integer>> cooking_level = ATTACHMENT_TYPES.register(
+            "cooking_level", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+    );
+
     public static final Supplier<AttachmentType<Float>> food = ATTACHMENT_TYPES.register(
             "food", () -> AttachmentType.builder(() -> 0.0F).serialize(Codec.FLOAT).build()
     );

@@ -51,6 +51,7 @@ public class IFWBlockStateProvider extends BlockStateProvider {
         ifw_simpleBlockWithItem(IFWBlocks.deepslate_mithril_ore.get());
         ifw_simpleBlockWithItem(IFWBlocks.deepslate_silver_ore.get());
 
+
     }
 
     private void ifw_simpleBlockWithItem(Block block) {

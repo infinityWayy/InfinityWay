@@ -24,4 +24,8 @@ public class ReplaceHelper {
     public static void stackSize(Item patchItem, int add) {
         patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(DataComponents.MAX_STACK_SIZE, add).build());
     }
+
+    public static void itemCookingLevel(Item patchItem, int add) {
+        patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(IFWDataComponents.ifw_cooking_level.get(), add).build());
+    }
 }

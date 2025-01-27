@@ -14,6 +14,6 @@ public class IFWRecipeType {
 
     public static final DeferredRegister<RecipeType<?>> RECIPES = DeferredRegister.create(BuiltInRegistries.RECIPE_TYPE, InfinityWay.MOD_ID);
 
-    public static final DeferredHolder<RecipeType<?>, RecipeType<?>> ifw_smelting = RECIPES.register("ifw_smelting",
-            location -> RecipeType.SMELTING);
+    public static final DeferredHolder<RecipeType<?>, RecipeType<LevelCookingRecipe>> ifw_smelting = RECIPES.register("ifw_smelting",
+            location -> RecipeType.register("ifw_smelting"));
 }

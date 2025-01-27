@@ -21,8 +21,8 @@ public class IFWRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(final @NotNull RecipeOutput recipeOutput) {
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.adamantium_ingot), RecipeCategory.FOOD, IFWItems.raw_adamantium,
-                        100.0F, 200, 5)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_adamantium), RecipeCategory.MISC, IFWItems.adamantium_ingot,
+                        100.0F, 200, 4)
                 .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium))
                 .save(recipeOutput, "raw_adamantium_smelting");
 

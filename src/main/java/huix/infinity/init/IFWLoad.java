@@ -1,5 +1,6 @@
 package huix.infinity.init;
 
+import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
 import huix.infinity.common.world.item.IFWItems;
@@ -14,7 +15,11 @@ import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 public class IFWLoad {
 
     @SubscribeEvent
-    public static void injectFood(final FMLLoadCompleteEvent event) {
+    public static void injectItem(final FMLLoadCompleteEvent event) {
+        ReplaceHelper.itemCookingLevel(Items.COAL, 2);
+        ReplaceHelper.itemCookingLevel(Items.BLAZE_ROD, 4);
+
+        //food
         ReplaceHelper.foodOverride(Items.APPLE, RebuildFoods.APPLE);
         ReplaceHelper.foodAdd(Items.APPLE, IFWFoods.apple);
         ReplaceHelper.foodOverride(Items.BREAD, RebuildFoods.BREAD);
