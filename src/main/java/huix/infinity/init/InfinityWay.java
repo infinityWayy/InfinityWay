@@ -6,6 +6,8 @@ import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.effect.IFWMobEffects;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.common.world.item.crafting.IFWRecipeSerializer;
+import huix.infinity.common.world.item.crafting.IFWRecipeType;
 import huix.infinity.common.world.item.group.IFWItemGroup;
 import huix.infinity.common.world.entity.IFWAttributes;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
@@ -22,6 +24,8 @@ public final class InfinityWay {
 
 
     public InfinityWay(final ModContainer mod, final IEventBus bus) {
+        IFWRecipeType.RECIPES.register(bus);
+        IFWRecipeSerializer.RECIPE_SERIALIZERS.register(bus);
         IFWArmorMaterials.ARMOR_MATERIALS.register(bus);
         IFWDataComponents.DATA_COMPONENTS.register(bus);
         IFWItemGroup.CREATIVE_TABS.register(bus);

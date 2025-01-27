@@ -3,6 +3,7 @@ package huix.infinity.datagen.recipe;
 import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.common.world.item.crafting.CookingLevelRecipeBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -20,9 +21,10 @@ public class IFWRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(final @NotNull RecipeOutput recipeOutput) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.KELP), RecipeCategory.FOOD, Items.DRIED_KELP, 0.1F, 200)
-                .unlockedBy("has_kelp", has(Blocks.KELP)).cookingLevel(5)
-                .save(recipeOutput, "dried_kelp_smelting");
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.adamantium_ingot), RecipeCategory.FOOD, IFWItems.raw_adamantium,
+                        100.0F, 200, 5)
+                .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium))
+                .save(recipeOutput, "raw_adamantium_smelting");
 
 
         nineBlockStorageRecipesWithCustomPacking(

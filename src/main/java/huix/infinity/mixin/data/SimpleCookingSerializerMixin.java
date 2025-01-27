@@ -18,24 +18,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin( SimpleCookingSerializer.class )
 public class SimpleCookingSerializerMixin<T extends AbstractCookingRecipe> {
-    @Shadow
-    @Final
-    @Mutable
-    private MapCodec<T> codec;
-
-    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/network/codec/StreamCodec;of(Lnet/minecraft/network/codec/StreamEncoder;Lnet/minecraft/network/codec/StreamDecoder;)Lnet/minecraft/network/codec/StreamCodec;")
-            , method = "<init>")
-    private void ifw_cookingLevel(AbstractCookingRecipe.Factory<T> factory, int cookingTime, CallbackInfo ci) {
-        this.codec = RecordCodecBuilder.mapCodec(
-                instance -> instance.group(
-                                Codec.STRING.optionalFieldOf("group", "").forGetter(AbstractCookingRecipe::getGroup),
-                                CookingBookCategory.CODEC.fieldOf("category").orElse(CookingBookCategory.MISC).forGetter(t -> t.category),
-                                Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(t -> t.ingredient),
-                                ItemStack.CODEC.fieldOf("result").forGetter(t -> t.result),
-                                Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(AbstractCookingRecipe::getExperience),
-                                Codec.INT.fieldOf("cookingTime").orElse(cookingTime).forGetter(AbstractCookingRecipe::getCookingTime),
-                                Codec.INT.fieldOf("cookingLevel").orElse(cookingTime).forGetter(AbstractCookingRecipe::cookingLevel)
-                        ).apply(instance, factory::create)
-        );
-    }
+//    @Shadow
+//    @Final
+//    @Mutable
+//    private MapCodec<T> codec;
+//
+//    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/network/codec/StreamCodec;of(Lnet/minecraft/network/codec/StreamEncoder;Lnet/minecraft/network/codec/StreamDecoder;)Lnet/minecraft/network/codec/StreamCodec;")
+//            , method = "<init>")
+//    private void ifw_cookingLevel(AbstractCookingRecipe.Factory<T> factory, int cookingTime, CallbackInfo ci) {
+//        this.codec = RecordCodecBuilder.mapCodec(
+//                instance -> instance.group(
+//                                Codec.STRING.optionalFieldOf("group", "").forGetter(AbstractCookingRecipe::getGroup),
+//                                CookingBookCategory.CODEC.fieldOf("category").orElse(CookingBookCategory.MISC).forGetter(t -> t.category),
+//                                Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(t -> t.ingredient),
+//                                ItemStack.CODEC.fieldOf("result").forGetter(t -> t.result),
+//                                Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(AbstractCookingRecipe::getExperience),
+//                                Codec.INT.fieldOf("cookingTime").orElse(cookingTime).forGetter(AbstractCookingRecipe::getCookingTime),
+//                                Codec.INT.fieldOf("cookingLevel").orElse(cookingTime).forGetter(AbstractCookingRecipe::cookingLevel)
+//                        ).apply(instance, factory::create)
+//        );
+//    }
 }

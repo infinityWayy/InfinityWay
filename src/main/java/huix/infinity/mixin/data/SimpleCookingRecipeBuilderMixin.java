@@ -29,54 +29,54 @@ import java.util.Objects;
 @Mixin(SimpleCookingRecipeBuilder.class)
 public class SimpleCookingRecipeBuilderMixin implements CookingRecipeBuilderExtension {
 
-    @Unique
-    private int cookingLevel;
-
-    @Override
-    public int cookingLevel() {
-        return this.cookingLevel;
-    }
-
-    @Override
-    public SimpleCookingRecipeBuilder cookingLevel(int level) {
-        this.cookingLevel  = level;
-        return ReflectHelper.dyCast(this);
-    }
-
-    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/data/recipes/RecipeOutput;accept(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/item/crafting/Recipe;Lnet/minecraft/advancements/AdvancementHolder;)V")
-            , method = "save")
-    private void ifw_cookingLevel(RecipeOutput instance, ResourceLocation location, Recipe<?> recipe, AdvancementHolder advancement) {
-        AbstractCookingRecipe abstractcookingrecipe =  this.factory
-                .create(Objects.requireNonNullElse(this.group, ""), this.bookCategory, this.ingredient, new ItemStack(this.result)
-                            , this.experience, 0).cookingLevel(this.cookingLevel);
-
-        instance.accept(location, abstractcookingrecipe, advancement);
-    }
-
-    @Shadow
-    @Final
-    private RecipeCategory category;
-    @Shadow
-    @Final
-    private CookingBookCategory bookCategory;
-    @Shadow
-    @Final
-    private Item result;
-    @Shadow
-    @Final
-    private Ingredient ingredient;
-    @Shadow
-    @Final
-    private float experience;
-    @Shadow
-    @Final
-    private int cookingTime;
-    @Shadow
-    @Final
-    private Map<String, Criterion<?>> criteria;
-    @Nullable
-    private String group;
-    @Shadow
-    @Final
-    private AbstractCookingRecipe.Factory<?> factory;
+//    @Unique
+//    private int cookingLevel;
+//
+//    @Override
+//    public int cookingLevel() {
+//        return this.cookingLevel;
+//    }
+//
+//    @Override
+//    public SimpleCookingRecipeBuilder cookingLevel(int level) {
+//        this.cookingLevel  = level;
+//        return ReflectHelper.dyCast(this);
+//    }
+//
+//    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/data/recipes/RecipeOutput;accept(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/item/crafting/Recipe;Lnet/minecraft/advancements/AdvancementHolder;)V")
+//            , method = "save")
+//    private void ifw_cookingLevel(RecipeOutput instance, ResourceLocation location, Recipe<?> recipe, AdvancementHolder advancement) {
+//        AbstractCookingRecipe abstractcookingrecipe =  this.factory
+//                .create(Objects.requireNonNullElse(this.group, ""), this.bookCategory, this.ingredient, new ItemStack(this.result)
+//                            , this.experience, 0).cookingLevel(this.cookingLevel);
+//
+//        instance.accept(location, abstractcookingrecipe, advancement);
+//    }
+//
+//    @Shadow
+//    @Final
+//    private RecipeCategory category;
+//    @Shadow
+//    @Final
+//    private CookingBookCategory bookCategory;
+//    @Shadow
+//    @Final
+//    private Item result;
+//    @Shadow
+//    @Final
+//    private Ingredient ingredient;
+//    @Shadow
+//    @Final
+//    private float experience;
+//    @Shadow
+//    @Final
+//    private int cookingTime;
+//    @Shadow
+//    @Final
+//    private Map<String, Criterion<?>> criteria;
+//    @Nullable
+//    private String group;
+//    @Shadow
+//    @Final
+//    private AbstractCookingRecipe.Factory<?> factory;
 }

@@ -9,19 +9,19 @@ import org.spongepowered.asm.mixin.Unique;
 @Mixin(AbstractCookingRecipe.class)
 public class AbstractCookingRecipeMixin implements CookingRecipeExtension {
 
-    @Unique
-    private int cookingLevel = 0;
-
-    @Unique
-    @Override
-    public int cookingLevel() {
-        return this.cookingLevel;
-    }
-
-    @Unique
-    @Override
-    public AbstractCookingRecipe cookingLevel(int cookingLevel) {
-        this.cookingLevel = cookingLevel;
-        return ReflectHelper.dyCast(this);
-    }
+//    @Unique
+//    private int cookingLevel = 0;
+//
+//    @Unique
+//    @Override
+//    public int cookingLevel() {
+//        return this.cookingLevel;
+//    }
+//
+//    @Unique
+//    @Override
+//    public AbstractCookingRecipe cookingLevel(int cookingLevel) {
+//        this.cookingLevel = cookingLevel;
+//        return ReflectHelper.dyCast(this);
+//    }
 }
