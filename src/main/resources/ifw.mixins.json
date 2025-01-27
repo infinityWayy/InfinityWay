@@ -5,7 +5,9 @@
   "refmap": "ifw.refmap.json",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "data.AbstractCookingRecipeMixin",
     "data.SimpleCookingRecipeBuilderMixin",
+    "data.SimpleCookingSerializerMixin",
     "inventory.EnchantmentMenuMixin",
     "server.PlayerListMixin",
     "server.player.SleepStatusMixin",

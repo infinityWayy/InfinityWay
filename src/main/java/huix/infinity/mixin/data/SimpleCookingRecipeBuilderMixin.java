@@ -1,6 +1,6 @@
 package huix.infinity.mixin.data;
 
-import huix.infinity.common.world.item.crafting.AbstractCookingLevelRecipe;
+import com.llamalad7.mixinextras.sugar.Local;
 import huix.infinity.func_extension.CookingRecipeBuilderExtension;
 import huix.infinity.util.ReflectHelper;
 import net.minecraft.advancements.AdvancementHolder;
@@ -30,7 +30,7 @@ import java.util.Objects;
 public class SimpleCookingRecipeBuilderMixin implements CookingRecipeBuilderExtension {
 
     @Unique
-    private int cookingLevel = 0;
+    private int cookingLevel;
 
     @Override
     public int cookingLevel() {
@@ -46,13 +46,11 @@ public class SimpleCookingRecipeBuilderMixin implements CookingRecipeBuilderExte
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/data/recipes/RecipeOutput;accept(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/item/crafting/Recipe;Lnet/minecraft/advancements/AdvancementHolder;)V")
             , method = "save")
     private void ifw_cookingLevel(RecipeOutput instance, ResourceLocation location, Recipe<?> recipe, AdvancementHolder advancement) {
-        if (this.cookingLevel != 0) {
-            AbstractCookingRecipe abstractcookingrecipe = ((AbstractCookingLevelRecipe.Factory<?>) this.factory)
-                    .create(Objects.requireNonNullElse(this.group, ""), this.bookCategory, this.ingredient, new ItemStack(this.result)
-                            , this.experience, this.cookingTime, this.cookingLevel);
-            instance.accept(location, abstractcookingrecipe, advancement);
-        } else
-            instance.accept(location, recipe, advancement);
+        AbstractCookingRecipe abstractcookingrecipe =  this.factory
+                .create(Objects.requireNonNullElse(this.group, ""), this.bookCategory, this.ingredient, new ItemStack(this.result)
+                            , this.experience, 0).cookingLevel(this.cookingLevel);
+
+        instance.accept(location, abstractcookingrecipe, advancement);
     }
 
     @Shadow
