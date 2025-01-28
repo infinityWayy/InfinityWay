@@ -83,13 +83,6 @@ public class BlocksInjected {
         return new GravelBlock(dustColor, properties);
     }
 
-    @Redirect(at = @At(value = "INVOKE", target = "register")
-            , method = "<clinit>")
-    private static FurnaceBlock ifw_rebuildFurnace(BlockBehaviour.Properties properties) {
-        return new IFWFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
-                .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13)));
-    }
-
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/util/valueproviders/UniformInt;of(II)Lnet/minecraft/util/valueproviders/UniformInt;", ordinal = 0), method = "<clinit>")
     private static UniformInt ifw_noCoalDropXp_0(int minInclusive, int maxInclusive) {
         return UniformInt.of(0, 0);

@@ -21,7 +21,7 @@ public class IFWFurnaceBlockEntity extends LevelFurnaceBlockEntity {
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("container.furnace");
+        return Component.translatable("container.stone_furnace");
     }
 
     @Override

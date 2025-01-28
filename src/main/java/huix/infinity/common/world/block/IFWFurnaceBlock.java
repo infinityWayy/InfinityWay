@@ -35,6 +35,7 @@ public class IFWFurnaceBlock extends LevelFurnaceBlock {
         return CODEC;
     }
 
+
     @Override
     protected void openContainer(Level level, BlockPos pos, Player player) {
         BlockEntity blockentity = level.getBlockEntity(pos);

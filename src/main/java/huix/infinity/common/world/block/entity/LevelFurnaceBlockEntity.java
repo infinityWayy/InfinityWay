@@ -50,7 +50,6 @@ public abstract class LevelFurnaceBlockEntity extends AbstractFurnaceBlockEntity
                         blockEntity.items.set(1, itemstack.getCraftingRemainingItem());
                     else
                     if (flag3) {
-                        Item item = itemstack.getItem();
                         itemstack.shrink(1);
                         if (itemstack.isEmpty()) {
                             blockEntity.items.set(1, itemstack.getCraftingRemainingItem());
