@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-24T18:05:59.3411548	Loot Tables
+// 1.21.1	2025-01-28T11:53:50.8644831	Loot Tables
 e83ac5ba844b67d2d69c691887b951b8f7166f9d data/ifw/loot_table/blocks/adamantium_bars.json
 b75574a0827bdf12669b4631f5e8a591ffe3b2db data/ifw/loot_table/blocks/adamantium_block.json
 b7ab973a031782a3653f2f5505b20d10f85d9f39 data/ifw/loot_table/blocks/adamantium_door.json
@@ -24,3 +24,4 @@ ac397dc31a6ef3cac43504dcef3b932d08710eb3 data/ifw/loot_table/blocks/raw_adamanti
 237bb24485d9adc0cc5f7cf3cd77c8130b9709e4 data/ifw/loot_table/blocks/silver_block.json
 8d2c8fa0b9a1b3f3e456c8442d6ea4f97701118a data/ifw/loot_table/blocks/silver_door.json
 d55993b32390813d728e2fd894f363c8a8685c42 data/ifw/loot_table/blocks/silver_ore.json
+30543095b5f0833411fbd0f70081abc410bd6d6c data/ifw/loot_table/blocks/stone_furnace.json

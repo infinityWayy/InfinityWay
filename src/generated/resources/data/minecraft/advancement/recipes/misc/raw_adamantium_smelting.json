@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_adamantium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:raw_adamantium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:raw_adamantium_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_adamantium"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:raw_adamantium_smelting"
+    ]
+  }
+}

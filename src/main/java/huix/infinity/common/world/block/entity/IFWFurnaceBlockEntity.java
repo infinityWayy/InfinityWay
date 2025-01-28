@@ -15,8 +15,12 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class IFWFurnaceBlockEntity extends LevelFurnaceBlockEntity {
 
+    public IFWFurnaceBlockEntity(BlockPos pos, BlockState blockState, int furnaceLevel) {
+        super(IFWBlockEntityTypes.ifw_furnace.value(), pos, blockState, IFWRecipeType.ifw_smelting.get(), furnaceLevel);
+    }
+
     public IFWFurnaceBlockEntity(BlockPos pos, BlockState blockState) {
-        super(IFWBlockEntityTypes.ifw_furnace.value(), pos, blockState, IFWRecipeType.ifw_smelting.get());
+        super(IFWBlockEntityTypes.ifw_furnace.value(), pos, blockState, IFWRecipeType.ifw_smelting.get(), 0);
     }
 
     @Override

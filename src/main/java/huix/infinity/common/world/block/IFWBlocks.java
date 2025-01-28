@@ -41,7 +41,7 @@ public class IFWBlocks {
 
     public static final DeferredBlock<Block> stone_furnace = BLOCKS.registerBlock("stone_furnace",
             block -> new IFWFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
-                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))));
+                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(1));
     public static final DeferredItem<BlockItem> stone_furnace_item = ITEM_BLOCKS.registerSimpleBlockItem("stone_furnace", stone_furnace, new Item.Properties().stacksTo(1));
 
 

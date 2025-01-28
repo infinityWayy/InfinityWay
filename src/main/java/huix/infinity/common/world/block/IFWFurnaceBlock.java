@@ -24,6 +24,17 @@ import org.jetbrains.annotations.Nullable;
 
 public class IFWFurnaceBlock extends LevelFurnaceBlock {
 
+    private int furnaceLevel;
+
+    public int furnaceLevel() {
+        return furnaceLevel;
+    }
+
+    public IFWFurnaceBlock furnaceLevel(int furnaceLevel) {
+        this.furnaceLevel = furnaceLevel;
+        return this;
+    }
+
     public static final MapCodec<IFWFurnaceBlock> CODEC = simpleCodec(IFWFurnaceBlock::new);
 
     public IFWFurnaceBlock(Properties properties) {
@@ -73,6 +84,6 @@ public class IFWFurnaceBlock extends LevelFurnaceBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new IFWFurnaceBlockEntity(pos, state);
+        return new IFWFurnaceBlockEntity(pos, state, this.furnaceLevel);
     }
 }

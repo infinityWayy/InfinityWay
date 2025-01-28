@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-24T18:05:59.3380645	Block States: ifw
+// 1.21.1	2025-01-28T11:53:50.8604771	Block States: ifw
 946d1ee0e16e6764047acdb20e22d0390e68eed9 assets/ifw/blockstates/adamantium_bars.json
 5d74aec16c1765c863c3b307aa12c18dbcf03f7a assets/ifw/blockstates/adamantium_block.json
 036c9e415fb102a067f89aa8005a23ced7df8929 assets/ifw/blockstates/adamantium_door.json
@@ -24,6 +24,7 @@ a0c9668a2e96582bfc0b41b2fd3f2ab45d6c7a12 assets/ifw/blockstates/mithril_door.jso
 d916ccdc6c61138f4382160cabd86d50884df330 assets/ifw/blockstates/silver_block.json
 b6201cbfb509f22b6ba68b52c43244a2fcbe7dd4 assets/ifw/blockstates/silver_door.json
 732bb1aa4ad4e51753e890d200b932930349514e assets/ifw/blockstates/silver_ore.json
+7b2514dc43475bc658e5ff8bbff472695fbf98bd assets/ifw/blockstates/stone_furnace.json
 bd9e18a35750bada8080e4ccc229fdc61d0c31bd assets/ifw/models/block/adamantium_bars_noside.json
 c2d01a265f45de42bb9bb5fe6d7f0539b54523c4 assets/ifw/models/block/adamantium_bars_noside_alt.json
 6eb25ee3bae59e1ed79d1f994202f4310c33a634 assets/ifw/models/block/adamantium_bars_post.json
@@ -115,16 +116,6 @@ d9774be32048930e18a756ed627c1e706103adb3 assets/ifw/models/block/silver_door_bot
 95543c3f918198046244449daaee5f6347fb33b4 assets/ifw/models/block/silver_door_top_right.json
 fdd230b8049cba81c7135777e485053e4eada9ca assets/ifw/models/block/silver_door_top_right_open.json
 c8d315ac641ffeff0322bf0c68905a4457a2b287 assets/ifw/models/block/silver_ore.json
-76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
-64475cda8e30547c4dd4a9fd3db5846c837a6e02 assets/ifw/models/item/adamantium_ore.json
-009824db9c5aea0a93a2ce0e56144e45a7edba2b assets/ifw/models/item/ancient_metal_block.json
-3f33ff51dc7675fd6c0c52ba87e1d4bd35633144 assets/ifw/models/item/deepslate_adamantium_ore.json
-91be8ca48c50f4b2b29e4ebce7bfb90da39491e0 assets/ifw/models/item/deepslate_mithril_ore.json
-bdf58386b051960f0d26eeac6c1c261ab5c4070f assets/ifw/models/item/deepslate_silver_ore.json
-165ea1fb7d808d8031deedbd43b6fa8ca6dba71f assets/ifw/models/item/mithril_block.json
-ced196a0afc5feb514d967c9b6c52277d8d3b6eb assets/ifw/models/item/mithril_ore.json
-4fcde61212ce7f28c6c53552ea2cc18feb19132c assets/ifw/models/item/raw_adamantium_block.json
-de1768d31308908d0e3a61428812099eaa8a03d9 assets/ifw/models/item/raw_mithril_block.json
-49b7ccda336008252c1123c119d1ab18f65c9d8b assets/ifw/models/item/raw_silver_block.json
-f4d5c6928fb20b6548b9711ee31fa24511b084e7 assets/ifw/models/item/silver_block.json
-43b251c193b50884510894c7fb4abf08640eafe8 assets/ifw/models/item/silver_ore.json
+8d90ac59e84622ec896c94dcfcb0dfc2483b746e assets/ifw/models/block/stone_furnace.json
+e8fc35f6fc176ae2e6fe4a3e822a7af1979eb30d assets/ifw/models/block/stone_furnace_on.json
+b8129d8a7c538d88905dc8d908a7eb7885d6dafc assets/ifw/models/item/stone_furnace.json

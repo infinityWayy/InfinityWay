@@ -1,0 +1,13 @@
+{
+  "type": "ifw:level_smelting",
+  "category": "misc",
+  "cookinglevel": 4,
+  "cookingtime": 200,
+  "experience": 100.0,
+  "ingredient": {
+    "item": "ifw:raw_adamantium"
+  },
+  "result": {
+    "id": "ifw:adamantium_ingot"
+  }
+}

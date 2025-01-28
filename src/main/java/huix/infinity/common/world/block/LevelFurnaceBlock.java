@@ -22,7 +22,8 @@ public abstract class LevelFurnaceBlock extends AbstractFurnaceBlock {
     }
 
     @Nullable
-    protected static <T extends BlockEntity> BlockEntityTicker<T> ifw_createFurnaceTicker(Level level, BlockEntityType<T> serverType, BlockEntityType<? extends AbstractFurnaceBlockEntity> clientType) {
+    protected static <T extends BlockEntity> BlockEntityTicker<T> ifw_createFurnaceTicker(Level level, BlockEntityType<T> serverType
+            , BlockEntityType<? extends LevelFurnaceBlockEntity> clientType) {
         return level.isClientSide ? null : createTickerHelper(serverType, clientType, LevelFurnaceBlockEntity::serverTick);
     }
 }

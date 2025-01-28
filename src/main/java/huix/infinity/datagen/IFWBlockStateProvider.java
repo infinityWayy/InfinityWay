@@ -7,7 +7,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.IronBarsBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class IFWBlockStateProvider extends BlockStateProvider {
@@ -50,5 +52,24 @@ public class IFWBlockStateProvider extends BlockStateProvider {
         simpleBlock(IFWBlocks.deepslate_adamantium_ore.get());
         simpleBlock(IFWBlocks.deepslate_mithril_ore.get());
         simpleBlock(IFWBlocks.deepslate_silver_ore.get());
+
+
+        Block stoneFurnaceBlock = IFWBlocks.stone_furnace.get();
+        ModelFile stoneFurnaceModel = models().orientable(
+                "stone_furnace", // 模型名称
+                modLoc("block/stone_furnace_side"), // 侧面纹理
+                 modLoc("block/stone_furnace_front"), // 正面纹理（未燃烧）
+                modLoc("block/stone_furnace_top") // 顶部纹理
+        );
+        ModelFile stoneFurnaceOnModel = models().orientable(
+                "stone_furnace_on", // 燃烧状态模型名称
+                modLoc("block/stone_furnace_side"), // 侧面纹理（相同）
+                modLoc("block/stone_furnace_front_on"), // 正面纹理（燃烧状态）
+                modLoc("block/stone_furnace_top") // 顶部纹理（相同）
+        );
+        horizontalBlock(stoneFurnaceBlock, state -> {
+            boolean isLit = state.getValue(BlockStateProperties.LIT);
+            return isLit ? stoneFurnaceOnModel : stoneFurnaceModel;}, 180); // 调整旋转角度（可选）
+        simpleBlockItem(stoneFurnaceBlock, stoneFurnaceModel);
     }
 }

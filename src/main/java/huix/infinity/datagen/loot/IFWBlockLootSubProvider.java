@@ -57,5 +57,6 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.deepslate_mithril_ore.get());
         dropSelf(IFWBlocks.deepslate_silver_ore.get());
 
+        dropSelf(IFWBlocks.stone_furnace.get());
     }
 }
