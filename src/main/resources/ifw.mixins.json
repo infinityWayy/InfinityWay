@@ -23,6 +23,7 @@
     "world.food.FoodDataMixin",
     "world.food.FoodProperties$BuilderMixin",
     "world.food.FoodsMixin",
+    "world.inventory.FurnaceFuelSlotMixin",
     "world.item.ArmorItemMixin",
     "world.item.ArmorMaterialMixin",
     "world.item.Item$PropertiesMixin",
@@ -31,6 +32,7 @@
     "world.item.ItemStackMixin"
   ],
   "client": [
+    "client.ClientRecipeBookMixin",
     "client.EnchantmentScreenMixin",
     "client.GuiMixin",
     "world.entity.LocalPlayerMixin"

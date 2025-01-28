@@ -20,9 +20,9 @@ public class CookingLevelRecipeBuilder extends SimpleCookingRecipeBuilder {
     private final LevelCookingRecipe.Factory<?> level_factory;
     public final int cookingLevel;
 
-    public CookingLevelRecipeBuilder(RecipeCategory category, CookingBookCategory bookCategory, ItemLike result,
+    public CookingLevelRecipeBuilder(RecipeCategory category, ItemLike result,
                                      Ingredient ingredient, float experience, int cookingTime, int cookingLevel, LevelCookingRecipe.Factory<?> level_factory) {
-        super(category, bookCategory, result, ingredient, experience, cookingTime, null);
+        super(category, CookingBookCategory.MISC, result, ingredient, experience, cookingTime, null);
 
         this.level_factory = level_factory;
         this.cookingLevel = cookingLevel;
@@ -45,7 +45,7 @@ public class CookingLevelRecipeBuilder extends SimpleCookingRecipeBuilder {
 
     public static CookingLevelRecipeBuilder smelting(Ingredient ingredient, RecipeCategory category, ItemLike result, float experience, int cookingTime, int cookingLevel) {
         return new CookingLevelRecipeBuilder(
-                category, determineSmeltingRecipeCategory(result), result, ingredient, experience, cookingTime, cookingLevel, LevelSmeltingRecipe::new
+                category, result, ingredient, experience, cookingTime, cookingLevel, LevelSmeltingRecipe::new
         );
     }
 

@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.animal;
 
-import huix.infinity.common.attachment.IFWAttachment;
+import huix.infinity.attachment.IFWAttachment;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;

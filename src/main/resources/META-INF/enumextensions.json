@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "IFW_COOKING_RECIPE",
+      "constructor": "()V",
+      "parameters": {
+        "class": "huix/infinity/enum_extesion/IFWEnums",
+        "field": "cooking_recipe_enum_proxy"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "IFW_LEVEL_RECIPE",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "huix/infinity/enum_extesion/IFWEnums",
+        "field": "level_recipe_enum_proxy"
+      }
+    }
+  ]
+}

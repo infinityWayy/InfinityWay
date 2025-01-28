@@ -1,7 +1,6 @@
 package huix.infinity.common.world.block.entity;
 
-import huix.infinity.common.attachment.IFWAttachment;
-import huix.infinity.common.core.component.IFWDataComponents;
+import huix.infinity.attachment.IFWAttachment;
 import huix.infinity.common.world.item.crafting.LevelCookingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;

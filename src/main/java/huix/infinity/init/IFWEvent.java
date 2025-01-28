@@ -1,6 +1,6 @@
 package huix.infinity.init;
 
-import huix.infinity.common.attachment.IFWAttachment;
+import huix.infinity.attachment.IFWAttachment;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
@@ -14,7 +14,6 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;

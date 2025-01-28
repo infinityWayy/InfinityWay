@@ -1,11 +1,12 @@
 package huix.infinity.init;
 
 import com.mojang.logging.LogUtils;
-import huix.infinity.common.attachment.IFWAttachment;
+import huix.infinity.attachment.IFWAttachment;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.effect.IFWMobEffects;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
+import huix.infinity.common.world.inventory.IFWMenuType;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.world.item.crafting.IFWRecipeSerializer;
 import huix.infinity.common.world.item.crafting.IFWRecipeType;
@@ -19,15 +20,15 @@ import org.slf4j.Logger;
 
 @Mod(InfinityWay.MOD_ID)
 public final class InfinityWay {
-
     public static final String MOD_ID = "ifw";
     private static final Logger LOGGER = LogUtils.getLogger();
 
 
     public InfinityWay(final ModContainer mod, final IEventBus bus) {
         IFWAttachment.ATTACHMENT_TYPES.register(bus);
-        IFWBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
         IFWRecipeType.RECIPES.register(bus);
+        IFWMenuType.MENUS.register(bus);
+        IFWBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
         IFWRecipeSerializer.RECIPE_SERIALIZERS.register(bus);
         IFWArmorMaterials.ARMOR_MATERIALS.register(bus);
         IFWDataComponents.DATA_COMPONENTS.register(bus);

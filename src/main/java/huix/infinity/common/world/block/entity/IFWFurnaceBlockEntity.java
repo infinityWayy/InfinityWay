@@ -1,6 +1,7 @@
 package huix.infinity.common.world.block.entity;
 
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
+import huix.infinity.common.world.inventory.IFWFurnaceMenu;
 import huix.infinity.common.world.item.crafting.IFWRecipeType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -20,7 +21,7 @@ public class IFWFurnaceBlockEntity extends LevelFurnaceBlockEntity {
     }
 
     public IFWFurnaceBlockEntity(BlockPos pos, BlockState blockState) {
-        super(IFWBlockEntityTypes.ifw_furnace.value(), pos, blockState, IFWRecipeType.ifw_smelting.get(), 0);
+        super(IFWBlockEntityTypes.ifw_furnace.value(), pos, blockState, IFWRecipeType.ifw_smelting.get(), 1);
     }
 
     @Override
@@ -30,6 +31,6 @@ public class IFWFurnaceBlockEntity extends LevelFurnaceBlockEntity {
 
     @Override
     protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return new FurnaceMenu(containerId, inventory, this, this.dataAccess);
+        return new IFWFurnaceMenu(containerId, inventory, this, this.dataAccess);
     }
 }

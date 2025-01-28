@@ -1,4 +1,4 @@
-package huix.infinity.common.attachment;
+package huix.infinity.attachment;
 
 import com.mojang.serialization.Codec;
 import huix.infinity.init.InfinityWay;
