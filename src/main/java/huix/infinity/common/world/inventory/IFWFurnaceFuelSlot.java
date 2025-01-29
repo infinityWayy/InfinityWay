@@ -2,6 +2,7 @@ package huix.infinity.common.world.inventory;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AbstractFurnaceMenu;
+import net.minecraft.world.inventory.FurnaceFuelSlot;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
@@ -17,12 +18,12 @@ public class IFWFurnaceFuelSlot extends Slot {
 
     @Override
     public boolean mayPlace(ItemStack stack) {
-        return this.menu.isFuel(stack) || isBucket(stack);
+        return this.menu.isFuel(stack) || FurnaceFuelSlot.isBucket(stack);
     }
 
     @Override
     public int getMaxStackSize(ItemStack stack) {
-        return isBucket(stack) ? 1 : super.getMaxStackSize(stack);
+        return  FurnaceFuelSlot.isBucket(stack) ? 1 : super.getMaxStackSize(stack);
     }
 
 }

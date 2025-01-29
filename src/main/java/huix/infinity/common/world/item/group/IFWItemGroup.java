@@ -279,7 +279,7 @@ public class IFWItemGroup {
                         output.accept(IFWBlocks.raw_silver_block_item.get());
                         output.accept(IFWBlocks.deepslate_adamantium_ore_item.get());
                         output.accept(IFWBlocks.deepslate_mithril_ore_item.get());
-                        output.accept(IFWBlocks.deepslate_silver_ore_ore_item.get());
+                        output.accept(IFWBlocks.deepslate_silver_ore_item.get());
                     }).build());
 
 
