@@ -16,6 +16,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.Nullable;
 
 public abstract class LevelFurnaceBlock extends AbstractFurnaceBlock {
+    private int furnaceLevel;
+
+    public int furnaceLevel() {
+        return furnaceLevel;
+    }
+
+    public LevelFurnaceBlock furnaceLevel(int furnaceLevel) {
+        this.furnaceLevel = furnaceLevel;
+        return this;
+    }
 
     protected LevelFurnaceBlock(Properties properties) {
         super(properties);

@@ -1,6 +1,7 @@
 package huix.infinity.common.world.block.entity;
 
 import huix.infinity.attachment.IFWAttachment;
+import huix.infinity.common.world.block.LevelFurnaceBlock;
 import huix.infinity.common.world.item.crafting.LevelCookingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -8,23 +9,18 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public abstract class LevelFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
 
-    private final int furnaceLevel;
     public final RecipeManager.CachedCheck<SingleRecipeInput, ? extends LevelCookingRecipe> ifw_quickCheck;
 
-    public int furnaceLevel() {
-        return furnaceLevel;
-    }
 
-
-    protected LevelFurnaceBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState, RecipeType<? extends LevelCookingRecipe> recipeType, int furnaceLevel) {
+    protected LevelFurnaceBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState, RecipeType<? extends LevelCookingRecipe> recipeType) {
         super(type, pos, blockState, recipeType);
-        this.furnaceLevel = furnaceLevel;
         this.ifw_quickCheck = RecipeManager.createCheck(recipeType);
     }
 
@@ -49,7 +45,7 @@ public abstract class LevelFurnaceBlockEntity extends AbstractFurnaceBlockEntity
             }
 
             int i = blockEntity.getMaxStackSize();
-            if (!blockEntity.isLit() && levelEnoughFromItem(blockEntity) && canBurn(level.registryAccess(), recipeholder, blockEntity.items, i, blockEntity)) {
+            if (!blockEntity.isLit() && levelEnoughFromItem(blockEntity, state) && canBurn(level.registryAccess(), recipeholder, blockEntity.items, i, blockEntity)) {
                 blockEntity.litTime = blockEntity.getBurnDuration(fuel);
                 blockEntity.litDuration = blockEntity.litTime;
                 if (blockEntity.isLit()) {
@@ -96,8 +92,10 @@ public abstract class LevelFurnaceBlockEntity extends AbstractFurnaceBlockEntity
         }
     }
 
-    private static boolean levelEnoughFromItem(LevelFurnaceBlockEntity blockEntity) {
-        return blockEntity.getItem(1).cookingLevel() >= recipeCookingLevel(blockEntity);
+    private static boolean levelEnoughFromItem(LevelFurnaceBlockEntity blockEntity, BlockState state) {
+        LevelFurnaceBlock block = (LevelFurnaceBlock) state.getBlock();
+        return block.furnaceLevel() >= blockEntity.getItem(1).cookingLevel()
+                && blockEntity.getItem(1).cookingLevel() >= recipeCookingLevel(blockEntity);
     }
 
     private static boolean levelEnough(LevelFurnaceBlockEntity blockEntity) {

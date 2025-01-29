@@ -13,24 +13,22 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class IFWFurnaceBlockEntity extends LevelFurnaceBlockEntity {
 
-    public IFWFurnaceBlockEntity(BlockPos pos, BlockState blockState, int furnaceLevel) {
-        super(IFWBlockEntityTypes.ifw_furnace.value(), pos, blockState, IFWRecipeType.ifw_smelting.get(), furnaceLevel);
-    }
 
     public IFWFurnaceBlockEntity(BlockPos pos, BlockState blockState) {
-        super(IFWBlockEntityTypes.ifw_furnace.value(), pos, blockState, IFWRecipeType.ifw_smelting.get(), 1);
+        super(IFWBlockEntityTypes.ifw_furnace.value(), pos, blockState, IFWRecipeType.ifw_smelting.get());
     }
 
     @Override
-    protected Component getDefaultName() {
+    protected @NotNull Component getDefaultName() {
         return Component.translatable("container.stone_furnace");
     }
 
     @Override
-    protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+    protected @NotNull AbstractContainerMenu createMenu(int containerId, @NotNull Inventory inventory) {
         return new IFWFurnaceMenu(containerId, inventory, this, this.dataAccess);
     }
 }
