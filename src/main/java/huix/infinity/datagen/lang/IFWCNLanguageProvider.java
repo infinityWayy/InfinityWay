@@ -125,10 +125,10 @@ public class IFWCNLanguageProvider extends LanguageProvider {
         add(IFWItems.iron_battle_axe.get(), "铁战斧");
         add(IFWItems.iron_war_hammer.get(), "铁战锤");
         add(IFWItems.iron_dagger.get(), "铁短剑");
-        add(IFWItems.gold_scythe.get(), "金镰刀");
-        add(IFWItems.gold_mattock.get(), "金鹤嘴锄");
-        add(IFWItems.gold_battle_axe.get(), "金战斧");
-        add(IFWItems.gold_war_hammer.get(), "金战锤");
-        add(IFWItems.gold_dagger.get(), "金短剑");
+        add(IFWItems.golden_scythe.get(), "金镰刀");
+        add(IFWItems.golden_mattock.get(), "金鹤嘴锄");
+        add(IFWItems.golden_battle_axe.get(), "金战斧");
+        add(IFWItems.golden_war_hammer.get(), "金战锤");
+        add(IFWItems.golden_dagger.get(), "金短剑");
     }
 }

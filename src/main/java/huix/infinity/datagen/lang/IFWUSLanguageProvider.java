@@ -31,8 +31,8 @@ public class IFWUSLanguageProvider extends LanguageProvider {
         add(IFWBlocks.ancient_metal_block_item.get(), "Ancient Metal Block");
         add(IFWBlocks.ancient_metal_bars_item.get(), "Ancient Metal Bars");
         add(IFWBlocks.ancient_metal_door_item.get(), "Ancient Metal Door");
-        add(IFWBlocks.gold_bars_item.get(), "Gold Bars");
-        add(IFWBlocks.gold_door_item.get(), "Gold Door");
+        add(IFWBlocks.gold_bars_item.get(), "golden Bars");
+        add(IFWBlocks.gold_door_item.get(), "golden Door");
         add(IFWBlocks.silver_block_item.get(), "Silver Block");
         add(IFWBlocks.silver_ore_item.get(), "Silver Ore");
         add(IFWBlocks.silver_bars_item.get(), "Silver Bars");
@@ -127,10 +127,10 @@ public class IFWUSLanguageProvider extends LanguageProvider {
         add(IFWItems.iron_battle_axe.get(), "Iron Battle Axe");
         add(IFWItems.iron_war_hammer.get(), "Iron War Hammer");
         add(IFWItems.iron_dagger.get(), "Iron Dagger");
-        add(IFWItems.gold_scythe.get(), "Gold Scythe");
-        add(IFWItems.gold_mattock.get(), "Gold Mattock");
-        add(IFWItems.gold_battle_axe.get(), "Gold Battle Axe");
-        add(IFWItems.gold_war_hammer.get(), "Gold War Hammer");
-        add(IFWItems.gold_dagger.get(), "Gold Dagger");
+        add(IFWItems.golden_scythe.get(), "golden Scythe");
+        add(IFWItems.golden_mattock.get(), "golden Mattock");
+        add(IFWItems.golden_battle_axe.get(), "golden Battle Axe");
+        add(IFWItems.golden_war_hammer.get(), "golden War Hammer");
+        add(IFWItems.golden_dagger.get(), "golden Dagger");
     }
 }

@@ -49,6 +49,12 @@ public class CookingLevelRecipeBuilder extends SimpleCookingRecipeBuilder {
         );
     }
 
+    public static CookingLevelRecipeBuilder smelting(Ingredient ingredient, RecipeCategory category, ItemLike result, float experience, int cookingTime) {
+        return new CookingLevelRecipeBuilder(
+                category, result, ingredient, experience, cookingTime, 1, LevelSmeltingRecipe::new
+        );
+    }
+
 
 
 

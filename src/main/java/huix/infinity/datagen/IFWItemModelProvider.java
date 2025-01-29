@@ -123,17 +123,17 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.rusted_iron_battle_axe.get());
         handheldItem(IFWItems.rusted_iron_war_hammer.get());
         handheldItem(IFWItems.rusted_iron_dagger.get());
-        handheldItem(IFWItems.gold_pickaxe.get());
-        handheldItem(IFWItems.gold_shears.get());
-        handheldItem(IFWItems.gold_shovel.get());
-        handheldItem(IFWItems.gold_hoe.get());
-        handheldItem(IFWItems.gold_sword.get());
-        handheldItem(IFWItems.gold_axe.get());
-        handheldItem(IFWItems.gold_scythe.get());
-        handheldItem(IFWItems.gold_mattock.get());
-        handheldItem(IFWItems.gold_battle_axe.get());
-        handheldItem(IFWItems.gold_war_hammer.get());
-        handheldItem(IFWItems.gold_dagger.get());
+        handheldItem(IFWItems.golden_pickaxe.get());
+        handheldItem(IFWItems.golden_shears.get());
+        handheldItem(IFWItems.golden_shovel.get());
+        handheldItem(IFWItems.golden_hoe.get());
+        handheldItem(IFWItems.golden_sword.get());
+        handheldItem(IFWItems.golden_axe.get());
+        handheldItem(IFWItems.golden_scythe.get());
+        handheldItem(IFWItems.golden_mattock.get());
+        handheldItem(IFWItems.golden_battle_axe.get());
+        handheldItem(IFWItems.golden_war_hammer.get());
+        handheldItem(IFWItems.golden_dagger.get());
 
         //FOOD
         basicItem(IFWItems.salad.get());
@@ -174,10 +174,10 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.iron_chestplate.get());
         basicItem(IFWItems.iron_leggings.get());
         basicItem(IFWItems.iron_boots.get());
-        basicItem(IFWItems.gold_helmet.get());
-        basicItem(IFWItems.gold_chestplate.get());
-        basicItem(IFWItems.gold_leggings.get());
-        basicItem(IFWItems.gold_boots.get());
+        basicItem(IFWItems.golden_helmet.get());
+        basicItem(IFWItems.golden_chestplate.get());
+        basicItem(IFWItems.golden_leggings.get());
+        basicItem(IFWItems.golden_boots.get());
         basicItem(IFWItems.ancient_metal_helmet.get());
         basicItem(IFWItems.ancient_metal_chestplate.get());
         basicItem(IFWItems.ancient_metal_leggings.get());
@@ -206,10 +206,10 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.rusted_iron_chainmail_chestplate.get());
         basicItem(IFWItems.rusted_iron_chainmail_leggings.get());
         basicItem(IFWItems.rusted_iron_chainmail_boots.get());
-        basicItem(IFWItems.gold_chainmail_helmet.get());
-        basicItem(IFWItems.gold_chainmail_chestplate.get());
-        basicItem(IFWItems.gold_chainmail_leggings.get());
-        basicItem(IFWItems.gold_chainmail_boots.get());
+        basicItem(IFWItems.golden_chainmail_helmet.get());
+        basicItem(IFWItems.golden_chainmail_chestplate.get());
+        basicItem(IFWItems.golden_chainmail_leggings.get());
+        basicItem(IFWItems.golden_chainmail_boots.get());
         basicItem(IFWItems.ancient_metal_chainmail_helmet.get());
         basicItem(IFWItems.ancient_metal_chainmail_chestplate.get());
         basicItem(IFWItems.ancient_metal_chainmail_leggings.get());
