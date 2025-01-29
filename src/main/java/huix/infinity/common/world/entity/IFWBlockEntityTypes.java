@@ -21,6 +21,8 @@ public class IFWBlockEntityTypes {
 
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<IFWFurnaceBlockEntity>> ifw_furnace = BLOCK_ENTITY_TYPES.register(
-            "ifw_furnace", () -> BlockEntityType.Builder.of(IFWFurnaceBlockEntity::new, IFWBlocks.stone_furnace.get())
+            "ifw_furnace", () -> BlockEntityType.Builder.of(IFWFurnaceBlockEntity::new
+                    , IFWBlocks.clay_furnace.get(), IFWBlocks.hardened_clay_furnace.get(), IFWBlocks.sandstone_furnace.get()
+                    , IFWBlocks.stone_furnace.get(), IFWBlocks.obsidian_furnace.get(), IFWBlocks.netherrack_furnace.get())
                             .build(Util.fetchChoiceType(References.BLOCK_ENTITY, "ifw_furnace")));
 }

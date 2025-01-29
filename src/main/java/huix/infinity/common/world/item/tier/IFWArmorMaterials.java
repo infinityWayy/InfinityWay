@@ -63,13 +63,13 @@ public class IFWArmorMaterials {
                         map.put(ArmorItem.Type.BODY, 2.7F);}),
                     30, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0, 60, 0,
                     () -> Ingredient.of(Items.IRON_NUGGET), "iron"));
-    public static final Holder<ArmorMaterial> gold = ARMOR_MATERIALS.register("gold", () ->
+    public static final Holder<ArmorMaterial> golden = ARMOR_MATERIALS.register("golden", () ->
             register(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                         map.put(ArmorItem.Type.BOOTS, 1.0F);map.put(ArmorItem.Type.LEGGINGS, 1.8F);
                         map.put(ArmorItem.Type.CHESTPLATE, 2.0F);map.put(ArmorItem.Type.HELMET, 1.3F);
                         map.put(ArmorItem.Type.BODY, 2.0F);}),
                     50, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0, 999999999, 0,
-                    () -> Ingredient.of(Items.GOLD_NUGGET), "gold"));
+                    () -> Ingredient.of(Items.GOLD_NUGGET), "golden"));
     public static final Holder<ArmorMaterial> ancient_metal = ARMOR_MATERIALS.register("ancient_metal", () ->
             register(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                         map.put(ArmorItem.Type.BOOTS, 1.3F);map.put(ArmorItem.Type.LEGGINGS, 2.3F);
@@ -119,13 +119,13 @@ public class IFWArmorMaterials {
                         map.put(ArmorItem.Type.BODY, 1.3F);}),
                     0, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0, 4, 0,
                     () -> Ingredient.of(Items.IRON_NUGGET), "rusted_iron_chainmail"));
-    public static final Holder<ArmorMaterial> gold_chainmail = ARMOR_MATERIALS.register("gold_chainmail", () ->
+    public static final Holder<ArmorMaterial> golden_chainmail = ARMOR_MATERIALS.register("golden_chainmail", () ->
             register(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                         map.put(ArmorItem.Type.BOOTS, 1.0F);map.put(ArmorItem.Type.LEGGINGS, 1.8F);
                         map.put(ArmorItem.Type.CHESTPLATE, 2.0F);map.put(ArmorItem.Type.HELMET, 1.3F);
                         map.put(ArmorItem.Type.BODY, 2.0F);}),
                     25, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0, 999999, 0,
-                    () -> Ingredient.of(Items.GOLD_NUGGET), "gold_chainmail"));
+                    () -> Ingredient.of(Items.GOLD_NUGGET), "golden_chainmail"));
     public static final Holder<ArmorMaterial> ancient_metal_chainmail = ARMOR_MATERIALS.register("ancient_metal_chainmail", () ->
             register(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                         map.put(ArmorItem.Type.BOOTS, 1.0F);map.put(ArmorItem.Type.LEGGINGS, 1.8F);
@@ -139,7 +139,7 @@ public class IFWArmorMaterials {
                         map.put(ArmorItem.Type.CHESTPLATE, 2.3F);map.put(ArmorItem.Type.HELMET, 1.5F);
                         map.put(ArmorItem.Type.BODY, 2.3F);}),
                     50, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0, 100, 0,
-                    () -> Ingredient.of(IFWItems.mithril_nugget), "gold_chainmail"));
+                    () -> Ingredient.of(IFWItems.mithril_nugget), "mithril_chainmail"));
     public static final Holder<ArmorMaterial> adamantium_chainmail = ARMOR_MATERIALS.register("adamantium_chainmail", () ->
             register(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                         map.put(ArmorItem.Type.BOOTS, 1.3F);map.put(ArmorItem.Type.LEGGINGS, 2.3F);

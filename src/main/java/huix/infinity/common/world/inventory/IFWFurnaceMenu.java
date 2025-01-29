@@ -9,15 +9,12 @@ import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
 
 public class IFWFurnaceMenu extends AbstractFurnaceMenu {
+
     protected IFWFurnaceMenu(int containerId, Inventory playerInventory) {
         super(IFWMenuType.ifw_furnace_menu.get(), IFWRecipeType.ifw_smelting.get(), IFWEnums.cooking_recipe_enum_proxy.getValue(), containerId, playerInventory);
-
-        this.addSlot(new FurnaceFuelSlot(this, playerInventory, 1, 56, 53));
     }
 
     public IFWFurnaceMenu(int containerId, Inventory playerInventory, Container furnaceContainer, ContainerData furnaceData) {
         super(IFWMenuType.ifw_furnace_menu.get(), IFWRecipeType.ifw_smelting.get(), IFWEnums.cooking_recipe_enum_proxy.getValue(), containerId, playerInventory, furnaceContainer, furnaceData);
-
-        this.addSlot(new FurnaceFuelSlot(this, playerInventory, 1, 56, 53));
     }
 }

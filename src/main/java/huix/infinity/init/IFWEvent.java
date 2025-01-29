@@ -9,9 +9,11 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -20,6 +22,7 @@ import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
 import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
 
 import java.util.List;
 
@@ -35,6 +38,7 @@ public class IFWEvent {
         bus.addListener(IFWEvent::daySleep);
         bus.addListener(IFWEvent::addFoodInfo);
         bus.addListener(IFWEvent::nonRemoveUnClearEffect);
+        bus.addListener(IFWEvent::injectFuel);
     }
 
     public static void onBreakSpeed(final PlayerEvent.BreakSpeed event) {
@@ -103,6 +107,15 @@ public class IFWEvent {
         if (event.getEffect().value() instanceof UnClearEffect)
             event.setCanceled(true);
     }
+    public static void injectFuel(final FurnaceFuelBurnTimeEvent event) {
+        if (event.getItemStack().is(Items.TORCH))
+            event.setBurnTime(800);
+        if (event.getItemStack().is(Items.LAVA_BUCKET))
+            event.setBurnTime(3200);
+        if (event.getItemStack().is(ItemTags.ARROWS))
+            event.setBurnTime(100);
+    }
+
 
 
 }
