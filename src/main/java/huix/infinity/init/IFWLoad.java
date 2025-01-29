@@ -11,6 +11,7 @@ import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
+import net.neoforged.neoforge.common.Tags;
 
 @EventBusSubscriber(modid = InfinityWay.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class IFWLoad {
@@ -86,12 +87,14 @@ public class IFWLoad {
 
 
     private static void rebuildStackSize() {
+        //misc
         ReplaceHelper.stackSize(Items.BOOK, 16);
         //ingot
-        ReplaceHelper.stackSize(Items.IRON_INGOT, StackSizeHelper.ingot);
-        ReplaceHelper.stackSize(Items.GOLD_INGOT, StackSizeHelper.ingot);
-        ReplaceHelper.stackSize(Items.COPPER_INGOT, StackSizeHelper.ingot);
-        ReplaceHelper.stackSize(Items.NETHERITE_INGOT, StackSizeHelper.ingot);
+        ReplaceHelper.stackSize(Tags.Items.INGOTS, StackSizeHelper.ingot);
+//        ReplaceHelper.stackSize(Items.IRON_INGOT, StackSizeHelper.ingot);
+//        ReplaceHelper.stackSize(Items.GOLD_INGOT, StackSizeHelper.ingot);
+//        ReplaceHelper.stackSize(Items.COPPER_INGOT, StackSizeHelper.ingot);
+//        ReplaceHelper.stackSize(Items.NETHERITE_INGOT, StackSizeHelper.ingot);
         //slab
         ReplaceHelper.stackSize(Items.END_STONE_BRICK_SLAB, StackSizeHelper.slab);
         ReplaceHelper.stackSize(Items.SANDSTONE_SLAB, StackSizeHelper.slab);
