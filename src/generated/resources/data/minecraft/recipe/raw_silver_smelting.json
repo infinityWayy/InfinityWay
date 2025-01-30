@@ -1,0 +1,13 @@
+{
+  "type": "ifw:level_smelting",
+  "category": "misc",
+  "cookinglevel": 2,
+  "cookingtime": 200,
+  "experience": 15.0,
+  "ingredient": {
+    "item": "ifw:raw_silver"
+  },
+  "result": {
+    "id": "ifw:silver_ingot"
+  }
+}

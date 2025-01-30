@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "ifw:raw_mithril"
+    },
+    {
+      "item": "ifw:raw_mithril"
+    },
+    {
+      "item": "ifw:raw_mithril"
+    },
+    {
+      "item": "ifw:raw_mithril"
+    },
+    {
+      "item": "ifw:raw_mithril"
+    },
+    {
+      "item": "ifw:raw_mithril"
+    },
+    {
+      "item": "ifw:raw_mithril"
+    },
+    {
+      "item": "ifw:raw_mithril"
+    },
+    {
+      "item": "ifw:raw_mithril"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:raw_mithril_block"
+  }
+}
