@@ -10,6 +10,7 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,6 +23,398 @@ public class IFWRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(final @NotNull RecipeOutput recipeOutput) {
+        cookingRecipe(recipeOutput);
+        foodRecipe(recipeOutput);
+
+        {
+            armorRecipe(recipeOutput, IFWItems.adamantium_helmet, IFWItems.adamantium_chestplate, IFWItems.adamantium_leggings,
+                    IFWItems.adamantium_boots, IFWItems.adamantium_ingot);
+            armorRecipe(recipeOutput, IFWItems.adamantium_chainmail_helmet, IFWItems.adamantium_chainmail_chestplate,
+                    IFWItems.adamantium_chainmail_leggings, IFWItems.adamantium_chainmail_boots, IFWItems.adamantium_chain);
+            metalToolRecipe(recipeOutput, IFWItems.adamantium_shears, IFWItems.adamantium_shovel, IFWItems.adamantium_hoe, IFWItems.adamantium_sword
+                    , IFWItems.adamantium_pickaxe, IFWItems.adamantium_axe, IFWItems.adamantium_scythe, IFWItems.adamantium_mattock, IFWItems.adamantium_battle_axe
+                    , IFWItems.adamantium_war_hammer, IFWItems.adamantium_dagger, IFWItems.adamantium_ingot);
+            nineBlockStorageRecipesWithCustomPacking(recipeOutput, RecipeCategory.MISC, IFWItems.adamantium_ingot, RecipeCategory.BUILDING_BLOCKS,
+                    IFWBlocks.adamantium_block, "adamantium_block_from_ingot", "adamantium_block");
+            nineBlockStorageRecipesWithCustomPacking(recipeOutput, RecipeCategory.MISC, IFWItems.adamantium_nugget, RecipeCategory.MISC,
+                    IFWItems.adamantium_ingot, "adamantium_ingot_from_nugget", "adamantium_ingot");
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWItems.adamantium_chain)
+                    .pattern(" Y ")
+                    .pattern("Y Y")
+                    .pattern(" Y ")
+                    .define('Y', IFWItems.adamantium_nugget)
+                    .unlockedBy("has_adamantium_nugget", has(IFWItems.adamantium_nugget)).save(recipeOutput);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.adamantium_bars, 6)
+                    .requires(IFWItems.adamantium_ingot, 6)
+                    .unlockedBy("has_adamantium_ingot", has(IFWItems.adamantium_ingot)).save(recipeOutput);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.raw_adamantium_block, 1)
+                    .requires(IFWItems.raw_adamantium, 9)
+                    .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium)).save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.adamantium_door)
+                    .pattern("YY")
+                    .pattern("YY")
+                    .pattern("YY")
+                    .define('Y', IFWItems.adamantium_ingot)
+                    .unlockedBy("has_adamantium_ingot", has(IFWItems.adamantium_ingot)).save(recipeOutput);
+
+            armorRecipe(recipeOutput, IFWItems.mithril_helmet, IFWItems.mithril_chestplate, IFWItems.mithril_leggings,
+                    IFWItems.mithril_boots, IFWItems.mithril_ingot);
+            armorRecipe(recipeOutput, IFWItems.mithril_chainmail_helmet, IFWItems.mithril_chainmail_chestplate,
+                    IFWItems.mithril_chainmail_leggings, IFWItems.mithril_chainmail_boots, IFWItems.mithril_chain);
+            metalToolRecipe(recipeOutput, IFWItems.mithril_shears, IFWItems.mithril_shovel, IFWItems.mithril_hoe, IFWItems.mithril_sword
+                    , IFWItems.mithril_pickaxe, IFWItems.mithril_axe, IFWItems.mithril_scythe, IFWItems.mithril_mattock, IFWItems.mithril_battle_axe
+                    , IFWItems.mithril_war_hammer, IFWItems.mithril_dagger, IFWItems.mithril_ingot);
+            nineBlockStorageRecipesWithCustomPacking(recipeOutput, RecipeCategory.MISC, IFWItems.mithril_ingot, RecipeCategory.BUILDING_BLOCKS,
+                    IFWBlocks.mithril_block, "mithril_block_from_ingot", "mithril_block");
+            nineBlockStorageRecipesWithCustomPacking(recipeOutput, RecipeCategory.MISC, IFWItems.mithril_nugget, RecipeCategory.MISC,
+                    IFWItems.mithril_ingot, "mithril_ingot_from_nugget", "mithril_ingot");
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWItems.mithril_chain)
+                    .pattern(" Y ")
+                    .pattern("Y Y")
+                    .pattern(" Y ")
+                    .define('Y', IFWItems.mithril_nugget)
+                    .unlockedBy("has_mithril_nugget", has(IFWItems.mithril_nugget)).save(recipeOutput);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.mithril_bars, 6)
+                    .requires(IFWItems.mithril_ingot, 6)
+                    .unlockedBy("has_mithril_ingot", has(IFWItems.mithril_ingot)).save(recipeOutput);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.raw_mithril_block, 1)
+                    .requires(IFWItems.raw_mithril, 9)
+                    .unlockedBy("has_raw_mithril", has(IFWItems.raw_mithril)).save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.mithril_door)
+                    .pattern("YY")
+                    .pattern("YY")
+                    .pattern("YY")
+                    .define('Y', IFWItems.mithril_ingot)
+                    .unlockedBy("has_mithril_ingot", has(IFWItems.mithril_ingot)).save(recipeOutput);
+            armorRecipe(recipeOutput, IFWItems.ancient_metal_helmet, IFWItems.ancient_metal_chestplate, IFWItems.ancient_metal_leggings,
+                    IFWItems.ancient_metal_boots, IFWItems.ancient_metal_ingot);
+            armorRecipe(recipeOutput, IFWItems.ancient_metal_chainmail_helmet, IFWItems.ancient_metal_chainmail_chestplate,
+                    IFWItems.ancient_metal_chainmail_leggings, IFWItems.ancient_metal_chainmail_boots, IFWItems.ancient_metal_chain);
+            metalToolRecipe(recipeOutput, IFWItems.ancient_metal_shears, IFWItems.ancient_metal_shovel, IFWItems.ancient_metal_hoe, IFWItems.ancient_metal_sword
+                    , IFWItems.ancient_metal_pickaxe, IFWItems.ancient_metal_axe, IFWItems.ancient_metal_scythe, IFWItems.ancient_metal_mattock, IFWItems.ancient_metal_battle_axe
+                    , IFWItems.ancient_metal_war_hammer, IFWItems.ancient_metal_dagger, IFWItems.ancient_metal_ingot);
+            nineBlockStorageRecipesWithCustomPacking(recipeOutput, RecipeCategory.MISC, IFWItems.ancient_metal_ingot, RecipeCategory.BUILDING_BLOCKS,
+                    IFWBlocks.ancient_metal_block, "ancient_metal_block_from_ingot", "ancient_metal_block");
+            nineBlockStorageRecipesWithCustomPacking(recipeOutput, RecipeCategory.MISC, IFWItems.ancient_metal_nugget, RecipeCategory.MISC,
+                    IFWItems.ancient_metal_ingot, "ancient_metal_ingot_from_nugget", "ancient_metal_ingot");
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWItems.ancient_metal_chain)
+                    .pattern(" Y ")
+                    .pattern("Y Y")
+                    .pattern(" Y ")
+                    .define('Y', IFWItems.ancient_metal_nugget)
+                    .unlockedBy("has_ancient_metal_nugget", has(IFWItems.ancient_metal_nugget)).save(recipeOutput);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.ancient_metal_bars, 6)
+                    .requires(IFWItems.ancient_metal_ingot, 6)
+                    .unlockedBy("has_ancient_metal_ingot", has(IFWItems.ancient_metal_ingot)).save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.ancient_metal_door)
+                    .pattern("YY")
+                    .pattern("YY")
+                    .pattern("YY")
+                    .define('Y', IFWItems.ancient_metal_ingot)
+                    .unlockedBy("has_ancient_metal_ingot", has(IFWItems.ancient_metal_ingot)).save(recipeOutput);
+            armorRecipe(recipeOutput, IFWItems.iron_helmet, IFWItems.iron_chestplate, IFWItems.iron_leggings,
+                    IFWItems.iron_boots, Items.IRON_INGOT);
+            armorRecipe(recipeOutput, IFWItems.iron_chainmail_helmet, IFWItems.iron_chainmail_chestplate,
+                    IFWItems.iron_chainmail_leggings, IFWItems.iron_chainmail_boots, IFWItems.iron_chain);
+            metalToolRecipe(recipeOutput, IFWItems.iron_shears, IFWItems.iron_shovel, IFWItems.iron_hoe, IFWItems.iron_sword
+                    , IFWItems.iron_pickaxe, IFWItems.iron_axe, IFWItems.iron_scythe, IFWItems.iron_mattock, IFWItems.iron_battle_axe
+                    , IFWItems.iron_war_hammer, IFWItems.iron_dagger, Items.IRON_INGOT);
+            armorRecipe(recipeOutput, IFWItems.rusted_iron_chainmail_helmet, IFWItems.rusted_iron_chainmail_chestplate,
+                    IFWItems.rusted_iron_chainmail_leggings, IFWItems.rusted_iron_chainmail_boots, IFWItems.rusted_iron_chain);
+            armorRecipe(recipeOutput, IFWItems.golden_helmet, IFWItems.golden_chestplate, IFWItems.golden_leggings,
+                    IFWItems.golden_boots, Items.GOLD_INGOT);
+            armorRecipe(recipeOutput, IFWItems.golden_chainmail_helmet, IFWItems.golden_chainmail_chestplate,
+                    IFWItems.golden_chainmail_leggings, IFWItems.golden_chainmail_boots, IFWItems.golden_chain);
+            metalToolRecipe(recipeOutput, IFWItems.golden_shears, IFWItems.golden_shovel, IFWItems.golden_hoe, IFWItems.golden_sword
+                    , IFWItems.golden_pickaxe, IFWItems.golden_axe, IFWItems.golden_scythe, IFWItems.golden_mattock, IFWItems.golden_battle_axe
+                    , IFWItems.golden_war_hammer, IFWItems.golden_dagger, Items.GOLD_INGOT);
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWItems.golden_chain)
+                    .pattern(" Y ")
+                    .pattern("Y Y")
+                    .pattern(" Y ")
+                    .define('Y', Items.IRON_NUGGET)
+                    .unlockedBy("has_golden_nugget", has(Items.IRON_NUGGET)).save(recipeOutput);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.gold_bars, 6)
+                    .requires(Items.GOLD_INGOT, 6)
+                    .unlockedBy("has_golden_ingot", has(Items.GOLD_INGOT)).save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.gold_door)
+                    .pattern("YY")
+                    .pattern("YY")
+                    .pattern("YY")
+                    .define('Y', Items.GOLD_INGOT)
+                    .unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT)).save(recipeOutput);
+            armorRecipe(recipeOutput, IFWItems.silver_helmet, IFWItems.silver_chestplate, IFWItems.silver_leggings,
+                    IFWItems.silver_boots, IFWItems.silver_ingot);
+            armorRecipe(recipeOutput, IFWItems.silver_chainmail_helmet, IFWItems.silver_chainmail_chestplate,
+                    IFWItems.silver_chainmail_leggings, IFWItems.silver_chainmail_boots, IFWItems.silver_chain);
+            metalToolRecipe(recipeOutput, IFWItems.silver_shears, IFWItems.silver_shovel, IFWItems.silver_hoe, IFWItems.silver_sword
+                    , IFWItems.silver_pickaxe, IFWItems.silver_axe, IFWItems.silver_scythe, IFWItems.silver_mattock, IFWItems.silver_battle_axe
+                    , IFWItems.silver_war_hammer, IFWItems.silver_dagger, IFWItems.silver_ingot);
+            nineBlockStorageRecipesWithCustomPacking(recipeOutput, RecipeCategory.MISC, IFWItems.silver_ingot, RecipeCategory.BUILDING_BLOCKS,
+                    IFWBlocks.silver_block, "silver_block_from_ingot", "silver_block");
+            nineBlockStorageRecipesWithCustomPacking(recipeOutput, RecipeCategory.MISC, IFWItems.silver_nugget, RecipeCategory.MISC,
+                    IFWItems.silver_ingot, "silver_ingot_from_nugget", "silver_ingot");
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWItems.silver_chain)
+                    .pattern(" Y ")
+                    .pattern("Y Y")
+                    .pattern(" Y ")
+                    .define('Y', IFWItems.silver_nugget)
+                    .unlockedBy("has_silver_nugget", has(IFWItems.silver_nugget)).save(recipeOutput);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.silver_bars, 6)
+                    .requires(IFWItems.silver_ingot, 6)
+                    .unlockedBy("has_silver_ingot", has(IFWItems.silver_ingot)).save(recipeOutput);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.raw_silver_block, 1)
+                    .requires(IFWItems.raw_silver, 9)
+                    .unlockedBy("has_raw_silver", has(IFWItems.raw_silver)).save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.silver_door)
+                    .pattern("YY")
+                    .pattern("YY")
+                    .pattern("YY")
+                    .define('Y', IFWItems.silver_ingot)
+                    .unlockedBy("has_silver_ingot", has(IFWItems.silver_ingot)).save(recipeOutput);
+            armorRecipe(recipeOutput, IFWItems.copper_helmet, IFWItems.copper_chestplate, IFWItems.copper_leggings,
+                    IFWItems.copper_boots, Items.COPPER_INGOT);
+            armorRecipe(recipeOutput, IFWItems.copper_chainmail_helmet, IFWItems.copper_chainmail_chestplate,
+                    IFWItems.copper_chainmail_leggings, IFWItems.copper_chainmail_boots, IFWItems.copper_chain);
+            metalToolRecipe(recipeOutput, IFWItems.copper_shears, IFWItems.copper_shovel, IFWItems.copper_hoe, IFWItems.copper_sword
+                    , IFWItems.copper_pickaxe, IFWItems.copper_axe, IFWItems.copper_scythe, IFWItems.copper_mattock, IFWItems.copper_battle_axe
+                    , IFWItems.copper_war_hammer, IFWItems.copper_dagger, Items.COPPER_INGOT);
+            nineBlockStorageRecipesWithCustomPacking(recipeOutput, RecipeCategory.MISC, IFWItems.copper_nugget, RecipeCategory.MISC,
+                    Items.COPPER_INGOT, "copper_ingot_from_nugget", "copper_ingot");
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWItems.copper_chain)
+                    .pattern(" Y ")
+                    .pattern("Y Y")
+                    .pattern(" Y ")
+                    .define('Y', IFWItems.copper_nugget)
+                    .unlockedBy("has_copper_nugget", has(IFWItems.copper_nugget)).save(recipeOutput);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.copper_bars, 6)
+                    .requires(Items.COPPER_INGOT, 6)
+                    .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT)).save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.copper_door)
+                    .pattern("YY")
+                    .pattern("YY")
+                    .pattern("YY")
+                    .define('Y', Items.COPPER_INGOT)
+                    .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT)).save(recipeOutput);
+        }
+        {
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_hatchet)
+                    .define('X', Items.FLINT)
+                    .define('Y', Items.STICK)
+                    .define('Z', IFWItemTags.string)
+                    .pattern("YX")
+                    .pattern("YZ")
+                    .unlockedBy("has_flint", has(Items.FLINT))
+                    .save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_axe)
+                    .define('X', Items.FLINT)
+                    .define('Y', Items.STICK)
+                    .define('Z', IFWItemTags.string)
+                    .pattern("XX")
+                    .pattern("YX")
+                    .pattern("YZ")
+                    .unlockedBy("has_flint", has(Items.FLINT))
+                    .save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_shovel)
+                    .define('X', Items.FLINT)
+                    .define('Y', Items.STICK)
+                    .define('Z', IFWItemTags.string)
+                    .pattern("XZ")
+                    .pattern("Y ")
+                    .pattern("Y ")
+                    .unlockedBy("has_flint", has(Items.FLINT))
+                    .save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_knife)
+                    .define('X', Items.FLINT)
+                    .define('Y', Items.STICK)
+                    .define('Z', IFWItemTags.string)
+                    .pattern("XZ")
+                    .pattern("Y ")
+                    .unlockedBy("has_flint", has(Items.FLINT))
+                    .save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.wooden_club)
+                    .define('X', ItemTags.PLANKS)
+                    .define('Y', Items.STICK)
+                    .pattern("X")
+                    .pattern("X")
+                    .pattern("Y")
+                    .unlockedBy("has_plank", has(ItemTags.PLANKS))
+                    .save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.wooden_shovel)
+                    .define('X', ItemTags.PLANKS)
+                    .define('Y', Items.STICK)
+                    .pattern("X")
+                    .pattern("Y")
+                    .pattern("Y")
+                    .unlockedBy("has_plank", has(ItemTags.PLANKS))
+                    .save(recipeOutput);
+        }
+    }
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.raw_adamantium_block, 1)
+//            .requires(IFWItems.raw_adamantium, 9)
+//                .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium)).save(recipeOutput);
+    private void foodRecipe(RecipeOutput recipeOutput) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.salad, 1)
+            .requires(Items.BOWL, 1)
+            .requires(Items.DANDELION, 3)
+            .unlockedBy("has_bowl", has(Items.BOWL)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.salad, 1)
+                .requires(Items.BOWL, 1)
+                .requires(Items.DANDELION, 3)
+                .unlockedBy("has_bowl", has(Items.BOWL)).save(recipeOutput);
+
+
+//        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.salad)
+//                .define('X', ItemTags.PLANKS)
+//                .define('Y', Items.STICK)
+//                .pattern("X")
+//                .pattern("X")
+//                .pattern("Y")
+//                .unlockedBy("has_bowl", has(Items.BOWL))
+//                .save(recipeOutput);
+
+
+
+    }
+
+    private void metalToolRecipe(RecipeOutput recipeOutput, ItemLike shears, ItemLike shovel, ItemLike hoe, ItemLike sword
+            , ItemLike pickaxe, ItemLike axe, ItemLike scythe, ItemLike mattock, ItemLike battle_axe, ItemLike war_hammer, ItemLike dagger, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, shears)
+                .pattern("X ")
+                .pattern(" X")
+                .define('X', material)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, shovel)
+                .pattern("X")
+                .pattern("Y")
+                .pattern("Y")
+                .define('X', material)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hoe)
+                .pattern("XX")
+                .pattern("Y ")
+                .pattern("Y ")
+                .define('X', material)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, sword)
+                .pattern("X")
+                .pattern("X")
+                .pattern("Y")
+                .define('X', material)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pickaxe)
+                .pattern("XXX")
+                .pattern(" Y ")
+                .pattern(" Y ")
+                .define('X', material)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, axe)
+                .pattern("XX")
+                .pattern("YX")
+                .pattern("Y ")
+                .define('X', material)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, scythe)
+                .pattern("YX ")
+                .pattern("Y X")
+                .pattern("Y  ")
+                .define('X', material)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, mattock)
+                .pattern("XXX")
+                .pattern(" YX")
+                .pattern(" Y ")
+                .define('X', material)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, battle_axe)
+                .pattern("X X")
+                .pattern("XYX")
+                .pattern(" Y ")
+                .define('X', material)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, war_hammer)
+                .pattern("XXX")
+                .pattern("XYX")
+                .pattern(" Y ")
+                .define('X', material)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, dagger)
+                .pattern("X")
+                .pattern("Y")
+                .define('X', material)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+    }
+    private void armorRecipe(RecipeOutput recipeOutput, ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, helmet)
+                .pattern("CCC")
+                .pattern("C C")
+                .define('C', Ingredient.of(material))
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, chestplate)
+                .pattern("C C")
+                .pattern("CCC")
+                .pattern("CCC")
+                .define('C', Ingredient.of(material))
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, leggings)
+                .pattern("CCC")
+                .pattern("C C")
+                .pattern("C C")
+                .define('C', Ingredient.of(material))
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, boots)
+                .pattern("C C")
+                .pattern("C C")
+                .define('C', Ingredient.of(material))
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+    }
+    private void cookingRecipe(RecipeOutput recipeOutput) {
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RAW_COPPER), RecipeCategory.MISC, Items.COPPER_INGOT,
+                        10.0F, 200, 2)
+                .unlockedBy("has_raw_copper", has(Items.RAW_COPPER))
+                .save(recipeOutput, "raw_copper_smelting");
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_silver), RecipeCategory.MISC, IFWItems.silver_ingot,
+                        15.0F, 200, 2)
+                .unlockedBy("has_raw_silver", has(IFWItems.raw_silver))
+                .save(recipeOutput, "raw_silver_smelting");
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RAW_GOLD), RecipeCategory.MISC, Items.GOLD_INGOT,
+                        20.0F, 200, 2)
+                .unlockedBy("has_raw_gold", has(Items.RAW_GOLD))
+                .save(recipeOutput, "raw_gold_smelting");
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RAW_IRON), RecipeCategory.MISC, Items.IRON_INGOT,
+                        10.0F, 200, 2)
+                .unlockedBy("has_raw_iron", has(Items.RAW_IRON))
+                .save(recipeOutput, "raw_iron_smelting");
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_mithril), RecipeCategory.MISC, IFWItems.mithril_ingot,
+                        40.0F, 200, 3)
+                .unlockedBy("has_raw_mithril", has(IFWItems.raw_mithril))
+                .save(recipeOutput, "raw_mithril_smelting");
         CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_adamantium), RecipeCategory.MISC, IFWItems.adamantium_ingot,
                         100.0F, 200, 4)
                 .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium))
@@ -87,7 +480,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                         RecipeCategory.MISC,
                         Items.GOLD_NUGGET,
                         0.1F,
-                        200
+                        200, 2
                 )
                 .unlockedBy("has_golden_pickaxe", has(IFWItems.golden_pickaxe))
                 .unlockedBy("has_golden_shovel", has(IFWItems.golden_shovel))
@@ -101,40 +494,30 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .save(recipeOutput, getSmeltingRecipeName(Items.GOLD_NUGGET));
         CookingLevelRecipeBuilder.smelting(
                         Ingredient.of(
-                                Items.IRON_PICKAXE,
-                                Items.IRON_SHOVEL,
-                                Items.IRON_AXE,
-                                Items.IRON_HOE,
-                                Items.IRON_SWORD,
-                                Items.IRON_HELMET,
-                                Items.IRON_CHESTPLATE,
-                                Items.IRON_LEGGINGS,
-                                Items.IRON_BOOTS,
-                                Items.IRON_HORSE_ARMOR,
-                                Items.CHAINMAIL_HELMET,
-                                Items.CHAINMAIL_CHESTPLATE,
-                                Items.CHAINMAIL_LEGGINGS,
-                                Items.CHAINMAIL_BOOTS
+                                IFWItems.iron_pickaxe,
+                                IFWItems.iron_shovel,
+                                IFWItems.iron_axe,
+                                IFWItems.iron_hoe,
+                                IFWItems.iron_sword,
+                                IFWItems.iron_helmet,
+                                IFWItems.iron_chestplate,
+                                IFWItems.iron_leggings,
+                                IFWItems.iron_boots
                         ),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
                         0.1F,
-                        200
+                        200, 2
                 )
-                .unlockedBy("has_iron_pickaxe", has(Items.IRON_PICKAXE))
-                .unlockedBy("has_iron_shovel", has(Items.IRON_SHOVEL))
-                .unlockedBy("has_iron_axe", has(Items.IRON_AXE))
-                .unlockedBy("has_iron_hoe", has(Items.IRON_HOE))
-                .unlockedBy("has_iron_sword", has(Items.IRON_SWORD))
-                .unlockedBy("has_iron_helmet", has(Items.IRON_HELMET))
-                .unlockedBy("has_iron_chestplate", has(Items.IRON_CHESTPLATE))
-                .unlockedBy("has_iron_leggings", has(Items.IRON_LEGGINGS))
-                .unlockedBy("has_iron_boots", has(Items.IRON_BOOTS))
-                .unlockedBy("has_iron_horse_armor", has(Items.IRON_HORSE_ARMOR))
-                .unlockedBy("has_chainmail_helmet", has(Items.CHAINMAIL_HELMET))
-                .unlockedBy("has_chainmail_chestplate", has(Items.CHAINMAIL_CHESTPLATE))
-                .unlockedBy("has_chainmail_leggings", has(Items.CHAINMAIL_LEGGINGS))
-                .unlockedBy("has_chainmail_boots", has(Items.CHAINMAIL_BOOTS))
+                .unlockedBy("has_iron_pickaxe", has(IFWItems.iron_pickaxe))
+                .unlockedBy("has_iron_shovel", has(IFWItems.iron_shovel))
+                .unlockedBy("has_iron_axe", has(IFWItems.iron_axe))
+                .unlockedBy("has_iron_hoe", has(IFWItems.iron_hoe))
+                .unlockedBy("has_iron_sword", has(IFWItems.iron_sword))
+                .unlockedBy("has_iron_helmet", has(IFWItems.iron_helmet))
+                .unlockedBy("has_iron_chestplate", has(IFWItems.iron_chestplate))
+                .unlockedBy("has_iron_leggings", has(IFWItems.iron_leggings))
+                .unlockedBy("has_iron_boots", has(IFWItems.iron_boots))
                 .save(recipeOutput, getSmeltingRecipeName(Items.IRON_NUGGET));
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.CLAY), RecipeCategory.BUILDING_BLOCKS, Blocks.TERRACOTTA.asItem(), 0.35F, 200)
                 .unlockedBy("has_clay_block", has(Blocks.CLAY))
@@ -254,107 +637,6 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .save(recipeOutput);
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.COBBLED_DEEPSLATE), RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE, 0.1F, 200)
                 .unlockedBy("has_cobbled_deepslate", has(Blocks.COBBLED_DEEPSLATE))
-                .save(recipeOutput);
-        
-        
-        
-
-        nineBlockStorageRecipesWithCustomPacking(
-                recipeOutput, RecipeCategory.MISC, IFWItems.adamantium_ingot, RecipeCategory.BUILDING_BLOCKS,
-                IFWBlocks.adamantium_block, "adamantium_block_from_ingot", "adamantium_block");
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_hatchet)
-                .define('X', Items.FLINT)
-                .define('Y', Items.STICK)
-                .define('Z', IFWItemTags.string)
-                .pattern("YX")
-                .pattern("YZ")
-                .unlockedBy("has_flint", has(Items.FLINT))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_axe)
-                .define('X', Items.FLINT)
-                .define('Y', Items.STICK)
-                .define('Z', IFWItemTags.string)
-                .pattern("XX")
-                .pattern("YX")
-                .pattern("YZ")
-                .unlockedBy("has_flint", has(Items.FLINT))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_shovel)
-                .define('X', Items.FLINT)
-                .define('Y', Items.STICK)
-                .define('Z', IFWItemTags.string)
-                .pattern("XZ")
-                .pattern("Y ")
-                .pattern("Y ")
-                .unlockedBy("has_flint", has(Items.FLINT))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_knife)
-                .define('X', Items.FLINT)
-                .define('Y', Items.STICK)
-                .define('Z', IFWItemTags.string)
-                .pattern("XZ")
-                .pattern("Y ")
-                .unlockedBy("has_flint", has(Items.FLINT))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.adamantium_axe)
-                .define('X', IFWItems.adamantium_ingot)
-                .define('Y', Items.STICK)
-                .pattern("XX")
-                .pattern("YX")
-                .pattern("Y ")
-                .unlockedBy("has_adamantium_ingot", has(IFWItems.adamantium_ingot))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.ancient_metal_axe)
-                .define('X', IFWItems.ancient_metal_ingot)
-                .define('Y', Items.STICK)
-                .pattern("XX")
-                .pattern("YX")
-                .pattern("Y ")
-                .unlockedBy("has_adamantium_ingot", has(IFWItems.adamantium_ingot))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.mithril_axe)
-                .define('X', IFWItems.mithril_ingot)
-                .define('Y', Items.STICK)
-                .pattern("XX")
-                .pattern("YX")
-                .pattern("Y ")
-                .unlockedBy("has_mithril_ingot", has(IFWItems.mithril_ingot))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.silver_axe)
-                .define('X', IFWItems.silver_ingot)
-                .define('Y', Items.STICK)
-                .pattern("XX")
-                .pattern("YX")
-                .pattern("Y ")
-                .unlockedBy("has_silver_ingot", has(IFWItems.silver_ingot))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.copper_axe)
-                .define('X', Items.COPPER_INGOT)
-                .define('Y', Items.STICK)
-                .pattern("XX")
-                .pattern("YX")
-                .pattern("Y ")
-                .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.golden_axe)
-                .define('X', Items.GOLD_INGOT)
-                .define('Y', Items.STICK)
-                .pattern("XX")
-                .pattern("YX")
-                .pattern("Y ")
-                .unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.iron_axe)
-                .define('X', Items.IRON_AXE)
-                .define('Y', Items.STICK)
-                .pattern("XX")
-                .pattern("YX")
-                .pattern("Y ")
-                .unlockedBy("has_iron_axe", has(Items.IRON_AXE))
-                .save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.adamantium_bars, 6)
-                .requires(IFWItems.adamantium_ingot, 6)
-                .unlockedBy("has_adamantium_ingot", has(IFWItems.adamantium_ingot))
                 .save(recipeOutput);
     }
 }

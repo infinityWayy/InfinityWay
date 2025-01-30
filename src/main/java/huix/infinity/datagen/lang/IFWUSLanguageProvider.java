@@ -183,7 +183,7 @@ public class IFWUSLanguageProvider extends LanguageProvider {
 //        add(IFWItems.obsidian_knife.get(), "Obsidian Knife");
 //        add(IFWItems.obsidian_hatchet.get(), "Obsidian Hatchet");
 //        add(IFWItems.obsidian_shovel.get(), "Obsidian Shovel");
-        add(IFWItems.wooden_cudgel.get(), "Wooden Cudgel");
+        add(IFWItems.wooden_club.get(), "Wooden Cudgel");
         add(IFWItems.wooden_shovel.get(), "Wooden Shovel");
         add(IFWItems.adamantium_helmet.get(), "Adamantium Helmet");
         add(IFWItems.adamantium_chestplate.get(), "Adamantium Chestplate");

@@ -181,7 +181,7 @@ public class IFWCNLanguageProvider extends LanguageProvider {
 //        add(IFWItems.obsidian_knife.get(), "黑耀石小刀");
 //        add(IFWItems.obsidian_hatchet.get(), "黑耀石手斧");
 //        add(IFWItems.obsidian_shovel.get(), "黑耀石锹");
-        add(IFWItems.wooden_cudgel.get(), "木短棒");
+        add(IFWItems.wooden_club.get(), "木短棒");
         add(IFWItems.wooden_shovel.get(), "木锹");
         add(IFWItems.adamantium_helmet.get(), "艾德曼头盔");
         add(IFWItems.adamantium_chestplate.get(), "艾德曼胸甲");

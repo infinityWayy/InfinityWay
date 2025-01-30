@@ -1,51 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_chainmail_boots": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:chainmail_boots"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_chainmail_chestplate": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:chainmail_chestplate"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_chainmail_helmet": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:chainmail_helmet"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_chainmail_leggings": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:chainmail_leggings"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_iron_axe": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_axe"
+            "items": "ifw:iron_axe"
           }
         ]
       },
@@ -55,7 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_boots"
+            "items": "ifw:iron_boots"
           }
         ]
       },
@@ -65,7 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_chestplate"
+            "items": "ifw:iron_chestplate"
           }
         ]
       },
@@ -75,7 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_helmet"
+            "items": "ifw:iron_helmet"
           }
         ]
       },
@@ -85,17 +45,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_hoe"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_iron_horse_armor": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:iron_horse_armor"
+            "items": "ifw:iron_hoe"
           }
         ]
       },
@@ -105,7 +55,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_leggings"
+            "items": "ifw:iron_leggings"
           }
         ]
       },
@@ -115,7 +65,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_pickaxe"
+            "items": "ifw:iron_pickaxe"
           }
         ]
       },
@@ -125,7 +75,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_shovel"
+            "items": "ifw:iron_shovel"
           }
         ]
       },
@@ -135,7 +85,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_sword"
+            "items": "ifw:iron_sword"
           }
         ]
       },
@@ -159,12 +109,7 @@
       "has_iron_helmet",
       "has_iron_chestplate",
       "has_iron_leggings",
-      "has_iron_boots",
-      "has_iron_horse_armor",
-      "has_chainmail_helmet",
-      "has_chainmail_chestplate",
-      "has_chainmail_leggings",
-      "has_chainmail_boots"
+      "has_iron_boots"
     ]
   ],
   "rewards": {

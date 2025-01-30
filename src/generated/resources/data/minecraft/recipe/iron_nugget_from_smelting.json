@@ -1,51 +1,36 @@
 {
   "type": "ifw:level_smelting",
   "category": "misc",
-  "cookinglevel": 1,
+  "cookinglevel": 2,
   "cookingtime": 200,
   "experience": 0.1,
   "ingredient": [
     {
-      "item": "minecraft:iron_pickaxe"
+      "item": "ifw:iron_pickaxe"
     },
     {
-      "item": "minecraft:iron_shovel"
+      "item": "ifw:iron_shovel"
     },
     {
-      "item": "minecraft:iron_axe"
+      "item": "ifw:iron_axe"
     },
     {
-      "item": "minecraft:iron_hoe"
+      "item": "ifw:iron_hoe"
     },
     {
-      "item": "minecraft:iron_sword"
+      "item": "ifw:iron_sword"
     },
     {
-      "item": "minecraft:iron_helmet"
+      "item": "ifw:iron_helmet"
     },
     {
-      "item": "minecraft:iron_chestplate"
+      "item": "ifw:iron_chestplate"
     },
     {
-      "item": "minecraft:iron_leggings"
+      "item": "ifw:iron_leggings"
     },
     {
-      "item": "minecraft:iron_boots"
-    },
-    {
-      "item": "minecraft:iron_horse_armor"
-    },
-    {
-      "item": "minecraft:chainmail_helmet"
-    },
-    {
-      "item": "minecraft:chainmail_chestplate"
-    },
-    {
-      "item": "minecraft:chainmail_leggings"
-    },
-    {
-      "item": "minecraft:chainmail_boots"
+      "item": "ifw:iron_boots"
     }
   ],
   "result": {

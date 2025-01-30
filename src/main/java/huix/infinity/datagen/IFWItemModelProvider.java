@@ -59,7 +59,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.flint_knife.get());
         handheldItem(IFWItems.adamantium_hoe.get());
         handheldItem(IFWItems.flint_hatchet.get());
-        handheldItem(IFWItems.wooden_cudgel.get());
+        handheldItem(IFWItems.wooden_club.get());
         handheldItem(IFWItems.wooden_shovel.get());
         handheldItem(IFWItems.adamantium_pickaxe.get());
         handheldItem(IFWItems.adamantium_shears.get());
@@ -237,5 +237,15 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.adamantium_chainmail_chestplate.get());
         basicItem(IFWItems.adamantium_chainmail_leggings.get());
         basicItem(IFWItems.adamantium_chainmail_boots.get());
+
+        //chain
+        basicItem(IFWItems.copper_chain.get());
+        basicItem(IFWItems.silver_chain.get());
+        basicItem(IFWItems.golden_chain.get());
+        basicItem(IFWItems.iron_chain.get());
+        basicItem(IFWItems.rusted_iron_chain.get());
+        basicItem(IFWItems.ancient_metal_chain.get());
+        basicItem(IFWItems.mithril_chain.get());
+        basicItem(IFWItems.adamantium_chain.get());
     }
 }

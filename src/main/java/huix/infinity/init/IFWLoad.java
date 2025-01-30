@@ -1,6 +1,5 @@
 package huix.infinity.init;
 
-import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
@@ -13,7 +12,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 
 @EventBusSubscriber(modid = InfinityWay.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class IFWLoad {
@@ -62,7 +60,7 @@ public class IFWLoad {
         ReplaceHelper.itemCookingLevel(Items.LADDER, 1);
         ReplaceHelper.itemCookingLevel(ItemTags.SIGNS, 1);
         ReplaceHelper.itemCookingLevel(ItemTags.HANGING_SIGNS, 1);
-        ReplaceHelper.itemCookingLevel(IFWItems.wooden_cudgel.get(), 1);
+        ReplaceHelper.itemCookingLevel(IFWItems.wooden_club.get(), 1);
         ReplaceHelper.itemCookingLevel(IFWItems.wooden_shovel.get(), 1);
         ReplaceHelper.itemCookingLevel(ItemTags.WOODEN_DOORS, 1);
         ReplaceHelper.itemCookingLevel(ItemTags.BOATS, 1);

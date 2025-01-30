@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "X": {
-      "item": "minecraft:iron_axe"
+      "item": "minecraft:iron_ingot"
     },
     "Y": {
       "item": "minecraft:stick"

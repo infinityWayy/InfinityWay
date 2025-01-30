@@ -13,6 +13,23 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class IFWItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(InfinityWay.MOD_ID);
 
+    public static final DeferredItem<Item> copper_chain =
+            ITEMS.registerSimpleItem("copper_chain", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> silver_chain =
+            ITEMS.registerSimpleItem("silver_chain", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> golden_chain =
+            ITEMS.registerSimpleItem("golden_chain", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> rusted_iron_chain =
+            ITEMS.registerSimpleItem("rusted_iron_chain", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> iron_chain =
+            ITEMS.registerSimpleItem("iron_chain", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> ancient_metal_chain =
+            ITEMS.registerSimpleItem("ancient_metal_chain", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> mithril_chain =
+            ITEMS.registerSimpleItem("mithril_chain", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> adamantium_chain =
+            ITEMS.registerSimpleItem("adamantium_chain", new Item.Properties().stacksTo(16));
+
     public static final DeferredItem<Item> copper_helmet =
             ITEMS.register("copper_helmet", item -> new ArmorItem(IFWArmorMaterials.copper, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(4))));
@@ -205,7 +222,6 @@ public class IFWItems {
     public static final DeferredItem<Item> adamantium_chainmail_boots =
             ITEMS.register("adamantium_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.adamantium_chainmail, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(96))));
-
     public static final DeferredItem<Item> flint_shard =
             ITEMS.registerSimpleItem("flint_shard", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> obsidian_shard =
@@ -223,8 +239,8 @@ public class IFWItems {
     public static final DeferredItem<Item> wooden_shovel =
             ITEMS.register("wooden_shovel", item -> new ShovelTool(EnumTier.WOOD, 400,
                     new Item.Properties().attributes(ShovelTool.createAttributes(EnumTier.WOOD,1.0F, -3.0F))));
-    public static final DeferredItem<Item> wooden_cudgel =
-            ITEMS.register("wooden_cudgel", item -> new ClubWeapon(EnumTier.WOOD, 1000,
+    public static final DeferredItem<Item> wooden_club =
+            ITEMS.register("wooden_club", item -> new ClubWeapon(EnumTier.WOOD, 1000,
                     new Item.Properties().attributes(SwordWeapon.createAttributes(EnumTier.WOOD,3.0F, -2.4F))));
     public static final DeferredItem<Item> flint_hatchet =
             ITEMS.register("flint_hatchet", item -> new HatchetTool(EnumTier.FLINT, 360,

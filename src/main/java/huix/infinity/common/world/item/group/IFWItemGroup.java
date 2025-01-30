@@ -16,6 +16,14 @@ public class IFWItemGroup {
             CREATIVE_TABS.register("item_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ifw.item"))
             .icon(() -> IFWItems.adamantium_ingot.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
+                output.accept(IFWItems.copper_chain.get());
+                output.accept(IFWItems.silver_chain.get());
+                output.accept(IFWItems.golden_chain.get());
+                output.accept(IFWItems.rusted_iron_chain.get());
+                output.accept(IFWItems.iron_chain.get());
+                output.accept(IFWItems.ancient_metal_chain.get());
+                output.accept(IFWItems.mithril_chain.get());
+                output.accept(IFWItems.adamantium_chain.get());
                 output.accept(IFWItems.adamantium_ingot.get());
                 output.accept(IFWItems.ancient_metal_ingot.get());
                 output.accept(IFWItems.mithril_ingot.get());
@@ -157,32 +165,32 @@ public class IFWItemGroup {
                         output.accept(IFWItems.flint_shovel.get());
                         output.accept(IFWItems.flint_axe.get());
                         output.accept(IFWItems.wooden_shovel.get());
-                        output.accept(IFWItems.wooden_cudgel.get());
+                        output.accept(IFWItems.wooden_club.get());
 
                         output.accept(IFWItems.flint_hatchet.get());
                         output.accept(IFWItems.flint_knife.get());
                         output.accept(IFWItems.flint_shovel.get());
                         output.accept(IFWItems.flint_axe.get());
                         output.accept(IFWItems.wooden_shovel.get());
-                        output.accept(IFWItems.wooden_cudgel.get());
+                        output.accept(IFWItems.wooden_club.get());
                         output.accept(IFWItems.flint_hatchet.get());
                         output.accept(IFWItems.flint_knife.get());
                         output.accept(IFWItems.flint_shovel.get());
                         output.accept(IFWItems.flint_axe.get());
                         output.accept(IFWItems.wooden_shovel.get());
-                        output.accept(IFWItems.wooden_cudgel.get());
+                        output.accept(IFWItems.wooden_club.get());
                         output.accept(IFWItems.flint_hatchet.get());
                         output.accept(IFWItems.flint_knife.get());
                         output.accept(IFWItems.flint_shovel.get());
                         output.accept(IFWItems.flint_axe.get());
                         output.accept(IFWItems.wooden_shovel.get());
-                        output.accept(IFWItems.wooden_cudgel.get());
+                        output.accept(IFWItems.wooden_club.get());
                         output.accept(IFWItems.flint_hatchet.get());
                         output.accept(IFWItems.flint_knife.get());
                         output.accept(IFWItems.flint_shovel.get());
                         output.accept(IFWItems.flint_axe.get());
                         output.accept(IFWItems.wooden_shovel.get());
-                        output.accept(IFWItems.wooden_cudgel.get());
+                        output.accept(IFWItems.wooden_club.get());
                         output.accept(IFWItems.copper_helmet.get());
                         output.accept(IFWItems.copper_chestplate.get());
                         output.accept(IFWItems.copper_leggings.get());
@@ -254,6 +262,12 @@ public class IFWItemGroup {
             CREATIVE_TABS.register("block_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ifw.block"))
                     .icon(() -> IFWBlocks.adamantium_block_item.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
+                        output.accept(IFWBlocks.clay_furnace_item.get());
+                        output.accept(IFWBlocks.hardened_clay_furnace_item.get());
+                        output.accept(IFWBlocks.sandstone_furnace_item.get());
+                        output.accept(IFWBlocks.stone_furnace_item.get());
+                        output.accept(IFWBlocks.obsidian_furnace_item.get());
+                        output.accept(IFWBlocks.netherrack_furnace_item.get());
                         output.accept(IFWBlocks.adamantium_block_item.get());
                         output.accept(IFWBlocks.adamantium_ore_item.get());
                         output.accept(IFWBlocks.adamantium_bars_item.get());
