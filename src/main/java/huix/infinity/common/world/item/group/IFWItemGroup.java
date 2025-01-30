@@ -16,6 +16,14 @@ public class IFWItemGroup {
             CREATIVE_TABS.register("item_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ifw.item"))
             .icon(() -> IFWItems.adamantium_ingot.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
+                output.accept(IFWItems.copper_chain.get());
+                output.accept(IFWItems.silver_chain.get());
+                output.accept(IFWItems.golden_chain.get());
+                output.accept(IFWItems.rusted_iron_chain.get());
+                output.accept(IFWItems.iron_chain.get());
+                output.accept(IFWItems.ancient_metal_chain.get());
+                output.accept(IFWItems.mithril_chain.get());
+                output.accept(IFWItems.adamantium_chain.get());
                 output.accept(IFWItems.adamantium_ingot.get());
                 output.accept(IFWItems.ancient_metal_ingot.get());
                 output.accept(IFWItems.mithril_ingot.get());
@@ -35,7 +43,6 @@ public class IFWItemGroup {
                 output.accept(IFWItems.raw_mithril.get());
                 output.accept(IFWItems.raw_silver.get());
                 output.accept(IFWItems.sinew.get());
-
                 output.accept(IFWItems.salad.get());
                 output.accept(IFWItems.milk_bowl.get());
                 output.accept(IFWItems.water_bowl.get());
@@ -123,16 +130,16 @@ public class IFWItemGroup {
                         output.accept(IFWItems.copper_mattock.get());
                         output.accept(IFWItems.copper_battle_axe.get());
                         output.accept(IFWItems.copper_war_hammer.get());
-                        output.accept(IFWItems.gold_pickaxe.get());
-                        output.accept(IFWItems.gold_shears.get());
-                        output.accept(IFWItems.gold_shovel.get());
-                        output.accept(IFWItems.gold_hoe.get());
-                        output.accept(IFWItems.gold_sword.get());
-                        output.accept(IFWItems.gold_axe.get());
-                        output.accept(IFWItems.gold_scythe.get());
-                        output.accept(IFWItems.gold_mattock.get());
-                        output.accept(IFWItems.gold_battle_axe.get());
-                        output.accept(IFWItems.gold_war_hammer.get());
+                        output.accept(IFWItems.golden_pickaxe.get());
+                        output.accept(IFWItems.golden_shears.get());
+                        output.accept(IFWItems.golden_shovel.get());
+                        output.accept(IFWItems.golden_hoe.get());
+                        output.accept(IFWItems.golden_sword.get());
+                        output.accept(IFWItems.golden_axe.get());
+                        output.accept(IFWItems.golden_scythe.get());
+                        output.accept(IFWItems.golden_mattock.get());
+                        output.accept(IFWItems.golden_battle_axe.get());
+                        output.accept(IFWItems.golden_war_hammer.get());
                         output.accept(IFWItems.iron_pickaxe.get());
                         output.accept(IFWItems.iron_shears.get());
                         output.accept(IFWItems.iron_shovel.get());
@@ -153,19 +160,114 @@ public class IFWItemGroup {
                         output.accept(IFWItems.rusted_iron_mattock.get());
                         output.accept(IFWItems.rusted_iron_battle_axe.get());
                         output.accept(IFWItems.rusted_iron_war_hammer.get());
+                        output.accept(IFWItems.flint_hatchet.get());
+                        output.accept(IFWItems.flint_knife.get());
+                        output.accept(IFWItems.flint_shovel.get());
+                        output.accept(IFWItems.flint_axe.get());
+                        output.accept(IFWItems.wooden_shovel.get());
+                        output.accept(IFWItems.wooden_club.get());
 
                         output.accept(IFWItems.flint_hatchet.get());
                         output.accept(IFWItems.flint_knife.get());
                         output.accept(IFWItems.flint_shovel.get());
                         output.accept(IFWItems.flint_axe.get());
                         output.accept(IFWItems.wooden_shovel.get());
-                        output.accept(IFWItems.wooden_cudgel.get());
+                        output.accept(IFWItems.wooden_club.get());
+                        output.accept(IFWItems.flint_hatchet.get());
+                        output.accept(IFWItems.flint_knife.get());
+                        output.accept(IFWItems.flint_shovel.get());
+                        output.accept(IFWItems.flint_axe.get());
+                        output.accept(IFWItems.wooden_shovel.get());
+                        output.accept(IFWItems.wooden_club.get());
+                        output.accept(IFWItems.flint_hatchet.get());
+                        output.accept(IFWItems.flint_knife.get());
+                        output.accept(IFWItems.flint_shovel.get());
+                        output.accept(IFWItems.flint_axe.get());
+                        output.accept(IFWItems.wooden_shovel.get());
+                        output.accept(IFWItems.wooden_club.get());
+                        output.accept(IFWItems.flint_hatchet.get());
+                        output.accept(IFWItems.flint_knife.get());
+                        output.accept(IFWItems.flint_shovel.get());
+                        output.accept(IFWItems.flint_axe.get());
+                        output.accept(IFWItems.wooden_shovel.get());
+                        output.accept(IFWItems.wooden_club.get());
+                        output.accept(IFWItems.copper_helmet.get());
+                        output.accept(IFWItems.copper_chestplate.get());
+                        output.accept(IFWItems.copper_leggings.get());
+                        output.accept(IFWItems.copper_boots.get());
+                        output.accept(IFWItems.silver_helmet.get());
+                        output.accept(IFWItems.silver_chestplate.get());
+                        output.accept(IFWItems.silver_leggings.get());
+                        output.accept(IFWItems.silver_boots.get());
+                        output.accept(IFWItems.rusted_iron_helmet.get());
+                        output.accept(IFWItems.rusted_iron_chestplate.get());
+                        output.accept(IFWItems.rusted_iron_leggings.get());
+                        output.accept(IFWItems.rusted_iron_boots.get());
+                        output.accept(IFWItems.iron_helmet.get());
+                        output.accept(IFWItems.iron_chestplate.get());
+                        output.accept(IFWItems.iron_leggings.get());
+                        output.accept(IFWItems.iron_boots.get());
+                        output.accept(IFWItems.golden_helmet.get());
+                        output.accept(IFWItems.golden_chestplate.get());
+                        output.accept(IFWItems.golden_leggings.get());
+                        output.accept(IFWItems.golden_boots.get());
+                        output.accept(IFWItems.ancient_metal_helmet.get());
+                        output.accept(IFWItems.ancient_metal_chestplate.get());
+                        output.accept(IFWItems.ancient_metal_leggings.get());
+                        output.accept(IFWItems.ancient_metal_boots.get());
+                        output.accept(IFWItems.mithril_helmet.get());
+                        output.accept(IFWItems.mithril_chestplate.get());
+                        output.accept(IFWItems.mithril_leggings.get());
+                        output.accept(IFWItems.mithril_boots.get());
+                        output.accept(IFWItems.adamantium_helmet.get());
+                        output.accept(IFWItems.adamantium_chestplate.get());
+                        output.accept(IFWItems.adamantium_leggings.get());
+                        output.accept(IFWItems.adamantium_boots.get());
+                        output.accept(IFWItems.copper_chainmail_helmet.get());
+                        output.accept(IFWItems.copper_chainmail_chestplate.get());
+                        output.accept(IFWItems.copper_chainmail_leggings.get());
+                        output.accept(IFWItems.copper_chainmail_boots.get());
+                        output.accept(IFWItems.silver_chainmail_helmet.get());
+                        output.accept(IFWItems.silver_chainmail_chestplate.get());
+                        output.accept(IFWItems.silver_chainmail_leggings.get());
+                        output.accept(IFWItems.silver_chainmail_boots.get());
+                        output.accept(IFWItems.iron_chainmail_helmet.get());
+                        output.accept(IFWItems.iron_chainmail_chestplate.get());
+                        output.accept(IFWItems.iron_chainmail_leggings.get());
+                        output.accept(IFWItems.iron_chainmail_boots.get());
+                        output.accept(IFWItems.rusted_iron_chainmail_helmet.get());
+                        output.accept(IFWItems.rusted_iron_chainmail_chestplate.get());
+                        output.accept(IFWItems.rusted_iron_chainmail_leggings.get());
+                        output.accept(IFWItems.rusted_iron_chainmail_boots.get());
+                        output.accept(IFWItems.golden_chainmail_helmet.get());
+                        output.accept(IFWItems.golden_chainmail_chestplate.get());
+                        output.accept(IFWItems.golden_chainmail_leggings.get());
+                        output.accept(IFWItems.golden_chainmail_boots.get());
+                        output.accept(IFWItems.ancient_metal_chainmail_helmet.get());
+                        output.accept(IFWItems.ancient_metal_chainmail_chestplate.get());
+                        output.accept(IFWItems.ancient_metal_chainmail_leggings.get());
+                        output.accept(IFWItems.ancient_metal_chainmail_boots.get());
+                        output.accept(IFWItems.mithril_chainmail_helmet.get());
+                        output.accept(IFWItems.mithril_chainmail_chestplate.get());
+                        output.accept(IFWItems.mithril_chainmail_leggings.get());
+                        output.accept(IFWItems.mithril_chainmail_boots.get());
+                        output.accept(IFWItems.adamantium_chainmail_helmet.get());
+                        output.accept(IFWItems.adamantium_chainmail_chestplate.get());
+                        output.accept(IFWItems.adamantium_chainmail_leggings.get());
+                        output.accept(IFWItems.adamantium_chainmail_boots.get());
+
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> block_tab =
             CREATIVE_TABS.register("block_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ifw.block"))
                     .icon(() -> IFWBlocks.adamantium_block_item.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
+                        output.accept(IFWBlocks.clay_furnace_item.get());
+                        output.accept(IFWBlocks.hardened_clay_furnace_item.get());
+                        output.accept(IFWBlocks.sandstone_furnace_item.get());
+                        output.accept(IFWBlocks.stone_furnace_item.get());
+                        output.accept(IFWBlocks.obsidian_furnace_item.get());
+                        output.accept(IFWBlocks.netherrack_furnace_item.get());
                         output.accept(IFWBlocks.adamantium_block_item.get());
                         output.accept(IFWBlocks.adamantium_ore_item.get());
                         output.accept(IFWBlocks.adamantium_bars_item.get());
@@ -191,7 +293,7 @@ public class IFWItemGroup {
                         output.accept(IFWBlocks.raw_silver_block_item.get());
                         output.accept(IFWBlocks.deepslate_adamantium_ore_item.get());
                         output.accept(IFWBlocks.deepslate_mithril_ore_item.get());
-                        output.accept(IFWBlocks.deepslate_silver_ore_ore_item.get());
+                        output.accept(IFWBlocks.deepslate_silver_ore_item.get());
                     }).build());
 
 

@@ -14,6 +14,21 @@ public class IFWItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        simpleBlockItem(IFWBlocks.silver_block.get());
+        simpleBlockItem(IFWBlocks.silver_ore.get());
+        simpleBlockItem(IFWBlocks.raw_adamantium_block.get());
+        simpleBlockItem(IFWBlocks.raw_mithril_block.get());
+        simpleBlockItem(IFWBlocks.raw_silver_block.get());
+        simpleBlockItem(IFWBlocks.deepslate_adamantium_ore.get());
+        simpleBlockItem(IFWBlocks.deepslate_mithril_ore.get());
+        simpleBlockItem(IFWBlocks.deepslate_silver_ore.get());
+        simpleBlockItem(IFWBlocks.mithril_block.get());
+        simpleBlockItem(IFWBlocks.mithril_ore.get());
+        simpleBlockItem(IFWBlocks.ancient_metal_block.get());
+        simpleBlockItem(IFWBlocks.adamantium_ore.get());
+        simpleBlockItem(IFWBlocks.adamantium_block.get());
+
+
         basicItem(IFWItems.flint_shard.get());
         basicItem(IFWItems.diamond_shard.get());
         basicItem(IFWItems.emerald_shard.get());
@@ -44,7 +59,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.flint_knife.get());
         handheldItem(IFWItems.adamantium_hoe.get());
         handheldItem(IFWItems.flint_hatchet.get());
-        handheldItem(IFWItems.wooden_cudgel.get());
+        handheldItem(IFWItems.wooden_club.get());
         handheldItem(IFWItems.wooden_shovel.get());
         handheldItem(IFWItems.adamantium_pickaxe.get());
         handheldItem(IFWItems.adamantium_shears.get());
@@ -123,17 +138,17 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.rusted_iron_battle_axe.get());
         handheldItem(IFWItems.rusted_iron_war_hammer.get());
         handheldItem(IFWItems.rusted_iron_dagger.get());
-        handheldItem(IFWItems.gold_pickaxe.get());
-        handheldItem(IFWItems.gold_shears.get());
-        handheldItem(IFWItems.gold_shovel.get());
-        handheldItem(IFWItems.gold_hoe.get());
-        handheldItem(IFWItems.gold_sword.get());
-        handheldItem(IFWItems.gold_axe.get());
-        handheldItem(IFWItems.gold_scythe.get());
-        handheldItem(IFWItems.gold_mattock.get());
-        handheldItem(IFWItems.gold_battle_axe.get());
-        handheldItem(IFWItems.gold_war_hammer.get());
-        handheldItem(IFWItems.gold_dagger.get());
+        handheldItem(IFWItems.golden_pickaxe.get());
+        handheldItem(IFWItems.golden_shears.get());
+        handheldItem(IFWItems.golden_shovel.get());
+        handheldItem(IFWItems.golden_hoe.get());
+        handheldItem(IFWItems.golden_sword.get());
+        handheldItem(IFWItems.golden_axe.get());
+        handheldItem(IFWItems.golden_scythe.get());
+        handheldItem(IFWItems.golden_mattock.get());
+        handheldItem(IFWItems.golden_battle_axe.get());
+        handheldItem(IFWItems.golden_war_hammer.get());
+        handheldItem(IFWItems.golden_dagger.get());
 
         //FOOD
         basicItem(IFWItems.salad.get());
@@ -157,5 +172,80 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.banana.get());
         basicItem(IFWItems.cooked_worm.get());
         basicItem(IFWItems.worm.get());
+        //armor
+        basicItem(IFWItems.copper_helmet.get());
+        basicItem(IFWItems.copper_chestplate.get());
+        basicItem(IFWItems.copper_leggings.get());
+        basicItem(IFWItems.copper_boots.get());
+        basicItem(IFWItems.silver_helmet.get());
+        basicItem(IFWItems.silver_chestplate.get());
+        basicItem(IFWItems.silver_leggings.get());
+        basicItem(IFWItems.silver_boots.get());
+        basicItem(IFWItems.rusted_iron_helmet.get());
+        basicItem(IFWItems.rusted_iron_chestplate.get());
+        basicItem(IFWItems.rusted_iron_leggings.get());
+        basicItem(IFWItems.rusted_iron_boots.get());
+        basicItem(IFWItems.iron_helmet.get());
+        basicItem(IFWItems.iron_chestplate.get());
+        basicItem(IFWItems.iron_leggings.get());
+        basicItem(IFWItems.iron_boots.get());
+        basicItem(IFWItems.golden_helmet.get());
+        basicItem(IFWItems.golden_chestplate.get());
+        basicItem(IFWItems.golden_leggings.get());
+        basicItem(IFWItems.golden_boots.get());
+        basicItem(IFWItems.ancient_metal_helmet.get());
+        basicItem(IFWItems.ancient_metal_chestplate.get());
+        basicItem(IFWItems.ancient_metal_leggings.get());
+        basicItem(IFWItems.ancient_metal_boots.get());
+        basicItem(IFWItems.mithril_helmet.get());
+        basicItem(IFWItems.mithril_chestplate.get());
+        basicItem(IFWItems.mithril_leggings.get());
+        basicItem(IFWItems.mithril_boots.get());
+        basicItem(IFWItems.adamantium_helmet.get());
+        basicItem(IFWItems.adamantium_chestplate.get());
+        basicItem(IFWItems.adamantium_leggings.get());
+        basicItem(IFWItems.adamantium_boots.get());
+        basicItem(IFWItems.copper_chainmail_helmet.get());
+        basicItem(IFWItems.copper_chainmail_chestplate.get());
+        basicItem(IFWItems.copper_chainmail_leggings.get());
+        basicItem(IFWItems.copper_chainmail_boots.get());
+        basicItem(IFWItems.silver_chainmail_helmet.get());
+        basicItem(IFWItems.silver_chainmail_chestplate.get());
+        basicItem(IFWItems.silver_chainmail_leggings.get());
+        basicItem(IFWItems.silver_chainmail_boots.get());
+        basicItem(IFWItems.iron_chainmail_helmet.get());
+        basicItem(IFWItems.iron_chainmail_chestplate.get());
+        basicItem(IFWItems.iron_chainmail_leggings.get());
+        basicItem(IFWItems.iron_chainmail_boots.get());
+        basicItem(IFWItems.rusted_iron_chainmail_helmet.get());
+        basicItem(IFWItems.rusted_iron_chainmail_chestplate.get());
+        basicItem(IFWItems.rusted_iron_chainmail_leggings.get());
+        basicItem(IFWItems.rusted_iron_chainmail_boots.get());
+        basicItem(IFWItems.golden_chainmail_helmet.get());
+        basicItem(IFWItems.golden_chainmail_chestplate.get());
+        basicItem(IFWItems.golden_chainmail_leggings.get());
+        basicItem(IFWItems.golden_chainmail_boots.get());
+        basicItem(IFWItems.ancient_metal_chainmail_helmet.get());
+        basicItem(IFWItems.ancient_metal_chainmail_chestplate.get());
+        basicItem(IFWItems.ancient_metal_chainmail_leggings.get());
+        basicItem(IFWItems.ancient_metal_chainmail_boots.get());
+        basicItem(IFWItems.mithril_chainmail_helmet.get());
+        basicItem(IFWItems.mithril_chainmail_chestplate.get());
+        basicItem(IFWItems.mithril_chainmail_leggings.get());
+        basicItem(IFWItems.mithril_chainmail_boots.get());
+        basicItem(IFWItems.adamantium_chainmail_helmet.get());
+        basicItem(IFWItems.adamantium_chainmail_chestplate.get());
+        basicItem(IFWItems.adamantium_chainmail_leggings.get());
+        basicItem(IFWItems.adamantium_chainmail_boots.get());
+
+        //chain
+        basicItem(IFWItems.copper_chain.get());
+        basicItem(IFWItems.silver_chain.get());
+        basicItem(IFWItems.golden_chain.get());
+        basicItem(IFWItems.iron_chain.get());
+        basicItem(IFWItems.rusted_iron_chain.get());
+        basicItem(IFWItems.ancient_metal_chain.get());
+        basicItem(IFWItems.mithril_chain.get());
+        basicItem(IFWItems.adamantium_chain.get());
     }
 }

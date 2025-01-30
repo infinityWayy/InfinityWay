@@ -127,7 +127,7 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     @Unique
     private float ifw_modifyValue() {
         final int max_level = this.experienceLevel >= 35 ? 35 : this.experienceLevel;
-        return (float) max_level / 5 * 2 + 6.0F;
+        return Math.max((float) max_level / 5 * 2 + 6.0F, 1.0F);
     }
     @Unique
     public void ifw_maxHealth(final float health) {

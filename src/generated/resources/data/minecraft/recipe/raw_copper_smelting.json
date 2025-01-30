@@ -1,0 +1,13 @@
+{
+  "type": "ifw:level_smelting",
+  "category": "misc",
+  "cookinglevel": 2,
+  "cookingtime": 200,
+  "experience": 10.0,
+  "ingredient": {
+    "item": "minecraft:raw_copper"
+  },
+  "result": {
+    "id": "minecraft:copper_ingot"
+  }
+}

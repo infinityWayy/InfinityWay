@@ -1,11 +1,15 @@
 package huix.infinity.mixin.world.block;
 
 import huix.infinity.common.world.block.GravelBlock;
+import huix.infinity.common.world.block.IFWFurnaceBlock;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ColoredFallingBlock;
+import net.minecraft.world.level.block.FurnaceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "ancient_metal_block",
+  "key": {
+    "#": {
+      "item": "ifw:ancient_metal_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:ancient_metal_block"
+  }
+}

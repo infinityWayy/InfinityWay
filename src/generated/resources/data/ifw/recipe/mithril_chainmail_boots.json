@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "ifw:mithril_chain"
+    }
+  },
+  "pattern": [
+    "C C",
+    "C C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:mithril_chainmail_boots"
+  }
+}

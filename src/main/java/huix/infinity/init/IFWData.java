@@ -23,8 +23,8 @@ public final class IFWData {
         var existingFileHelper = event.getExistingFileHelper();
         var lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeClient(), new IFWItemModelProvider(output, existingFileHelper));
         generator.addProvider(event.includeClient(), new IFWBlockStateProvider(output, existingFileHelper));
+        generator.addProvider(event.includeClient(), new IFWItemModelProvider(output, existingFileHelper));
         //zh_cn
         generator.addProvider(event.includeClient(), new IFWCNLanguageProvider(output));
         //en_us
