@@ -15,6 +15,7 @@
     "world.entity.PlayerMixin",
     "world.entity.ServerPlayerMixin",
     "world.entity.ai.PanicGoalMixin",
+    "world.entity.ai.TemptGoalMixin",
     "world.entity.ai.attribute.AttributesMixin",
     "world.entity.animal.AnimalMixin",
     "world.entity.animal.ChickenMixin",

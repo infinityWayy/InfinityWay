@@ -1,6 +1,7 @@
 package huix.infinity.common.world.entity.animal;
 
 import huix.infinity.common.core.attachment.IFWAttachment;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -8,6 +9,10 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+
+import java.util.Set;
 
 public interface Livestock {
     EntityDataAccessor<Boolean> IS_WELL = SynchedEntityData.defineId(Animal.class, EntityDataSerializers.BOOLEAN);
@@ -69,6 +74,11 @@ public interface Livestock {
         return this.animal().getData(IFWAttachment.production_counter);
     }
 
+    default void productionAddCounter(int i) {
+        this.animal().setData(IFWAttachment.production_counter,
+                this.animal().getData(IFWAttachment.production_counter) + i);
+    }
+
     default void addFood(float food) {
         this.food(this.food() + food);
     }
@@ -125,7 +135,40 @@ public interface Livestock {
         }
     }
 
+    default Set<Block> getFoodBlocks() {
+        return Set.of(
+            Blocks.GRASS_BLOCK,
+            Blocks.SHORT_GRASS, Blocks.TALL_GRASS,
+            Blocks.FERN, Blocks.LARGE_FERN
+        );
+    }
 
+    default boolean isNearFood() {
+        return isNearFood(this.animal().blockPosition());
+    }
+
+    default boolean isNearFood(BlockPos pos) {
+        return isNearFood(pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    default boolean isNearFood(int x, int y, int z) {
+        int height = Mth.floor(this.animal().getBbHeight());
+        for (int dx = -1; dx <= 1; ++dx) {
+            for (int dy = -1; dy <= height; ++dy) {
+                for (int dz = -1; dz <= 1; ++dz) {
+                    if (getFoodBlocks().contains(this.ifw_level().getBlockState(
+                            new BlockPos(x + dx, y + dy, z + dz)).getBlock())) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    default boolean hasFullHealth() {
+        return this.animal().getHealth() == this.animal().getMaxHealth();
+    }
 
     Animal animal();
 
