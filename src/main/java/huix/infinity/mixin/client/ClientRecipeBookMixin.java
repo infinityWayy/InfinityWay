@@ -1,6 +1,5 @@
 package huix.infinity.mixin.client;
 
-import huix.infinity.network.ClientboundSetHealthPayload;
 import net.minecraft.client.ClientRecipeBook;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.world.item.crafting.RecipeHolder;

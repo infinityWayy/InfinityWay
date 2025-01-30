@@ -2,7 +2,7 @@ package huix.infinity.mixin.world.entity;
 
 import com.mojang.authlib.GameProfile;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
-import huix.infinity.network.ClientboundSetHealthPayload;
+import huix.infinity.network.ClientBoundSetHealthPayload;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
@@ -34,11 +34,10 @@ public class ServerPlayerMixin extends Player {
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;getHealth()F", ordinal = 0, shift = At.Shift.BEFORE), method = "doTick")
     private void updateHealth(CallbackInfo ci){
         if (this.lastMaxFoodLevel !=  this.foodData.ifw_maxFoodLevel() || this.lastStats != foodData.ifw_nutritionalStatus()) {
-            this.connection.send(new ClientboundSetHealthPayload(foodData.ifw_maxFoodLevel(), foodData.ifw_nutritionalStatusByINT(), foodData.ifw_phytonutrients(), foodData.ifw_protein()));
+            this.connection.send(new ClientBoundSetHealthPayload(foodData.ifw_maxFoodLevel(), foodData.ifw_nutritionalStatusByINT(), foodData.ifw_phytonutrients(), foodData.ifw_protein()));
             this.lastMaxFoodLevel = this.foodData.ifw_maxFoodLevel();
             this.lastStats = foodData.ifw_nutritionalStatus();
         }
-
     }
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;isDay()Z")

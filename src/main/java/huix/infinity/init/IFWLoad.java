@@ -1,6 +1,7 @@
 package huix.infinity.init;
 
 import huix.infinity.common.core.component.IFWDataComponents;
+import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
 import huix.infinity.common.world.item.IFWItems;
@@ -12,6 +13,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 
 @EventBusSubscriber(modid = InfinityWay.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class IFWLoad {
@@ -20,8 +22,10 @@ public class IFWLoad {
     public static void injectItem(final FMLLoadCompleteEvent event) {
         injectCookingLevel();
         rebuildFood();
-        rebuildStackSize();
+
     }
+
+
 
     private static void injectCookingLevel() {
         ReplaceHelper.itemCookingLevel(Items.TORCH, 1);
@@ -86,7 +90,9 @@ public class IFWLoad {
     }
 
 
-    private static void rebuildStackSize() {
+    public static void rebuildStackSize() {
+        ReplaceHelper.stackSize(IFWItemTags.string, StackSizeHelper.ingot);
+
         //misc
         ReplaceHelper.stackSize(Items.BOOK, 16);
         //ingot

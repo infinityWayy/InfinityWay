@@ -14,6 +14,21 @@ public class IFWItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        simpleBlockItem(IFWBlocks.silver_block.get());
+        simpleBlockItem(IFWBlocks.silver_ore.get());
+        simpleBlockItem(IFWBlocks.raw_adamantium_block.get());
+        simpleBlockItem(IFWBlocks.raw_mithril_block.get());
+        simpleBlockItem(IFWBlocks.raw_silver_block.get());
+        simpleBlockItem(IFWBlocks.deepslate_adamantium_ore.get());
+        simpleBlockItem(IFWBlocks.deepslate_mithril_ore.get());
+        simpleBlockItem(IFWBlocks.deepslate_silver_ore.get());
+        simpleBlockItem(IFWBlocks.mithril_block.get());
+        simpleBlockItem(IFWBlocks.mithril_ore.get());
+        simpleBlockItem(IFWBlocks.ancient_metal_block.get());
+        simpleBlockItem(IFWBlocks.adamantium_ore.get());
+        simpleBlockItem(IFWBlocks.adamantium_block.get());
+
+
         basicItem(IFWItems.flint_shard.get());
         basicItem(IFWItems.diamond_shard.get());
         basicItem(IFWItems.emerald_shard.get());

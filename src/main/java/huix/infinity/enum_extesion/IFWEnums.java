@@ -9,6 +9,8 @@ import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.fml.common.asm.enumextension.EnumProxy;
 
 import java.util.List;
@@ -19,8 +21,4 @@ public class IFWEnums {
 
     public static final EnumProxy<RecipeBookType> cooking_recipe_enum_proxy = new EnumProxy<>(
             RecipeBookType.class, "ifw:cooking_recipe");
-
-    public static final EnumProxy<RecipeBookCategories> level_recipe_enum_proxy = new EnumProxy<>(
-            RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(IFWItems.raw_adamantium.get())));
-    public static final Supplier<RecipeBookCategories> level_recipe = Suppliers.memoize(level_recipe_enum_proxy::getValue);
 }

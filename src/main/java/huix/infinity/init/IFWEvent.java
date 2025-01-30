@@ -23,6 +23,8 @@ import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
+import net.neoforged.neoforge.registries.datamaps.DataMapsUpdatedEvent;
 
 import java.util.List;
 
@@ -39,7 +41,13 @@ public class IFWEvent {
         bus.addListener(IFWEvent::addFoodInfo);
         bus.addListener(IFWEvent::nonRemoveUnClearEffect);
         bus.addListener(IFWEvent::injectFuel);
+        bus.addListener(IFWEvent::injectItem);
     }
+
+    public static void injectItem(final DataMapsUpdatedEvent event) {
+        IFWLoad.rebuildStackSize();
+    }
+
 
     public static void onBreakSpeed(final PlayerEvent.BreakSpeed event) {
         event.setNewSpeed(event.getOriginalSpeed() + LevelBonusStats.HARVESTING.calcBonusFor(event.getEntity()));

@@ -13,6 +13,7 @@ import huix.infinity.common.world.item.crafting.IFWRecipeType;
 import huix.infinity.common.world.item.group.IFWItemGroup;
 import huix.infinity.common.world.entity.IFWAttributes;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;

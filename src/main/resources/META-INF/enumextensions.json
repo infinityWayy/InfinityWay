@@ -14,7 +14,7 @@
       "name": "IFW_LEVEL_RECIPE",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "huix/infinity/enum_extesion/IFWEnums",
+        "class": "huix/infinity/enum_extesion/IFWRecipeBookCategories",
         "field": "level_recipe_enum_proxy"
       }
     }

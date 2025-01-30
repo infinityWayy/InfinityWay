@@ -31,7 +31,7 @@ public class ReplaceHelper {
 
     public static void stackSize(TagKey<Item> itemTagKey, int size) {
         for (Holder<Item> holder : BuiltInRegistries.ITEM.getTagOrEmpty(itemTagKey)) {
-            holder.value().ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(DataComponents.MAX_STACK_SIZE, size).build());
+            stackSize(holder.value(), size);
         }
     }
 
@@ -41,7 +41,7 @@ public class ReplaceHelper {
 
     public static void itemCookingLevel(TagKey<Item> itemTagKey, int level) {
         for (Holder<Item> holder : BuiltInRegistries.ITEM.getTagOrEmpty(itemTagKey)) {
-            holder.value().ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(IFWDataComponents.ifw_cooking_level.get(), level).build());
+            itemCookingLevel(holder.value(), level);
         }
     }
 }
