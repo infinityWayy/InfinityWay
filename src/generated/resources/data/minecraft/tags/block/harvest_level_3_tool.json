@@ -6,6 +6,7 @@
     "minecraft:emerald_block",
     "minecraft:gold_block",
     "minecraft:ancient_debris",
-    "ifw:adamantium_ore"
+    "ifw:adamantium_ore",
+    "ifw:deepslate_adamantium_ore"
   ]
 }

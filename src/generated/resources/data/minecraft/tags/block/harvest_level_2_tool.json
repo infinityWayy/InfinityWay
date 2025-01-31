@@ -86,6 +86,8 @@
     "minecraft:deepslate_lapis_ore",
     "minecraft:raw_copper_block",
     "minecraft:cut_copper_slab",
-    "minecraft:respawn_anchor"
+    "minecraft:respawn_anchor",
+    "ifw:deepslate_mithril_ore",
+    "ifw:mithril_ore"
   ]
 }

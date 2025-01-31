@@ -266,6 +266,9 @@ public class IFWItemGroup {
             CREATIVE_TABS.register("block_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ifw.block"))
                     .icon(() -> IFWBlocks.adamantium_block_item.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
+                        output.accept(IFWBlocks.copper_anvil.get());
+                        output.accept(IFWBlocks.chipped_copper_anvil.get());
+                        output.accept(IFWBlocks.damaged_copper_anvil.get());
                         output.accept(IFWBlocks.clay_furnace_item.get());
                         output.accept(IFWBlocks.hardened_clay_furnace_item.get());
                         output.accept(IFWBlocks.sandstone_furnace_item.get());

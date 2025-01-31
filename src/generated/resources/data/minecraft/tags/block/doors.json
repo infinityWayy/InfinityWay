@@ -1,5 +1,10 @@
 {
   "values": [
-    "ifw:adamantium_door"
+    "ifw:adamantium_door",
+    "ifw:ancient_metal_door",
+    "ifw:copper_door",
+    "ifw:gold_door",
+    "ifw:mithril_door",
+    "ifw:silver_door"
   ]
 }

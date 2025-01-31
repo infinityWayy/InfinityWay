@@ -27,8 +27,6 @@ public class IFWItemModelProvider extends ItemModelProvider {
         simpleBlockItem(IFWBlocks.ancient_metal_block.get());
         simpleBlockItem(IFWBlocks.adamantium_ore.get());
         simpleBlockItem(IFWBlocks.adamantium_block.get());
-
-
         basicItem(IFWItems.flint_shard.get());
         basicItem(IFWItems.diamond_shard.get());
         basicItem(IFWItems.emerald_shard.get());
@@ -149,7 +147,6 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.golden_battle_axe.get());
         handheldItem(IFWItems.golden_war_hammer.get());
         handheldItem(IFWItems.golden_dagger.get());
-
         //FOOD
         basicItem(IFWItems.salad.get());
         basicItem(IFWItems.milk_bowl.get());
@@ -241,7 +238,6 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.adamantium_chainmail_chestplate.get());
         basicItem(IFWItems.adamantium_chainmail_leggings.get());
         basicItem(IFWItems.adamantium_chainmail_boots.get());
-
         //chain
         basicItem(IFWItems.copper_chain.get());
         basicItem(IFWItems.silver_chain.get());

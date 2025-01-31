@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-29T14:41:19.8248717	Block States: ifw
+// 1.21.1	2025-01-31T16:27:56.4250917	Block States: ifw
 946d1ee0e16e6764047acdb20e22d0390e68eed9 assets/ifw/blockstates/adamantium_bars.json
 5d74aec16c1765c863c3b307aa12c18dbcf03f7a assets/ifw/blockstates/adamantium_block.json
 036c9e415fb102a067f89aa8005a23ced7df8929 assets/ifw/blockstates/adamantium_door.json
@@ -6,9 +6,12 @@
 c243a9512d1ee7e4c938b828b5d29da06e96ea6f assets/ifw/blockstates/ancient_metal_bars.json
 e3106f184717deb5ce69ac2055da170fbd190d15 assets/ifw/blockstates/ancient_metal_block.json
 3f0c3c37a26e592ffd1015438b90262992f07523 assets/ifw/blockstates/ancient_metal_door.json
+00d976a0d8602b6840b3a94f9610830da11ac590 assets/ifw/blockstates/chipped_copper_anvil.json
 341e721b3cf87bf027edfa05ef4594cdb8146007 assets/ifw/blockstates/clay_furnace.json
+dd509f0dbabced318bbd915b1a12bba117352bea assets/ifw/blockstates/copper_anvil.json
 e306ad924c6ce04068778138681c09925ff3200b assets/ifw/blockstates/copper_bars.json
 18f1429a6cd5750b03e3a96eee6f218629c116a4 assets/ifw/blockstates/copper_door.json
+9e70e94d0beec4da47fb403e6c2c05bfab1ae1e5 assets/ifw/blockstates/damaged_copper_anvil.json
 94e1af6f045ef20d7d9b5dffb90ca2eccd14f6f3 assets/ifw/blockstates/deepslate_adamantium_ore.json
 a065eea8e4b25f5ce979cb0eb88fb07cf25b8579 assets/ifw/blockstates/deepslate_mithril_ore.json
 a4388f10ec4caac56dd46c60f3ff4e19d7553612 assets/ifw/blockstates/deepslate_silver_ore.json
@@ -59,8 +62,10 @@ e0360dc8035806498cfff316da2640abce140397 assets/ifw/models/block/ancient_metal_b
 cd88c697843b9214a6b796066addc329088dcecf assets/ifw/models/block/ancient_metal_door_top_left_open.json
 fae732c8caece1cee2e9656e5f4be402d4542d57 assets/ifw/models/block/ancient_metal_door_top_right.json
 dcde7ff722823757ee4e41578652d294b62ce1a1 assets/ifw/models/block/ancient_metal_door_top_right_open.json
+7a6ebf101999d284c7e354fd5a4ff6c4544ff122 assets/ifw/models/block/chipped_copper_anvil_top.json
 90f20fe95e72165df0a846265321585be94f8f2c assets/ifw/models/block/clay_furnace.json
 2afa81433f800dc13dcf2e17ccafffccd9249132 assets/ifw/models/block/clay_furnace_on.json
+353d604f80472cb36f564dead81c3d2055eb3231 assets/ifw/models/block/copper_anvil.json
 85177c32469060e1ae1fb42ebff4f289b8ab2b1d assets/ifw/models/block/copper_bars_noside.json
 4a1ddf24ffc68c7f983ef09833f0f511e7f6f7d5 assets/ifw/models/block/copper_bars_noside_alt.json
 46767ba7223fd980974fcda25805323e6a87087c assets/ifw/models/block/copper_bars_post.json
@@ -74,6 +79,7 @@ b331808630d5e4cd7450f63d2891b48296a7e153 assets/ifw/models/block/copper_door_top
 48739ee35aa8c263ad7cf5e7b7f97924c7096cb0 assets/ifw/models/block/copper_door_top_left_open.json
 cc7ba5baddf26fc1c0c42da6598764b445e27e86 assets/ifw/models/block/copper_door_top_right.json
 9babf672fdcc97c96f38a64526bb7168d52f6c25 assets/ifw/models/block/copper_door_top_right_open.json
+7b81a5b910512400e24e7bc43eba8f7d2fbb3252 assets/ifw/models/block/damaged_copper_anvil_top.json
 3da8146c8f7b0b4a13822da2206fdb40918d245b assets/ifw/models/block/deepslate_adamantium_ore.json
 4d151b4a8c7150b48308e1e59ba954227d921346 assets/ifw/models/block/deepslate_mithril_ore.json
 81715d852fbfbebe1aae619c9b8b05ff08e5650a assets/ifw/models/block/deepslate_silver_ore.json
@@ -133,7 +139,10 @@ fdd230b8049cba81c7135777e485053e4eada9ca assets/ifw/models/block/silver_door_top
 c8d315ac641ffeff0322bf0c68905a4457a2b287 assets/ifw/models/block/silver_ore.json
 8d90ac59e84622ec896c94dcfcb0dfc2483b746e assets/ifw/models/block/stone_furnace.json
 e8fc35f6fc176ae2e6fe4a3e822a7af1979eb30d assets/ifw/models/block/stone_furnace_on.json
+9cec29bc1c009a89f24e2fdc1e3ee95bb2e53396 assets/ifw/models/item/chipped_copper_anvil.json
 257d1c0b901a618f30dbdeab32985a0b11f0cffa assets/ifw/models/item/clay_furnace.json
+e6e335b052a3f2ed7829b21be61554b54d3d04ab assets/ifw/models/item/copper_anvil.json
+20b20886d37298a457c951b86b6a6c579afa0bfd assets/ifw/models/item/damaged_copper_anvil.json
 9f1b1b2e48c86c981c56a4fd1b3fe181265acfa3 assets/ifw/models/item/hardened_clay_furnace.json
 98b3c2da40fa48c1a7cb5a24cc0bf27022d3ff43 assets/ifw/models/item/netherrack_furnace.json
 8d288eebe17b9d3ddced81226e58351b637ee70e assets/ifw/models/item/obsidian_furnace.json

@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ifw:deepslate_mithril_ore"
+          "name": "ifw:raw_mithril"
         }
       ],
       "rolls": 1.0

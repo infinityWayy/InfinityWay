@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ifw:raw_silver"
+          "name": "ifw:damaged_copper_anvil"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "ifw:blocks/silver_ore"
+  "random_sequence": "ifw:blocks/damaged_copper_anvil"
 }

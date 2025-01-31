@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ifw:mithril_ore"
+          "name": "ifw:raw_mithril"
         }
       ],
       "rolls": 1.0

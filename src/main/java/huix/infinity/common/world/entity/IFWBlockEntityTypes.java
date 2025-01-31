@@ -1,6 +1,7 @@
 package huix.infinity.common.world.entity;
 
 import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.block.entity.AnvilBlockEntity;
 import huix.infinity.common.world.block.entity.IFWFurnaceBlockEntity;
 import huix.infinity.common.world.block.entity.LevelFurnaceBlockEntity;
 import huix.infinity.init.InfinityWay;
@@ -25,4 +26,9 @@ public class IFWBlockEntityTypes {
                     , IFWBlocks.clay_furnace.get(), IFWBlocks.hardened_clay_furnace.get(), IFWBlocks.sandstone_furnace.get()
                     , IFWBlocks.stone_furnace.get(), IFWBlocks.obsidian_furnace.get(), IFWBlocks.netherrack_furnace.get())
                             .build(Util.fetchChoiceType(References.BLOCK_ENTITY, "ifw_furnace")));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AnvilBlockEntity>> ifw_anvil = BLOCK_ENTITY_TYPES.register(
+            "ifw_anvil", () -> BlockEntityType.Builder.of(AnvilBlockEntity::new
+                            , IFWBlocks.copper_anvil.get(), IFWBlocks.chipped_copper_anvil.get(), IFWBlocks.damaged_copper_anvil.get())
+                    .build(Util.fetchChoiceType(References.BLOCK_ENTITY, "ifw_anvil")));
 }

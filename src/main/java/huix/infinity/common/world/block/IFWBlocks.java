@@ -1,7 +1,9 @@
 package huix.infinity.common.world.block;
 
+import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.util.DurabilityHelper;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
@@ -19,6 +21,23 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class IFWBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(InfinityWay.MOD_ID);
     public static final DeferredRegister.Items ITEM_BLOCKS = IFWItems.ITEMS;
+
+    public static final DeferredBlock<IFWAnvilBlock> copper_anvil = BLOCKS.registerBlock("copper_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER, 0));
+    public static final DeferredItem<BlockItem> copper_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_anvil", copper_anvil,
+            new Item.Properties().stacksTo(1).durability(DurabilityHelper.getDurability(IFWTiers.COPPER)));
+    public static final DeferredBlock<IFWAnvilBlock> chipped_copper_anvil = BLOCKS.registerBlock("chipped_copper_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER, 1));
+    public static final DeferredItem<BlockItem> chipped_copper_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("chipped_copper_anvil", chipped_copper_anvil,
+            new Item.Properties().stacksTo(1).durability(DurabilityHelper.getDurability(IFWTiers.COPPER)));
+    public static final DeferredBlock<IFWAnvilBlock> damaged_copper_anvil = BLOCKS.registerBlock("damaged_copper_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER, 2));
+    public static final DeferredItem<BlockItem> damaged_copper_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("damaged_copper_anvil", damaged_copper_anvil,
+            new Item.Properties().stacksTo(1).durability(DurabilityHelper.getDurability(IFWTiers.COPPER)));
+
 
     public static final DeferredBlock<Block> adamantium_block = BLOCKS.registerSimpleBlock("adamantium_block",
             BlockBehaviour.Properties.of().mapColor(MapColor.METAL).instrument(NoteBlockInstrument.XYLOPHONE).requiresCorrectToolForDrops()
@@ -63,8 +82,6 @@ public class IFWBlocks {
             block -> new IFWFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(4));
     public static final DeferredItem<BlockItem> netherrack_furnace_item = ITEM_BLOCKS.registerSimpleBlockItem("netherrack_furnace", netherrack_furnace, new Item.Properties().stacksTo(1));
-
-
 
     public static final DeferredBlock<Block> mithril_block = BLOCKS.registerSimpleBlock("mithril_block",
             BlockBehaviour.Properties.of().mapColor(MapColor.METAL).instrument(NoteBlockInstrument.XYLOPHONE).requiresCorrectToolForDrops()

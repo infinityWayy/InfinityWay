@@ -1,24 +1,27 @@
-// 1.21.1	2025-01-30T15:08:57.6768472	Loot Tables
+// 1.21.1	2025-01-31T16:27:56.4300532	Loot Tables
 e83ac5ba844b67d2d69c691887b951b8f7166f9d data/ifw/loot_table/blocks/adamantium_bars.json
 b75574a0827bdf12669b4631f5e8a591ffe3b2db data/ifw/loot_table/blocks/adamantium_block.json
 b7ab973a031782a3653f2f5505b20d10f85d9f39 data/ifw/loot_table/blocks/adamantium_door.json
-fefb2e51e74f9b0e41b7d0d1df92f88abb1c238e data/ifw/loot_table/blocks/adamantium_ore.json
+eedf5609378873dffd1a9f209143da3d1cbaa295 data/ifw/loot_table/blocks/adamantium_ore.json
 e874b9a955e58ca052b8d2ea8dc91d72103f8b52 data/ifw/loot_table/blocks/ancient_metal_bars.json
 5a8c707b43540d4775162840255495a4e8b59686 data/ifw/loot_table/blocks/ancient_metal_block.json
 13a5a58b473f839ab0ad28cb8b42011d5ba8d2b8 data/ifw/loot_table/blocks/ancient_metal_door.json
+ab76c31db379e8e32092207e3eb0aade01fee332 data/ifw/loot_table/blocks/chipped_copper_anvil.json
 c93d81ccf4190ed3836d3f642ba3351d156200a7 data/ifw/loot_table/blocks/clay_furnace.json
+007b80b71013b170411249f98e93c2ac42f406c4 data/ifw/loot_table/blocks/copper_anvil.json
 d2a0e828934ec26ca3dbec1e4380f602c1224ddc data/ifw/loot_table/blocks/copper_bars.json
 af542bc09bc74c7c38666396f46f42742f516e31 data/ifw/loot_table/blocks/copper_door.json
-ca9c99a3212603f9e924118350df095a8ff29dc7 data/ifw/loot_table/blocks/deepslate_adamantium_ore.json
-14a38807a1bd149ed4125a36d72bfa52c134aa41 data/ifw/loot_table/blocks/deepslate_mithril_ore.json
-31408f858bd3ca00f2b95142f3afe1003267b44e data/ifw/loot_table/blocks/deepslate_silver_ore.json
+63dabd7e39c0ef667eff7ac0361d760697a0cf95 data/ifw/loot_table/blocks/damaged_copper_anvil.json
+3046753cb17b2e927b913dbfdd90e7f841f38e08 data/ifw/loot_table/blocks/deepslate_adamantium_ore.json
+02508d01ffe62870f6e6ad3e6e3579635ceda400 data/ifw/loot_table/blocks/deepslate_mithril_ore.json
+b51243d394559a287001c359867d57784b429098 data/ifw/loot_table/blocks/deepslate_silver_ore.json
 809b8708cec911a2c2e744d29b4af8e84f40bf69 data/ifw/loot_table/blocks/gold_bars.json
 7cba7be2019e08f3a633ad62810166f9a9bfedf2 data/ifw/loot_table/blocks/gold_door.json
 6276f376c77e1a9b4bbddae37c03df84b1acd02c data/ifw/loot_table/blocks/hardened_clay_furnace.json
 2eb5895320afe7ee464dcb1dcfb14622a987be50 data/ifw/loot_table/blocks/mithril_bars.json
 fe991b060e2cc12bea52f460c31e216b4d06b0d8 data/ifw/loot_table/blocks/mithril_block.json
 32b21782cfb5780779f16834001c5266bfc7df31 data/ifw/loot_table/blocks/mithril_door.json
-7f70264eb3bb18910d4c2776a54f4e7793c241a1 data/ifw/loot_table/blocks/mithril_ore.json
+00dd5a9db18e98f12af497a0a33715b60b5022aa data/ifw/loot_table/blocks/mithril_ore.json
 3b47c641e1f071fdafa710c50ac70c8ea68f1035 data/ifw/loot_table/blocks/netherrack_furnace.json
 2a243691d081ee77d7ae61631746131877e7ffa2 data/ifw/loot_table/blocks/obsidian_furnace.json
 5055a745cdb7810808f4c6911d54ccb56c1e675e data/ifw/loot_table/blocks/raw_adamantium_block.json
@@ -28,5 +31,5 @@ baa21fe1a891504b2f09febaa4fe9cf3c8645f72 data/ifw/loot_table/blocks/sandstone_fu
 40e3e1dd24ffd8cd4e223a655488b512668e68e6 data/ifw/loot_table/blocks/silver_bars.json
 237bb24485d9adc0cc5f7cf3cd77c8130b9709e4 data/ifw/loot_table/blocks/silver_block.json
 8d2c8fa0b9a1b3f3e456c8442d6ea4f97701118a data/ifw/loot_table/blocks/silver_door.json
-d55993b32390813d728e2fd894f363c8a8685c42 data/ifw/loot_table/blocks/silver_ore.json
+8fb2e8c2bb410912457b1a0d695acc97329712ea data/ifw/loot_table/blocks/silver_ore.json
 30543095b5f0833411fbd0f70081abc410bd6d6c data/ifw/loot_table/blocks/stone_furnace.json
