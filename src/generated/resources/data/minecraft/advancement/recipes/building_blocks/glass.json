@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_smelts_to_glass": {
+    "has_glass_shard": {
       "conditions": {
         "items": [
           {
-            "items": "#minecraft:smelts_to_glass"
+            "items": "ifw:glass_shard"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_smelts_to_glass"
+      "has_glass_shard"
     ]
   ],
   "rewards": {

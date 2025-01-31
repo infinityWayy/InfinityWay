@@ -61,9 +61,13 @@ public class IFWItemGroup {
                 output.accept(IFWItems.mashed_potato.get());
                 output.accept(IFWItems.ice_cream.get());
                 output.accept(IFWItems.orange.get());
+                output.accept(IFWItems.blueberry.get());
+                output.accept(IFWItems.onion.get());
                 output.accept(IFWItems.banana.get());
                 output.accept(IFWItems.cooked_worm.get());
                 output.accept(IFWItems.worm.get());
+                output.accept(IFWItems.flour.get());
+                output.accept(IFWItems.manure.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tool_tab =

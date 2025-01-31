@@ -6,6 +6,7 @@ import huix.infinity.common.core.tag.IFWBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -21,7 +22,7 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(final HolderLookup.@NotNull Provider provider) {
-        tag(IFWBlockTags.HARVEST_LEVEL_0_TOOL).add(Blocks.OAK_LOG);
+        tag(IFWBlockTags.HARVEST_LEVEL_0_TOOL).addTags(BlockTags.LOGS);
         tag(IFWBlockTags.HARVEST_LEVEL_1_TOOL).add(Blocks.STONE, Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.COPPER_ORE
                 , Blocks.DEEPSLATE_COPPER_ORE, Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE);
         tag(IFWBlockTags.HARVEST_LEVEL_2_TOOL).add(
@@ -57,7 +58,7 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_2_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_4_TOOL);
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_2_TOOL)
                 .addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_4_TOOL);
-        tag(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_0_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_1_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_2_TOOL)
+        tag(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_1_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_2_TOOL)
                 .addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_4_TOOL);
 
 

@@ -13,6 +13,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class IFWItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(InfinityWay.MOD_ID);
 
+    public static final DeferredItem<Item> manure =
+            ITEMS.registerSimpleItem("manure", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> flour =
+            ITEMS.registerSimpleItem("flour", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> copper_chain =
             ITEMS.registerSimpleItem("copper_chain", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> silver_chain =
@@ -582,8 +586,12 @@ public class IFWItems {
             ITEMS.registerSimpleItem("orange", new Item.Properties().stacksTo(16).food(IFWFoods.orange));
     public static final DeferredItem<Item> banana =
             ITEMS.registerSimpleItem("banana", new Item.Properties().stacksTo(16).food(IFWFoods.banana));
+    public static final DeferredItem<Item> blueberry =
+            ITEMS.registerSimpleItem("blueberry", new Item.Properties().stacksTo(16).food(IFWFoods.blueberry));
     public static final DeferredItem<Item> cooked_worm =
             ITEMS.registerSimpleItem("cooked_worm", new Item.Properties().stacksTo(16).food(IFWFoods.cooked_worm));
     public static final DeferredItem<Item> worm =
             ITEMS.registerSimpleItem("worm", new Item.Properties().stacksTo(16).food(IFWFoods.worm));
+    public static final DeferredItem<Item> onion =
+            ITEMS.registerSimpleItem("onion", new Item.Properties().stacksTo(16).food(IFWFoods.onion));
 }

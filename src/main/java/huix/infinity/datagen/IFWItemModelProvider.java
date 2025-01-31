@@ -169,9 +169,13 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.mashed_potato.get());
         basicItem(IFWItems.ice_cream.get());
         basicItem(IFWItems.orange.get());
+        basicItem(IFWItems.blueberry.get());
         basicItem(IFWItems.banana.get());
         basicItem(IFWItems.cooked_worm.get());
         basicItem(IFWItems.worm.get());
+        basicItem(IFWItems.onion.get());
+        basicItem(IFWItems.flour.get());
+        basicItem(IFWItems.manure.get());
         //armor
         basicItem(IFWItems.copper_helmet.get());
         basicItem(IFWItems.copper_chestplate.get());

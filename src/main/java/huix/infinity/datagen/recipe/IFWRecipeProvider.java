@@ -25,6 +25,7 @@ public class IFWRecipeProvider extends RecipeProvider {
     protected void buildRecipes(final @NotNull RecipeOutput recipeOutput) {
         cookingRecipe(recipeOutput);
         foodRecipe(recipeOutput);
+        rebuildRecipe(recipeOutput);
 
         {
             armorRecipe(recipeOutput, IFWItems.adamantium_helmet, IFWItems.adamantium_chestplate, IFWItems.adamantium_leggings,
@@ -119,6 +120,12 @@ public class IFWRecipeProvider extends RecipeProvider {
             metalToolRecipe(recipeOutput, IFWItems.iron_shears, IFWItems.iron_shovel, IFWItems.iron_hoe, IFWItems.iron_sword
                     , IFWItems.iron_pickaxe, IFWItems.iron_axe, IFWItems.iron_scythe, IFWItems.iron_mattock, IFWItems.iron_battle_axe
                     , IFWItems.iron_war_hammer, IFWItems.iron_dagger, Items.IRON_INGOT);
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWItems.iron_chain)
+                    .pattern(" Y ")
+                    .pattern("Y Y")
+                    .pattern(" Y ")
+                    .define('Y', Items.IRON_NUGGET)
+                    .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET)).save(recipeOutput);
             armorRecipe(recipeOutput, IFWItems.rusted_iron_chainmail_helmet, IFWItems.rusted_iron_chainmail_chestplate,
                     IFWItems.rusted_iron_chainmail_leggings, IFWItems.rusted_iron_chainmail_boots, IFWItems.rusted_iron_chain);
             armorRecipe(recipeOutput, IFWItems.golden_helmet, IFWItems.golden_chestplate, IFWItems.golden_leggings,
@@ -132,8 +139,8 @@ public class IFWRecipeProvider extends RecipeProvider {
                     .pattern(" Y ")
                     .pattern("Y Y")
                     .pattern(" Y ")
-                    .define('Y', Items.IRON_NUGGET)
-                    .unlockedBy("has_golden_nugget", has(Items.IRON_NUGGET)).save(recipeOutput);
+                    .define('Y', Items.GOLD_NUGGET)
+                    .unlockedBy("has_golden_nugget", has(Items.GOLD_NUGGET)).save(recipeOutput);
             ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.gold_bars, 6)
                     .requires(Items.GOLD_INGOT, 6)
                     .unlockedBy("has_golden_ingot", has(Items.GOLD_INGOT)).save(recipeOutput);
@@ -250,33 +257,221 @@ public class IFWRecipeProvider extends RecipeProvider {
                     .save(recipeOutput);
         }
     }
-//        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.raw_adamantium_block, 1)
-//            .requires(IFWItems.raw_adamantium, 9)
-//                .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium)).save(recipeOutput);
+    private void rebuildRecipe(RecipeOutput recipeOutput) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWItems.sinew, 2)
+                .requires(Items.LEATHER, 1)
+                .unlockedBy("has_leather", has(Items.LEATHER)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.DIAMOND, 1)
+                .requires(IFWItems.diamond_shard, 9)
+                .unlockedBy("has_diamond_shard", has(IFWItems.diamond_shard)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.EMERALD, 1)
+                .requires(IFWItems.emerald_shard, 9)
+                .unlockedBy("has_emerald_shard", has(IFWItems.emerald_shard)).save(recipeOutput);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.QUARTZ, 1)
+//                .requires(IFWItems.quartz_shard, 9)
+//                .unlockedBy("has_quartz_shard", has(IFWItems.quartz_shard)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.FLINT, 1)
+                .requires(IFWItems.flint_shard, 4)
+                .unlockedBy("has_flint_shard", has(IFWItems.flint_shard)).save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWBlocks.clay_furnace_item)
+                .pattern("YY")
+                .pattern("YY")
+                .define('Y', Items.CLAY)
+                .unlockedBy("has_clay", has(Items.CLAY)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWBlocks.hardened_clay_furnace_item)
+                .pattern("YY")
+                .pattern("YY")
+                .define('Y', Items.TERRACOTTA)
+                .unlockedBy("has_terracotta", has(Items.TERRACOTTA)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWBlocks.sandstone_furnace_item)
+                .pattern("YYY")
+                .pattern("Y Y")
+                .pattern("YYY")
+                .define('Y', Items.SANDSTONE)
+                .unlockedBy("has_sandstone", has(Items.SANDSTONE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWBlocks.stone_furnace)
+                .pattern("YYY")
+                .pattern("Y Y")
+                .pattern("YYY")
+                .define('Y', ItemTags.STONE_CRAFTING_MATERIALS)
+                .unlockedBy("has_cobblestone", has(ItemTags.STONE_CRAFTING_MATERIALS)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWBlocks.obsidian_furnace)
+                .pattern("YYY")
+                .pattern("Y Y")
+                .pattern("YYY")
+                .define('Y', Items.OBSIDIAN)
+                .unlockedBy("has_obsidian", has(Items.OBSIDIAN)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWBlocks.netherrack_furnace)
+                .pattern("YYY")
+                .pattern("Y Y")
+                .pattern("YYY")
+                .define('Y', Items.NETHERRACK)
+                .unlockedBy("has_netherrack", has(Items.NETHERRACK)).save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.COMPASS)
+                .pattern("YYY")
+                .pattern("YXY")
+                .pattern("YYY")
+                .define('X', Items.REDSTONE)
+                .define('Y', Items.IRON_NUGGET)
+                .unlockedBy("has_redstone", has(Items.REDSTONE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CLOCK)
+                .pattern("YYY")
+                .pattern("YXY")
+                .pattern("YYY")
+                .define('X', Items.REDSTONE)
+                .define('Y', Items.GOLD_NUGGET)
+                .unlockedBy("has_redstone", has(Items.REDSTONE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.FLINT_AND_STEEL)
+                .pattern("Y ")
+                .pattern(" X")
+                .define('X', Items.FLINT)
+                .define('Y', Items.IRON_NUGGET)
+                .unlockedBy("has_flint", has(Items.FLINT)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.GLASS, 1)
+                .requires(IFWItems.glass_shard, 9)
+                .unlockedBy("has_glass_shard", has(IFWItems.glass_shard)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.GLASS_PANE, 9)
+                .requires(Blocks.GLASS, 1)
+                .unlockedBy("has_glass", has(Blocks.GLASS)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE, 2)
+                .requires(Blocks.COBBLESTONE, 4)
+                .unlockedBy("has_cobblestone", has(Blocks.COBBLESTONE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BRICKS, 2)
+                .pattern("YYY")
+                .pattern("YXY")
+                .pattern("YYY")
+                .define('X', Items.SAND)
+                .define('Y', Items.BRICK)
+                .unlockedBy("has_brick", has(Items.BRICK)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.OBSIDIAN, 1)
+                .requires(IFWItems.obsidian_shard, 9)
+                .unlockedBy("has_obsidian_shard", has(IFWItems.obsidian_shard)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.LADDER, 2)
+                .pattern("X X")
+                .pattern("XXX")
+                .pattern("X X")
+                .define('X', Items.STICK)
+                .unlockedBy("has_stick", has(Items.STICK)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.NETHER_BRICKS, 2)
+                .pattern("YYY")
+                .pattern("YXY")
+                .pattern("YYY")
+                .define('Y', Items.NETHER_BRICK)
+                .define('X', Items.SOUL_SAND)
+                .unlockedBy("has_brick", has(Items.NETHER_BRICK)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Items.SADDLE)
+                .pattern("YYY")
+                .pattern("Y Y")
+                .pattern("X X")
+                .define('Y', Items.LEATHER)
+                .define('X', Items.IRON_NUGGET)
+                .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET)).save(recipeOutput);
+    }
     private void foodRecipe(RecipeOutput recipeOutput) {
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.cooked_worm), RecipeCategory.FOOD, IFWItems.worm,
+                        1.0F, 200, 1)
+                .unlockedBy("has_worm", has(IFWItems.worm)).save(recipeOutput, "worm_smelting");
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.salad, 1)
             .requires(Items.BOWL, 1)
             .requires(Items.DANDELION, 3)
             .unlockedBy("has_bowl", has(Items.BOWL)).save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.salad, 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.cereal, 1)
+                .requires(IFWItems.milk_bowl, 1)
+                .requires(Items.WHEAT, 1)
+                .requires(Items.SUGAR, 1)
+                .unlockedBy("has_milk_bowl", has(IFWItems.milk_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.chocolate, 1)
+                .requires(Items.COCOA_BEANS, 1)
+                .requires(Items.SUGAR, 1)
+                .unlockedBy("has_cocoa_beans", has(Items.COCOA_BEANS)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.pumpkin_soup, 1)
+                .requires(IFWItems.water_bowl, 1)
+                .requires(Items.PUMPKIN, 1)
+                .unlockedBy("has_water_bowl", has(IFWItems.water_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.mushroom_soup_cream, 1)
+                .requires(IFWItems.milk_bowl, 1)
+                .requires(Items.BROWN_MUSHROOM, 2)
+                .unlockedBy("has_milk_bowl", has(IFWItems.milk_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.vegetable_soup, 1)
+                .requires(IFWItems.water_bowl, 1)
+                .requires(Items.POTATO, 1)
+                .requires(IFWItems.onion, 1)
+                .requires(Items.CARROT, 1)
+                .unlockedBy("has_water_bowl", has(IFWItems.water_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.vegetable_soup_cream, 1)
+                .requires(IFWItems.milk_bowl, 1)
+                .requires(Items.POTATO, 1)
+                .requires(IFWItems.onion, 1)
+                .requires(Items.CARROT, 1)
+                .unlockedBy("has_milk_bowl", has(IFWItems.milk_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.chicken_soup, 1)
+                .requires(IFWItems.water_bowl, 1)
+                .requires(Items.COOKED_CHICKEN, 1)
+                .requires(IFWItems.onion, 1)
+                .requires(Items.CARROT, 1)
+                .unlockedBy("has_water_bowl", has(IFWItems.water_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.beef_stew, 1)
+                .requires(IFWItems.water_bowl, 1)
+                .requires(Items.COOKED_BEEF, 1)
+                .requires(Items.POTATO, 1)
+                .requires(Items.BROWN_MUSHROOM, 1)
+                .unlockedBy("has_water_bowl", has(IFWItems.water_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.sorbet, 1)
                 .requires(Items.BOWL, 1)
-                .requires(Items.DANDELION, 3)
+                .requires(Items.SNOWBALL, 1)
+                .requires(Items.SUGAR, 1)
+                .requires(IFWItems.orange, 1)
                 .unlockedBy("has_bowl", has(Items.BOWL)).save(recipeOutput);
-
-
-//        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.salad)
-//                .define('X', ItemTags.PLANKS)
-//                .define('Y', Items.STICK)
-//                .pattern("X")
-//                .pattern("X")
-//                .pattern("Y")
-//                .unlockedBy("has_bowl", has(Items.BOWL))
-//                .save(recipeOutput);
-
-
-
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.cheese, 1)
+                .requires(IFWItems.milk_bowl, 4)
+                .unlockedBy("has_milk_bowl", has(IFWItems.milk_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.mashed_potato, 1)
+                .requires(IFWItems.milk_bowl, 1)
+                .requires(Items.BAKED_POTATO, 1)
+                .requires(IFWItems.cheese, 1)
+                .unlockedBy("has_milk_bowl", has(IFWItems.milk_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.ice_cream, 1)
+                .requires(Items.BOWL, 1)
+                .requires(Items.SNOWBALL, 1)
+                .requires(Items.SUGAR, 1)
+                .requires(Items.COCOA_BEANS, 1)
+                .unlockedBy("has_bowl", has(Items.BOWL)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.dough, 1)
+                .requires(IFWItems.water_bowl, 1)
+                .requires(IFWItems.flour, 1)
+                .unlockedBy("has_water_bowl", has(IFWItems.water_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.flour, 1)
+                .requires(Items.WHEAT, 3)
+                .unlockedBy("has_wheat", has(Items.WHEAT)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.MUSHROOM_STEW, 1)
+                .requires(IFWItems.water_bowl, 1)
+                .requires(Items.BROWN_MUSHROOM, 1)
+                .requires(Items.RED_MUSHROOM, 1)
+                .unlockedBy("has_water_bowl", has(IFWItems.water_bowl)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Items.GOLDEN_APPLE)
+                .define('X', Items.APPLE)
+                .define('Z', Items.GOLD_NUGGET)
+                .pattern("ZZZ")
+                .pattern("ZXZ")
+                .pattern("ZZZ")
+                .unlockedBy("has_apple", has(Items.APPLE))
+                .save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.PUMPKIN_PIE, 1)
+                .requires(IFWItems.milk_bowl, 1)
+                .requires(Items.EGG, 1)
+                .requires(Items.SUGAR, 1)
+                .requires(IFWItems.flour, 1)
+                .unlockedBy("has_pumpkin", has(Items.PUMPKIN)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.CAKE, 1)
+                .requires(Items.PUMPKIN, 1)
+                .requires(Items.EGG, 1)
+                .requires(Items.SUGAR, 1)
+                .requires(IFWItems.flour, 1)
+                .unlockedBy("has_milk_bowl", has(IFWItems.milk_bowl)).save(recipeOutput);
     }
-
     private void metalToolRecipe(RecipeOutput recipeOutput, ItemLike shears, ItemLike shovel, ItemLike hoe, ItemLike sword
             , ItemLike pickaxe, ItemLike axe, ItemLike scythe, ItemLike mattock, ItemLike battle_axe, ItemLike war_hammer, ItemLike dagger, ItemLike material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, shears)
@@ -419,6 +614,9 @@ public class IFWRecipeProvider extends RecipeProvider {
                         100.0F, 200, 4)
                 .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium))
                 .save(recipeOutput, "raw_adamantium_smelting");
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.dough), RecipeCategory.FOOD, Items.BREAD,
+                        1.0F, 200, 1)
+                .unlockedBy("has_dough", has(IFWItems.dough)).save(recipeOutput, "dough_smelting");
 
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.POTATO), RecipeCategory.FOOD, Items.BAKED_POTATO, 0.35F, 200)
                 .unlockedBy("has_potato", has(Items.POTATO))
@@ -455,9 +653,6 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .save(recipeOutput);
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RABBIT), RecipeCategory.FOOD, Items.COOKED_RABBIT, 0.35F, 200)
                 .unlockedBy("has_rabbit", has(Items.RABBIT))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(ItemTags.SMELTS_TO_GLASS), RecipeCategory.BUILDING_BLOCKS, Blocks.GLASS.asItem(), 0.1F, 200)
-                .unlockedBy("has_smelts_to_glass", has(ItemTags.SMELTS_TO_GLASS))
                 .save(recipeOutput);
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.SEA_PICKLE), RecipeCategory.MISC, Items.LIME_DYE, 0.1F, 200)
                 .unlockedBy("has_sea_pickle", has(Blocks.SEA_PICKLE))
@@ -530,9 +725,6 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .save(recipeOutput);
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.WET_SPONGE), RecipeCategory.BUILDING_BLOCKS, Blocks.SPONGE.asItem(), 0.15F, 200)
                 .unlockedBy("has_wet_sponge", has(Blocks.WET_SPONGE))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.COBBLESTONE), RecipeCategory.BUILDING_BLOCKS, Blocks.STONE.asItem(), 0.1F, 200)
-                .unlockedBy("has_cobblestone", has(Blocks.COBBLESTONE))
                 .save(recipeOutput);
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.STONE), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_STONE.asItem(), 0.1F, 200)
                 .unlockedBy("has_stone", has(Blocks.STONE))

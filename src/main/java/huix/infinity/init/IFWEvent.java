@@ -5,6 +5,7 @@ import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.food.IFWFoodProperties;
+import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
@@ -121,6 +122,8 @@ public class IFWEvent {
         if (event.getItemStack().is(Items.LAVA_BUCKET))
             event.setBurnTime(3200);
         if (event.getItemStack().is(ItemTags.ARROWS))
+            event.setBurnTime(100);
+        if (event.getItemStack().is(IFWItems.manure))
             event.setBurnTime(100);
     }
 

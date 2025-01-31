@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "ifw:obsidian_shard"
+    },
+    {
+      "item": "ifw:obsidian_shard"
+    },
+    {
+      "item": "ifw:obsidian_shard"
+    },
+    {
+      "item": "ifw:obsidian_shard"
+    },
+    {
+      "item": "ifw:obsidian_shard"
+    },
+    {
+      "item": "ifw:obsidian_shard"
+    },
+    {
+      "item": "ifw:obsidian_shard"
+    },
+    {
+      "item": "ifw:obsidian_shard"
+    },
+    {
+      "item": "ifw:obsidian_shard"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:obsidian"
+  }
+}

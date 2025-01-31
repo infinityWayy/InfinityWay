@@ -90,68 +90,47 @@ public class IFWLoad {
 
     public static void rebuildStackSize() {
         ReplaceHelper.stackSize(IFWItemTags.string, StackSizeHelper.ingot);
-
-        //misc
         ReplaceHelper.stackSize(Items.BOOK, 16);
-        //ingot
         ReplaceHelper.stackSize(Tags.Items.INGOTS, StackSizeHelper.ingot);
-//        ReplaceHelper.stackSize(Items.IRON_INGOT, StackSizeHelper.ingot);
-//        ReplaceHelper.stackSize(Items.GOLD_INGOT, StackSizeHelper.ingot);
-//        ReplaceHelper.stackSize(Items.COPPER_INGOT, StackSizeHelper.ingot);
-//        ReplaceHelper.stackSize(Items.NETHERITE_INGOT, StackSizeHelper.ingot);
-        //slab
-        ReplaceHelper.stackSize(Items.END_STONE_BRICK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.SANDSTONE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.SMOOTH_QUARTZ_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.ACACIA_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.ANDESITE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.SMOOTH_RED_SANDSTONE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.SMOOTH_STONE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.BAMBOO_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.SPRUCE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.BLACKSTONE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.BRICK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.BAMBOO_MOSAIC_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.CHERRY_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.COBBLED_DEEPSLATE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.COBBLESTONE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.CRIMSON_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.CUT_COPPER_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.CUT_RED_SANDSTONE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.CUT_STANDSTONE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.DARK_OAK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.DARK_PRISMARINE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.DEEPSLATE_TILE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.DIORITE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.EXPOSED_CUT_COPPER_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.GRANITE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.JUNGLE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.MANGROVE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.MOSSY_COBBLESTONE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.MOSSY_STONE_BRICK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.MUD_BRICK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.NETHER_BRICK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.OAK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.OXIDIZED_CUT_COPPER_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.PETRIFIED_OAK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.POLISHED_BLACKSTONE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.POLISHED_DEEPSLATE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.POLISHED_DIORITE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.POLISHED_GRANITE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.POLISHED_TUFF_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.PRISMARINE_BRICK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.PRISMARINE_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.TUFF_BRICK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.TUFF_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.WARPED_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.WAXED_CUT_COPPER_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.WAXED_OXIDIZED_CUT_COPPER_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.WAXED_EXPOSED_CUT_COPPER_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.WAXED_WEATHERED_CUT_COPPER_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.WEATHERED_CUT_COPPER_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.CRACKED_DEEPSLATE_BRICKS, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.DEEPSLATE_BRICK_SLAB, StackSizeHelper.slab);
-        ReplaceHelper.stackSize(Items.STONE_SLAB, StackSizeHelper.slab);
+        ReplaceHelper.stackSize(ItemTags.ARROWS, 16);
+
+        ReplaceHelper.stackSize(ItemTags.STONE_CRAFTING_MATERIALS, 4);
+
+        ReplaceHelper.stackSize(ItemTags.WOOL, 8);
+        ReplaceHelper.stackSize(ItemTags.PLANKS, 8);
+        ReplaceHelper.stackSize(ItemTags.STONE_BRICKS, 4);
+        ReplaceHelper.stackSize(ItemTags.BUTTONS, 16);
+        ReplaceHelper.stackSize(ItemTags.WOOL_CARPETS, 16);
+        ReplaceHelper.stackSize(ItemTags.WOODEN_DOORS, 1);
+        ReplaceHelper.stackSize(ItemTags.WOODEN_STAIRS, 8);
+        ReplaceHelper.stackSize(ItemTags.WOODEN_SLABS, 8);
+        ReplaceHelper.stackSize(ItemTags.WOODEN_FENCES, 8);
+        ReplaceHelper.stackSize(ItemTags.FENCE_GATES, 8);
+        ReplaceHelper.stackSize(ItemTags.WOODEN_PRESSURE_PLATES, 16);
+
+        ReplaceHelper.stackSize(ItemTags.WOODEN_TRAPDOORS, 8);
+        ReplaceHelper.stackSize(ItemTags.DOORS, 1);
+        ReplaceHelper.stackSize(ItemTags.SAPLINGS, 1);
+        ReplaceHelper.stackSize(ItemTags.WOOL_CARPETS, 16);
+        ReplaceHelper.stackSize(ItemTags.LOGS_THAT_BURN, 4);
+        ReplaceHelper.stackSize(ItemTags.LOGS, 4);
+        ReplaceHelper.stackSize(ItemTags.CRIMSON_STEMS, 8);
+        ReplaceHelper.stackSize(ItemTags.WARPED_STEMS, 8);
+        ReplaceHelper.stackSize(ItemTags.BAMBOO_BLOCKS, 4);
+        ReplaceHelper.stackSize(ItemTags.WART_BLOCKS, 4);
+        ReplaceHelper.stackSize(ItemTags.STAIRS, 8);
+        ReplaceHelper.stackSize(ItemTags.SLABS, 8);
+        ReplaceHelper.stackSize(ItemTags.WALLS, 8);
+        ReplaceHelper.stackSize(ItemTags.WART_BLOCKS, 4);
+
+        ReplaceHelper.stackSize(ItemTags.ANVIL, 1);
+        ReplaceHelper.stackSize(ItemTags.SMALL_FLOWERS, 32);
+        ReplaceHelper.stackSize(ItemTags.TALL_FLOWERS, 16);
+        ReplaceHelper.stackSize(ItemTags.MEAT, 16);
+        ReplaceHelper.stackSize(ItemTags.STAIRS, 8);
+        ReplaceHelper.stackSize(ItemTags.SLABS, 8);
+        ReplaceHelper.stackSize(ItemTags.WALLS, 8);
+        ReplaceHelper.stackSize(ItemTags.WART_BLOCKS, 4);
         //glass_pane
         ReplaceHelper.stackSize(Items.LIME_STAINED_GLASS_PANE, StackSizeHelper.glass_pane);
         ReplaceHelper.stackSize(Items.BLACK_STAINED_GLASS_PANE, StackSizeHelper.glass_pane);
@@ -196,7 +175,7 @@ public class IFWLoad {
         ReplaceHelper.foodOverride(Items.PUFFERFISH, RebuildFoods.PUFFERFISH);
         ReplaceHelper.foodAdd(Items.COOKED_COD, IFWFoods.cooked_cod);
         ReplaceHelper.foodOverride(Items.COOKED_SALMON, RebuildFoods.COOKED_SALMON);
-        ReplaceHelper.foodAdd(Items.COOKED_SALMON, IFWFoods.salmon);
+        ReplaceHelper.foodAdd(Items.COOKED_SALMON, IFWFoods.cooked_salmon);
         ReplaceHelper.foodOverride(Items.COOKIE, RebuildFoods.COOKIE);
         ReplaceHelper.foodAdd(Items.COOKIE, IFWFoods.cookie);
         ReplaceHelper.foodOverride(Items.MELON_SLICE, RebuildFoods.MELON_SLICE);
@@ -209,7 +188,7 @@ public class IFWLoad {
         ReplaceHelper.foodAdd(Items.COOKED_BEEF, IFWFoods.cooked_beef);
         ReplaceHelper.foodOverride(Items.CHICKEN, RebuildFoods.CHICKEN);
         ReplaceHelper.foodAdd(Items.CHICKEN, IFWFoods.chicken);
-        ReplaceHelper.foodAdd(Items.COOKED_CHICKEN, IFWFoods.chicken);
+        ReplaceHelper.foodAdd(Items.COOKED_CHICKEN, IFWFoods.cooked_chicken);
         ReplaceHelper.foodOverride(Items.ROTTEN_FLESH, RebuildFoods.ROTTEN_FLESH);
         ReplaceHelper.foodAdd(Items.ROTTEN_FLESH, IFWFoods.rotten_flesh);
         ReplaceHelper.foodOverride(Items.SPIDER_EYE, RebuildFoods.SPIDER_EYE);
@@ -277,7 +256,9 @@ public class IFWLoad {
         ReplaceHelper.foodAdd(IFWItems.ice_cream.get(), IFWFoods.ifw_ice_cream);
         ReplaceHelper.foodAdd(IFWItems.orange.get(), IFWFoods.ifw_orange);
         ReplaceHelper.foodAdd(IFWItems.banana.get(), IFWFoods.ifw_banana);
+        ReplaceHelper.foodAdd(IFWItems.blueberry.get(), IFWFoods.ifw_blueberry);
         ReplaceHelper.foodAdd(IFWItems.cooked_worm.get(), IFWFoods.ifw_cooked_worm);
         ReplaceHelper.foodAdd(IFWItems.worm.get(), IFWFoods.ifw_worm);
+        ReplaceHelper.foodAdd(IFWItems.onion.get(), IFWFoods.ifw_onion);
     }
 }
