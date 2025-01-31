@@ -1,4 +1,4 @@
-package huix.infinity.datagen.loot;
+package huix.infinity.common.world.loot;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

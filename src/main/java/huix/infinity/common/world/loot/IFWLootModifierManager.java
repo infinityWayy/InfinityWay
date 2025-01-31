@@ -1,4 +1,4 @@
-package huix.infinity.datagen.loot;
+package huix.infinity.common.world.loot;
 
 import com.mojang.serialization.MapCodec;
 import huix.infinity.init.InfinityWay;
@@ -16,7 +16,4 @@ public class IFWLootModifierManager {
     public static final Supplier<MapCodec<JungleLeavesLootModifier>> JUNGLE_LEAVES_LOOT_MODIFIER =
             GLOBAL_LOOT_MODIFIER_SERIALIZERS.register("jungle_leaves_drop", () -> JungleLeavesLootModifier.CODEC);
 
-    public static void register(IEventBus eventBus) {
-        GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(eventBus);
-    }
 }

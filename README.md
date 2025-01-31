@@ -2,7 +2,8 @@
 Infinity Way
 =======
 
-please runData before runClient
+about......
 
 ### About
-* Resource is from [ysesiq](https://github.com/ysesiq)
+* Resource from [ysesiq](https://github.com/ysesiq)
+* Resource from [YF101](https://github.com/YF101)
