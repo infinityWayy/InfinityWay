@@ -61,9 +61,13 @@ public class IFWItemGroup {
                 output.accept(IFWItems.mashed_potato.get());
                 output.accept(IFWItems.ice_cream.get());
                 output.accept(IFWItems.orange.get());
+                output.accept(IFWItems.blueberry.get());
+                output.accept(IFWItems.onion.get());
                 output.accept(IFWItems.banana.get());
                 output.accept(IFWItems.cooked_worm.get());
                 output.accept(IFWItems.worm.get());
+                output.accept(IFWItems.flour.get());
+                output.accept(IFWItems.manure.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tool_tab =
@@ -262,6 +266,9 @@ public class IFWItemGroup {
             CREATIVE_TABS.register("block_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ifw.block"))
                     .icon(() -> IFWBlocks.adamantium_block_item.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
+                        output.accept(IFWBlocks.copper_anvil.get());
+                        output.accept(IFWBlocks.chipped_copper_anvil.get());
+                        output.accept(IFWBlocks.damaged_copper_anvil.get());
                         output.accept(IFWBlocks.clay_furnace_item.get());
                         output.accept(IFWBlocks.hardened_clay_furnace_item.get());
                         output.accept(IFWBlocks.sandstone_furnace_item.get());

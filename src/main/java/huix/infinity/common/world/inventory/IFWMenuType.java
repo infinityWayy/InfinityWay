@@ -13,4 +13,7 @@ public class IFWMenuType {
 
     public static final DeferredHolder<MenuType<?>, MenuType<IFWFurnaceMenu>> ifw_furnace_menu = MENUS.register(
             "ifw_furnace_menu", () -> new MenuType<>(IFWFurnaceMenu::new, FeatureFlags.VANILLA_SET));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<IFWAnvilMenu>> ifw_anvil_menu = MENUS.register(
+            "ifw_anvil_menu", () -> new MenuType<>(IFWAnvilMenu::new, FeatureFlags.VANILLA_SET));
 }

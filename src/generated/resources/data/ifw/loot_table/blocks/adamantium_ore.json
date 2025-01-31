@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ifw:adamantium_ore"
+          "name": "ifw:raw_adamantium"
         }
       ],
       "rolls": 1.0

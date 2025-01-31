@@ -1,13 +1,14 @@
-// 1.21.1	2024-12-20T12:20:05.3612899	Tags for minecraft:block mod id ifw
-431a024b6cd1c8210fd861dbe3b73bf72d744e29 data/minecraft/tags/block/doors.json
-c7b088896d30807f2fb9929e1bfc274248e98d0a data/minecraft/tags/block/harvest_level_0_tool.json
-be55a2bf6d7f7c38fa1d28bed1e6f3fb7975a269 data/minecraft/tags/block/harvest_level_1_tool.json
-81e58958d219b25cef7f1f797459c8d93ac7fc13 data/minecraft/tags/block/harvest_level_2_tool.json
-3e0387c27a76ade63639ac881f46a253156f6463 data/minecraft/tags/block/harvest_level_3_tool.json
-54217ed75f4503bd3e4461cef72f1d817a2758fa data/minecraft/tags/block/harvest_level_4_tool.json
-a0a4487a6d80868bb75d506463d9685679da7a5d data/minecraft/tags/block/incorrect_for_level_0_tool.json
+// 1.21.1	2025-01-31T16:27:56.438898	Tags for minecraft:block mod id ifw
+135c338d4e90db4d3d07e2f281bb46d37795d1d3 data/minecraft/tags/block/anvil.json
+acf4e3ca7c3b0e94b6ea6bbf061ea843d1250c97 data/minecraft/tags/block/doors.json
+b147fcff5c0b4d72df1cb7809b063b2562180832 data/minecraft/tags/block/harvest_level_0_tool.json
+7d3e39787ca0ec017e53abe718814453f9da57c3 data/minecraft/tags/block/harvest_level_1_tool.json
+dacf197626721e17696a4107e87886ed886c20f9 data/minecraft/tags/block/harvest_level_2_tool.json
+f2bbfec2bf36a37f8d8a2aa71ef39c34e46b09aa data/minecraft/tags/block/harvest_level_3_tool.json
+6e00b6b6198940ee408244e3249c5b979c3e3d9d data/minecraft/tags/block/harvest_level_4_tool.json
+ccb9467ef80c45c0c5c56759a5a78b3177be8d19 data/minecraft/tags/block/incorrect_for_level_0_tool.json
 718a575b2b27841189cd149cb6378eff2ca30ae4 data/minecraft/tags/block/incorrect_for_level_1_tool.json
 708b4caa5c19b246a57d1bcbadc6d37ba6be568a data/minecraft/tags/block/incorrect_for_level_2_tool.json
 eabbbe1f65f580f77513deceab7ccbd9afc1aed7 data/minecraft/tags/block/incorrect_for_level_3_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/incorrect_for_level_4_tool.json
-88ff67cd2af5ffe26fc3c7351b5a8ee9f8ebc077 data/minecraft/tags/block/mineable/pickaxe.json
+431a024b6cd1c8210fd861dbe3b73bf72d744e29 data/minecraft/tags/block/mineable/pickaxe.json

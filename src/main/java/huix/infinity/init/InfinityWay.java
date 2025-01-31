@@ -36,8 +36,9 @@ public final class InfinityWay {
         IFWItemGroup.CREATIVE_TABS.register(bus);
         IFWAttributes.ATTRIBUTES.register(bus);
         IFWMobEffects.MOB_EFFECTS.register(bus);
-        IFWItems.ITEMS.register(bus);
         IFWBlocks.BLOCKS.register(bus);
+
+        IFWItems.ITEMS.register(bus);
         IFWLootModifierManager.register(bus);
 
         IFWEvent.init();

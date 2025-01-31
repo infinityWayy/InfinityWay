@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ifw:silver_ore"
+          "name": "ifw:raw_silver"
         }
       ],
       "rolls": 1.0

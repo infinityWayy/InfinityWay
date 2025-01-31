@@ -34,21 +34,9 @@ public class ItemsInjected {
         return new ArmorItem(IFWArmorMaterials.leather, ArmorItem.Type.BOOTS, (new Item.Properties()).durability(ArmorItem.Type.BOOTS.getDurability(1)));
     }
 
-//    @Redirect(at = @At(value = "NEW", target = "()Lnet/minecraft/world/item/Item$Properties;")
-//            , method = "registerBlock(Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/item/Item;")
-//    private static Item.Properties ifw_blockStackSize_0() {
-//        return new Item.Properties().stacksTo(4);
-//    }
-//
-//    @Redirect(at = @At(value = "NEW", target = "()Lnet/minecraft/world/item/Item$Properties;")
-//            , method = "registerBlock(Lnet/minecraft/world/level/block/Block;Ljava/util/function/UnaryOperator;)Lnet/minecraft/world/item/Item;")
-//    private static Item.Properties ifw_blockStackSize_1() {
-//        return new Item.Properties().stacksTo(4);
-//    }
-//
-//    @Redirect(at = @At(value = "NEW", target = "()Lnet/minecraft/world/item/Item$Properties;")
-//            , method = "registerBlock(Lnet/minecraft/world/level/block/Block;[Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/item/Item;")
-//    private static Item.Properties ifw_blockStackSize_2() {
-//        return new Item.Properties().stacksTo(4);
+//    @Redirect(at = @At(value = "INVOKE", target = "item"
+//            , ordinal = 10), method = "<clinit>")
+//    private static ArmorItem ifw_rebuildDiamond(Holder<ArmorMaterials> material, ArmorItem.Type type, Item.Properties properties) {
+//        return new ArmorItem(IFWArmorMaterials.leather, ArmorItem.Type.HELMET, (new Item.Properties()).durability(ArmorItem.Type.HELMET.getDurability(1)));
 //    }
 }

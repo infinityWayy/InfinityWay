@@ -11,6 +11,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 import java.util.Map;
 import java.util.Optional;
@@ -32,6 +33,12 @@ public class ReplaceHelper {
     public static void stackSize(TagKey<Item> itemTagKey, int size) {
         for (Holder<Item> holder : BuiltInRegistries.ITEM.getTagOrEmpty(itemTagKey)) {
             stackSize(holder.value(), size);
+        }
+    }
+
+    public static void stackSizeByBlock(TagKey<Block> blockTagKey, int size) {
+        for (Holder<Block> holder : BuiltInRegistries.BLOCK.getTagOrEmpty(blockTagKey)) {
+            stackSize(holder.value().asItem(), size);
         }
     }
 

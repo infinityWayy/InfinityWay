@@ -2,6 +2,7 @@ package huix.infinity.common.world.item;
 
 import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.core.tag.IFWBlockTags;
+import huix.infinity.util.DurabilityHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,7 +14,7 @@ import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class IFWTieredItem extends Item implements IRepairableItem {
+public abstract class IFWTieredItem extends Item implements RepairableItem {
     private final IFWTier tier;
     private final int numComponents;
 
@@ -29,7 +30,7 @@ public abstract class IFWTieredItem extends Item implements IRepairableItem {
         this.numComponents = 0;
     }
 
-    public Tier getTier() {
+    public IFWTier ifwTier() {
         return this.tier;
     }
 
@@ -89,4 +90,8 @@ public abstract class IFWTieredItem extends Item implements IRepairableItem {
         return this.numComponents * 2;
     }
 
+    @Override
+    public int getRepairLevel() {
+        return this.ifwTier().repairLevel();
+    }
 }

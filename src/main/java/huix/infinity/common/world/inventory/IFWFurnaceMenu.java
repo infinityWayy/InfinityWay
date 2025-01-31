@@ -5,8 +5,6 @@ import huix.infinity.enum_extesion.IFWEnums;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.*;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeType;
 
 public class IFWFurnaceMenu extends AbstractFurnaceMenu {
 

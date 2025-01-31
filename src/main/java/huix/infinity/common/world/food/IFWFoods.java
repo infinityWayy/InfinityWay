@@ -3,6 +3,7 @@ package huix.infinity.common.world.food;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Items;
 
 public class IFWFoods {
     public static final IFWFoodProperties apple = (new IFWFoodProperties.Builder()).phytonutrients(8000).build();
@@ -13,7 +14,7 @@ public class IFWFoods {
     public static final IFWFoodProperties chicken = (new IFWFoodProperties.Builder()).protein(24000).meat().build();
     public static final IFWFoodProperties cod = (new IFWFoodProperties.Builder()).protein(16000).build();
     public static final IFWFoodProperties cooked_beef = (new IFWFoodProperties.Builder()).protein(80000).meat().build();
-    public static final IFWFoodProperties cooked_chick = (new IFWFoodProperties.Builder()).protein(48000).meat().build();
+    public static final IFWFoodProperties cooked_chicken = (new IFWFoodProperties.Builder()).protein(48000).meat().build();
     public static final IFWFoodProperties cooked_cod = (new IFWFoodProperties.Builder()).protein(40000).build();
     public static final IFWFoodProperties cooked_mutton = (new IFWFoodProperties.Builder()).protein(48000).meat().build();
     public static final IFWFoodProperties cooked_porkchop = (new IFWFoodProperties.Builder()).protein(32000).meat().build();
@@ -39,9 +40,9 @@ public class IFWFoods {
 
 
     public static final FoodProperties wheat_seeds = (new FoodProperties.Builder()).saturationModifier(0.3F).build();
-    public static final FoodProperties salad = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.3F).build();
+    public static final FoodProperties salad = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.3F).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_salad = (new IFWFoodProperties.Builder()).phytonutrients(8000).build();
-    public static final FoodProperties milk_bowl = (new FoodProperties.Builder()).nutrition(1).build();
+    public static final FoodProperties milk_bowl = (new FoodProperties.Builder()).nutrition(1).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_milk_bowl = (new IFWFoodProperties.Builder()).protein(8000).soup().build();
     public static final FoodProperties milk_bucket = (new FoodProperties.Builder()).nutrition(4).build();
     public static final IFWFoodProperties ifw_milk_bucket = (new IFWFoodProperties.Builder()).protein(32000).build();
@@ -60,19 +61,19 @@ public class IFWFoods {
     public static final FoodProperties dough = (new FoodProperties.Builder()).nutrition(2).saturationModifier(1.8F).build();
     public static final FoodProperties chocolate = (new FoodProperties.Builder()).nutrition(3).saturationModifier(0.9F).build();
     public static final IFWFoodProperties ifw_chocolate = (new IFWFoodProperties.Builder()).insulinResponse(4800).build();
-    public static final FoodProperties cereal = (new FoodProperties.Builder()).nutrition(4).saturationModifier(0.6F).build();
+    public static final FoodProperties cereal = (new FoodProperties.Builder()).nutrition(4).saturationModifier(0.6F).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_cereal = (new IFWFoodProperties.Builder()).protein(16000).build();
-    public static final FoodProperties pumpkin_soup = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.6F).build();
+    public static final FoodProperties pumpkin_soup = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.6F).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_pumpkin_soup = (new IFWFoodProperties.Builder()).protein(16000).soup().build();
-    public static final FoodProperties mushroom_soup_cream = (new FoodProperties.Builder()).nutrition(3).saturationModifier(1.5F).build();
+    public static final FoodProperties mushroom_soup_cream = (new FoodProperties.Builder()).nutrition(3).saturationModifier(1.5F).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_mushroom_soup_cream = (new IFWFoodProperties.Builder()).protein(40000).soup().build();
-    public static final FoodProperties vegetable_soup = (new FoodProperties.Builder()).nutrition(6).saturationModifier(1.8F).build();
+    public static final FoodProperties vegetable_soup = (new FoodProperties.Builder()).nutrition(6).saturationModifier(1.8F).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_vegetable_soup = (new IFWFoodProperties.Builder()).phytonutrients(48000).build();
-    public static final FoodProperties vegetable_soup_cream = (new FoodProperties.Builder()).nutrition(7).saturationModifier(2.1F).build();
+    public static final FoodProperties vegetable_soup_cream = (new FoodProperties.Builder()).nutrition(7).saturationModifier(2.1F).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_vegetable_soup_cream = (new IFWFoodProperties.Builder()).protein(56000).phytonutrients(56000).soup().build();
-    public static final FoodProperties chicken_soup = (new FoodProperties.Builder()).nutrition(10).saturationModifier(3.0F).build();
+    public static final FoodProperties chicken_soup = (new FoodProperties.Builder()).nutrition(10).saturationModifier(3.0F).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_chicken_soup = (new IFWFoodProperties.Builder()).protein(80000).phytonutrients(80000).soup().build();
-    public static final FoodProperties beef_stew = (new FoodProperties.Builder()).nutrition(16).saturationModifier(3.8F).build();
+    public static final FoodProperties beef_stew = (new FoodProperties.Builder()).nutrition(16).saturationModifier(3.8F).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_beef_stew = (new IFWFoodProperties.Builder()).protein(128000).phytonutrients(128000).soup().build();
     public static final FoodProperties porridge = (new FoodProperties.Builder()).nutrition(4).saturationModifier(0.6F).build();
     public static final IFWFoodProperties ifw_porridge = (new IFWFoodProperties.Builder()).phytonutrients(16000).insulinResponse(9600).soup().build();
@@ -95,4 +96,6 @@ public class IFWFoods {
     public static final FoodProperties nether_wart = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.5F).build();
     public static final FoodProperties melon_seed = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.3F).build();
     public static final FoodProperties beetroot_seeds = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.4F).build();
+    public static final FoodProperties onion = (new FoodProperties.Builder()).nutrition(1).saturationModifier(0.5F).build();
+    public static final IFWFoodProperties ifw_onion = (new IFWFoodProperties.Builder()).phytonutrients(8000).build();
 }

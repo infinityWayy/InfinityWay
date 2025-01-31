@@ -11,4 +11,6 @@ public interface IFWTier extends Tier {
     public float acidResistance();
 
     float repairDurability();
+
+    int repairLevel();
 }
