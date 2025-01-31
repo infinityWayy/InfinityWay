@@ -258,10 +258,10 @@ public class IFWRecipeProvider extends RecipeProvider {
             .requires(Items.BOWL, 1)
             .requires(Items.DANDELION, 3)
             .unlockedBy("has_bowl", has(Items.BOWL)).save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.salad, 1)
-                .requires(Items.BOWL, 1)
-                .requires(Items.DANDELION, 3)
-                .unlockedBy("has_bowl", has(Items.BOWL)).save(recipeOutput);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.salad, 1)
+//                .requires(Items.BOWL, 1)
+//                .requires(Items.DANDELION, 3)
+//                .unlockedBy("has_bowl", has(Items.BOWL)).save(recipeOutput);
 
 
 //        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.salad)

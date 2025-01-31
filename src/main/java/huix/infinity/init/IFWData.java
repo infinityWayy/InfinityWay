@@ -4,6 +4,7 @@ import huix.infinity.datagen.IFWBlockStateProvider;
 import huix.infinity.datagen.IFWItemModelProvider;
 import huix.infinity.datagen.lang.IFWCNLanguageProvider;
 import huix.infinity.datagen.lang.IFWUSLanguageProvider;
+import huix.infinity.datagen.loot.IFWGlobalLootModifierProvider;
 import huix.infinity.datagen.loot.IFWLootTableProvider;
 import huix.infinity.datagen.recipe.IFWRecipeProvider;
 import huix.infinity.datagen.tag.IFWBlockTagsProvider;
@@ -40,5 +41,6 @@ public final class IFWData {
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new IFWItemTagsProvider(output, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
 
+        generator.addProvider(event.includeClient(), new IFWGlobalLootModifierProvider(output, lookupProvider));
     }
 }
