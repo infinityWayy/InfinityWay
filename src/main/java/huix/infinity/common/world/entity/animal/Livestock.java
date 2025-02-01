@@ -79,6 +79,10 @@ public interface Livestock {
                 this.animal().getData(IFWAttachment.production_counter) + i);
     }
 
+    default boolean isPanic() {return this.animal().getData(IFWAttachment.is_panic);};
+
+    default void setPanic(boolean isPanic) {this.animal().setData(IFWAttachment.is_panic, isPanic);};
+
     default void addFood(float food) {
         this.food(this.food() + food);
     }

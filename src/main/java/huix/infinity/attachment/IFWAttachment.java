@@ -38,6 +38,8 @@ public class IFWAttachment {
             "manure_countdown", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
     );
 
-
+    public static final Supplier<AttachmentType<Boolean>> is_panic = ATTACHMENT_TYPES.register(
+            "is_panic", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
+    );
 
 }
