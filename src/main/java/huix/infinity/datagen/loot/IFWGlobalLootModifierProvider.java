@@ -26,5 +26,12 @@ public class IFWGlobalLootModifierProvider extends GlobalLootModifierProvider {
                 },
                 new ItemStack(IFWItems.banana.get()), 200
         ));
+        // 添加橡树树叶在丛林群系掉落橘子的 LootModifier
+        add("oak_leaves_drop", new OakLeavesLootModifier(
+                new LootItemCondition[]{
+                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.OAK_LEAVES).build()
+                },
+                new ItemStack(IFWItems.orange.get()), 200
+        ));
     }
 }

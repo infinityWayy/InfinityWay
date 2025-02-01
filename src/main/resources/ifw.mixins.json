@@ -10,6 +10,7 @@
     "server.player.SleepStatusMixin",
     "world.block.BlockBehaviourMixin",
     "world.block.BlocksInjected",
+    "world.block.LeavesBlockMixin",
     "world.enchantment.RemoveBinomialMixin",
     "world.entity.LivingEntityMixin",
     "world.entity.MobMixin",

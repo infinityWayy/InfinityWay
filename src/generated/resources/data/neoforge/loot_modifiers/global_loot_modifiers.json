@@ -1,6 +1,7 @@
 {
   "entries": [
-    "ifw:jungle_leaves_drop"
+    "ifw:jungle_leaves_drop",
+    "ifw:oak_leaves_drop"
   ],
   "replace": false
 }

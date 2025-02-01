@@ -1,0 +1,14 @@
+{
+  "type": "ifw:oak_leaves_drop",
+  "conditions": [
+    {
+      "block": "minecraft:oak_leaves",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "item": {
+    "count": 1,
+    "id": "ifw:orange"
+  },
+  "probability": 1
+}

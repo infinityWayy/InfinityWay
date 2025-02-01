@@ -16,6 +16,9 @@ public class IFWLootModifierManager {
     public static final Supplier<MapCodec<JungleLeavesLootModifier>> JUNGLE_LEAVES_LOOT_MODIFIER =
             GLOBAL_LOOT_MODIFIER_SERIALIZERS.register("jungle_leaves_drop", () -> JungleLeavesLootModifier.CODEC);
 
+    public static final Supplier<MapCodec<OakLeavesLootModifier>> OAK_LEAVES_LOOT_MODIFIER =
+            GLOBAL_LOOT_MODIFIER_SERIALIZERS.register("oak_leaves_drop", () -> OakLeavesLootModifier.CODEC);
+
     public static void register(IEventBus eventBus) {
         GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(eventBus);
     }
