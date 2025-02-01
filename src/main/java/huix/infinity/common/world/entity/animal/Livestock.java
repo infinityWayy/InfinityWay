@@ -15,21 +15,12 @@ import net.minecraft.world.level.block.Blocks;
 import java.util.Set;
 
 public interface Livestock {
-    EntityDataAccessor<Boolean> IS_WELL = SynchedEntityData.defineId(Animal.class, EntityDataSerializers.BOOLEAN);
-    EntityDataAccessor<Boolean> IS_THIRSTY = SynchedEntityData.defineId(Animal.class, EntityDataSerializers.BOOLEAN);
 
-
-    default void finalizeSpawn() {
+    default void ifw_FinalizeSpawn() {
         this.food(0.8F + this.ifw_random().nextFloat() * 0.2F);
         this.water(0.8F + this.ifw_random().nextFloat() * 0.2F);
         this.freedom(0.8F + this.ifw_random().nextFloat() * 0.2F);
     }
-
-    default void defineSynchedData(SynchedEntityData.Builder builder) {
-        builder.define(IS_WELL, true);
-        builder.define(IS_THIRSTY, false);
-    }
-
 
     default void water(float water) {
         if (!this.ifw_level().isClientSide()) {
@@ -95,21 +86,10 @@ public interface Livestock {
         this.freedom(this.freedom() + freedom);
     }
 
-    default void setIsWell(boolean isWell) {
-        this.ifw_getEntityData().set(IS_WELL, isWell);
-    }
-
-    default void setIsThirsty(boolean isThirsty) {
-        this.ifw_getEntityData().set(IS_THIRSTY, isThirsty);
-    }
-
-    default boolean isThirsty() {
-        if (this.ifw_level().isClientSide()) {
-            return this.ifw_getEntityData().get(IS_THIRSTY);
-        } else {
-            return this.water() < 0.5F;
-        }
-    }
+    void setIsWell(boolean isWell);
+    void setIsThirsty(boolean isThirsty);
+    boolean isThirsty();
+    boolean isWell();
 
     default boolean isHungry() {
         return this.food() < 0.5F;
@@ -131,13 +111,6 @@ public interface Livestock {
         return this.water() < 0.05F;
     }
 
-    default boolean isWell() {
-        if (this.ifw_level().isClientSide()) {
-            return this.ifw_getEntityData().get(IS_WELL);
-        } else {
-            return Math.min(this.freedom(), Math.min(this.food(), this.water())) >= 0.25F;
-        }
-    }
 
     default Set<Block> getFoodBlocks() {
         return Set.of(

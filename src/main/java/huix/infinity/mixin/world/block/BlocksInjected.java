@@ -55,17 +55,17 @@ public class BlocksInjected {
         return properties.strength(2.4F, 1200.0F);
     }
 
-    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(F)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;")
-            , method = "log(Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;)Lnet/minecraft/world/level/block/Block;")
-    private static BlockBehaviour.Properties ifw_logWithTool_0(BlockBehaviour.Properties properties, float strength) {
-        return properties.strength(1.2F).requiresCorrectToolForDrops();
-    }
-
-    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(F)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;")
-            , method = "log(Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/block/SoundType;)Lnet/minecraft/world/level/block/Block;")
-    private static BlockBehaviour.Properties ifw_logWithTool_1(BlockBehaviour.Properties properties, float strength) {
-        return properties.strength(1.2F).requiresCorrectToolForDrops();
-    }
+//    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(F)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;")
+//            , method = "log(Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;)Lnet/minecraft/world/level/block/Block;")
+//    private static BlockBehaviour.Properties ifw_logWithTool_0(BlockBehaviour.Properties properties, float strength) {
+//        return properties.strength(1.2F).requiresCorrectToolForDrops();
+//    }
+//
+//    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(F)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;")
+//            , method = "log(Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/block/SoundType;)Lnet/minecraft/world/level/block/Block;")
+//    private static BlockBehaviour.Properties ifw_logWithTool_1(BlockBehaviour.Properties properties, float strength) {
+//        return properties.strength(1.2F).requiresCorrectToolForDrops();
+//    }
 
     @Redirect(at = @At(value = "NEW", target = "(Lnet/minecraft/util/ColorRGBA;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/ColoredFallingBlock;"
             , ordinal = 2), method = "<clinit>")

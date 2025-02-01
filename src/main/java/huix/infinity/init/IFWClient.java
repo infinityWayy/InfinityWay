@@ -5,7 +5,6 @@ import com.google.common.collect.ImmutableList;
 import huix.infinity.common.client.IFWFurnaceScreen;
 import huix.infinity.common.client.IFWAnvilScreen;
 import huix.infinity.common.world.block.IFWBlocks;
-import huix.infinity.common.world.inventory.IFWAnvilMenu;
 import huix.infinity.common.world.inventory.IFWMenuType;
 import huix.infinity.common.world.item.crafting.IFWRecipeType;
 import huix.infinity.enum_extesion.IFWEnums;
@@ -43,7 +42,7 @@ public final class IFWClient {
     @SubscribeEvent
     public static void registerMenuScreens(final RegisterMenuScreensEvent event) {
         event.register(IFWMenuType.ifw_furnace_menu.get(), IFWFurnaceScreen::new);
-        event.register(IFWMenuType.ifw_anvil_menu.get(), IFWAnvilScreen::new);
+        event.register(IFWMenuType.copper_anvil_menu.get(), IFWAnvilScreen::new);
     }
 
     @SubscribeEvent

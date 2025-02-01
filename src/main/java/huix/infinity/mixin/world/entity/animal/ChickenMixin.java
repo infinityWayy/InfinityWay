@@ -4,6 +4,8 @@ import huix.infinity.common.world.entity.ai.MoveToFoodItemGoals;
 import huix.infinity.common.world.entity.ai.SeekFoodIfHungryGoal;
 import huix.infinity.common.world.entity.animal.Livestock;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
@@ -40,6 +42,11 @@ public abstract class ChickenMixin extends Animal implements Livestock {
     @Shadow public abstract boolean isChickenJockey();
     @Shadow public abstract boolean isFood(@NotNull ItemStack stack);
 
+    @Unique
+    private final static EntityDataAccessor<Boolean> IS_WELL = SynchedEntityData.defineId(ChickenMixin.class, EntityDataSerializers.BOOLEAN);
+    @Unique
+    private final static EntityDataAccessor<Boolean> IS_THIRSTY = SynchedEntityData.defineId(ChickenMixin.class, EntityDataSerializers.BOOLEAN);
+
     protected ChickenMixin(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
         if (!this.level().isClientSide) {
@@ -50,7 +57,7 @@ public abstract class ChickenMixin extends Animal implements Livestock {
             }
             this.num_feathers = this.max_num_feathers;
         }
-        this.finalizeSpawn();
+        this.ifw_FinalizeSpawn();
     }
 
     @Inject(method = "registerGoals", at = @At("RETURN"))
@@ -146,7 +153,8 @@ public abstract class ChickenMixin extends Animal implements Livestock {
     @Override
     public void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
         super.defineSynchedData(builder);
-        Livestock.super.defineSynchedData(builder);
+        builder.define(IS_WELL, true);
+        builder.define(IS_THIRSTY, false);
     }
 
     @Override
@@ -184,5 +192,30 @@ public abstract class ChickenMixin extends Animal implements Livestock {
     @Override
     public Animal animal() {
         return this;
+    }
+
+    @Override
+    public void setIsWell(boolean isWell) {
+        this.ifw_getEntityData().set(IS_WELL, isWell);
+    }
+    @Override
+    public void setIsThirsty(boolean isThirsty) {
+        this.ifw_getEntityData().set(IS_THIRSTY, isThirsty);
+    }
+    @Override
+    public boolean isThirsty() {
+        if (this.ifw_level().isClientSide()) {
+            return this.ifw_getEntityData().get(IS_THIRSTY);
+        } else {
+            return this.water() < 0.5F;
+        }
+    }
+    @Override
+    public boolean isWell() {
+        if (this.ifw_level().isClientSide()) {
+            return this.ifw_getEntityData().get(IS_WELL);
+        } else {
+            return Math.min(this.freedom(), Math.min(this.food(), this.water())) >= 0.25F;
+        }
     }
 }

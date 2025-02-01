@@ -8,6 +8,7 @@
     "inventory.EnchantmentMenuMixin",
     "server.PlayerListMixin",
     "server.player.SleepStatusMixin",
+    "world.block.RotatedPillarBlockMixin",
     "world.block.BlockBehaviourMixin",
     "world.block.BlocksInjected",
     "world.block.LeavesBlockMixin",

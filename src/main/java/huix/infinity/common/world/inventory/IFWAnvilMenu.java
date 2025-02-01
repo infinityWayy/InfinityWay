@@ -3,6 +3,7 @@ package huix.infinity.common.world.inventory;
 import huix.infinity.common.core.tag.IFWBlockTags;
 import huix.infinity.common.world.block.IFWAnvilBlock;
 import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.block.entity.AnvilBlockEntity;
 import huix.infinity.common.world.item.RepairableItem;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.core.Holder;
@@ -20,29 +21,69 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.block.AnvilBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class IFWAnvilMenu extends ItemCombinerMenu {
+public abstract class IFWAnvilMenu extends ItemCombinerMenu {
     public int repairItemCountCost;
     @Nullable
     private String itemName;
     private int durabilityCost;
-    private int maxDurability;
-    private int currentDurability;
+    private int maxDurability = -1;
+    private int currentDurability = 0;
+    private final DataSlot repairLevel = DataSlot.standalone();
 
-    private DataSlot repairLevel = DataSlot.standalone();
+    protected final ContainerData anvilData = new ContainerData() {
+        @Override
+        public int get(int index) {
+            return switch (index) {
+                case 0 -> IFWAnvilMenu.this.maxDurability;
+                case 1 -> IFWAnvilMenu.this.currentDurability;
+                default -> 0;
+            };
+        }
 
-    public IFWAnvilMenu(int containerId, Inventory playerInventory) {
-        this(containerId, playerInventory, ContainerLevelAccess.NULL);
+        @Override
+        public void set(int index, int value) {
+            switch (index) {
+                case 0 -> IFWAnvilMenu.this.maxDurability = value;
+                case 1 -> IFWAnvilMenu.this.currentDurability = value;
+
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+    };
+
+    public IFWAnvilMenu(@Nullable MenuType<?> type, int containerId, Inventory playerInventory, ContainerLevelAccess access, int repairLevel) {
+        super(type, containerId, playerInventory, access);
+        this.addDataSlots(this.anvilData);
+        this.addDataSlot(this.repairLevel);
+        this.repairLevel.set(repairLevel);
+        access.evaluate((level, pos) -> {
+            Block block = level.getBlockState(pos).getBlock();
+            if (block instanceof IFWAnvilBlock) {
+                this.maxDurability = ((IFWAnvilBlock)block).maxDurability();
+            }
+
+            BlockEntity tileEntity = level.getBlockEntity(pos);
+            if (tileEntity instanceof AnvilBlockEntity anvilBlockEntity) {
+                this.currentDurability = this.maxDurability - anvilBlockEntity.durability();
+            }
+
+            this.sendAllDataToRemote();
+            return Optional.empty();
+        });
     }
-
-    public IFWAnvilMenu(int containerId, Inventory playerInventory, ContainerLevelAccess access) {
-        super(IFWMenuType.ifw_anvil_menu.get(), containerId, playerInventory, access);
-    }
-
 
     @NotNull
     @Override
@@ -81,12 +122,20 @@ public class IFWAnvilMenu extends ItemCombinerMenu {
         this.access.execute((level, pos) -> {
             BlockState blockstate = level.getBlockState(pos);
             if (!player.getAbilities().instabuild && blockstate.is(BlockTags.ANVIL)) {
+                BlockEntity oldEntity = level.getBlockEntity(pos);
                 BlockState resultBlock = ((IFWAnvilBlock) blockstate.getBlock()).getBrokeState(this.durabilityCost);
                 if (resultBlock == null) {
                     level.removeBlock(pos, false);
                     level.levelEvent(1029, pos, 0);
                 } else {
                     level.setBlock(pos, resultBlock, 2);
+                    BlockEntity entity = level.getBlockEntity(pos);
+                    if (entity instanceof AnvilBlockEntity newEntity) {
+                        this.currentDurability = this.maxDurability - ((AnvilBlockEntity)oldEntity).durability();
+                        newEntity.durability(this.maxDurability - this.currentDurability);
+                        this.sendAllDataToRemote();
+                    }
+
                     level.levelEvent(1030, pos, 0);
                 }
             } else {
@@ -115,12 +164,12 @@ public class IFWAnvilMenu extends ItemCombinerMenu {
                         repairDurability = toolItem.getRepairCost();
                         l1 = toolItem.getRepairLevel();
                         if (l1 > this.repairLevel()) {
-                            this.inputSlots.setItem(0, ItemStack.EMPTY);
+                            this.resultSlots.setItem(2, ItemStack.EMPTY);
                             return;
                         }
 
                         if (repairDurability <= 0) {
-                            this.inputSlots.setItem(0, ItemStack.EMPTY);
+                            this.resultSlots.setItem(2, ItemStack.EMPTY);
                             return;
                         }
 
@@ -128,13 +177,13 @@ public class IFWAnvilMenu extends ItemCombinerMenu {
                             input.setDamageValue(0);
                             this.repairItemCountCost = 1;
                             this.durabilityCost = repairDurability;
-                            this.inputSlots.setItem(1, input);
+                            this.resultSlots.setItem(1, input);
                             return;
                         }
 
                         materialCost = Math.min((tool.getDamageValue() - tool.getDamageValue() % repairDurability) / repairDurability, ingredient.getCount());
                         input.setDamageValue(input.getDamageValue() - materialCost * repairDurability);
-                        this.inputSlots.setItem(2, input);
+                        this.inputSlots.setItem(1, input);
                         this.durabilityCost = materialCost * repairDurability;
                         this.repairItemCountCost = materialCost;
                         return;
@@ -243,10 +292,6 @@ public class IFWAnvilMenu extends ItemCombinerMenu {
         }
     }
 
-    public static int calculateIncreasedRepairCost(int oldRepairCost) {
-        return (int)Math.min((long)oldRepairCost * 2L + 1L, 2147483647L);
-    }
-
     public boolean setItemName(String itemName) {
         String s = validateName(itemName);
         if (s != null && !s.equals(this.itemName)) {
@@ -273,13 +318,17 @@ public class IFWAnvilMenu extends ItemCombinerMenu {
         return s.length() <= 50 ? s : null;
     }
 
+    public int currentDurability() {
+        return this.currentDurability;
+    }
+
+    public int maxDurability() {
+        return this.maxDurability;
+    }
+
     public int repairLevel() {
         return this.repairLevel.get();
     }
 
-    public IFWAnvilMenu repairLevel(int repairLevel) {
-        this.repairLevel.set(repairLevel);
-        return this;
-    }
 
 }

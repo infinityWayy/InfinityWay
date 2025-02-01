@@ -22,7 +22,7 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(final HolderLookup.@NotNull Provider provider) {
-        tag(IFWBlockTags.HARVEST_LEVEL_0_TOOL).addTags(BlockTags.LOGS);
+        tag(IFWBlockTags.HARVEST_LEVEL_0_TOOL).addTag(BlockTags.LOGS);
         tag(IFWBlockTags.HARVEST_LEVEL_1_TOOL).add(Blocks.STONE, Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.COPPER_ORE
                 , Blocks.DEEPSLATE_COPPER_ORE, Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE,
                 IFWBlocks.deepslate_silver_ore.get(), IFWBlocks.silver_ore.get());
@@ -58,15 +58,16 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_4_TOOL);
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL);
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_2_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_4_TOOL);
-        tag(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_2_TOOL)
-                .addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_4_TOOL);
-        tag(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_1_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_2_TOOL)
-                .addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_4_TOOL);
+        tag(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_2_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_4_TOOL);
+        tag(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_1_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_2_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_4_TOOL);
 
 
         tag(BlockTags.DOORS).add(IFWBlocks.adamantium_door.get(), IFWBlocks.ancient_metal_door.get(), IFWBlocks.copper_door.get(), IFWBlocks.gold_door.get(),
                 IFWBlocks.mithril_door.get(), IFWBlocks.silver_door.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IFWBlocks.adamantium_door.get());
         tag(BlockTags.ANVIL).add(IFWBlocks.copper_anvil.get(), IFWBlocks.chipped_copper_anvil.get(), IFWBlocks.damaged_copper_anvil.get());
+        tag(IFWBlockTags.IFW_FURNACE).add(IFWBlocks.clay_furnace.get(), IFWBlocks.hardened_clay_furnace.get(), IFWBlocks.netherrack_furnace.get(), IFWBlocks.obsidian_furnace.get()
+                                    , IFWBlocks.sandstone_furnace.get(), IFWBlocks.stone_furnace.get());
+        tag(IFWBlockTags.PORTABLE_BLOCK).addTags(BlockTags.ANVIL, IFWBlockTags.IFW_FURNACE).add(Blocks.CRAFTING_TABLE);
     }
 }

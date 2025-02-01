@@ -3,6 +3,7 @@ package huix.infinity.common.world.block;
 import huix.infinity.common.world.block.entity.AnvilBlockEntity;
 import huix.infinity.common.world.block.entity.IFWFurnaceBlockEntity;
 import huix.infinity.common.world.inventory.IFWAnvilMenu;
+import huix.infinity.common.world.inventory.IFWCopperAnvilMenu;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.util.DurabilityHelper;
 import net.minecraft.core.BlockPos;
@@ -117,7 +118,7 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
     @Override
     protected MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
         return new SimpleMenuProvider((id, inventory, player) ->
-                        new IFWAnvilMenu(id, inventory, ContainerLevelAccess.create(level, pos)).repairLevel(this.repairLevel), Component.translatable("container.repair"));
+                        new IFWCopperAnvilMenu(id, inventory, ContainerLevelAccess.create(level, pos)), Component.translatable("container.repair"));
     }
 
     public int maxDurability() {

@@ -289,8 +289,12 @@ public class FoodDataMixin implements FoodDataExtension {
     }
     @Unique
     private boolean healTick(final Player player) {
+        int result = this.naturalHealTick() * this.nutritionalStatus.naturalHealSpeedTimes();
+        if (player.isSleeping())
+            result /= 8;
+
         return player.level().getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION)
-                 && this.tickTimer >= this.naturalHealTick() * this.nutritionalStatus.naturalHealSpeedTimes();
+                 && this.tickTimer >= result;
     }
     @Unique
     private boolean damageTick() {
