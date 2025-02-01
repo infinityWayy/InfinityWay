@@ -2,6 +2,7 @@ package huix.infinity.datagen.loot;
 
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.world.loot.JungleLeavesLootModifier;
+import huix.infinity.common.world.loot.OakLeavesLootModifier;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
