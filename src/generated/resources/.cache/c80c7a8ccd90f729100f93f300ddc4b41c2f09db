@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-01T19:49:51.7669731	Tags for minecraft:block mod id ifw
+// 1.21.1	2025-02-02T18:20:35.6842981	Tags for minecraft:block mod id ifw
 135c338d4e90db4d3d07e2f281bb46d37795d1d3 data/minecraft/tags/block/anvil.json
 acf4e3ca7c3b0e94b6ea6bbf061ea843d1250c97 data/minecraft/tags/block/doors.json
 b147fcff5c0b4d72df1cb7809b063b2562180832 data/minecraft/tags/block/harvest_level_0_tool.json
@@ -13,4 +13,5 @@ ccb9467ef80c45c0c5c56759a5a78b3177be8d19 data/minecraft/tags/block/incorrect_for
 eabbbe1f65f580f77513deceab7ccbd9afc1aed7 data/minecraft/tags/block/incorrect_for_level_3_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/incorrect_for_level_4_tool.json
 431a024b6cd1c8210fd861dbe3b73bf72d744e29 data/minecraft/tags/block/mineable/pickaxe.json
+856f3ec346a8e680ef42769e7466c83a465ec43c data/minecraft/tags/block/mineable/shovel.json
 a6266b90aa3c43c4e5fff8e080ba2ee2fe7b1280 data/minecraft/tags/block/portable_block.json

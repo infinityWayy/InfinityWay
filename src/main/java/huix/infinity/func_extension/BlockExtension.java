@@ -16,5 +16,9 @@ public interface BlockExtension {
         return Lists.newArrayList(item);
     }
 
+    default ItemStack ifw_defaultInstance() {
+        return ItemStack.EMPTY;
+    }
+
 }
 

@@ -7,6 +7,5 @@
   "net/minecraft/world/item/Item$Properties": "huix/infinity/func_extension/ItemPropertiesExtension",
   "net/minecraft/world/level/block/Block": "huix/infinity/func_extension/BlockExtension",
   "net/minecraft/world/item/ArmorMaterial": "huix/infinity/func_extension/ArmorMaterialExtension",
-  "net/minecraft/world/item/ArmorItem": "huix/infinity/func_extension/ArmorExtension",
-  "net/minecraft/data/recipes/SimpleCookingRecipeBuilder": "huix/infinity/func_extension/CookingRecipeBuilderExtension"
+  "net/minecraft/world/item/ArmorItem": "huix/infinity/func_extension/ArmorExtension"
 }

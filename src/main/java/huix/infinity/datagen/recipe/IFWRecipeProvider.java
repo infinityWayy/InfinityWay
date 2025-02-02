@@ -258,7 +258,10 @@ public class IFWRecipeProvider extends RecipeProvider {
         }
     }
     private void rebuildRecipe(RecipeOutput recipeOutput) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWItems.sinew, 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Items.PUMPKIN_SEEDS, 1)
+                .requires(Items.PUMPKIN, 1)
+                .unlockedBy("has_pumpkin", has(Items.PUMPKIN)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWItems.sinew, 4)
                 .requires(Items.LEATHER, 1)
                 .unlockedBy("has_leather", has(Items.LEATHER)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.DIAMOND, 1)

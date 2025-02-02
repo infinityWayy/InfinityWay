@@ -7,7 +7,5 @@ import net.minecraft.world.item.Item;
 
 public interface ItemPropertiesExtension {
 
-    default Item.Properties ifw_food(IFWFoodProperties food) {
-        return null;
-    }
+
 }

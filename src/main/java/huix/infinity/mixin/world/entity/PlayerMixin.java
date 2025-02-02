@@ -1,5 +1,6 @@
 package huix.infinity.mixin.world.entity;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.func_extension.PlayerExtension;
@@ -33,9 +34,10 @@ import java.util.Objects;
 @Mixin( Player.class )
 public abstract class PlayerMixin extends LivingEntity implements PlayerExtension {
 
+    @Shadow public abstract void causeFoodExhaustion(float exhaustion);
+
     @Shadow public abstract FoodData getFoodData();
 
-    @Shadow protected FoodData foodData;
 
     @Overwrite
     public int getXpNeededForNextLevel() {
@@ -129,15 +131,21 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     }
     @Unique
     public void ifw_levelUpdate() {
-        float modifyValue = this.ifw_modifyValue();
+        int modifyValue = this.ifw_modifyValue();
         this.ifw_maxHealth(modifyValue);
-        this.foodData.ifw_maxFoodLevel((int) modifyValue);
+        this.getFoodData().ifw_maxFoodLevel(modifyValue);
+
+        if (modifyValue < this.getFoodData().getFoodLevel())
+            this.getFoodData().setFoodLevel(modifyValue);
+        if (modifyValue < this.getFoodData().getSaturationLevel())
+            this.getFoodData().setSaturation(modifyValue);
     }
+
     @Unique
-    private float ifw_modifyValue() {
-        final int max_level = this.experienceLevel >= 35 ? 35 : this.experienceLevel;
-        return Math.max((float) max_level / 5 * 2 + 6.0F, 6.0F);
+    private int ifw_modifyValue() {
+        return Math.max(Math.min(6 + this.experienceLevel / 5 * 2, 20), 6);
     }
+
     @Unique
     public void ifw_maxHealth(final float health) {
         Objects.requireNonNull(this.getAttributes().getInstance(Attributes.MAX_HEALTH)).setBaseValue(health);

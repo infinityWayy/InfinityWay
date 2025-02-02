@@ -1,8 +1,6 @@
 package huix.infinity.common.world.inventory;
 
-import huix.infinity.common.core.tag.IFWBlockTags;
 import huix.infinity.common.world.block.IFWAnvilBlock;
-import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.block.entity.AnvilBlockEntity;
 import huix.infinity.common.world.item.RepairableItem;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -10,25 +8,20 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
 import net.minecraft.util.StringUtil;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import java.util.Optional;
 
 public abstract class IFWAnvilMenu extends ItemCombinerMenu {
     public int repairItemCountCost;
@@ -69,7 +62,7 @@ public abstract class IFWAnvilMenu extends ItemCombinerMenu {
         this.addDataSlots(this.anvilData);
         this.addDataSlot(this.repairLevel);
         this.repairLevel.set(repairLevel);
-        access.evaluate((level, pos) -> {
+        access.execute((level, pos) -> {
             Block block = level.getBlockState(pos).getBlock();
             if (block instanceof IFWAnvilBlock) {
                 this.maxDurability = ((IFWAnvilBlock)block).maxDurability();
@@ -77,11 +70,10 @@ public abstract class IFWAnvilMenu extends ItemCombinerMenu {
 
             BlockEntity tileEntity = level.getBlockEntity(pos);
             if (tileEntity instanceof AnvilBlockEntity anvilBlockEntity) {
-                this.currentDurability = this.maxDurability - anvilBlockEntity.durability();
+                this.currentDurability = this.maxDurability - anvilBlockEntity.damage();
             }
 
             this.sendAllDataToRemote();
-            return Optional.empty();
         });
     }
 
@@ -101,7 +93,7 @@ public abstract class IFWAnvilMenu extends ItemCombinerMenu {
 
     @Override
     protected boolean mayPickup(Player player, boolean hasStack) {
-        return player.hasInfiniteMaterials();
+        return true;
     }
 
     @Override
@@ -123,7 +115,7 @@ public abstract class IFWAnvilMenu extends ItemCombinerMenu {
             BlockState blockstate = level.getBlockState(pos);
             if (!player.getAbilities().instabuild && blockstate.is(BlockTags.ANVIL)) {
                 BlockEntity oldEntity = level.getBlockEntity(pos);
-                BlockState resultBlock = ((IFWAnvilBlock) blockstate.getBlock()).getBrokeState(this.durabilityCost);
+                BlockState resultBlock = ((IFWAnvilBlock) blockstate.getBlock()).ifw_damage(this.durabilityCost, oldEntity);
                 if (resultBlock == null) {
                     level.removeBlock(pos, false);
                     level.levelEvent(1029, pos, 0);
@@ -131,9 +123,10 @@ public abstract class IFWAnvilMenu extends ItemCombinerMenu {
                     level.setBlock(pos, resultBlock, 2);
                     BlockEntity entity = level.getBlockEntity(pos);
                     if (entity instanceof AnvilBlockEntity newEntity) {
-                        this.currentDurability = this.maxDurability - ((AnvilBlockEntity)oldEntity).durability();
-                        newEntity.durability(this.maxDurability - this.currentDurability);
+                        this.currentDurability = this.maxDurability - ((AnvilBlockEntity)oldEntity).damage();
+                        newEntity.damage(this.maxDurability - this.currentDurability);
                         this.sendAllDataToRemote();
+                        System.out.println(newEntity.damage());
                     }
 
                     level.levelEvent(1030, pos, 0);
@@ -156,19 +149,9 @@ public abstract class IFWAnvilMenu extends ItemCombinerMenu {
             boolean flag = ingredient.has(DataComponents.STORED_ENCHANTMENTS);
             if (!ingredient.isEmpty()) {
                 if (input.isDamageableItem() && input.getItem().isValidRepairItem(tool, ingredient)) {
-                    int materialCost;
-                    int repairDurability;
-                    int l1;
-                    Item resultItem = input.getItem();
-                    if (resultItem instanceof RepairableItem toolItem) {
-                        repairDurability = toolItem.getRepairCost();
-                        l1 = toolItem.getRepairLevel();
-                        if (l1 > this.repairLevel()) {
-                            this.resultSlots.setItem(2, ItemStack.EMPTY);
-                            return;
-                        }
-
-                        if (repairDurability <= 0) {
+                    if (input.getItem() instanceof RepairableItem toolItem) {
+                        int repairDurability = toolItem.getRepairCost();
+                        if ((toolItem.getRepairLevel() > this.repairLevel()) || (repairDurability <= 0)) {
                             this.resultSlots.setItem(2, ItemStack.EMPTY);
                             return;
                         }
@@ -181,9 +164,9 @@ public abstract class IFWAnvilMenu extends ItemCombinerMenu {
                             return;
                         }
 
-                        materialCost = Math.min((tool.getDamageValue() - tool.getDamageValue() % repairDurability) / repairDurability, ingredient.getCount());
+                        int materialCost = Math.min((tool.getDamageValue() - tool.getDamageValue() % repairDurability) / repairDurability, ingredient.getCount());
                         input.setDamageValue(input.getDamageValue() - materialCost * repairDurability);
-                        this.inputSlots.setItem(1, input);
+                        this.resultSlots.setItem(1, input);
                         this.durabilityCost = materialCost * repairDurability;
                         this.repairItemCountCost = materialCost;
                         return;

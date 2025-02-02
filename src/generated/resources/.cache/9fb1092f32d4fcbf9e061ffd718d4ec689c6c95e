@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-31T16:27:56.4315567	Recipes
+// 1.21.1	2025-02-02T18:16:58.8508873	Recipes
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
 c3ed1abdd1c9e856def620a4c7679b2fbc4b8e83 data/ifw/advancement/recipes/building_blocks/ancient_metal_bars.json
@@ -366,7 +366,7 @@ cca5022f1a16210e8c643bd9dfbc8573354b42d6 data/ifw/recipe/silver_shears.json
 18d5231ee8d0b7af5899008f6e32d851d38d119f data/ifw/recipe/silver_shovel.json
 ea4cb4518d2d36e26ebb3b306df7803635553105 data/ifw/recipe/silver_sword.json
 c6547a67b1dc8f968a49ae0fcd709a448ac3a199 data/ifw/recipe/silver_war_hammer.json
-c00077ccb0a010a14eaabe4bfcf3fd4744b2fcf3 data/ifw/recipe/sinew.json
+7ba0fda18fa3ffa0ba91c7de0487fb4aada129ea data/ifw/recipe/sinew.json
 132aa576722691b4a8bd63f75d8f410436c14c44 data/ifw/recipe/sorbet.json
 806daab1b386cb67af0732a470ef527b8d61b0c5 data/ifw/recipe/stone_furnace.json
 1016bfd66eebeaef180b44303130c1be878a2a2f data/ifw/recipe/vegetable_soup.json
@@ -384,6 +384,7 @@ a9b8907bfd52945202a8d3f6852ce350bf5f7d7e data/minecraft/advancement/recipes/buil
 6e523eee1ea699f772907f902f16f4f7cb3e4362 data/minecraft/advancement/recipes/building_blocks/mithril_block_from_ingot.json
 51603388ac82e19164c89315304f203f68e8dfb5 data/minecraft/advancement/recipes/building_blocks/nether_bricks.json
 4cb8ccef0ee5434856163cacc8ef7f8ff1888ea0 data/minecraft/advancement/recipes/building_blocks/obsidian.json
+7c7417e8dfdb46c3f5978a8b85a0ac503c1ba958 data/minecraft/advancement/recipes/building_blocks/pumpkin_seeds.json
 c810440c84781edd602de771fdfe5e023fe9904b data/minecraft/advancement/recipes/building_blocks/saddle.json
 f712991b7ae1c41a6294325b4874595d0cc90aec data/minecraft/advancement/recipes/building_blocks/silver_block_from_ingot.json
 454c0618a4ab72b2cf547e67b2a5496268a798e6 data/minecraft/advancement/recipes/building_blocks/smooth_basalt.json
@@ -524,6 +525,7 @@ ce85de452d95391cf4e86ae2b0b4af09a02938bf data/minecraft/recipe/obsidian.json
 9bbe6976bfb7418f9730f5c2b9f594f972ddaa62 data/minecraft/recipe/pink_glazed_terracotta.json
 0f1a9c606e681079272c71bbcb163a57ed1bea82 data/minecraft/recipe/popped_chorus_fruit.json
 6a55553eacd395fccaaf4637e9d2f305f3ac5a78 data/minecraft/recipe/pumpkin_pie.json
+943b84918dd5d69e10a77d6c370b2bc84e98064f data/minecraft/recipe/pumpkin_seeds.json
 41295b55747a473712d00d8aa7ac18e1eafeb965 data/minecraft/recipe/purple_glazed_terracotta.json
 a840a03d1b3631ad522b7ff315ed00b8ee0d4226 data/minecraft/recipe/quartz.json
 89377842d98832bdda3c10876c38019c8d8f2425 data/minecraft/recipe/raw_adamantium_smelting.json

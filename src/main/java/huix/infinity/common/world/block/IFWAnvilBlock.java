@@ -1,8 +1,7 @@
 package huix.infinity.common.world.block;
 
+import huix.infinity.attachment.IFWAttachment;
 import huix.infinity.common.world.block.entity.AnvilBlockEntity;
-import huix.infinity.common.world.block.entity.IFWFurnaceBlockEntity;
-import huix.infinity.common.world.inventory.IFWAnvilMenu;
 import huix.infinity.common.world.inventory.IFWCopperAnvilMenu;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.util.DurabilityHelper;
@@ -17,10 +16,11 @@ import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -44,12 +44,12 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
     @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
         if (canPlace(state, level, pos, oldState)) {
-            ServerLevel worldIn = (ServerLevel) level;
-            int durability = ((AnvilBlockEntity)worldIn.getBlockEntity(pos)).durability();
-            if (durability < this.maxDurability()) {
+            AnvilBlockEntity blockEntity = (AnvilBlockEntity) level.getBlockEntity(pos);
+            int damage = blockEntity.getData(IFWAttachment.anvil_damage.get());
+            if (damage < this.maxDurability()) {
                 ItemStack result = new ItemStack(this.asItem());
-                result.set(DataComponents.DAMAGE, durability);
-                popResource(worldIn, pos, result);
+                result.set(DataComponents.DAMAGE, damage);
+                popResource(level, pos, result);
             }
         }
         super.onPlace(state, level, pos, oldState, isMoving);
@@ -61,13 +61,18 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
     }
 
     @Override
+    public ItemStack ifw_defaultInstance() {
+        ItemStack itemstack = super.ifw_defaultInstance();
+        itemstack.set(DataComponents.MAX_DAMAGE, this.maxDurability());
+        itemstack.set(DataComponents.DAMAGE, this.initalDurability());
+        return itemstack;
+    }
+
+    @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinBuildHeight()) {
-            CompoundTag nbtCompound = new CompoundTag();
-            nbtCompound.putInt("Durability", ((AnvilBlockEntity)level.getBlockEntity(pos)).durability());
-            FallingBlockEntity fallingblockentity = FallingBlockEntity.fall(level, pos, state);
-            fallingblockentity.blockData = nbtCompound;
-            this.configureFallingBlockEntity(fallingblockentity);
+            AnvilBlockEntity blockEntity = (AnvilBlockEntity) level.getBlockEntity(pos);
+            blockEntity.setData(IFWAttachment.anvil_damage.get(), blockEntity.damage());
         }
 
         super.tick(state, level, pos, random);
@@ -78,10 +83,10 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
     }
 
     @Nullable
-    public BlockState damage(int value, BlockEntity tileEntityAnvil) {
+    public BlockState ifw_damage(int value, BlockEntity tileEntityAnvil) {
         if (tileEntityAnvil instanceof AnvilBlockEntity anvilBlockEntity) {
-            anvilBlockEntity.durability(anvilBlockEntity.durability() + value);
-            return this.getBrokeState(anvilBlockEntity.durability());
+            anvilBlockEntity.damage(anvilBlockEntity.damage() + value);
+            return this.getBrokeState(anvilBlockEntity.damage());
         } else {
             return null;
         }
@@ -91,9 +96,9 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
     public BlockState getBrokeState(int currentDamage) {
         if (currentDamage > this.maxDurability())
             throw new IllegalArgumentException("IFWAnvilBlock.GetBrokeState error");
-
-        if (currentDamage <= this.maxDurability() * 0.5F) return this.getDamagedState();
-        else if (currentDamage >= this.maxDurability() * 0.8F) return this.defaultBlockState();
+        int currentDurability = this.maxDurability() - currentDamage;
+        if (currentDurability <= this.maxDurability() * 0.5F) return this.getDamagedState();
+        else if (currentDurability >= this.maxDurability() * 0.8F) return this.defaultBlockState();
         else return this.getChippedState();
     }
 

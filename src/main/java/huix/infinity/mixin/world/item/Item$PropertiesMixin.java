@@ -15,15 +15,6 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(Item.Properties.class)
 public class Item$PropertiesMixin implements ItemPropertiesExtension {
 
-    /*
-    * do not use because "Caused by: java.lang.NullPointerException: Trying to access unbound value: ResourceKey[minecraft:data_component_type / ifw:ifw_food_data]"
-    */
-    @Unique
-    @Override
-    public Item.Properties ifw_food(IFWFoodProperties food) {
-        return this.component(IFWDataComponents.ifw_food_data.get(), food);
-    }
-
     @Shadow
     public <T> Item.Properties component(DataComponentType<T> component, T value) {
         return null;

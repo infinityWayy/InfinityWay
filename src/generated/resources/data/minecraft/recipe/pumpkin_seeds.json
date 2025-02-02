@@ -3,11 +3,11 @@
   "category": "building",
   "ingredients": [
     {
-      "item": "minecraft:leather"
+      "item": "minecraft:pumpkin"
     }
   ],
   "result": {
-    "count": 4,
-    "id": "ifw:sinew"
+    "count": 1,
+    "id": "minecraft:pumpkin_seeds"
   }
 }
