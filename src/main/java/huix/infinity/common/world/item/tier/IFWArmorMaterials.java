@@ -27,7 +27,7 @@ public class IFWArmorMaterials {
     public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(BuiltInRegistries.ARMOR_MATERIAL, InfinityWay.MOD_ID);
 
     public static final DeferredHolder<ArmorMaterial, ArmorMaterial> leather = ARMOR_MATERIALS.register("leather", () ->
-            register(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+            registerByMC(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.BOOTS, 0.33F);map.put(ArmorItem.Type.LEGGINGS, 0.58F);
                 map.put(ArmorItem.Type.CHESTPLATE, 0.67F);map.put(ArmorItem.Type.HELMET, 0.42F);
                 map.put(ArmorItem.Type.BODY, 0.67F);}),
@@ -149,18 +149,23 @@ public class IFWArmorMaterials {
                     () -> Ingredient.of(IFWItems.adamantium_nugget), "adamantium_chainmail"));
 
 
-    private static ArmorMaterial register(EnumMap<ArmorItem.Type, Float> defense
-            , int enchantmentValue, Holder<SoundEvent> equipSound
-            , float toughness, float knockbackResistance, int acidResistance, float magicResistance
-            , Supplier<Ingredient> repairIngridient, String name) {
+    private static ArmorMaterial register(EnumMap<ArmorItem.Type, Float> defense, int enchantmentValue, Holder<SoundEvent> equipSound, float toughness, float knockbackResistance, int acidResistance, float magicResistance, Supplier<Ingredient> repairIngridient, String name) {
         EnumMap<ArmorItem.Type, Float> enummap = new EnumMap<>(ArmorItem.Type.class);
-
         for(ArmorItem.Type armoritem$type : ArmorItem.Type.values()) {
             enummap.put(armoritem$type, defense.get(armoritem$type));
         }
-
         return new ArmorMaterial(new EnumMap<>(ArmorItem.Type.class), enchantmentValue, equipSound, repairIngridient,
                 List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, name))),
+                toughness, knockbackResistance).ifw_defense(enummap).acidResistance(acidResistance).magicResistance(magicResistance);
+    }
+
+    private static ArmorMaterial registerByMC(EnumMap<ArmorItem.Type, Float> defense, int enchantmentValue, Holder<SoundEvent> equipSound, float toughness, float knockbackResistance, int acidResistance, float magicResistance, Supplier<Ingredient> repairIngridient, String name) {
+        EnumMap<ArmorItem.Type, Float> enummap = new EnumMap<>(ArmorItem.Type.class);
+        for(ArmorItem.Type armoritem$type : ArmorItem.Type.values()) {
+            enummap.put(armoritem$type, defense.get(armoritem$type));
+        }
+        return new ArmorMaterial(new EnumMap<>(ArmorItem.Type.class), enchantmentValue, equipSound, repairIngridient,
+                List.of(new ArmorMaterial.Layer(ResourceLocation.withDefaultNamespace(name))),
                 toughness, knockbackResistance).ifw_defense(enummap).acidResistance(acidResistance).magicResistance(magicResistance);
     }
 }

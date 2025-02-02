@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class AnvilBlockEntity extends BlockEntity {
-    private int durability;
+    private int damage;
 
     public AnvilBlockEntity(BlockPos pos, BlockState blockState) {
         super(IFWBlockEntityTypes.ifw_anvil.get(), pos, blockState);
@@ -17,20 +17,20 @@ public class AnvilBlockEntity extends BlockEntity {
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
-        if (tag.contains("Durability")) this.durability = tag.getInt("Durability");
+        if (tag.contains("Damage")) this.damage = tag.getInt("Damage");
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
-        if (this.durability != 0) tag.putInt("Durability", this.durability);
+        if (this.damage != 0) tag.putInt("Damage", this.damage);
     }
 
-    public void durability(int durability) {
-        this.durability = durability;
+    public void damage(int durability) {
+        this.damage = durability;
     }
 
-    public int durability() {
-        return this.durability;
+    public int damage() {
+        return this.damage;
     }
 }

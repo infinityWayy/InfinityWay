@@ -2,14 +2,13 @@
   "required": true,
   "minVersion": "0.8",
   "package": "huix.infinity.mixin",
-  "refmap": "ifw.refmap.json",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "data.worldgen.features.MiscOverworldFeaturesMixin",
     "inventory.EnchantmentMenuMixin",
     "server.PlayerListMixin",
     "server.player.SleepStatusMixin",
     "world.block.BlockBehaviourMixin",
+    "world.block.BlockMixin",
     "world.block.BlocksInjected",
     "world.block.DirtBlockMixin",
     "world.block.FarmBlockMixin",
@@ -33,10 +32,12 @@
     "world.inventory.FurnaceFuelSlotMixin",
     "world.item.ArmorItemMixin",
     "world.item.ArmorMaterialMixin",
+    "world.item.BlockItemMixin",
     "world.item.Item$PropertiesMixin",
     "world.item.ItemMixin",
     "world.item.ItemsInjected",
-    "world.item.ItemStackMixin"
+    "world.item.ItemStackMixin",
+    "world.item.enchantment.EnchantmentMixin"
   ],
   "client": [
     "client.ClientRecipeBookMixin",

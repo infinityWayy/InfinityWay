@@ -11,7 +11,7 @@
       "fallback": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:dirt"
+          "Name": "minecraft:sand"
         }
       },
       "rules": []
@@ -19,6 +19,7 @@
     "target": {
       "type": "minecraft:matching_blocks",
       "blocks": [
+        "minecraft:dirt",
         "minecraft:grass_block"
       ]
     }

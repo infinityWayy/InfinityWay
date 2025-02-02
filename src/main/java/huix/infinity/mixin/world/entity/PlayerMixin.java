@@ -1,9 +1,11 @@
 package huix.infinity.mixin.world.entity;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.func_extension.PlayerExtension;
 import huix.infinity.util.ReflectHelper;
+import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
@@ -15,6 +17,8 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
@@ -30,9 +34,10 @@ import java.util.Objects;
 @Mixin( Player.class )
 public abstract class PlayerMixin extends LivingEntity implements PlayerExtension {
 
+    @Shadow public abstract void causeFoodExhaustion(float exhaustion);
+
     @Shadow public abstract FoodData getFoodData();
 
-    @Shadow protected FoodData foodData;
 
     @Overwrite
     public int getXpNeededForNextLevel() {
@@ -97,24 +102,18 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     }
     @Overwrite
     public double blockInteractionRange() {
-        double i = this.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE);
-        if (!this.getMainHandItem().isEmpty())
-            return i + this.getMainHandItem().getItem().getReachBonus();
-        return i;
+        return this.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE) + this.getMainHandItem().getItem().getReachBonus();
     }
     @Overwrite
     public double entityInteractionRange() {
-        double i = this.getAttributeValue(Attributes.ENTITY_INTERACTION_RANGE);
-        if (!this.getMainHandItem().isEmpty())
-            return i + this.getMainHandItem().getItem().getReachBonus();
-        return i;
+        return this.getAttributeValue(Attributes.ENTITY_INTERACTION_RANGE) + this.getMainHandItem().getItem().getReachBonus();
     }
 
     @Overwrite
     public static AttributeSupplier.Builder createAttributes() {
         return LivingEntity.createLivingAttributes().add(Attributes.ATTACK_DAMAGE, 1.0F).add(Attributes.MOVEMENT_SPEED, 0.1F)
                 .add(Attributes.ATTACK_SPEED).add(Attributes.LUCK)
-                .add(Attributes.BLOCK_INTERACTION_RANGE, 2.75F).add(Attributes.ENTITY_INTERACTION_RANGE, 1.5F)
+                .add(Attributes.BLOCK_INTERACTION_RANGE, 3.0F).add(Attributes.ENTITY_INTERACTION_RANGE, 1.5F)
                 .add(Attributes.BLOCK_BREAK_SPEED).add(Attributes.SUBMERGED_MINING_SPEED).add(Attributes.SNEAKING_SPEED).add(Attributes.MINING_EFFICIENCY)
                 .add(Attributes.SWEEPING_DAMAGE_RATIO).add(NeoForgeMod.CREATIVE_FLIGHT);
     }
@@ -132,15 +131,21 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     }
     @Unique
     public void ifw_levelUpdate() {
-        float modifyValue = this.ifw_modifyValue();
+        int modifyValue = this.ifw_modifyValue();
         this.ifw_maxHealth(modifyValue);
-        this.foodData.ifw_maxFoodLevel((int) modifyValue);
+        this.getFoodData().ifw_maxFoodLevel(modifyValue);
+
+        if (modifyValue < this.getFoodData().getFoodLevel())
+            this.getFoodData().setFoodLevel(modifyValue);
+        if (modifyValue < this.getFoodData().getSaturationLevel())
+            this.getFoodData().setSaturation(modifyValue);
     }
+
     @Unique
-    private float ifw_modifyValue() {
-         int max_level = this.experienceLevel >= 35 ? 35 : this.experienceLevel;
-        return Math.max((float) max_level / 5 * 2 + 6.0F, 1.0F);
+    private int ifw_modifyValue() {
+        return Math.max(Math.min(6 + this.experienceLevel / 5 * 2, 20), 6);
     }
+
     @Unique
     public void ifw_maxHealth(final float health) {
         Objects.requireNonNull(this.getAttributes().getInstance(Attributes.MAX_HEALTH)).setBaseValue(health);
@@ -151,6 +156,8 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
         if (food.get(IFWDataComponents.ifw_food_data.get()) != null)
             this.getFoodData().eat(food.get(IFWDataComponents.ifw_food_data.get()));
     }
+
+
 
 
     @Shadow

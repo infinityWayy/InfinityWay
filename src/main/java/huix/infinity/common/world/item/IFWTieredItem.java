@@ -17,17 +17,20 @@ import net.minecraft.world.level.block.state.BlockState;
 public abstract class IFWTieredItem extends Item implements RepairableItem {
     private final IFWTier tier;
     private final int numComponents;
+    private final float durability;
 
     public IFWTieredItem(IFWTier tier, int numComponents, Properties properties) {
         super(properties.durability(DurabilityHelper.getMultipliedDurability(numComponents, tier.getDurability())));
         this.tier = tier;
         this.numComponents = numComponents;
+        this.durability = DurabilityHelper.getMultipliedDurability(numComponents, tier.getDurability());
     }
 
     public IFWTieredItem(IFWTier tier, float durability, Properties properties) {
         super(properties.durability((int) durability));
         this.tier = tier;
         this.numComponents = 0;
+        this.durability = durability;
     }
 
     public IFWTier ifwTier() {
@@ -87,7 +90,7 @@ public abstract class IFWTieredItem extends Item implements RepairableItem {
 
     @Override
     public int getRepairCost() {
-        return this.numComponents * 2;
+        return (int) (this.durability / 5);
     }
 
     @Override

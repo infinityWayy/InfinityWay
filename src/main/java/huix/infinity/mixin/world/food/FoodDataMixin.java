@@ -52,6 +52,7 @@ public class FoodDataMixin implements FoodDataExtension {
     @Inject(at = @At("RETURN"), method = "<init>")
     private void giveValue(CallbackInfo ci){
         this.foodLevel = 6;
+        this.lastFoodLevel = 6;
         this.saturationLevel = 2.0F;
     }
 
