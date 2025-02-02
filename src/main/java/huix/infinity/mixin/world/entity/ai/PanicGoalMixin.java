@@ -116,7 +116,8 @@ public abstract class PanicGoalMixin {
     @Unique
     private boolean infinityWay$findNewAwayPosition() {
         Vec3 newPosition = DefaultRandomPos.getPosAway(
-                this.mob, PATHFINDING_RANGE, PATHFINDING_RETREAT_DISTANCE, this.infinityWay$sourcePosition
+                this.mob, PATHFINDING_RANGE, PATHFINDING_RETREAT_DISTANCE,
+                this.infinityWay$sourcePosition != null? this.infinityWay$sourcePosition: this.mob.position()
         );
         if (newPosition != null) {
             this.infinityWay$setTargetPosition(newPosition);
