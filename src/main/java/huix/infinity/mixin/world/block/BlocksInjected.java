@@ -26,6 +26,30 @@ public class BlocksInjected {
     }
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;instabreak()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 30), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_touchHardness(BlockBehaviour.Properties properties) {
+        return properties.instabreak().replaceable();
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;instabreak()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 31), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_wallTouchHardness(BlockBehaviour.Properties properties) {
+        return properties.instabreak().replaceable();
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;instabreak()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 39), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_soulTouchHardness(BlockBehaviour.Properties properties) {
+        return properties.instabreak().replaceable();
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;instabreak()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 40), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_soulWallTouchHardness(BlockBehaviour.Properties properties) {
+        return properties.instabreak().replaceable();
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;instabreak()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
             , ordinal = 8), method = "<clinit>")
     private static BlockBehaviour.Properties ifw_shortGrassHardness(BlockBehaviour.Properties properties) {
         return properties.strength(0.02F);
