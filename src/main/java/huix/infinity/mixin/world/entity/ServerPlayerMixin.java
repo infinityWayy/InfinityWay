@@ -1,5 +1,6 @@
 package huix.infinity.mixin.world.entity;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.authlib.GameProfile;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.network.ClientBoundSetHealthPayload;
@@ -8,6 +9,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -61,5 +63,24 @@ public class ServerPlayerMixin extends Player {
     @Shadow
     public boolean isCreative() {
         return false;
+    }
+
+    @Inject(at = @At(value = "TAIL"), method = "travel")
+    private void playerHungerOnTravel(Vec3 travelVector, CallbackInfo ci, @Local(ordinal = 0) double x, @Local(ordinal = 1) double y, @Local(ordinal = 2) double z) {
+        if (this.isInWater())
+            this.causeFoodExhaustion(Math.round(Math.sqrt(x * x + y * y + z * z) * 100.0F));
+        else if (this.onClimbable())
+            this.causeFoodExhaustion((float) (y / 10.0F)) ;
+        else if (this.onGround()) {
+            if (this.isSleeping())
+                this.causeFoodExhaustion(0);
+            else {
+                float f = Math.round(Math.sqrt(x * x + z * z) * 100.0F) * 0.01F * 0.01F;
+                if (this.isSprinting())
+                    this.causeFoodExhaustion(f * 5);
+                else
+                    this.causeFoodExhaustion(f);
+            }
+        }
     }
 }

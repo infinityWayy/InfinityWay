@@ -33,6 +33,7 @@
     "world.inventory.FurnaceFuelSlotMixin",
     "world.item.ArmorItemMixin",
     "world.item.ArmorMaterialMixin",
+    "world.item.BlockItemMixin",
     "world.item.Item$PropertiesMixin",
     "world.item.ItemMixin",
     "world.item.ItemsInjected",
