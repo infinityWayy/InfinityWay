@@ -1,35 +1,26 @@
 package huix.infinity.common.world.block;
 
-import huix.infinity.attachment.IFWAttachment;
 import huix.infinity.common.world.block.entity.AnvilBlockEntity;
-import huix.infinity.common.world.inventory.IFWCopperAnvilMenu;
+import huix.infinity.common.world.inventory.IFWAnvilMenu;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.util.DurabilityHelper;
-import huix.infinity.util.ReplaceHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.item.FallingBlockEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AnvilBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -39,14 +30,12 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
     private final int maxDurability;
     private final int repairLevel;
     private final IFWTiers tier;
-    private final int initalDurability;
 
-    public IFWAnvilBlock(Properties properties, IFWTiers tier, int stage) {
+    public IFWAnvilBlock(Properties properties, IFWTiers tier) {
         super(properties);
         this.tier = tier;
         this.repairLevel = tier.repairLevel();
         this.maxDurability = DurabilityHelper.getDurability(tier);
-        this.initalDurability = DurabilityHelper.getStageDurability(stage, this);
     }
 
     @Override
@@ -61,6 +50,13 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
         entity.setHurtsEntities(2.0F, 40);
     }
 
+
+    @Override
+    public void ifw_onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, ItemStack stack, Player player, boolean movedByPiston) {
+        super.ifw_onPlace(state, level, pos, oldState, stack, player, movedByPiston);
+        AnvilBlockEntity entity = (AnvilBlockEntity) level.getBlockEntity(pos);
+        entity.damage(stack.getDamageValue());
+    }
 
     private boolean canRemove(Level level, BlockPos pos, BlockState newState) {
         return !level.isClientSide() && !isFree(level.getBlockState(pos.below())) && !(newState.getBlock() instanceof AnvilBlock);
@@ -104,13 +100,27 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
 
     private BlockState getChippedState() {
         return switch (this.tier) {
-            default -> IFWBlocks.chipped_copper_anvil.get().defaultBlockState();
+            case COPPER -> IFWBlocks.chipped_copper_anvil.get().defaultBlockState();
+            case SILVER -> IFWBlocks.chipped_silver_anvil.get().defaultBlockState();
+            case GOLD -> IFWBlocks.chipped_gold_anvil.get().defaultBlockState();
+            case IRON -> IFWBlocks.chipped_iron_anvil.get().defaultBlockState();
+            case ANCIENT_METAL -> IFWBlocks.chipped_ancient_metal_anvil.get().defaultBlockState();
+            case MITHRIL -> IFWBlocks.chipped_mithril_anvil.get().defaultBlockState();
+            case ADAMANTIUM -> IFWBlocks.chipped_adamantium_anvil.get().defaultBlockState();
+            default -> Blocks.AIR.defaultBlockState();
         };
     }
 
     private BlockState getDamagedState() {
         return switch (this.tier) {
-            default -> IFWBlocks.damaged_copper_anvil.get().defaultBlockState();
+            case COPPER -> IFWBlocks.damaged_copper_anvil.get().defaultBlockState();
+            case SILVER -> IFWBlocks.damaged_silver_anvil.get().defaultBlockState();
+            case GOLD -> IFWBlocks.damaged_gold_anvil.get().defaultBlockState();
+            case IRON -> IFWBlocks.damaged_iron_anvil.get().defaultBlockState();
+            case ANCIENT_METAL -> IFWBlocks.damaged_ancient_metal_anvil.get().defaultBlockState();
+            case MITHRIL -> IFWBlocks.damaged_mithril_anvil.get().defaultBlockState();
+            case ADAMANTIUM -> IFWBlocks.damaged_adamantium_anvil.get().defaultBlockState();
+            default -> Blocks.AIR.defaultBlockState();
         };
     }
 
@@ -123,15 +133,11 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
     @Override
     protected MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
         return new SimpleMenuProvider((id, inventory, player) ->
-                        new IFWCopperAnvilMenu(id, inventory, ContainerLevelAccess.create(level, pos)), Component.translatable("container.repair"));
+                        new IFWAnvilMenu(id, inventory, ContainerLevelAccess.create(level, pos)), Component.translatable("container.repair"));
     }
 
     public int maxDurability() {
         return this.maxDurability;
-    }
-
-    public int initalDurability() {
-        return this.initalDurability;
     }
 
     public IFWTiers tier() {

@@ -5,7 +5,6 @@ import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
 import huix.infinity.common.world.item.IFWItems;
-import huix.infinity.util.DurabilityHelper;
 import huix.infinity.util.ReplaceHelper;
 import huix.infinity.util.StackSizeHelper;
 import net.minecraft.tags.BlockTags;
@@ -91,8 +90,20 @@ public class IFWLoad {
     }
 
     public static void injectAnvil() {
-        ReplaceHelper.damage(IFWBlocks.chipped_copper_anvil_item.get(), DurabilityHelper.getStageDurability(1, IFWBlocks.copper_anvil.get()));
-        ReplaceHelper.damage(IFWBlocks.damaged_copper_anvil_item.get(), DurabilityHelper.getStageDurability(2, IFWBlocks.copper_anvil.get()));
+        ReplaceHelper.anvilDamage(IFWBlocks.chipped_copper_anvil_item.get(), 39680);
+        ReplaceHelper.anvilDamage(IFWBlocks.damaged_copper_anvil_item.get(), 99200);
+        ReplaceHelper.anvilDamage(IFWBlocks.chipped_silver_anvil_item.get(), 39680);
+        ReplaceHelper.anvilDamage(IFWBlocks.damaged_silver_anvil_item.get(), 99200);
+        ReplaceHelper.anvilDamage(IFWBlocks.chipped_gold_anvil_item.get(), 39680);
+        ReplaceHelper.anvilDamage(IFWBlocks.damaged_gold_anvil_item.get(), 99200);
+        ReplaceHelper.anvilDamage(IFWBlocks.chipped_iron_anvil_item.get(), 198400);
+        ReplaceHelper.anvilDamage(IFWBlocks.damaged_iron_anvil_item.get(), 79360);
+        ReplaceHelper.anvilDamage(IFWBlocks.chipped_ancient_metal_anvil_item.get(), 396800);
+        ReplaceHelper.anvilDamage(IFWBlocks.damaged_ancient_metal_anvil_item.get(), 158720);
+        ReplaceHelper.anvilDamage(IFWBlocks.chipped_mithril_anvil_item.get(), 1587200);
+        ReplaceHelper.anvilDamage(IFWBlocks.damaged_mithril_anvil_item.get(), 634880);
+        ReplaceHelper.anvilDamage(IFWBlocks.chipped_adamantium_anvil_item.get(), 6348800);
+        ReplaceHelper.anvilDamage(IFWBlocks.damaged_adamantium_anvil_item.get(), 2539520);
     }
 
     public static void rebuildStackSize() {

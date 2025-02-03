@@ -1,17 +1,24 @@
-// 1.21.1	2025-02-02T18:16:58.8508873	Recipes
+// 1.21.1	2025-02-03T16:04:34.3297262	Recipes
+8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
+42230c8a0ba6489fdfc4b29d92b29b5ab807b36f data/ifw/advancement/recipes/building_blocks/ancient_metal_anvil.json
 c3ed1abdd1c9e856def620a4c7679b2fbc4b8e83 data/ifw/advancement/recipes/building_blocks/ancient_metal_bars.json
 1a0a4817c6764e406ba2de46d015800bb5606c04 data/ifw/advancement/recipes/building_blocks/ancient_metal_door.json
+3d3681092d483d8bc3ba3f53f43ce58911ebb331 data/ifw/advancement/recipes/building_blocks/copper_anvil.json
 f4319943d08ccd61c18a569ddbe266184fcc18f6 data/ifw/advancement/recipes/building_blocks/copper_bars.json
 fb019242e89028d8c4fcd03090495ba20e9f0519 data/ifw/advancement/recipes/building_blocks/copper_door.json
+c3d7b64effab000e4744f22ae764c2ea9880a635 data/ifw/advancement/recipes/building_blocks/gold_anvil.json
 78613109b659798b168fe1b2e2c0e70654bc573e data/ifw/advancement/recipes/building_blocks/gold_bars.json
 cf21768eb8192f0d34fd04f309c10cc6783a920b data/ifw/advancement/recipes/building_blocks/gold_door.json
+e5cf198dc659e7708ab8e59cb96a20d1cb56119d data/ifw/advancement/recipes/building_blocks/iron_anvil.json
+c9194eb8b0fe9ede3dbd1d5533c96cac70c1556b data/ifw/advancement/recipes/building_blocks/mithril_anvil.json
 910a6735b0a7d3fb3eeff5d77264ba880a16a1e9 data/ifw/advancement/recipes/building_blocks/mithril_bars.json
 c400010b4ba074f3f3ff16cc5a3bf14b6c23cfcd data/ifw/advancement/recipes/building_blocks/mithril_door.json
 c871ccfcf18d6acefcf51a35364f538f7879015b data/ifw/advancement/recipes/building_blocks/raw_adamantium_block.json
 d85b92770d9ece0a53e679bb7cbad1bfa8b8e829 data/ifw/advancement/recipes/building_blocks/raw_mithril_block.json
 a296fdf83247ed874d7a9980046eb1bfa795b028 data/ifw/advancement/recipes/building_blocks/raw_silver_block.json
+6a709d11ad6d220735c680f105a76aff4c33dcd0 data/ifw/advancement/recipes/building_blocks/silver_anvil.json
 d7d912faaa68888e36315a4d35ad5a08e46c948f data/ifw/advancement/recipes/building_blocks/silver_bars.json
 bee03c06ad2c8dbbb0fc99eaa9380deb36aadf8d data/ifw/advancement/recipes/building_blocks/silver_door.json
 222a73d4d0618e1c5fc5769a08f6bfc03b70ecd9 data/ifw/advancement/recipes/building_blocks/sinew.json
@@ -186,6 +193,7 @@ bd0da25bd9a9327ed31e31dd7ebb2e03117fc666 data/ifw/advancement/recipes/tools/silv
 201411fbd9bf84ed6e69f8bcdd58b498d737eafb data/ifw/advancement/recipes/tools/silver_war_hammer.json
 738a08c031aefd3e566b55d7d26ef091037b2541 data/ifw/advancement/recipes/tools/wooden_club.json
 7febb6495efdb592498b6a4419e9f78c58ed6c59 data/ifw/advancement/recipes/tools/wooden_shovel.json
+d6323f2a801e1c272f94fdf7be6287b6f2cf12e4 data/ifw/recipe/adamantium_anvil.json
 a9f48f57a1a9ab145a2861d4669959e42d010beb data/ifw/recipe/adamantium_axe.json
 5267b5bf27fc062dc498b959461702b541a545dd data/ifw/recipe/adamantium_bars.json
 de08f986064e6da13d99ed2a8f78b7c991bed861 data/ifw/recipe/adamantium_battle_axe.json
@@ -208,6 +216,7 @@ e7e9846f8a6a0eb44857103dcf6fecc0763fb97b data/ifw/recipe/adamantium_scythe.json
 2d54616a917c29877d01e3d5916f4f46304ea34c data/ifw/recipe/adamantium_shovel.json
 a2390278d49935f68b2d46e4324d2c38d5ab7b51 data/ifw/recipe/adamantium_sword.json
 140e7f1db1e6caddc67ce587e385db2742dc9d03 data/ifw/recipe/adamantium_war_hammer.json
+f6005b5041bcfc247e99793d9d9ad8afe478b961 data/ifw/recipe/ancient_metal_anvil.json
 2b1cabe5175092f9da9819e843ddc75818709299 data/ifw/recipe/ancient_metal_axe.json
 6fd1ffc4ff72eb58536868dac595fff316e13a60 data/ifw/recipe/ancient_metal_bars.json
 df397d961e045f2b2fb6cba27452279689a8c4d3 data/ifw/recipe/ancient_metal_battle_axe.json
@@ -236,6 +245,7 @@ d09091ca0c1a17b3b2eff529488ded93a503da24 data/ifw/recipe/cereal.json
 703a62dada2194c91803dea1d1f0c5c44a673cf0 data/ifw/recipe/chicken_soup.json
 e4a439434298fa7329e1dcd66bad7bf07d575151 data/ifw/recipe/chocolate.json
 52540d7f8c08f92356e3807ab68e7006416fa379 data/ifw/recipe/clay_furnace.json
+b9f06ccc4796e23585017293411c2ef9a6a12409 data/ifw/recipe/copper_anvil.json
 1499ac32d06fa5f1dbc3972e804726d9be7bcbe9 data/ifw/recipe/copper_axe.json
 a474b57d84f5861e4e95e75d20187254de1437fc data/ifw/recipe/copper_bars.json
 e4a7df8157b24c087b49566a297f5cbc11647a9c data/ifw/recipe/copper_battle_axe.json
@@ -284,10 +294,12 @@ bf6a2b4f0c17a16b09c0d1c40061bb83ca309fb3 data/ifw/recipe/golden_dagger.json
 d6417e1b0029a19dd685fda57a6355fa32864541 data/ifw/recipe/golden_shovel.json
 22ebd954d63e7f421b417cfeb07077d2b54fd532 data/ifw/recipe/golden_sword.json
 100b8452fcda31cc2030c924fd6b1fd891ec80aa data/ifw/recipe/golden_war_hammer.json
+a66cbd15571388b25da87e7ea5ebd792c0d79f19 data/ifw/recipe/gold_anvil.json
 2e06dfe3933bf36a401ef2cf979dbb4151cede29 data/ifw/recipe/gold_bars.json
 e62f8dfad8017034c2cc0359df8fc19c1e778444 data/ifw/recipe/gold_door.json
 ec901f6e71b0bb718efa7204b879b3761a703ee1 data/ifw/recipe/hardened_clay_furnace.json
 8afffc301ac49e300a6740005c2fdd6ddb620131 data/ifw/recipe/ice_cream.json
+b1322c38f0e5a2744915e42d132015a4f4b1b7eb data/ifw/recipe/iron_anvil.json
 f64ab0833541ccd893763d0bb97b37a7b4b28f2c data/ifw/recipe/iron_axe.json
 e99716a6885aea8703197dacd5b3892707f10292 data/ifw/recipe/iron_battle_axe.json
 96a026b48337453e54c31f02fd8b1d773f38eda3 data/ifw/recipe/iron_boots.json
@@ -309,6 +321,7 @@ f3cff6818b392dfcc4ffbe8f4c8d53b596b567c7 data/ifw/recipe/iron_shovel.json
 9d4e7e6a7c0bec1bf7884c7960e5678d9e9df1d6 data/ifw/recipe/iron_sword.json
 eba80ad8cda3e9dcdf387172e2c6111da20661da data/ifw/recipe/iron_war_hammer.json
 54ed989a6bb97f42125e4194ffe022fd9ef2d4b3 data/ifw/recipe/mashed_potato.json
+f8f77ff33bbb420a2d0c9b76f267ce02c90ebfd7 data/ifw/recipe/mithril_anvil.json
 5a7db7fe44473d2c3918056208d24bb6b578cdd2 data/ifw/recipe/mithril_axe.json
 0531f77b18bcacbf344092b370b54735fa89f8b2 data/ifw/recipe/mithril_bars.json
 0de3f2db8a009c1077dc7266cce746501d1f1914 data/ifw/recipe/mithril_battle_axe.json
@@ -344,6 +357,7 @@ e9b39447a72bcea30e05a98468bb53ac7ab6df5c data/ifw/recipe/rusted_iron_chainmail_b
 14621e1b80b2cdb36e72bd2158e410cce5f50d1f data/ifw/recipe/rusted_iron_chainmail_leggings.json
 b519885236aaa2a3dce907a45d9963071480a0e5 data/ifw/recipe/salad.json
 a26b719d81684201c5e7bc1714093418ab05f29d data/ifw/recipe/sandstone_furnace.json
+01cb592504b8eda9b743d51b5aa9568a8f29eafe data/ifw/recipe/silver_anvil.json
 ea8944ef562be9971158ded89f6108b89eb8fce3 data/ifw/recipe/silver_axe.json
 18fc62e8707f1904ba55f4768c45853f9783fa8d data/ifw/recipe/silver_bars.json
 8606fda9d9c986f12d6bafdf037e27f0da0cfd50 data/ifw/recipe/silver_battle_axe.json

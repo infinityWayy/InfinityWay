@@ -28,19 +28,111 @@ public class IFWBlocks {
 
     public static final DeferredBlock<IFWAnvilBlock> copper_anvil = BLOCKS.registerBlock("copper_anvil",
             block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
-                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER, 0));
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER));
     public static final DeferredItem<BlockItem> copper_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_anvil", copper_anvil,
-            new Item.Properties().stacksTo(1).durability(DurabilityHelper.getDurability(IFWTiers.COPPER)));
+            new Item.Properties().stacksTo(1).durability(198400));
     public static final DeferredBlock<IFWAnvilBlock> chipped_copper_anvil = BLOCKS.registerBlock("chipped_copper_anvil",
             block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
-                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER, 1));
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER));
     public static final DeferredItem<BlockItem> chipped_copper_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("chipped_copper_anvil", chipped_copper_anvil,
-            new Item.Properties().stacksTo(1).durability(DurabilityHelper.getDurability(IFWTiers.COPPER)));
+            new Item.Properties().stacksTo(1).durability(198400));
     public static final DeferredBlock<IFWAnvilBlock> damaged_copper_anvil = BLOCKS.registerBlock("damaged_copper_anvil",
             block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
-                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER, 2));
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER));
     public static final DeferredItem<BlockItem> damaged_copper_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("damaged_copper_anvil", damaged_copper_anvil,
-            new Item.Properties().stacksTo(1).durability(DurabilityHelper.getDurability(IFWTiers.COPPER)));
+            new Item.Properties().stacksTo(1).durability(198400));
+    public static final DeferredBlock<IFWAnvilBlock> silver_anvil = BLOCKS.registerBlock("silver_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.SILVER));
+    public static final DeferredItem<BlockItem> silver_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("silver_anvil", silver_anvil,
+            new Item.Properties().stacksTo(1).durability(198400));
+    public static final DeferredBlock<IFWAnvilBlock> chipped_silver_anvil = BLOCKS.registerBlock("chipped_silver_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.SILVER));
+    public static final DeferredItem<BlockItem> chipped_silver_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("chipped_silver_anvil", chipped_silver_anvil,
+            new Item.Properties().stacksTo(1).durability(198400));
+    public static final DeferredBlock<IFWAnvilBlock> damaged_silver_anvil = BLOCKS.registerBlock("damaged_silver_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.SILVER));
+    public static final DeferredItem<BlockItem> damaged_silver_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("damaged_silver_anvil", damaged_silver_anvil,
+            new Item.Properties().stacksTo(1).durability(198400));
+    public static final DeferredBlock<IFWAnvilBlock> gold_anvil = BLOCKS.registerBlock("gold_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.GOLD));
+    public static final DeferredItem<BlockItem> gold_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("gold_anvil", gold_anvil,
+            new Item.Properties().stacksTo(1).durability(198400));
+    public static final DeferredBlock<IFWAnvilBlock> chipped_gold_anvil = BLOCKS.registerBlock("chipped_gold_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.GOLD));
+    public static final DeferredItem<BlockItem> chipped_gold_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("chipped_gold_anvil", chipped_gold_anvil,
+            new Item.Properties().stacksTo(1).durability(198400));
+    public static final DeferredBlock<IFWAnvilBlock> damaged_gold_anvil = BLOCKS.registerBlock("damaged_gold_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.GOLD));
+    public static final DeferredItem<BlockItem> damaged_gold_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("damaged_gold_anvil", damaged_gold_anvil,
+            new Item.Properties().stacksTo(1).durability(198400));
+    public static final DeferredBlock<IFWAnvilBlock> iron_anvil = BLOCKS.registerBlock("iron_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.IRON));
+    public static final DeferredItem<BlockItem> iron_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("iron_anvil", iron_anvil,
+            new Item.Properties().stacksTo(1).durability(396800));
+    public static final DeferredBlock<IFWAnvilBlock> chipped_iron_anvil = BLOCKS.registerBlock("chipped_iron_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.IRON));
+    public static final DeferredItem<BlockItem> chipped_iron_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("chipped_iron_anvil", chipped_iron_anvil,
+            new Item.Properties().stacksTo(1).durability(396800));
+    public static final DeferredBlock<IFWAnvilBlock> damaged_iron_anvil = BLOCKS.registerBlock("damaged_iron_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.IRON));
+    public static final DeferredItem<BlockItem> damaged_iron_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("damaged_iron_anvil", damaged_iron_anvil,
+            new Item.Properties().stacksTo(1).durability(396800));
+    public static final DeferredBlock<IFWAnvilBlock> ancient_metal_anvil = BLOCKS.registerBlock("ancient_metal_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.ANCIENT_METAL));
+    public static final DeferredItem<BlockItem> ancient_metal_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("ancient_metal_anvil", ancient_metal_anvil,
+            new Item.Properties().stacksTo(1).durability(793600));
+    public static final DeferredBlock<IFWAnvilBlock> chipped_ancient_metal_anvil = BLOCKS.registerBlock("chipped_ancient_metal_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.ANCIENT_METAL));
+    public static final DeferredItem<BlockItem> chipped_ancient_metal_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("chipped_ancient_metal_anvil", chipped_ancient_metal_anvil,
+            new Item.Properties().stacksTo(1).durability(793600));
+    public static final DeferredBlock<IFWAnvilBlock> damaged_ancient_metal_anvil = BLOCKS.registerBlock("damaged_ancient_metal_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.ANCIENT_METAL));
+    public static final DeferredItem<BlockItem> damaged_ancient_metal_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("damaged_ancient_metal_anvil", damaged_ancient_metal_anvil,
+            new Item.Properties().stacksTo(1).durability(793600));
+    public static final DeferredBlock<IFWAnvilBlock> mithril_anvil = BLOCKS.registerBlock("mithril_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.MITHRIL));
+    public static final DeferredItem<BlockItem> mithril_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_anvil", mithril_anvil,
+            new Item.Properties().stacksTo(1).durability(3174400));
+    public static final DeferredBlock<IFWAnvilBlock> chipped_mithril_anvil = BLOCKS.registerBlock("chipped_mithril_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.MITHRIL));
+    public static final DeferredItem<BlockItem> chipped_mithril_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("chipped_mithril_anvil", chipped_mithril_anvil,
+            new Item.Properties().stacksTo(1).durability(3174400));
+    public static final DeferredBlock<IFWAnvilBlock> damaged_mithril_anvil = BLOCKS.registerBlock("damaged_mithril_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.MITHRIL));
+    public static final DeferredItem<BlockItem> damaged_mithril_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("damaged_mithril_anvil", damaged_mithril_anvil,
+            new Item.Properties().stacksTo(1).durability(3174400));
+    public static final DeferredBlock<IFWAnvilBlock> adamantium_anvil = BLOCKS.registerBlock("adamantium_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.ADAMANTIUM));
+    public static final DeferredItem<BlockItem> adamantium_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_anvil", adamantium_anvil,
+            new Item.Properties().stacksTo(1).durability(12697200));
+    public static final DeferredBlock<IFWAnvilBlock> chipped_adamantium_anvil = BLOCKS.registerBlock("chipped_adamantium_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.ADAMANTIUM));
+    public static final DeferredItem<BlockItem> chipped_adamantium_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("chipped_adamantium_anvil", chipped_adamantium_anvil,
+            new Item.Properties().stacksTo(1).durability(12697200));
+    public static final DeferredBlock<IFWAnvilBlock> damaged_adamantium_anvil = BLOCKS.registerBlock("damaged_adamantium_anvil",
+            block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
+                    .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.ADAMANTIUM));
+    public static final DeferredItem<BlockItem> damaged_adamantium_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("damaged_adamantium_anvil", damaged_adamantium_anvil,
+            new Item.Properties().stacksTo(1).durability(12697200));
+
+
 
 
     public static final DeferredBlock<Block> adamantium_block = BLOCKS.registerSimpleBlock("adamantium_block",

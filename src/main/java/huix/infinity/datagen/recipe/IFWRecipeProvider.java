@@ -28,6 +28,15 @@ public class IFWRecipeProvider extends RecipeProvider {
         rebuildRecipe(recipeOutput);
 
         {
+            anvilRecipe(recipeOutput, IFWBlocks.adamantium_anvil, IFWItems.adamantium_ingot,IFWBlocks.adamantium_block);
+            anvilRecipe(recipeOutput, IFWBlocks.silver_anvil, IFWItems.silver_ingot,IFWBlocks.silver_block);
+            anvilRecipe(recipeOutput, IFWBlocks.copper_anvil, Items.COPPER_INGOT,Blocks.COPPER_BLOCK);
+            anvilRecipe(recipeOutput, IFWBlocks.gold_anvil, Items.GOLD_INGOT,Blocks.GOLD_BLOCK);
+            anvilRecipe(recipeOutput, IFWBlocks.iron_anvil, Items.IRON_INGOT,Blocks.IRON_BLOCK);
+            anvilRecipe(recipeOutput, IFWBlocks.ancient_metal_anvil, IFWItems.ancient_metal_ingot,IFWBlocks.ancient_metal_block);
+            anvilRecipe(recipeOutput, IFWBlocks.mithril_anvil, IFWItems.mithril_ingot,IFWBlocks.mithril_block);
+        }
+        {
             armorRecipe(recipeOutput, IFWItems.adamantium_helmet, IFWItems.adamantium_chestplate, IFWItems.adamantium_leggings,
                     IFWItems.adamantium_boots, IFWItems.adamantium_ingot);
             armorRecipe(recipeOutput, IFWItems.adamantium_chainmail_helmet, IFWItems.adamantium_chainmail_chestplate,
@@ -257,6 +266,17 @@ public class IFWRecipeProvider extends RecipeProvider {
                     .save(recipeOutput);
         }
     }
+    private void anvilRecipe(RecipeOutput recipeOutput, ItemLike anvil, ItemLike ingot, ItemLike block) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, anvil)
+                .pattern("YYY")
+                .pattern(" X ")
+                .pattern("XXX")
+                .define('X', ingot)
+                .define('Y', block)
+                .unlockedBy("has_block", has(block))
+                .save(recipeOutput);
+    }
+
     private void rebuildRecipe(RecipeOutput recipeOutput) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Items.PUMPKIN_SEEDS, 1)
                 .requires(Items.PUMPKIN, 1)

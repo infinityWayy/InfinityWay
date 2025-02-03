@@ -28,7 +28,13 @@ public class IFWBlockEntityTypes {
                             .build(Util.fetchChoiceType(References.BLOCK_ENTITY, "ifw_furnace")));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AnvilBlockEntity>> ifw_anvil = BLOCK_ENTITY_TYPES.register(
-            "ifw_anvil", () -> BlockEntityType.Builder.of(AnvilBlockEntity::new
-                            , IFWBlocks.copper_anvil.get(), IFWBlocks.chipped_copper_anvil.get(), IFWBlocks.damaged_copper_anvil.get())
+            "ifw_anvil", () -> BlockEntityType.Builder.of(AnvilBlockEntity::new,
+                            IFWBlocks.copper_anvil.get(), IFWBlocks.chipped_copper_anvil.get(), IFWBlocks.damaged_copper_anvil.get(),
+                            IFWBlocks.silver_anvil.get(), IFWBlocks.chipped_silver_anvil.get(), IFWBlocks.damaged_silver_anvil.get(),
+                            IFWBlocks.gold_anvil.get(), IFWBlocks.chipped_gold_anvil.get(), IFWBlocks.damaged_gold_anvil.get(),
+                            IFWBlocks.iron_anvil.get(), IFWBlocks.chipped_iron_anvil.get(), IFWBlocks.damaged_iron_anvil.get(),
+                            IFWBlocks.ancient_metal_anvil.get(), IFWBlocks.chipped_ancient_metal_anvil.get(), IFWBlocks.damaged_ancient_metal_anvil.get(),
+                            IFWBlocks.mithril_anvil.get(), IFWBlocks.chipped_mithril_anvil.get(), IFWBlocks.damaged_mithril_anvil.get(),
+                            IFWBlocks.adamantium_anvil.get(), IFWBlocks.chipped_adamantium_anvil.get(), IFWBlocks.damaged_adamantium_anvil.get())
                     .build(Util.fetchChoiceType(References.BLOCK_ENTITY, "ifw_anvil")));
 }

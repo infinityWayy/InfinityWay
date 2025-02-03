@@ -31,6 +31,14 @@ public interface ArmorMaterialExtension {
         return null;
     }
 
+    default int repairLevel() {
+        return 0;
+    }
+
+    default ArmorMaterial repairLevel(int repairLevel) {
+        return null;
+    }
+
     default float float_defense(ArmorItem.Type type) {
         return 0.0F;
     }

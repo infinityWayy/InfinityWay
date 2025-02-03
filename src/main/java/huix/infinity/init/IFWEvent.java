@@ -47,7 +47,6 @@ public class IFWEvent {
         bus.addListener(IFWEvent::nonRemoveUnClearEffect);
         bus.addListener(IFWEvent::injectFuel);
         bus.addListener(IFWEvent::injectItem);
-        bus.addListener(IFWEvent::placeAnvil);
     }
 
     public static void injectItem(final DataMapsUpdatedEvent event) {
@@ -55,17 +54,17 @@ public class IFWEvent {
         IFWLoad.injectAnvil();
     }
 
-    public static void placeAnvil(final BlockEvent.EntityPlaceEvent event) {
-        if (event.getPlacedBlock().is(BlockTags.ANVIL)) {
-            System.out.println("222222222222");
-            AnvilBlockEntity entity = (AnvilBlockEntity) event.getLevel().getBlockEntity(event.getPos());
-            if (entity != null) {
-                ItemStack stack = new ItemStack(event.getPlacedBlock().getBlock());
-                entity.damage(stack.getDamageValue());
-                System.out.println(entity.damage());
-            }
-        }
-    }
+//    public static void placeAnvil(final BlockEvent.EntityPlaceEvent event) {
+//        if (event.getPlacedBlock().is(BlockTags.ANVIL)) {
+//            System.out.println("222222222222");
+//            AnvilBlockEntity entity = (AnvilBlockEntity) event.getLevel().getBlockEntity(event.getPos());
+//            if (entity != null) {
+//                ItemStack stack = new ItemStack(event.getPlacedBlock().getBlock());
+//                entity.damage(stack.getDamageValue());
+//                System.out.println(entity.damage());
+//            }
+//        }
+//    }
 
     public static void onBreakSpeed(final PlayerEvent.BreakSpeed event) {
         event.setNewSpeed(event.getOriginalSpeed() + LevelBonusStats.HARVESTING.calcBonusFor(event.getEntity()));

@@ -3,18 +3,13 @@ package huix.infinity.util;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-
-import java.util.Map;
-import java.util.Optional;
 
 public class ReplaceHelper {
 
@@ -30,7 +25,8 @@ public class ReplaceHelper {
         patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(DataComponents.MAX_STACK_SIZE, size).build());
     }
 
-    public static void damage(Item patchItem, int damage) {
+    public static void anvilDamage(Item patchItem, int current) {
+        int damage = patchItem.components.get(DataComponents.MAX_DAMAGE) - current;
         patchItem.ifw_modifyDefaultComponentsToAnvil(DataComponentPatch.builder().set(DataComponents.DAMAGE, damage).build());
     }
 

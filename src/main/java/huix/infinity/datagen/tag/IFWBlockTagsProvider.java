@@ -69,7 +69,13 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.DOORS).add(IFWBlocks.adamantium_door.get(), IFWBlocks.ancient_metal_door.get(), IFWBlocks.copper_door.get(), IFWBlocks.gold_door.get(),
                 IFWBlocks.mithril_door.get(), IFWBlocks.silver_door.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IFWBlocks.adamantium_door.get());
-        tag(BlockTags.ANVIL).add(IFWBlocks.copper_anvil.get(), IFWBlocks.chipped_copper_anvil.get(), IFWBlocks.damaged_copper_anvil.get());
+        tag(BlockTags.ANVIL).add(IFWBlocks.copper_anvil.get(), IFWBlocks.chipped_copper_anvil.get(), IFWBlocks.damaged_copper_anvil.get(),
+                IFWBlocks.silver_anvil.get(), IFWBlocks.chipped_silver_anvil.get(), IFWBlocks.damaged_silver_anvil.get(),
+                IFWBlocks.gold_anvil.get(), IFWBlocks.chipped_gold_anvil.get(), IFWBlocks.damaged_gold_anvil.get(),
+                IFWBlocks.iron_anvil.get(), IFWBlocks.chipped_iron_anvil.get(), IFWBlocks.damaged_iron_anvil.get(),
+                IFWBlocks.ancient_metal_anvil.get(), IFWBlocks.chipped_ancient_metal_anvil.get(), IFWBlocks.damaged_ancient_metal_anvil.get(),
+                IFWBlocks.mithril_anvil.get(), IFWBlocks.chipped_mithril_anvil.get(), IFWBlocks.damaged_mithril_anvil.get(),
+                IFWBlocks.adamantium_anvil.get(), IFWBlocks.chipped_adamantium_anvil.get(), IFWBlocks.damaged_adamantium_anvil.get());
         tag(IFWBlockTags.IFW_FURNACE).add(IFWBlocks.clay_furnace.get(), IFWBlocks.hardened_clay_furnace.get(), IFWBlocks.netherrack_furnace.get(), IFWBlocks.obsidian_furnace.get()
                                     , IFWBlocks.sandstone_furnace.get(), IFWBlocks.stone_furnace.get());
         tag(IFWBlockTags.PORTABLE_BLOCK).addTags(BlockTags.ANVIL, IFWBlockTags.IFW_FURNACE).add(Blocks.CRAFTING_TABLE);

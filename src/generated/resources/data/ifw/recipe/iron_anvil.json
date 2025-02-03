@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "Y": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "pattern": [
+    "YYY",
+    " X ",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:iron_anvil"
+  }
+}

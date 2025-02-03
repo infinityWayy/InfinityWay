@@ -5,11 +5,13 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "inventory.EnchantmentMenuMixin",
+    "neoforge.CommonHooksMixin",
     "server.PlayerListMixin",
     "server.player.SleepStatusMixin",
     "world.block.BlockBehaviourMixin",
     "world.block.BlockMixin",
     "world.block.BlocksInjected",
+    "world.block.BlockStateBaseMixin",
     "world.block.DirtBlockMixin",
     "world.block.FarmBlockMixin",
     "world.block.LeavesBlockMixin",

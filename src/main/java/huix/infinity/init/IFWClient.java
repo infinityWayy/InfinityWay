@@ -42,7 +42,7 @@ public final class IFWClient {
     @SubscribeEvent
     public static void registerMenuScreens(final RegisterMenuScreensEvent event) {
         event.register(IFWMenuType.ifw_furnace_menu.get(), IFWFurnaceScreen::new);
-        event.register(IFWMenuType.copper_anvil_menu.get(), IFWAnvilScreen::new);
+        event.register(IFWMenuType.anvil_menu.get(), IFWAnvilScreen::new);
     }
 
     @SubscribeEvent

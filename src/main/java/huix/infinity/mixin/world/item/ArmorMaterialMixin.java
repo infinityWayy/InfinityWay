@@ -19,6 +19,8 @@ public class ArmorMaterialMixin implements ArmorMaterialExtension {
     @Unique
     private float magicResistance;
     @Unique
+    private int repairLevel;
+    @Unique
     private Map<ArmorItem.Type, Float> ifw_defense;
 
     @Unique
@@ -57,5 +59,16 @@ public class ArmorMaterialMixin implements ArmorMaterialExtension {
     @Override
     public int acidResistance() {
         return this.acidResistance;
+    }
+
+    @Override
+    public int repairLevel() {
+        return this.repairLevel;
+    }
+
+    @Override
+    public ArmorMaterial repairLevel(int repairLevel) {
+        this.repairLevel = repairLevel;
+        return ReflectHelper.dyCast(this);
     }
 }

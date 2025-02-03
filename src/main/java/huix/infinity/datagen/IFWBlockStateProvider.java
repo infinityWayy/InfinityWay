@@ -38,7 +38,6 @@ public class IFWBlockStateProvider extends BlockStateProvider {
                 .forAllStates(state -> ConfiguredModel.builder()
                         .modelFile(copperAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
         simpleBlockItem(IFWBlocks.copper_anvil.get(), copperAnvil);
-
         ModelFile chippedCopperAnvil = models().withExistingParent("chipped_copper_anvil_top", mcLoc("block/anvil"))
                 .texture("particle", modLoc("block/chipped_copper_anvil_top"))
                 .texture("body", modLoc("block/copper_anvil"))
@@ -47,7 +46,6 @@ public class IFWBlockStateProvider extends BlockStateProvider {
                 .forAllStates(state -> ConfiguredModel.builder()
                         .modelFile(chippedCopperAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
         simpleBlockItem(IFWBlocks.chipped_copper_anvil.get(), chippedCopperAnvil);
-
         ModelFile damagedCopperAnvil = models().withExistingParent("damaged_copper_anvil_top", mcLoc("block/anvil"))
                 .texture("particle", modLoc("block/damaged_copper_anvil_top"))
                 .texture("body", modLoc("block/copper_anvil"))
@@ -56,8 +54,151 @@ public class IFWBlockStateProvider extends BlockStateProvider {
                 .forAllStates(state -> ConfiguredModel.builder()
                         .modelFile(damagedCopperAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
         simpleBlockItem(IFWBlocks.damaged_copper_anvil.get(), damagedCopperAnvil);
+        ModelFile adamantiumAnvil = models().withExistingParent("adamantium_anvil", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/adamantium_anvil_top"))
+                .texture("body", modLoc("block/adamantium_anvil"))
+                .texture("top", modLoc("block/adamantium_anvil_top"));
+        getVariantBuilder(IFWBlocks.adamantium_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(adamantiumAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.adamantium_anvil.get(), adamantiumAnvil);
+        ModelFile chippedAdamantiumAnvil = models().withExistingParent("chipped_adamantium_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/chipped_adamantium_anvil_top"))
+                .texture("body", modLoc("block/adamantium_anvil"))
+                .texture("top", modLoc("block/chipped_adamantium_anvil_top"));
+        getVariantBuilder(IFWBlocks.chipped_adamantium_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(chippedAdamantiumAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.chipped_adamantium_anvil.get(), chippedAdamantiumAnvil);
+        ModelFile damagedAdamantiumAnvil = models().withExistingParent("damaged_adamantium_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/damaged_adamantium_anvil_top"))
+                .texture("body", modLoc("block/adamantium_anvil"))
+                .texture("top", modLoc("block/damaged_adamantium_anvil_top"));
+        getVariantBuilder(IFWBlocks.damaged_adamantium_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(damagedAdamantiumAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.damaged_adamantium_anvil.get(), damagedAdamantiumAnvil);
+        ModelFile mithrilAnvil = models().withExistingParent("mithril_anvil", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/mithril_anvil_top"))
+                .texture("body", modLoc("block/mithril_anvil"))
+                .texture("top", modLoc("block/mithril_anvil_top"));
+        getVariantBuilder(IFWBlocks.mithril_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(mithrilAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.mithril_anvil.get(), mithrilAnvil);
+        ModelFile chippedMithrilAnvil = models().withExistingParent("chipped_mithril_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/chipped_mithril_anvil_top"))
+                .texture("body", modLoc("block/mithril_anvil"))
+                .texture("top", modLoc("block/chipped_mithril_anvil_top"));
+        getVariantBuilder(IFWBlocks.chipped_mithril_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(chippedMithrilAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.chipped_mithril_anvil.get(), chippedMithrilAnvil);
+        ModelFile damagedMithrilAnvil = models().withExistingParent("damaged_mithril_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/damaged_mithril_anvil_top"))
+                .texture("body", modLoc("block/mithril_anvil"))
+                .texture("top", modLoc("block/damaged_mithril_anvil_top"));
+        getVariantBuilder(IFWBlocks.damaged_mithril_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(damagedMithrilAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.damaged_mithril_anvil.get(), damagedMithrilAnvil);
+        ModelFile ancientMetalAnvil = models().withExistingParent("ancient_metal_anvil", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/ancient_metal_anvil_top"))
+                .texture("body", modLoc("block/ancient_metal_anvil"))
+                .texture("top", modLoc("block/ancient_metal_anvil_top"));
+        getVariantBuilder(IFWBlocks.ancient_metal_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(ancientMetalAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.ancient_metal_anvil.get(), ancientMetalAnvil);
+        ModelFile chippedAncientMetalAnvil = models().withExistingParent("chipped_ancient_metal_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/chipped_ancient_metal_anvil_top"))
+                .texture("body", modLoc("block/ancient_metal_anvil"))
+                .texture("top", modLoc("block/chipped_ancient_metal_anvil_top"));
+        getVariantBuilder(IFWBlocks.chipped_ancient_metal_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(chippedAncientMetalAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.chipped_ancient_metal_anvil.get(), chippedAncientMetalAnvil);
+        ModelFile damagedAncientMetalAnvil = models().withExistingParent("damaged_ancient_metal_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/damaged_ancient_metal_anvil_top"))
+                .texture("body", modLoc("block/ancient_metal_anvil"))
+                .texture("top", modLoc("block/damaged_ancient_metal_anvil_top"));
+        getVariantBuilder(IFWBlocks.damaged_ancient_metal_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(damagedAncientMetalAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.damaged_ancient_metal_anvil.get(), damagedAncientMetalAnvil);
 
-
+        ModelFile ironAnvil = models().withExistingParent("iron_anvil", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/iron_anvil_top"))
+                .texture("body", modLoc("block/iron_anvil"))
+                .texture("top", modLoc("block/iron_anvil_top"));
+        getVariantBuilder(IFWBlocks.iron_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(ironAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.iron_anvil.get(), ironAnvil);
+        ModelFile chippedIronAnvil = models().withExistingParent("chipped_iron_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/chipped_iron_anvil_top"))
+                .texture("body", modLoc("block/iron_anvil"))
+                .texture("top", modLoc("block/chipped_iron_anvil_top"));
+        getVariantBuilder(IFWBlocks.chipped_iron_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(chippedIronAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.chipped_iron_anvil.get(), chippedIronAnvil);
+        ModelFile damagedIronAnvil = models().withExistingParent("damaged_iron_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/damaged_iron_anvil_top"))
+                .texture("body", modLoc("block/iron_anvil"))
+                .texture("top", modLoc("block/damaged_iron_anvil_top"));
+        getVariantBuilder(IFWBlocks.damaged_iron_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(damagedIronAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.damaged_iron_anvil.get(), damagedIronAnvil);
+        ModelFile goldAnvil = models().withExistingParent("gold_anvil", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/gold_anvil_top"))
+                .texture("body", modLoc("block/gold_anvil"))
+                .texture("top", modLoc("block/gold_anvil_top"));
+        getVariantBuilder(IFWBlocks.gold_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(goldAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.gold_anvil.get(), goldAnvil);
+        ModelFile chippedGoldAnvil = models().withExistingParent("chipped_gold_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/chipped_gold_anvil_top"))
+                .texture("body", modLoc("block/gold_anvil"))
+                .texture("top", modLoc("block/chipped_gold_anvil_top"));
+        getVariantBuilder(IFWBlocks.chipped_gold_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(chippedGoldAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.chipped_gold_anvil.get(), chippedGoldAnvil);
+        ModelFile damagedGoldAnvil = models().withExistingParent("damaged_gold_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/damaged_gold_anvil_top"))
+                .texture("body", modLoc("block/gold_anvil"))
+                .texture("top", modLoc("block/damaged_gold_anvil_top"));
+        getVariantBuilder(IFWBlocks.damaged_gold_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(damagedGoldAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.damaged_gold_anvil.get(), damagedGoldAnvil);
+        ModelFile silverAnvil = models().withExistingParent("silver_anvil", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/silver_anvil_top"))
+                .texture("body", modLoc("block/silver_anvil"))
+                .texture("top", modLoc("block/silver_anvil_top"));
+        getVariantBuilder(IFWBlocks.silver_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(silverAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.silver_anvil.get(), silverAnvil);
+        ModelFile chippedSilverAnvil = models().withExistingParent("chipped_silver_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/chipped_silver_anvil_top"))
+                .texture("body", modLoc("block/silver_anvil"))
+                .texture("top", modLoc("block/chipped_silver_anvil_top"));
+        getVariantBuilder(IFWBlocks.chipped_silver_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(chippedSilverAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.chipped_silver_anvil.get(), chippedSilverAnvil);
+        ModelFile damagedSilverAnvil = models().withExistingParent("damaged_silver_anvil_top", mcLoc("block/anvil"))
+                .texture("particle", modLoc("block/damaged_silver_anvil_top"))
+                .texture("body", modLoc("block/silver_anvil"))
+                .texture("top", modLoc("block/damaged_silver_anvil_top"));
+        getVariantBuilder(IFWBlocks.damaged_silver_anvil.get())
+                .forAllStates(state -> ConfiguredModel.builder()
+                        .modelFile(damagedSilverAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
+        simpleBlockItem(IFWBlocks.damaged_silver_anvil.get(), damagedSilverAnvil);
         simpleBlock(IFWBlocks.adamantium_block.get());
         simpleBlock(IFWBlocks.adamantium_ore.get());
         paneBlock((IronBarsBlock) IFWBlocks.adamantium_bars.get(), modLoc("block/adamantium_bars") , modLoc("block/adamantium_bars"));

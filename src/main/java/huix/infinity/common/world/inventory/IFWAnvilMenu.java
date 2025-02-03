@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public abstract class IFWAnvilMenu extends ItemCombinerMenu {
+public class IFWAnvilMenu extends ItemCombinerMenu {
     public int repairItemCountCost;
     @Nullable
     private String itemName;
@@ -57,15 +57,19 @@ public abstract class IFWAnvilMenu extends ItemCombinerMenu {
         }
     };
 
-    public IFWAnvilMenu(@Nullable MenuType<?> type, int containerId, Inventory playerInventory, ContainerLevelAccess access, int repairLevel) {
-        super(type, containerId, playerInventory, access);
+    public IFWAnvilMenu(int containerId, Inventory playerInventory) {
+        this(containerId, playerInventory, ContainerLevelAccess.NULL);
+    }
+
+    public IFWAnvilMenu(int containerId, Inventory playerInventory, ContainerLevelAccess access) {
+        super(IFWMenuType.anvil_menu.get(), containerId, playerInventory, access);
         this.addDataSlots(this.anvilData);
         this.addDataSlot(this.repairLevel);
-        this.repairLevel.set(repairLevel);
         access.execute((level, pos) -> {
             Block block = level.getBlockState(pos).getBlock();
-            if (block instanceof IFWAnvilBlock) {
-                this.maxDurability = ((IFWAnvilBlock)block).maxDurability();
+            if (block instanceof IFWAnvilBlock anvilBlock) {
+                this.maxDurability = anvilBlock.maxDurability();
+                this.repairLevel.set(anvilBlock.repairLevel());
             }
 
             BlockEntity tileEntity = level.getBlockEntity(pos);

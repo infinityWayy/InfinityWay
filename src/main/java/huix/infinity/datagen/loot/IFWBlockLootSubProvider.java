@@ -29,7 +29,24 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.copper_anvil.get());
         dropSelf(IFWBlocks.chipped_copper_anvil.get());
         dropSelf(IFWBlocks.damaged_copper_anvil.get());
-
+        dropSelf(IFWBlocks.adamantium_anvil.get());
+        dropSelf(IFWBlocks.chipped_adamantium_anvil.get());
+        dropSelf(IFWBlocks.damaged_adamantium_anvil.get());
+        dropSelf(IFWBlocks.mithril_anvil.get());
+        dropSelf(IFWBlocks.chipped_mithril_anvil.get());
+        dropSelf(IFWBlocks.damaged_mithril_anvil.get());
+        dropSelf(IFWBlocks.ancient_metal_anvil.get());
+        dropSelf(IFWBlocks.chipped_ancient_metal_anvil.get());
+        dropSelf(IFWBlocks.damaged_ancient_metal_anvil.get());
+        dropSelf(IFWBlocks.iron_anvil.get());
+        dropSelf(IFWBlocks.chipped_iron_anvil.get());
+        dropSelf(IFWBlocks.damaged_iron_anvil.get());
+        dropSelf(IFWBlocks.gold_anvil.get());
+        dropSelf(IFWBlocks.chipped_gold_anvil.get());
+        dropSelf(IFWBlocks.damaged_gold_anvil.get());
+        dropSelf(IFWBlocks.silver_anvil.get());
+        dropSelf(IFWBlocks.chipped_silver_anvil.get());
+        dropSelf(IFWBlocks.damaged_silver_anvil.get());
         dropOther(IFWBlocks.adamantium_ore.get(), IFWItems.raw_adamantium);
         dropOther(IFWBlocks.deepslate_adamantium_ore.get(), IFWItems.raw_adamantium);
         dropOther(IFWBlocks.mithril_ore.get(), IFWItems.raw_mithril);
