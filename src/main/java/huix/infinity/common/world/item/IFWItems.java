@@ -460,9 +460,6 @@ public class IFWItems {
     public static final DeferredItem<Item> iron_sword =
             ITEMS.register("iron_sword", item -> new SwordWeapon(IFWTiers.IRON,
                     new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.IRON,4.0F, -2.4F))));
-    public static final DeferredItem<Item> iron_pickaxe =
-            ITEMS.register("iron_pickaxe", item -> new PickaxeTool(IFWTiers.IRON,
-                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.IRON, 2, -2.7F))));
     public static final DeferredItem<Item> iron_axe =
             ITEMS.register("iron_axe", item -> new AxeTool(IFWTiers.IRON,
                     new Item.Properties().attributes(AxeTool.createAttributes(IFWTiers.IRON,3.0F, -3.1F))));

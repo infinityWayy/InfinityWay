@@ -1,9 +1,11 @@
 package huix.infinity.init.event;
 
-import huix.infinity.datagen.IFWBlockStateProvider;
-import huix.infinity.datagen.IFWItemModelProvider;
-import huix.infinity.datagen.lang.IFWCNLanguageProvider;
-import huix.infinity.datagen.lang.IFWUSLanguageProvider;
+import huix.infinity.datagen.lang.MCCNLang;
+import huix.infinity.datagen.lang.MCUSLang;
+import huix.infinity.datagen.model.IFWBlockStateProvider;
+import huix.infinity.datagen.model.IFWItemModelProvider;
+import huix.infinity.datagen.lang.IFWCNLang;
+import huix.infinity.datagen.lang.IFWUSLang;
 import huix.infinity.datagen.loot.IFWGlobalLootModifierProvider;
 import huix.infinity.datagen.loot.IFWLootTableProvider;
 import huix.infinity.datagen.recipe.IFWRecipeProvider;
@@ -28,9 +30,11 @@ public final class IFWData {
         generator.addProvider(event.includeClient(), new IFWBlockStateProvider(output, existingFileHelper));
         generator.addProvider(event.includeClient(), new IFWItemModelProvider(output, existingFileHelper));
         //zh_cn
-        generator.addProvider(event.includeClient(), new IFWCNLanguageProvider(output));
+        generator.addProvider(event.includeClient(), new IFWCNLang(output));
+        //generator.addProvider(event.includeClient(), new MCCNLang(output));
         //en_us
-        generator.addProvider(event.includeClient(), new IFWUSLanguageProvider(output));
+        generator.addProvider(event.includeClient(), new IFWUSLang(output));
+        //generator.addProvider(event.includeClient(), new MCUSLang(output));
 
         generator.addProvider(event.includeServer(), new IFWLootTableProvider(output, lookupProvider));
 

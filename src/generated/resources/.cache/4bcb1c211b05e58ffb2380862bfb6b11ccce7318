@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-31T16:27:56.439894	Item Models: ifw
+// 1.21.1	2025-02-03T20:12:23.9455915	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -127,7 +127,6 @@ a460d5aa9fa13cf967af58fb118eed314c7dd063 assets/ifw/models/item/iron_helmet.json
 da4476ce90d0cdfff7545052c83d2f24f640c0f4 assets/ifw/models/item/iron_hoe.json
 29bc4369b0d532fa3e98d7261b66919ebbcdc926 assets/ifw/models/item/iron_leggings.json
 a493c9ef22ad24aa10189a2a80d1dc23647e729e assets/ifw/models/item/iron_mattock.json
-e092dcd707580cdacdc591211fe1fc1fad62c3d5 assets/ifw/models/item/iron_pickaxe.json
 276fa47b2ddce7089127ebca834812655faaf726 assets/ifw/models/item/iron_scythe.json
 bf7de59da97791a0c8f20311574e5773be76b904 assets/ifw/models/item/iron_shears.json
 4b1d4353cc6cdc7006b1c07a39e98bfc7b2c08b4 assets/ifw/models/item/iron_shovel.json

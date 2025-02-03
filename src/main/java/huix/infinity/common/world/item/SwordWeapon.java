@@ -41,9 +41,6 @@ public class SwordWeapon extends IFWTieredItem {
         return 0.5F;
     }
 
-    /**
-     * Neo: Allow modded Swords to set exactly what Tool data component to use for their sword.
-     */
     public SwordWeapon(IFWTier tier, Properties properties, Tool toolComponentData) {
         super(tier, 2, properties.component(DataComponents.TOOL, toolComponentData));
     }
@@ -56,9 +53,6 @@ public class SwordWeapon extends IFWTieredItem {
         return createAttributes(tier, (float)damage, speed);
     }
 
-    /**
-     * Neo: Method overload to allow giving a float for damage instead of an int.
-     */
     public static ItemAttributeModifiers createAttributes(IFWTier tier, float damage, float speed) {
         return ItemAttributeModifiers.builder()
             .add(
@@ -77,12 +71,12 @@ public class SwordWeapon extends IFWTieredItem {
     }
 
     @Override
-    public boolean canAttackBlock(BlockState p_43291_, Level p_43292_, BlockPos p_43293_, Player p_43294_) {
-        return !p_43294_.isCreative();
+    public boolean canAttackBlock(BlockState state, Level level, BlockPos pos, Player player) {
+        return !player.isCreative();
     }
 
     @Override
-    public boolean hurtEnemy(ItemStack p_43278_, LivingEntity p_43279_, LivingEntity p_43280_) {
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         return true;
     }
 
@@ -91,4 +85,8 @@ public class SwordWeapon extends IFWTieredItem {
         return net.neoforged.neoforge.common.ItemAbilities.DEFAULT_SWORD_ACTIONS.contains(itemAbility);
     }
 
+    @Override
+    public float getReachBonus() {
+        return 0.75F;
+    }
 }

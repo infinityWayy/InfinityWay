@@ -6,7 +6,7 @@
   "experience": 0.1,
   "ingredient": [
     {
-      "item": "ifw:iron_pickaxe"
+      "item": "minecraft:iron_pickaxe"
     },
     {
       "item": "ifw:iron_shovel"

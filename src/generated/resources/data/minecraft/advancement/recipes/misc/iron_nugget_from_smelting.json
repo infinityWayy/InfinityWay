@@ -65,7 +65,7 @@
       "conditions": {
         "items": [
           {
-            "items": "ifw:iron_pickaxe"
+            "items": "minecraft:iron_pickaxe"
           }
         ]
       },

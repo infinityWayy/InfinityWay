@@ -151,7 +151,7 @@ public class IFWAnvilMenu extends ItemCombinerMenu {
             this.repairItemCountCost = 0;
             boolean flag = ingredient.has(DataComponents.STORED_ENCHANTMENTS);
             if (!ingredient.isEmpty()) {
-                if (input.isDamageableItem() && input.getItem().isValidRepairItem(tool, ingredient)) {
+                if (input.isDamageableItem() && input.get(DataComponents.DAMAGE) > 0 && input.getItem().isValidRepairItem(tool, ingredient)) {
                     if (input.getItem() instanceof RepairableItem toolItem) {
                         int repairDurability = toolItem.getRepairCost();
                         if ((toolItem.getRepairLevel() > this.repairLevel()) || (repairDurability <= 0)) {

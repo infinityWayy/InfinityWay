@@ -10,6 +10,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,8 +24,7 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(final HolderLookup.@NotNull Provider provider) {
-        tag(ItemTags.PICKAXES).add(IFWItems.adamantium_pickaxe.get(), IFWItems.mithril_pickaxe.get(), IFWItems.ancient_metal_pickaxe.get(),
-                IFWItems.iron_pickaxe.get(), IFWItems.copper_pickaxe.get(), IFWItems.golden_pickaxe.get(), IFWItems.silver_pickaxe.get(), IFWItems.rusted_iron_pickaxe.get());
+        tag(ItemTags.PICKAXES).add(IFWItems.adamantium_pickaxe.get(), IFWItems.mithril_pickaxe.get(), IFWItems.ancient_metal_pickaxe.get(), IFWItems.copper_pickaxe.get(), IFWItems.golden_pickaxe.get(), IFWItems.silver_pickaxe.get(), IFWItems.rusted_iron_pickaxe.get());
         tag(ItemTags.AXES).add(IFWItems.adamantium_axe.get(), IFWItems.mithril_axe.get(), IFWItems.ancient_metal_axe.get(),
                 IFWItems.iron_axe.get(), IFWItems.copper_axe.get(), IFWItems.golden_axe.get(), IFWItems.silver_axe.get(), IFWItems.rusted_iron_axe.get());
         tag(ItemTags.SWORDS).add(IFWItems.adamantium_sword.get(), IFWItems.mithril_sword.get(), IFWItems.ancient_metal_sword.get(),
@@ -49,5 +49,6 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
 
         tag(IFWItemTags.STRING).add(IFWItems.sinew.get(), Items.STRING);
         copy(BlockTags.ANVIL, IFWItemTags.ANVIL);
+        tag(Tags.Items.RODS_WOODEN).add(Items.STICK);
     }
 }

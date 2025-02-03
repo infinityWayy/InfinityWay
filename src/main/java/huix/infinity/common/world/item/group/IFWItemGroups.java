@@ -144,7 +144,7 @@ public class IFWItemGroups {
                         output.accept(IFWItems.golden_mattock.get());
                         output.accept(IFWItems.golden_battle_axe.get());
                         output.accept(IFWItems.golden_war_hammer.get());
-                        output.accept(IFWItems.iron_pickaxe.get());
+
                         output.accept(IFWItems.iron_shears.get());
                         output.accept(IFWItems.iron_shovel.get());
                         output.accept(IFWItems.iron_hoe.get());

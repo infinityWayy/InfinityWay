@@ -4,22 +4,24 @@ import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class IFWCNLanguageProvider extends LanguageProvider {
-    public IFWCNLanguageProvider(PackOutput output) {
+public class IFWCNLang extends LanguageProvider {
+    public IFWCNLang(PackOutput output) {
         super(output, InfinityWay.MOD_ID, "zh_cn");
     }
 
     @Override
     protected void addTranslations() {
+        //extra
         add("foodtips.saturation", "+%s 饱和度");
         add("foodtips.nutrition", "+%s 饥饿值");
         add("foodtips.protein", "+%s 蛋白质");
         add("foodtips.phytonutrients", "+%s 植物营养素");
         add("foodtips.insulinresponse", "+%s 胰岛素反应");
         add("tooltip.infinity.gem.xp", "+%s 玩家经验");
-
+        //Blocks
         add(IFWBlocks.adamantium_block_item.get(), "艾德曼块");
         add(IFWBlocks.adamantium_ore_item.get(), "艾德曼矿石");
         add(IFWBlocks.adamantium_bars_item.get(), "艾德曼栏杆");
@@ -40,7 +42,6 @@ public class IFWCNLanguageProvider extends LanguageProvider {
         add(IFWBlocks.copper_bars_item.get(), "铜栏杆");
         add(IFWBlocks.copper_door_item.get(), "铜门");
         add(IFWBlocks.raw_adamantium_block_item.get(), "粗艾德曼块");
-//        add(IFWBlocks.raw_mithril_block_item.get(), "粗秘银块");
         add(IFWBlocks.raw_silver_block_item.get(), "粗银块");
         add(IFWBlocks.deepslate_adamantium_ore_item.get(), "深层艾德曼矿石");
         add(IFWBlocks.deepslate_mithril_ore_item.get(), "深层秘银矿石");
@@ -152,7 +153,6 @@ public class IFWCNLanguageProvider extends LanguageProvider {
         add(IFWItems.rusted_iron_battle_axe.get(), "锈铁战斧");
         add(IFWItems.rusted_iron_war_hammer.get(), "锈铁战锤");
         add(IFWItems.rusted_iron_dagger.get(), "锈铁短剑");
-        add(IFWItems.iron_pickaxe.get(), "铁镐");
         add(IFWItems.iron_shears.get(), "铁剪刀");
         add(IFWItems.iron_shovel.get(), "铁锹");
         add(IFWItems.iron_hoe.get(), "铁锄");

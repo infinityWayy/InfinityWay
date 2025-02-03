@@ -1,9 +1,10 @@
-package huix.infinity.datagen;
+package huix.infinity.datagen.model;
 
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -114,7 +115,6 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.copper_battle_axe.get());
         handheldItem(IFWItems.copper_war_hammer.get());
         handheldItem(IFWItems.copper_dagger.get());
-        handheldItem(IFWItems.iron_pickaxe.get());
         handheldItem(IFWItems.iron_shears.get());
         handheldItem(IFWItems.iron_shovel.get());
         handheldItem(IFWItems.iron_hoe.get());

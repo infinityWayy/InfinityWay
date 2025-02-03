@@ -4,22 +4,23 @@ import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class IFWUSLanguageProvider extends LanguageProvider {
-    public IFWUSLanguageProvider(PackOutput output) {
+public class IFWUSLang extends LanguageProvider {
+    public IFWUSLang(PackOutput output) {
         super(output, InfinityWay.MOD_ID, "en_us");
     }
 
     @Override
     protected void addTranslations() {
+        //extra
         add("foodtips.saturation", "+%s Saturation Value");
         add("foodtips.nutrition", "+%s  Food Value");
         add("foodtips.protein", "+%s Protein Value");
         add("foodtips.phytonutrients", "+%s Phytonutrients Value");
         add("foodtips.insulinresponse", "+%s Insulin Response");
         add("tooltip.infinity.gem.xp", "+%s Experience Value");
-
         //Blocks
         add(IFWBlocks.adamantium_block_item.get(), "Adamantium Block");
         add(IFWBlocks.adamantium_ore_item.get(), "Adamantium Ore");
@@ -41,12 +42,10 @@ public class IFWUSLanguageProvider extends LanguageProvider {
         add(IFWBlocks.copper_bars_item.get(), "Copper Bars");
         add(IFWBlocks.copper_door_item.get(), "Copper Door");
         add(IFWBlocks.raw_adamantium_block_item.get(), "Raw Adamantium Block");
-//        add(IFWBlocks.raw_mithril_block_item.get(), "Raw Mithril Block");
         add(IFWBlocks.raw_silver_block_item.get(), "Raw Silver Block");
         add(IFWBlocks.deepslate_adamantium_ore_item.get(), "Deepslate Adamantium Ore");
         add(IFWBlocks.deepslate_mithril_ore_item.get(), "Deepslate Mithril Ore");
         add(IFWBlocks.deepslate_silver_ore_item.get(), "Deepslate Silver Ore");
-
         //Items
         add(IFWItems.sinew.get(), "Sinew");
         add(IFWItems.salad.get(), "Salad");
@@ -154,7 +153,6 @@ public class IFWUSLanguageProvider extends LanguageProvider {
         add(IFWItems.rusted_iron_battle_axe.get(), "Rusted Iron Battle Axe");
         add(IFWItems.rusted_iron_war_hammer.get(), "Rusted Iron War Hammer");
         add(IFWItems.rusted_iron_dagger.get(), "Rusted Iron Dagger");
-        add(IFWItems.iron_pickaxe.get(), "Iron Pickaxe");
         add(IFWItems.iron_shears.get(), "Iron Shears");
         add(IFWItems.iron_shovel.get(), "Iron Shovel");
         add(IFWItems.iron_hoe.get(), "Iron Hoe");

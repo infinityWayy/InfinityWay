@@ -1,4 +1,4 @@
-package huix.infinity.datagen;
+package huix.infinity.datagen.model;
 
 
 import huix.infinity.common.world.block.IFWBlocks;

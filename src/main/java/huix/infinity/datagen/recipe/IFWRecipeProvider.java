@@ -127,7 +127,7 @@ public class IFWRecipeProvider extends RecipeProvider {
             armorRecipe(recipeOutput, IFWItems.iron_chainmail_helmet, IFWItems.iron_chainmail_chestplate,
                     IFWItems.iron_chainmail_leggings, IFWItems.iron_chainmail_boots, IFWItems.iron_chain);
             metalToolRecipe(recipeOutput, IFWItems.iron_shears, IFWItems.iron_shovel, IFWItems.iron_hoe, IFWItems.iron_sword
-                    , IFWItems.iron_pickaxe, IFWItems.iron_axe, IFWItems.iron_scythe, IFWItems.iron_mattock, IFWItems.iron_battle_axe
+                    , Items.IRON_PICKAXE, IFWItems.iron_axe, IFWItems.iron_scythe, IFWItems.iron_mattock, IFWItems.iron_battle_axe
                     , IFWItems.iron_war_hammer, IFWItems.iron_dagger, Items.IRON_INGOT);
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWItems.iron_chain)
                     .pattern(" Y ")
@@ -712,7 +712,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .save(recipeOutput, getSmeltingRecipeName(Items.GOLD_NUGGET));
         CookingLevelRecipeBuilder.smelting(
                         Ingredient.of(
-                                IFWItems.iron_pickaxe,
+                                Items.IRON_PICKAXE,
                                 IFWItems.iron_shovel,
                                 IFWItems.iron_axe,
                                 IFWItems.iron_hoe,
@@ -727,7 +727,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                         0.1F,
                         200, 2
                 )
-                .unlockedBy("has_iron_pickaxe", has(IFWItems.iron_pickaxe))
+                .unlockedBy("has_iron_pickaxe", has(Items.IRON_PICKAXE))
                 .unlockedBy("has_iron_shovel", has(IFWItems.iron_shovel))
                 .unlockedBy("has_iron_axe", has(IFWItems.iron_axe))
                 .unlockedBy("has_iron_hoe", has(IFWItems.iron_hoe))

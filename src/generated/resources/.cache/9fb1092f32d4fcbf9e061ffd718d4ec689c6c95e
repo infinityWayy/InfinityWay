@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-03T16:04:34.3297262	Recipes
+// 1.21.1	2025-02-03T20:24:23.6563605	Recipes
 8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
@@ -163,7 +163,6 @@ b99f3286cd2b7d05d847f11f9eceada311ddf698 data/ifw/advancement/recipes/tools/iron
 afd93cb584494a99d09155e8c729446861c17518 data/ifw/advancement/recipes/tools/iron_dagger.json
 cf3c1a10f6d17a66bdfbc6f38a54b46e05e6bbea data/ifw/advancement/recipes/tools/iron_hoe.json
 9c41e8e3d3ef227cf1aa4ad40bb0dcbc9e93da5e data/ifw/advancement/recipes/tools/iron_mattock.json
-e33864ad9f163ab17b8d6052b6b9d39b3127fecc data/ifw/advancement/recipes/tools/iron_pickaxe.json
 c3ae7138533548d837ad39843811c080a310e19f data/ifw/advancement/recipes/tools/iron_scythe.json
 bc20db6c085c2dc9774852aaaf7bba4da25c9966 data/ifw/advancement/recipes/tools/iron_shears.json
 90d3ed60f57b6e7e2b116827724aa565ab697bc6 data/ifw/advancement/recipes/tools/iron_shovel.json
@@ -314,7 +313,6 @@ bbcd9940fa1edc398dbf57e6673a7214f558a16a data/ifw/recipe/iron_helmet.json
 b8c3ae9d4b97373c09a0b89e2da4a6366e331da9 data/ifw/recipe/iron_hoe.json
 30428a3f239f63ed4282a8255b8b48fa938ff7a1 data/ifw/recipe/iron_leggings.json
 8132cc58292c43cf66429f50a0ddc93cce4e6ddb data/ifw/recipe/iron_mattock.json
-471309d733f511e03840bfc0c41f0fb42c03b224 data/ifw/recipe/iron_pickaxe.json
 6b0caeedbf7fb1aef3a2b90e56f4fbf504a45aed data/ifw/recipe/iron_scythe.json
 cf3aeea141b0d4b35381d25ce886de5d336f6d81 data/ifw/recipe/iron_shears.json
 f3cff6818b392dfcc4ffbe8f4c8d53b596b567c7 data/ifw/recipe/iron_shovel.json
@@ -457,7 +455,7 @@ dec96daccea831ca5fc55174de9396387be970cf data/minecraft/advancement/recipes/misc
 392fc3707f4150bd95009d0f7f2558464e26a30a data/minecraft/advancement/recipes/misc/flint_and_steel.json
 afc60353b8aebfaea24fd91bfd44d5747746bc12 data/minecraft/advancement/recipes/misc/gold_nugget_from_smelting.json
 4bca5f37e20ad3599621ed5addc2bef77200a885 data/minecraft/advancement/recipes/misc/green_dye.json
-9478350e7d0dd7e8b181c41c272949b260384301 data/minecraft/advancement/recipes/misc/iron_nugget_from_smelting.json
+c3e3298c16ea0997b3a4e26310138ffdeea1581d data/minecraft/advancement/recipes/misc/iron_nugget_from_smelting.json
 9cfa2621f018d2556a4c79eb4ed6c36b6eb24765 data/minecraft/advancement/recipes/misc/lime_dye_from_smelting.json
 740b1099fe60a12b53e7c0a31ad75e7da5f032ee data/minecraft/advancement/recipes/misc/mithril_ingot.json
 7f5fbde2187b4941e4d251823a5ce78396c100ea data/minecraft/advancement/recipes/misc/mithril_ingot_from_nugget.json
@@ -476,6 +474,7 @@ be684e8e53c736af36a46936691661cc4832cd27 data/minecraft/advancement/recipes/misc
 cf5054f5754f12a4d9b6f8055b380e1dcb9fc4df data/minecraft/advancement/recipes/misc/silver_ingot_from_nugget.json
 646879e23ac9c2e5387e64a9a5cfda988aa993cc data/minecraft/advancement/recipes/misc/silver_nugget.json
 69eb99c803309f8d109f068830c85f783b6db0b0 data/minecraft/advancement/recipes/tools/golden_apple.json
+4ea45ae23351431a334a91ecc0c928dd1352d103 data/minecraft/advancement/recipes/tools/iron_pickaxe.json
 8016342e3dc56bf6a6b743b88d5ac3f3eea7726b data/minecraft/recipe/adamantium_block_from_ingot.json
 cc90aab0622037381813827575687b9bba3c91a0 data/minecraft/recipe/adamantium_ingot.json
 6e058125a685b72108aa06e2d90fed9b8bc58112 data/minecraft/recipe/adamantium_ingot_from_nugget.json
@@ -519,7 +518,8 @@ fe88ba5abd59f52cf12695a1b51a265e6380a686 data/minecraft/recipe/golden_apple.json
 7a1906636e72a4213b6cbe3cb66fff8592f61c42 data/minecraft/recipe/gray_glazed_terracotta.json
 88a65d2c954385fec4cf43b55cbd5b4c7c8ad910 data/minecraft/recipe/green_dye.json
 6e7122e2fa027f8fc7cf640e7f7619af7d619c8b data/minecraft/recipe/green_glazed_terracotta.json
-e1269aa310db85af90c6227d001057dc4e89995f data/minecraft/recipe/iron_nugget_from_smelting.json
+d5ad0bf94c23653d9148daa088debcb99313d52c data/minecraft/recipe/iron_nugget_from_smelting.json
+e5367fce2c6704b18424ab59a902e471bed4269f data/minecraft/recipe/iron_pickaxe.json
 99730a9db1626e7e5d6c705ead5c53e5c438ce98 data/minecraft/recipe/ladder.json
 8f27d5f7d0cbb5540af63b2b2c5bf0e1afd2baa2 data/minecraft/recipe/light_blue_glazed_terracotta.json
 d395fbe1f19d01afb38e6dbee24396b00111c37f data/minecraft/recipe/light_gray_glazed_terracotta.json
