@@ -1,7 +1,6 @@
 package huix.infinity.func_extension;
 
 import net.minecraft.world.item.ArmorItem;
-import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Map;
 

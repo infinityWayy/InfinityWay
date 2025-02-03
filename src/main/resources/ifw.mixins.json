@@ -6,7 +6,6 @@
   "mixins": [
     "inventory.EnchantmentMenuMixin",
     "neoforge.CommonHooksMixin",
-    "server.PlayerListMixin",
     "server.player.SleepStatusMixin",
     "world.block.BlockBehaviourMixin",
     "world.block.BlockMixin",
@@ -18,20 +17,15 @@
     "world.block.RotatedPillarBlockMixin",
     "world.enchantment.RemoveBinomialMixin",
     "world.entity.FallingBlockEntityMixin",
-    "world.entity.LivingEntityMixin",
     "world.entity.MobMixin",
     "world.entity.PlayerMixin",
     "world.entity.ServerPlayerMixin",
     "world.entity.ai.PanicGoalMixin",
     "world.entity.ai.TemptGoalMixin",
-    "world.entity.ai.attribute.AttributesMixin",
     "world.entity.animal.AnimalMixin",
     "world.entity.animal.ChickenMixin",
-    "world.entity.animal.LivestockInjected",
     "world.food.FoodDataMixin",
     "world.food.FoodProperties$BuilderMixin",
-    "world.food.FoodsMixin",
-    "world.inventory.FurnaceFuelSlotMixin",
     "world.item.ArmorItemMixin",
     "world.item.ArmorMaterialMixin",
     "world.item.BlockItemMixin",
@@ -42,7 +36,6 @@
     "world.item.enchantment.EnchantmentMixin"
   ],
   "client": [
-    "client.ClientRecipeBookMixin",
     "client.EnchantmentScreenMixin",
     "client.GuiMixin",
     "world.entity.LocalPlayerMixin"

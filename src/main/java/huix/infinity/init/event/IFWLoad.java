@@ -1,10 +1,11 @@
-package huix.infinity.init;
+package huix.infinity.init.event;
 
 import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.init.InfinityWay;
 import huix.infinity.util.ReplaceHelper;
 import huix.infinity.util.StackSizeHelper;
 import net.minecraft.tags.BlockTags;

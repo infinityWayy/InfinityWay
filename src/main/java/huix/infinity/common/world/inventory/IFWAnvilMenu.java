@@ -62,7 +62,7 @@ public class IFWAnvilMenu extends ItemCombinerMenu {
     }
 
     public IFWAnvilMenu(int containerId, Inventory playerInventory, ContainerLevelAccess access) {
-        super(IFWMenuType.anvil_menu.get(), containerId, playerInventory, access);
+        super(IFWMenuTypes.anvil_menu.get(), containerId, playerInventory, access);
         this.addDataSlots(this.anvilData);
         this.addDataSlot(this.repairLevel);
         access.execute((level, pos) -> {

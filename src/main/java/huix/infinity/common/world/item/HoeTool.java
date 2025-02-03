@@ -12,7 +12,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
@@ -47,12 +49,12 @@ public class HoeTool extends IFWDiggerItem {
         )
     );
 
-    public HoeTool(IFWTier p_41336_, Properties p_41339_) {
-        super(p_41336_, 2, BlockTags.MINEABLE_WITH_HOE, p_41339_);
+    public HoeTool(IFWTier tier, Properties properties) {
+        super(tier, 2, BlockTags.MINEABLE_WITH_HOE, properties);
     }
 
-    public HoeTool(IFWTier p_41336_, int c, Properties p_41339_) {
-        super(p_41336_, c, BlockTags.MINEABLE_WITH_HOE, p_41339_);
+    public HoeTool(IFWTier tier, int c, Properties properties) {
+        super(tier, c, BlockTags.MINEABLE_WITH_HOE, properties);
     }
 
     @Override

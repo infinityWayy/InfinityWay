@@ -4,8 +4,6 @@ import com.google.common.base.Suppliers;
 import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.fml.common.asm.enumextension.EnumProxy;
 
 import java.util.List;

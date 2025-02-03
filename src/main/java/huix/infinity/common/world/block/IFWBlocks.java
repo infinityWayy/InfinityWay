@@ -1,9 +1,8 @@
 package huix.infinity.common.world.block;
 
+import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.init.InfinityWay;
-import huix.infinity.common.world.item.IFWItems;
-import huix.infinity.util.DurabilityHelper;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;

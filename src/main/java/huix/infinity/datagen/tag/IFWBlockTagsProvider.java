@@ -1,12 +1,11 @@
 package huix.infinity.datagen.tag;
 
-import huix.infinity.init.InfinityWay;
-import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.core.tag.IFWBlockTags;
+import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.init.InfinityWay;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -79,5 +78,6 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
         tag(IFWBlockTags.IFW_FURNACE).add(IFWBlocks.clay_furnace.get(), IFWBlocks.hardened_clay_furnace.get(), IFWBlocks.netherrack_furnace.get(), IFWBlocks.obsidian_furnace.get()
                                     , IFWBlocks.sandstone_furnace.get(), IFWBlocks.stone_furnace.get());
         tag(IFWBlockTags.PORTABLE_BLOCK).addTags(BlockTags.ANVIL, IFWBlockTags.IFW_FURNACE).add(Blocks.CRAFTING_TABLE);
+        tag(IFWBlockTags.SCYTHE_EFFECTIVE).add(Blocks.GLASS);
     }
 }

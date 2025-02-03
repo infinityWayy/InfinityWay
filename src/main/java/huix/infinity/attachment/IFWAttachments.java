@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.function.Supplier;
 
-public class IFWAttachment {
+public class IFWAttachments {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, InfinityWay.MOD_ID);
 
     public static final Supplier<AttachmentType<Integer>> respawn_xp = ATTACHMENT_TYPES.register(

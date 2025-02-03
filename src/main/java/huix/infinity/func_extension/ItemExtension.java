@@ -1,14 +1,12 @@
 package huix.infinity.func_extension;
 
 import huix.infinity.common.core.component.IFWDataComponents;
-import huix.infinity.common.world.food.IFWFoodProperties;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.internal.RegistrationEvents;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.Optional;

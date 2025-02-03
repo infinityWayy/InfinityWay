@@ -1,15 +1,17 @@
 package huix.infinity.common.world.block.entity;
 
-import huix.infinity.attachment.IFWAttachment;
+import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.world.block.LevelFurnaceBlock;
 import huix.infinity.common.world.item.crafting.LevelCookingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -103,11 +105,11 @@ public abstract class LevelFurnaceBlockEntity extends AbstractFurnaceBlockEntity
     }
 
     private static int cookingLevel(LevelFurnaceBlockEntity blockEntity) {
-        return blockEntity.getData(IFWAttachment.cooking_level.get());
+        return blockEntity.getData(IFWAttachments.cooking_level.get());
     }
 
     private static void cookingLevel(int level, LevelFurnaceBlockEntity blockEntity) {
-        blockEntity.setData(IFWAttachment.cooking_level.get(), level);
+        blockEntity.setData(IFWAttachments.cooking_level.get(), level);
     }
 
     private static int recipeCookingLevel(LevelFurnaceBlockEntity blockEntity) {

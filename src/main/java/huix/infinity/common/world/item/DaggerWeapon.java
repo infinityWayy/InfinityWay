@@ -1,7 +1,6 @@
 package huix.infinity.common.world.item;
 
 import huix.infinity.common.world.item.tier.IFWTier;
-import net.minecraft.core.component.DataComponents;
 
 public class DaggerWeapon extends SwordWeapon {
     public DaggerWeapon(IFWTier tier, Properties properties) {

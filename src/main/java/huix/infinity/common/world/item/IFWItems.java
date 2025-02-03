@@ -2,8 +2,8 @@ package huix.infinity.common.world.item;
 
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
-import huix.infinity.init.InfinityWay;
 import huix.infinity.common.world.item.tier.IFWTiers;
+import huix.infinity.init.InfinityWay;
 import huix.infinity.util.DurabilityHelper;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ArmorItem;

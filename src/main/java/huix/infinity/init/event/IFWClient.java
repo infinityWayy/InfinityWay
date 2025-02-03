@@ -1,14 +1,15 @@
-package huix.infinity.init;
+package huix.infinity.init.event;
 
 
 import com.google.common.collect.ImmutableList;
-import huix.infinity.common.client.IFWFurnaceScreen;
 import huix.infinity.common.client.IFWAnvilScreen;
+import huix.infinity.common.client.IFWFurnaceScreen;
 import huix.infinity.common.world.block.IFWBlocks;
-import huix.infinity.common.world.inventory.IFWMenuType;
-import huix.infinity.common.world.item.crafting.IFWRecipeType;
-import huix.infinity.enum_extesion.IFWEnums;
+import huix.infinity.common.world.inventory.IFWMenuTypes;
+import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
 import huix.infinity.enum_extesion.IFWRecipeBookCategories;
+import huix.infinity.enum_extesion.IFWRecipeBookTypes;
+import huix.infinity.init.InfinityWay;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -41,16 +42,16 @@ public final class IFWClient {
 
     @SubscribeEvent
     public static void registerMenuScreens(final RegisterMenuScreensEvent event) {
-        event.register(IFWMenuType.ifw_furnace_menu.get(), IFWFurnaceScreen::new);
-        event.register(IFWMenuType.anvil_menu.get(), IFWAnvilScreen::new);
+        event.register(IFWMenuTypes.ifw_furnace_menu.get(), IFWFurnaceScreen::new);
+        event.register(IFWMenuTypes.anvil_menu.get(), IFWAnvilScreen::new);
     }
 
     @SubscribeEvent
     public static void registerRecipeBookCategories(final RegisterRecipeBookCategoriesEvent event) {
-        event.registerBookCategories(IFWEnums.cooking_recipe_enum_proxy.getValue(),
+        event.registerBookCategories(IFWRecipeBookTypes.cooking_recipe_enum_proxy.getValue(),
                 ImmutableList.of(IFWRecipeBookCategories.level_recipe.get(), RecipeBookCategories.FURNACE_BLOCKS
                         , RecipeBookCategories.FURNACE_FOOD, RecipeBookCategories.FURNACE_MISC));
 
-        event.registerRecipeCategoryFinder(IFWRecipeType.ifw_smelting.get(), r -> IFWRecipeBookCategories   .level_recipe.get());
+        event.registerRecipeCategoryFinder(IFWRecipeTypes.ifw_smelting.get(), r -> IFWRecipeBookCategories   .level_recipe.get());
     }
 }

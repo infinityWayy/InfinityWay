@@ -3,16 +3,11 @@ package huix.infinity.common.core.component;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.food.FoodProperties;
-import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.function.Supplier;
 
 public class IFWDataComponents {
 

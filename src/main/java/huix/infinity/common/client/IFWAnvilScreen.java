@@ -4,16 +4,13 @@ import huix.infinity.common.world.inventory.IFWAnvilMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.screens.inventory.AnvilScreen;
 import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ServerboundRenameItemPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
@@ -27,11 +24,9 @@ public class IFWAnvilScreen extends ItemCombinerScreen<IFWAnvilMenu> {
     private static final ResourceLocation ANVIL_LOCATION = ResourceLocation.withDefaultNamespace("textures/gui/container/anvil.png");
     private static final Component TOO_EXPENSIVE_TEXT = Component.translatable("container.repair.expensive");
     private EditBox name;
-    private final Player player;
 
     public IFWAnvilScreen(IFWAnvilMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title, ANVIL_LOCATION);
-        this.player = playerInventory.player;
         this.titleLabelX = 60;
     }
 

@@ -1,4 +1,4 @@
-package huix.infinity.init;
+package huix.infinity.init.event;
 
 import huix.infinity.datagen.IFWBlockStateProvider;
 import huix.infinity.datagen.IFWItemModelProvider;
@@ -10,6 +10,7 @@ import huix.infinity.datagen.recipe.IFWRecipeProvider;
 import huix.infinity.datagen.tag.IFWBlockTagsProvider;
 import huix.infinity.datagen.tag.IFWEnchantmentTagsProvider;
 import huix.infinity.datagen.tag.IFWItemTagsProvider;
+import huix.infinity.init.InfinityWay;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;

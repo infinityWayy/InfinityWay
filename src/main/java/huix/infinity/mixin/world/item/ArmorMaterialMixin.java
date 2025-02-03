@@ -4,9 +4,7 @@ import huix.infinity.func_extension.ArmorMaterialExtension;
 import huix.infinity.util.ReflectHelper;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Map;

@@ -1,8 +1,8 @@
 package huix.infinity.datagen.lang;
 
-import huix.infinity.init.InfinityWay;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.init.InfinityWay;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 

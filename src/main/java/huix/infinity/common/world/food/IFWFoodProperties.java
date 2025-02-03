@@ -1,20 +1,11 @@
 package huix.infinity.common.world.food;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.food.FoodConstants;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
-
-import java.util.List;
-import java.util.Optional;
 
 public record IFWFoodProperties(int phytonutrients, int protein, int insulinResponse, boolean meat, boolean snack, boolean soup) {
 

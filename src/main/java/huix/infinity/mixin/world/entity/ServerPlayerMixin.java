@@ -1,6 +1,5 @@
 package huix.infinity.mixin.world.entity;
 
-import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.authlib.GameProfile;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.network.ClientBoundSetHealthPayload;
@@ -11,7 +10,6 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;

@@ -1,9 +1,7 @@
 package huix.infinity.common.world.entity.animal;
 
-import huix.infinity.attachment.IFWAttachment;
+import huix.infinity.attachment.IFWAttachments;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -24,7 +22,7 @@ public interface Livestock {
 
     default void water(float water) {
         if (!this.ifw_level().isClientSide()) {
-            this.animal().setData(IFWAttachment.water, Mth.clamp(water, 0.0F, 1.0F));
+            this.animal().setData(IFWAttachments.water, Mth.clamp(water, 0.0F, 1.0F));
             this.setIsWell(this.isWell());
             this.setIsThirsty(this.isThirsty());
         }
@@ -32,47 +30,47 @@ public interface Livestock {
 
     default void food(float food) {
         if (!this.ifw_level().isClientSide()) {
-            this.animal().setData(IFWAttachment.food, Mth.clamp(food, 0.0F, 1.0F));
+            this.animal().setData(IFWAttachments.food, Mth.clamp(food, 0.0F, 1.0F));
             this.setIsWell(this.isWell());
         }
     }
 
     default void freedom(float freedom) {
         if (!this.ifw_level().isClientSide()) {
-            this.animal().setData(IFWAttachment.freedom, Mth.clamp(freedom, 0.0F, 1.0F));
+            this.animal().setData(IFWAttachments.freedom, Mth.clamp(freedom, 0.0F, 1.0F));
             this.setIsWell(this.isWell());
         }
     }
 
     default void manurePeriod(int manure_period) {
-        this.animal().setData(IFWAttachment.manure_period, manure_period);
-        this.animal().setData(IFWAttachment.manure_countdown, (int)(Math.random() * (double)manure_period));
+        this.animal().setData(IFWAttachments.manure_period, manure_period);
+        this.animal().setData(IFWAttachments.manure_countdown, (int)(Math.random() * (double)manure_period));
     }
 
     default float water() {
-        return this.animal().getData(IFWAttachment.water);
+        return this.animal().getData(IFWAttachments.water);
     }
 
     default float food() {
-        return this.animal().getData(IFWAttachment.food);
+        return this.animal().getData(IFWAttachments.food);
     }
 
     default float freedom() {
-        return this.animal().getData(IFWAttachment.freedom);
+        return this.animal().getData(IFWAttachments.freedom);
     }
 
     default int productionCounter() {
-        return this.animal().getData(IFWAttachment.production_counter);
+        return this.animal().getData(IFWAttachments.production_counter);
     }
 
     default void productionAddCounter(int i) {
-        this.animal().setData(IFWAttachment.production_counter,
-                this.animal().getData(IFWAttachment.production_counter) + i);
+        this.animal().setData(IFWAttachments.production_counter,
+                this.animal().getData(IFWAttachments.production_counter) + i);
     }
 
-    default boolean isPanic() {return this.animal().getData(IFWAttachment.is_panic);};
+    default boolean isPanic() {return this.animal().getData(IFWAttachments.is_panic);};
 
-    default void setPanic(boolean isPanic) {this.animal().setData(IFWAttachment.is_panic, isPanic);};
+    default void setPanic(boolean isPanic) {this.animal().setData(IFWAttachments.is_panic, isPanic);};
 
     default void addFood(float food) {
         this.food(this.food() + food);

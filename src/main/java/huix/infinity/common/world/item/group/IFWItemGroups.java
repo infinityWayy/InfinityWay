@@ -1,15 +1,15 @@
 package huix.infinity.common.world.item.group;
 
-import huix.infinity.init.InfinityWay;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.init.InfinityWay;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class IFWItemGroup {
+public class IFWItemGroups {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, InfinityWay.MOD_ID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> item_tab =

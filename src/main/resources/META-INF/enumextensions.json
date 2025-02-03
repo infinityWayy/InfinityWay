@@ -5,7 +5,7 @@
       "name": "IFW_COOKING_RECIPE",
       "constructor": "()V",
       "parameters": {
-        "class": "huix/infinity/enum_extesion/IFWEnums",
+        "class": "huix/infinity/enum_extesion/IFWRecipeBookTypes",
         "field": "cooking_recipe_enum_proxy"
       }
     },

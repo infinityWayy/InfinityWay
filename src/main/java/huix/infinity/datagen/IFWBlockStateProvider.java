@@ -1,15 +1,9 @@
 package huix.infinity.datagen;
 
 
-import huix.infinity.init.InfinityWay;
 import huix.infinity.common.world.block.IFWBlocks;
-import net.minecraft.core.Direction;
+import huix.infinity.init.InfinityWay;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.models.blockstates.PropertyDispatch;
-import net.minecraft.data.models.blockstates.Variant;
-import net.minecraft.data.models.blockstates.VariantProperties;
-import net.minecraft.data.models.model.TexturedModel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
@@ -19,8 +13,6 @@ import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-
-import static net.minecraft.data.models.model.TextureMapping.cubeBottomTop;
 
 public class IFWBlockStateProvider extends BlockStateProvider {
 

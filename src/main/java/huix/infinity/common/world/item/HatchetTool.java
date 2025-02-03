@@ -1,7 +1,6 @@
 package huix.infinity.common.world.item;
 
 import huix.infinity.common.world.item.tier.IFWTier;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.UseOnContext;
 
