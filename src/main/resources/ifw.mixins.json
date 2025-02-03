@@ -10,6 +10,7 @@
     "world.block.BlockBehaviourMixin",
     "world.block.BlockMixin",
     "world.block.BlocksInjected",
+    "world.block.BlocksInjected_1",
     "world.block.BlockStateBaseMixin",
     "world.block.DirtBlockMixin",
     "world.block.FarmBlockMixin",
@@ -32,6 +33,7 @@
     "world.item.Item$PropertiesMixin",
     "world.item.ItemMixin",
     "world.item.ItemsInjected",
+    "world.item.ItemsInjected_1",
     "world.item.ItemStackMixin",
     "world.item.enchantment.EnchantmentMixin"
   ],

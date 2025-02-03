@@ -225,5 +225,6 @@
   "item.ifw.water_bowl": "水碗",
   "item.ifw.wooden_club": "木短棒",
   "item.ifw.wooden_shovel": "木锹",
-  "item.ifw.worm": "虫子"
+  "item.ifw.worm": "虫子",
+  "tooltip.infinity.gem.xp": "+%s 玩家经验"
 }

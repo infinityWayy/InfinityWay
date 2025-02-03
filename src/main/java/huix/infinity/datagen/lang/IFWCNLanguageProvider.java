@@ -18,6 +18,7 @@ public class IFWCNLanguageProvider extends LanguageProvider {
         add("foodtips.protein", "+%s 蛋白质");
         add("foodtips.phytonutrients", "+%s 植物营养素");
         add("foodtips.insulinresponse", "+%s 胰岛素反应");
+        add("tooltip.infinity.gem.xp", "+%s 玩家经验");
 
         add(IFWBlocks.adamantium_block_item.get(), "艾德曼块");
         add(IFWBlocks.adamantium_ore_item.get(), "艾德曼矿石");

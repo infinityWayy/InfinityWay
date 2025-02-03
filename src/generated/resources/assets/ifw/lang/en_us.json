@@ -225,5 +225,6 @@
   "item.ifw.water_bowl": "Water of Bowl",
   "item.ifw.wooden_club": "Wooden Cudgel",
   "item.ifw.wooden_shovel": "Wooden Shovel",
-  "item.ifw.worm": "Worm"
+  "item.ifw.worm": "Worm",
+  "tooltip.infinity.gem.xp": "+%s Experience Value"
 }

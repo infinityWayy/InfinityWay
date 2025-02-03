@@ -53,10 +53,6 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
         tag(IFWBlockTags.HARVEST_LEVEL_4_TOOL).add(
                 Blocks.DIAMOND_BLOCK, IFWBlocks.mithril_bars.get(), IFWBlocks.mithril_door.get(), IFWBlocks.mithril_block.get()
         );
-        this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
-                .add(Blocks.CLAY, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.FARMLAND, Blocks.GRASS_BLOCK, Blocks.GRAVEL, Blocks.MYCELIUM,
-                        Blocks.SAND, Blocks.RED_SAND, Blocks.SOUL_SAND, Blocks.DIRT_PATH, Blocks.SOUL_SOIL, Blocks.ROOTED_DIRT, Blocks.MUDDY_MANGROVE_ROOTS,
-                        Blocks.MUD, Blocks.SUSPICIOUS_SAND, Blocks.SUSPICIOUS_GRAVEL).addTag(BlockTags.CONCRETE_POWDER);
 
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_4_TOOL);
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL);

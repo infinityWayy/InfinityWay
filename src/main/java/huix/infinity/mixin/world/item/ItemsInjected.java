@@ -33,10 +33,4 @@ public class ItemsInjected {
     private static ArmorItem ifw_rebuildLeather_3(Holder<ArmorMaterials> material, ArmorItem.Type type, Item.Properties properties) {
         return new ArmorItem(IFWArmorMaterials.leather, ArmorItem.Type.BOOTS, (new Item.Properties()).durability(ArmorItem.Type.BOOTS.getDurability(1)));
     }
-
-//    @Redirect(at = @At(value = "INVOKE", target = "item"
-//            , ordinal = 10), method = "<clinit>")
-//    private static ArmorItem ifw_rebuildDiamond(Holder<ArmorMaterials> material, ArmorItem.Type type, Item.Properties properties) {
-//        return new ArmorItem(IFWArmorMaterials.leather, ArmorItem.Type.HELMET, (new Item.Properties()).durability(ArmorItem.Type.HELMET.getDurability(1)));
-//    }
 }

@@ -18,6 +18,7 @@ public class IFWUSLanguageProvider extends LanguageProvider {
         add("foodtips.protein", "+%s Protein Value");
         add("foodtips.phytonutrients", "+%s Phytonutrients Value");
         add("foodtips.insulinresponse", "+%s Insulin Response");
+        add("tooltip.infinity.gem.xp", "+%s Experience Value");
 
         //Blocks
         add(IFWBlocks.adamantium_block_item.get(), "Adamantium Block");
