@@ -126,7 +126,6 @@ public abstract class IFWAnvilMenu extends ItemCombinerMenu {
                         this.currentDurability = this.maxDurability - ((AnvilBlockEntity)oldEntity).damage();
                         newEntity.damage(this.maxDurability - this.currentDurability);
                         this.sendAllDataToRemote();
-                        System.out.println(newEntity.damage());
                     }
 
                     level.levelEvent(1030, pos, 0);

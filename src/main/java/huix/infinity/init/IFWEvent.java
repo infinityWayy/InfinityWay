@@ -2,6 +2,8 @@ package huix.infinity.init;
 
 import huix.infinity.attachment.IFWAttachment;
 import huix.infinity.common.core.component.IFWDataComponents;
+import huix.infinity.common.core.tag.IFWItemTags;
+import huix.infinity.common.world.block.entity.AnvilBlockEntity;
 import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.food.IFWFoodProperties;
@@ -10,20 +12,22 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
-import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
-import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.neoforged.neoforge.event.level.BlockDropsEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import net.neoforged.neoforge.registries.datamaps.DataMapsUpdatedEvent;
 
@@ -43,12 +47,25 @@ public class IFWEvent {
         bus.addListener(IFWEvent::nonRemoveUnClearEffect);
         bus.addListener(IFWEvent::injectFuel);
         bus.addListener(IFWEvent::injectItem);
+        bus.addListener(IFWEvent::placeAnvil);
     }
 
     public static void injectItem(final DataMapsUpdatedEvent event) {
         IFWLoad.rebuildStackSize();
+        IFWLoad.injectAnvil();
     }
 
+    public static void placeAnvil(final BlockEvent.EntityPlaceEvent event) {
+        if (event.getPlacedBlock().is(BlockTags.ANVIL)) {
+            System.out.println("222222222222");
+            AnvilBlockEntity entity = (AnvilBlockEntity) event.getLevel().getBlockEntity(event.getPos());
+            if (entity != null) {
+                ItemStack stack = new ItemStack(event.getPlacedBlock().getBlock());
+                entity.damage(stack.getDamageValue());
+                System.out.println(entity.damage());
+            }
+        }
+    }
 
     public static void onBreakSpeed(final PlayerEvent.BreakSpeed event) {
         event.setNewSpeed(event.getOriginalSpeed() + LevelBonusStats.HARVESTING.calcBonusFor(event.getEntity()));

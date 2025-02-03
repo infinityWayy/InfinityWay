@@ -30,9 +30,5 @@ public abstract class BlockItemMixin extends Item {
         player.causeFoodExhaustion(Math.min(state.getBlock().defaultDestroyTime(), 20.0F));
     }
 
-    @Override
-    public ItemStack getDefaultInstance() {
-        return this.getBlock().ifw_defaultInstance();
-    }
 
 }

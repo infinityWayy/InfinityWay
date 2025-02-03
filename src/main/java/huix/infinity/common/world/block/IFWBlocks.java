@@ -26,17 +26,17 @@ public class IFWBlocks {
     public static Set<Block> fallBlocks =
             Set.of(Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT, Blocks.FARMLAND, Blocks.MUD, Blocks.DIRT_PATH);
 
-    public static final DeferredBlock<Block> copper_anvil = BLOCKS.registerBlock("copper_anvil",
+    public static final DeferredBlock<IFWAnvilBlock> copper_anvil = BLOCKS.registerBlock("copper_anvil",
             block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
                     .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER, 0));
     public static final DeferredItem<BlockItem> copper_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_anvil", copper_anvil,
             new Item.Properties().stacksTo(1).durability(DurabilityHelper.getDurability(IFWTiers.COPPER)));
-    public static final DeferredBlock<Block> chipped_copper_anvil = BLOCKS.registerBlock("chipped_copper_anvil",
+    public static final DeferredBlock<IFWAnvilBlock> chipped_copper_anvil = BLOCKS.registerBlock("chipped_copper_anvil",
             block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
                     .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER, 1));
     public static final DeferredItem<BlockItem> chipped_copper_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("chipped_copper_anvil", chipped_copper_anvil,
             new Item.Properties().stacksTo(1).durability(DurabilityHelper.getDurability(IFWTiers.COPPER)));
-    public static final DeferredBlock<Block> damaged_copper_anvil = BLOCKS.registerBlock("damaged_copper_anvil",
+    public static final DeferredBlock<IFWAnvilBlock> damaged_copper_anvil = BLOCKS.registerBlock("damaged_copper_anvil",
             block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
                     .strength(5.0F, 1200.0F).sound(SoundType.ANVIL).pushReaction(PushReaction.BLOCK), IFWTiers.COPPER, 2));
     public static final DeferredItem<BlockItem> damaged_copper_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("damaged_copper_anvil", damaged_copper_anvil,

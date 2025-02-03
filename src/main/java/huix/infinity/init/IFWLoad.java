@@ -1,9 +1,11 @@
 package huix.infinity.init;
 
 import huix.infinity.common.core.tag.IFWItemTags;
+import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.util.DurabilityHelper;
 import huix.infinity.util.ReplaceHelper;
 import huix.infinity.util.StackSizeHelper;
 import net.minecraft.tags.BlockTags;
@@ -88,9 +90,13 @@ public class IFWLoad {
 
     }
 
+    public static void injectAnvil() {
+        ReplaceHelper.damage(IFWBlocks.chipped_copper_anvil_item.get(), DurabilityHelper.getStageDurability(1, IFWBlocks.copper_anvil.get()));
+        ReplaceHelper.damage(IFWBlocks.damaged_copper_anvil_item.get(), DurabilityHelper.getStageDurability(2, IFWBlocks.copper_anvil.get()));
+    }
 
     public static void rebuildStackSize() {
-        ReplaceHelper.stackSize(IFWItemTags.string, StackSizeHelper.ingot);
+        ReplaceHelper.stackSize(IFWItemTags.STRING, StackSizeHelper.ingot);
         ReplaceHelper.stackSize(Items.BOOK, 16);
         ReplaceHelper.stackSize(Tags.Items.INGOTS, StackSizeHelper.ingot);
         ReplaceHelper.stackSize(ItemTags.ARROWS, 16);

@@ -66,23 +66,23 @@ public class HoeTool extends IFWDiggerItem {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext p_41341_) {
-        Level level = p_41341_.getLevel();
-        BlockPos blockpos = p_41341_.getClickedPos();
-        BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(p_41341_, net.neoforged.neoforge.common.ItemAbilities.HOE_TILL, false);
+    public InteractionResult useOn(UseOnContext hand) {
+        Level level = hand.getLevel();
+        BlockPos blockpos = hand.getClickedPos();
+        BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(hand, net.neoforged.neoforge.common.ItemAbilities.HOE_TILL, false);
         Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of(ctx -> true, changeIntoState(toolModifiedState));
         if (pair == null) {
             return InteractionResult.PASS;
         } else {
             Predicate<UseOnContext> predicate = pair.getFirst();
             Consumer<UseOnContext> consumer = pair.getSecond();
-            if (predicate.test(p_41341_)) {
-                Player player = p_41341_.getPlayer();
+            if (predicate.test(hand)) {
+                Player player = hand.getPlayer();
                 level.playSound(player, blockpos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!level.isClientSide) {
-                    consumer.accept(p_41341_);
+                    consumer.accept(hand);
                     if (player != null) {
-                        p_41341_.getItemInHand().hurtAndBreak(40, player, LivingEntity.getSlotForHand(p_41341_.getHand()));
+                        hand.getItemInHand().hurtAndBreak(40, player, LivingEntity.getSlotForHand(hand.getHand()));
                     }
                 }
 

@@ -10,8 +10,4 @@ import org.spongepowered.asm.mixin.Mixin;
 @Mixin( Block.class )
 public abstract class BlockMixin implements BlockExtension, ItemLike {
 
-    @Override
-    public ItemStack ifw_defaultInstance() {
-        return new ItemStack(this);
-    }
 }

@@ -30,6 +30,10 @@ public class ReplaceHelper {
         patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(DataComponents.MAX_STACK_SIZE, size).build());
     }
 
+    public static void damage(Item patchItem, int damage) {
+        patchItem.ifw_modifyDefaultComponentsToAnvil(DataComponentPatch.builder().set(DataComponents.DAMAGE, damage).build());
+    }
+
     public static void stackSize(TagKey<Item> itemTagKey, int size) {
         for (Holder<Item> holder : BuiltInRegistries.ITEM.getTagOrEmpty(itemTagKey)) {
             stackSize(holder.value(), size);

@@ -32,6 +32,14 @@ public interface ItemExtension {
         instance.components = Item.Properties.COMPONENT_INTERNER.intern(Item.Properties.validateComponents(builder.build()));
     }
 
+    @ApiStatus.Internal
+    default void ifw_modifyDefaultComponentsToAnvil(DataComponentPatch patch) {
+        Item instance = (Item) this;
+        DataComponentMap.Builder builder = DataComponentMap.builder().addAll(instance.components);
+        patch.entrySet().forEach((entry) -> builder.set((DataComponentType)entry.getKey(), ((Optional)entry.getValue()).orElse((Object)null)));
+        instance.components = Item.Properties.COMPONENT_INTERNER.intern(Item.Properties.validateComponents(builder.build()));
+    }
+
     default boolean ifw_isFood() {
         DataComponentMap components = ((Item) this).components;
         return components.has(DataComponents.FOOD) || components.has(IFWDataComponents.ifw_food_data.get());

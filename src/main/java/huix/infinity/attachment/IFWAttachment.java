@@ -42,8 +42,4 @@ public class IFWAttachment {
             "is_panic", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
     );
 
-    public static final Supplier<AttachmentType<Integer>> anvil_damage = ATTACHMENT_TYPES.register(
-            "anvil_damage", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
-    );
-
 }
