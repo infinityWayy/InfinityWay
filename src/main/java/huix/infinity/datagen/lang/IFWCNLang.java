@@ -2,6 +2,7 @@ package huix.infinity.datagen.lang;
 
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.common.world.item.group.IFWItemGroups;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
@@ -14,14 +15,55 @@ public class IFWCNLang extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        //extra
+        add("itemGroup.ifw.block", "IFW| 方块");
+        add("itemGroup.ifw.item", "IFW| 物品");
+        add("itemGroup.ifw.tool", "IFW| 工具");
+        add(IFWBlocks.clay_furnace.get(), "黏土熔炉");
+        add(IFWBlocks.hardened_clay_furnace.get(), "硬化黏土熔炉");
+        add(IFWBlocks.sandstone_furnace.get(), "砂岩熔炉");
+        add(IFWBlocks.stone_furnace.get(), "石制熔炉");
+        add(IFWBlocks.obsidian_furnace.get(), "黑曜石熔炉");
+        add(IFWBlocks.netherrack_furnace.get(), "地狱岩熔炉");
+        add(IFWBlocks.copper_anvil.get(), "铜砧");
+        add(IFWBlocks.chipped_copper_anvil.get(), "开裂的铜砧");
+        add(IFWBlocks.damaged_copper_anvil.get(), "损坏的铜砧");
+        add(IFWBlocks.silver_anvil.get(), "银砧");
+        add(IFWBlocks.chipped_silver_anvil.get(), "开裂的银砧");
+        add(IFWBlocks.damaged_silver_anvil.get(), "损坏的银砧");
+        add(IFWBlocks.gold_anvil.get(), "金砧");
+        add(IFWBlocks.chipped_gold_anvil.get(), "开裂的金砧");
+        add(IFWBlocks.damaged_gold_anvil.get(), "损坏的金砧");
+        add(IFWBlocks.iron_anvil.get(), "铁砧");
+        add(IFWBlocks.chipped_iron_anvil.get(), "开裂的铁砧");
+        add(IFWBlocks.damaged_iron_anvil.get(), "损坏的铁砧");
+        add(IFWBlocks.ancient_metal_anvil.get(), "远古金属砧");
+        add(IFWBlocks.chipped_ancient_metal_anvil.get(), "开裂的远古金属砧");
+        add(IFWBlocks.damaged_ancient_metal_anvil.get(), "损坏的远古金属砧");
+        add(IFWBlocks.mithril_anvil.get(), "秘银砧");
+        add(IFWBlocks.chipped_mithril_anvil.get(), "开裂的秘银砧");
+        add(IFWBlocks.damaged_mithril_anvil.get(), "损坏的秘银砧");
+        add(IFWBlocks.adamantium_anvil.get(), "艾德曼砧");
+        add(IFWBlocks.chipped_adamantium_anvil.get(), "开裂的艾德曼砧");
+        add(IFWBlocks.damaged_adamantium_anvil.get(), "损坏的艾德曼砧");
+        add(IFWItems.manure.get(), "肥料");
+        add(IFWItems.flour.get(), "面粉");
+        add(IFWItems.copper_chain.get(), "铜锁链");
+        add(IFWItems.silver_chain.get(), "银锁链");
+        add(IFWItems.golden_chain.get(), "金锁链");
+        add(IFWItems.rusted_iron_chain.get(), "生锈的铁锁链");
+        add(IFWItems.iron_chain.get(), "铁锁链");
+        add(IFWItems.ancient_metal_chain.get(), "古代金属锁链");
+        add(IFWItems.mithril_chain.get(), "秘银锁链");
+        add(IFWItems.adamantium_chain.get(), "艾德曼锁链");
+        add(IFWItems.onion.get(), "洋葱");
+        add(IFWItems.blueberry.get(), "蓝莓");
+        //EXTRA
         add("foodtips.saturation", "+%s 饱和度");
         add("foodtips.nutrition", "+%s 饥饿值");
         add("foodtips.protein", "+%s 蛋白质");
         add("foodtips.phytonutrients", "+%s 植物营养素");
         add("foodtips.insulinresponse", "+%s 胰岛素反应");
         add("tooltip.infinity.gem.xp", "+%s 玩家经验");
-        //Blocks
         add(IFWBlocks.adamantium_block_item.get(), "艾德曼块");
         add(IFWBlocks.adamantium_ore_item.get(), "艾德曼矿石");
         add(IFWBlocks.adamantium_bars_item.get(), "艾德曼栏杆");
@@ -46,7 +88,6 @@ public class IFWCNLang extends LanguageProvider {
         add(IFWBlocks.deepslate_adamantium_ore_item.get(), "深层艾德曼矿石");
         add(IFWBlocks.deepslate_mithril_ore_item.get(), "深层秘银矿石");
         add(IFWBlocks.deepslate_silver_ore_item.get(), "深层银矿石");
-
         add(IFWItems.sinew.get(), "皮革绳");
         add(IFWItems.salad.get(), "沙拉");
         add(IFWItems.milk_bowl.get(), "牛奶碗");
