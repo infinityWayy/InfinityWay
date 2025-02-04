@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "ifw:iron_chainmail_chestplate"
+        "recipe": "minecraft:chainmail_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "ifw:iron_chainmail_chestplate"
+      "minecraft:chainmail_boots"
     ]
   }
 }

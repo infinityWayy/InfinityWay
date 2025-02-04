@@ -15,7 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": "ifw:golden_boots"
+            "items": "minecraft:golden_boots"
           }
         ]
       },
@@ -25,7 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": "ifw:golden_chestplate"
+            "items": "minecraft:golden_chestplate"
           }
         ]
       },
@@ -35,7 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": "ifw:golden_helmet"
+            "items": "minecraft:golden_helmet"
           }
         ]
       },
@@ -55,7 +55,7 @@
       "conditions": {
         "items": [
           {
-            "items": "ifw:golden_leggings"
+            "items": "minecraft:golden_leggings"
           }
         ]
       },

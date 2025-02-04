@@ -144,7 +144,7 @@ public class IFWItemGroups {
                         output.accept(IFWItems.golden_mattock.get());
                         output.accept(IFWItems.golden_battle_axe.get());
                         output.accept(IFWItems.golden_war_hammer.get());
-
+                        output.accept(IFWItems.iron_pickaxe.get());
                         output.accept(IFWItems.iron_shears.get());
                         output.accept(IFWItems.iron_shovel.get());
                         output.accept(IFWItems.iron_hoe.get());
@@ -207,14 +207,6 @@ public class IFWItemGroups {
                         output.accept(IFWItems.rusted_iron_chestplate.get());
                         output.accept(IFWItems.rusted_iron_leggings.get());
                         output.accept(IFWItems.rusted_iron_boots.get());
-                        output.accept(IFWItems.iron_helmet.get());
-                        output.accept(IFWItems.iron_chestplate.get());
-                        output.accept(IFWItems.iron_leggings.get());
-                        output.accept(IFWItems.iron_boots.get());
-                        output.accept(IFWItems.golden_helmet.get());
-                        output.accept(IFWItems.golden_chestplate.get());
-                        output.accept(IFWItems.golden_leggings.get());
-                        output.accept(IFWItems.golden_boots.get());
                         output.accept(IFWItems.ancient_metal_helmet.get());
                         output.accept(IFWItems.ancient_metal_chestplate.get());
                         output.accept(IFWItems.ancient_metal_leggings.get());
@@ -235,10 +227,6 @@ public class IFWItemGroups {
                         output.accept(IFWItems.silver_chainmail_chestplate.get());
                         output.accept(IFWItems.silver_chainmail_leggings.get());
                         output.accept(IFWItems.silver_chainmail_boots.get());
-                        output.accept(IFWItems.iron_chainmail_helmet.get());
-                        output.accept(IFWItems.iron_chainmail_chestplate.get());
-                        output.accept(IFWItems.iron_chainmail_leggings.get());
-                        output.accept(IFWItems.iron_chainmail_boots.get());
                         output.accept(IFWItems.rusted_iron_chainmail_helmet.get());
                         output.accept(IFWItems.rusted_iron_chainmail_chestplate.get());
                         output.accept(IFWItems.rusted_iron_chainmail_leggings.get());

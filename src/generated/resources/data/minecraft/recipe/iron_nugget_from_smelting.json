@@ -6,7 +6,7 @@
   "experience": 0.1,
   "ingredient": [
     {
-      "item": "minecraft:iron_pickaxe"
+      "item": "ifw:iron_pickaxe"
     },
     {
       "item": "ifw:iron_shovel"
@@ -21,16 +21,16 @@
       "item": "ifw:iron_sword"
     },
     {
-      "item": "ifw:iron_helmet"
+      "item": "minecraft:iron_helmet"
     },
     {
-      "item": "ifw:iron_chestplate"
+      "item": "minecraft:iron_chestplate"
     },
     {
-      "item": "ifw:iron_leggings"
+      "item": "minecraft:iron_leggings"
     },
     {
-      "item": "ifw:iron_boots"
+      "item": "minecraft:iron_boots"
     }
   ],
   "result": {

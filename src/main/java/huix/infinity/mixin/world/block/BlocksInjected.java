@@ -5,7 +5,11 @@ import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ColoredFallingBlock;
+import net.minecraft.world.level.block.SnowLayerBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -93,5 +97,14 @@ public class BlocksInjected {
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/util/valueproviders/UniformInt;of(II)Lnet/minecraft/util/valueproviders/UniformInt;", ordinal = 1), method = "<clinit>")
     private static UniformInt ifw_noCoalDropXp_1(int minInclusive, int maxInclusive) {
         return UniformInt.of(0, 0);
+    }
+
+    @Redirect(at = @At(value = "NEW", target = "(Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/SnowLayerBlock;"), method = "<clinit>")
+    private static SnowLayerBlock ifw_snowWithoutTools(BlockBehaviour.Properties properties) {
+        return new SnowLayerBlock(
+                BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.SNOW).replaceable().forceSolidOff().randomTicks().strength(0.1F).sound(SoundType.SNOW)
+                        .isViewBlocking((state, getter, pos) -> state.getValue(SnowLayerBlock.LAYERS) >= 8)
+                        .pushReaction(PushReaction.DESTROY));
     }
 }

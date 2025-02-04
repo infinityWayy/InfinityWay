@@ -15,7 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": "ifw:iron_boots"
+            "items": "minecraft:iron_boots"
           }
         ]
       },
@@ -25,7 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": "ifw:iron_chestplate"
+            "items": "minecraft:iron_chestplate"
           }
         ]
       },
@@ -35,7 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": "ifw:iron_helmet"
+            "items": "minecraft:iron_helmet"
           }
         ]
       },
@@ -55,7 +55,7 @@
       "conditions": {
         "items": [
           {
-            "items": "ifw:iron_leggings"
+            "items": "minecraft:iron_leggings"
           }
         ]
       },
@@ -65,7 +65,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_pickaxe"
+            "items": "ifw:iron_pickaxe"
           }
         ]
       },

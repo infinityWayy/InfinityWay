@@ -71,30 +71,9 @@ public class IFWItems {
     public static final DeferredItem<Item> rusted_iron_boots =
             ITEMS.register("rusted_iron_boots", item -> new ArmorItem(IFWArmorMaterials.rusted_iron, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(3))));
-    public static final DeferredItem<Item> iron_helmet =
-            ITEMS.register("iron_helmet", item -> new ArmorItem(IFWArmorMaterials.iron, ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(8))));
-    public static final DeferredItem<Item> iron_chestplate =
-            ITEMS.register("iron_chestplate", item -> new ArmorItem(IFWArmorMaterials.iron, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(8))));
-    public static final DeferredItem<Item> iron_leggings =
-            ITEMS.register("iron_leggings", item -> new ArmorItem(IFWArmorMaterials.iron, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(8))));
-    public static final DeferredItem<Item> iron_boots =
-            ITEMS.register("iron_boots", item -> new ArmorItem(IFWArmorMaterials.iron, ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(8))));
-    public static final DeferredItem<Item> golden_helmet =
-            ITEMS.register("golden_helmet", item -> new ArmorItem(IFWArmorMaterials.golden, ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(4))));
-    public static final DeferredItem<Item> golden_chestplate =
-            ITEMS.register("golden_chestplate", item -> new ArmorItem(IFWArmorMaterials.golden, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(4))));
-    public static final DeferredItem<Item> golden_leggings =
-            ITEMS.register("golden_leggings", item -> new ArmorItem(IFWArmorMaterials.golden, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(4))));
-    public static final DeferredItem<Item> golden_boots =
-            ITEMS.register("golden_boots", item -> new ArmorItem(IFWArmorMaterials.golden, ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(4))));
+
+
+
     public static final DeferredItem<Item> ancient_metal_helmet =
             ITEMS.register("ancient_metal_helmet", item -> new ArmorItem(IFWArmorMaterials.ancient_metal, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(16))));
@@ -155,18 +134,6 @@ public class IFWItems {
     public static final DeferredItem<Item> silver_chainmail_boots =
             ITEMS.register("silver_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.silver_chainmail, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(2))));
-    public static final DeferredItem<Item> iron_chainmail_helmet =
-            ITEMS.register("iron_chainmail_helmet", item -> new ArmorItem(IFWArmorMaterials.iron_chainmail, ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(4))));
-    public static final DeferredItem<Item> iron_chainmail_chestplate =
-            ITEMS.register("iron_chainmail_chestplate", item -> new ArmorItem(IFWArmorMaterials.iron_chainmail, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(DurabilityHelper.Armor.CHESTPLATE.getDurability(4))));
-    public static final DeferredItem<Item> iron_chainmail_leggings =
-            ITEMS.register("iron_chainmail_leggings", item -> new ArmorItem(IFWArmorMaterials.iron_chainmail, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(DurabilityHelper.Armor.LEGGINGS.getDurability(4))));
-    public static final DeferredItem<Item> iron_chainmail_boots =
-            ITEMS.register("iron_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.iron_chainmail, ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(4))));
     public static final DeferredItem<Item> rusted_iron_chainmail_helmet =
             ITEMS.register("rusted_iron_chainmail_helmet", item -> new ArmorItem(IFWArmorMaterials.rusted_iron_chainmail, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(1.5F))));
@@ -301,7 +268,7 @@ public class IFWItems {
                     new Item.Properties().attributes(WarHammerTool.createAttributes(IFWTiers.ADAMANTIUM,4.0F, -2.8F))));
     public static final DeferredItem<Item> adamantium_dagger =
             ITEMS.register("adamantium_dagger", item -> new DaggerWeapon(IFWTiers.ADAMANTIUM,
-                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.ADAMANTIUM,4.0F, -1.5F))));
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.ADAMANTIUM,3.0F, -1.5F))));
     public static final DeferredItem<Item> ancient_metal_ingot =
             ITEMS.registerSimpleItem("ancient_metal_ingot", new Item.Properties().stacksTo(10));
     public static final DeferredItem<Item> ancient_metal_nugget =
@@ -338,7 +305,7 @@ public class IFWItems {
                     new Item.Properties().attributes(WarHammerTool.createAttributes(IFWTiers.ANCIENT_METAL,4.0F, -2.8F))));
     public static final DeferredItem<Item> ancient_metal_dagger =
             ITEMS.register("ancient_metal_dagger", item -> new DaggerWeapon(IFWTiers.ANCIENT_METAL,
-                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.ANCIENT_METAL,4.0F, -1.5F))));
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.ANCIENT_METAL,3.0F, -1.5F))));
     public static final DeferredItem<Item> mithril_ingot =
             ITEMS.registerSimpleItem("mithril_ingot", new Item.Properties().stacksTo(10));
     public static final DeferredItem<Item> mithril_nugget =
@@ -375,7 +342,7 @@ public class IFWItems {
                     new Item.Properties().attributes(WarHammerTool.createAttributes(IFWTiers.MITHRIL,4.0F, -2.8F))));
     public static final DeferredItem<Item> mithril_dagger =
             ITEMS.register("mithril_dagger", item -> new DaggerWeapon(IFWTiers.MITHRIL,
-                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.MITHRIL,4.0F, -1.5F))));
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.MITHRIL,3.0F, -1.5F))));
     public static final DeferredItem<Item> silver_ingot =
             ITEMS.registerSimpleItem("silver_ingot", new Item.Properties().stacksTo(10));
     public static final DeferredItem<Item> silver_nugget =
@@ -412,7 +379,7 @@ public class IFWItems {
                     new Item.Properties().attributes(WarHammerTool.createAttributes(IFWTiers.SILVER,4.0F, -2.8F))));
     public static final DeferredItem<Item> silver_dagger =
             ITEMS.register("silver_dagger", item -> new DaggerWeapon(IFWTiers.SILVER,
-                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.SILVER,4.0F, -1.5F))));
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.SILVER,3.0F, -1.5F))));
     public static final DeferredItem<Item> copper_nugget =
             ITEMS.registerSimpleItem("copper_nugget", new Item.Properties().stacksTo(64));
     public static final DeferredItem<Item> copper_shears =
@@ -447,7 +414,7 @@ public class IFWItems {
                     new Item.Properties().attributes(WarHammerTool.createAttributes(IFWTiers.COPPER,4.0F, -2.8F))));
     public static final DeferredItem<Item> copper_dagger =
             ITEMS.register("copper_dagger", item -> new DaggerWeapon(IFWTiers.COPPER,
-                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.COPPER,4.0F, -1.5F))));
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.COPPER,3.0F, -1.5F))));
     public static final DeferredItem<Item> iron_shears =
             ITEMS.register("iron_shears", item -> new ShearsWeapon(IFWTiers.IRON,
                     new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
@@ -457,6 +424,9 @@ public class IFWItems {
     public static final DeferredItem<Item> iron_hoe =
             ITEMS.register("iron_hoe", item -> new HoeTool(IFWTiers.IRON,
                     new Item.Properties().attributes(HoeTool.createAttributes(IFWTiers.IRON,0F, -2.1F))));
+    public static final DeferredItem<Item> iron_pickaxe =
+            ITEMS.register("iron_pickaxe", item -> new AxeTool(IFWTiers.IRON,
+                    new Item.Properties().attributes(AxeTool.createAttributes(IFWTiers.IRON,2, -2.7F))));
     public static final DeferredItem<Item> iron_sword =
             ITEMS.register("iron_sword", item -> new SwordWeapon(IFWTiers.IRON,
                     new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.IRON,4.0F, -2.4F))));
@@ -477,7 +447,7 @@ public class IFWItems {
                     new Item.Properties().attributes(WarHammerTool.createAttributes(IFWTiers.IRON,4.0F, -2.8F))));
     public static final DeferredItem<Item> iron_dagger =
             ITEMS.register("iron_dagger", item -> new DaggerWeapon(IFWTiers.IRON,
-                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.IRON,4.0F, -1.5F))));
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.IRON,3.0F, -1.5F))));
     public static final DeferredItem<Item> golden_shears =
             ITEMS.register("golden_shears", item -> new ShearsWeapon(IFWTiers.GOLD,
                     new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
@@ -510,7 +480,7 @@ public class IFWItems {
                     new Item.Properties().attributes(WarHammerTool.createAttributes(IFWTiers.GOLD,4.0F, -2.8F))));
     public static final DeferredItem<Item> golden_dagger =
             ITEMS.register("golden_dagger", item -> new DaggerWeapon(IFWTiers.GOLD,
-                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.GOLD,4.0F, -1.5F))));
+                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.GOLD,3.0F, -1.5F))));
     public static final DeferredItem<Item> rusted_iron_shears =
             ITEMS.register("rusted_iron_shears", item -> new ShearsWeapon(IFWTiers.RUSTED_IRON,
                     new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
@@ -543,7 +513,7 @@ public class IFWItems {
                     new Item.Properties().attributes(WarHammerTool.createAttributes(IFWTiers.RUSTED_IRON,4.0F, -2.8F))));
     public static final DeferredItem<Item> rusted_iron_dagger =
             ITEMS.register("rusted_iron_dagger", item -> new DaggerWeapon(IFWTiers.RUSTED_IRON,
-                    new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.RUSTED_IRON,4.0F, -1.5F))));
+                    new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.RUSTED_IRON,3.0F, -1.5F))));
 
     //Food
     public static final DeferredItem<Item> salad =

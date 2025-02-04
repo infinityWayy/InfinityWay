@@ -118,6 +118,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         handheldItem(IFWItems.iron_shears.get());
         handheldItem(IFWItems.iron_shovel.get());
         handheldItem(IFWItems.iron_hoe.get());
+        handheldItem(IFWItems.iron_pickaxe.get());
         handheldItem(IFWItems.iron_sword.get());
         handheldItem(IFWItems.iron_axe.get());
         handheldItem(IFWItems.iron_scythe.get());
@@ -186,14 +187,6 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.rusted_iron_chestplate.get());
         basicItem(IFWItems.rusted_iron_leggings.get());
         basicItem(IFWItems.rusted_iron_boots.get());
-        basicItem(IFWItems.iron_helmet.get());
-        basicItem(IFWItems.iron_chestplate.get());
-        basicItem(IFWItems.iron_leggings.get());
-        basicItem(IFWItems.iron_boots.get());
-        basicItem(IFWItems.golden_helmet.get());
-        basicItem(IFWItems.golden_chestplate.get());
-        basicItem(IFWItems.golden_leggings.get());
-        basicItem(IFWItems.golden_boots.get());
         basicItem(IFWItems.ancient_metal_helmet.get());
         basicItem(IFWItems.ancient_metal_chestplate.get());
         basicItem(IFWItems.ancient_metal_leggings.get());
@@ -214,10 +207,6 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.silver_chainmail_chestplate.get());
         basicItem(IFWItems.silver_chainmail_leggings.get());
         basicItem(IFWItems.silver_chainmail_boots.get());
-        basicItem(IFWItems.iron_chainmail_helmet.get());
-        basicItem(IFWItems.iron_chainmail_chestplate.get());
-        basicItem(IFWItems.iron_chainmail_leggings.get());
-        basicItem(IFWItems.iron_chainmail_boots.get());
         basicItem(IFWItems.rusted_iron_chainmail_helmet.get());
         basicItem(IFWItems.rusted_iron_chainmail_chestplate.get());
         basicItem(IFWItems.rusted_iron_chainmail_leggings.get());

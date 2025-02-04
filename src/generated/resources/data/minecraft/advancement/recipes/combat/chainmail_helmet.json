@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:gold_ingot"
+            "items": "ifw:iron_chain"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "ifw:golden_chestplate"
+        "recipe": "minecraft:chainmail_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "ifw:golden_chestplate"
+      "minecraft:chainmail_helmet"
     ]
   }
 }

@@ -156,6 +156,7 @@ public class IFWUSLang extends LanguageProvider {
         add(IFWItems.iron_shears.get(), "Iron Shears");
         add(IFWItems.iron_shovel.get(), "Iron Shovel");
         add(IFWItems.iron_hoe.get(), "Iron Hoe");
+        add(IFWItems.iron_pickaxe.get(), "Iron Pickaxe");
         add(IFWItems.iron_sword.get(), "Iron Sword");
         add(IFWItems.iron_axe.get(), "Iron Axe");
         add(IFWItems.iron_scythe.get(), "Iron Scythe");
@@ -232,18 +233,6 @@ public class IFWUSLang extends LanguageProvider {
         add(IFWItems.rusted_iron_chainmail_chestplate.get(), "Rusted Iron Chainmail Chestplate");
         add(IFWItems.rusted_iron_chainmail_leggings.get(), "Rusted Iron Chainmail Leggings");
         add(IFWItems.rusted_iron_chainmail_boots.get(), "Rusted Iron Chainmail Boots");
-        add(IFWItems.iron_helmet.get(), "Iron Helmet");
-        add(IFWItems.iron_chestplate.get(), "Iron Chestplate");
-        add(IFWItems.iron_leggings.get(), "Iron Leggings");
-        add(IFWItems.iron_boots.get(), "Iron Boots");
-        add(IFWItems.iron_chainmail_helmet.get(), "Iron Chainmail Helmet");
-        add(IFWItems.iron_chainmail_chestplate.get(), "Iron Chainmail Chestplate");
-        add(IFWItems.iron_chainmail_leggings.get(), "Iron Chainmail Leggings");
-        add(IFWItems.iron_chainmail_boots.get(), "Iron Chainmail Boots");
-        add(IFWItems.golden_helmet.get(), "Gold Helmet");
-        add(IFWItems.golden_chestplate.get(), "Gold Chestplate");
-        add(IFWItems.golden_leggings.get(), "Gold Leggings");
-        add(IFWItems.golden_boots.get(), "Gold Boots");
         add(IFWItems.golden_chainmail_helmet.get(), "Gold Chainmail Helmet");
         add(IFWItems.golden_chainmail_chestplate.get(), "Gold Chainmail Chestplate");
         add(IFWItems.golden_chainmail_leggings.get(), "Gold Chainmail Leggings");

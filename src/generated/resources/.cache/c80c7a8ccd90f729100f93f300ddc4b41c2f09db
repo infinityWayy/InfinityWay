@@ -1,6 +1,7 @@
-// 1.21.1	2025-02-03T17:55:14.8631646	Tags for minecraft:block mod id ifw
+// 1.21.1	2025-02-04T13:19:32.7869667	Tags for minecraft:block mod id ifw
 96f50b5a6a3bf46756af20ca13251571d3e39bec data/minecraft/tags/block/anvil.json
 acf4e3ca7c3b0e94b6ea6bbf061ea843d1250c97 data/minecraft/tags/block/doors.json
+37a6c3a11450b21a8e0381b726b34e2085dd5d29 data/minecraft/tags/block/fallen_dirt.json
 b147fcff5c0b4d72df1cb7809b063b2562180832 data/minecraft/tags/block/harvest_level_0_tool.json
 7d3e39787ca0ec017e53abe718814453f9da57c3 data/minecraft/tags/block/harvest_level_1_tool.json
 dacf197626721e17696a4107e87886ed886c20f9 data/minecraft/tags/block/harvest_level_2_tool.json

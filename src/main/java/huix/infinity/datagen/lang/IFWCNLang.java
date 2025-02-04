@@ -155,6 +155,7 @@ public class IFWCNLang extends LanguageProvider {
         add(IFWItems.rusted_iron_dagger.get(), "锈铁短剑");
         add(IFWItems.iron_shears.get(), "铁剪刀");
         add(IFWItems.iron_shovel.get(), "铁锹");
+        add(IFWItems.iron_pickaxe.get(), "铁镐");
         add(IFWItems.iron_hoe.get(), "铁锄");
         add(IFWItems.iron_sword.get(), "铁剑");
         add(IFWItems.iron_axe.get(), "铁斧");
@@ -232,18 +233,6 @@ public class IFWCNLang extends LanguageProvider {
         add(IFWItems.rusted_iron_chainmail_chestplate.get(), "锈铁锁链胸甲");
         add(IFWItems.rusted_iron_chainmail_leggings.get(), "锈铁锁链护腿");
         add(IFWItems.rusted_iron_chainmail_boots.get(), "锈铁锁链鞋子");
-        add(IFWItems.iron_helmet.get(), "铁头盔");
-        add(IFWItems.iron_chestplate.get(), "铁胸甲");
-        add(IFWItems.iron_leggings.get(), "铁护腿");
-        add(IFWItems.iron_boots.get(), "铁鞋子");
-        add(IFWItems.iron_chainmail_helmet.get(), "铁锁链头盔");
-        add(IFWItems.iron_chainmail_chestplate.get(), "铁锁链胸甲");
-        add(IFWItems.iron_chainmail_leggings.get(), "铁锁链护腿");
-        add(IFWItems.iron_chainmail_boots.get(), "铁锁链鞋子");
-        add(IFWItems.golden_helmet.get(), "金头盔");
-        add(IFWItems.golden_chestplate.get(), "金胸甲");
-        add(IFWItems.golden_leggings.get(), "金护腿");
-        add(IFWItems.golden_boots.get(), "金鞋子");
         add(IFWItems.golden_chainmail_helmet.get(), "金锁链头盔");
         add(IFWItems.golden_chainmail_chestplate.get(), "金锁链胸甲");
         add(IFWItems.golden_chainmail_leggings.get(), "金锁链护腿");

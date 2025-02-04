@@ -65,6 +65,7 @@ public class IFWLoad {
         ReplaceHelper.itemCookingLevel(ItemTags.HANGING_SIGNS, 1);
         ReplaceHelper.itemCookingLevel(IFWItems.wooden_club.get(), 1);
         ReplaceHelper.itemCookingLevel(IFWItems.wooden_shovel.get(), 1);
+        ReplaceHelper.itemCookingLevel(IFWItems.manure.get(), 1);
         ReplaceHelper.itemCookingLevel(ItemTags.WOODEN_DOORS, 1);
         ReplaceHelper.itemCookingLevel(ItemTags.BOATS, 1);
         ReplaceHelper.itemCookingLevel(ItemTags.WOOL, 1);
@@ -303,5 +304,12 @@ public class IFWLoad {
         ReplaceHelper.foodAdd(IFWItems.cooked_worm.get(), IFWFoods.ifw_cooked_worm);
         ReplaceHelper.foodAdd(IFWItems.worm.get(), IFWFoods.ifw_worm);
         ReplaceHelper.foodAdd(IFWItems.onion.get(), IFWFoods.ifw_onion);
+        ReplaceHelper.foodOverride(Items.CHORUS_FRUIT, RebuildFoods.CHORUS_FRUIT);
+        ReplaceHelper.foodOverride(Items.COOKED_CHICKEN, RebuildFoods.COOKED_CHICKEN);
+        ReplaceHelper.foodOverride(Items.COD, RebuildFoods.COD);
+        ReplaceHelper.foodOverride(Items.COOKED_COD, RebuildFoods.COOKED_COD);
+        ReplaceHelper.foodOverride(Items.SALMON, RebuildFoods.SALMON);
+        ReplaceHelper.foodOverride(Items.TROPICAL_FISH, RebuildFoods.TROPICAL_FISH);
+        ReplaceHelper.foodOverride(Items.OMINOUS_BOTTLE, RebuildFoods.OMINOUS_BOTTLE);
     }
 }

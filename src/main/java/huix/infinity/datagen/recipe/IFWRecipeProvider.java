@@ -122,12 +122,10 @@ public class IFWRecipeProvider extends RecipeProvider {
                     .pattern("YY")
                     .define('Y', IFWItems.ancient_metal_ingot)
                     .unlockedBy("has_ancient_metal_ingot", has(IFWItems.ancient_metal_ingot)).save(recipeOutput);
-            armorRecipe(recipeOutput, IFWItems.iron_helmet, IFWItems.iron_chestplate, IFWItems.iron_leggings,
-                    IFWItems.iron_boots, Items.IRON_INGOT);
-            armorRecipe(recipeOutput, IFWItems.iron_chainmail_helmet, IFWItems.iron_chainmail_chestplate,
-                    IFWItems.iron_chainmail_leggings, IFWItems.iron_chainmail_boots, IFWItems.iron_chain);
+            armorRecipe(recipeOutput, Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE,
+                    Items.CHAINMAIL_LEGGINGS, Items.CHAINMAIL_BOOTS, IFWItems.iron_chain);
             metalToolRecipe(recipeOutput, IFWItems.iron_shears, IFWItems.iron_shovel, IFWItems.iron_hoe, IFWItems.iron_sword
-                    , Items.IRON_PICKAXE, IFWItems.iron_axe, IFWItems.iron_scythe, IFWItems.iron_mattock, IFWItems.iron_battle_axe
+                    , IFWItems.iron_pickaxe, IFWItems.iron_axe, IFWItems.iron_scythe, IFWItems.iron_mattock, IFWItems.iron_battle_axe
                     , IFWItems.iron_war_hammer, IFWItems.iron_dagger, Items.IRON_INGOT);
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWItems.iron_chain)
                     .pattern(" Y ")
@@ -137,8 +135,6 @@ public class IFWRecipeProvider extends RecipeProvider {
                     .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET)).save(recipeOutput);
             armorRecipe(recipeOutput, IFWItems.rusted_iron_chainmail_helmet, IFWItems.rusted_iron_chainmail_chestplate,
                     IFWItems.rusted_iron_chainmail_leggings, IFWItems.rusted_iron_chainmail_boots, IFWItems.rusted_iron_chain);
-            armorRecipe(recipeOutput, IFWItems.golden_helmet, IFWItems.golden_chestplate, IFWItems.golden_leggings,
-                    IFWItems.golden_boots, Items.GOLD_INGOT);
             armorRecipe(recipeOutput, IFWItems.golden_chainmail_helmet, IFWItems.golden_chainmail_chestplate,
                     IFWItems.golden_chainmail_leggings, IFWItems.golden_chainmail_boots, IFWItems.golden_chain);
             metalToolRecipe(recipeOutput, IFWItems.golden_shears, IFWItems.golden_shovel, IFWItems.golden_hoe, IFWItems.golden_sword
@@ -690,10 +686,10 @@ public class IFWRecipeProvider extends RecipeProvider {
                                 IFWItems.golden_axe,
                                 IFWItems.golden_hoe,
                                 IFWItems.golden_sword,
-                                IFWItems.golden_helmet,
-                                IFWItems.golden_chestplate,
-                                IFWItems.golden_leggings,
-                                IFWItems.golden_boots
+                                Items.GOLDEN_HELMET,
+                                Items.GOLDEN_CHESTPLATE,
+                                Items.GOLDEN_LEGGINGS,
+                                Items.GOLDEN_BOOTS
                         ),
                         RecipeCategory.MISC,
                         Items.GOLD_NUGGET,
@@ -705,37 +701,37 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_golden_axe", has(IFWItems.golden_axe))
                 .unlockedBy("has_golden_hoe", has(IFWItems.golden_hoe))
                 .unlockedBy("has_golden_sword", has(IFWItems.golden_sword))
-                .unlockedBy("has_golden_helmet", has(IFWItems.golden_helmet))
-                .unlockedBy("has_golden_chestplate", has(IFWItems.golden_chestplate))
-                .unlockedBy("has_golden_leggings", has(IFWItems.golden_leggings))
-                .unlockedBy("has_golden_boots", has(IFWItems.golden_boots))
+                .unlockedBy("has_golden_helmet", has(Items.GOLDEN_HELMET))
+                .unlockedBy("has_golden_chestplate", has(Items.GOLDEN_CHESTPLATE))
+                .unlockedBy("has_golden_leggings", has(Items.GOLDEN_LEGGINGS))
+                .unlockedBy("has_golden_boots", has(Items.GOLDEN_BOOTS))
                 .save(recipeOutput, getSmeltingRecipeName(Items.GOLD_NUGGET));
         CookingLevelRecipeBuilder.smelting(
                         Ingredient.of(
-                                Items.IRON_PICKAXE,
+                                IFWItems.iron_pickaxe,
                                 IFWItems.iron_shovel,
                                 IFWItems.iron_axe,
                                 IFWItems.iron_hoe,
                                 IFWItems.iron_sword,
-                                IFWItems.iron_helmet,
-                                IFWItems.iron_chestplate,
-                                IFWItems.iron_leggings,
-                                IFWItems.iron_boots
+                                Items.IRON_HELMET,
+                                Items.IRON_CHESTPLATE,
+                                Items.IRON_LEGGINGS,
+                                Items.IRON_BOOTS
                         ),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
                         0.1F,
                         200, 2
                 )
-                .unlockedBy("has_iron_pickaxe", has(Items.IRON_PICKAXE))
+                .unlockedBy("has_iron_pickaxe", has(IFWItems.iron_pickaxe))
                 .unlockedBy("has_iron_shovel", has(IFWItems.iron_shovel))
                 .unlockedBy("has_iron_axe", has(IFWItems.iron_axe))
                 .unlockedBy("has_iron_hoe", has(IFWItems.iron_hoe))
                 .unlockedBy("has_iron_sword", has(IFWItems.iron_sword))
-                .unlockedBy("has_iron_helmet", has(IFWItems.iron_helmet))
-                .unlockedBy("has_iron_chestplate", has(IFWItems.iron_chestplate))
-                .unlockedBy("has_iron_leggings", has(IFWItems.iron_leggings))
-                .unlockedBy("has_iron_boots", has(IFWItems.iron_boots))
+                .unlockedBy("has_iron_helmet", has(Items.IRON_HELMET))
+                .unlockedBy("has_iron_chestplate", has(Items.IRON_CHESTPLATE))
+                .unlockedBy("has_iron_leggings", has(Items.IRON_LEGGINGS))
+                .unlockedBy("has_iron_boots", has(Items.IRON_BOOTS))
                 .save(recipeOutput, getSmeltingRecipeName(Items.IRON_NUGGET));
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.CLAY), RecipeCategory.BUILDING_BLOCKS, Blocks.TERRACOTTA.asItem(), 0.35F, 200)
                 .unlockedBy("has_clay_block", has(Blocks.CLAY))

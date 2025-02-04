@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "C": {
-      "item": "minecraft:gold_ingot"
+      "item": "ifw:iron_chain"
     }
   },
   "pattern": [
@@ -12,6 +12,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "ifw:golden_boots"
+    "id": "minecraft:chainmail_boots"
   }
 }

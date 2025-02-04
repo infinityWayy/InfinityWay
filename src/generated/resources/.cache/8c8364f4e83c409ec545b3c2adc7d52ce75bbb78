@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-03T20:24:23.6523585	Tags for minecraft:item mod id vanilla
+// 1.21.1	2025-02-04T11:40:59.0677249	Tags for minecraft:item mod id vanilla
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/c/tags/item/rods/wooden.json
 96f50b5a6a3bf46756af20ca13251571d3e39bec data/minecraft/tags/item/anvil.json
 b0e34d03f683b91ebf4457718601c2de7370d052 data/minecraft/tags/item/axes.json
@@ -6,7 +6,7 @@ bdd81346635b7b10de96229750d71f72b3168a47 data/minecraft/tags/item/battle_axe.jso
 91e6fcd988d4016348a8188dcd9e1c6d02f0f8c2 data/minecraft/tags/item/dagger.json
 ef62ce36b6147fff8127c71888a789dbf97b5482 data/minecraft/tags/item/hoes.json
 48b2817554b707fbe61227fa136541f66a3677f5 data/minecraft/tags/item/mattock.json
-26b0ff9dcc0ecb05afd09fb3c6ae4eff3b926248 data/minecraft/tags/item/pickaxes.json
+9495b607f7eab50885d1bd7a6cf06053de7dccc4 data/minecraft/tags/item/pickaxes.json
 850a9fa4bd0ea0aba50d76a39b0a8fd594295c92 data/minecraft/tags/item/scythe.json
 6ea18528bc024774f162ffb9c6936139f8b96cda data/minecraft/tags/item/shears.json
 6856ebd597d30b5bf0c10dfa40694f34885029f1 data/minecraft/tags/item/shovels.json

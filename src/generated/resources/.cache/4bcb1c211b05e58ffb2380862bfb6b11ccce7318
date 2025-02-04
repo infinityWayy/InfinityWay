@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-03T20:12:23.9455915	Item Models: ifw
+// 1.21.1	2025-02-04T11:40:59.0777457	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -93,17 +93,13 @@ a1e0d77948f528e09e69d1dde3c9375abe845732 assets/ifw/models/item/flint_shovel.jso
 507aecd05385c0f3f9087233c7fc2aa5dd269150 assets/ifw/models/item/glass_shard.json
 9808b78fbbfa7e439440067101f699bc7b4a74ca assets/ifw/models/item/golden_axe.json
 f39a0f62dbc00a047f7bc8bb7fd5ad0d10c52e27 assets/ifw/models/item/golden_battle_axe.json
-381ccd4594d5cd0160c57222c3aa3ed7d642d709 assets/ifw/models/item/golden_boots.json
 d8700e1015a9c6d13c37df61a7f80082283c260f assets/ifw/models/item/golden_chain.json
 c24975b0f8bb4b4e1dce3fd3d4e3612eba7a424c assets/ifw/models/item/golden_chainmail_boots.json
 f909082cb0f4f80080204c70a04e5440877222af assets/ifw/models/item/golden_chainmail_chestplate.json
 bb66282628b4b1547fe9fccf89eee9da5f7f8af1 assets/ifw/models/item/golden_chainmail_helmet.json
 e54f8181ed5362378c9c8e989f4b0c745665f5bf assets/ifw/models/item/golden_chainmail_leggings.json
-36ea884bad3177171e4759e84ddcdcb364ae24d1 assets/ifw/models/item/golden_chestplate.json
 65bcd7a3c5526756d8892f839bdc2989df004717 assets/ifw/models/item/golden_dagger.json
-c0c17f2ebc0b00c31711fc34a074cb5fc09d72de assets/ifw/models/item/golden_helmet.json
 c5a32b1954b1b400f2dbd2779c55e95398713e08 assets/ifw/models/item/golden_hoe.json
-0961cb75671f458c36a073a8b08108ac65ed2c83 assets/ifw/models/item/golden_leggings.json
 edba7c336d9207102d3ebfe1324c8f2a2e2f360f assets/ifw/models/item/golden_mattock.json
 e034231a4430d43898042db934bc431bc29d73eb assets/ifw/models/item/golden_pickaxe.json
 364e55ec6b70883a0cb2a0a7a6ae256c8a77c918 assets/ifw/models/item/golden_scythe.json
@@ -115,18 +111,11 @@ c93b2e3662bb6ee422fe0045e4a64131c603143d assets/ifw/models/item/golden_war_hamme
 6e1b24d388884ee48afb4e19595cad3003885c1a assets/ifw/models/item/ice_cream.json
 300083a89aac3816b28fb60d23aa2cfe3d102ade assets/ifw/models/item/iron_axe.json
 ae20e8de7408f01fb71649a24b74b4e2cc7134ed assets/ifw/models/item/iron_battle_axe.json
-3a3efeccd773e66543ef64420816fe3f49e3144b assets/ifw/models/item/iron_boots.json
 1608ae092313f49c2ed04d9c2f0586a3b2575db4 assets/ifw/models/item/iron_chain.json
-086c8977dabf39f9ac63b60c1719ae45df9bee70 assets/ifw/models/item/iron_chainmail_boots.json
-4e2f931f4273053d47d91c21c1a5030fc312d85e assets/ifw/models/item/iron_chainmail_chestplate.json
-e763dd2caa9b17b0a49196bed9449f44d4aeeb36 assets/ifw/models/item/iron_chainmail_helmet.json
-0e4a3f62a9a7b6dae231af1a68c8867608b944cc assets/ifw/models/item/iron_chainmail_leggings.json
-5632cf79496638a89a7061110603ca8ab2f108f5 assets/ifw/models/item/iron_chestplate.json
 6a37940deecacc4b56da893d580e567066fba8fa assets/ifw/models/item/iron_dagger.json
-a460d5aa9fa13cf967af58fb118eed314c7dd063 assets/ifw/models/item/iron_helmet.json
 da4476ce90d0cdfff7545052c83d2f24f640c0f4 assets/ifw/models/item/iron_hoe.json
-29bc4369b0d532fa3e98d7261b66919ebbcdc926 assets/ifw/models/item/iron_leggings.json
 a493c9ef22ad24aa10189a2a80d1dc23647e729e assets/ifw/models/item/iron_mattock.json
+e092dcd707580cdacdc591211fe1fc1fad62c3d5 assets/ifw/models/item/iron_pickaxe.json
 276fa47b2ddce7089127ebca834812655faaf726 assets/ifw/models/item/iron_scythe.json
 bf7de59da97791a0c8f20311574e5773be76b904 assets/ifw/models/item/iron_shears.json
 4b1d4353cc6cdc7006b1c07a39e98bfc7b2c08b4 assets/ifw/models/item/iron_shovel.json

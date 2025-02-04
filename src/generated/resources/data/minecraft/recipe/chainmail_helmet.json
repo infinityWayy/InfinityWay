@@ -3,15 +3,15 @@
   "category": "equipment",
   "key": {
     "C": {
-      "item": "minecraft:iron_ingot"
+      "item": "ifw:iron_chain"
     }
   },
   "pattern": [
-    "C C",
+    "CCC",
     "C C"
   ],
   "result": {
     "count": 1,
-    "id": "ifw:iron_boots"
+    "id": "minecraft:chainmail_helmet"
   }
 }

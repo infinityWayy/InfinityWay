@@ -8,10 +8,11 @@
   },
   "pattern": [
     "CCC",
+    "C C",
     "C C"
   ],
   "result": {
     "count": 1,
-    "id": "ifw:iron_chainmail_helmet"
+    "id": "minecraft:chainmail_leggings"
   }
 }

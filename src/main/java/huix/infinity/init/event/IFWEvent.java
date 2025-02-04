@@ -124,6 +124,10 @@ public class IFWEvent {
             event.setBurnTime(100);
         if (event.getItemStack().is(IFWItems.manure))
             event.setBurnTime(100);
+        if (event.getItemStack().is(IFWItems.wooden_shovel))
+            event.setBurnTime(200);
+        if (event.getItemStack().is(IFWItems.wooden_club))
+            event.setBurnTime(200);
     }
 
 

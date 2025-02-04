@@ -3,6 +3,7 @@ package huix.infinity.mixin.world.entity;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.func_extension.PlayerExtension;
 import huix.infinity.util.ReflectHelper;
+import huix.infinity.util.WorldHelper;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -165,8 +166,8 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     @Unique
     @Override
     public boolean canResetTimeBySleeping() {
-        long time = this.level().dayTime();
-        return this.isSleeping() && this.sleepCounter >= 100 && time > 15000L && time < 23000L;
+        long hour = WorldHelper.worldHour(this.level().dayTime());
+        return this.isSleeping() && this.sleepCounter >= 100 && (hour <= 5 || hour >= 21);
     }
 
 

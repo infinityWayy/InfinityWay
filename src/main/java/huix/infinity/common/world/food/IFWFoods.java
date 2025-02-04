@@ -39,7 +39,7 @@ public class IFWFoods {
 
 
 
-    public static final FoodProperties wheat_seeds = (new FoodProperties.Builder()).saturationModifier(0.3F).build();
+    public static final FoodProperties wheat_seeds = (new FoodProperties.Builder()).saturationModifier(1).build();
     public static final FoodProperties salad = (new FoodProperties.Builder()).nutrition(1).saturationModifier(1).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_salad = (new IFWFoodProperties.Builder()).phytonutrients(8000).build();
     public static final FoodProperties milk_bowl = (new FoodProperties.Builder()).nutrition(1).usingConvertsTo(Items.BOWL).build();
@@ -50,7 +50,7 @@ public class IFWFoods {
     public static final FoodProperties red_mushroom = (new FoodProperties.Builder()).nutrition(1).saturationModifier(1)
             .effect(() -> new MobEffectInstance(MobEffects.POISON, 200, 1), 1.0F)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 1200, 1), 1.0F).build();
-    public static final FoodProperties pumpkin_seed = (new FoodProperties.Builder()).nutrition(3).saturationModifier(2).build();
+    public static final FoodProperties pumpkin_seed = (new FoodProperties.Builder()).nutrition(2).saturationModifier(1).build();
     public static final FoodProperties sugar = (new FoodProperties.Builder()).saturationModifier(1).build();
     public static final IFWFoodProperties ifw_sugar = (new IFWFoodProperties.Builder()).insulinResponse(4800).build();
     public static final FoodProperties egg = (new FoodProperties.Builder()).nutrition(3).saturationModifier(1).build();
@@ -93,7 +93,7 @@ public class IFWFoods {
     public static final IFWFoodProperties ifw_worm = (new IFWFoodProperties.Builder()).protein(8000).build();
     public static final FoodProperties blueberry = (new FoodProperties.Builder()).nutrition(1).saturationModifier(1).build();
     public static final IFWFoodProperties ifw_blueberry = (new IFWFoodProperties.Builder()).phytonutrients(8000).insulinResponse(4800).build();
-    public static final FoodProperties nether_wart = (new FoodProperties.Builder()).nutrition(1).saturationModifier(2).build();
+    public static final FoodProperties nether_wart = (new FoodProperties.Builder()).nutrition(1).saturationModifier(1).build();
     public static final FoodProperties melon_seed = (new FoodProperties.Builder()).nutrition(1).saturationModifier(1).build();
     public static final FoodProperties beetroot_seeds = (new FoodProperties.Builder()).nutrition(1).saturationModifier(2).build();
     public static final FoodProperties onion = (new FoodProperties.Builder()).nutrition(1).saturationModifier(1).build();

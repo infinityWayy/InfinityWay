@@ -22,8 +22,6 @@ import java.util.Set;
 public class IFWBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(InfinityWay.MOD_ID);
     public static final DeferredRegister.Items ITEM_BLOCKS = IFWItems.ITEMS;
-    public static Set<Block> fallBlocks =
-            Set.of(Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT, Blocks.FARMLAND, Blocks.MUD, Blocks.DIRT_PATH);
 
     public static final DeferredBlock<IFWAnvilBlock> copper_anvil = BLOCKS.registerBlock("copper_anvil",
             block -> new IFWAnvilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL)
