@@ -81,7 +81,7 @@ public class FoodDataMixin implements FoodDataExtension {
     @Overwrite
     private void add(int foodLevel, float saturationLevel) {
         this.foodLevel = Mth.clamp(foodLevel + this.foodLevel, 0, this.maxFoodLevel);
-        this.saturationLevel = Mth.clamp(saturationLevel + this.saturationLevel, 0.0F, (float)this.foodLevel);
+        this.saturationLevel = Mth.clamp(saturationLevel + this.saturationLevel, 0.0F, this.maxFoodLevel);
     }
 
     @Overwrite
@@ -92,6 +92,11 @@ public class FoodDataMixin implements FoodDataExtension {
     @Overwrite
     public void eat(FoodProperties foodProperties) {
         this.add(foodProperties.nutrition(), foodProperties.saturation());
+    }
+
+    @Overwrite
+    public boolean needsFood() {
+        return this.foodLevel <= this.maxFoodLevel && this.saturationLevel <= this.maxFoodLevel;
     }
 
     @Unique

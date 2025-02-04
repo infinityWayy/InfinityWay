@@ -1,6 +1,7 @@
 package huix.infinity.common.world.item;
 
 import huix.infinity.common.world.item.tier.IFWTier;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -18,6 +19,11 @@ public class ClubWeapon extends IFWTieredItem {
     @Override
     public float getDecayRateForAttackingEntity(ItemStack stack) {
         return 0.25F;
+    }
+
+    @Override
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        return true;
     }
 
     @Override

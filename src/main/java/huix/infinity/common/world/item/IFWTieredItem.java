@@ -5,7 +5,6 @@ import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.util.DurabilityHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -38,9 +37,8 @@ public abstract class IFWTieredItem extends Item implements RepairableItem {
 
     public abstract float getDecayRateForAttackingEntity(ItemStack stack);
 
-    public final int getToolDecayFromBreakingBlock(Level level, BlockState state, BlockPos pos) {
+    private int getToolDecayFromBreakingBlock(Level level, BlockState state, BlockPos pos) {
         float destroySpeed = state.getDestroySpeed(level, pos);
-
         if (!level.isClientSide && destroySpeed != 0.0F && !state.is(IFWBlockTags.PORTABLE_BLOCK)) {
             float decay = 100.0F * this.getDecayRateForBreakingBlock(state);
             return Math.max(Math.max((int)(destroySpeed * decay), (int)(decay / 20.0F)), 1);
@@ -48,31 +46,26 @@ public abstract class IFWTieredItem extends Item implements RepairableItem {
         return 0;
     }
 
-    public final int getToolDecayFromAttackingEntity(ItemStack stack, LivingEntity livingEntity) {
-        return Math.max((int)(100.0F * this.getDecayRateForAttackingEntity(stack)), 1);
-    }
-
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
         Tool tool = stack.get(DataComponents.TOOL);
-        if (tool == null) {
-            return false;
-        } else {
-            if (tool.damagePerBlock() > 0 && this.isDamageable(state)) {
-                stack.hurtAndBreak(this.getToolDecayFromBreakingBlock(level, state, pos), miningEntity, EquipmentSlot.MAINHAND);
-            }
-
-            return true;
+        if (tool != null && tool.damagePerBlock() > 0 && this.isDamageable(state)) {
+            stack.hurtAndBreak(this.getToolDecayFromBreakingBlock(level, state, pos), miningEntity, EquipmentSlot.MAINHAND);
         }
+        return true;
     }
 
     public boolean isDamageable(BlockState state) {
         return false;
     }
 
+    private int toolDecayFromAttackingEntity(ItemStack stack, LivingEntity target) {
+        return Math.max((int)(100.0F * this.getDecayRateForAttackingEntity(stack)), 1);
+    }
+
     @Override
     public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.hurtAndBreak(getToolDecayFromAttackingEntity(stack, target), attacker, EquipmentSlot.MAINHAND);
+        stack.hurtAndBreak(this.toolDecayFromAttackingEntity(stack, target), attacker, EquipmentSlot.MAINHAND);
     }
 
     @Override

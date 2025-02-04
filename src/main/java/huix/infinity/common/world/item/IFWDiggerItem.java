@@ -40,7 +40,6 @@ public abstract class IFWDiggerItem extends IFWTieredItem {
                 )
                 .build();
     }
-
     @Override
     public boolean isDamageable(BlockState state) {
         return state.is(effectiveBlocks);

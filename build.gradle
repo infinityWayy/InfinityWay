@@ -48,11 +48,10 @@ repositories {
 }
 
 dependencies {
-    //implementation "dev.shadowsoffire:Placebo:${minecraft_version}-${placebo_version}"
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
-    runtimeOnly "curse.maven:jade-324717:${jade_id}"
-//    runtimeOnly "curse.maven:modern-ui-352491:${modernui_id}"
-//    runtimeOnly "maven.modrinth:sodium:${sodium_version}-neoforge"
+//    runtimeOnly "curse.maven:appleskin-248787:5864743"
+    runtimeOnly "curse.maven:jade-324717:6155158"
+    runtimeOnly "curse.maven:modern-ui-352491:5977413"
 
 }
 
