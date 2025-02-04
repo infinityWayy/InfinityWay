@@ -20,7 +20,8 @@ public class WarHammerTool extends PickaxeTool {
     }
 
     @Override
-    public float getDestroySpeed(ItemStack itemStack, BlockState state) {
-        return super.getDestroySpeed(itemStack, state) * 0.75F;
+    public float getBaseHarvestEfficiency(BlockState state) {
+        return super.getBaseHarvestEfficiency(state) * 0.75F;
     }
+
 }

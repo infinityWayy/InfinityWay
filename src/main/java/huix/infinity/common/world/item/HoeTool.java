@@ -68,6 +68,11 @@ public class HoeTool extends IFWDiggerItem {
     }
 
     @Override
+    public float getBaseHarvestEfficiency(BlockState state) {
+        return super.getBaseHarvestEfficiency(state) * 0.5F;
+    }
+
+    @Override
     public InteractionResult useOn(UseOnContext hand) {
         Level level = hand.getLevel();
         BlockPos blockpos = hand.getClickedPos();

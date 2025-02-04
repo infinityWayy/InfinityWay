@@ -10,8 +10,8 @@ public class BattleAxeTool extends AxeTool {
     }
 
     @Override
-    public float getDestroySpeed(ItemStack itemStack, BlockState state) {
-        return super.getDestroySpeed(itemStack, state) * 0.75F;
+    public float getBaseHarvestEfficiency(BlockState state) {
+        return super.getBaseHarvestEfficiency(state) * 0.75F;
     }
 
     @Override

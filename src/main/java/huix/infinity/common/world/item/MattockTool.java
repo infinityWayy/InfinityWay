@@ -17,7 +17,7 @@ public class MattockTool extends HoeTool {
 
 
     @Override
-    public float getDestroySpeed(ItemStack itemStack, BlockState state) {
-        return !state.is(BlockTags.MINEABLE_WITH_SHOVEL) && !state.is(BlockTags.MINEABLE_WITH_HOE) ? 1.0F : this.ifwTier().getSpeed();
+    public float getBaseHarvestEfficiency(BlockState state) {
+        return super.getBaseHarvestEfficiency(state) * 0.75F;
     }
 }

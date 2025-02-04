@@ -5,6 +5,7 @@ import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.util.DurabilityHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -15,20 +16,17 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public abstract class IFWTieredItem extends Item implements RepairableItem {
     private final IFWTier tier;
-    private final int numComponents;
     private final float durability;
 
     public IFWTieredItem(IFWTier tier, int numComponents, Properties properties) {
         super(properties.durability(DurabilityHelper.getMultipliedDurability(numComponents, tier.getDurability())));
         this.tier = tier;
-        this.numComponents = numComponents;
         this.durability = DurabilityHelper.getMultipliedDurability(numComponents, tier.getDurability());
     }
 
     public IFWTieredItem(IFWTier tier, float durability, Properties properties) {
         super(properties.durability((int) durability));
         this.tier = tier;
-        this.numComponents = 0;
         this.durability = durability;
     }
 
@@ -95,5 +93,14 @@ public abstract class IFWTieredItem extends Item implements RepairableItem {
     @Override
     public int getRepairLevel() {
         return this.ifwTier().repairLevel();
+    }
+
+    public float getBaseHarvestEfficiency(BlockState state) {
+        return 4.0F;
+    }
+
+    @Override
+    public float getDestroySpeed(ItemStack itemStack, BlockState state) {
+        return this.getBaseHarvestEfficiency(state) * this.ifwTier().getSpeed();
     }
 }

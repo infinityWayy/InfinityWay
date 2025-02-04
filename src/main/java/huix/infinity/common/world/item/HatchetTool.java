@@ -3,6 +3,7 @@ package huix.infinity.common.world.item;
 import huix.infinity.common.world.item.tier.IFWTier;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class HatchetTool extends AxeTool {
     public HatchetTool(IFWTier tier, Properties properties) {
@@ -21,5 +22,10 @@ public class HatchetTool extends AxeTool {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public float getBaseHarvestEfficiency(BlockState state) {
+        return super.getBaseHarvestEfficiency(state) * 0.5F;
     }
 }

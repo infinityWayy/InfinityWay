@@ -137,4 +137,9 @@ public class AxeTool extends IFWDiggerItem {
         return Optional.ofNullable(STRIPPABLES.get(blockState.getBlock()))
             .map(block -> block.defaultBlockState().setValue(RotatedPillarBlock.AXIS, blockState.getValue(RotatedPillarBlock.AXIS)));
     }
+
+    @Override
+    public float getBaseHarvestEfficiency(BlockState state) {
+        return state.is(Blocks.SANDSTONE) ? super.getBaseHarvestEfficiency(state) * 0.5F : super.getBaseHarvestEfficiency(state);
+    }
 }

@@ -19,4 +19,9 @@ public class ClubWeapon extends IFWTieredItem {
     public float getDecayRateForAttackingEntity(ItemStack stack) {
         return 0.25F;
     }
+
+    @Override
+    public float getReachBonus() {
+        return 0.5F;
+    }
 }
