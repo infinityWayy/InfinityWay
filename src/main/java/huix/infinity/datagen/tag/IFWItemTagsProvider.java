@@ -52,6 +52,5 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
 
         tag(IFWItemTags.STRING).add(IFWItems.sinew.get(), Items.STRING);
         copy(BlockTags.ANVIL, IFWItemTags.ANVIL);
-        tag(Tags.Items.RODS_WOODEN).add(Items.STICK);
     }
 }

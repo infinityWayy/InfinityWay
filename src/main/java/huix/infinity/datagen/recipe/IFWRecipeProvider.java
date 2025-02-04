@@ -649,31 +649,31 @@ public class IFWRecipeProvider extends RecipeProvider {
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.CHORUS_FRUIT), RecipeCategory.MISC, Items.POPPED_CHORUS_FRUIT, 0.1F, 200)
                 .unlockedBy("has_chorus_fruit", has(Items.CHORUS_FRUIT))
                 .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.BEEF), RecipeCategory.FOOD, Items.COOKED_BEEF, 0.35F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.BEEF), RecipeCategory.FOOD, Items.COOKED_BEEF, 5, 200)
                 .unlockedBy("has_beef", has(Items.BEEF))
                 .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.CHICKEN), RecipeCategory.FOOD, Items.COOKED_CHICKEN, 0.35F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.CHICKEN), RecipeCategory.FOOD, Items.COOKED_CHICKEN, 3, 200)
                 .unlockedBy("has_chicken", has(Items.CHICKEN))
                 .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.COD), RecipeCategory.FOOD, Items.COOKED_COD, 0.35F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.COD), RecipeCategory.FOOD, Items.COOKED_COD, 2, 200)
                 .unlockedBy("has_cod", has(Items.COD))
                 .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.KELP), RecipeCategory.FOOD, Items.DRIED_KELP, 0.1F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.KELP), RecipeCategory.FOOD, Items.DRIED_KELP, 1, 200)
                 .unlockedBy("has_kelp", has(Blocks.KELP))
                 .save(recipeOutput, getSmeltingRecipeName(Items.DRIED_KELP));
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.SALMON), RecipeCategory.FOOD, Items.COOKED_SALMON, 0.35F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.SALMON), RecipeCategory.FOOD, Items.COOKED_SALMON, 3, 200)
                 .unlockedBy("has_salmon", has(Items.SALMON))
                 .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.MUTTON), RecipeCategory.FOOD, Items.COOKED_MUTTON, 0.35F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.MUTTON), RecipeCategory.FOOD, Items.COOKED_MUTTON, 3, 200)
                 .unlockedBy("has_mutton", has(Items.MUTTON))
                 .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.PORKCHOP), RecipeCategory.FOOD, Items.COOKED_PORKCHOP, 0.35F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.PORKCHOP), RecipeCategory.FOOD, Items.COOKED_PORKCHOP, 4, 200)
                 .unlockedBy("has_porkchop", has(Items.PORKCHOP))
                 .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RABBIT), RecipeCategory.FOOD, Items.COOKED_RABBIT, 0.35F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RABBIT), RecipeCategory.FOOD, Items.COOKED_RABBIT, 2, 200)
                 .unlockedBy("has_rabbit", has(Items.RABBIT))
                 .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.SEA_PICKLE), RecipeCategory.MISC, Items.LIME_DYE, 0.1F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.SEA_PICKLE), RecipeCategory.MISC, Items.LIME_DYE, 1, 200)
                 .unlockedBy("has_sea_pickle", has(Blocks.SEA_PICKLE))
                 .save(recipeOutput, getSmeltingRecipeName(Items.LIME_DYE));
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.CACTUS.asItem()), RecipeCategory.MISC, Items.GREEN_DYE, 1.0F, 200)
@@ -693,7 +693,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                         ),
                         RecipeCategory.MISC,
                         Items.GOLD_NUGGET,
-                        0.1F,
+                        1F,
                         200, 2
                 )
                 .unlockedBy("has_golden_pickaxe", has(IFWItems.golden_pickaxe))
@@ -720,7 +720,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                         ),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
-                        0.1F,
+                        1,
                         200, 2
                 )
                 .unlockedBy("has_iron_pickaxe", has(IFWItems.iron_pickaxe))
@@ -733,10 +733,10 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_iron_leggings", has(Items.IRON_LEGGINGS))
                 .unlockedBy("has_iron_boots", has(Items.IRON_BOOTS))
                 .save(recipeOutput, getSmeltingRecipeName(Items.IRON_NUGGET));
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.CLAY), RecipeCategory.BUILDING_BLOCKS, Blocks.TERRACOTTA.asItem(), 0.35F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.CLAY), RecipeCategory.BUILDING_BLOCKS, Blocks.TERRACOTTA.asItem(), 3.5F, 200)
                 .unlockedBy("has_clay_block", has(Blocks.CLAY))
                 .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.NETHERRACK), RecipeCategory.MISC, Items.NETHER_BRICK, 0.1F, 200)
+        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.NETHERRACK), RecipeCategory.MISC, Items.NETHER_BRICK, 1, 200)
                 .unlockedBy("has_netherrack", has(Blocks.NETHERRACK))
                 .save(recipeOutput);
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.NETHER_QUARTZ_ORE), RecipeCategory.MISC, Items.QUARTZ, 0.2F, 200)

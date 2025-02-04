@@ -12,7 +12,9 @@ import huix.infinity.datagen.recipe.IFWRecipeProvider;
 import huix.infinity.datagen.tag.IFWBlockTagsProvider;
 import huix.infinity.datagen.tag.IFWEnchantmentTagsProvider;
 import huix.infinity.datagen.tag.IFWItemTagsProvider;
+import huix.infinity.datagen.worldgen.IFWBiomeModifiers;
 import huix.infinity.init.InfinityWay;
+import net.minecraft.data.DataProvider;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -47,5 +49,6 @@ public final class IFWData {
         generator.addProvider(event.includeServer(), new IFWItemTagsProvider(output, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
 
         generator.addProvider(event.includeClient(), new IFWGlobalLootModifierProvider(output, lookupProvider));
+        generator.addProvider(event.includeServer(), (DataProvider.Factory<IFWBiomeModifiers>) packOutput -> new IFWBiomeModifiers(packOutput, lookupProvider));
     }
 }
