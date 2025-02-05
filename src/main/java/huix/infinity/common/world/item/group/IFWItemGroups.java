@@ -71,7 +71,7 @@ public class IFWItemGroups {
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tool_tab =
-            CREATIVE_TABS.register("tool_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ifw.tool_tab"))
+            CREATIVE_TABS.register("tool_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ifw.tool"))
                     .icon(() -> IFWItems.adamantium_pickaxe.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
                         output.accept(IFWItems.adamantium_pickaxe.get());
@@ -299,8 +299,6 @@ public class IFWItemGroups {
                         output.accept(IFWBlocks.silver_bars_item.get());
                         output.accept(IFWBlocks.silver_door_item.get());
                         output.accept(IFWBlocks.copper_bars_item.get());
-                        output.accept(IFWBlocks.copper_door_item.get());
-
                         output.accept(IFWBlocks.raw_adamantium_block_item.get());
                         output.accept(IFWBlocks.raw_mithril_block_item.get());
                         output.accept(IFWBlocks.raw_silver_block_item.get());

@@ -43,15 +43,17 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
                 Blocks.WAXED_EXPOSED_COPPER_TRAPDOOR, Blocks.WAXED_WEATHERED_COPPER_TRAPDOOR, Blocks.WAXED_OXIDIZED_COPPER_TRAPDOOR, Blocks.COPPER_DOOR, Blocks.EXPOSED_COPPER_DOOR,
                 Blocks.WEATHERED_COPPER_DOOR, Blocks.OXIDIZED_COPPER_DOOR, Blocks.WAXED_COPPER_DOOR, Blocks.WAXED_EXPOSED_COPPER_DOOR, Blocks.WAXED_WEATHERED_COPPER_DOOR, Blocks.WAXED_OXIDIZED_COPPER_DOOR, Blocks.EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE,
                 Blocks.RAW_GOLD_BLOCK, Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE, Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, Blocks.RAW_IRON_BLOCK, Blocks.LAPIS_BLOCK, Blocks.LAPIS_ORE,
-                Blocks.DEEPSLATE_LAPIS_ORE, Blocks.RAW_COPPER_BLOCK, Blocks.CUT_COPPER_SLAB, Blocks.RESPAWN_ANCHOR,
-                IFWBlocks.deepslate_mithril_ore.get(), IFWBlocks.mithril_ore.get()
+                Blocks.DEEPSLATE_LAPIS_ORE, Blocks.RAW_COPPER_BLOCK, Blocks.CUT_COPPER_SLAB, Blocks.RESPAWN_ANCHOR, Blocks.GOLD_BLOCK,
+                IFWBlocks.deepslate_mithril_ore.get(), IFWBlocks.mithril_ore.get(), IFWBlocks.copper_bars.get(), IFWBlocks.silver_block.get(), IFWBlocks.silver_bars.get(),
+                IFWBlocks.silver_door.get(), IFWBlocks.gold_door.get()
         );
         tag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).add(
-                Blocks.IRON_BLOCK, Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.EMERALD_BLOCK, Blocks.GOLD_BLOCK, Blocks.ANCIENT_DEBRIS,
-                IFWBlocks.adamantium_ore.get(), IFWBlocks.deepslate_adamantium_ore.get()
-        );
+                Blocks.IRON_BLOCK, Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.EMERALD_BLOCK, Blocks.ANCIENT_DEBRIS, Blocks.IRON_BARS,
+                IFWBlocks.adamantium_ore.get(), IFWBlocks.deepslate_adamantium_ore.get(), Blocks.DIAMOND_BLOCK, Blocks.IRON_DOOR,
+                IFWBlocks.ancient_metal_block.get(), IFWBlocks.ancient_metal_bars.get(), IFWBlocks.ancient_metal_door.get()
+                );
         tag(IFWBlockTags.HARVEST_LEVEL_4_TOOL).add(
-                Blocks.DIAMOND_BLOCK, IFWBlocks.mithril_bars.get(), IFWBlocks.mithril_door.get(), IFWBlocks.mithril_block.get()
+                IFWBlocks.mithril_bars.get(), IFWBlocks.mithril_door.get(), IFWBlocks.mithril_block.get()
         );
 
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_4_TOOL);
@@ -60,10 +62,16 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_2_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_4_TOOL);
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_1_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_2_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).addTag(IFWBlockTags.HARVEST_LEVEL_4_TOOL);
 
+        tag(IFWBlockTags.METAL_DOORS).add(IFWBlocks.adamantium_door.get(), IFWBlocks.ancient_metal_door.get(), Blocks.COPPER_DOOR, IFWBlocks.gold_door.get(),
+                IFWBlocks.mithril_door.get(), IFWBlocks.silver_door.get(), Blocks.IRON_DOOR);
+        tag(BlockTags.DOORS).addTag(IFWBlockTags.METAL_DOORS);
 
-        tag(BlockTags.DOORS).add(IFWBlocks.adamantium_door.get(), IFWBlocks.ancient_metal_door.get(), IFWBlocks.copper_door.get(), IFWBlocks.gold_door.get(),
-                IFWBlocks.mithril_door.get(), IFWBlocks.silver_door.get());
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IFWBlocks.adamantium_door.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IFWBlocks.adamantium_ore.get(), IFWBlocks.deepslate_adamantium_ore.get(),
+                IFWBlocks.mithril_bars.get(), IFWBlocks.mithril_door.get(), IFWBlocks.mithril_block.get(), IFWBlocks.deepslate_mithril_ore.get(), IFWBlocks.mithril_ore.get(),
+                IFWBlocks.deepslate_silver_ore.get(), IFWBlocks.silver_ore.get(), IFWBlocks.copper_bars.get(), IFWBlocks.silver_block.get(), IFWBlocks.silver_bars.get(),
+                IFWBlocks.silver_door.get(), IFWBlocks.gold_door.get(), IFWBlocks.ancient_metal_block.get(), IFWBlocks.ancient_metal_bars.get(), IFWBlocks.ancient_metal_door.get()
+        ).addTag(BlockTags.DOORS);
+
         tag(BlockTags.ANVIL).add(IFWBlocks.copper_anvil.get(), IFWBlocks.chipped_copper_anvil.get(), IFWBlocks.damaged_copper_anvil.get(),
                 IFWBlocks.silver_anvil.get(), IFWBlocks.chipped_silver_anvil.get(), IFWBlocks.damaged_silver_anvil.get(),
                 IFWBlocks.gold_anvil.get(), IFWBlocks.chipped_gold_anvil.get(), IFWBlocks.damaged_gold_anvil.get(),

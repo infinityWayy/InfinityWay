@@ -16,8 +16,10 @@
     "world.block.FarmBlockMixin",
     "world.block.LeavesBlockMixin",
     "world.block.RotatedPillarBlockMixin",
+    "world.damagesource.CombatRulesMixin",
     "world.enchantment.RemoveBinomialMixin",
     "world.entity.FallingBlockEntityMixin",
+    "world.entity.LivingEntityMixin",
     "world.entity.MobMixin",
     "world.entity.PlayerMixin",
     "world.entity.ServerPlayerMixin",
@@ -36,7 +38,8 @@
     "world.item.ItemMixin",
     "world.item.ItemsInjected",
     "world.item.ItemStackMixin",
-    "world.item.enchantment.EnchantmentMixin"
+    "world.item.enchantment.EnchantmentMixin",
+    "world.loot.ApplyBonusCount$OreDropsMixin"
   ],
   "client": [
     "client.EnchantmentScreenMixin",

@@ -54,14 +54,14 @@ public class IFWArmorMaterials {
                     0, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0, 5, 0, 2,
                     () -> Ingredient.of(Items.IRON_NUGGET), "rusted_iron"));
     public static final Holder<ArmorMaterial> iron = ARMOR_MATERIALS.register("iron", () ->
-            register(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+            registerByMC(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                         map.put(ArmorItem.Type.BOOTS, 1.3F);map.put(ArmorItem.Type.LEGGINGS, 2.3F);
                         map.put(ArmorItem.Type.CHESTPLATE, 2.7F);map.put(ArmorItem.Type.HELMET, 1.7F);
                         map.put(ArmorItem.Type.BODY, 2.7F);}),
                     30, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0, 60, 0, 2,
                     () -> Ingredient.of(Items.IRON_NUGGET), "iron"));
-    public static final Holder<ArmorMaterial> golden = ARMOR_MATERIALS.register("golden", () ->
-            register(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+    public static final Holder<ArmorMaterial> golden = ARMOR_MATERIALS.register("gold", () ->
+            registerByMC(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                         map.put(ArmorItem.Type.BOOTS, 1.0F);map.put(ArmorItem.Type.LEGGINGS, 1.8F);
                         map.put(ArmorItem.Type.CHESTPLATE, 2.0F);map.put(ArmorItem.Type.HELMET, 1.3F);
                         map.put(ArmorItem.Type.BODY, 2.0F);}),

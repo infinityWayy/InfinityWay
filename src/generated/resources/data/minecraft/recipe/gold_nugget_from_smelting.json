@@ -3,7 +3,7 @@
   "category": "misc",
   "cookinglevel": 2,
   "cookingtime": 200,
-  "experience": 0.1,
+  "experience": 1.0,
   "ingredient": [
     {
       "item": "ifw:golden_pickaxe"

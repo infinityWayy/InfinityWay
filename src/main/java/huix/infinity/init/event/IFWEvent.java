@@ -6,17 +6,29 @@ import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.util.IFWEnchantmentHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
@@ -33,6 +45,7 @@ public class IFWEvent {
     public static void init() {
         final IEventBus bus = NeoForge.EVENT_BUS;
 
+        bus.addListener(IFWEvent::armorModify);
         bus.addListener(IFWEvent::onBreakSpeed);
         bus.addListener(IFWEvent::playerAttacklHit);
         bus.addListener(IFWEvent::playerDie);
@@ -47,6 +60,17 @@ public class IFWEvent {
     public static void injectItem(final DataMapsUpdatedEvent event) {
         IFWLoad.rebuildStackSize();
         IFWLoad.injectAnvil();
+    }
+
+    public static void armorModify(final ItemAttributeModifierEvent event) {
+        if (event.getItemStack().getItem() instanceof ArmorItem armorItem) {
+            ArmorItem.Type type = armorItem.getType();
+            double armorValue = event.getModifiers().getFirst().modifier().amount() * IFWEnchantmentHelper.getProtectionFactor(event.getItemStack());
+            event.replaceModifier(Attributes.ARMOR,
+                    new AttributeModifier(ResourceLocation.withDefaultNamespace("armor." + type.getName()),
+                            armorValue, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.bySlot(type.getSlot()));
+        }
+
     }
 
     public static void onBreakSpeed(final PlayerEvent.BreakSpeed event) {

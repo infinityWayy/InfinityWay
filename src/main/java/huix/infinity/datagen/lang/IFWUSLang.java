@@ -14,6 +14,48 @@ public class IFWUSLang extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("itemGroup.ifw.block", "IFW| Block");
+        add("itemGroup.ifw.item", "IFW| Item");
+        add("itemGroup.ifw.tool", "IFW| Tool");
+        add(IFWBlocks.clay_furnace.get(), "Clay Furnace");
+        add(IFWBlocks.hardened_clay_furnace.get(), "Hardened Clay Furnace");
+        add(IFWBlocks.sandstone_furnace.get(), "Sandstone Furnace");
+        add(IFWBlocks.stone_furnace.get(), "Stone Furnace");
+        add(IFWBlocks.obsidian_furnace.get(), "Obsidian Furnace");
+        add(IFWBlocks.netherrack_furnace.get(), "Netherrack Furnace");
+        add(IFWBlocks.copper_anvil.get(), "Copper Anvil");
+        add(IFWBlocks.chipped_copper_anvil.get(), "Chipped Copper Anvil");
+        add(IFWBlocks.damaged_copper_anvil.get(), "Damaged Copper Anvil");
+        add(IFWBlocks.silver_anvil.get(), "Silver Anvil");
+        add(IFWBlocks.chipped_silver_anvil.get(), "Chipped Silver Anvil");
+        add(IFWBlocks.damaged_silver_anvil.get(), "Damaged Silver Anvil");
+        add(IFWBlocks.gold_anvil.get(), "Golden Anvil");
+        add(IFWBlocks.chipped_gold_anvil.get(), "Chipped Golden Anvil");
+        add(IFWBlocks.damaged_gold_anvil.get(), "Damaged Golden Anvil");
+        add(IFWBlocks.iron_anvil.get(), "Iron Anvil");
+        add(IFWBlocks.chipped_iron_anvil.get(), "Chipped Iron Anvil");
+        add(IFWBlocks.damaged_iron_anvil.get(), "Damaged Iron Anvil");
+        add(IFWBlocks.ancient_metal_anvil.get(), "Ancient Metal Anvil");
+        add(IFWBlocks.chipped_ancient_metal_anvil.get(), "Chipped Ancient Metal Anvil");
+        add(IFWBlocks.damaged_ancient_metal_anvil.get(), "Damaged Ancient Metal Anvil");
+        add(IFWBlocks.mithril_anvil.get(), "Mithril Anvil");
+        add(IFWBlocks.chipped_mithril_anvil.get(), "Chipped Mithril Anvil");
+        add(IFWBlocks.damaged_mithril_anvil.get(), "Damaged Mithril Anvil");
+        add(IFWBlocks.adamantium_anvil.get(), "Adamantium Anvil");
+        add(IFWBlocks.chipped_adamantium_anvil.get(), "Chipped Adamantium Anvil");
+        add(IFWBlocks.damaged_adamantium_anvil.get(), "Damaged Adamantium Anvil");
+        add(IFWItems.manure.get(), "Manure");
+        add(IFWItems.flour.get(), "Flour");
+        add(IFWItems.copper_chain.get(), "Copper Chain");
+        add(IFWItems.silver_chain.get(), "Silver Chain");
+        add(IFWItems.golden_chain.get(), "Golden Chain");
+        add(IFWItems.rusted_iron_chain.get(), "Rusted Iron Chain");
+        add(IFWItems.iron_chain.get(), "Iron Chain");
+        add(IFWItems.ancient_metal_chain.get(), "Ancient Metal Chain");
+        add(IFWItems.mithril_chain.get(), "Mithril Chain");
+        add(IFWItems.adamantium_chain.get(), "Adamantium Chain");
+        add(IFWItems.onion.get(), "Onion");
+        add(IFWItems.blueberry.get(), "Blueberry");
         //extra
         add("foodtips.saturation", "+%s Saturation Value");
         add("foodtips.nutrition", "+%s  Food Value");
@@ -40,7 +82,6 @@ public class IFWUSLang extends LanguageProvider {
         add(IFWBlocks.silver_bars_item.get(), "Silver Bars");
         add(IFWBlocks.silver_door_item.get(), "Silver Door");
         add(IFWBlocks.copper_bars_item.get(), "Copper Bars");
-        add(IFWBlocks.copper_door_item.get(), "Copper Door");
         add(IFWBlocks.raw_adamantium_block_item.get(), "Raw Adamantium Block");
         add(IFWBlocks.raw_silver_block_item.get(), "Raw Silver Block");
         add(IFWBlocks.deepslate_adamantium_ore_item.get(), "Deepslate Adamantium Ore");

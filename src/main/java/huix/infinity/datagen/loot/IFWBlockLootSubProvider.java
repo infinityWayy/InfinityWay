@@ -5,7 +5,9 @@ import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -47,12 +49,12 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.silver_anvil.get());
         dropSelf(IFWBlocks.chipped_silver_anvil.get());
         dropSelf(IFWBlocks.damaged_silver_anvil.get());
-        dropOther(IFWBlocks.adamantium_ore.get(), IFWItems.raw_adamantium);
-        dropOther(IFWBlocks.deepslate_adamantium_ore.get(), IFWItems.raw_adamantium);
-        dropOther(IFWBlocks.mithril_ore.get(), IFWItems.raw_mithril);
-        dropOther(IFWBlocks.deepslate_mithril_ore.get(), IFWItems.raw_mithril);
-        dropOther(IFWBlocks.silver_ore.get(), IFWItems.raw_silver);
-        dropOther(IFWBlocks.deepslate_silver_ore.get(), IFWItems.raw_silver);
+        add(IFWBlocks.adamantium_ore.get(), block -> this.createOreDrop(block, IFWItems.raw_adamantium.get()));
+        add(IFWBlocks.deepslate_adamantium_ore.get(), block -> this.createOreDrop(block, IFWItems.raw_adamantium.get()));
+        add(IFWBlocks.mithril_ore.get(), block -> this.createOreDrop(block, IFWItems.raw_mithril.get()));
+        add(IFWBlocks.deepslate_mithril_ore.get(), block -> this.createOreDrop(block, IFWItems.raw_mithril.get()));
+        add(IFWBlocks.silver_ore.get(), block -> this.createOreDrop(block, IFWItems.raw_silver.get()));
+        add(IFWBlocks.deepslate_silver_ore.get(), block -> this.createOreDrop(block, IFWItems.raw_silver.get()));
         dropSelf(IFWBlocks.adamantium_block.get());
         dropSelf(IFWBlocks.adamantium_bars.get());
         add(IFWBlocks.adamantium_door.get(), this::createDoorTable);
@@ -68,7 +70,6 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.silver_bars.get());
         add(IFWBlocks.silver_door.get(), this::createDoorTable);
         dropSelf(IFWBlocks.copper_bars.get());
-        add(IFWBlocks.copper_door.get(), this::createDoorTable);
         dropSelf(IFWBlocks.raw_adamantium_block.get());
         dropSelf(IFWBlocks.raw_mithril_block.get());
         dropSelf(IFWBlocks.raw_silver_block.get());
