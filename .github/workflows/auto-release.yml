@@ -25,4 +25,4 @@ jobs:
           tag: ${{ github.ref_name }}
           name: "IFW ${{ github.ref_name }}"
           artifacts: "build.zip"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{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}}
