@@ -1,0 +1,28 @@
+name: Auto Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Project
+        run: |
+          npm install
+          npm run build
+          zip -r build.zip dist/
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref_name }}
+          name: "IFW ${{ github.ref_name }}"
+          artifacts: "build.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
