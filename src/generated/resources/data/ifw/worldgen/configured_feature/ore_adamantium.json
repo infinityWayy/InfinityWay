@@ -2,11 +2,11 @@
   "type": "minecraft:ore",
   "config": {
     "discard_chance_on_air_exposure": 0.0,
-    "size": 12,
+    "size": 8,
     "targets": [
       {
         "state": {
-          "Name": "ifw:silver_ore"
+          "Name": "ifw:adamantium_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "ifw:deepslate_silver_ore"
+          "Name": "ifw:deepslate_adamantium_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
