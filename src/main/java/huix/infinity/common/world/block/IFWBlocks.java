@@ -249,12 +249,6 @@ public class IFWBlocks {
             block -> new IronBarsBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F)
                     .sound(SoundType.METAL).noOcclusion()), BlockBehaviour.Properties.of());
     public static final DeferredItem<BlockItem> copper_bars_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_bars", copper_bars, new Item.Properties().stacksTo(16));
-    public static final DeferredBlock<Block> copper_door = BLOCKS.registerBlock("copper_door",
-            block -> new DoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops()
-                    .strength(5.0F).noOcclusion().pushReaction(PushReaction.DESTROY)),
-            BlockBehaviour.Properties.of());
-    public static final DeferredItem<BlockItem> copper_door_item = ITEM_BLOCKS.register("copper_door",
-            item -> new DoubleHighBlockItem(copper_door.get(), new Item.Properties().stacksTo(1)));
 
     public static final DeferredBlock<Block> raw_adamantium_block = BLOCKS.registerBlock("raw_adamantium_block",
             block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)

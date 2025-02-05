@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-05T12:38:47.7492748	Recipes
+// 1.21.1	2025-02-05T17:23:20.6035882	Recipes
 8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
@@ -7,7 +7,6 @@ c3ed1abdd1c9e856def620a4c7679b2fbc4b8e83 data/ifw/advancement/recipes/building_b
 1a0a4817c6764e406ba2de46d015800bb5606c04 data/ifw/advancement/recipes/building_blocks/ancient_metal_door.json
 3d3681092d483d8bc3ba3f53f43ce58911ebb331 data/ifw/advancement/recipes/building_blocks/copper_anvil.json
 f4319943d08ccd61c18a569ddbe266184fcc18f6 data/ifw/advancement/recipes/building_blocks/copper_bars.json
-fb019242e89028d8c4fcd03090495ba20e9f0519 data/ifw/advancement/recipes/building_blocks/copper_door.json
 c3d7b64effab000e4744f22ae764c2ea9880a635 data/ifw/advancement/recipes/building_blocks/gold_anvil.json
 78613109b659798b168fe1b2e2c0e70654bc573e data/ifw/advancement/recipes/building_blocks/gold_bars.json
 cf21768eb8192f0d34fd04f309c10cc6783a920b data/ifw/advancement/recipes/building_blocks/gold_door.json
@@ -245,7 +244,6 @@ ea81068277ddfcccf6c68f62ff2195b982776104 data/ifw/recipe/copper_chainmail_helmet
 1247a36c7336b3083a423cc04daa638c4307605b data/ifw/recipe/copper_chainmail_leggings.json
 0543894e03550558225dae7adc07b089ba12f1c5 data/ifw/recipe/copper_chestplate.json
 6a26455bc9a32f8764cbdf0b81a8d1d00f7ae4ce data/ifw/recipe/copper_dagger.json
-80db673d2ddcb576274f21ebfc166fc8b07b99e8 data/ifw/recipe/copper_door.json
 18f5c5756fe3f78c4a670c4f7394861b34986876 data/ifw/recipe/copper_helmet.json
 6bcf5264a352fae90043ac18dd847ec392bd3bf2 data/ifw/recipe/copper_hoe.json
 b36159d3cc5d2879fedf4163a20e40ecf25b19bb data/ifw/recipe/copper_leggings.json

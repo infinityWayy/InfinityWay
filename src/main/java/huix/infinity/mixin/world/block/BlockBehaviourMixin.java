@@ -19,7 +19,7 @@ public abstract class BlockBehaviourMixin implements BlockBehaviourExtension {
         if (f != -1.0F && player.getFoodData().ifw_hasAnyEnergy()) {
             int i = net.neoforged.neoforge.event.EventHooks.doPlayerHarvestCheck(player, state, level, pos) ? 4 : -1;
             if (state.is(IFWBlockTags.PORTABLE_BLOCK))
-                i = (int)((float)i / 20.0F);
+                i = (int)((float)i / 5.0F);
 
             return player.getDigSpeed(state, pos) / f / (float)i;
         }

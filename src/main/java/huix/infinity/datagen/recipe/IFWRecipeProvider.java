@@ -202,12 +202,6 @@ public class IFWRecipeProvider extends RecipeProvider {
             ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.copper_bars, 6)
                     .requires(Items.COPPER_INGOT, 6)
                     .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT)).save(recipeOutput);
-            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, IFWBlocks.copper_door)
-                    .pattern("YY")
-                    .pattern("YY")
-                    .pattern("YY")
-                    .define('Y', Items.COPPER_INGOT)
-                    .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT)).save(recipeOutput);
         }
         {
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_hatchet)

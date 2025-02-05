@@ -87,7 +87,13 @@
     "minecraft:raw_copper_block",
     "minecraft:cut_copper_slab",
     "minecraft:respawn_anchor",
+    "minecraft:gold_block",
     "ifw:deepslate_mithril_ore",
-    "ifw:mithril_ore"
+    "ifw:mithril_ore",
+    "ifw:copper_bars",
+    "ifw:silver_block",
+    "ifw:silver_bars",
+    "ifw:silver_door",
+    "ifw:gold_door"
   ]
 }

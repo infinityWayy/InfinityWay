@@ -82,7 +82,6 @@ public class IFWCNLang extends LanguageProvider {
         add(IFWBlocks.silver_bars_item.get(), "银栏杆");
         add(IFWBlocks.silver_door_item.get(), "银门");
         add(IFWBlocks.copper_bars_item.get(), "铜栏杆");
-        add(IFWBlocks.copper_door_item.get(), "铜门");
         add(IFWBlocks.raw_adamantium_block_item.get(), "粗艾德曼块");
         add(IFWBlocks.raw_silver_block_item.get(), "粗银块");
         add(IFWBlocks.deepslate_adamantium_ore_item.get(), "深层艾德曼矿石");

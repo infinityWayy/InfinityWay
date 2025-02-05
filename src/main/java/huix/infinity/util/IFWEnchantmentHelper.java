@@ -26,8 +26,7 @@ public class IFWEnchantmentHelper {
         return enchantmentCost / 100;
     }
 
-    public static int calculateRequiredExperienceLevel(final RandomSource random, final int slot,
-                                                       int bookshelfCount, final ItemStack stack, final int enchantingMultiplier) {
+    public static int calculateRequiredExperienceLevel(final RandomSource random, final int slot, int bookshelfCount, final ItemStack stack, final int enchantingMultiplier) {
         Item item = stack.getItem();
         int i = item.getEnchantmentValue();
         if (i <= 0) {
@@ -73,8 +72,7 @@ public class IFWEnchantmentHelper {
         }
     }
 
-    public static List<EnchantmentInstance> selectEnchantment(final RandomSource random, final ItemStack stack, int cost,
-                                                              final Stream<Holder<Enchantment>> possibleEnchantments) {
+    public static List<EnchantmentInstance> selectEnchantment(final RandomSource random, final ItemStack stack, int cost, final Stream<Holder<Enchantment>> possibleEnchantments) {
         List<EnchantmentInstance> enchantmentsToAdd = Lists.newArrayList();
         int i = stack.getEnchantmentValue();
         if (i > 0) {
@@ -134,5 +132,13 @@ public class IFWEnchantmentHelper {
             }
         });
         return list;
+    }
+
+    public static float getProtectionFactor(ItemStack itemStack) {
+        if (itemStack.isDamageableItem() && itemStack.getDamageValue() >= itemStack.getMaxDamage() - 1) {
+            return 0.0F;
+        } else {
+            return Math.min(2.0F - (float) itemStack.getDamageValue() / itemStack.getMaxDamage() * 2.0F, 1.0F);
+        }
     }
 }

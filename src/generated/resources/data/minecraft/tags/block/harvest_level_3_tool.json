@@ -4,9 +4,14 @@
     "minecraft:diamond_ore",
     "minecraft:deepslate_diamond_ore",
     "minecraft:emerald_block",
-    "minecraft:gold_block",
     "minecraft:ancient_debris",
+    "minecraft:iron_bars",
     "ifw:adamantium_ore",
-    "ifw:deepslate_adamantium_ore"
+    "ifw:deepslate_adamantium_ore",
+    "minecraft:diamond_block",
+    "minecraft:iron_door",
+    "ifw:ancient_metal_block",
+    "ifw:ancient_metal_bars",
+    "ifw:ancient_metal_door"
   ]
 }

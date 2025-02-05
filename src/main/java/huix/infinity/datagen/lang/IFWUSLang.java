@@ -82,7 +82,6 @@ public class IFWUSLang extends LanguageProvider {
         add(IFWBlocks.silver_bars_item.get(), "Silver Bars");
         add(IFWBlocks.silver_door_item.get(), "Silver Door");
         add(IFWBlocks.copper_bars_item.get(), "Copper Bars");
-        add(IFWBlocks.copper_door_item.get(), "Copper Door");
         add(IFWBlocks.raw_adamantium_block_item.get(), "Raw Adamantium Block");
         add(IFWBlocks.raw_silver_block_item.get(), "Raw Silver Block");
         add(IFWBlocks.deepslate_adamantium_ore_item.get(), "Deepslate Adamantium Ore");

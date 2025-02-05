@@ -119,7 +119,7 @@ public class IFWLoad {
         ReplaceHelper.stackSize(Items.BONE, 16);
         ReplaceHelper.stackSize(Tags.Items.INGOTS, 10);
         ReplaceHelper.stackSize(ItemTags.ARROWS, 16);
-        ReplaceHelper.stackSizeByBlock(BlockTags.MINEABLE_WITH_SHOVEL, 4);
+        ReplaceHelper.stackSizeByBlock(BlockTags.MINEABLE_WITH_SHOVEL, 8);
         ReplaceHelper.stackSizeByBlock(BlockTags.MINEABLE_WITH_AXE, 16);
         ReplaceHelper.stackSizeByBlock(BlockTags.MINEABLE_WITH_HOE, 16);
         ReplaceHelper.stackSizeByBlock(BlockTags.LEAVES, 4);
@@ -299,7 +299,6 @@ public class IFWLoad {
         ReplaceHelper.stackSize(Items.TNT, 4);
         ReplaceHelper.stackSize(Items.FIREWORK_ROCKET, 16);
         ReplaceHelper.stackSizeByBlock(BlockTags.IMPERMEABLE, 8);
-        ReplaceHelper.stackSizeByBlock(BlockTags.TERRACOTTA, 8);
         ReplaceHelper.stackSizeByBlock(BlockTags.FENCES, 8);
         ReplaceHelper.stackSizeByBlock(BlockTags.TRAPDOORS, 16);
         ReplaceHelper.stackSize(Items.COBBLESTONE, 4);
@@ -384,6 +383,8 @@ public class IFWLoad {
         ReplaceHelper.stackSize(Items.BELL, 4);
         ReplaceHelper.stackSize(Items.WIND_CHARGE, 16);
         ReplaceHelper.stackSize(Items.END_CRYSTAL, 16);
+        ReplaceHelper.stackSizeByBlock(BlockTags.TERRACOTTA, 8);
+
     }
 
     private static void rebuildFood() {

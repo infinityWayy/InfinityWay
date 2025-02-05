@@ -26,6 +26,6 @@ public class IFWBlockTags {
     public static final TagKey<Block> SCYTHE_EFFECTIVE = create("scythe_effective");
     public static final TagKey<Block> PORTABLE_BLOCK = create("portable_block");
     public static final TagKey<Block> IFW_FURNACE = create("ifw_furnace");
-
+    public static final TagKey<Block> METAL_DOORS = create("ifw_furnace");
     public static final TagKey<Block> FALLEN_DIRT = create("fallen_dirt");
 }

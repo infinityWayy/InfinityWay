@@ -38,7 +38,6 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWBlocks.adamantium_door_item.get());
         basicItem(IFWBlocks.mithril_door_item.get());
         basicItem(IFWBlocks.ancient_metal_door_item.get());
-        basicItem(IFWBlocks.copper_door_item.get());
         basicItem(IFWBlocks.silver_door_item.get());
         basicItem(IFWBlocks.gold_door_item.get());
         basicItem(IFWItems.adamantium_ingot.get());

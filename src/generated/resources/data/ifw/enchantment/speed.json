@@ -1,0 +1,38 @@
+{
+  "anvil_cost": 0,
+  "description": {
+    "translate": "enchantment.ifw.speed"
+  },
+  "effects": {
+    "minecraft:location_changed": [
+      {
+        "effect": {
+          "type": "minecraft:attribute",
+          "amount": {
+            "type": "minecraft:linear",
+            "base": 0.0,
+            "per_level_above_first": 0.005
+          },
+          "attribute": "minecraft:generic.movement_speed",
+          "id": "ifw:speed",
+          "operation": "add_value"
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#minecraft:exclusive_set/armor",
+  "max_cost": {
+    "base": 21,
+    "per_level_above_first": 8
+  },
+  "max_level": 5,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 8
+  },
+  "slots": [
+    "feet"
+  ],
+  "supported_items": "#minecraft:enchantable/foot_armor",
+  "weight": 1
+}
