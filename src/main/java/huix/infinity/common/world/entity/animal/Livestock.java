@@ -183,9 +183,9 @@ public abstract class Livestock extends Animal {
         this.setProductionCounter(this.getData(IFWAttachments.production_counter) + i);
     }
 
-    protected boolean isPanic() {return this.getData(IFWAttachments.is_panic);}
+    public boolean isPanic() {return this.getData(IFWAttachments.is_panic);}
 
-    protected void setPanic(boolean isPanic) {this.setData(IFWAttachments.is_panic, isPanic);}
+    public void setPanic(boolean isPanic) {this.setData(IFWAttachments.is_panic, isPanic);}
 
     protected void addFood(float food) {
         this.food(this.food() + food);
