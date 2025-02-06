@@ -2,10 +2,8 @@ package huix.infinity.datagen.lang;
 
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
-import huix.infinity.common.world.item.group.IFWItemGroups;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class IFWCNLang extends LanguageProvider {

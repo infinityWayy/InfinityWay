@@ -1,0 +1,11 @@
+{
+  "values": [
+    "ifw:stone_copper_bucket",
+    "ifw:stone_iron_bucket",
+    "ifw:stone_silver_bucket",
+    "ifw:stone_gold_bucket",
+    "ifw:stone_ancient_metal_bucket",
+    "ifw:stone_mithril_bucket",
+    "ifw:stone_adamantium_bucket"
+  ]
+}

@@ -12,6 +12,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -207,7 +208,7 @@ public class IFWRecipeProvider extends RecipeProvider {
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_hatchet)
                     .define('X', Items.FLINT)
                     .define('Y', Items.STICK)
-                    .define('Z', IFWItemTags.STRING)
+                    .define('Z', Tags.Items.STRINGS)
                     .pattern("YX")
                     .pattern("YZ")
                     .unlockedBy("has_flint", has(Items.FLINT))
@@ -215,7 +216,7 @@ public class IFWRecipeProvider extends RecipeProvider {
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_axe)
                     .define('X', Items.FLINT)
                     .define('Y', Items.STICK)
-                    .define('Z', IFWItemTags.STRING)
+                    .define('Z', Tags.Items.STRINGS)
                     .pattern("XX")
                     .pattern("YX")
                     .pattern("YZ")
@@ -224,7 +225,7 @@ public class IFWRecipeProvider extends RecipeProvider {
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_shovel)
                     .define('X', Items.FLINT)
                     .define('Y', Items.STICK)
-                    .define('Z', IFWItemTags.STRING)
+                    .define('Z', Tags.Items.STRINGS)
                     .pattern("XZ")
                     .pattern("Y ")
                     .pattern("Y ")
@@ -233,7 +234,7 @@ public class IFWRecipeProvider extends RecipeProvider {
             ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, IFWItems.flint_knife)
                     .define('X', Items.FLINT)
                     .define('Y', Items.STICK)
-                    .define('Z', IFWItemTags.STRING)
+                    .define('Z', Tags.Items.STRINGS)
                     .pattern("XZ")
                     .pattern("Y ")
                     .unlockedBy("has_flint", has(Items.FLINT))

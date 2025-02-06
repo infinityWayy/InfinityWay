@@ -7,15 +7,17 @@ import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.util.IFWEnchantmentHelper;
+import huix.infinity.util.WorldHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Holder;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -23,9 +25,8 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
@@ -36,9 +37,12 @@ import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.registries.datamaps.DataMapsUpdatedEvent;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class IFWEvent {
 
@@ -55,11 +59,37 @@ public class IFWEvent {
         bus.addListener(IFWEvent::nonRemoveUnClearEffect);
         bus.addListener(IFWEvent::injectFuel);
         bus.addListener(IFWEvent::injectItem);
+        bus.addListener(IFWEvent::onServerTick);
     }
 
     public static void injectItem(final DataMapsUpdatedEvent event) {
         IFWLoad.rebuildStackSize();
         IFWLoad.injectAnvil();
+    }
+
+
+    public static void onServerTick(final ServerTickEvent.Post event) {
+        for (Map.Entry<ResourceKey<Level>, Map<BlockPos, Integer>> entry : WorldHelper.DELAYED_BLOCKS.entrySet()) {
+            ResourceKey<Level> dimension = entry.getKey();
+            Map<BlockPos, Integer> blocks = entry.getValue();
+
+            ServerLevel level = event.getServer().getLevel(dimension);
+            if (level == null) continue;
+
+            Iterator<Map.Entry<BlockPos, Integer>> iterator = blocks.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<BlockPos, Integer> blockEntry = iterator.next();
+                BlockPos pos = blockEntry.getKey();
+                int timeLeft = blockEntry.getValue() - 1;
+
+                if (timeLeft <= 0) {
+                    level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+                    iterator.remove();
+                } else {
+                    blockEntry.setValue(timeLeft);
+                }
+            }
+        }
     }
 
     public static void armorModify(final ItemAttributeModifierEvent event) {
