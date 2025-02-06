@@ -108,7 +108,7 @@ public class IFWLoad {
     }
 
     public static void rebuildStackSize() {
-        ReplaceHelper.stackSize(IFWItemTags.STRING, 16);
+        ReplaceHelper.stackSize(Tags.Items.STRINGS, 16);
         ReplaceHelper.stackSize(Items.BOOK, 16);
         ReplaceHelper.stackSize(Items.APPLE, 16);
         ReplaceHelper.stackSize(Items.ENCHANTED_GOLDEN_APPLE, 16);
@@ -143,7 +143,7 @@ public class IFWLoad {
         ReplaceHelper.stackSize(Items.RAW_IRON, 16);
         ReplaceHelper.stackSize(Items.RAW_GOLD, 16);
         ReplaceHelper.stackSize(Tags.Items.GEMS, 32);
-        ReplaceHelper.stackSize(Tags.Items.BUCKETS, 1);
+        ReplaceHelper.stackSize(Tags.Items.BUCKETS_EMPTY, 8);
         ReplaceHelper.stackSize(Items.BLAZE_ROD, 16);
         ReplaceHelper.stackSize(Items.BREEZE_ROD, 16);
         ReplaceHelper.stackSize(Items.GLOWSTONE, 4);

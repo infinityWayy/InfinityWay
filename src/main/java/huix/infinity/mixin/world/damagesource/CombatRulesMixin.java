@@ -22,18 +22,18 @@ public class CombatRulesMixin {
             armor *= Mth.clamp(EnchantmentHelper.modifyArmorEffectiveness(serverlevel, itemstack, entity, source, armor), 0.0F, 1.0F);
         }
 
-        float toughEff = toughness / 4.0F;
         if (armor > damage) {
-            int delta = (int) ((int) armor - damage + toughEff);
+            float toughEff = toughness / 10.0F;
+            int delta = (int) ((int) armor - damage);
 
             for (int i = -1; i < delta; ++i) {
-                if (entity.getRandom().nextFloat() < 0.2F) {
+                if (entity.getRandom().nextFloat() < 0.2F + toughEff) {
                     return 0.0F;
                 }
             }
         }
 
-        return Math.max(damage - armor - toughEff, 1.0F);
+        return Math.max(damage - armor, 1.0F);
     }
 
 }

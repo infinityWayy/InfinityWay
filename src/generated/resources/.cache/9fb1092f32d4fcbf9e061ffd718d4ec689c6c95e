@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-05T17:23:20.6035882	Recipes
+// 1.21.1	2025-02-06T19:44:34.0605272	Recipes
 8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
@@ -255,10 +255,10 @@ cc521bfed360534b143ac6da7275c5d382b1b708 data/ifw/recipe/copper_shovel.json
 ff0a2e2737d8b890dd37f5dc24f735d40d6c5731 data/ifw/recipe/copper_sword.json
 c2106def915636be92d6c9540f83d60f7d399715 data/ifw/recipe/copper_war_hammer.json
 30502a999523c0134ea54fe55e362e59d10e3e0b data/ifw/recipe/dough.json
-9e85f96d625d80cc3beed1a8aa5b532fe4704549 data/ifw/recipe/flint_axe.json
-5cb3b7d13f9d792ca90e8df00bcd873335deccdf data/ifw/recipe/flint_hatchet.json
-837cf72fcdd81adb5cbf585757fe36615b306ccc data/ifw/recipe/flint_knife.json
-a855627f73eac9523753d012ef07ee8db974551b data/ifw/recipe/flint_shovel.json
+459b134c25c7aed25458224d4394d5315b14a785 data/ifw/recipe/flint_axe.json
+ca92aa6b4bccc965f86eabf0def116e755a93931 data/ifw/recipe/flint_hatchet.json
+599f50be726872148fbb8e53589eeeb93bd81636 data/ifw/recipe/flint_knife.json
+497aac6b94361f1f895fc101b3a4ad03155f14c6 data/ifw/recipe/flint_shovel.json
 4bcb378015284674dfbb40dda852f64bbaac92c7 data/ifw/recipe/flour.json
 d4679f3fed592b13a4ec0a0d998aa1995acbdb89 data/ifw/recipe/golden_axe.json
 db5bf7134ad2f3b7f48222002394b57191a289e7 data/ifw/recipe/golden_battle_axe.json

@@ -1,6 +1,5 @@
 package huix.infinity.datagen.tag;
 
-import huix.infinity.common.core.tag.IFWBlockTags;
 import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.core.HolderLookup;
@@ -9,9 +8,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
@@ -50,7 +47,32 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
         tag(IFWItemTags.WAR_HAMMER).add(IFWItems.adamantium_war_hammer.get(), IFWItems.mithril_war_hammer.get(), IFWItems.ancient_metal_war_hammer.get(),
                 IFWItems.iron_war_hammer.get(), IFWItems.copper_war_hammer.get(), IFWItems.golden_war_hammer.get(), IFWItems.silver_war_hammer.get(), IFWItems.rusted_iron_war_hammer.get());
 
-        tag(IFWItemTags.STRING).add(IFWItems.sinew.get(), Items.STRING);
+        tag(Tags.Items.STRINGS).add(IFWItems.sinew.get());
         copy(BlockTags.ANVIL, IFWItemTags.ANVIL);
+
+        tag(IFWItemTags.BUCKETS_TROPICAL_FISH).add(IFWItems.tropical_copper_bucket.get(), IFWItems.tropical_silver_bucket.get(), IFWItems.tropical_gold_bucket.get(),
+                IFWItems.tropical_iron_bucket.get(), IFWItems.tropical_ancient_metal_bucket.get(), IFWItems.tropical_mithril_bucket.get(), IFWItems.tropical_adamantium_bucket.get());
+        tag(Tags.Items.BUCKETS_EMPTY).add(IFWItems.copper_bucket.get(), IFWItems.silver_bucket.get(),
+                IFWItems.gold_bucket.get(), IFWItems.ancient_metal_bucket.get(), IFWItems.mithril_bucket.get(), IFWItems.adamantium_bucket.get());
+        tag(Tags.Items.BUCKETS_LAVA).add(IFWItems.lava_copper_bucket.get(), IFWItems.lava_silver_bucket.get(),
+                IFWItems.lava_gold_bucket.get(), IFWItems.lava_ancient_metal_bucket.get(), IFWItems.lava_mithril_bucket.get(), IFWItems.lava_adamantium_bucket.get());
+        tag(Tags.Items.BUCKETS_POWDER_SNOW).add(IFWItems.powder_snow_copper_bucket.get(), IFWItems.powder_snow_silver_bucket.get(),
+                IFWItems.powder_snow_gold_bucket.get(), IFWItems.powder_snow_ancient_metal_bucket.get(), IFWItems.powder_snow_mithril_bucket.get(), IFWItems.powder_snow_adamantium_bucket.get());
+        tag(Tags.Items.BUCKETS_WATER).add(IFWItems.water_copper_bucket.get(), IFWItems.water_silver_bucket.get(),
+                IFWItems.water_gold_bucket.get(), IFWItems.water_ancient_metal_bucket.get(), IFWItems.water_mithril_bucket.get(), IFWItems.water_adamantium_bucket.get());
+        tag(Tags.Items.BUCKETS_MILK).add(IFWItems.milk_copper_bucket.get(), IFWItems.milk_silver_bucket.get(),
+                IFWItems.milk_gold_bucket.get(), IFWItems.milk_ancient_metal_bucket.get(), IFWItems.milk_mithril_bucket.get(), IFWItems.milk_adamantium_bucket.get());
+        tag(IFWItemTags.BUCKETS_STONE).add(IFWItems.stone_copper_bucket.get(), IFWItems.stone_iron_bucket.get(), IFWItems.stone_silver_bucket.get(),
+                IFWItems.stone_gold_bucket.get(), IFWItems.stone_ancient_metal_bucket.get(), IFWItems.stone_mithril_bucket.get(), IFWItems.stone_adamantium_bucket.get());
+
+        tag(Tags.Items.BUCKETS_ENTITY_WATER).add(IFWItems.pufferfish_copper_bucket.get(), IFWItems.salmon_copper_bucket.get(), IFWItems.cod_copper_bucket.get()
+                , IFWItems.axolotl_copper_bucket.get(), IFWItems.tadpole_copper_bucket.get(), IFWItems.pufferfish_iron_bucket.get(), IFWItems.salmon_iron_bucket.get(), IFWItems.cod_iron_bucket.get()
+                , IFWItems.axolotl_iron_bucket.get(), IFWItems.tadpole_iron_bucket.get()).addTag(IFWItemTags.BUCKETS_TROPICAL_FISH).add(IFWItems.pufferfish_silver_bucket.get(), IFWItems.salmon_silver_bucket.get(), IFWItems.cod_silver_bucket.get()
+                , IFWItems.axolotl_silver_bucket.get(), IFWItems.pufferfish_gold_bucket.get(), IFWItems.salmon_gold_bucket.get(), IFWItems.cod_gold_bucket.get()
+                , IFWItems.axolotl_gold_bucket.get(), IFWItems.pufferfish_ancient_metal_bucket.get(), IFWItems.salmon_ancient_metal_bucket.get(), IFWItems.cod_ancient_metal_bucket.get()
+                , IFWItems.axolotl_ancient_metal_bucket.get(), IFWItems.pufferfish_mithril_bucket.get(), IFWItems.salmon_mithril_bucket.get(), IFWItems.cod_mithril_bucket.get()
+                , IFWItems.axolotl_mithril_bucket.get(), IFWItems.pufferfish_adamantium_bucket.get(), IFWItems.salmon_adamantium_bucket.get(), IFWItems.cod_adamantium_bucket.get()
+                , IFWItems.axolotl_adamantium_bucket.get());
+
     }
 }

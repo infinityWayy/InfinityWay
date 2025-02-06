@@ -6,13 +6,228 @@ import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.util.DurabilityHelper;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.MilkBucketItem;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class IFWItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(InfinityWay.MOD_ID);
+
+
+    public static final DeferredItem<Item> copper_bucket =
+            ITEMS.register("copper_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.COPPER, new Item.Properties()));
+    public static final DeferredItem<Item> water_copper_bucket =
+            ITEMS.register("water_copper_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.COPPER, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> lava_copper_bucket =
+            ITEMS.register("lava_copper_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.COPPER, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> powder_snow_copper_bucket =
+            ITEMS.register("powder_snow_copper_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.COPPER, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> milk_copper_bucket =
+            ITEMS.register("milk_copper_bucket", item -> new MilkBucketItem(new Item.Properties().craftRemainder(copper_bucket.get()).stacksTo(1)));
+    public static final DeferredItem<Item> stone_copper_bucket =
+            ITEMS.registerSimpleItem("stone_copper_bucket", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> pufferfish_copper_bucket =
+            ITEMS.register("pufferfish_copper_bucket", item -> new IFWMobBucketItem(EntityType.PUFFERFISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.COPPER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> salmon_copper_bucket =
+            ITEMS.register("salmon_copper_bucket", item -> new IFWMobBucketItem(EntityType.SALMON,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.COPPER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> cod_copper_bucket =
+            ITEMS.register("cod_copper_bucket", item -> new IFWMobBucketItem(EntityType.COD,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.COPPER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tropical_copper_bucket =
+            ITEMS.register("tropical_copper_bucket", item -> new IFWMobBucketItem(EntityType.TROPICAL_FISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.COPPER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> axolotl_copper_bucket =
+            ITEMS.register("axolotl_copper_bucket", item -> new IFWMobBucketItem(EntityType.AXOLOTL,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.COPPER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tadpole_copper_bucket =
+            ITEMS.register("tadpole_copper_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.COPPER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+
+    public static final DeferredItem<Item> stone_iron_bucket =
+            ITEMS.registerSimpleItem("stone_iron_bucket", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> pufferfish_iron_bucket =
+            ITEMS.register("pufferfish_iron_bucket", item -> new IFWMobBucketItem(EntityType.PUFFERFISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.IRON, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> salmon_iron_bucket =
+            ITEMS.register("salmon_iron_bucket", item -> new IFWMobBucketItem(EntityType.SALMON,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.IRON, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> cod_iron_bucket =
+            ITEMS.register("cod_iron_bucket", item -> new IFWMobBucketItem(EntityType.COD,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.IRON, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tropical_iron_bucket =
+            ITEMS.register("tropical_iron_bucket", item -> new IFWMobBucketItem(EntityType.TROPICAL_FISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.IRON, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> axolotl_iron_bucket =
+            ITEMS.register("axolotl_iron_bucket", item -> new IFWMobBucketItem(EntityType.AXOLOTL,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.IRON, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tadpole_iron_bucket =
+            ITEMS.register("tadpole_iron_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.IRON, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+
+    public static final DeferredItem<Item> silver_bucket =
+            ITEMS.register("silver_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.SILVER, new Item.Properties()));
+    public static final DeferredItem<Item> water_silver_bucket =
+            ITEMS.register("water_silver_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.SILVER, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> lava_silver_bucket =
+            ITEMS.register("lava_silver_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.SILVER, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> powder_snow_silver_bucket =
+            ITEMS.register("powder_snow_silver_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.SILVER, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> milk_silver_bucket =
+            ITEMS.register("milk_silver_bucket", item -> new MilkBucketItem(new Item.Properties().craftRemainder(silver_bucket.get()).stacksTo(1)));
+    public static final DeferredItem<Item> stone_silver_bucket =
+            ITEMS.registerSimpleItem("stone_silver_bucket", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> pufferfish_silver_bucket =
+            ITEMS.register("pufferfish_silver_bucket", item -> new IFWMobBucketItem(EntityType.PUFFERFISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.SILVER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> salmon_silver_bucket =
+            ITEMS.register("salmon_silver_bucket", item -> new IFWMobBucketItem(EntityType.SALMON,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.SILVER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> cod_silver_bucket =
+            ITEMS.register("cod_silver_bucket", item -> new IFWMobBucketItem(EntityType.COD,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.SILVER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tropical_silver_bucket =
+            ITEMS.register("tropical_silver_bucket", item -> new IFWMobBucketItem(EntityType.TROPICAL_FISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.SILVER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> axolotl_silver_bucket =
+            ITEMS.register("axolotl_silver_bucket", item -> new IFWMobBucketItem(EntityType.AXOLOTL,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.SILVER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tadpole_silver_bucket =
+            ITEMS.register("tadpole_silver_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.SILVER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+
+    public static final DeferredItem<Item> gold_bucket =
+            ITEMS.register("gold_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.GOLD, new Item.Properties()));
+    public static final DeferredItem<Item> water_gold_bucket =
+            ITEMS.register("water_gold_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.GOLD, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> lava_gold_bucket =
+            ITEMS.register("lava_gold_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.GOLD, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> powder_snow_gold_bucket =
+            ITEMS.register("powder_snow_gold_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.GOLD, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> milk_gold_bucket =
+            ITEMS.register("milk_gold_bucket", item -> new MilkBucketItem(new Item.Properties().craftRemainder(gold_bucket.get()).stacksTo(1)));
+    public static final DeferredItem<Item> stone_gold_bucket =
+            ITEMS.registerSimpleItem("stone_gold_bucket", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> pufferfish_gold_bucket =
+            ITEMS.register("pufferfish_gold_bucket", item -> new IFWMobBucketItem(EntityType.PUFFERFISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.GOLD, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> salmon_gold_bucket =
+            ITEMS.register("salmon_gold_bucket", item -> new IFWMobBucketItem(EntityType.SALMON,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.GOLD, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> cod_gold_bucket =
+            ITEMS.register("cod_gold_bucket", item -> new IFWMobBucketItem(EntityType.COD,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.GOLD, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tropical_gold_bucket =
+            ITEMS.register("tropical_gold_bucket", item -> new IFWMobBucketItem(EntityType.TROPICAL_FISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.GOLD, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> axolotl_gold_bucket =
+            ITEMS.register("axolotl_gold_bucket", item -> new IFWMobBucketItem(EntityType.AXOLOTL,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.GOLD, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tadpole_gold_bucket =
+            ITEMS.register("tadpole_gold_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.GOLD, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+
+    public static final DeferredItem<Item> ancient_metal_bucket =
+            ITEMS.register("ancient_metal_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.ANCIENT_METAL, new Item.Properties()));
+    public static final DeferredItem<Item> water_ancient_metal_bucket =
+            ITEMS.register("water_ancient_metal_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> lava_ancient_metal_bucket =
+            ITEMS.register("lava_ancient_metal_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> powder_snow_ancient_metal_bucket =
+            ITEMS.register("powder_snow_ancient_metal_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> milk_ancient_metal_bucket =
+            ITEMS.register("milk_ancient_metal_bucket", item -> new MilkBucketItem(new Item.Properties().craftRemainder(ancient_metal_bucket.get()).stacksTo(1)));
+    public static final DeferredItem<Item> stone_ancient_metal_bucket =
+            ITEMS.registerSimpleItem("stone_ancient_metal_bucket", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> pufferfish_ancient_metal_bucket =
+            ITEMS.register("pufferfish_ancient_metal_bucket", item -> new IFWMobBucketItem(EntityType.PUFFERFISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> salmon_ancient_metal_bucket =
+            ITEMS.register("salmon_ancient_metal_bucket", item -> new IFWMobBucketItem(EntityType.SALMON,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> cod_ancient_metal_bucket =
+            ITEMS.register("cod_ancient_metal_bucket", item -> new IFWMobBucketItem(EntityType.COD,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tropical_ancient_metal_bucket =
+            ITEMS.register("tropical_ancient_metal_bucket", item -> new IFWMobBucketItem(EntityType.TROPICAL_FISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> axolotl_ancient_metal_bucket =
+            ITEMS.register("axolotl_ancient_metal_bucket", item -> new IFWMobBucketItem(EntityType.AXOLOTL,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tadpole_ancient_metal_bucket =
+            ITEMS.register("tadpole_ancient_metal_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+
+    public static final DeferredItem<Item> mithril_bucket =
+            ITEMS.register("mithril_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.MITHRIL, new Item.Properties()));
+    public static final DeferredItem<Item> water_mithril_bucket =
+            ITEMS.register("water_mithril_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> lava_mithril_bucket =
+            ITEMS.register("lava_mithril_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> powder_snow_mithril_bucket =
+            ITEMS.register("powder_snow_mithril_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> milk_mithril_bucket =
+            ITEMS.register("milk_mithril_bucket", item -> new MilkBucketItem(new Item.Properties().craftRemainder(mithril_bucket.get()).stacksTo(1)));
+    public static final DeferredItem<Item> stone_mithril_bucket =
+            ITEMS.registerSimpleItem("stone_mithril_bucket", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> pufferfish_mithril_bucket =
+            ITEMS.register("pufferfish_mithril_bucket", item -> new IFWMobBucketItem(EntityType.PUFFERFISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> salmon_mithril_bucket =
+            ITEMS.register("salmon_mithril_bucket", item -> new IFWMobBucketItem(EntityType.SALMON,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> cod_mithril_bucket =
+            ITEMS.register("cod_mithril_bucket", item -> new IFWMobBucketItem(EntityType.COD,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tropical_mithril_bucket =
+            ITEMS.register("tropical_mithril_bucket", item -> new IFWMobBucketItem(EntityType.TROPICAL_FISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> axolotl_mithril_bucket =
+            ITEMS.register("axolotl_mithril_bucket", item -> new IFWMobBucketItem(EntityType.AXOLOTL,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tadpole_mithril_bucket =
+            ITEMS.register("tadpole_mithril_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+
+    public static final DeferredItem<Item> adamantium_bucket =
+            ITEMS.register("adamantium_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.ADAMANTIUM, new Item.Properties()));
+    public static final DeferredItem<Item> water_adamantium_bucket =
+            ITEMS.register("water_adamantium_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> lava_adamantium_bucket =
+            ITEMS.register("lava_adamantium_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> powder_snow_adamantium_bucket =
+            ITEMS.register("powder_snow_adamantium_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> milk_adamantium_bucket =
+            ITEMS.register("milk_adamantium_bucket", item -> new MilkBucketItem(new Item.Properties().craftRemainder(adamantium_bucket.get()).stacksTo(1)));
+    public static final DeferredItem<Item> stone_adamantium_bucket =
+            ITEMS.registerSimpleItem("stone_adamantium_bucket", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> pufferfish_adamantium_bucket =
+            ITEMS.register("pufferfish_adamantium_bucket", item -> new IFWMobBucketItem(EntityType.PUFFERFISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> salmon_adamantium_bucket =
+            ITEMS.register("salmon_adamantium_bucket", item -> new IFWMobBucketItem(EntityType.SALMON,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> cod_adamantium_bucket =
+            ITEMS.register("cod_adamantium_bucket", item -> new IFWMobBucketItem(EntityType.COD,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tropical_adamantium_bucket =
+            ITEMS.register("tropical_adamantium_bucket", item -> new IFWMobBucketItem(EntityType.TROPICAL_FISH,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> axolotl_adamantium_bucket =
+            ITEMS.register("axolotl_adamantium_bucket", item -> new IFWMobBucketItem(EntityType.AXOLOTL,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> tadpole_adamantium_bucket =
+            ITEMS.register("tadpole_adamantium_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
+                    Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+
 
     public static final DeferredItem<Item> manure =
             ITEMS.registerSimpleItem("manure", new Item.Properties().stacksTo(16));

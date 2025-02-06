@@ -9,7 +9,7 @@
       "item": "minecraft:stick"
     },
     "Z": {
-      "tag": "minecraft:string"
+      "tag": "c:strings"
     }
   },
   "pattern": [
