@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ifw:item/stone_ancient_metal_bucket"
+  }
+}
