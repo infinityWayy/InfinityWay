@@ -1,6 +1,7 @@
 package huix.infinity.mixin.world.entity;
 
 import huix.infinity.attachment.IFWAttachments;
+import huix.infinity.common.world.entity.LivingEntityAccess;
 import net.minecraft.core.Holder;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
@@ -21,8 +22,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import javax.annotation.Nullable;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity {
+public abstract class LivingEntityMixin extends Entity implements LivingEntityAccess {
 
+    @Unique
+    public int food_or_repair_item_pickup_cooldown = 0;
 
     @Shadow public abstract boolean hasEffect(Holder<MobEffect> effect);
 
@@ -53,5 +56,21 @@ public abstract class LivingEntityMixin extends Entity {
 
     public LivingEntityMixin(EntityType<?> entityType, Level level) {
         super(entityType, level);
+    }
+
+    @Override
+    public int getFoodOrRepairItemPickupCoolDown() {
+        return food_or_repair_item_pickup_cooldown;
+    }
+
+    public void setFoodOrRepairItemPickupCoolDown(int i) {
+        this.food_or_repair_item_pickup_cooldown = i;
+    }
+
+    @Inject(method = "tick", at = @At("RETURN"))
+    public void tick(CallbackInfo ci) {
+        if (this.food_or_repair_item_pickup_cooldown > 0) {
+            --this.food_or_repair_item_pickup_cooldown;
+        }
     }
 }
