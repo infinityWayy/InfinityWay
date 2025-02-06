@@ -252,7 +252,7 @@ public abstract class Livestock extends Animal {
         );
     }
 
-    protected boolean isNearFood() {
+    public boolean isNearFood() {
         return isNearFood(this.blockPosition());
     }
 
