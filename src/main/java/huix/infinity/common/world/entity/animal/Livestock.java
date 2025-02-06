@@ -1,116 +1,250 @@
 package huix.infinity.common.world.entity.animal;
 
 import huix.infinity.attachment.IFWAttachments;
+import huix.infinity.common.world.entity.LivingEntityAccess;
+import huix.infinity.common.world.entity.ai.MoveToItemGoals;
+import huix.infinity.common.world.entity.ai.SeekFoodIfHungryGoal;
+import huix.infinity.common.world.entity.ai.SeekWaterIfThirstyGoal;
+import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.gameevent.GameEvent;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public interface Livestock {
+public abstract class Livestock extends Animal {
+    private final static EntityDataAccessor<Boolean> IS_WELL = SynchedEntityData.defineId(Livestock.class, EntityDataSerializers.BOOLEAN);
+    private final static EntityDataAccessor<Boolean> IS_THIRSTY = SynchedEntityData.defineId(Livestock.class, EntityDataSerializers.BOOLEAN);
 
-    default void ifw_FinalizeSpawn() {
-        this.food(0.8F + this.ifw_random().nextFloat() * 0.2F);
-        this.water(0.8F + this.ifw_random().nextFloat() * 0.2F);
-        this.freedom(0.8F + this.ifw_random().nextFloat() * 0.2F);
+
+    protected Livestock(EntityType<? extends Animal> entityType, Level level) {
+        super(entityType, level);
+        finalizeSpawn();
     }
 
-    default void water(float water) {
-        if (!this.ifw_level().isClientSide()) {
-            this.animal().setData(IFWAttachments.water, Mth.clamp(water, 0.0F, 1.0F));
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.goalSelector.addGoal(1, new MoveToItemGoals(this, this::isFood, 16));
+        this.goalSelector.addGoal(2, new SeekFoodIfHungryGoal(this));
+        this.goalSelector.addGoal(2, new SeekWaterIfThirstyGoal(this));
+    }
+
+    @Override
+    public void aiStep() {
+        super.aiStep();
+        if (!this.level().isClientSide && !this.isBaby() && !this.isDesperateForFood()) {
+            addManureCountdown(-1);
+            if (this.getManureCountdown() <= 0) {
+                this.spawnAtLocation(IFWItems.manure);
+                this.gameEvent(GameEvent.ENTITY_PLACE);
+                this.setManureCountdown(this.getManurePeriod() / 2 + this.random.nextInt(this.getManurePeriod()));
+            }
+        }
+    }
+
+    @Override
+    public void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(IS_WELL, true);
+        builder.define(IS_THIRSTY, false);
+    }
+
+    @Override
+    public boolean canPickUpLoot() {
+        return true;
+    }
+
+    @Override
+    public boolean wantsToPickUp(@NotNull ItemStack stack) {
+        return this.isFood(stack);
+    }
+
+    @Override
+    public void pickUpItem(@NotNull ItemEntity itemEntity) {
+        if (isFood(itemEntity.getItem()) &&
+                ((LivingEntityAccess) this).getFoodOrRepairItemPickupCoolDown() == 0 &&
+                (this.canFallInLove() || this.isBaby())) {
+            ItemStack itemstack = itemEntity.getItem();
+            this.onItemPickup(itemEntity);
+            this.take(itemEntity, 1);
+            itemstack.shrink(1);
+            if (itemstack.isEmpty()) {
+                itemEntity.discard();
+            }
+            this.addFood(1);
+            int age = this.getAge();
+            if (!this.level().isClientSide && age == 0 && this.canFallInLove()) {
+                this.setInLove(null);
+            }
+
+            if (this.isBaby()) {
+                this.ageUp(getSpeedUpSecondsWhenFeeding(-age), true);
+            }
+            ((LivingEntityAccess) this).setFoodOrRepairItemPickupCoolDown(400);
+        }
+    }
+
+    @Override
+    protected int getBaseExperienceReward() {
+        return 0;
+    }
+
+    protected void finalizeSpawn() {
+        this.food(0.8F + this.random.nextFloat() * 0.2F);
+        this.water(0.8F + this.random.nextFloat() * 0.2F);
+        this.freedom(0.8F + this.random.nextFloat() * 0.2F);
+        this.setManurePeriod(24000);
+        this.setManureCountdown((int) (Math.random() * this.getManurePeriod()));
+    }
+
+    private void water(float water) {
+        if (!this.level().isClientSide()) {
+            this.setData(IFWAttachments.water, Mth.clamp(water, 0.0F, 1.0F));
             this.setIsWell(this.isWell());
             this.setIsThirsty(this.isThirsty());
         }
     }
 
-    default void food(float food) {
-        if (!this.ifw_level().isClientSide()) {
-            this.animal().setData(IFWAttachments.food, Mth.clamp(food, 0.0F, 1.0F));
+    private void food(float food) {
+        if (!this.level().isClientSide()) {
+            this.setData(IFWAttachments.food, Mth.clamp(food, 0.0F, 1.0F));
             this.setIsWell(this.isWell());
         }
     }
 
-    default void freedom(float freedom) {
-        if (!this.ifw_level().isClientSide()) {
-            this.animal().setData(IFWAttachments.freedom, Mth.clamp(freedom, 0.0F, 1.0F));
+    private void freedom(float freedom) {
+        if (!this.level().isClientSide()) {
+            this.setData(IFWAttachments.freedom, Mth.clamp(freedom, 0.0F, 1.0F));
             this.setIsWell(this.isWell());
         }
     }
 
-    default void manurePeriod(int manure_period) {
-        this.animal().setData(IFWAttachments.manure_period, manure_period);
-        this.animal().setData(IFWAttachments.manure_countdown, (int)(Math.random() * (double)manure_period));
+    public int getManurePeriod() {
+        return this.getData(IFWAttachments.manure_period);
     }
 
-    default float water() {
-        return this.animal().getData(IFWAttachments.water);
+    protected void setManurePeriod(int manure_period) {
+        if (!this.level().isClientSide()) {
+            this.setData(IFWAttachments.manure_period, manure_period);
+        }
     }
 
-    default float food() {
-        return this.animal().getData(IFWAttachments.food);
+    public int getManureCountdown() {
+        return this.getData(IFWAttachments.manure_countdown);
     }
 
-    default float freedom() {
-        return this.animal().getData(IFWAttachments.freedom);
+    protected void setManureCountdown(int manure_countdown) {
+        if (!this.level().isClientSide()) {
+            this.setData(IFWAttachments.manure_countdown, manure_countdown);
+        }
     }
 
-    default int productionCounter() {
-        return this.animal().getData(IFWAttachments.production_counter);
+    protected void addManureCountdown(int i) {
+        this.setData(IFWAttachments.manure_countdown,
+                this.getData(IFWAttachments.manure_countdown) + i);
     }
 
-    default void productionAddCounter(int i) {
-        this.animal().setData(IFWAttachments.production_counter,
-                this.animal().getData(IFWAttachments.production_counter) + i);
+    public float water() {
+        return this.getData(IFWAttachments.water);
     }
 
-    default boolean isPanic() {return this.animal().getData(IFWAttachments.is_panic);};
+    public float food() {
+        return this.getData(IFWAttachments.food);
+    }
 
-    default void setPanic(boolean isPanic) {this.animal().setData(IFWAttachments.is_panic, isPanic);};
+    public float freedom() {
+        return this.getData(IFWAttachments.freedom);
+    }
 
-    default void addFood(float food) {
+    public int productionCounter() {
+        return this.getData(IFWAttachments.production_counter);
+    }
+
+    protected void setProductionCounter(int production_counter) {
+        if (!this.level().isClientSide()) {
+            this.setData(IFWAttachments.production_counter, production_counter);
+        }
+    }
+
+    protected void addProductionCounter(int i) {
+        this.setProductionCounter(this.getData(IFWAttachments.production_counter) + i);
+    }
+
+    protected boolean isPanic() {return this.getData(IFWAttachments.is_panic);}
+
+    protected void setPanic(boolean isPanic) {this.setData(IFWAttachments.is_panic, isPanic);}
+
+    protected void addFood(float food) {
         this.food(this.food() + food);
     }
 
-    default void addWater(float water) {
+    protected void addWater(float water) {
         this.water(this.water() + water);
     }
 
-    default void addFreedom(float freedom) {
+    protected void addFreedom(float freedom) {
         this.freedom(this.freedom() + freedom);
     }
 
-    void setIsWell(boolean isWell);
-    void setIsThirsty(boolean isThirsty);
-    boolean isThirsty();
-    boolean isWell();
+    public void setIsWell(boolean isWell) {
+        this.getEntityData().set(IS_WELL, isWell);
+    }
 
-    default boolean isHungry() {
+    public void setIsThirsty(boolean isThirsty) {
+        this.getEntityData().set(IS_THIRSTY, isThirsty);
+    }
+
+    public boolean isThirsty() {
+        if (this.level().isClientSide()) {
+            return this.getEntityData().get(IS_THIRSTY);
+        } else {
+            return this.water() < 0.5F;
+        }
+    }
+
+    public boolean isWell() {
+        if (this.level().isClientSide()) {
+            return this.getEntityData().get(IS_WELL);
+        } else {
+            return Math.min(this.freedom(), Math.min(this.food(), this.water())) >= 0.25F;
+        }
+    }
+
+    public boolean isHungry() {
         return this.food() < 0.5F;
     }
 
-    default boolean isVeryHungry() {
+    public boolean isVeryHungry() {
         return this.food() < 0.25F;
     }
 
-    default boolean isDesperateForFood() {
+    public boolean isDesperateForFood() {
         return this.food() < 0.05F;
     }
 
-    default boolean isVeryThirsty() {
+    public boolean isVeryThirsty() {
         return this.water() < 0.25F;
     }
 
-    default boolean isDesperateForWater() {
+    public boolean isDesperateForWater() {
         return this.water() < 0.05F;
     }
 
 
-    default Set<Block> getFoodBlocks() {
+    public Set<Block> getFoodBlocks() {
         return Set.of(
             Blocks.GRASS_BLOCK,
             Blocks.SHORT_GRASS, Blocks.TALL_GRASS,
@@ -118,20 +252,20 @@ public interface Livestock {
         );
     }
 
-    default boolean isNearFood() {
-        return isNearFood(this.animal().blockPosition());
+    protected boolean isNearFood() {
+        return isNearFood(this.blockPosition());
     }
 
-    default boolean isNearFood(BlockPos pos) {
+    protected boolean isNearFood(BlockPos pos) {
         return isNearFood(pos.getX(), pos.getY(), pos.getZ());
     }
 
-    default boolean isNearFood(int x, int y, int z) {
-        int height = Mth.floor(this.animal().getBbHeight());
+    protected boolean isNearFood(int x, int y, int z) {
+        int height = Mth.floor(this.getBbHeight());
         for (int dx = -1; dx <= 1; ++dx) {
             for (int dy = -1; dy <= height; ++dy) {
                 for (int dz = -1; dz <= 1; ++dz) {
-                    if (getFoodBlocks().contains(this.ifw_level().getBlockState(
+                    if (getFoodBlocks().contains(this.level().getBlockState(
                             new BlockPos(x + dx, y + dy, z + dz)).getBlock())) {
                         return true;
                     }
@@ -141,21 +275,44 @@ public interface Livestock {
         return false;
     }
 
-    default boolean hasFullHealth() {
-        return this.animal().getHealth() == this.animal().getMaxHealth();
+    public boolean isCrowded() {
+        return this.level().getEntitiesOfClass(LivingEntity.class,
+                this.getBoundingBox().expandTowards(2.0, 0.5, 2.0)).size() > 2;
     }
 
-    Animal animal();
-
-    default Level ifw_level() {
-        return this.animal().level();
+    public int getLight() {
+        return this.level().getBlockState(this.blockPosition()).getLightBlock(
+                this.level(), this.blockPosition()
+        );
     }
 
-    default SynchedEntityData ifw_getEntityData() {
-        return this.animal().getEntityData();
+    protected boolean updateWellness() {
+        float benefit = 0.1f;
+        float penalty = -0.005f;
+
+        if (isNearFood()) {
+            this.addFood(benefit);
+        } else {
+            this.addFood(penalty);
+        }
+
+        if (this.isInWater()) {
+            this.addWater(benefit);
+        } else if (this.isInRain()) {
+            this.addWater(benefit / 10.0F);
+        } else {
+            this.addWater(penalty);
+        }
+
+        if (this.getLight() >= 7 || !this.isCrowded()) {
+            this.addFreedom(benefit);
+        } else {
+            this.addFreedom(penalty);
+        }
+        return this.isWell();
     }
 
-    default RandomSource ifw_random() {
-        return this.animal().getRandom();
+    public boolean hasFullHealth() {
+        return this.getHealth() == this.getMaxHealth();
     }
 }

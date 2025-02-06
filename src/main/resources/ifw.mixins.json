@@ -26,7 +26,6 @@
     "world.entity.ai.PanicGoalMixin",
     "world.entity.ai.TemptGoalMixin",
     "world.entity.animal.AnimalMixin",
-    "world.entity.animal.ChickenMixin",
     "world.food.FoodDataMixin",
     "world.food.FoodProperties$BuilderMixin",
     "world.food.FoodsMixin",
