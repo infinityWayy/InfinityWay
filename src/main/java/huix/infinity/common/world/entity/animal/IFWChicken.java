@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public abstract class IFWChicken extends Livestock {
+public class IFWChicken extends Livestock {
     private int max_num_feathers;
     private int num_feathers;
     private static final EntityDimensions BABY_DIMENSIONS = EntityType.CHICKEN.getDimensions().scale(0.5F).withEyeHeight(0.2975F);
@@ -38,7 +38,7 @@ public abstract class IFWChicken extends Livestock {
     private float nextFlap = 1.0F;
     public boolean isChickenJockey;
 
-    protected IFWChicken(EntityType<? extends Animal> entityType, Level level) {
+    public IFWChicken(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(PathType.WATER, 0.0F);
         if (!level.isClientSide) {
