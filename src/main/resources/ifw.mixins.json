@@ -28,7 +28,6 @@
     "world.entity.ai.PanicGoalMixin",
     "world.entity.ai.TemptGoalMixin",
     "world.entity.animal.AbstractFishMixin",
-    "world.entity.animal.AnimalMixin",
     "world.entity.animal.AxolotlMixin",
     "world.entity.animal.CodMixin",
     "world.entity.animal.PufferfishMixin",

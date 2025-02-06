@@ -5,6 +5,8 @@ import com.google.common.collect.ImmutableList;
 import huix.infinity.common.client.IFWAnvilScreen;
 import huix.infinity.common.client.IFWFurnaceScreen;
 import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.entity.IFWEntity;
+import huix.infinity.common.world.entity.render.IFWChickenRenderer;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
 import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
 import huix.infinity.enum_extesion.IFWRecipeBookCategories;
@@ -18,6 +20,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.ChunkRenderTypeSet;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
 
@@ -53,4 +56,10 @@ public final class IFWClient {
 
         event.registerRecipeCategoryFinder(IFWRecipeTypes.ifw_smelting.get(), r -> IFWRecipeBookCategories   .level_recipe.get());
     }
+
+    @SubscribeEvent
+    public static void onRegisterRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(IFWEntity.CHICKEN.get(), IFWChickenRenderer::new);
+    }
+
 }
