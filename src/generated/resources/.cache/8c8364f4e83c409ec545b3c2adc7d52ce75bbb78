@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-06T20:34:55.4892805	Tags for minecraft:item mod id vanilla
+// 1.21.1	2025-02-07T09:43:54.0158559	Tags for minecraft:item mod id vanilla
 20de0e0f4a475259665e322b8fce4c6dc9bd398e data/c/tags/item/buckets/empty.json
 9933c503dbedf99d643885097dc116339d03f83e data/c/tags/item/buckets/entity_water.json
 443176368149964cb5339e006ca44d79e5343a0e data/c/tags/item/buckets/lava.json
@@ -20,3 +20,4 @@ ef62ce36b6147fff8127c71888a789dbf97b5482 data/minecraft/tags/item/hoes.json
 6856ebd597d30b5bf0c10dfa40694f34885029f1 data/minecraft/tags/item/shovels.json
 8bd7d2773b5adb85891894640d75dcae990d7f3f data/minecraft/tags/item/swords.json
 fa031f0a44015a033e136278f19b9714d7246219 data/minecraft/tags/item/war_hammer.json
+9d9d86f335349e153114a11ae278da6d5d3c0925 data/swordblockingmechanics/tags/item/can_perform_sword_blocking.json

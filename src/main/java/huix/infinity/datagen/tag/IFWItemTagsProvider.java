@@ -1,5 +1,6 @@
 package huix.infinity.datagen.tag;
 
+import fuzs.swordblockingmechanics.init.ModRegistry;
 import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.core.HolderLookup;
@@ -46,6 +47,8 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
                 IFWItems.iron_shears.get(), IFWItems.copper_shears.get(), IFWItems.golden_shears.get(), IFWItems.silver_shears.get(), IFWItems.rusted_iron_shears.get());
         tag(IFWItemTags.WAR_HAMMER).add(IFWItems.adamantium_war_hammer.get(), IFWItems.mithril_war_hammer.get(), IFWItems.ancient_metal_war_hammer.get(),
                 IFWItems.iron_war_hammer.get(), IFWItems.copper_war_hammer.get(), IFWItems.golden_war_hammer.get(), IFWItems.silver_war_hammer.get(), IFWItems.rusted_iron_war_hammer.get());
+
+        tag(ModRegistry.CAN_PERFORM_SWORD_BLOCKING_ITEM_TAG).addTags(ItemTags.PICKAXES, ItemTags.AXES, ItemTags.SHOVELS, IFWItemTags.BATTLE_AXE, IFWItemTags.WAR_HAMMER);
 
         tag(Tags.Items.STRINGS).add(IFWItems.sinew.get());
         copy(BlockTags.ANVIL, IFWItemTags.ANVIL);
