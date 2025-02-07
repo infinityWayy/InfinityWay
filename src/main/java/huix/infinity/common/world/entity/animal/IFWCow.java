@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
 import java.util.Set;
 
 public class IFWCow extends Livestock {
-    private static final EntityDimensions BABY_DIMENSIONS = EntityType.COW.getDimensions().scale(0.5F).withEyeHeight(0.665F);
+    private static final EntityDimensions BABY_DIMENSIONS = IFWEntityType.COW.get().getDimensions().scale(0.5F).withEyeHeight(0.665F);
     private int data_object_id_milk;
 
     public IFWCow(EntityType<? extends IFWCow> entityType, Level level) {

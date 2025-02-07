@@ -1,5 +1,6 @@
 package huix.infinity.common.world.entity.animal;
 
+import huix.infinity.common.world.entity.IFWEntityType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -13,7 +14,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
 public class IFWChicken extends Livestock {
     private int max_num_feathers;
     private int num_feathers;
-    private static final EntityDimensions BABY_DIMENSIONS = EntityType.CHICKEN.getDimensions().scale(0.5F).withEyeHeight(0.2975F);
+    private static final EntityDimensions BABY_DIMENSIONS = IFWEntityType.CHICKEN.get().getDimensions().scale(0.5F).withEyeHeight(0.2975F);
     public float flap;
     public float flapSpeed;
     public float oFlapSpeed;
@@ -124,8 +124,8 @@ public class IFWChicken extends Livestock {
     }
 
     @Nullable
-    public Chicken getBreedOffspring(@NotNull ServerLevel level, @NotNull AgeableMob otherParent) {
-        return EntityType.CHICKEN.create(level);
+    public IFWChicken getBreedOffspring(@NotNull ServerLevel level, @NotNull AgeableMob otherParent) {
+        return IFWEntityType.CHICKEN.get().create(level);
     }
 
     /**
