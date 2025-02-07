@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-05T17:37:17.7238906	Tags for minecraft:block mod id ifw
+// 1.21.1	2025-02-07T11:28:15.1174779	Tags for minecraft:block mod id ifw
 96f50b5a6a3bf46756af20ca13251571d3e39bec data/minecraft/tags/block/anvil.json
 ab55cb014db4d72b708f41939003f26264832296 data/minecraft/tags/block/doors.json
 37a6c3a11450b21a8e0381b726b34e2085dd5d29 data/minecraft/tags/block/fallen_dirt.json
@@ -16,3 +16,4 @@ eabbbe1f65f580f77513deceab7ccbd9afc1aed7 data/minecraft/tags/block/incorrect_for
 4ae126ad7c6542b7e96d8c20a995c61390129d7a data/minecraft/tags/block/mineable/pickaxe.json
 a6266b90aa3c43c4e5fff8e080ba2ee2fe7b1280 data/minecraft/tags/block/portable_block.json
 98a4ba37009d94811c7d545a36557a2185623315 data/minecraft/tags/block/scythe_effective.json
+efd2bb655ee4be3e2915841b28a4d30b7f1249d4 data/minecraft/tags/block/shears_effective.json

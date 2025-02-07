@@ -140,38 +140,41 @@ public class IFWAnvilMenu extends ItemCombinerMenu {
         });
     }
 
+    private boolean canRepair(ItemStack input, ItemStack tool, ItemStack ingredient) {
+        return input.isDamageableItem() && input.get(DataComponents.DAMAGE) > 0 && input.getItem().isValidRepairItem(tool, ingredient);
+    }
+
     @Override
     public void createResult() {
         ItemStack tool = this.inputSlots.getItem(0);
+        ItemStack ingredient = this.inputSlots.getItem(1);
         int i = 0;
         if (!tool.isEmpty() && EnchantmentHelper.canStoreEnchantments(tool)) {
             ItemStack input = tool.copy();
-            ItemStack ingredient = this.inputSlots.getItem(1);
+            boolean flag = ingredient.has(DataComponents.STORED_ENCHANTMENTS);
             ItemEnchantments.Mutable itemenchantments$mutable = new ItemEnchantments.Mutable(EnchantmentHelper.getEnchantmentsForCrafting(input));
             this.repairItemCountCost = 0;
-            boolean flag = ingredient.has(DataComponents.STORED_ENCHANTMENTS);
             if (!ingredient.isEmpty()) {
-                if (input.isDamageableItem() && input.get(DataComponents.DAMAGE) > 0 && input.getItem().isValidRepairItem(tool, ingredient)) {
+                if (canRepair(input, ingredient, ingredient)) {
                     if (input.getItem() instanceof RepairableItem toolItem) {
-                        int repairDurability = toolItem.getRepairCost();
-                        if ((toolItem.getRepairLevel() > this.repairLevel()) || (repairDurability <= 0)) {
+                        int repairCost = toolItem.getRepairCost();
+                        if ((toolItem.getRepairLevel() > this.repairLevel()) || (repairCost <= 0)) {
                             this.resultSlots.setItem(2, ItemStack.EMPTY);
                             return;
                         }
-
-                        if (tool.getDamageValue() <= repairDurability) {
+                        int currentDamage = tool.getDamageValue();
+                        if (currentDamage <= repairCost) {
                             input.setDamageValue(0);
                             this.repairItemCountCost = 1;
-                            this.durabilityCost = repairDurability;
+                            this.durabilityCost = repairCost;
                             this.resultSlots.setItem(1, input);
                             return;
                         }
 
-                        int materialCost = Math.min((tool.getDamageValue() - tool.getDamageValue() % repairDurability) / repairDurability, ingredient.getCount());
-                        input.setDamageValue(input.getDamageValue() - materialCost * repairDurability);
+                        this.repairItemCountCost = Math.min((currentDamage - currentDamage % repairCost) / repairCost, ingredient.getCount());
+                        input.setDamageValue(currentDamage - this.repairItemCountCost * repairCost);
                         this.resultSlots.setItem(1, input);
-                        this.durabilityCost = materialCost * repairDurability;
-                        this.repairItemCountCost = materialCost;
+                        this.durabilityCost = this.repairItemCountCost * repairCost;
                         return;
                     }
                 } else {

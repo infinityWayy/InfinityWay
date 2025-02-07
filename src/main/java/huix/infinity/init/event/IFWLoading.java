@@ -24,8 +24,6 @@ public class IFWLoading {
 
     }
 
-
-
     private static void injectCookingLevel() {
         ReplaceHelper.itemCookingLevel(Items.TORCH, 1);
         ReplaceHelper.itemCookingLevel(Items.COAL, 2);
@@ -119,6 +117,7 @@ public class IFWLoading {
         ReplaceHelper.stackSize(Tags.Items.INGOTS, 10);
         ReplaceHelper.stackSize(ItemTags.ARROWS, 16);
         ReplaceHelper.stackSizeByBlock(BlockTags.MINEABLE_WITH_SHOVEL, 8);
+        ReplaceHelper.stackSizeByBlock(BlockTags.DIRT, 4);
         ReplaceHelper.stackSizeByBlock(BlockTags.MINEABLE_WITH_AXE, 16);
         ReplaceHelper.stackSizeByBlock(BlockTags.MINEABLE_WITH_HOE, 16);
         ReplaceHelper.stackSizeByBlock(BlockTags.LEAVES, 4);

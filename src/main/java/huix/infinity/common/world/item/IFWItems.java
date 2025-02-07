@@ -452,8 +452,8 @@ public class IFWItems {
     public static final DeferredItem<Item> adamantium_nugget =
             ITEMS.registerSimpleItem("adamantium_nugget", new Item.Properties());
     public static final DeferredItem<Item> adamantium_shears =
-            ITEMS.register("adamantium_shears", item -> new ShearsWeapon(IFWTiers.ADAMANTIUM,
-                    new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
+            ITEMS.register("adamantium_shears", item -> new ShearsTool(IFWTiers.ADAMANTIUM,
+                    new Item.Properties().component(DataComponents.TOOL, ShearsTool.createToolProperties())));
     public static final DeferredItem<Item> adamantium_shovel =
             ITEMS.register("adamantium_shovel", item -> new ShovelTool(IFWTiers.ADAMANTIUM,
                     new Item.Properties().attributes(ShovelTool.createAttributes(IFWTiers.ADAMANTIUM,1.0F, -3.0F))));
@@ -489,8 +489,8 @@ public class IFWItems {
     public static final DeferredItem<Item> ancient_metal_nugget =
             ITEMS.registerSimpleItem("ancient_metal_nugget", new Item.Properties());
     public static final DeferredItem<Item> ancient_metal_shears =
-            ITEMS.register("ancient_metal_shears", item -> new ShearsWeapon(IFWTiers.ANCIENT_METAL,
-                    new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
+            ITEMS.register("ancient_metal_shears", item -> new ShearsTool(IFWTiers.ANCIENT_METAL,
+                    new Item.Properties().component(DataComponents.TOOL, ShearsTool.createToolProperties())));
     public static final DeferredItem<Item> ancient_metal_shovel =
             ITEMS.register("ancient_metal_shovel", item -> new ShovelTool(IFWTiers.ANCIENT_METAL,
                     new Item.Properties().attributes(ShovelTool.createAttributes(IFWTiers.ANCIENT_METAL,1.0F, -3.0F))));
@@ -526,8 +526,8 @@ public class IFWItems {
     public static final DeferredItem<Item> mithril_nugget =
             ITEMS.registerSimpleItem("mithril_nugget", new Item.Properties());
     public static final DeferredItem<Item> mithril_shears =
-            ITEMS.register("mithril_shears", item -> new ShearsWeapon(IFWTiers.MITHRIL,
-                    new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
+            ITEMS.register("mithril_shears", item -> new ShearsTool(IFWTiers.MITHRIL,
+                    new Item.Properties().component(DataComponents.TOOL, ShearsTool.createToolProperties())));
     public static final DeferredItem<Item> mithril_shovel =
             ITEMS.register("mithril_shovel", item -> new ShovelTool(IFWTiers.MITHRIL,
                     new Item.Properties().attributes(ShovelTool.createAttributes(IFWTiers.MITHRIL,1.0F, -3.0F))));
@@ -563,8 +563,8 @@ public class IFWItems {
     public static final DeferredItem<Item> silver_nugget =
             ITEMS.registerSimpleItem("silver_nugget", new Item.Properties());
     public static final DeferredItem<Item> silver_shears =
-            ITEMS.register("silver_shears", item -> new ShearsWeapon(IFWTiers.SILVER,
-                    new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
+            ITEMS.register("silver_shears", item -> new ShearsTool(IFWTiers.SILVER,
+                    new Item.Properties().component(DataComponents.TOOL, ShearsTool.createToolProperties())));
     public static final DeferredItem<Item> silver_shovel =
             ITEMS.register("silver_shovel", item -> new ShovelTool(IFWTiers.SILVER,
                     new Item.Properties().attributes(ShovelTool.createAttributes(IFWTiers.SILVER,1.0F, -3.0F))));
@@ -598,8 +598,8 @@ public class IFWItems {
     public static final DeferredItem<Item> copper_nugget =
             ITEMS.registerSimpleItem("copper_nugget", new Item.Properties().stacksTo(64));
     public static final DeferredItem<Item> copper_shears =
-            ITEMS.register("copper_shears", item -> new ShearsWeapon(IFWTiers.COPPER,
-                    new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
+            ITEMS.register("copper_shears", item -> new ShearsTool(IFWTiers.COPPER,
+                    new Item.Properties().component(DataComponents.TOOL, ShearsTool.createToolProperties())));
     public static final DeferredItem<Item> copper_shovel =
             ITEMS.register("copper_shovel", item -> new ShovelTool(IFWTiers.COPPER,
                     new Item.Properties().attributes(ShovelTool.createAttributes(IFWTiers.COPPER,1.0F, -3.0F))));
@@ -631,8 +631,8 @@ public class IFWItems {
             ITEMS.register("copper_dagger", item -> new DaggerWeapon(IFWTiers.COPPER,
                     new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.COPPER,3.0F, -1.5F))));
     public static final DeferredItem<Item> iron_shears =
-            ITEMS.register("iron_shears", item -> new ShearsWeapon(IFWTiers.IRON,
-                    new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
+            ITEMS.register("iron_shears", item -> new ShearsTool(IFWTiers.IRON,
+                    new Item.Properties().component(DataComponents.TOOL, ShearsTool.createToolProperties())));
     public static final DeferredItem<Item> iron_shovel =
             ITEMS.register("iron_shovel", item -> new ShovelTool(IFWTiers.IRON,
                     new Item.Properties().attributes(ShovelTool.createAttributes(IFWTiers.IRON,1.0F, -3.0F))));
@@ -664,8 +664,8 @@ public class IFWItems {
             ITEMS.register("iron_dagger", item -> new DaggerWeapon(IFWTiers.IRON,
                     new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.IRON,3.0F, -1.5F))));
     public static final DeferredItem<Item> golden_shears =
-            ITEMS.register("golden_shears", item -> new ShearsWeapon(IFWTiers.GOLD,
-                    new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
+            ITEMS.register("golden_shears", item -> new ShearsTool(IFWTiers.GOLD,
+                    new Item.Properties().component(DataComponents.TOOL, ShearsTool.createToolProperties())));
     public static final DeferredItem<Item> golden_shovel =
             ITEMS.register("golden_shovel", item -> new ShovelTool(IFWTiers.GOLD,
                     new Item.Properties().attributes(ShovelTool.createAttributes(IFWTiers.GOLD,1.0F, -3.0F))));
@@ -697,8 +697,8 @@ public class IFWItems {
             ITEMS.register("golden_dagger", item -> new DaggerWeapon(IFWTiers.GOLD,
                     new Item.Properties().attributes(IFWDiggerItem.createAttributes(IFWTiers.GOLD,3.0F, -1.5F))));
     public static final DeferredItem<Item> rusted_iron_shears =
-            ITEMS.register("rusted_iron_shears", item -> new ShearsWeapon(IFWTiers.RUSTED_IRON,
-                    new Item.Properties().component(DataComponents.TOOL, ShearsWeapon.createToolProperties())));
+            ITEMS.register("rusted_iron_shears", item -> new ShearsTool(IFWTiers.RUSTED_IRON,
+                    new Item.Properties().component(DataComponents.TOOL, ShearsTool.createToolProperties())));
     public static final DeferredItem<Item> rusted_iron_shovel =
             ITEMS.register("rusted_iron_shovel", item -> new ShovelTool(IFWTiers.RUSTED_IRON,
                     new Item.Properties().attributes(ShovelTool.createAttributes(IFWTiers.RUSTED_IRON,1.0F, -3.0F))));

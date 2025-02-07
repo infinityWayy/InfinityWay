@@ -43,10 +43,23 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
                 IFWItems.iron_mattock.get(), IFWItems.copper_mattock.get(), IFWItems.golden_mattock.get(), IFWItems.silver_mattock.get(), IFWItems.rusted_iron_mattock.get());
         tag(IFWItemTags.SCYTHE).add(IFWItems.adamantium_scythe.get(), IFWItems.mithril_scythe.get(), IFWItems.ancient_metal_scythe.get(),
                 IFWItems.iron_scythe.get(), IFWItems.copper_scythe.get(), IFWItems.golden_scythe.get(), IFWItems.silver_scythe.get(), IFWItems.rusted_iron_scythe.get());
-        tag(IFWItemTags.SHEARS).add(IFWItems.adamantium_shears.get(), IFWItems.mithril_shears.get(), IFWItems.ancient_metal_shears.get(),
+        tag(Tags.Items.TOOLS_SHEAR).add(IFWItems.adamantium_shears.get(), IFWItems.mithril_shears.get(), IFWItems.ancient_metal_shears.get(),
                 IFWItems.iron_shears.get(), IFWItems.copper_shears.get(), IFWItems.golden_shears.get(), IFWItems.silver_shears.get(), IFWItems.rusted_iron_shears.get());
         tag(IFWItemTags.WAR_HAMMER).add(IFWItems.adamantium_war_hammer.get(), IFWItems.mithril_war_hammer.get(), IFWItems.ancient_metal_war_hammer.get(),
                 IFWItems.iron_war_hammer.get(), IFWItems.copper_war_hammer.get(), IFWItems.golden_war_hammer.get(), IFWItems.silver_war_hammer.get(), IFWItems.rusted_iron_war_hammer.get());
+
+        tag(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(IFWItems.copper_helmet.get(), IFWItems.copper_chainmail_helmet.get(), IFWItems.silver_helmet.get(),
+                IFWItems.silver_chainmail_helmet.get(), IFWItems.golden_chainmail_helmet.get(), IFWItems.ancient_metal_helmet.get(), IFWItems.ancient_metal_chainmail_helmet.get()
+                , IFWItems.mithril_helmet.get(), IFWItems.mithril_chainmail_helmet.get(), IFWItems.adamantium_helmet.get(), IFWItems.adamantium_chainmail_helmet.get());
+        tag(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(IFWItems.copper_chestplate.get(), IFWItems.copper_chainmail_chestplate.get(), IFWItems.silver_chestplate.get(),
+                IFWItems.silver_chainmail_chestplate.get(), IFWItems.golden_chainmail_chestplate.get(), IFWItems.ancient_metal_chestplate.get(), IFWItems.ancient_metal_chainmail_chestplate.get()
+                , IFWItems.mithril_chestplate.get(), IFWItems.mithril_chainmail_chestplate.get(), IFWItems.adamantium_chestplate.get(), IFWItems.adamantium_chainmail_chestplate.get());
+        tag(ItemTags.LEG_ARMOR_ENCHANTABLE).add(IFWItems.copper_leggings.get(), IFWItems.copper_chainmail_leggings.get(), IFWItems.silver_leggings.get(),
+                IFWItems.silver_chainmail_leggings.get(), IFWItems.golden_chainmail_leggings.get(), IFWItems.ancient_metal_leggings.get(), IFWItems.ancient_metal_chainmail_leggings.get()
+                , IFWItems.mithril_leggings.get(), IFWItems.mithril_chainmail_leggings.get(), IFWItems.adamantium_leggings.get(), IFWItems.adamantium_chainmail_leggings.get());
+        tag(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(IFWItems.copper_boots.get(), IFWItems.copper_chainmail_boots.get(), IFWItems.silver_boots.get(),
+                IFWItems.silver_chainmail_boots.get(), IFWItems.golden_chainmail_boots.get(), IFWItems.ancient_metal_boots.get(), IFWItems.ancient_metal_chainmail_boots.get()
+                , IFWItems.mithril_boots.get(), IFWItems.mithril_chainmail_boots.get(), IFWItems.adamantium_boots.get(), IFWItems.adamantium_chainmail_boots.get());
 
         tag(ModRegistry.CAN_PERFORM_SWORD_BLOCKING_ITEM_TAG).addTags(ItemTags.PICKAXES, ItemTags.AXES, ItemTags.SHOVELS, IFWItemTags.BATTLE_AXE, IFWItemTags.WAR_HAMMER);
 

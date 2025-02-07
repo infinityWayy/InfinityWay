@@ -83,6 +83,9 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
                                     , IFWBlocks.sandstone_furnace.get(), IFWBlocks.stone_furnace.get());
         tag(IFWBlockTags.PORTABLE_BLOCK).addTags(BlockTags.ANVIL, IFWBlockTags.IFW_FURNACE).add(Blocks.CRAFTING_TABLE);
         tag(IFWBlockTags.SCYTHE_EFFECTIVE).add(Blocks.GLASS);
+        tag(IFWBlockTags.SHEARS_EFFECTIVE).addTags(BlockTags.LEAVES, BlockTags.WOOL)
+                .add(Blocks.COBWEB, Blocks.SHORT_GRASS, Blocks.FERN, Blocks.DEAD_BUSH, Blocks.HANGING_ROOTS, Blocks.VINE,Blocks.TRIPWIRE)
+                ;
         tag(IFWBlockTags.FALLEN_DIRT).add(Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT, Blocks.FARMLAND, Blocks.MUD);
     }
 }

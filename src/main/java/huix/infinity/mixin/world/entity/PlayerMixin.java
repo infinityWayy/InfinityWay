@@ -158,8 +158,6 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     }
 
 
-
-
     @Shadow
     private int sleepCounter;
 
