@@ -9,7 +9,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class IFWEntity {
+public class IFWEntityType {
     public static final DeferredRegister<EntityType<?>> ENTITIES =
             DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, InfinityWay.MOD_ID);
 

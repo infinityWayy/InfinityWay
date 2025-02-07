@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableList;
 import huix.infinity.common.client.IFWAnvilScreen;
 import huix.infinity.common.client.IFWFurnaceScreen;
 import huix.infinity.common.world.block.IFWBlocks;
-import huix.infinity.common.world.entity.IFWEntity;
+import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.entity.render.IFWChickenRenderer;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
 import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
@@ -59,7 +59,7 @@ public final class IFWClient {
 
     @SubscribeEvent
     public static void onRegisterRenderers(final EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(IFWEntity.CHICKEN.get(), IFWChickenRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.CHICKEN.get(), IFWChickenRenderer::new);
     }
 
 }

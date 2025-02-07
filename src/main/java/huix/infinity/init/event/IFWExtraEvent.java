@@ -1,6 +1,6 @@
 package huix.infinity.init.event;
 
-import huix.infinity.common.world.entity.IFWEntity;
+import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.entity.animal.IFWChicken;
 import huix.infinity.init.InfinityWay;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -11,6 +11,6 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 public class IFWExtraEvent {
     @SubscribeEvent
     public static void onRegisterAttributes(final EntityAttributeCreationEvent event) {
-        event.put(IFWEntity.CHICKEN.get(), IFWChicken.createAttributes().build());
+        event.put(IFWEntityType.CHICKEN.get(), IFWChicken.createAttributes().build());
     }
 }

@@ -33,6 +33,7 @@
     "world.entity.animal.PufferfishMixin",
     "world.entity.animal.SalmonMixin",
     "world.entity.animal.TadpoleMixin",
+    "world.entity.animal.ThrownEggMixin",
     "world.entity.animal.TropicalMixin",
     "world.food.FoodDataMixin",
     "world.food.FoodProperties$BuilderMixin",

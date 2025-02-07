@@ -7,7 +7,7 @@ import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.effect.IFWMobEffects;
 import huix.infinity.common.world.entity.IFWAttributes;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
-import huix.infinity.common.world.entity.IFWEntity;
+import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.world.item.crafting.IFWRecipeSerializers;
@@ -40,7 +40,7 @@ public final class InfinityWay {
         IFWMobEffects.MOB_EFFECTS.register(bus);
         IFWItems.ITEMS.register(bus);
         IFWBlocks.BLOCKS.register(bus);
-        IFWEntity.ENTITIES.register(bus);
+        IFWEntityType.ENTITIES.register(bus);
 
         IFWEvents.init();
     }

@@ -17,6 +17,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -281,9 +282,7 @@ public abstract class Livestock extends Animal {
     }
 
     public int getLight() {
-        return this.level().getBlockState(this.blockPosition()).getLightBlock(
-                this.level(), this.blockPosition()
-        );
+        return this.level().getBrightness(LightLayer.SKY, this.blockPosition());
     }
 
     protected boolean updateWellness() {
