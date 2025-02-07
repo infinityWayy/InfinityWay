@@ -1,5 +1,6 @@
 package huix.infinity.util;
 
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
@@ -19,4 +20,12 @@ public class WorldHelper {
         return (int) Math.round((time % 1000) * 0.06);
     }
 
+    public static long getDay(Level level) {
+        return level.getGameTime() / 24000L;
+    }
+
+    public static ClientLevel setDay(ClientLevel level, long time) {
+        level.setGameTime(time);
+        return level;
+    }
 }

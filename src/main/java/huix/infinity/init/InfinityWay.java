@@ -3,6 +3,7 @@ package huix.infinity.init;
 import com.mojang.logging.LogUtils;
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.core.component.IFWDataComponents;
+import huix.infinity.common.levelgen.structure.IFWStructureTypes;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.effect.IFWMobEffects;
 import huix.infinity.common.world.entity.IFWAttributes;
@@ -30,6 +31,7 @@ public final class InfinityWay {
         IFWAttachments.ATTACHMENT_TYPES.register(bus);
         IFWRecipeTypes.RECIPES.register(bus);
         IFWMenuTypes.MENUS.register(bus);
+        IFWStructureTypes.STRUCTURE_TYPES.register(bus);
         IFWLootModifiers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(bus);
         IFWBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
         IFWRecipeSerializers.RECIPE_SERIALIZERS.register(bus);
