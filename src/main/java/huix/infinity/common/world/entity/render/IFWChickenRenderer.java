@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class IFWChickenRenderer extends MobRenderer<IFWChicken, ChickenModel<IFWChicken>> {
     private static final ResourceLocation CHICKEN_LOCATION = ResourceLocation.withDefaultNamespace("textures/entity/chicken.png");
-    private static final ResourceLocation CHICKEN_SICK = ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "textures/entity/sick.png");
+    private static final ResourceLocation CHICKEN_SICK = ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "textures/entity/chicken/sick.png");
     public IFWChickenRenderer(EntityRendererProvider.Context context) {
         super(context, new ChickenModel<>(context.bakeLayer(ModelLayers.CHICKEN)), 0.3F);
     }

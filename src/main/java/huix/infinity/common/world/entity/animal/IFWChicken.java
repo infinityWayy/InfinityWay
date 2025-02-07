@@ -47,6 +47,7 @@ public class IFWChicken extends Livestock {
                 --this.max_num_feathers;
             }
             this.num_feathers = this.max_num_feathers;
+            this.setManurePeriodAddManureCountdown(this.getManurePeriod() * 8 * 2);
         }
     }
 
@@ -90,16 +91,6 @@ public class IFWChicken extends Livestock {
         }
 
         this.flap = this.flap + this.flapping * 2.0F;
-
-        if (!this.level().isClientSide) {
-            if (this.tickCount % 100 == 0) {
-                if (this.random.nextInt(10) > 0 && this.isAlive() && !this.isBaby()
-                        && !this.isChickenJockey() && this.updateWellness()) {
-                    this.addProductionCounter(1);
-                }
-                this.produceGoods();
-            }
-        }
     }
 
     @Override
@@ -193,15 +184,19 @@ public class IFWChicken extends Livestock {
         this.isChickenJockey = isChickenJockey;
     }
 
+    public boolean isSpecialCase() {
+        return this.isChickenJockey;
+    }
+
     public void produceGoods() {
         int feather_threshold = 100;
-        if (this.productionCounter() >= feather_threshold && this.random.nextInt(feather_threshold * 5) == 0) {
+        if (this.getProductionCounter() >= feather_threshold && this.random.nextInt(feather_threshold * 5) == 0) {
             this.gainFeather();
             this.addProductionCounter(-feather_threshold);
             return;
         }
         int egg_threshold = 200;
-        if (this.productionCounter() >= egg_threshold && this.random.nextInt(20) == 0) {
+        if (this.getProductionCounter() >= egg_threshold && this.random.nextInt(20) == 0) {
             this.playSound(SoundEvents.CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
             this.spawnAtLocation(Items.EGG);
             this.gameEvent(GameEvent.ENTITY_PLACE);

@@ -46,18 +46,36 @@ public abstract class Livestock extends Animal {
     @Override
     public void aiStep() {
         super.aiStep();
-        if (!this.level().isClientSide && !this.isBaby() && !this.isDesperateForFood()) {
-            addManureCountdown(-1);
-            if (this.getManureCountdown() <= 0) {
-                this.spawnAtLocation(IFWItems.manure);
-                this.gameEvent(GameEvent.ENTITY_PLACE);
-                this.setManureCountdown(this.getManurePeriod() / 2 + this.random.nextInt(this.getManurePeriod()));
+
+        if (!this.level().isClientSide) {
+            if (this.tickCount % 100 == 0) {
+                if (this.random.nextInt(10) > 0 && this.isAlive() && !this.isBaby()
+                        && !this.isSpecialCase() && this.updateWellness()) {
+                    this.addProductionCounter(1);
+                }
+                this.produceGoods();
+            }
+
+            if (!this.isBaby() && !this.isDesperateForFood()) {
+                addManureCountdown(-1);
+                if (this.getManureCountdown() <= 0) {
+                    this.spawnAtLocation(IFWItems.manure);
+                    this.gameEvent(GameEvent.ENTITY_PLACE);
+                    this.setManureCountdown(this.getManurePeriod() / 2 + this.random.nextInt(this.getManurePeriod()));
+                }
             }
         }
+
     }
 
+    public boolean isSpecialCase() {
+        return false;
+    }
+
+    public abstract void produceGoods();
+
     @Override
-    public void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
+    protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
         super.defineSynchedData(builder);
         builder.define(IS_WELL, true);
         builder.define(IS_THIRSTY, false);
@@ -107,8 +125,7 @@ public abstract class Livestock extends Animal {
         this.food(0.8F + this.random.nextFloat() * 0.2F);
         this.water(0.8F + this.random.nextFloat() * 0.2F);
         this.freedom(0.8F + this.random.nextFloat() * 0.2F);
-        this.setManurePeriod(24000);
-        this.setManureCountdown((int) (Math.random() * this.getManurePeriod()));
+        this.setManurePeriodAddManureCountdown(24000);
     }
 
     private void water(float water) {
@@ -153,6 +170,11 @@ public abstract class Livestock extends Animal {
         }
     }
 
+    protected void setManurePeriodAddManureCountdown(int manure_period) {
+        this.setManurePeriod(manure_period);
+        this.setManureCountdown((int) (Math.random() * manure_period));
+    }
+
     protected void addManureCountdown(int i) {
         this.setData(IFWAttachments.manure_countdown,
                 this.getData(IFWAttachments.manure_countdown) + i);
@@ -170,7 +192,7 @@ public abstract class Livestock extends Animal {
         return this.getData(IFWAttachments.freedom);
     }
 
-    public int productionCounter() {
+    public int getProductionCounter() {
         return this.getData(IFWAttachments.production_counter);
     }
 
@@ -266,8 +288,13 @@ public abstract class Livestock extends Animal {
         for (int dx = -1; dx <= 1; ++dx) {
             for (int dy = -1; dy <= height; ++dy) {
                 for (int dz = -1; dz <= 1; ++dz) {
-                    if (getFoodBlocks().contains(this.level().getBlockState(
-                            new BlockPos(x + dx, y + dy, z + dz)).getBlock())) {
+                    BlockPos blockpos = new BlockPos(x + dx, y + dy, z + dz);
+                    if (getFoodBlocks().contains(this.level().getBlockState(blockpos).getBlock())) {
+                        if (this instanceof IFWCow && this.random.nextInt(100) == 0) {
+                            if (net.neoforged.neoforge.event.EventHooks.canEntityGrief(this.level(), this)) {
+                                this.level().destroyBlock(blockpos, false);
+                            }
+                        }
                         return true;
                     }
                 }

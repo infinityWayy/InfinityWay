@@ -7,6 +7,9 @@ import huix.infinity.common.client.IFWFurnaceScreen;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.entity.render.IFWChickenRenderer;
+import huix.infinity.common.world.entity.render.IFWCowRenderer;
+import huix.infinity.common.world.entity.render.IFWSheepRenderer;
+import huix.infinity.common.world.entity.render.sheep.IFWPigRenderer;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
 import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
 import huix.infinity.enum_extesion.IFWRecipeBookCategories;
@@ -60,6 +63,9 @@ public final class IFWClient {
     @SubscribeEvent
     public static void onRegisterRenderers(final EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(IFWEntityType.CHICKEN.get(), IFWChickenRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.SHEEP.get(), IFWSheepRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.PIG.get(), IFWPigRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.COW.get(), IFWCowRenderer::new);
     }
 
 }

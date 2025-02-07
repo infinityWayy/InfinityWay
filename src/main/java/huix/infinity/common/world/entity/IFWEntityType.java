@@ -1,6 +1,9 @@
 package huix.infinity.common.world.entity;
 
 import huix.infinity.common.world.entity.animal.IFWChicken;
+import huix.infinity.common.world.entity.animal.IFWCow;
+import huix.infinity.common.world.entity.animal.IFWPig;
+import huix.infinity.common.world.entity.animal.IFWSheep;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -23,4 +26,32 @@ public class IFWEntityType {
                             .build("chicken")
             );
 
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWSheep>> SHEEP =
+            ENTITIES.register("sheep",
+                    () -> EntityType.Builder.of(IFWSheep::new, MobCategory.CREATURE)
+                            .sized(0.9F, 1.3F)
+                            .eyeHeight(1.235F)
+                            .passengerAttachments(1.2375F)
+                            .clientTrackingRange(10)
+                            .build("sheep")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWPig>> PIG =
+            ENTITIES.register("pig",
+                    () -> EntityType.Builder.of(IFWPig::new, MobCategory.CREATURE)
+                            .sized(0.9F, 0.9F)
+                            .passengerAttachments(0.86875F)
+                            .clientTrackingRange(10)
+                            .build("pig")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWCow>> COW =
+            ENTITIES.register("cow",
+                    () -> EntityType.Builder.of(IFWCow::new, MobCategory.CREATURE)
+                            .sized(0.9F, 1.4F)
+                            .eyeHeight(1.3F)
+                            .passengerAttachments(1.36875F)
+                            .clientTrackingRange(10)
+                            .build("cow")
+            );
 }
