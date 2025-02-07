@@ -25,12 +25,12 @@ public class IFWLoading {
     }
 
     private static void injectCookingLevel() {
-        ReplaceHelper.itemCookingLevel(Items.TORCH, 1);
-        ReplaceHelper.itemCookingLevel(Items.COAL, 2);
-        ReplaceHelper.itemCookingLevel(Items.BLAZE_ROD, 4);
-        ReplaceHelper.itemCookingLevel(Items.LAVA_BUCKET, 3);
-        ReplaceHelper.itemCookingLevel(Items.COAL_BLOCK, 2);
-        ReplaceHelper.itemCookingLevel(Items.CHARCOAL, 1);
+        ReplaceHelper.itemCookingLevel(Items.TORCH, 2);
+        ReplaceHelper.itemCookingLevel(Items.COAL, 3);
+        ReplaceHelper.itemCookingLevel(Items.BLAZE_ROD, 5);
+        ReplaceHelper.itemCookingLevel(Tags.Items.BUCKETS_LAVA, 4);
+        ReplaceHelper.itemCookingLevel(Items.COAL_BLOCK, 3);
+        ReplaceHelper.itemCookingLevel(Items.CHARCOAL, 2);
         ReplaceHelper.itemCookingLevel(ItemTags.LOGS, 1);
         ReplaceHelper.itemCookingLevel(ItemTags.BAMBOO_BLOCKS, 1);
         ReplaceHelper.itemCookingLevel(ItemTags.PLANKS, 1);
@@ -84,7 +84,7 @@ public class IFWLoading {
         ReplaceHelper.itemCookingLevel(Items.AZALEA, 1);
         ReplaceHelper.itemCookingLevel(Items.FLOWERING_AZALEA, 1);
         ReplaceHelper.itemCookingLevel(Items.MANGROVE_ROOTS, 1);
-
+        ReplaceHelper.itemCookingLevel(IFWItems.manure.get(), 1);
     }
 
     public static void injectAnvil() {

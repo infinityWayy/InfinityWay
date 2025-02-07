@@ -30,6 +30,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
@@ -183,6 +184,8 @@ public class IFWEvents {
             event.setBurnTime(200);
         if (event.getItemStack().is(IFWItems.wooden_club))
             event.setBurnTime(200);
+        if (event.getItemStack().is(Tags.Items.BUCKETS_LAVA))
+            event.setBurnTime(20000);
     }
 
 

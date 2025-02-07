@@ -605,27 +605,27 @@ public class IFWRecipeProvider extends RecipeProvider {
     }
     private void cookingRecipe(RecipeOutput recipeOutput) {
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RAW_COPPER), RecipeCategory.MISC, Items.COPPER_INGOT,
-                        10.0F, 200, 2)
+                        10.0F, 200, 3)
                 .unlockedBy("has_raw_copper", has(Items.RAW_COPPER))
                 .save(recipeOutput, "raw_copper_smelting");
         CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_silver), RecipeCategory.MISC, IFWItems.silver_ingot,
-                        15.0F, 200, 2)
+                        15.0F, 200, 3)
                 .unlockedBy("has_raw_silver", has(IFWItems.raw_silver))
                 .save(recipeOutput, "raw_silver_smelting");
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RAW_GOLD), RecipeCategory.MISC, Items.GOLD_INGOT,
-                        20.0F, 200, 2)
+                        20.0F, 200, 3)
                 .unlockedBy("has_raw_gold", has(Items.RAW_GOLD))
                 .save(recipeOutput, "raw_gold_smelting");
         CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RAW_IRON), RecipeCategory.MISC, Items.IRON_INGOT,
-                        10.0F, 200, 2)
+                        10.0F, 200, 3)
                 .unlockedBy("has_raw_iron", has(Items.RAW_IRON))
                 .save(recipeOutput, "raw_iron_smelting");
         CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_mithril), RecipeCategory.MISC, IFWItems.mithril_ingot,
-                        40.0F, 200, 3)
+                        40.0F, 200, 4)
                 .unlockedBy("has_raw_mithril", has(IFWItems.raw_mithril))
                 .save(recipeOutput, "raw_mithril_smelting");
         CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_adamantium), RecipeCategory.MISC, IFWItems.adamantium_ingot,
-                        100.0F, 200, 4)
+                        100.0F, 200, 5)
                 .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium))
                 .save(recipeOutput, "raw_adamantium_smelting");
         CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.dough), RecipeCategory.FOOD, Items.BREAD,

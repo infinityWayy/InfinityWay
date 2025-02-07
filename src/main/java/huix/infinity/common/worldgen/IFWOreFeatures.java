@@ -19,7 +19,7 @@ public class IFWOreFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ore_silver = WorldGenHelper.createKeyToCong("ore_silver");
     public static final OreConfiguration ore_silver_cong = new OreConfiguration(
             List.of(OreConfiguration.target(stone, IFWBlocks.silver_ore.get().defaultBlockState()),
-                    OreConfiguration.target(deepslate, IFWBlocks.deepslate_silver_ore.get().defaultBlockState())), 12);
+                    OreConfiguration.target(deepslate, IFWBlocks.deepslate_silver_ore.get().defaultBlockState())), 10);
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ore_mithril = WorldGenHelper.createKeyToCong("ore_mithril");
     public static final OreConfiguration mithril_ore_cong = new OreConfiguration(

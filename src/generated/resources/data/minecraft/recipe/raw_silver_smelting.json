@@ -1,7 +1,7 @@
 {
   "type": "ifw:level_smelting",
   "category": "misc",
-  "cookinglevel": 2,
+  "cookinglevel": 3,
   "cookingtime": 200,
   "experience": 15.0,
   "ingredient": {

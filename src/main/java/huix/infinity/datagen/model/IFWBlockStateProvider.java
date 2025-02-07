@@ -237,7 +237,7 @@ public class IFWBlockStateProvider extends BlockStateProvider {
         ModelFile hardenedClayFurnaceOnModel = models().orientable("hardened_clay_furnace_on", modLoc("block/hardened_clay_furnace_side"),
                 modLoc("block/hardened_clay_furnace_front_on"), modLoc("block/hardened_clay_furnace_top"));
         horizontalBlock(hardenedClayFurnaceBlock, state ->
-                state.getValue(BlockStateProperties.LIT) ? hardenedClayFurnaceModel : hardenedClayFurnaceOnModel, 180);
+                state.getValue(BlockStateProperties.LIT) ? hardenedClayFurnaceOnModel : hardenedClayFurnaceModel, 180);
         simpleBlockItem(hardenedClayFurnaceBlock, hardenedClayFurnaceModel);
         Block sandstoneFurnaceBlock = IFWBlocks.sandstone_furnace.get();
         ModelFile sandstoneFurnaceModel = models().orientable("sandstone_furnace", modLoc("block/sandstone_furnace_side"),

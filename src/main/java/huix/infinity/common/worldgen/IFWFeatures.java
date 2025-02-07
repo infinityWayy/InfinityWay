@@ -8,6 +8,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.OrePlacements;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.data.worldgen.placement.VillagePlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
@@ -60,8 +62,9 @@ public class IFWFeatures {
                 //remove
                 bootstrap.register(REMOVE_FEATURES, new BiomeModifiers.RemoveFeaturesBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
-                        HolderSet.direct(placedFeatures.getOrThrow(MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND)),
-                        Set.of(GenerationStep.Decoration.LAKES)));
+                        HolderSet.direct(placedFeatures.getOrThrow(MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND),
+                                placedFeatures.getOrThrow(VegetationPlacements.PATCH_MELON), placedFeatures.getOrThrow(VegetationPlacements.PATCH_MELON_SPARSE)),
+                        Set.of(GenerationStep.Decoration.LAKES, GenerationStep.Decoration.VEGETAL_DECORATION)));
             });
 
 }

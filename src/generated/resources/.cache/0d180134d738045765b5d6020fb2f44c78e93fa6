@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-05T17:23:20.6007451	Block States: ifw
+// 1.21.1	2025-02-07T12:27:33.439852	Block States: ifw
 044660bb88278a354615632365a7a1d69f8bf3e9 assets/ifw/blockstates/adamantium_anvil.json
 946d1ee0e16e6764047acdb20e22d0390e68eed9 assets/ifw/blockstates/adamantium_bars.json
 5d74aec16c1765c863c3b307aa12c18dbcf03f7a assets/ifw/blockstates/adamantium_block.json
@@ -31,7 +31,7 @@ a4388f10ec4caac56dd46c60f3ff4e19d7553612 assets/ifw/blockstates/deepslate_silver
 4ee65049b1a2a078d01db013fb8a747082e7401b assets/ifw/blockstates/gold_anvil.json
 a9aee237b9ca2405a35845003f4da7002893dfc1 assets/ifw/blockstates/gold_bars.json
 095b97f9bd1cc9327267385f092855eaf7f37632 assets/ifw/blockstates/gold_door.json
-af2fc571c9b4800f1df23ed0a90734faa48791dd assets/ifw/blockstates/hardened_clay_furnace.json
+fb093d19c53c041de1f551d3c410aaf6c82f2e3f assets/ifw/blockstates/hardened_clay_furnace.json
 8fac71727ab7d0d4c60604c2a3463021e4d63da2 assets/ifw/blockstates/iron_anvil.json
 24e25ab56ba6cec64c8478504ffbb03b40d20317 assets/ifw/blockstates/mithril_anvil.json
 99b5477f9dfd399d4fdbed4fab97f5dbc9ebe627 assets/ifw/blockstates/mithril_bars.json

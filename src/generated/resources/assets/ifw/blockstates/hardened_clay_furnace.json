@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=east,lit=false": {
-      "model": "ifw:block/hardened_clay_furnace_on",
+      "model": "ifw:block/hardened_clay_furnace",
       "y": 90
     },
     "facing=east,lit=true": {
-      "model": "ifw:block/hardened_clay_furnace",
+      "model": "ifw:block/hardened_clay_furnace_on",
       "y": 90
     },
     "facing=north,lit=false": {
-      "model": "ifw:block/hardened_clay_furnace_on"
-    },
-    "facing=north,lit=true": {
       "model": "ifw:block/hardened_clay_furnace"
     },
+    "facing=north,lit=true": {
+      "model": "ifw:block/hardened_clay_furnace_on"
+    },
     "facing=south,lit=false": {
-      "model": "ifw:block/hardened_clay_furnace_on",
+      "model": "ifw:block/hardened_clay_furnace",
       "y": 180
     },
     "facing=south,lit=true": {
-      "model": "ifw:block/hardened_clay_furnace",
+      "model": "ifw:block/hardened_clay_furnace_on",
       "y": 180
     },
     "facing=west,lit=false": {
-      "model": "ifw:block/hardened_clay_furnace_on",
+      "model": "ifw:block/hardened_clay_furnace",
       "y": 270
     },
     "facing=west,lit=true": {
-      "model": "ifw:block/hardened_clay_furnace",
+      "model": "ifw:block/hardened_clay_furnace_on",
       "y": 270
     }
   }

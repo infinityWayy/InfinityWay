@@ -157,23 +157,23 @@ public class IFWBlocks {
     public static final DeferredItem<BlockItem> clay_furnace_item = ITEM_BLOCKS.registerSimpleBlockItem("clay_furnace", clay_furnace, new Item.Properties().stacksTo(1));
     public static final DeferredBlock<Block> hardened_clay_furnace = BLOCKS.registerBlock("hardened_clay_furnace",
             block -> new IFWFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
-                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(1));
+                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(2));
     public static final DeferredItem<BlockItem> hardened_clay_furnace_item = ITEM_BLOCKS.registerSimpleBlockItem("hardened_clay_furnace", hardened_clay_furnace, new Item.Properties().stacksTo(1));
     public static final DeferredBlock<Block> sandstone_furnace = BLOCKS.registerBlock("sandstone_furnace",
             block -> new IFWFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
-                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(1));
+                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(2));
     public static final DeferredItem<BlockItem> sandstone_furnace_item = ITEM_BLOCKS.registerSimpleBlockItem("sandstone_furnace", sandstone_furnace, new Item.Properties().stacksTo(1));
     public static final DeferredBlock<Block> stone_furnace = BLOCKS.registerBlock("stone_furnace",
             block -> new IFWFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
-                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(2));
+                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(3));
     public static final DeferredItem<BlockItem> stone_furnace_item = ITEM_BLOCKS.registerSimpleBlockItem("stone_furnace", stone_furnace, new Item.Properties().stacksTo(1));
     public static final DeferredBlock<Block> obsidian_furnace = BLOCKS.registerBlock("obsidian_furnace",
             block -> new IFWFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
-                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(3));
+                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(4));
     public static final DeferredItem<BlockItem> obsidian_furnace_item = ITEM_BLOCKS.registerSimpleBlockItem("obsidian_furnace", obsidian_furnace, new Item.Properties().stacksTo(1));
     public static final DeferredBlock<Block> netherrack_furnace = BLOCKS.registerBlock("netherrack_furnace",
             block -> new IFWFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
-                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(4));
+                    .instrument(NoteBlockInstrument.BASEDRUM).strength(3.5F).lightLevel(Blocks.litBlockEmission(13))).furnaceLevel(5));
     public static final DeferredItem<BlockItem> netherrack_furnace_item = ITEM_BLOCKS.registerSimpleBlockItem("netherrack_furnace", netherrack_furnace, new Item.Properties().stacksTo(1));
 
     public static final DeferredBlock<Block> mithril_block = BLOCKS.registerSimpleBlock("mithril_block",
