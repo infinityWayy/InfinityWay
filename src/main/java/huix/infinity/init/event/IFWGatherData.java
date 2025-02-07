@@ -1,8 +1,6 @@
 package huix.infinity.init.event;
 
 import huix.infinity.datagen.enchantment.IFWDataEnchantments;
-import huix.infinity.datagen.lang.MCCNLang;
-import huix.infinity.datagen.lang.MCUSLang;
 import huix.infinity.datagen.model.IFWBlockStateProvider;
 import huix.infinity.datagen.model.IFWItemModelProvider;
 import huix.infinity.datagen.lang.IFWCNLang;
@@ -21,7 +19,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 @EventBusSubscriber(modid = InfinityWay.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
-public final class IFWData {
+public final class IFWGatherData {
 
     @SubscribeEvent
     public static void gatherData(final GatherDataEvent event) {

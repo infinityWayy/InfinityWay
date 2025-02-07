@@ -15,7 +15,6 @@ import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
 import huix.infinity.common.world.item.group.IFWItemGroups;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.loot.IFWLootModifiers;
-import huix.infinity.init.event.IFWEvent;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -43,6 +42,6 @@ public final class InfinityWay {
         IFWBlocks.BLOCKS.register(bus);
         IFWEntity.ENTITIES.register(bus);
 
-        IFWEvent.init();
+        IFWEvents.init();
     }
 }

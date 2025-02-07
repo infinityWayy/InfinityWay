@@ -1,4 +1,4 @@
-package huix.infinity.init.event;
+package huix.infinity.init;
 
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.core.component.IFWDataComponents;
@@ -6,6 +6,7 @@ import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.init.event.IFWLoading;
 import huix.infinity.util.IFWEnchantmentHelper;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.ChatFormatting;
@@ -44,27 +45,27 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class IFWEvent {
+public class IFWEvents {
 
     public static void init() {
         final IEventBus bus = NeoForge.EVENT_BUS;
 
-        bus.addListener(IFWEvent::armorModify);
-        bus.addListener(IFWEvent::onBreakSpeed);
-        bus.addListener(IFWEvent::playerAttacklHit);
-        bus.addListener(IFWEvent::playerDie);
-        bus.addListener(IFWEvent::playerClone);
-        bus.addListener(IFWEvent::daySleep);
-        bus.addListener(IFWEvent::addFoodInfo);
-        bus.addListener(IFWEvent::nonRemoveUnClearEffect);
-        bus.addListener(IFWEvent::injectFuel);
-        bus.addListener(IFWEvent::injectItem);
-        bus.addListener(IFWEvent::onServerTick);
+        bus.addListener(IFWEvents::armorModify);
+        bus.addListener(IFWEvents::onBreakSpeed);
+        bus.addListener(IFWEvents::playerAttacklHit);
+        bus.addListener(IFWEvents::playerDie);
+        bus.addListener(IFWEvents::playerClone);
+        bus.addListener(IFWEvents::daySleep);
+        bus.addListener(IFWEvents::addFoodInfo);
+        bus.addListener(IFWEvents::nonRemoveUnClearEffect);
+        bus.addListener(IFWEvents::injectFuel);
+        bus.addListener(IFWEvents::injectItem);
+        bus.addListener(IFWEvents::onServerTick);
     }
 
     public static void injectItem(final DataMapsUpdatedEvent event) {
-        IFWLoad.rebuildStackSize();
-        IFWLoad.injectAnvil();
+        IFWLoading.rebuildStackSize();
+        IFWLoading.injectAnvil();
     }
 
 

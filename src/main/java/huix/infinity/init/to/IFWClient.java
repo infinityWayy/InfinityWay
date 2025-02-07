@@ -1,4 +1,4 @@
-package huix.infinity.init.event;
+package huix.infinity.init.to;
 
 
 import com.google.common.collect.ImmutableList;
