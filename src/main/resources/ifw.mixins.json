@@ -6,6 +6,7 @@
   "mixins": [
     "inventory.EnchantmentMenuMixin",
     "neoforge.CommonHooksMixin",
+    "server.commands.SpawnArmorTrimsCommandMixin",
     "server.player.SleepStatusMixin",
     "world.block.BlockBehaviourMixin",
     "world.block.BlockMixin",
