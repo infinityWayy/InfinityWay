@@ -69,7 +69,7 @@ public class IFWArmorMaterials {
                         map.put(ArmorItem.Type.CHESTPLATE, 2.0F);map.put(ArmorItem.Type.HELMET, 1.3F);
                         map.put(ArmorItem.Type.BODY, 2.0F);}),
                     50, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0, 999999999, 0, 1,
-                    () -> Ingredient.of(Items.GOLD_NUGGET), "golden"));
+                    () -> Ingredient.of(Items.GOLD_NUGGET), "gold"));
     public static final Holder<ArmorMaterial> ancient_metal = ARMOR_MATERIALS.register("ancient_metal", () ->
             register(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                         map.put(ArmorItem.Type.BOOTS, 1.3F);map.put(ArmorItem.Type.LEGGINGS, 2.3F);

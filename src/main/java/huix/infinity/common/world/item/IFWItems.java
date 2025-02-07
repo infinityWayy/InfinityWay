@@ -288,7 +288,6 @@ public class IFWItems {
                     new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(3))));
 
 
-
     public static final DeferredItem<Item> ancient_metal_helmet =
             ITEMS.register("ancient_metal_helmet", item -> new ArmorItem(IFWArmorMaterials.ancient_metal, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(16))));
