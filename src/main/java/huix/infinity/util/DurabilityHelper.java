@@ -1,6 +1,7 @@
 package huix.infinity.util;
 
 import huix.infinity.common.world.block.IFWAnvilBlock;
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.world.item.tier.IFWTiers;
 
 public class DurabilityHelper {
@@ -14,7 +15,7 @@ public class DurabilityHelper {
         return 4.0F;
     }
 
-    public static int getDurability(IFWTiers tier) {
+    public static int getDurability(IFWTier tier) {
         return (int)((float)(getBaseDurabilityPerIngot() * 31) * tier.getDurability());
     }
 

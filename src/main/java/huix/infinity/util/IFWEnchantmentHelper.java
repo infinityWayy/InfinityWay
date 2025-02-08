@@ -11,9 +11,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class IFWEnchantmentHelper {
@@ -27,94 +25,71 @@ public class IFWEnchantmentHelper {
     }
 
     public static int calculateRequiredExperienceLevel(final RandomSource random, final int slot, int bookshelfCount, final ItemStack stack, final int enchantingMultiplier) {
-        Item item = stack.getItem();
-        int i = item.getEnchantmentValue();
-        if (i <= 0) {
-            return 0;
-        } else {
-            if (bookshelfCount > 24) {
-                bookshelfCount = 24;
-            }
+        final Item item = stack.getItem();
+        if (item.getEnchantmentValue() <= 0) return 0;
 
-            int enchantment_table_power = (1 + bookshelfCount) * 2 * enchantingMultiplier;
-            int enchantment_levels = getEnchantmentLevelsAlteredByItem(enchantment_table_power, item);
-            float fraction = (1.0F + (float)slot) / 3.0F;
-            if (slot < 2) {
-                fraction += (random.nextFloat() - 0.5F) * 0.2F;
-            }
+        bookshelfCount = Math.min(bookshelfCount, 24);
+        final int enchantmentTablePower = (bookshelfCount + 1) * 2 * enchantingMultiplier;
+        final int enchantmentLevels = enchantmentLevelsByItem(enchantmentTablePower, item);
 
-            return Math.max(Math.round((float)enchantment_levels * fraction), 1);
-        }
+        float fraction = (slot + 1) / 3.0F;
+        if (slot < 2) fraction += (random.nextFloat() - 0.5F) * 0.2F;
+
+        return Math.max(Math.round(enchantmentLevels * fraction), 1);
     }
 
-    public static int getEnchantmentLevelsAlteredByItem(final int enchantment_table_power, final Item item) {
-        int enchantability = item.getEnchantmentValue();
-        if (enchantability < 1) {
-            return 0;
-        } else if (enchantment_table_power <= enchantability) {
-            return enchantment_table_power;
-        } else {
-            float enchantmentLevelsFloat = (float) enchantability;
+    private static int enchantmentLevelsByItem(final int enchantment_table_power, final Item item) {
+        int value = item.getEnchantmentValue();
+        System.out.println(value);
+        if (value < 1) return 0;
+        else if (enchantment_table_power <= value) return enchantment_table_power;
+        else {
+            int startA = value + 1;
+            int endA = Math.min(2 * value, enchantment_table_power);
+            int countA = endA >= startA ? endA - startA + 1 : 0;
 
-            for(int i = enchantability + 1; i <= enchantment_table_power; ++i) {
-                if (i <= enchantability * 2) {
-                    enchantmentLevelsFloat += 0.5F;
-                } else {
-                    if (i > enchantability * 3) {
-                        break;
-                    }
+            int startB = 2 * value + 1;
+            int endB = Math.min(3 * value, enchantment_table_power);
+            int countB = endB >= startB ? endB - startB + 1 : 0;
 
-                    enchantmentLevelsFloat += 0.25F;
-                }
-            }
-
-            return Math.round(enchantmentLevelsFloat);
+            return Math.round(value + 0.5f * countA + 0.25f * countB);
         }
     }
 
     public static List<EnchantmentInstance> selectEnchantment(final RandomSource random, final ItemStack stack, int cost, final Stream<Holder<Enchantment>> possibleEnchantments) {
-        List<EnchantmentInstance> enchantmentsToAdd = Lists.newArrayList();
-        int i = stack.getEnchantmentValue();
-        if (i > 0) {
-            float levelFactor = 1.0F + (random.nextFloat() - 0.5F) * 0.5F;
-            cost = getExperienceLevel(cost);
-            List<Holder<Enchantment>> streamList = possibleEnchantments.toList();
-            List<EnchantmentInstance>  possibleInstances = getAvailableEnchantmentResults(cost, stack, streamList.stream());
-            cost = Mth.clamp(Math.round((float)cost * levelFactor), 1, Integer.MAX_VALUE);
+        if (stack.getEnchantmentValue() <= 0) return Collections.emptyList();
+        List<EnchantmentInstance> selectedEnchantments = new ArrayList<>();
 
-            while(cost > 0 && enchantmentsToAdd.size() <= 2 && !possibleInstances.isEmpty()) {
-                possibleInstances = getAvailableEnchantmentResults(cost, stack, streamList.stream());
+        float levelFactor = 1.0F + (random.nextFloat() - 0.5F) * 0.5F;
+        cost = getExperienceLevel(cost);
+        cost = Mth.clamp(Math.round((float) cost * levelFactor), 1, Integer.MAX_VALUE);
 
-                Iterator<EnchantmentInstance> iterator = enchantmentsToAdd.iterator();
-                EnchantmentInstance e;
-                while(iterator.hasNext()) {
-                    e = iterator.next();
-                    EnchantmentHelper.filterCompatibleEnchantments(possibleInstances, e);
-                }
+        final List<Holder<Enchantment>> candidateEnchantments = possibleEnchantments.toList();
 
-                if (possibleInstances.isEmpty()) {
-                    break;
-                }
+        while (cost > 0 && selectedEnchantments.size() < 3) {
+            List<EnchantmentInstance> availableEnchantments = getAvailableEnchantmentResults(cost, stack, candidateEnchantments.stream());
 
-                Optional<EnchantmentInstance> instance = WeightedRandom.getRandomItem(random, possibleInstances);
-                if (instance.isPresent()) {
-                    e = instance.get();
-                    if (enchantmentsToAdd.size() < 2 && possibleInstances.size() > 1 && e.enchantment.value().ifw_hasLevels() && random.nextInt(2) == 0) {
-                        e.level = random.nextInt(e.level) + 1;
-                    }
+            for (EnchantmentInstance selected : selectedEnchantments) EnchantmentHelper.filterCompatibleEnchantments(availableEnchantments, selected);
 
+            if (availableEnchantments.isEmpty()) break;
 
-                    enchantmentsToAdd.add(e);
-                    cost -= e.enchantment.value().ifw_hasLevels() ? e.enchantment.value().getMinCost(e.level) : e.enchantment.value().getMinCost(1) + 5;
-                }
+            Optional<EnchantmentInstance> optionalEnchantment = WeightedRandom.getRandomItem(random, availableEnchantments);
+            if (optionalEnchantment.isPresent()) {
+                EnchantmentInstance chosen = optionalEnchantment.get();
+                Holder<Enchantment> enchantmentHolder = chosen.enchantment;
 
-                if (cost < 5) {
-                    break;
-                }
+                if (selectedEnchantments.size() < 2 && availableEnchantments.size() > 1 && enchantmentHolder.value().ifw_hasLevels() && random.nextInt(2) == 0)
+                    chosen.level = random.nextInt(chosen.level) + 1;
+
+                selectedEnchantments.add(chosen);
+
+                int costReduction = enchantmentHolder.value().ifw_hasLevels() ? enchantmentHolder.value().getMinCost(chosen.level) : enchantmentHolder.value().getMinCost(1) + 5;
+                cost -= costReduction;
             }
-        }
 
-        return enchantmentsToAdd;
+            if (cost < 5) break;
+        }
+        return selectedEnchantments;
     }
 
     public static List<EnchantmentInstance> getAvailableEnchantmentResults(int level, ItemStack stack, Stream<Holder<Enchantment>> possibleEnchantments) {
@@ -135,10 +110,14 @@ public class IFWEnchantmentHelper {
     }
 
     public static float getProtectionFactor(ItemStack itemStack) {
-        if (itemStack.isDamageableItem() && itemStack.getDamageValue() >= itemStack.getMaxDamage() - 1) {
-            return 0.0F;
-        } else {
-            return Math.min(2.0F - (float) itemStack.getDamageValue() / itemStack.getMaxDamage() * 2.0F, 1.0F);
-        }
+        if (!itemStack.isDamageableItem()) return 1.0F;
+
+        final int maxDamage = itemStack.getMaxDamage();
+        final int damage = itemStack.getDamageValue();
+
+        if (damage >= maxDamage - 1) return 0.0F;
+
+        float factor = 2.0F * (1.0F - ((float) damage / maxDamage));
+        return Math.min(factor, 1.0F);
     }
 }

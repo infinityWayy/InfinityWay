@@ -89,7 +89,7 @@ public class IFWArmorMaterials {
                         map.put(ArmorItem.Type.BOOTS, 1.7F);map.put(ArmorItem.Type.LEGGINGS, 2.9F);
                         map.put(ArmorItem.Type.CHESTPLATE, 3.3F);map.put(ArmorItem.Type.HELMET, 2.1F);
                         map.put(ArmorItem.Type.BODY, 3.3F);}),
-                    70, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, 1000, 0, 5,
+                    40, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, 1000, 0, 5,
                     () -> Ingredient.of(IFWItems.adamantium_nugget), "adamantium"));
     public static final Holder<ArmorMaterial> copper_chainmail = ARMOR_MATERIALS.register("copper_chainmail", () ->
             register(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {

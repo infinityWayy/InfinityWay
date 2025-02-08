@@ -2,6 +2,7 @@ package huix.infinity.common.world.block;
 
 import huix.infinity.common.world.block.entity.AnvilBlockEntity;
 import huix.infinity.common.world.inventory.IFWAnvilMenu;
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.util.DurabilityHelper;
 import net.minecraft.core.BlockPos;
@@ -29,9 +30,9 @@ import java.util.List;
 public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
     private final int maxDurability;
     private final int repairLevel;
-    private final IFWTiers tier;
+    private final IFWTier tier;
 
-    public IFWAnvilBlock(Properties properties, IFWTiers tier) {
+    public IFWAnvilBlock(Properties properties, IFWTier tier) {
         super(properties);
         this.tier = tier;
         this.repairLevel = tier.repairLevel();
@@ -100,26 +101,26 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
 
     private BlockState getChippedState() {
         return switch (this.tier) {
-            case COPPER -> IFWBlocks.chipped_copper_anvil.get().defaultBlockState();
-            case SILVER -> IFWBlocks.chipped_silver_anvil.get().defaultBlockState();
-            case GOLD -> IFWBlocks.chipped_gold_anvil.get().defaultBlockState();
-            case IRON -> IFWBlocks.chipped_iron_anvil.get().defaultBlockState();
-            case ANCIENT_METAL -> IFWBlocks.chipped_ancient_metal_anvil.get().defaultBlockState();
-            case MITHRIL -> IFWBlocks.chipped_mithril_anvil.get().defaultBlockState();
-            case ADAMANTIUM -> IFWBlocks.chipped_adamantium_anvil.get().defaultBlockState();
+            case IFWTiers.COPPER -> IFWBlocks.chipped_copper_anvil.get().defaultBlockState();
+            case IFWTiers.SILVER -> IFWBlocks.chipped_silver_anvil.get().defaultBlockState();
+            case IFWTiers.GOLD -> IFWBlocks.chipped_gold_anvil.get().defaultBlockState();
+            case IFWTiers.IRON -> IFWBlocks.chipped_iron_anvil.get().defaultBlockState();
+            case IFWTiers.ANCIENT_METAL -> IFWBlocks.chipped_ancient_metal_anvil.get().defaultBlockState();
+            case IFWTiers.MITHRIL -> IFWBlocks.chipped_mithril_anvil.get().defaultBlockState();
+            case IFWTiers.ADAMANTIUM -> IFWBlocks.chipped_adamantium_anvil.get().defaultBlockState();
             default -> Blocks.AIR.defaultBlockState();
         };
     }
 
     private BlockState getDamagedState() {
         return switch (this.tier) {
-            case COPPER -> IFWBlocks.damaged_copper_anvil.get().defaultBlockState();
-            case SILVER -> IFWBlocks.damaged_silver_anvil.get().defaultBlockState();
-            case GOLD -> IFWBlocks.damaged_gold_anvil.get().defaultBlockState();
-            case IRON -> IFWBlocks.damaged_iron_anvil.get().defaultBlockState();
-            case ANCIENT_METAL -> IFWBlocks.damaged_ancient_metal_anvil.get().defaultBlockState();
-            case MITHRIL -> IFWBlocks.damaged_mithril_anvil.get().defaultBlockState();
-            case ADAMANTIUM -> IFWBlocks.damaged_adamantium_anvil.get().defaultBlockState();
+            case IFWTiers.COPPER -> IFWBlocks.damaged_copper_anvil.get().defaultBlockState();
+            case IFWTiers.SILVER -> IFWBlocks.damaged_silver_anvil.get().defaultBlockState();
+            case IFWTiers.GOLD -> IFWBlocks.damaged_gold_anvil.get().defaultBlockState();
+            case IFWTiers.IRON -> IFWBlocks.damaged_iron_anvil.get().defaultBlockState();
+            case IFWTiers.ANCIENT_METAL -> IFWBlocks.damaged_ancient_metal_anvil.get().defaultBlockState();
+            case IFWTiers.MITHRIL -> IFWBlocks.damaged_mithril_anvil.get().defaultBlockState();
+            case IFWTiers.ADAMANTIUM -> IFWBlocks.damaged_adamantium_anvil.get().defaultBlockState();
             default -> Blocks.AIR.defaultBlockState();
         };
     }
@@ -140,7 +141,7 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
         return this.maxDurability;
     }
 
-    public IFWTiers tier() {
+    public IFWTier tier() {
         return this.tier;
     }
 
