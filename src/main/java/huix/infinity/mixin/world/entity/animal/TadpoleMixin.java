@@ -1,5 +1,6 @@
 package huix.infinity.mixin.world.entity.animal;
 
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.func_extension.BucketableExtension;
 import huix.infinity.util.BucketHelper;
@@ -7,8 +8,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.AbstractFish;
-import net.minecraft.world.entity.animal.Bucketable;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
 import net.minecraft.world.entity.animal.frog.Tadpole;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +24,7 @@ public abstract class TadpoleMixin extends AbstractFish implements BucketableExt
     @Shadow protected abstract void feed(Player player, ItemStack stack);
 
     @Override
-    public ItemStack ifw_getBucketItemStack(IFWTiers tier) {
+    public ItemStack ifw_getBucketItemStack(IFWTier tier) {
         return BucketHelper.tadpoleBucket(tier);
     }
 

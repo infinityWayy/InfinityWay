@@ -11,6 +11,7 @@ import huix.infinity.common.world.entity.render.IFWCowRenderer;
 import huix.infinity.common.world.entity.render.IFWSheepRenderer;
 import huix.infinity.common.world.entity.render.sheep.IFWPigRenderer;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
+import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
 import huix.infinity.enum_extesion.IFWRecipeBookCategories;
 import huix.infinity.enum_extesion.IFWRecipeBookTypes;
@@ -18,6 +19,11 @@ import huix.infinity.init.InfinityWay;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.FishingRodItem;
+import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -43,6 +49,12 @@ public final class IFWClient {
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.copper_bars.get(), ChunkRenderTypeSet.of(cutout));
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.silver_door.get(), ChunkRenderTypeSet.of(cutout));
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.silver_bars.get(), ChunkRenderTypeSet.of(cutout));
+        registerFishingRodModel(IFWItems.copper_fishing_rod.get());
+        registerFishingRodModel(IFWItems.silver_fishing_rod.get());
+        registerFishingRodModel(IFWItems.gold_fishing_rod.get());
+        registerFishingRodModel(IFWItems.ancient_mental_fishing_rod.get());
+        registerFishingRodModel(IFWItems.mithril_fishing_rod.get());
+        registerFishingRodModel(IFWItems.adamantium_fishing_rod.get());
     }
 
     @SubscribeEvent
@@ -66,6 +78,22 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.SHEEP.get(), IFWSheepRenderer::new);
         event.registerEntityRenderer(IFWEntityType.PIG.get(), IFWPigRenderer::new);
         event.registerEntityRenderer(IFWEntityType.COW.get(), IFWCowRenderer::new);
+    }
+
+
+    public static void registerFishingRodModel(Item fishingRod) {
+        ItemProperties.register(fishingRod, ResourceLocation.withDefaultNamespace("cast"), (stack, level, entity, i) -> {
+            if (entity == null) {
+                return 0.0F;
+            } else {
+                boolean isMainhand = entity.getMainHandItem() == stack;
+                boolean isOffHand = entity.getOffhandItem() == stack;
+                if (entity.getMainHandItem().getItem() instanceof FishingRodItem) {
+                    isOffHand = false;
+                }
+                return (isMainhand || isOffHand) && entity instanceof Player && ((Player) entity).fishing != null ? 1.0F : 0.0F;
+            }
+        });
     }
 
 }

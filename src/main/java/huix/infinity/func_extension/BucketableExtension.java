@@ -1,6 +1,7 @@
 package huix.infinity.func_extension;
 
 import huix.infinity.common.world.item.IFWBucketItem;
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,7 +12,6 @@ import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.Tags;
 
@@ -19,7 +19,7 @@ import java.util.Optional;
 
 public interface BucketableExtension extends Bucketable{
 
-    default ItemStack ifw_getBucketItemStack(IFWTiers tier) {
+    default ItemStack ifw_getBucketItemStack(IFWTier tier) {
         return ItemStack.EMPTY;
     }
 

@@ -63,6 +63,9 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
 
         tag(ModRegistry.CAN_PERFORM_SWORD_BLOCKING_ITEM_TAG).addTags(ItemTags.PICKAXES, ItemTags.AXES, ItemTags.SHOVELS, IFWItemTags.BATTLE_AXE, IFWItemTags.WAR_HAMMER);
 
+        tag(ItemTags.FISHING_ENCHANTABLE).add(IFWItems.copper_fishing_rod.get());
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(IFWItems.copper_fishing_rod.get());
+
         tag(Tags.Items.STRINGS).add(IFWItems.sinew.get());
         copy(BlockTags.ANVIL, IFWItemTags.ANVIL);
 

@@ -1,5 +1,6 @@
 package huix.infinity.mixin.world.material;
 
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.func_extension.FluidExtension;
 import huix.infinity.util.BucketHelper;
@@ -13,7 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 public class WaterFluidMixin implements FluidExtension {
 
     @Override
-    public Item getBucket(Player player, LevelAccessor level, IFWTiers tier) {
+    public Item getBucket(Player player, LevelAccessor level, IFWTier tier) {
         return BucketHelper.waterBucket(tier).getItem();
     }
 }

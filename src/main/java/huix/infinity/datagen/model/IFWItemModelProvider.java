@@ -5,6 +5,7 @@ import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class IFWItemModelProvider extends ItemModelProvider {
@@ -14,6 +15,51 @@ public class IFWItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        withExistingParent("copper_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/copper_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
+
+        withExistingParent("silver_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/silver_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
+        withExistingParent("gold_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/gold_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
+        withExistingParent("iron_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/iron_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
+        withExistingParent("ancient_mental_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/ancient_mental_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
+        withExistingParent("mithril_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/mithril_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
+        withExistingParent("adamantium_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/adamantium_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
+
+
         simpleBlockItem(IFWBlocks.silver_block.get());
         simpleBlockItem(IFWBlocks.silver_ore.get());
         simpleBlockItem(IFWBlocks.raw_adamantium_block.get());

@@ -2,6 +2,7 @@ package huix.infinity.mixin.world.entity.animal;
 
 import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.item.IFWBucketItem;
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.func_extension.BucketableExtension;
 import huix.infinity.util.BucketHelper;
@@ -21,7 +22,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 public abstract class AxolotlMixin extends Animal implements BucketableExtension {
 
     @Override
-    public ItemStack ifw_getBucketItemStack(IFWTiers tier) {
+    public ItemStack ifw_getBucketItemStack(IFWTier tier) {
         return BucketHelper.axolotlBucket(tier);
     }
 

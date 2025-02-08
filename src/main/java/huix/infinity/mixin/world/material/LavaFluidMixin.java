@@ -1,5 +1,6 @@
 package huix.infinity.mixin.world.material;
 
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.func_extension.FluidExtension;
 import huix.infinity.util.BucketHelper;
@@ -18,7 +19,7 @@ import org.spongepowered.asm.mixin.Mixin;
 public abstract class LavaFluidMixin extends FlowingFluid implements FluidExtension {
 
     @Override
-    public Item getBucket(Player player, LevelAccessor level, IFWTiers tier) {
+    public Item getBucket(Player player, LevelAccessor level, IFWTier tier) {
         if (level.getRandom().nextFloat() <= BucketHelper.chanceOfMeltingWhenFilledWithLava(tier)) {
             level.playSound(null, player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
             player.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);

@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-08T09:26:43.6806532	Item Models: ifw
+// 1.21.1	2025-02-08T11:36:57.5645721	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -85,6 +85,7 @@ dfe50122e89b24181ef32136a75cd011777bb247 assets/ifw/models/item/copper_chainmail
 1685c7e336392d81f163331045921248d9707f6a assets/ifw/models/item/copper_chainmail_leggings.json
 b48ae423fdd5fcd584958ae6755352f1b18a0870 assets/ifw/models/item/copper_chestplate.json
 c4d3a1f9e163a0dd74194aada7729571c0d1aa03 assets/ifw/models/item/copper_dagger.json
+1441dfdd1b481843c8e273f338475674ea38c151 assets/ifw/models/item/copper_fishing_rod.json
 89ea118646cd173acf357f192bb3a2cbc52c7e51 assets/ifw/models/item/copper_helmet.json
 d86c2db79d04cfbbe7513a840ab719fca0a3c0dc assets/ifw/models/item/copper_hoe.json
 c7e2c8311db4f7919cb29003c0d97b8abcd19781 assets/ifw/models/item/copper_horse_armor.json

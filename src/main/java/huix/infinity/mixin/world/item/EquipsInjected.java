@@ -1,7 +1,5 @@
 package huix.infinity.mixin.world.item;
 
-import huix.infinity.common.world.item.IFWDiggerItem;
-import huix.infinity.common.world.item.PickaxeTool;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.util.DurabilityHelper;

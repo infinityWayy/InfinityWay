@@ -1,6 +1,5 @@
 package huix.infinity.datagen.recipe;
 
-import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.world.item.crafting.CookingLevelRecipeBuilder;
@@ -257,6 +256,16 @@ public class IFWRecipeProvider extends RecipeProvider {
                     .save(recipeOutput);
         }
     }
+
+    private void bucketRecipe(RecipeOutput recipeOutput, ItemLike helmet, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, helmet)
+                .pattern("CCC")
+                .pattern("C C")
+                .define('C', Ingredient.of(material))
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+    }
+
     private void anvilRecipe(RecipeOutput recipeOutput, ItemLike anvil, ItemLike ingot, ItemLike block) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, anvil)
                 .pattern("YYY")
@@ -267,7 +276,6 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_block", has(block))
                 .save(recipeOutput);
     }
-
     private void rebuildRecipe(RecipeOutput recipeOutput) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Items.PUMPKIN_SEEDS, 1)
                 .requires(Items.PUMPKIN, 1)

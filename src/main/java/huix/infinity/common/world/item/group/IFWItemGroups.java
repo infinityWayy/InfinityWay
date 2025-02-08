@@ -152,6 +152,13 @@ public class IFWItemGroups {
                 output.accept(IFWItems.ancient_metal_horse_armor.get());
                 output.accept(IFWItems.mithril_horse_armor.get());
                 output.accept(IFWItems.adamantium_horse_armor.get());
+                output.accept(IFWItems.copper_fishing_rod.get());
+                output.accept(IFWItems.silver_fishing_rod.get());
+                output.accept(IFWItems.gold_fishing_rod.get());
+                output.accept(IFWItems.iron_fishing_rod.get());
+                output.accept(IFWItems.ancient_mental_fishing_rod.get());
+                output.accept(IFWItems.mithril_fishing_rod.get());
+                output.accept(IFWItems.adamantium_fishing_rod.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tool_tab =

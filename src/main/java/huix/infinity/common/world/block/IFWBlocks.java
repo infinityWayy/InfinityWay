@@ -17,8 +17,6 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.Set;
-
 public class IFWBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(InfinityWay.MOD_ID);
     public static final DeferredRegister.Items ITEM_BLOCKS = IFWItems.ITEMS;

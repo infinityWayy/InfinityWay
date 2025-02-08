@@ -1,5 +1,6 @@
 package huix.infinity.common.world.item;
 
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.func_extension.BucketPickupExtension;
 import huix.infinity.util.BucketHelper;
@@ -41,8 +42,8 @@ import java.util.HashMap;
 import java.util.Optional;
 
 public class IFWBucketItem extends BucketItem {
-    private final IFWTiers tier;
-    public IFWBucketItem(Fluid content, IFWTiers tier, Properties properties) {
+    private final IFWTier tier;
+    public IFWBucketItem(Fluid content, IFWTier tier, Properties properties) {
         super(content, properties.stacksTo(1));
         this.tier = tier;
     }
@@ -100,7 +101,7 @@ public class IFWBucketItem extends BucketItem {
     }
 
 
-    public static ItemStack ifw_emptySuccessItem(ItemStack stack, Player player, IFWTiers tier) {
+    public static ItemStack ifw_emptySuccessItem(ItemStack stack, Player player, IFWTier tier) {
         return !player.hasInfiniteMaterials() ? BucketHelper.emptyBucket(tier) : stack;
     }
 
@@ -191,7 +192,7 @@ public class IFWBucketItem extends BucketItem {
     }
 
 
-    public IFWTiers tier() {
+    public IFWTier tier() {
         return this.tier;
     }
 }

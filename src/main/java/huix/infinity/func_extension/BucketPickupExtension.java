@@ -1,5 +1,6 @@
 package huix.infinity.func_extension;
 
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
@@ -12,7 +13,7 @@ import javax.annotation.Nullable;
 
 public interface BucketPickupExtension extends BucketPickup {
 
-    default ItemStack ifw_pickupBlock(@Nullable Player player, LevelAccessor level, BlockPos pos, BlockState state, IFWTiers tier) {
+    default ItemStack ifw_pickupBlock(@Nullable Player player, LevelAccessor level, BlockPos pos, BlockState state, IFWTier tier) {
         return ItemStack.EMPTY;
     }
 }

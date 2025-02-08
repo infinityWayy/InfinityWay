@@ -20,6 +20,21 @@ public class IFWItems {
 
 
 
+    public static final DeferredItem<Item> copper_fishing_rod =
+            ITEMS.register("copper_fishing_rod", item -> new FishingRod(IFWTiers.COPPER, new Item.Properties()));
+    public static final DeferredItem<Item> silver_fishing_rod =
+            ITEMS.register("silver_fishing_rod", item -> new FishingRod(IFWTiers.SILVER, new Item.Properties()));
+    public static final DeferredItem<Item> gold_fishing_rod =
+            ITEMS.register("gold_fishing_rod", item -> new FishingRod(IFWTiers.GOLD, new Item.Properties()));
+    public static final DeferredItem<Item> iron_fishing_rod =
+            ITEMS.register("iron_fishing_rod", item -> new FishingRod(IFWTiers.IRON, new Item.Properties()));
+    public static final DeferredItem<Item> ancient_mental_fishing_rod =
+            ITEMS.register("ancient_mental_fishing_rod", item -> new FishingRod(IFWTiers.ANCIENT_METAL, new Item.Properties()));
+    public static final DeferredItem<Item> mithril_fishing_rod =
+            ITEMS.register("mithril_fishing_rod", item -> new FishingRod(IFWTiers.MITHRIL, new Item.Properties()));
+    public static final DeferredItem<Item> adamantium_fishing_rod =
+            ITEMS.register("adamantium_fishing_rod", item -> new FishingRod(IFWTiers.ADAMANTIUM, new Item.Properties()));
+
     public static final DeferredItem<Item> copper_horse_armor =
             ITEMS.register("copper_horse_armor", item -> new AnimalArmorItem(IFWArmorMaterials.copper, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> silver_horse_armor =
@@ -30,8 +45,6 @@ public class IFWItems {
             ITEMS.register("mithril_horse_armor", item -> new AnimalArmorItem(IFWArmorMaterials.mithril, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> adamantium_horse_armor =
             ITEMS.register("adamantium_horse_armor", item -> new AnimalArmorItem(IFWArmorMaterials.adamantium, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1)));
-
-
     public static final DeferredItem<Item> copper_bucket =
             ITEMS.register("copper_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.COPPER, new Item.Properties()));
     public static final DeferredItem<Item> water_copper_bucket =

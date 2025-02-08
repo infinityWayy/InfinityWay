@@ -1,13 +1,12 @@
 package huix.infinity.mixin.world.block;
 
+import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.func_extension.BucketPickupExtension;
-import huix.infinity.func_extension.BucketableExtension;
 import huix.infinity.util.BucketHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -20,7 +19,7 @@ import org.spongepowered.asm.mixin.Mixin;
 public abstract class PowderSnowBlockMixin implements BucketPickupExtension {
 
     @Override
-    public ItemStack ifw_pickupBlock(@Nullable Player player, LevelAccessor level, BlockPos pos, BlockState state, IFWTiers tier) {
+    public ItemStack ifw_pickupBlock(@Nullable Player player, LevelAccessor level, BlockPos pos, BlockState state, IFWTier tier) {
         level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
         if (!level.isClientSide()) {
             level.levelEvent(2001, pos, Block.getId(state));
