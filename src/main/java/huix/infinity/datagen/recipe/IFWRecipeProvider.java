@@ -28,6 +28,23 @@ public class IFWRecipeProvider extends RecipeProvider {
         rebuildRecipe(recipeOutput);
 
         {
+            fishingRodRecipe(recipeOutput, IFWItems.obsidian_fishing_rod, IFWItems.obsidian_shard);
+            fishingRodRecipe(recipeOutput, IFWItems.flint_fishing_rod, Items.FLINT);
+            bucketRecipe(recipeOutput, IFWItems.copper_bucket, Items.COPPER_INGOT);
+            fishingRodRecipe(recipeOutput, IFWItems.copper_fishing_rod, IFWItems.copper_nugget);
+            fishingRodRecipe(recipeOutput, IFWItems.iron_fishing_rod, Items.IRON_NUGGET);
+            bucketRecipe(recipeOutput, IFWItems.silver_bucket, IFWItems.silver_ingot);
+            fishingRodRecipe(recipeOutput, IFWItems.silver_fishing_rod, IFWItems.silver_nugget);
+            bucketRecipe(recipeOutput, IFWItems.gold_bucket, Items.GOLD_INGOT);
+            fishingRodRecipe(recipeOutput, IFWItems.gold_fishing_rod, Items.GOLD_NUGGET);
+            bucketRecipe(recipeOutput, IFWItems.ancient_metal_bucket, IFWItems.ancient_metal_ingot);
+            fishingRodRecipe(recipeOutput, IFWItems.ancient_metal_fishing_rod, IFWItems.ancient_metal_nugget);
+            bucketRecipe(recipeOutput, IFWItems.mithril_bucket, IFWItems.mithril_ingot);
+            fishingRodRecipe(recipeOutput, IFWItems.mithril_fishing_rod, IFWItems.mithril_nugget);
+            bucketRecipe(recipeOutput, IFWItems.adamantium_bucket, IFWItems.adamantium_ingot);
+            fishingRodRecipe(recipeOutput, IFWItems.adamantium_fishing_rod, IFWItems.adamantium_nugget);
+        }
+        {
             anvilRecipe(recipeOutput, IFWBlocks.adamantium_anvil, IFWItems.adamantium_ingot,IFWBlocks.adamantium_block);
             anvilRecipe(recipeOutput, IFWBlocks.silver_anvil, IFWItems.silver_ingot,IFWBlocks.silver_block);
             anvilRecipe(recipeOutput, IFWBlocks.copper_anvil, Items.COPPER_INGOT,Blocks.COPPER_BLOCK);
@@ -257,11 +274,22 @@ public class IFWRecipeProvider extends RecipeProvider {
         }
     }
 
-    private void bucketRecipe(RecipeOutput recipeOutput, ItemLike helmet, ItemLike material) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, helmet)
-                .pattern("CCC")
+    private void bucketRecipe(RecipeOutput recipeOutput, ItemLike bucket, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, bucket)
                 .pattern("C C")
+                .pattern(" C ")
                 .define('C', Ingredient.of(material))
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+    }
+    private void fishingRodRecipe(RecipeOutput recipeOutput, ItemLike fishingRod, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, fishingRod)
+                .pattern("  C")
+                .pattern(" CB")
+                .pattern("CAB")
+                .define('A', Ingredient.of(material))
+                .define('B', Tags.Items.STRINGS)
+                .define('C', Tags.Items.RODS)
                 .unlockedBy("has_material", has(material))
                 .save(recipeOutput);
     }

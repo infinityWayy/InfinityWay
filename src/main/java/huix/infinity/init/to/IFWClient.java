@@ -52,9 +52,11 @@ public final class IFWClient {
         registerFishingRodModel(IFWItems.copper_fishing_rod.get());
         registerFishingRodModel(IFWItems.silver_fishing_rod.get());
         registerFishingRodModel(IFWItems.gold_fishing_rod.get());
-        registerFishingRodModel(IFWItems.ancient_mental_fishing_rod.get());
+        registerFishingRodModel(IFWItems.ancient_metal_fishing_rod.get());
         registerFishingRodModel(IFWItems.mithril_fishing_rod.get());
         registerFishingRodModel(IFWItems.adamantium_fishing_rod.get());
+        registerFishingRodModel(IFWItems.obsidian_fishing_rod.get());
+        registerFishingRodModel(IFWItems.flint_fishing_rod.get());
     }
 
     @SubscribeEvent

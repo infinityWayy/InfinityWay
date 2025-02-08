@@ -18,8 +18,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class IFWItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(InfinityWay.MOD_ID);
 
-
-
+    public static final DeferredItem<Item> flint_fishing_rod =
+            ITEMS.register("flint_fishing_rod", item -> new FishingRod(IFWTiers.FLINT, new Item.Properties()));
+    public static final DeferredItem<Item> obsidian_fishing_rod =
+            ITEMS.register("obsidian_fishing_rod", item -> new FishingRod(IFWTiers.OBSIDIAN, new Item.Properties()));
     public static final DeferredItem<Item> copper_fishing_rod =
             ITEMS.register("copper_fishing_rod", item -> new FishingRod(IFWTiers.COPPER, new Item.Properties()));
     public static final DeferredItem<Item> silver_fishing_rod =
@@ -28,8 +30,8 @@ public class IFWItems {
             ITEMS.register("gold_fishing_rod", item -> new FishingRod(IFWTiers.GOLD, new Item.Properties()));
     public static final DeferredItem<Item> iron_fishing_rod =
             ITEMS.register("iron_fishing_rod", item -> new FishingRod(IFWTiers.IRON, new Item.Properties()));
-    public static final DeferredItem<Item> ancient_mental_fishing_rod =
-            ITEMS.register("ancient_mental_fishing_rod", item -> new FishingRod(IFWTiers.ANCIENT_METAL, new Item.Properties()));
+    public static final DeferredItem<Item> ancient_metal_fishing_rod =
+            ITEMS.register("ancient_metal_fishing_rod", item -> new FishingRod(IFWTiers.ANCIENT_METAL, new Item.Properties()));
     public static final DeferredItem<Item> mithril_fishing_rod =
             ITEMS.register("mithril_fishing_rod", item -> new FishingRod(IFWTiers.MITHRIL, new Item.Properties()));
     public static final DeferredItem<Item> adamantium_fishing_rod =

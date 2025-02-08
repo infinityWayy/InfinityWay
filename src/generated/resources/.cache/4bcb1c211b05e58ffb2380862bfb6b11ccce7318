@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-08T11:36:57.5645721	Item Models: ifw
+// 1.21.1	2025-02-08T17:34:37.6621057	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -12,6 +12,7 @@ d6252b8050296388484319e0b7802d87e37145c9 assets/ifw/models/item/adamantium_chain
 5b0fe5f5df84f334a00d3c0eb919220969e5f387 assets/ifw/models/item/adamantium_chestplate.json
 dc8055a3db02f6681f481fb673307b18c3dc655c assets/ifw/models/item/adamantium_dagger.json
 c8a6b48b298ee9d29b6aaaabaef19e0b8a3f453c assets/ifw/models/item/adamantium_door.json
+696cae537412a82f7064333075a6d900d988374d assets/ifw/models/item/adamantium_fishing_rod.json
 d48f5a36e28870e1bc8da500db4a866664b382fe assets/ifw/models/item/adamantium_helmet.json
 219d1e7704ea0d2d957a44b4f16675417076cbda assets/ifw/models/item/adamantium_hoe.json
 4c50eff81712d56799ec7efa768b53495742c208 assets/ifw/models/item/adamantium_horse_armor.json
@@ -39,6 +40,7 @@ b31cf0678f8e6885c6ceec7181dc0828787c6662 assets/ifw/models/item/ancient_metal_ch
 1873aea19291921b0f170d53414769450b33d27e assets/ifw/models/item/ancient_metal_chestplate.json
 c9a187449055c71d108567a3f72ae0dcf9460507 assets/ifw/models/item/ancient_metal_dagger.json
 ab896c79a3fcf6798b6345b0ba21df4159986406 assets/ifw/models/item/ancient_metal_door.json
+e6da518cab905630041607f719ae29567c4a8b1f assets/ifw/models/item/ancient_metal_fishing_rod.json
 f1f9341663b148dc3458e1a254dc7535074cd36a assets/ifw/models/item/ancient_metal_helmet.json
 bb66eb2f1f2056f58dcbd699e7639e31d67558ff assets/ifw/models/item/ancient_metal_hoe.json
 5ab2b2e33d3e073258d6660e7ad3f6206e89fb2d assets/ifw/models/item/ancient_metal_horse_armor.json
@@ -85,7 +87,7 @@ dfe50122e89b24181ef32136a75cd011777bb247 assets/ifw/models/item/copper_chainmail
 1685c7e336392d81f163331045921248d9707f6a assets/ifw/models/item/copper_chainmail_leggings.json
 b48ae423fdd5fcd584958ae6755352f1b18a0870 assets/ifw/models/item/copper_chestplate.json
 c4d3a1f9e163a0dd74194aada7729571c0d1aa03 assets/ifw/models/item/copper_dagger.json
-1441dfdd1b481843c8e273f338475674ea38c151 assets/ifw/models/item/copper_fishing_rod.json
+fae9b3fe41ebccde7a1fb8e6c08ad795d2fc3901 assets/ifw/models/item/copper_fishing_rod.json
 89ea118646cd173acf357f192bb3a2cbc52c7e51 assets/ifw/models/item/copper_helmet.json
 d86c2db79d04cfbbe7513a840ab719fca0a3c0dc assets/ifw/models/item/copper_hoe.json
 c7e2c8311db4f7919cb29003c0d97b8abcd19781 assets/ifw/models/item/copper_horse_armor.json
@@ -105,6 +107,7 @@ bdf58386b051960f0d26eeac6c1c261ab5c4070f assets/ifw/models/item/deepslate_silver
 daf6346ca531b34d4767b2afbcfc25245933aa70 assets/ifw/models/item/dough.json
 def1fa39cdc255f8288f173b3bf26d5754a443ce assets/ifw/models/item/emerald_shard.json
 3825f2f59ec7df9bfee134e0bd03f00b282e3189 assets/ifw/models/item/flint_axe.json
+f694586047bf21426b372d7faf08c4e1c416a2cb assets/ifw/models/item/flint_fishing_rod.json
 b4b8caad10fc5d851f534b9ebb4b46e12783b9ad assets/ifw/models/item/flint_hatchet.json
 cb414e841673adbd3efae70839c2905968c6618e assets/ifw/models/item/flint_knife.json
 33513bb693bfb4e90a3746f419fdb289bf0d250d assets/ifw/models/item/flint_shard.json
@@ -129,11 +132,13 @@ a9eb51b919962ffb0b891badeafee7c5905320a5 assets/ifw/models/item/golden_shears.js
 c93b2e3662bb6ee422fe0045e4a64131c603143d assets/ifw/models/item/golden_war_hammer.json
 57ae440ab64b95bab4b92b3129d1d6a9df583e2e assets/ifw/models/item/gold_bucket.json
 37d51f90d897bddc8a9db76709d485a70aff72ba assets/ifw/models/item/gold_door.json
+b7db7c441377ed9a1349d8bdbac54a2d23746367 assets/ifw/models/item/gold_fishing_rod.json
 6e1b24d388884ee48afb4e19595cad3003885c1a assets/ifw/models/item/ice_cream.json
 300083a89aac3816b28fb60d23aa2cfe3d102ade assets/ifw/models/item/iron_axe.json
 ae20e8de7408f01fb71649a24b74b4e2cc7134ed assets/ifw/models/item/iron_battle_axe.json
 1608ae092313f49c2ed04d9c2f0586a3b2575db4 assets/ifw/models/item/iron_chain.json
 6a37940deecacc4b56da893d580e567066fba8fa assets/ifw/models/item/iron_dagger.json
+b59d81db6f38930f9186b5ddf15ae5264bf7ffe8 assets/ifw/models/item/iron_fishing_rod.json
 da4476ce90d0cdfff7545052c83d2f24f640c0f4 assets/ifw/models/item/iron_hoe.json
 a493c9ef22ad24aa10189a2a80d1dc23647e729e assets/ifw/models/item/iron_mattock.json
 e092dcd707580cdacdc591211fe1fc1fad62c3d5 assets/ifw/models/item/iron_pickaxe.json
@@ -170,6 +175,7 @@ e772609ce74d7ee81b7c847a48d03cffca1860b8 assets/ifw/models/item/mithril_chainmai
 8fdc80cb01bbf903d95a79ba768404c2277b2f1e assets/ifw/models/item/mithril_chestplate.json
 ea29e0760f06de034b10e3aa768baff9b3546647 assets/ifw/models/item/mithril_dagger.json
 2ab914792711bdd369e2eb6c618df788d3a2ec0f assets/ifw/models/item/mithril_door.json
+282e6cfe67b850a3601042e3b31c86713e84b1a9 assets/ifw/models/item/mithril_fishing_rod.json
 3f29ee5fb713e33e262d59917803c58405e9d606 assets/ifw/models/item/mithril_helmet.json
 b05c29ef96c946c88a630a3cc037a613d136b0a5 assets/ifw/models/item/mithril_hoe.json
 c6df700f2faabaef51d85e63a417f8e2cc9d2e6d assets/ifw/models/item/mithril_horse_armor.json
@@ -185,6 +191,7 @@ f3af0c4afda1b5cac3ac9b0e330f327ed060e476 assets/ifw/models/item/mithril_shears.j
 e7e5e99b90e689830029c1329d84dc8b2f584384 assets/ifw/models/item/mithril_sword.json
 0b0da527055273db8644826d3a44aef2a23031f1 assets/ifw/models/item/mithril_war_hammer.json
 64ce3ba5dc98a947e871808aa0cc25bd0c2bf50b assets/ifw/models/item/mushroom_soup_cream.json
+3a1275b37bbbcd5ddc4a8e0b0a330f0ac922e0b9 assets/ifw/models/item/obsidian_fishing_rod.json
 4cb0fc2b77fa53b56d5ec1355a47c62ca7cb6832 assets/ifw/models/item/obsidian_shard.json
 91ba90af7c0c8342ea9ca0fa1ea5b092c936d923 assets/ifw/models/item/onion.json
 c9539f0edf9c64c651341986f29a904bb6d1479c assets/ifw/models/item/orange.json
@@ -251,6 +258,7 @@ db5a787f10a16253724ddd5cbf5c01f9d8453338 assets/ifw/models/item/silver_chainmail
 981fa6879d61387564d0e2383f0eb8a1be2ff514 assets/ifw/models/item/silver_chestplate.json
 9c044f73e389613cbf120e17710e90acbd0b74e6 assets/ifw/models/item/silver_dagger.json
 75c17d61a1a75564377baa8730a57698bad7bc24 assets/ifw/models/item/silver_door.json
+0dfc0855c3a774ee0417f48e00bca4619d3a6983 assets/ifw/models/item/silver_fishing_rod.json
 b36a4c80f27b7709c7fb03c5a79391c3b2fbf90b assets/ifw/models/item/silver_helmet.json
 30b1c9c1ce1d5fe23bf93a8f65c2472d3ae7420b assets/ifw/models/item/silver_hoe.json
 bd09177aa86819ee5d9ed44b4802846d512012a8 assets/ifw/models/item/silver_horse_armor.json

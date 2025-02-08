@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "ifw:obsidian_shard"
+    },
+    "B": {
+      "tag": "c:strings"
+    },
+    "C": {
+      "tag": "c:rods"
+    }
+  },
+  "pattern": [
+    "  C",
+    " CB",
+    "CAB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:obsidian_fishing_rod"
+  }
+}

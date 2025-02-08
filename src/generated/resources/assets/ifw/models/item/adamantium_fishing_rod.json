@@ -6,15 +6,9 @@
       "predicate": {
         "minecraft:cast": 1.0
       }
-    },
-    {
-      "model": "minecraft:item/fishing_rod_cast",
-      "predicate": {
-        "minecraft:cast": 1.0
-      }
     }
   ],
   "textures": {
-    "layer0": "ifw:item/copper_fishing_rod"
+    "layer0": "ifw:item/adamantium_fishing_rod"
   }
 }

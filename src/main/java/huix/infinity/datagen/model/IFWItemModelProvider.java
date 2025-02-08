@@ -15,13 +15,36 @@ public class IFWItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        withExistingParent("obsidian_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/obsidian_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
+        withExistingParent("flint_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/flint_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
         withExistingParent("copper_fishing_rod", "handheld_rod")
                 .texture("layer0", modLoc("item/copper_fishing_rod"))
                 .override()
                 .predicate(mcLoc("cast"), 1)
                 .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
                 .end();
-
+        withExistingParent("silver_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/silver_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
+        withExistingParent("copper_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/copper_fishing_rod"))
+                .override()
+                .predicate(mcLoc("cast"), 1)
+                .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
+                .end();
         withExistingParent("silver_fishing_rod", "handheld_rod")
                 .texture("layer0", modLoc("item/silver_fishing_rod"))
                 .override()
@@ -40,8 +63,8 @@ public class IFWItemModelProvider extends ItemModelProvider {
                 .predicate(mcLoc("cast"), 1)
                 .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
                 .end();
-        withExistingParent("ancient_mental_fishing_rod", "handheld_rod")
-                .texture("layer0", modLoc("item/ancient_mental_fishing_rod"))
+        withExistingParent("ancient_metal_fishing_rod", "handheld_rod")
+                .texture("layer0", modLoc("item/ancient_metal_fishing_rod"))
                 .override()
                 .predicate(mcLoc("cast"), 1)
                 .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
