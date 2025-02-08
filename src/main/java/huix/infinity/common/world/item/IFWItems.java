@@ -8,9 +8,7 @@ import huix.infinity.util.DurabilityHelper;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.MilkBucketItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
@@ -19,6 +17,19 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class IFWItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(InfinityWay.MOD_ID);
+
+
+
+    public static final DeferredItem<Item> copper_horse_armor =
+            ITEMS.register("copper_horse_armor", item -> new AnimalArmorItem(IFWArmorMaterials.copper, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> silver_horse_armor =
+            ITEMS.register("silver_horse_armor", item -> new AnimalArmorItem(IFWArmorMaterials.silver, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> ancient_metal_horse_armor =
+            ITEMS.register("ancient_metal_horse_armor", item -> new AnimalArmorItem(IFWArmorMaterials.ancient_metal, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> mithril_horse_armor =
+            ITEMS.register("mithril_horse_armor", item -> new AnimalArmorItem(IFWArmorMaterials.mithril, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> adamantium_horse_armor =
+            ITEMS.register("adamantium_horse_armor", item -> new AnimalArmorItem(IFWArmorMaterials.adamantium, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1)));
 
 
     public static final DeferredItem<Item> copper_bucket =
@@ -51,7 +62,6 @@ public class IFWItems {
     public static final DeferredItem<Item> tadpole_copper_bucket =
             ITEMS.register("tadpole_copper_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
                     Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.COPPER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-
     public static final DeferredItem<Item> stone_iron_bucket =
             ITEMS.registerSimpleItem("stone_iron_bucket", new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> pufferfish_iron_bucket =
@@ -72,7 +82,6 @@ public class IFWItems {
     public static final DeferredItem<Item> tadpole_iron_bucket =
             ITEMS.register("tadpole_iron_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
                     Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.IRON, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-
     public static final DeferredItem<Item> silver_bucket =
             ITEMS.register("silver_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.SILVER, new Item.Properties()));
     public static final DeferredItem<Item> water_silver_bucket =
@@ -103,7 +112,6 @@ public class IFWItems {
     public static final DeferredItem<Item> tadpole_silver_bucket =
             ITEMS.register("tadpole_silver_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
                     Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.SILVER, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-
     public static final DeferredItem<Item> gold_bucket =
             ITEMS.register("gold_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.GOLD, new Item.Properties()));
     public static final DeferredItem<Item> water_gold_bucket =
@@ -134,7 +142,6 @@ public class IFWItems {
     public static final DeferredItem<Item> tadpole_gold_bucket =
             ITEMS.register("tadpole_gold_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
                     Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.GOLD, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-
     public static final DeferredItem<Item> ancient_metal_bucket =
             ITEMS.register("ancient_metal_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.ANCIENT_METAL, new Item.Properties()));
     public static final DeferredItem<Item> water_ancient_metal_bucket =
@@ -165,7 +172,6 @@ public class IFWItems {
     public static final DeferredItem<Item> tadpole_ancient_metal_bucket =
             ITEMS.register("tadpole_ancient_metal_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
                     Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-
     public static final DeferredItem<Item> mithril_bucket =
             ITEMS.register("mithril_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.MITHRIL, new Item.Properties()));
     public static final DeferredItem<Item> water_mithril_bucket =
@@ -196,7 +202,6 @@ public class IFWItems {
     public static final DeferredItem<Item> tadpole_mithril_bucket =
             ITEMS.register("tadpole_mithril_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
                     Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-
     public static final DeferredItem<Item> adamantium_bucket =
             ITEMS.register("adamantium_bucket", item -> new IFWBucketItem(Fluids.EMPTY, IFWTiers.ADAMANTIUM, new Item.Properties()));
     public static final DeferredItem<Item> water_adamantium_bucket =
@@ -227,8 +232,6 @@ public class IFWItems {
     public static final DeferredItem<Item> tadpole_adamantium_bucket =
             ITEMS.register("tadpole_adamantium_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
                     Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
-
-
     public static final DeferredItem<Item> manure =
             ITEMS.registerSimpleItem("manure", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> flour =
@@ -249,7 +252,6 @@ public class IFWItems {
             ITEMS.registerSimpleItem("mithril_chain", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> adamantium_chain =
             ITEMS.registerSimpleItem("adamantium_chain", new Item.Properties().stacksTo(16));
-
     public static final DeferredItem<Item> copper_helmet =
             ITEMS.register("copper_helmet", item -> new ArmorItem(IFWArmorMaterials.copper, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(4))));
@@ -286,8 +288,6 @@ public class IFWItems {
     public static final DeferredItem<Item> rusted_iron_boots =
             ITEMS.register("rusted_iron_boots", item -> new ArmorItem(IFWArmorMaterials.rusted_iron, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(3))));
-
-
     public static final DeferredItem<Item> ancient_metal_helmet =
             ITEMS.register("ancient_metal_helmet", item -> new ArmorItem(IFWArmorMaterials.ancient_metal, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(DurabilityHelper.Armor.HELMET.getDurability(16))));
@@ -728,7 +728,6 @@ public class IFWItems {
     public static final DeferredItem<Item> rusted_iron_dagger =
             ITEMS.register("rusted_iron_dagger", item -> new DaggerWeapon(IFWTiers.RUSTED_IRON,
                     new Item.Properties().attributes(SwordWeapon.createAttributes(IFWTiers.RUSTED_IRON,3.0F, -1.5F))));
-
     //Food
     public static final DeferredItem<Item> salad =
             ITEMS.registerSimpleItem("salad", new Item.Properties().stacksTo(4).food(IFWFoods.salad));

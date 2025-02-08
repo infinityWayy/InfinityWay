@@ -16,6 +16,11 @@ public class IFWUSLang extends LanguageProvider {
         add("itemGroup.ifw.block", "IFW| Block");
         add("itemGroup.ifw.item", "IFW| Item");
         add("itemGroup.ifw.tool", "IFW| Tool");
+        add(IFWItems.copper_horse_armor.get(), "Copper Horse Armor");
+        add(IFWItems.silver_horse_armor.get(), "Silver Horse Armor");
+        add(IFWItems.ancient_metal_horse_armor.get(), "Ancient Metal Horse Armor");
+        add(IFWItems.mithril_horse_armor.get(), "Mithril Horse Armor");
+        add(IFWItems.adamantium_horse_armor.get(), "Adamantium Horse Armor");
         add(IFWItems.copper_bucket.get(), "Copper Bucket");
         add(IFWItems.water_copper_bucket.get(), "Copper Water Bucket");
         add(IFWItems.lava_copper_bucket.get(), "Copper Lava Bucket");

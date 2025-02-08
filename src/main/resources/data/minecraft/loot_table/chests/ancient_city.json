@@ -92,7 +92,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:diamond_horse_armor",
+          "name": "ifw:ancient_metal_horse_armor",
           "weight": 2
         },
         {

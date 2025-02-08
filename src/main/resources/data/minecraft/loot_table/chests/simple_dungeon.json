@@ -37,12 +37,17 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:iron_horse_armor",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "ifw:copper_horse_armor",
           "weight": 15
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:diamond_horse_armor",
-          "weight": 5
+          "name": "ifw:silver_horse_armor",
+          "weight": 15
         },
         {
           "type": "minecraft:item",

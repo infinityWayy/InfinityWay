@@ -1,9 +1,10 @@
 package huix.infinity.mixin.world.item;
 
 import huix.infinity.common.world.item.*;
+import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.item.tier.IFWTiers;
+import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
@@ -65,5 +66,22 @@ public class ItemsInjected {
     private static SolidBucketItem ifw_rebuildBucket_3(Block block, SoundEvent placeSound, Item.Properties properties) {
         return new IFWSolidBucketItem(block, placeSound, IFWTiers.IRON, properties);
     }
+
+    @Redirect(at = @At(value = "NEW", target = "(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/AnimalArmorItem$BodyType;ZLnet/minecraft/world/item/Item$Properties;)Lnet/minecraft/world/item/AnimalArmorItem;"
+            , ordinal = 1), method = "<clinit>")
+    private static AnimalArmorItem ifw_rebuildAnimalArmor_0(Holder<ArmorMaterial> armorMaterial, AnimalArmorItem.BodyType bodyType, boolean hasOverlay, Item.Properties properties) {
+        return new AnimalArmorItem(IFWArmorMaterials.iron, bodyType, hasOverlay, properties);
+    }
+    @Redirect(at = @At(value = "NEW", target = "(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/AnimalArmorItem$BodyType;ZLnet/minecraft/world/item/Item$Properties;)Lnet/minecraft/world/item/AnimalArmorItem;"
+            , ordinal = 2), method = "<clinit>")
+    private static AnimalArmorItem ifw_rebuildAnimalArmor_1(Holder<ArmorMaterial> armorMaterial, AnimalArmorItem.BodyType bodyType, boolean hasOverlay, Item.Properties properties) {
+        return new AnimalArmorItem(IFWArmorMaterials.golden, bodyType, hasOverlay, properties);
+    }
+    @Redirect(at = @At(value = "NEW", target = "(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/AnimalArmorItem$BodyType;ZLnet/minecraft/world/item/Item$Properties;)Lnet/minecraft/world/item/AnimalArmorItem;"
+            , ordinal = 4), method = "<clinit>")
+    private static AnimalArmorItem ifw_rebuildAnimalArmor_2(Holder<ArmorMaterial> armorMaterial, AnimalArmorItem.BodyType bodyType, boolean hasOverlay, Item.Properties properties) {
+        return new AnimalArmorItem(IFWArmorMaterials.leather, bodyType, hasOverlay, properties);
+    }
+
 
 }

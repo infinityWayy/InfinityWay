@@ -16,6 +16,11 @@ public class IFWCNLang extends LanguageProvider {
         add("itemGroup.ifw.block", "IFW| 方块");
         add("itemGroup.ifw.item", "IFW| 物品");
         add("itemGroup.ifw.tool", "IFW| 工具");
+        add(IFWItems.copper_horse_armor.get(), "铜马铠");
+        add(IFWItems.silver_horse_armor.get(), "银马铠");
+        add(IFWItems.ancient_metal_horse_armor.get(), "远古金属马铠");
+        add(IFWItems.mithril_horse_armor.get(), "秘银马铠");
+        add(IFWItems.adamantium_horse_armor.get(), "艾德曼马铠");
         add(IFWItems.copper_bucket.get(), "铜桶");
         add(IFWItems.water_copper_bucket.get(), "铜水桶");
         add(IFWItems.lava_copper_bucket.get(), "铜熔岩桶");

@@ -147,6 +147,11 @@ public class IFWItemGroups {
                 output.accept(IFWItems.tropical_adamantium_bucket.get());
                 output.accept(IFWItems.axolotl_adamantium_bucket.get());
                 output.accept(IFWItems.tadpole_adamantium_bucket.get());
+                output.accept(IFWItems.copper_horse_armor.get());
+                output.accept(IFWItems.silver_horse_armor.get());
+                output.accept(IFWItems.ancient_metal_horse_armor.get());
+                output.accept(IFWItems.mithril_horse_armor.get());
+                output.accept(IFWItems.adamantium_horse_armor.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tool_tab =

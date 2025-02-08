@@ -80,7 +80,6 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
                 IFWItems.milk_gold_bucket.get(), IFWItems.milk_ancient_metal_bucket.get(), IFWItems.milk_mithril_bucket.get(), IFWItems.milk_adamantium_bucket.get());
         tag(IFWItemTags.BUCKETS_STONE).add(IFWItems.stone_copper_bucket.get(), IFWItems.stone_iron_bucket.get(), IFWItems.stone_silver_bucket.get(),
                 IFWItems.stone_gold_bucket.get(), IFWItems.stone_ancient_metal_bucket.get(), IFWItems.stone_mithril_bucket.get(), IFWItems.stone_adamantium_bucket.get());
-
         tag(Tags.Items.BUCKETS_ENTITY_WATER).add(IFWItems.pufferfish_copper_bucket.get(), IFWItems.salmon_copper_bucket.get(), IFWItems.cod_copper_bucket.get()
                 , IFWItems.axolotl_copper_bucket.get(), IFWItems.tadpole_copper_bucket.get(), IFWItems.pufferfish_iron_bucket.get(), IFWItems.salmon_iron_bucket.get(), IFWItems.cod_iron_bucket.get()
                 , IFWItems.axolotl_iron_bucket.get(), IFWItems.tadpole_iron_bucket.get()).addTag(IFWItemTags.BUCKETS_TROPICAL_FISH).add(IFWItems.pufferfish_silver_bucket.get(), IFWItems.salmon_silver_bucket.get(), IFWItems.cod_silver_bucket.get()

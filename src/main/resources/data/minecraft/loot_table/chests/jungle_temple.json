@@ -131,7 +131,11 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:diamond_horse_armor"
+          "name": "ifw:copper_horse_armor"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "ifw:silver_horse_armor"
         },
         {
           "type": "minecraft:item",

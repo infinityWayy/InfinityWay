@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-06T20:34:55.4962935	Item Models: ifw
+// 1.21.1	2025-02-08T09:26:43.6806532	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -14,6 +14,7 @@ dc8055a3db02f6681f481fb673307b18c3dc655c assets/ifw/models/item/adamantium_dagge
 c8a6b48b298ee9d29b6aaaabaef19e0b8a3f453c assets/ifw/models/item/adamantium_door.json
 d48f5a36e28870e1bc8da500db4a866664b382fe assets/ifw/models/item/adamantium_helmet.json
 219d1e7704ea0d2d957a44b4f16675417076cbda assets/ifw/models/item/adamantium_hoe.json
+4c50eff81712d56799ec7efa768b53495742c208 assets/ifw/models/item/adamantium_horse_armor.json
 25987a8313dc5f72acbff0ffde735f1ee9dfa7e0 assets/ifw/models/item/adamantium_ingot.json
 4a862e50d0bf8c5a848e0c07bf6953cca20e104d assets/ifw/models/item/adamantium_leggings.json
 0f699535fa91d46579b8e89447ef102adad22089 assets/ifw/models/item/adamantium_mattock.json
@@ -40,6 +41,7 @@ c9a187449055c71d108567a3f72ae0dcf9460507 assets/ifw/models/item/ancient_metal_da
 ab896c79a3fcf6798b6345b0ba21df4159986406 assets/ifw/models/item/ancient_metal_door.json
 f1f9341663b148dc3458e1a254dc7535074cd36a assets/ifw/models/item/ancient_metal_helmet.json
 bb66eb2f1f2056f58dcbd699e7639e31d67558ff assets/ifw/models/item/ancient_metal_hoe.json
+5ab2b2e33d3e073258d6660e7ad3f6206e89fb2d assets/ifw/models/item/ancient_metal_horse_armor.json
 0439e99dbf6100c129dcb65146094cbe4206bcdf assets/ifw/models/item/ancient_metal_ingot.json
 589bfa5684c30b6057c1f8b2d0f346528fe1d4b0 assets/ifw/models/item/ancient_metal_leggings.json
 9f247b9246ac86fe654ff027153de1ffd9901b0f assets/ifw/models/item/ancient_metal_mattock.json
@@ -85,6 +87,7 @@ b48ae423fdd5fcd584958ae6755352f1b18a0870 assets/ifw/models/item/copper_chestplat
 c4d3a1f9e163a0dd74194aada7729571c0d1aa03 assets/ifw/models/item/copper_dagger.json
 89ea118646cd173acf357f192bb3a2cbc52c7e51 assets/ifw/models/item/copper_helmet.json
 d86c2db79d04cfbbe7513a840ab719fca0a3c0dc assets/ifw/models/item/copper_hoe.json
+c7e2c8311db4f7919cb29003c0d97b8abcd19781 assets/ifw/models/item/copper_horse_armor.json
 f6743e48ef4a71e6d3e27bb4bb0bc9c25ae5c350 assets/ifw/models/item/copper_leggings.json
 d08ebf266731bc04ddd4daee055639064e5ce9c3 assets/ifw/models/item/copper_mattock.json
 19b9572f513ea1f2286e22339a447968609a29a8 assets/ifw/models/item/copper_nugget.json
@@ -168,6 +171,7 @@ ea29e0760f06de034b10e3aa768baff9b3546647 assets/ifw/models/item/mithril_dagger.j
 2ab914792711bdd369e2eb6c618df788d3a2ec0f assets/ifw/models/item/mithril_door.json
 3f29ee5fb713e33e262d59917803c58405e9d606 assets/ifw/models/item/mithril_helmet.json
 b05c29ef96c946c88a630a3cc037a613d136b0a5 assets/ifw/models/item/mithril_hoe.json
+c6df700f2faabaef51d85e63a417f8e2cc9d2e6d assets/ifw/models/item/mithril_horse_armor.json
 e5002a3f2708413b132b2308d796b242d8905728 assets/ifw/models/item/mithril_ingot.json
 a207222bb9eb19e62c41328161eb21281091f9cd assets/ifw/models/item/mithril_leggings.json
 e5c6ceeecca120d4f3e25381549f21382da76958 assets/ifw/models/item/mithril_mattock.json
@@ -248,6 +252,7 @@ db5a787f10a16253724ddd5cbf5c01f9d8453338 assets/ifw/models/item/silver_chainmail
 75c17d61a1a75564377baa8730a57698bad7bc24 assets/ifw/models/item/silver_door.json
 b36a4c80f27b7709c7fb03c5a79391c3b2fbf90b assets/ifw/models/item/silver_helmet.json
 30b1c9c1ce1d5fe23bf93a8f65c2472d3ae7420b assets/ifw/models/item/silver_hoe.json
+bd09177aa86819ee5d9ed44b4802846d512012a8 assets/ifw/models/item/silver_horse_armor.json
 b6616ed87f975f8d01e61e462451dd3dfd9dbb74 assets/ifw/models/item/silver_ingot.json
 4637dff154c82fb1573260c0784647236ac320e8 assets/ifw/models/item/silver_leggings.json
 7e14689354485d4b1d38740acf70f15b31b5167c assets/ifw/models/item/silver_mattock.json

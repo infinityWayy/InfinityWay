@@ -223,6 +223,11 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.stone_ancient_metal_bucket.get());
         basicItem(IFWItems.pufferfish_ancient_metal_bucket.get());
         basicItem(IFWItems.salmon_ancient_metal_bucket.get());
+        basicItem(IFWItems.copper_horse_armor.get());
+        basicItem(IFWItems.silver_horse_armor.get());
+        basicItem(IFWItems.ancient_metal_horse_armor.get());
+        basicItem(IFWItems.mithril_horse_armor.get());
+        basicItem(IFWItems.adamantium_horse_armor.get());
         basicItem(IFWItems.cod_ancient_metal_bucket.get());
         basicItem(IFWItems.tropical_ancient_metal_bucket.get());
         basicItem(IFWItems.axolotl_ancient_metal_bucket.get());
