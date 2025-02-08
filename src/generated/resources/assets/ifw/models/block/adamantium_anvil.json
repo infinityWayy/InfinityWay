@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/anvil",
-  "textures": {
-    "body": "ifw:block/adamantium_anvil",
-    "particle": "ifw:block/adamantium_anvil_top",
-    "top": "ifw:block/adamantium_anvil_top"
-  }
-}

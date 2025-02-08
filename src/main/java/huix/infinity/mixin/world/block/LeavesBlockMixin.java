@@ -28,7 +28,7 @@ public abstract class LeavesBlockMixin extends Block {
 
     @Inject(method = "tick", at = @At("RETURN"))
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
-        if (random.nextInt(250) == 0) {
+        if (random.nextInt(2500) == 0) {
             dropResources(state, level, pos);
         }
     }

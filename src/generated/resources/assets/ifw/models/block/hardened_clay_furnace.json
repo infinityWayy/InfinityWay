@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "ifw:block/hardened_clay_furnace_front",
-    "side": "ifw:block/hardened_clay_furnace_side",
-    "top": "ifw:block/hardened_clay_furnace_top"
-  }
-}

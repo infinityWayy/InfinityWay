@@ -10,6 +10,7 @@ import huix.infinity.datagen.loot.IFWLootTableProvider;
 import huix.infinity.datagen.recipe.IFWRecipeProvider;
 import huix.infinity.datagen.tag.IFWBlockTagsProvider;
 import huix.infinity.datagen.tag.IFWEnchantmentTagsProvider;
+import huix.infinity.datagen.tag.IFWEntityTypeTagsProvider;
 import huix.infinity.datagen.tag.IFWItemTagsProvider;
 import huix.infinity.datagen.worldgen.IFWBiomeModifiers;
 import huix.infinity.init.InfinityWay;
@@ -46,6 +47,8 @@ public final class IFWGatherData {
         IFWBlockTagsProvider blockTags = new IFWBlockTagsProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new IFWItemTagsProvider(output, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
+        IFWEntityTypeTagsProvider entityTags = new IFWEntityTypeTagsProvider(output, lookupProvider, existingFileHelper);
+        generator.addProvider(event.includeServer(), entityTags);
 
         generator.addProvider(event.includeServer(), new IFWGlobalLootModifierProvider(output, lookupProvider));
         generator.addProvider(event.includeServer(), (DataProvider.Factory<IFWBiomeModifiers>) packOutput -> new IFWBiomeModifiers(packOutput, lookupProvider));

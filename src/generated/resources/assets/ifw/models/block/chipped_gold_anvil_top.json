@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/anvil",
-  "textures": {
-    "body": "ifw:block/gold_anvil",
-    "particle": "ifw:block/chipped_gold_anvil_top",
-    "top": "ifw:block/chipped_gold_anvil_top"
-  }
-}

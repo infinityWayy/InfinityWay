@@ -1,5 +1,7 @@
 package huix.infinity.common.worldgen;
 
+import huix.infinity.common.core.tag.IFWEntityTypeTags;
+import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -9,10 +11,11 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
-import net.minecraft.data.worldgen.placement.VillagePlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -23,6 +26,7 @@ import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
+import java.util.List;
 import java.util.Set;
 
 public class IFWFeatures {
@@ -31,6 +35,10 @@ public class IFWFeatures {
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_features"));
     public static final ResourceKey<BiomeModifier> REMOVE_FEATURES = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_features"));
+    public static final ResourceKey<BiomeModifier> ADD_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_spawns"));
+    public static final ResourceKey<BiomeModifier> REMOVE_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_spawns"));
 
 
 
@@ -53,18 +61,38 @@ public class IFWFeatures {
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, bootstrap -> {
                 HolderGetter<Biome> biomes = bootstrap.lookup(Registries.BIOME);
                 HolderGetter<PlacedFeature> placedFeatures = bootstrap.lookup(Registries.PLACED_FEATURE);
+                HolderGetter<EntityType<?>> entities = bootstrap.lookup(Registries.ENTITY_TYPE);
+
                 //add
                 bootstrap.register(ADD_FEATURES, new BiomeModifiers.AddFeaturesBiomeModifier(
                                 biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
                                 HolderSet.direct(placedFeatures.getOrThrow(IFWOrePlacements.ore_silver), placedFeatures.getOrThrow(IFWOrePlacements.ore_mithril),
                                         placedFeatures.getOrThrow(IFWOrePlacements.ore_adamantium)),
                                 GenerationStep.Decoration.UNDERGROUND_ORES));
+
+                //add animal
+                bootstrap.register(ADD_SPAWNS, new BiomeModifiers.AddSpawnsBiomeModifier(
+                        biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
+                        List.of(
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.CHICKEN.get(), 10, 4, 4),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.SHEEP.get(), 12, 4, 4),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.PIG.get(), 10, 4, 4),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.COW.get(), 8, 4, 4)
+                        )
+                ));
+
                 //remove
                 bootstrap.register(REMOVE_FEATURES, new BiomeModifiers.RemoveFeaturesBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
                         HolderSet.direct(placedFeatures.getOrThrow(MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND),
                                 placedFeatures.getOrThrow(VegetationPlacements.PATCH_MELON), placedFeatures.getOrThrow(VegetationPlacements.PATCH_MELON_SPARSE)),
                         Set.of(GenerationStep.Decoration.LAKES, GenerationStep.Decoration.VEGETAL_DECORATION)));
+
+                //remove animal
+                bootstrap.register(REMOVE_SPAWNS, new BiomeModifiers.RemoveSpawnsBiomeModifier(
+                        biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
+                        entities.getOrThrow(IFWEntityTypeTags.LIVESTOCK)
+                ));
             });
 
 }
