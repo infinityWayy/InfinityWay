@@ -21,6 +21,10 @@ public class ReplaceHelper {
         patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(IFWDataComponents.ifw_food_data.get(), add).build());
     }
 
+    public static void beCookLevel(Item patchItem, int value) {
+        patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(IFWDataComponents.ifw_be_cooking_level.get(), value).build());
+    }
+
     public static void stackSize(Item patchItem, int size) {
         patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(DataComponents.MAX_STACK_SIZE, size).build());
     }

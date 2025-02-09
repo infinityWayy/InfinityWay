@@ -2,12 +2,11 @@
   "type": "minecraft:smelting",
   "category": "food",
   "cookingtime": 200,
-  "experience": 1.0,
+  "experience": 1,
   "ingredient": {
-    "item": "ifw:cooked_worm"
+    "item": "minecraft:kelp"
   },
   "result": {
-    "count": 1,
-    "id": "ifw:worm"
+    "id": "minecraft:dried_kelp"
   }
 }

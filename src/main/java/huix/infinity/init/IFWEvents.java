@@ -66,6 +66,7 @@ public class IFWEvents {
 
     public static void injectItem(final DataMapsUpdatedEvent event) {
         IFWLoading.rebuildStackSize();
+        IFWLoading.injectCookingLevel();
         IFWLoading.injectAnvil();
     }
 
@@ -174,8 +175,6 @@ public class IFWEvents {
     public static void injectFuel(final FurnaceFuelBurnTimeEvent event) {
         if (event.getItemStack().is(Items.TORCH))
             event.setBurnTime(800);
-        if (event.getItemStack().is(Items.LAVA_BUCKET))
-            event.setBurnTime(3200);
         if (event.getItemStack().is(ItemTags.ARROWS))
             event.setBurnTime(100);
         if (event.getItemStack().is(IFWItems.manure))
@@ -185,7 +184,7 @@ public class IFWEvents {
         if (event.getItemStack().is(IFWItems.wooden_club))
             event.setBurnTime(200);
         if (event.getItemStack().is(Tags.Items.BUCKETS_LAVA))
-            event.setBurnTime(20000);
+            event.setBurnTime(3200);
     }
 
 

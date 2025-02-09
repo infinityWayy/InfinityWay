@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface BlockExtension {
 
-    default List<ItemStack> asList(final Item item) {
+    default List<ItemStack> asListToStack(final Item item) {
         return Lists.newArrayList(new ItemStack(item));
     }
 
-    default List<ItemStack> asList(final ItemStack item) {
+    default List<ItemStack> asListToStack(final ItemStack item) {
         return Lists.newArrayList(item);
     }
 

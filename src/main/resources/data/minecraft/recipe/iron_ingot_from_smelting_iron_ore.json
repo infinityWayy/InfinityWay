@@ -1,7 +1,13 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:false"
-    }
-  ]
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 10,
+  "group": "iron_ingot",
+  "ingredient": {
+    "item": "minecraft:iron_ore"
+  },
+  "result": {
+    "id": "minecraft:iron_ingot"
+  }
 }

@@ -2,7 +2,6 @@ package huix.infinity.datagen.recipe;
 
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
-import huix.infinity.common.world.item.crafting.CookingLevelRecipeBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -420,9 +419,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET)).save(recipeOutput);
     }
     private void foodRecipe(RecipeOutput recipeOutput) {
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.cooked_worm), RecipeCategory.FOOD, IFWItems.worm,
-                        1.0F, 200, 1)
-                .unlockedBy("has_worm", has(IFWItems.worm)).save(recipeOutput, "worm_smelting");
+
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.salad, 1)
             .requires(Items.BOWL, 1)
@@ -640,245 +637,28 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .save(recipeOutput);
     }
     private void cookingRecipe(RecipeOutput recipeOutput) {
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RAW_COPPER), RecipeCategory.MISC, Items.COPPER_INGOT,
-                        10.0F, 200, 3)
-                .unlockedBy("has_raw_copper", has(Items.RAW_COPPER))
-                .save(recipeOutput, "raw_copper_smelting");
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_silver), RecipeCategory.MISC, IFWItems.silver_ingot,
-                        15.0F, 200, 3)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_silver), RecipeCategory.MISC, IFWItems.silver_ingot,
+                        15.0F, 200)
                 .unlockedBy("has_raw_silver", has(IFWItems.raw_silver))
-                .save(recipeOutput, "raw_silver_smelting");
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RAW_GOLD), RecipeCategory.MISC, Items.GOLD_INGOT,
-                        20.0F, 200, 3)
+                .save(recipeOutput);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_GOLD), RecipeCategory.MISC, Items.GOLD_INGOT,
+                        20.0F, 200)
                 .unlockedBy("has_raw_gold", has(Items.RAW_GOLD))
-                .save(recipeOutput, "raw_gold_smelting");
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RAW_IRON), RecipeCategory.MISC, Items.IRON_INGOT,
-                        10.0F, 200, 3)
-                .unlockedBy("has_raw_iron", has(Items.RAW_IRON))
-                .save(recipeOutput, "raw_iron_smelting");
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_mithril), RecipeCategory.MISC, IFWItems.mithril_ingot,
-                        40.0F, 200, 4)
+                .save(recipeOutput);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_mithril), RecipeCategory.MISC, IFWItems.mithril_ingot,
+                        40.0F, 200)
                 .unlockedBy("has_raw_mithril", has(IFWItems.raw_mithril))
-                .save(recipeOutput, "raw_mithril_smelting");
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_adamantium), RecipeCategory.MISC, IFWItems.adamantium_ingot,
-                        100.0F, 200, 5)
+                .save(recipeOutput);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_adamantium), RecipeCategory.MISC, IFWItems.adamantium_ingot,
+                        100.0F, 200)
                 .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium))
-                .save(recipeOutput, "raw_adamantium_smelting");
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(IFWItems.dough), RecipeCategory.FOOD, Items.BREAD,
-                        1.0F, 200, 1)
-                .unlockedBy("has_dough", has(IFWItems.dough)).save(recipeOutput, "dough_smelting");
+                .save(recipeOutput);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.dough), RecipeCategory.FOOD, Items.BREAD,
+                        1.0F, 200)
+                .unlockedBy("has_dough", has(IFWItems.dough)).save(recipeOutput, "ifw_bread");
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.cooked_worm), RecipeCategory.FOOD, IFWItems.worm,
+                        1.0F, 200)
+                .unlockedBy("has_worm", has(IFWItems.worm)).save(recipeOutput, "worm_smelting");
 
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.POTATO), RecipeCategory.FOOD, Items.BAKED_POTATO, 0.35F, 200)
-                .unlockedBy("has_potato", has(Items.POTATO))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.CLAY_BALL), RecipeCategory.MISC, Items.BRICK, 0.3F, 200)
-                .unlockedBy("has_clay_ball", has(Items.CLAY_BALL))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(ItemTags.LOGS_THAT_BURN), RecipeCategory.MISC, Items.CHARCOAL, 0.15F, 200)
-                .unlockedBy("has_log", has(ItemTags.LOGS_THAT_BURN))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.CHORUS_FRUIT), RecipeCategory.MISC, Items.POPPED_CHORUS_FRUIT, 0.1F, 200)
-                .unlockedBy("has_chorus_fruit", has(Items.CHORUS_FRUIT))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.BEEF), RecipeCategory.FOOD, Items.COOKED_BEEF, 5, 200)
-                .unlockedBy("has_beef", has(Items.BEEF))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.CHICKEN), RecipeCategory.FOOD, Items.COOKED_CHICKEN, 3, 200)
-                .unlockedBy("has_chicken", has(Items.CHICKEN))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.COD), RecipeCategory.FOOD, Items.COOKED_COD, 2, 200)
-                .unlockedBy("has_cod", has(Items.COD))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.KELP), RecipeCategory.FOOD, Items.DRIED_KELP, 1, 200)
-                .unlockedBy("has_kelp", has(Blocks.KELP))
-                .save(recipeOutput, getSmeltingRecipeName(Items.DRIED_KELP));
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.SALMON), RecipeCategory.FOOD, Items.COOKED_SALMON, 3, 200)
-                .unlockedBy("has_salmon", has(Items.SALMON))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.MUTTON), RecipeCategory.FOOD, Items.COOKED_MUTTON, 3, 200)
-                .unlockedBy("has_mutton", has(Items.MUTTON))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.PORKCHOP), RecipeCategory.FOOD, Items.COOKED_PORKCHOP, 4, 200)
-                .unlockedBy("has_porkchop", has(Items.PORKCHOP))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Items.RABBIT), RecipeCategory.FOOD, Items.COOKED_RABBIT, 2, 200)
-                .unlockedBy("has_rabbit", has(Items.RABBIT))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.SEA_PICKLE), RecipeCategory.MISC, Items.LIME_DYE, 1, 200)
-                .unlockedBy("has_sea_pickle", has(Blocks.SEA_PICKLE))
-                .save(recipeOutput, getSmeltingRecipeName(Items.LIME_DYE));
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.CACTUS.asItem()), RecipeCategory.MISC, Items.GREEN_DYE, 1.0F, 200)
-                .unlockedBy("has_cactus", has(Blocks.CACTUS))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(
-                                IFWItems.golden_pickaxe,
-                                IFWItems.golden_shovel,
-                                IFWItems.golden_axe,
-                                IFWItems.golden_hoe,
-                                IFWItems.golden_sword,
-                                Items.GOLDEN_HELMET,
-                                Items.GOLDEN_CHESTPLATE,
-                                Items.GOLDEN_LEGGINGS,
-                                Items.GOLDEN_BOOTS
-                        ),
-                        RecipeCategory.MISC,
-                        Items.GOLD_NUGGET,
-                        1F,
-                        200, 2
-                )
-                .unlockedBy("has_golden_pickaxe", has(IFWItems.golden_pickaxe))
-                .unlockedBy("has_golden_shovel", has(IFWItems.golden_shovel))
-                .unlockedBy("has_golden_axe", has(IFWItems.golden_axe))
-                .unlockedBy("has_golden_hoe", has(IFWItems.golden_hoe))
-                .unlockedBy("has_golden_sword", has(IFWItems.golden_sword))
-                .unlockedBy("has_golden_helmet", has(Items.GOLDEN_HELMET))
-                .unlockedBy("has_golden_chestplate", has(Items.GOLDEN_CHESTPLATE))
-                .unlockedBy("has_golden_leggings", has(Items.GOLDEN_LEGGINGS))
-                .unlockedBy("has_golden_boots", has(Items.GOLDEN_BOOTS))
-                .save(recipeOutput, getSmeltingRecipeName(Items.GOLD_NUGGET));
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(
-                                IFWItems.iron_pickaxe,
-                                IFWItems.iron_shovel,
-                                IFWItems.iron_axe,
-                                IFWItems.iron_hoe,
-                                IFWItems.iron_sword,
-                                Items.IRON_HELMET,
-                                Items.IRON_CHESTPLATE,
-                                Items.IRON_LEGGINGS,
-                                Items.IRON_BOOTS
-                        ),
-                        RecipeCategory.MISC,
-                        Items.IRON_NUGGET,
-                        1,
-                        200, 2
-                )
-                .unlockedBy("has_iron_pickaxe", has(IFWItems.iron_pickaxe))
-                .unlockedBy("has_iron_shovel", has(IFWItems.iron_shovel))
-                .unlockedBy("has_iron_axe", has(IFWItems.iron_axe))
-                .unlockedBy("has_iron_hoe", has(IFWItems.iron_hoe))
-                .unlockedBy("has_iron_sword", has(IFWItems.iron_sword))
-                .unlockedBy("has_iron_helmet", has(Items.IRON_HELMET))
-                .unlockedBy("has_iron_chestplate", has(Items.IRON_CHESTPLATE))
-                .unlockedBy("has_iron_leggings", has(Items.IRON_LEGGINGS))
-                .unlockedBy("has_iron_boots", has(Items.IRON_BOOTS))
-                .save(recipeOutput, getSmeltingRecipeName(Items.IRON_NUGGET));
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.CLAY), RecipeCategory.BUILDING_BLOCKS, Blocks.TERRACOTTA.asItem(), 3.5F, 200)
-                .unlockedBy("has_clay_block", has(Blocks.CLAY))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.NETHERRACK), RecipeCategory.MISC, Items.NETHER_BRICK, 1, 200)
-                .unlockedBy("has_netherrack", has(Blocks.NETHERRACK))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.NETHER_QUARTZ_ORE), RecipeCategory.MISC, Items.QUARTZ, 0.2F, 200)
-                .unlockedBy("has_nether_quartz_ore", has(Blocks.NETHER_QUARTZ_ORE))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.WET_SPONGE), RecipeCategory.BUILDING_BLOCKS, Blocks.SPONGE.asItem(), 0.15F, 200)
-                .unlockedBy("has_wet_sponge", has(Blocks.WET_SPONGE))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.STONE), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_STONE.asItem(), 0.1F, 200)
-                .unlockedBy("has_stone", has(Blocks.STONE))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.SANDSTONE), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_SANDSTONE.asItem(), 0.1F, 200)
-                .unlockedBy("has_sandstone", has(Blocks.SANDSTONE))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.RED_SANDSTONE), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_RED_SANDSTONE.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_red_sandstone", has(Blocks.RED_SANDSTONE))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.QUARTZ_BLOCK), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_QUARTZ.asItem(), 0.1F, 200)
-                .unlockedBy("has_quartz_block", has(Blocks.QUARTZ_BLOCK))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.STONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, Blocks.CRACKED_STONE_BRICKS.asItem(), 0.1F, 200)
-                .unlockedBy("has_stone_bricks", has(Blocks.STONE_BRICKS))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.BLACK_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.BLACK_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_black_terracotta", has(Blocks.BLACK_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.BLUE_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.BLUE_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_blue_terracotta", has(Blocks.BLUE_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.BROWN_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.BROWN_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_brown_terracotta", has(Blocks.BROWN_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.CYAN_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.CYAN_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_cyan_terracotta", has(Blocks.CYAN_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.GRAY_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.GRAY_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_gray_terracotta", has(Blocks.GRAY_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.GREEN_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.GREEN_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_green_terracotta", has(Blocks.GREEN_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.LIGHT_BLUE_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_light_blue_terracotta", has(Blocks.LIGHT_BLUE_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.LIGHT_GRAY_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.LIGHT_GRAY_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_light_gray_terracotta", has(Blocks.LIGHT_GRAY_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.LIME_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.LIME_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_lime_terracotta", has(Blocks.LIME_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.MAGENTA_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.MAGENTA_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_magenta_terracotta", has(Blocks.MAGENTA_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.ORANGE_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.ORANGE_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_orange_terracotta", has(Blocks.ORANGE_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.PINK_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.PINK_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_pink_terracotta", has(Blocks.PINK_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.PURPLE_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.PURPLE_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_purple_terracotta", has(Blocks.PURPLE_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.RED_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.RED_GLAZED_TERRACOTTA.asItem(), 0.1F, 200)
-                .unlockedBy("has_red_terracotta", has(Blocks.RED_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.WHITE_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.WHITE_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_white_terracotta", has(Blocks.WHITE_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(
-                        Ingredient.of(Blocks.YELLOW_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.YELLOW_GLAZED_TERRACOTTA.asItem(), 0.1F, 200
-                )
-                .unlockedBy("has_yellow_terracotta", has(Blocks.YELLOW_TERRACOTTA))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.ANCIENT_DEBRIS), RecipeCategory.MISC, Items.NETHERITE_SCRAP, 2.0F, 200)
-                .unlockedBy("has_ancient_debris", has(Blocks.ANCIENT_DEBRIS))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.BASALT), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_BASALT, 0.1F, 200)
-                .unlockedBy("has_basalt", has(Blocks.BASALT))
-                .save(recipeOutput);
-        CookingLevelRecipeBuilder.smelting(Ingredient.of(Blocks.COBBLED_DEEPSLATE), RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE, 0.1F, 200)
-                .unlockedBy("has_cobbled_deepslate", has(Blocks.COBBLED_DEEPSLATE))
-                .save(recipeOutput);
     }
 }

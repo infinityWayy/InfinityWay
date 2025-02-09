@@ -2,12 +2,12 @@
   "type": "minecraft:smelting",
   "category": "misc",
   "cookingtime": 200,
-  "experience": 20.0,
-  "group": "gold_ingot",
+  "experience": 40.0,
   "ingredient": {
-    "item": "minecraft:nether_gold_ore"
+    "item": "ifw:raw_mithril"
   },
   "result": {
-    "id": "minecraft:gold_ingot"
+    "count": 1,
+    "id": "ifw:mithril_ingot"
   }
 }

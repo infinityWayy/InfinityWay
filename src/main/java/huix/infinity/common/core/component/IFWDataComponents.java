@@ -20,4 +20,7 @@ public class IFWDataComponents {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> ifw_cooking_level = DATA_COMPONENTS.registerComponentType("ifw_cooking_level",
             builder -> builder.persistent(ExtraCodecs.intRange(1, 99)).networkSynchronized(ByteBufCodecs.VAR_INT).cacheEncoding());
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> ifw_be_cooking_level = DATA_COMPONENTS.registerComponentType("ifw_be_cooking_level",
+            builder -> builder.persistent(ExtraCodecs.intRange(1, 99)).networkSynchronized(ByteBufCodecs.VAR_INT).cacheEncoding());
+
 }

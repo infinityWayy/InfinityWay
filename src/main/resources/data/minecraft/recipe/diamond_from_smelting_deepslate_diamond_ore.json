@@ -1,7 +1,13 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:false"
-    }
-  ]
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1,
+  "group": "diamond",
+  "ingredient": {
+    "item": "minecraft:deepslate_diamond_ore"
+  },
+  "result": {
+    "id": "minecraft:diamond"
+  }
 }

@@ -19,12 +19,10 @@ public class IFWLoading {
 
     @SubscribeEvent
     public static void injectItem(final FMLLoadCompleteEvent event) {
-        injectCookingLevel();
         rebuildFood();
-
     }
 
-    private static void injectCookingLevel() {
+    public static void injectCookingLevel() {
         ReplaceHelper.itemCookingLevel(Items.TORCH, 2);
         ReplaceHelper.itemCookingLevel(Items.COAL, 3);
         ReplaceHelper.itemCookingLevel(Items.BLAZE_ROD, 5);
@@ -85,6 +83,14 @@ public class IFWLoading {
         ReplaceHelper.itemCookingLevel(Items.FLOWERING_AZALEA, 1);
         ReplaceHelper.itemCookingLevel(Items.MANGROVE_ROOTS, 1);
         ReplaceHelper.itemCookingLevel(IFWItems.manure.get(), 1);
+
+        ReplaceHelper.beCookLevel(Items.RAW_COPPER, 3);
+        ReplaceHelper.beCookLevel(IFWItems.raw_silver.get(), 3);
+        ReplaceHelper.beCookLevel(Items.RAW_GOLD, 3);
+        ReplaceHelper.beCookLevel(Items.RAW_IRON, 3);
+        ReplaceHelper.beCookLevel(IFWItems.raw_mithril.get(), 4);
+        ReplaceHelper.beCookLevel(IFWItems.raw_adamantium.get(), 5);
+
     }
 
     public static void injectAnvil() {

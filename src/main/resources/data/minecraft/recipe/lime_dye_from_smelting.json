@@ -2,12 +2,11 @@
   "type": "minecraft:smelting",
   "category": "misc",
   "cookingtime": 200,
-  "experience": 20.0,
-  "group": "gold_ingot",
+  "experience": 1,
   "ingredient": {
-    "item": "minecraft:nether_gold_ore"
+    "item": "minecraft:sea_pickle"
   },
   "result": {
-    "id": "minecraft:gold_ingot"
+    "id": "minecraft:lime_dye"
   }
 }

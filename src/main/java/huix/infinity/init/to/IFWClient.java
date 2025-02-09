@@ -3,7 +3,6 @@ package huix.infinity.init.to;
 
 import com.google.common.collect.ImmutableList;
 import huix.infinity.common.client.IFWAnvilScreen;
-import huix.infinity.common.client.IFWFurnaceScreen;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.entity.render.IFWChickenRenderer;
@@ -61,17 +60,11 @@ public final class IFWClient {
 
     @SubscribeEvent
     public static void registerMenuScreens(final RegisterMenuScreensEvent event) {
-        event.register(IFWMenuTypes.ifw_furnace_menu.get(), IFWFurnaceScreen::new);
         event.register(IFWMenuTypes.anvil_menu.get(), IFWAnvilScreen::new);
     }
 
     @SubscribeEvent
     public static void registerRecipeBookCategories(final RegisterRecipeBookCategoriesEvent event) {
-        event.registerBookCategories(IFWRecipeBookTypes.cooking_recipe_enum_proxy.getValue(),
-                ImmutableList.of(IFWRecipeBookCategories.level_recipe.get(), RecipeBookCategories.FURNACE_BLOCKS
-                        , RecipeBookCategories.FURNACE_FOOD, RecipeBookCategories.FURNACE_MISC));
-
-        event.registerRecipeCategoryFinder(IFWRecipeTypes.ifw_smelting.get(), r -> IFWRecipeBookCategories   .level_recipe.get());
     }
 
     @SubscribeEvent

@@ -4,10 +4,10 @@
   "cookingtime": 200,
   "experience": 1.0,
   "ingredient": {
-    "item": "ifw:cooked_worm"
+    "item": "ifw:dough"
   },
   "result": {
     "count": 1,
-    "id": "ifw:worm"
+    "id": "minecraft:bread"
   }
 }

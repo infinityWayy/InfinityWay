@@ -23,25 +23,25 @@ public class GravelBlock extends ColoredFallingBlock {
         params.getParameter(LootContextParams.THIS_ENTITY);
         ServerLevel level = params.getLevel();
         if (level.random.nextInt(7) == 0) {
-            return this.asList(IFWItems.flint_shard.get());
+            return this.asListToStack(IFWItems.flint_shard.get());
         } else if (level.random.nextInt(17) == 0) {
-            return this.asList(IFWItems.copper_nugget.get());
+            return this.asListToStack(IFWItems.copper_nugget.get());
         } else if (level.random.nextInt(53) == 0) {
-            return this.asList(IFWItems.silver_nugget.get());
+            return this.asListToStack(IFWItems.silver_nugget.get());
         } else if (level.random.nextInt(95) == 0) {
-            return this.asList(Items.FLINT);
+            return this.asListToStack(Items.FLINT);
         } else if (level.random.nextInt(161) == 0) {
-            return this.asList(Items.GOLD_NUGGET);
+            return this.asListToStack(Items.GOLD_NUGGET);
         } else if (level.random.nextInt(495) == 0) {
-            return this.asList(IFWItems.obsidian_shard.get());
+            return this.asListToStack(IFWItems.obsidian_shard.get());
         } else if (level.random.nextInt(1457) == 0) {
-            return this.asList(IFWItems.emerald_shard.get());
+            return this.asListToStack(IFWItems.emerald_shard.get());
         } else if (level.random.nextInt(4373) == 0) {
-            return this.asList(IFWItems.diamond_shard.get());
+            return this.asListToStack(IFWItems.diamond_shard.get());
         } else if (level.random.nextInt(13121) == 0) {
-            return this.asList(IFWItems.mithril_nugget.get());
+            return this.asListToStack(IFWItems.mithril_nugget.get());
         } else {
-            return level.random.nextInt(26243) == 0 ? this.asList(IFWItems.adamantium_nugget.get()) : this.asList(Items.GRAVEL);
+            return level.random.nextInt(26243) == 0 ? this.asListToStack(IFWItems.adamantium_nugget.get()) : this.asListToStack(Items.GRAVEL);
         }
     }
 }

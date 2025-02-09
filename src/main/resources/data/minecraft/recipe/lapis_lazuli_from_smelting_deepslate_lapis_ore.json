@@ -1,7 +1,13 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:false"
-    }
-  ]
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 2,
+  "group": "lapis_lazuli",
+  "ingredient": {
+    "item": "minecraft:deepslate_lapis_ore"
+  },
+  "result": {
+    "id": "minecraft:lapis_lazuli"
+  }
 }
