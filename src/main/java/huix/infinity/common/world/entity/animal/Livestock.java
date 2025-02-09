@@ -11,6 +11,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
@@ -340,5 +342,12 @@ public abstract class Livestock extends Animal {
 
     public boolean hasFullHealth() {
         return this.getHealth() == this.getMaxHealth();
+    }
+
+    @Override
+    protected void dropFromLootTable(@NotNull DamageSource damageSource, boolean attackedRecently) {
+        if (this.isWell() && !damageSource.is(DamageTypes.FALL)) {
+            super.dropFromLootTable(damageSource, attackedRecently);
+        }
     }
 }

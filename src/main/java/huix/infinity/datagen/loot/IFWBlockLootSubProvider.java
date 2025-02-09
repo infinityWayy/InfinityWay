@@ -2,20 +2,18 @@ package huix.infinity.datagen.loot;
 
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
+import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.Set;
 
 public class IFWBlockLootSubProvider extends BlockLootSubProvider {
-    private final List<Block> knownBlocks = IFWBlocks.BLOCKS.getEntries().stream().
-            map(e -> (Block) e.value()).toList();
+    private final Set<Block> knownBlocks = new ReferenceOpenHashSet<>();
 
     protected IFWBlockLootSubProvider(HolderLookup.Provider registries) {
         super(Set.of(), FeatureFlags.DEFAULT_FLAGS, registries);
@@ -79,5 +77,11 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.stone_furnace.get());
         dropSelf(IFWBlocks.obsidian_furnace.get());
         dropSelf(IFWBlocks.netherrack_furnace.get());
+    }
+
+    @Override
+    protected void add(@NotNull Block block, LootTable.@NotNull Builder builder) {
+        super.add(block, builder);
+        knownBlocks.add(block);
     }
 }
