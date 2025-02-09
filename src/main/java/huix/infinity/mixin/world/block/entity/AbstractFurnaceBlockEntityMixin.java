@@ -97,7 +97,6 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlock
     @Unique
     private static boolean ifw_levelEnoughFromItem(AbstractFurnaceBlockEntity blockEntity, BlockState state) {
         if (state.getBlock() instanceof IFWFurnaceBlock block) {
-            System.out.println(blockEntity.getItem(1).ifw_cookingLevel());
             return block.furnaceLevel() >= blockEntity.getItem(1).ifw_cookingLevel()
                     && blockEntity.getItem(1).ifw_cookingLevel() >= ifw_recipeCookingLevel(blockEntity);
         }

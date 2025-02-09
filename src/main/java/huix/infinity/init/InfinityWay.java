@@ -11,6 +11,7 @@ import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.common.world.item.crafting.IFWRecipeSerializers;
 import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
 import huix.infinity.common.world.item.group.IFWItemGroups;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
@@ -33,6 +34,7 @@ public final class InfinityWay {
         IFWStructureTypes.STRUCTURE_TYPES.register(bus);
         IFWLootModifiers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(bus);
         IFWBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
+        IFWRecipeSerializers.RECIPE_SERIALIZERS.register(bus);
         IFWArmorMaterials.ARMOR_MATERIALS.register(bus);
         IFWDataComponents.DATA_COMPONENTS.register(bus);
         IFWItemGroups.CREATIVE_TABS.register(bus);

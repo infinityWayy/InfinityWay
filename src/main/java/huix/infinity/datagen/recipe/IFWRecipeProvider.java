@@ -2,6 +2,7 @@ package huix.infinity.datagen.recipe;
 
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.common.world.item.crafting.EnchantmentRecipeBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -25,6 +26,12 @@ public class IFWRecipeProvider extends RecipeProvider {
         cookingRecipe(recipeOutput);
         foodRecipe(recipeOutput);
         rebuildRecipe(recipeOutput);
+
+
+        EnchantmentRecipeBuilder.basic(
+                Ingredient.of(Items.GOLDEN_APPLE), Items.ENCHANTED_GOLDEN_APPLE, 200)
+                .unlockedBy("has_golden_apple", has(Items.GOLDEN_APPLE))
+                .save(recipeOutput);
 
         {
             fishingRodRecipe(recipeOutput, IFWItems.obsidian_fishing_rod, IFWItems.obsidian_shard);

@@ -40,7 +40,6 @@ public class IFWEnchantmentHelper {
 
     private static int enchantmentLevelsByItem(final int enchantment_table_power, final Item item) {
         int value = item.getEnchantmentValue();
-        System.out.println(value);
         if (value < 1) return 0;
         else if (enchantment_table_power <= value) return enchantment_table_power;
         else {

@@ -55,7 +55,6 @@ public class EnchantmentScreenMixin extends AbstractContainerScreen<EnchantmentM
         guiGraphics.blit(ENCHANTING_TABLE_LOCATION, i, j, 0, 0, this.imageWidth, this.imageHeight);
         this.renderBook(guiGraphics, i, j, partialTick);
         EnchantmentNames.getInstance().initSeed(this.menu.getEnchantmentSeed());
-//        int k = this.menu.getGoldCount();
 
         for (int l = 0; l < 3; l++) {
             int i1 = i + 60;
@@ -70,8 +69,7 @@ public class EnchantmentScreenMixin extends AbstractContainerScreen<EnchantmentM
                 int l1 = 86 - this.font.width(s);
                 FormattedText formattedtext = EnchantmentNames.getInstance().getRandomName(this.font, l1);
                 int i2 = 6839882;
-                if ((this.minecraft.player.totalExperience < k1 && !this.minecraft.player.getAbilities().instabuild)
-                        || this.menu.enchantClue[l] == -1) { // Forge: render buttons as disabled when enchantable but enchantability not met on lower levels
+                if ((this.minecraft.player.totalExperience < k1 && !this.minecraft.player.getAbilities().instabuild)) { // Forge: render buttons as disabled when enchantable but enchantability not met on lower levels
                     RenderSystem.enableBlend();
                     guiGraphics.blitSprite(ENCHANTMENT_SLOT_DISABLED_SPRITE, i1, j + 14 + 19 * l, 108, 19);
                     guiGraphics.blitSprite(DISABLED_LEVEL_SPRITES[l], i1 + 1, j + 15 + 19 * l, 16, 16);
@@ -105,44 +103,16 @@ public class EnchantmentScreenMixin extends AbstractContainerScreen<EnchantmentM
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
         boolean flag = this.minecraft.player.getAbilities().instabuild;
-//        int i = this.menu.getGoldCount();
 
         for(int j = 0; j < 3; ++j) {
             int k = this.menu.costs[j];
-            Optional<Holder.Reference<Enchantment>> optional = this.minecraft.level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolder(((EnchantmentMenu)this.menu).enchantClue[j]);
-//            int l = this.menu.levelClue[j];
-//            int i1 = j + 1;
             if (this.isHovering(60, 14 + 19 * j, 108, 17, mouseX, mouseY) && k > 0) {
                 List<Component> list = Lists.newArrayList();
-                //list.add(Component.translatable("container.enchant.clue", optional.isEmpty() ? "" : Enchantment.getFullname(optional.get(), l)).withStyle(ChatFormatting.WHITE));
-                if (optional.isEmpty()) {
-                    list.add(Component.literal(""));
-                    list.add(Component.translatable("neoforge.container.enchant.limitedEnchantability").withStyle(ChatFormatting.RED));
-                } else if (!flag) {
-//                    list.add(CommonComponents.EMPTY);
+                if (!flag) {
                     if (this.minecraft.player.totalExperience < k) {
                         list.add(Component.translatable("container.enchant.level.requirement", this.menu.costs[j]).withStyle(ChatFormatting.RED));
                     }
-//                    else {
-//                        MutableComponent mutablecomponent;
-//                        if (i1 == 1) {
-//                            mutablecomponent = Component.translatable("container.enchant.lapis.one");
-//                        } else {
-//                            mutablecomponent = Component.translatable("container.enchant.lapis.many", new Object[]{i1});
-//                        }
-//
-//                        list.add(mutablecomponent.withStyle(i >= i1 ? ChatFormatting.GRAY : ChatFormatting.RED));
-//                        MutableComponent mutablecomponent1;
-//                        if (i1 == 1) {
-//                            mutablecomponent1 = Component.translatable("container.enchant.level.one");
-//                        } else {
-//                            mutablecomponent1 = Component.translatable("container.enchant.level.many", new Object[]{i1});
-//                        }
-//
-//                        list.add(mutablecomponent1.withStyle(ChatFormatting.GRAY));
-//                    }
                 }
-
                 guiGraphics.renderComponentTooltip(this.font, list, mouseX, mouseY);
                 break;
             }

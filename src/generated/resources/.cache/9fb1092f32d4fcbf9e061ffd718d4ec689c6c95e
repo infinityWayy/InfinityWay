@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-09T11:46:17.8818171	Recipes
+// 1.21.1	2025-02-09T16:19:49.2681514	Recipes
 8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
@@ -414,6 +414,7 @@ f712991b7ae1c41a6294325b4874595d0cc90aec data/minecraft/advancement/recipes/buil
 67bf3b3c79a662e0553e377ea1247a8e4efd6512 data/minecraft/advancement/recipes/combat/chainmail_chestplate.json
 0d60fa22918541abd64c0d9d76469d53eee769ad data/minecraft/advancement/recipes/combat/chainmail_helmet.json
 9c1978b88e7be74a5f546511f6310dfbb10a56b9 data/minecraft/advancement/recipes/combat/chainmail_leggings.json
+8c97b84efad2ea4c8db559c578cece94367f4f37 data/minecraft/advancement/recipes/enchantment/enchanted_golden_apple.json
 106fdcfc07bfb263d2f23587f050b5e56c5cb293 data/minecraft/advancement/recipes/food/cake.json
 d35c0944b087c0dd3a6c18551bdb3f5460ae16e1 data/minecraft/advancement/recipes/food/ifw_bread.json
 74aa51198d89114ecf3e29813be87454c10d5260 data/minecraft/advancement/recipes/food/mushroom_stew.json
@@ -461,6 +462,7 @@ a62e514cf33835da07bec3c12076ab3e4e8ace5f data/minecraft/recipe/chainmail_helmet.
 96cbf7c584d0e8ab3136b51a477850a35b39a254 data/minecraft/recipe/copper_nugget.json
 2e74e3f0882f87b3b6eec8040620a3752d38314f data/minecraft/recipe/diamond.json
 8626a0ff5c0a91e52a41b575ae23587c8aa2ed4f data/minecraft/recipe/emerald.json
+790fc36730dd4561d6da10ef93379b81694da46c data/minecraft/recipe/enchanted_golden_apple.json
 2c8c553d155a89c614bbb54949fcafb485be8843 data/minecraft/recipe/flint.json
 5ca38a6797c55037444e9d9d712646371f949eb0 data/minecraft/recipe/flint_and_steel.json
 6b5eb93df2a4a421b876fa2b764fb92aa6ea489a data/minecraft/recipe/glass.json
