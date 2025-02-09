@@ -39,15 +39,15 @@ import java.util.stream.Stream;
 public abstract class EnchantmentMenuMixin extends AbstractContainerMenu {
 
     @Unique
-    private final RecipeManager.CachedCheck<SingleRecipeInput, ? extends EnchantmentRecipe> recipes = RecipeManager.createCheck(IFWRecipeTypes.enchantment.get());
+    private final RecipeManager.CachedCheck<SingleRecipeInput, ? extends EnchantmentRecipe> ifw_recipes = RecipeManager.createCheck(IFWRecipeTypes.enchantment.get());
 
     @Unique
     private Optional<ItemStack> ifw_recipeInput(Level level, ItemStack stack) {
-        return this.recipes.getRecipeFor(new SingleRecipeInput(stack), level).map(holder -> holder.value().ingredient().getItems()[0]);
+        return this.ifw_recipes.getRecipeFor(new SingleRecipeInput(stack), level).map(holder -> holder.value().ingredient().getItems()[0]);
     }
     @Unique
     private Optional<ItemStack> ifw_recipeResult(Level level, ItemStack stack) {
-        Optional<? extends RecipeHolder<? extends EnchantmentRecipe>> recipeFor = this.recipes.getRecipeFor(new SingleRecipeInput(stack), level);
+        Optional<? extends RecipeHolder<? extends EnchantmentRecipe>> recipeFor = this.ifw_recipes.getRecipeFor(new SingleRecipeInput(stack), level);
         if (recipeFor.isPresent()) {
             RecipeHolder<? extends EnchantmentRecipe> holder = recipeFor.get();
             return Optional.of(holder.value().assemble(new SingleRecipeInput(stack), level.registryAccess()));
@@ -56,7 +56,7 @@ public abstract class EnchantmentMenuMixin extends AbstractContainerMenu {
     }
     @Unique
     private float ifw_recipeExperience(Level level, ItemStack stack) {
-        return this.recipes.getRecipeFor(new SingleRecipeInput(stack), level).map(holder -> holder.value().experience()).get();
+        return this.ifw_recipes.getRecipeFor(new SingleRecipeInput(stack), level).map(holder -> holder.value().experience()).get();
     }
 
     @Unique
@@ -68,28 +68,32 @@ public abstract class EnchantmentMenuMixin extends AbstractContainerMenu {
             ItemStack itemstack = inventory.getItem(0);
             if (!itemstack.isEmpty()) {
                 this.access.execute((level, pos) -> {
-                    float bookShelves = 0.0F;
-                    for (BlockPos blockpos : EnchantingTableBlock.BOOKSHELF_OFFSETS) {
-                        if (EnchantingTableBlock.isValidBookShelf(level, pos, blockpos))
-                            bookShelves += level.getBlockState(pos.offset(blockpos)).getEnchantPowerBonus(level, pos.offset(blockpos));
+                    if (itemstack.isEnchantable() || ifw_recipeInput(level, itemstack).isPresent()) {
+                        float bookShelves = 0.0F;
+                        for (BlockPos blockpos : EnchantingTableBlock.BOOKSHELF_OFFSETS) {
+                            if (EnchantingTableBlock.isValidBookShelf(level, pos, blockpos))
+                                bookShelves += level.getBlockState(pos.offset(blockpos)).getEnchantPowerBonus(level, pos.offset(blockpos));
+                        }
+
+                        this.enchantmentSeed.set(this.random.nextInt());
+
+                        int l;
+                        for(l= 0; l < 3; ++l) {
+                            this.costs[l] = IFWEnchantmentHelper.getExperienceCost(IFWEnchantmentHelper.calculateRequiredExperienceLevel(random, l, (int) bookShelves, itemstack, this.ifw_enchantingModify));
+                            if (this.costs[l] < l + 1) this.costs[l] = 0;
+
+                            this.costs[l] = EventHooks.onEnchantmentLevelSet(level, pos, l, (int)bookShelves, itemstack, this.costs[l]);
+                        }
+                        for(l = 0; l < 3; ++l)
+                            if (this.costs[l] > 0)
+                                this.getEnchantmentList(level.registryAccess(), itemstack, l, this.costs[l]);
+                            else if ( itemstack.is(ifw_recipeInput(level, itemstack).get().getItem()))
+                        this.costs[l] = (int) ifw_recipeExperience(level, itemstack);
+                        this.broadcastChanges();
+                    } else {
+                        for(int i = 0; i < 3; ++i)
+                            this.costs[i] = 0;
                     }
-
-                    this.enchantmentSeed.set(this.random.nextInt());
-
-                    int l;
-                    for(l = 0; l < 3; ++l) {
-                        this.costs[l] = IFWEnchantmentHelper.getExperienceCost(IFWEnchantmentHelper.calculateRequiredExperienceLevel(random, l, (int) bookShelves, itemstack, this.ifw_enchantingModify));
-                        if (this.costs[l] < l + 1) this.costs[l] = 0;
-
-                        this.costs[l] = EventHooks.onEnchantmentLevelSet(level, pos, l, (int)bookShelves, itemstack, this.costs[l]);
-                    }
-
-                    for(l = 0; l < 3; ++l)
-                        if (this.costs[l] > 0)
-                            this.getEnchantmentList(level.registryAccess(), itemstack, l, this.costs[l]);
-                        else if (ifw_recipeInput(level, itemstack).isPresent() && itemstack.is(ifw_recipeInput(level, itemstack).get().getItem()))
-                            this.costs[l] = (int) ifw_recipeExperience(level, itemstack);
-                    this.broadcastChanges();
                 });
             } else {
                 for(int i = 0; i < 3; ++i)
