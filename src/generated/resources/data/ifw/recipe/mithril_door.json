@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "Y": {
+      "item": "ifw:mithril_ingot"
+    }
+  },
+  "pattern": [
+    "YY",
+    "YY",
+    "YY"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:mithril_door"
+  }
+}

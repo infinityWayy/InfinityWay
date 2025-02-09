@@ -1,0 +1,4 @@
+// 1.21.1	2025-02-09T11:09:13.8571235	Global Loot Modifiers : ifw
+470828c527bde8a1cce01089711d3c831944739b data/ifw/loot_modifiers/jungle_leaves_drop.json
+fed4a61bb32f7eadfb17e16f834ef78e48ee38d7 data/ifw/loot_modifiers/oak_leaves_drop.json
+e0f5ff55666b414c6cf62e31961edcfd61dbd90f data/neoforge/loot_modifiers/global_loot_modifiers.json

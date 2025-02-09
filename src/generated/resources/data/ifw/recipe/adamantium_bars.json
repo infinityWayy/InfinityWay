@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "ifw:adamantium_ingot"
+    },
+    {
+      "item": "ifw:adamantium_ingot"
+    },
+    {
+      "item": "ifw:adamantium_ingot"
+    },
+    {
+      "item": "ifw:adamantium_ingot"
+    },
+    {
+      "item": "ifw:adamantium_ingot"
+    },
+    {
+      "item": "ifw:adamantium_ingot"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "id": "ifw:adamantium_bars"
+  }
+}

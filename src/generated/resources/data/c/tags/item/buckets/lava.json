@@ -1,0 +1,10 @@
+{
+  "values": [
+    "ifw:lava_copper_bucket",
+    "ifw:lava_silver_bucket",
+    "ifw:lava_gold_bucket",
+    "ifw:lava_ancient_metal_bucket",
+    "ifw:lava_mithril_bucket",
+    "ifw:lava_adamantium_bucket"
+  ]
+}

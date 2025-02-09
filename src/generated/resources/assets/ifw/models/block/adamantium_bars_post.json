@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "ifw:block/adamantium_bars",
+    "pane": "ifw:block/adamantium_bars"
+  }
+}

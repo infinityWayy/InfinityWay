@@ -1,0 +1,13 @@
+{
+  "type": "ifw:level_smelting",
+  "category": "misc",
+  "cookinglevel": 4,
+  "cookingtime": 200,
+  "experience": 40.0,
+  "ingredient": {
+    "item": "ifw:raw_mithril"
+  },
+  "result": {
+    "id": "ifw:mithril_ingot"
+  }
+}

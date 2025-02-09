@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "ifw:milk_bowl"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "ifw:onion"
+    },
+    {
+      "item": "minecraft:carrot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:vegetable_soup_cream"
+  }
+}

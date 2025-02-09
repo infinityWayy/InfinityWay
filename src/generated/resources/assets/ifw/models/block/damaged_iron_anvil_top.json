@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/anvil",
+  "textures": {
+    "body": "ifw:block/iron_anvil",
+    "particle": "ifw:block/damaged_iron_anvil_top",
+    "top": "ifw:block/damaged_iron_anvil_top"
+  }
+}

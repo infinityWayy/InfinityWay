@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "Y": {
+      "item": "minecraft:sandstone"
+    }
+  },
+  "pattern": [
+    "YYY",
+    "Y Y",
+    "YYY"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:sandstone_furnace"
+  }
+}

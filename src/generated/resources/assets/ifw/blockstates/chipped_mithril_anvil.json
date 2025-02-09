@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "ifw:block/chipped_mithril_anvil_top",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "ifw:block/chipped_mithril_anvil_top"
+    },
+    "facing=south": {
+      "model": "ifw:block/chipped_mithril_anvil_top",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ifw:block/chipped_mithril_anvil_top",
+      "y": 270
+    }
+  }
+}
