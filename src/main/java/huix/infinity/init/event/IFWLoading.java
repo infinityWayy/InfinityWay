@@ -3,6 +3,7 @@ package huix.infinity.init.event;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.enchantment.Recipes;
 import huix.infinity.common.world.entity.IFWEntityType;
+import huix.infinity.common.world.entity.animal.Livestock;
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
 import huix.infinity.common.world.item.IFWItems;
@@ -11,7 +12,6 @@ import huix.infinity.util.ReplaceHelper;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -514,9 +514,9 @@ public class IFWLoading {
 
     @SubscribeEvent
     public static void registerSpawnPlacementsEvent(RegisterSpawnPlacementsEvent event) {
-        event.register(IFWEntityType.CHICKEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.SHEEP.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.PIG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.COW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.CHICKEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Livestock::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.SHEEP.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Livestock::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.PIG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Livestock::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.COW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Livestock::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }

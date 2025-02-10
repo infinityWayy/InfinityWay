@@ -1,7 +1,7 @@
-// 1.21.1	2025-02-10T17:31:45.8449255	Biome Modifier Registries: ifw
+// 1.21.1	2025-02-10T20:27:48.6106056	Biome Modifier Registries: ifw
 a25ea81b0b513691a1aadbdd843a920893a06506 data/ifw/neoforge/biome_modifier/ifw_add_features.json
 992b4ba93bdc98a8c33f3fdbb002c1918e9c4f33 data/ifw/neoforge/biome_modifier/ifw_add_spawns.json
-78e29f65210883c5baddabec772009c2be349d3e data/ifw/neoforge/biome_modifier/ifw_remove_features.json
+c3c517b6bb5c1a869ec2b8bb6a5895a4eda835c4 data/ifw/neoforge/biome_modifier/ifw_remove_features.json
 286ad46f9725e702d1f1a05f890ec719b83961d2 data/ifw/neoforge/biome_modifier/ifw_remove_spawns.json
 78c60995ac955e2d8c3decd999ee61f693e654ce data/ifw/worldgen/configured_feature/ore_adamantium.json
 48ffb8b7278a819fe429e41573d5e998be39158c data/ifw/worldgen/configured_feature/ore_mithril.json

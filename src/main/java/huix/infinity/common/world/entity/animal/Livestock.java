@@ -6,19 +6,24 @@ import huix.infinity.common.world.entity.ai.MoveToItemGoals;
 import huix.infinity.common.world.entity.ai.SeekFoodIfHungryGoal;
 import huix.infinity.common.world.entity.ai.SeekWaterIfThirstyGoal;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.util.WorldHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -349,5 +354,14 @@ public abstract class Livestock extends Animal {
         if (this.isWell() && !damageSource.is(DamageTypes.FALL)) {
             super.dropFromLootTable(damageSource, attackedRecently);
         }
+    }
+
+    public static boolean checkMobSpawnRules(
+            @NotNull EntityType<? extends Mob> type, @NotNull LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random
+    ) {
+        if (spawnType == MobSpawnType.NATURAL && !WorldHelper.isBlueMoon(level)) {
+            return false;
+        }
+        return Animal.checkMobSpawnRules(type, level, spawnType, pos, random);
     }
 }
