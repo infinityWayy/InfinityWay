@@ -7,7 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 
 public class IFWEntityTypeTags {
-    public static final TagKey<EntityType<?>> LIVESTOCK = create("ifw_livestock");
+    public static final TagKey<EntityType<?>> ANIMAL = create("replace_animal");
 
     private static TagKey<EntityType<?>> create(String name) {
         return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, name));

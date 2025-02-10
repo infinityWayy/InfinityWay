@@ -91,7 +91,7 @@ public class IFWFeatures {
                 //remove animal
                 bootstrap.register(REMOVE_SPAWNS, new BiomeModifiers.RemoveSpawnsBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
-                        entities.getOrThrow(IFWEntityTypeTags.LIVESTOCK)
+                        entities.getOrThrow(IFWEntityTypeTags.ANIMAL)
                 ));
             });
 

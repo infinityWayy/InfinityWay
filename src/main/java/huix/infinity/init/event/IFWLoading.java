@@ -2,6 +2,7 @@ package huix.infinity.init.event;
 
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.enchantment.Recipes;
+import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
 import huix.infinity.common.world.item.IFWItems;
@@ -9,12 +10,15 @@ import huix.infinity.init.InfinityWay;
 import huix.infinity.util.ReplaceHelper;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 
 @EventBusSubscriber(modid = InfinityWay.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class IFWLoading {
@@ -506,5 +510,13 @@ public class IFWLoading {
         ReplaceHelper.foodOverride(Items.SALMON, RebuildFoods.SALMON);
         ReplaceHelper.foodOverride(Items.TROPICAL_FISH, RebuildFoods.TROPICAL_FISH);
         ReplaceHelper.foodOverride(Items.OMINOUS_BOTTLE, RebuildFoods.OMINOUS_BOTTLE);
+    }
+
+    @SubscribeEvent
+    public static void registerSpawnPlacementsEvent(RegisterSpawnPlacementsEvent event) {
+        event.register(IFWEntityType.CHICKEN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.SHEEP.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.PIG.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.COW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Animal::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }
