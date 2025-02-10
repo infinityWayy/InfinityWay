@@ -1,5 +1,0 @@
-{
-  "type": "neoforge:remove_spawns",
-  "biomes": "#c:is_overworld",
-  "entity_types": "#ifw:ifw_livestock"
-}

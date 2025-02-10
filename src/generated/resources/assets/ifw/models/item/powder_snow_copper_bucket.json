@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "ifw:item/powder_snow_copper_bucket"
-  }
-}

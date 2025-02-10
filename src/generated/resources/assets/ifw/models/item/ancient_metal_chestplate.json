@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "ifw:item/ancient_metal_chestplate"
-  }
-}
