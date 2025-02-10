@@ -2,6 +2,7 @@ package huix.infinity.util;
 
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.food.IFWFoodProperties;
+import huix.infinity.common.world.item.crafting.EnchantmentRecipe;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
@@ -19,6 +20,10 @@ public class ReplaceHelper {
 
     public static void foodAdd(Item patchItem, IFWFoodProperties add) {
         patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(IFWDataComponents.ifw_food_data.get(), add).build());
+    }
+
+    public static void enchantmentRecipe(Item patchItem, EnchantmentRecipe add) {
+        patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(IFWDataComponents.enchantment_recipe.get(), add).build());
     }
 
     public static void beCookLevel(Item patchItem, int value) {
@@ -46,13 +51,13 @@ public class ReplaceHelper {
         }
     }
 
-    public static void itemCookingLevel(Item patchItem, int level) {
+    public static void cookingLevel(Item patchItem, int level) {
         patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(IFWDataComponents.ifw_cooking_level.get(), level).build());
     }
 
-    public static void itemCookingLevel(TagKey<Item> itemTagKey, int level) {
+    public static void cookingLevel(TagKey<Item> itemTagKey, int level) {
         for (Holder<Item> holder : BuiltInRegistries.ITEM.getTagOrEmpty(itemTagKey)) {
-            itemCookingLevel(holder.value(), level);
+            cookingLevel(holder.value(), level);
         }
     }
 }

@@ -10,6 +10,4 @@ public class IFWRecipeSerializers {
 
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, InfinityWay.MOD_ID);
 
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<EnchantmentRecipe>> enchantment = RECIPE_SERIALIZERS.register("enchantment",
-            location -> new EnchantmentSerializer<>(EnchantmentRecipe::new));
 }

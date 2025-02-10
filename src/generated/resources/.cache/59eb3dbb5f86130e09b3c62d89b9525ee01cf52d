@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-09T11:46:17.8748063	Loot Tables
+// 1.21.1	2025-02-10T15:56:59.5633402	Loot Tables
 39ca8695010fbfadce1cd3e2a0ca92acd68b795b data/ifw/loot_table/blocks/adamantium_anvil.json
 e83ac5ba844b67d2d69c691887b951b8f7166f9d data/ifw/loot_table/blocks/adamantium_bars.json
 b75574a0827bdf12669b4631f5e8a591ffe3b2db data/ifw/loot_table/blocks/adamantium_block.json
@@ -50,3 +50,23 @@ baa21fe1a891504b2f09febaa4fe9cf3c8645f72 data/ifw/loot_table/blocks/sandstone_fu
 8d2c8fa0b9a1b3f3e456c8442d6ea4f97701118a data/ifw/loot_table/blocks/silver_door.json
 79793cd34871dc8973a73a48efdd9f4f7339b06e data/ifw/loot_table/blocks/silver_ore.json
 30543095b5f0833411fbd0f70081abc410bd6d6c data/ifw/loot_table/blocks/stone_furnace.json
+ee492443e21444488daf7a6cbffa23cdb26effc9 data/ifw/loot_table/entities/chicken.json
+96c4bb0c211dfc80fe549a42b6bc846841d8b03c data/ifw/loot_table/entities/cow.json
+c39af567c6e245c58907f0598afa58760b335dab data/ifw/loot_table/entities/pig.json
+be9d4887e896547663e68b5c07922ac88790a180 data/ifw/loot_table/entities/sheep.json
+a9cd98e723c07f8b83f8d778b13fda9835ca819b data/ifw/loot_table/entities/sheep/black.json
+a60dcb34aa2af572d5754e777ccf5b731623a7bc data/ifw/loot_table/entities/sheep/blue.json
+71b15522df6d297789983c5ea127f37688e0717c data/ifw/loot_table/entities/sheep/brown.json
+73bea876f95be1c23f74e5b75047f02dc7b568ab data/ifw/loot_table/entities/sheep/cyan.json
+07dbd236da0d05fa53e560a1d58cb843a22156c1 data/ifw/loot_table/entities/sheep/gray.json
+b9281f69982264526e82fd8d2230a3e4ba1a44fc data/ifw/loot_table/entities/sheep/green.json
+ff07b9e0780d558ac2c9bf42626a17d5c9b0a3d0 data/ifw/loot_table/entities/sheep/light_blue.json
+3b8a52c90ce8609ba0eb5f9ab670dfdb047920ee data/ifw/loot_table/entities/sheep/light_gray.json
+bbc933eb01df5c70e2c9a9835855bb4feddf3760 data/ifw/loot_table/entities/sheep/lime.json
+f00b492225ec1b6954d7189fa5e35ca881afcf17 data/ifw/loot_table/entities/sheep/magenta.json
+43c9932594e5ead1582145e86a699c1d5698f4df data/ifw/loot_table/entities/sheep/orange.json
+b45a88fd23c4d212ae764746fa087c6dd59c0f55 data/ifw/loot_table/entities/sheep/pink.json
+ff1ed6739a18f12a53842a36b36ee59540e33030 data/ifw/loot_table/entities/sheep/purple.json
+89dd5cc8e1e90fb2894f8233b6e268db11903457 data/ifw/loot_table/entities/sheep/red.json
+8963271e236739d3aaa03982e34f109dea1dfdc7 data/ifw/loot_table/entities/sheep/white.json
+475cad686c1dd37663beb775392545e6c78da211 data/ifw/loot_table/entities/sheep/yellow.json

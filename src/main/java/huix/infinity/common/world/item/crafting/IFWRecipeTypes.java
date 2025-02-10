@@ -12,6 +12,4 @@ public class IFWRecipeTypes {
 
     public static final DeferredRegister<RecipeType<?>> RECIPES = DeferredRegister.create(BuiltInRegistries.RECIPE_TYPE, InfinityWay.MOD_ID);
 
-    public static final DeferredHolder<RecipeType<?>, RecipeType<EnchantmentRecipe>> enchantment = RECIPES.register("enchantment",
-            location -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID,"enchantment")));
 }

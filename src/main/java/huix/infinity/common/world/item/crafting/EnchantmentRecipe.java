@@ -1,66 +1,66 @@
 package huix.infinity.common.world.item.crafting;
 
-import net.minecraft.core.HolderLookup;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.Items;
 
-public class EnchantmentRecipe implements Recipe<SingleRecipeInput> {
+public record EnchantmentRecipe(ItemStack ingredient, ItemStack result, int experience) {
 
-    private final Ingredient ingredient;
-    private final ItemStack result;
-    private final float experience;
+    public static final Codec<EnchantmentRecipe> DIRECT_CODEC = RecordCodecBuilder.create(
+            instance -> instance.group(
+                            ItemStack.CODEC.fieldOf("ingredient").forGetter(EnchantmentRecipe::ingredient),
+                            ItemStack.CODEC.fieldOf("result").orElse(new ItemStack(Items.BAMBOO)).forGetter(EnchantmentRecipe::result),
+                            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("experience").forGetter(EnchantmentRecipe::experience)
+                    )
+                    .apply(instance, EnchantmentRecipe::new)
+    );
 
-    public EnchantmentRecipe(final Ingredient ingredient, final ItemStack result, final float experience) {
-        this.ingredient = ingredient;
-        this.result = result;
-        this.experience = experience;
-    }
+    public static final StreamCodec<RegistryFriendlyByteBuf, EnchantmentRecipe> DIRECT_STREAM_CODEC = StreamCodec.composite(
+            ItemStack.STREAM_CODEC, EnchantmentRecipe::ingredient,
+            ItemStack.STREAM_CODEC, EnchantmentRecipe::result,
+            ByteBufCodecs.VAR_INT, EnchantmentRecipe::experience,
+            EnchantmentRecipe::new
+    );
 
-    public Ingredient ingredient() {
-        return this.ingredient;
-    }
+    public static class Builder {
+        private ItemStack ingredient;
+        private ItemStack result;
+        private int experience;
 
-    public float experience() {
-        return this.experience;
-    }
+        public ItemStack ingredient() {
+            return this.ingredient;
+        }
 
-    public ItemStack result() {
-        return this.result;
-    }
+        public ItemStack result() {
+            return this.result;
+        }
 
-    @Override
-    public boolean matches(SingleRecipeInput singleRecipeInput, Level level) {
-        return this.ingredient.test(singleRecipeInput.item());
-    }
+        public int experience() {
+            return this.experience;
+        }
 
-    @Override
-    public ItemStack assemble(SingleRecipeInput singleRecipeInput, HolderLookup.Provider provider) {
-        return this.result.copy();
-    }
+        public Builder ingredient(ItemStack ingredient) {
+            this.ingredient = ingredient;
+            return this;
+        }
 
-    @Override
-    public boolean canCraftInDimensions(int i, int i1) {
-        return true;
-    }
+        public Builder result(ItemStack result) {
+            this.result = result;
+            return this;
+        }
 
-    @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
-        return this.result;
-    }
+        public Builder experience(int experience) {
+            this.experience = experience;
+            return this;
+        }
 
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return IFWRecipeSerializers.enchantment.get();
-    }
-
-    @Override
-    public RecipeType<?> getType() {
-        return IFWRecipeTypes.enchantment.get();
-    }
-
-    @FunctionalInterface
-    public interface Factory<T extends EnchantmentRecipe> {
-        T create(Ingredient ingredient, ItemStack result, float experience);
+        public EnchantmentRecipe build() {
+            return new EnchantmentRecipe(this.ingredient(), this.result(), this.experience());
+        }
     }
 }
