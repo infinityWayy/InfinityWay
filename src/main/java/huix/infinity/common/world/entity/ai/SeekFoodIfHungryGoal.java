@@ -46,14 +46,6 @@ public class SeekFoodIfHungryGoal extends Goal {
         this.isRunning = false;
     }
 
-    @Override
-    public boolean canContinueToUse() {
-        if (this.mob instanceof Livestock livestock && livestock.food() > 0.95f) {
-            return false;
-        }
-        return super.canContinueToUse();
-    }
-
     protected boolean getMovementPath(Livestock livestock) {
         // 状态判断
         boolean isVeryHungry = livestock.isVeryHungry();

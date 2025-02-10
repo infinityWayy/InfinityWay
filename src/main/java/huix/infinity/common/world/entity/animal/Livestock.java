@@ -4,6 +4,7 @@ import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.world.entity.LivingEntityAccess;
 import huix.infinity.common.world.entity.ai.MoveToItemGoals;
 import huix.infinity.common.world.entity.ai.SeekFoodIfHungryGoal;
+import huix.infinity.common.world.entity.ai.SeekOpenSpaceIfCrowdedGoal;
 import huix.infinity.common.world.entity.ai.SeekWaterIfThirstyGoal;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.util.WorldHelper;
@@ -28,6 +29,7 @@ import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
@@ -48,6 +50,7 @@ public abstract class Livestock extends Animal {
         this.goalSelector.addGoal(1, new MoveToItemGoals(this, this::isFood, 16));
         this.goalSelector.addGoal(2, new SeekFoodIfHungryGoal(this));
         this.goalSelector.addGoal(2, new SeekWaterIfThirstyGoal(this));
+        this.goalSelector.addGoal(3, new SeekOpenSpaceIfCrowdedGoal(this));
     }
 
     @Override
@@ -311,8 +314,16 @@ public abstract class Livestock extends Animal {
     }
 
     public boolean isCrowded() {
-        return this.level().getEntitiesOfClass(LivingEntity.class,
+        return this.getLight() < 7 && this.level().getEntitiesOfClass(LivingEntity.class,
                 this.getBoundingBox().expandTowards(2.0, 0.5, 2.0)).size() > 2;
+    }
+
+    public boolean isCrowded(double x, double y, double z) {
+        if (this.getLight() >= 7) {
+            return false;
+        }
+        AABB bounding_box = new AABB(x - 2, y - 0.5f, z - 2, x + 2, y + 0.5f, z + 2);
+        return this.level().getEntitiesOfClass(LivingEntity.class, bounding_box).size() > 2;
     }
 
     public int getLight() {
@@ -337,7 +348,7 @@ public abstract class Livestock extends Animal {
             this.addWater(penalty);
         }
 
-        if (this.getLight() >= 7 || !this.isCrowded()) {
+        if (!this.isCrowded()) {
             this.addFreedom(benefit);
         } else {
             this.addFreedom(penalty);

@@ -11,8 +11,8 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public class MoveToItemGoals extends Goal {
-    protected final PathfinderMob mob;
 
+    protected final PathfinderMob mob;
     protected final Predicate<ItemStack> itemStackFilter;
     protected double posX;
     protected double posY;
