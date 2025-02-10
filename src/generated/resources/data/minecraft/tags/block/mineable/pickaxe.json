@@ -1,0 +1,22 @@
+{
+  "values": [
+    "ifw:adamantium_ore",
+    "ifw:deepslate_adamantium_ore",
+    "ifw:mithril_bars",
+    "ifw:mithril_door",
+    "ifw:mithril_block",
+    "ifw:deepslate_mithril_ore",
+    "ifw:mithril_ore",
+    "ifw:deepslate_silver_ore",
+    "ifw:silver_ore",
+    "ifw:copper_bars",
+    "ifw:silver_block",
+    "ifw:silver_bars",
+    "ifw:silver_door",
+    "ifw:gold_door",
+    "ifw:ancient_metal_block",
+    "ifw:ancient_metal_bars",
+    "ifw:ancient_metal_door",
+    "#minecraft:doors"
+  ]
+}

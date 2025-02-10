@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "ifw:block/gold_anvil",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "ifw:block/gold_anvil"
+    },
+    "facing=south": {
+      "model": "ifw:block/gold_anvil",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ifw:block/gold_anvil",
+      "y": 270
+    }
+  }
+}

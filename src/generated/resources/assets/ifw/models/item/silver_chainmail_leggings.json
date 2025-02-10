@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ifw:item/silver_chainmail_leggings"
+  }
+}

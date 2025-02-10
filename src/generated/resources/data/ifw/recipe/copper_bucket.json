@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    "C C",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:copper_bucket"
+  }
+}

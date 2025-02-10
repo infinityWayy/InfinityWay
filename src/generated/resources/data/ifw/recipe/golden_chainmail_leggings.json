@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "ifw:golden_chain"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "C C",
+    "C C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:golden_chainmail_leggings"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "ifw:block/raw_mithril_block"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/anvil",
+  "textures": {
+    "body": "ifw:block/mithril_anvil",
+    "particle": "ifw:block/mithril_anvil_top",
+    "top": "ifw:block/mithril_anvil_top"
+  }
+}
