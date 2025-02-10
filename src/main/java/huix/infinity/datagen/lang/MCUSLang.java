@@ -9,6 +9,7 @@ public class MCUSLang  extends LanguageProvider {
         super(output, "minecraft", "en_us");
     }
 
+    @Deprecated
     @Override
     protected void addTranslations() {
         add(Items.DIAMOND, "Diamond");

@@ -20,11 +20,13 @@ public class IFWFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
         super(IFWBlockEntityTypes.ifw_furnace.value(), pos, blockState, RecipeType.SMELTING);
     }
 
+    @NotNull
     @Override
     protected Component getDefaultName() {
         return Component.translatable("container.furnace");
     }
 
+    @NotNull
     @Override
     protected AbstractContainerMenu createMenu(int id, Inventory player) {
         return new FurnaceMenu(id, player, this, this.dataAccess);

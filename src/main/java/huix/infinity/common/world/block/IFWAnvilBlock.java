@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -74,6 +75,7 @@ public class IFWAnvilBlock extends AnvilBlock implements EntityBlock {
         super.onRemove(state, level, pos, newState, movedByPiston);
     }
 
+    @NotNull
     @Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
         return Collections.emptyList();

@@ -1,10 +1,11 @@
 package huix.infinity.common.core.tag;
 
 
+import huix.infinity.init.InfinityWay;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-
-import static net.minecraft.tags.BlockTags.create;
 
 public class IFWBlockTags {
     //flint,obsidian
@@ -29,4 +30,8 @@ public class IFWBlockTags {
     public static final TagKey<Block> IFW_FURNACE = create("ifw_furnace");
     public static final TagKey<Block> METAL_DOORS = create("ifw_furnace");
     public static final TagKey<Block> FALLEN_DIRT = create("fallen_dirt");
+
+    public static TagKey<Block> create(String name) {
+        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, name));
+    }
 }

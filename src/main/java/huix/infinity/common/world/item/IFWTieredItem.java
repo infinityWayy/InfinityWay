@@ -18,9 +18,9 @@ public abstract class IFWTieredItem extends Item implements RepairableItem {
     private final float durability;
 
     public IFWTieredItem(IFWTier tier, int numComponents, Properties properties) {
-        super(properties.durability(DurabilityHelper.getMultipliedDurability(numComponents, tier.getDurability())));
+        super(properties.durability(DurabilityHelper.getMultipliedDurability(numComponents, tier.durability())));
         this.tier = tier;
-        this.durability = DurabilityHelper.getMultipliedDurability(numComponents, tier.getDurability());
+        this.durability = DurabilityHelper.getMultipliedDurability(numComponents, tier.durability());
     }
 
     public IFWTieredItem(IFWTier tier, float durability, Properties properties) {

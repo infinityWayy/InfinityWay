@@ -2,7 +2,7 @@ package huix.infinity.util;
 
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.food.IFWFoodProperties;
-import huix.infinity.common.world.item.crafting.EnchantmentRecipe;
+import huix.infinity.common.world.item.crafting.EnchantingRecipe;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
@@ -22,7 +22,7 @@ public class ReplaceHelper {
         patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(IFWDataComponents.ifw_food_data.get(), add).build());
     }
 
-    public static void enchantmentRecipe(Item patchItem, EnchantmentRecipe add) {
+    public static void enchantmentRecipe(Item patchItem, EnchantingRecipe add) {
         patchItem.ifw_modifyDefaultComponentsFrom(DataComponentPatch.builder().set(IFWDataComponents.enchantment_recipe.get(), add).build());
     }
 

@@ -28,7 +28,7 @@ public class MoveToItemGoals extends Goal {
     @Override
     public boolean canUse() {
         if (this.mob instanceof LivingEntityAccess living &&
-                living.getFoodOrRepairItemPickupCoolDown() == 0 && !isRunning) {
+                living.ifw_foodOrRepairItemPickupCoolDown() == 0 && !isRunning) {
             return this.findItemPosition();
         } else {
             return false;

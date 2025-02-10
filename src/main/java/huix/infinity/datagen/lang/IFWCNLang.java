@@ -16,6 +16,7 @@ public class IFWCNLang extends LanguageProvider {
         add("itemGroup.ifw.block", "IFW| 方块");
         add("itemGroup.ifw.item", "IFW| 物品");
         add("itemGroup.ifw.tool", "IFW| 工具");
+        add("container.enchant.experience.requirement", "经验需要: %s");
         add(IFWItems.copper_horse_armor.get(), "铜马铠");
         add(IFWItems.silver_horse_armor.get(), "银马铠");
         add(IFWItems.ancient_metal_horse_armor.get(), "远古金属马铠");

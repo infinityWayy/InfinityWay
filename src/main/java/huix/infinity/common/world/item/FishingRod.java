@@ -11,12 +11,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.FishingRodItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.event.EventHooks;
 
 public class FishingRod extends FishingRodItem {
@@ -24,7 +22,7 @@ public class FishingRod extends FishingRodItem {
     private final IFWTier tier;
 
     public FishingRod(IFWTier tier, Properties properties) {
-        super(properties.stacksTo(1).durability((int) (2.0F * tier.getDurability())));
+        super(properties.stacksTo(1).durability((int) (2.0F * tier.durability())));
         this.tier = tier;
     }
 

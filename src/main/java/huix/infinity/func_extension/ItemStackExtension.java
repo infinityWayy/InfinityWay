@@ -1,6 +1,6 @@
 package huix.infinity.func_extension;
 
-import huix.infinity.common.world.item.crafting.EnchantmentRecipe;
+import huix.infinity.common.world.item.crafting.EnchantingRecipe;
 import net.minecraft.world.item.ItemStack;
 
 public interface ItemStackExtension {
@@ -18,7 +18,7 @@ public interface ItemStackExtension {
         return false;
     }
 
-    default EnchantmentRecipe ifw_encRecipe() {
+    default EnchantingRecipe ifw_encRecipe() {
         return null;
     }
 

@@ -16,6 +16,7 @@ public class IFWUSLang extends LanguageProvider {
         add("itemGroup.ifw.block", "IFW| Block");
         add("itemGroup.ifw.item", "IFW| Item");
         add("itemGroup.ifw.tool", "IFW| Tool");
+        add("container.enchant.experience.requirement", "Experience Requirement: %s");
         add(IFWItems.copper_horse_armor.get(), "Copper Horse Armor");
         add(IFWItems.silver_horse_armor.get(), "Silver Horse Armor");
         add(IFWItems.ancient_metal_horse_armor.get(), "Ancient Metal Horse Armor");

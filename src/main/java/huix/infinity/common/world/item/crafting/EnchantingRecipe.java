@@ -9,22 +9,22 @@ import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-public record EnchantmentRecipe(ItemStack ingredient, ItemStack result, int experience) {
+public record EnchantingRecipe(ItemStack ingredient, ItemStack result, int experience) {
 
-    public static final Codec<EnchantmentRecipe> DIRECT_CODEC = RecordCodecBuilder.create(
+    public static final Codec<EnchantingRecipe> DIRECT_CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
-                            ItemStack.CODEC.fieldOf("ingredient").forGetter(EnchantmentRecipe::ingredient),
-                            ItemStack.CODEC.fieldOf("result").orElse(new ItemStack(Items.BAMBOO)).forGetter(EnchantmentRecipe::result),
-                            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("experience").forGetter(EnchantmentRecipe::experience)
+                            ItemStack.CODEC.fieldOf("ingredient").forGetter(EnchantingRecipe::ingredient),
+                            ItemStack.CODEC.fieldOf("result").orElse(new ItemStack(Items.BAMBOO)).forGetter(EnchantingRecipe::result),
+                            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("experience").forGetter(EnchantingRecipe::experience)
                     )
-                    .apply(instance, EnchantmentRecipe::new)
+                    .apply(instance, EnchantingRecipe::new)
     );
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, EnchantmentRecipe> DIRECT_STREAM_CODEC = StreamCodec.composite(
-            ItemStack.STREAM_CODEC, EnchantmentRecipe::ingredient,
-            ItemStack.STREAM_CODEC, EnchantmentRecipe::result,
-            ByteBufCodecs.VAR_INT, EnchantmentRecipe::experience,
-            EnchantmentRecipe::new
+    public static final StreamCodec<RegistryFriendlyByteBuf, EnchantingRecipe> DIRECT_STREAM_CODEC = StreamCodec.composite(
+            ItemStack.STREAM_CODEC, EnchantingRecipe::ingredient,
+            ItemStack.STREAM_CODEC, EnchantingRecipe::result,
+            ByteBufCodecs.VAR_INT, EnchantingRecipe::experience,
+            EnchantingRecipe::new
     );
 
     public static class Builder {
@@ -59,8 +59,8 @@ public record EnchantmentRecipe(ItemStack ingredient, ItemStack result, int expe
             return this;
         }
 
-        public EnchantmentRecipe build() {
-            return new EnchantmentRecipe(this.ingredient(), this.result(), this.experience());
+        public EnchantingRecipe build() {
+            return new EnchantingRecipe(this.ingredient(), this.result(), this.experience());
         }
     }
 }

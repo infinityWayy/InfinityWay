@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class IFWFurnaceBlock extends AbstractFurnaceBlock {
@@ -25,11 +26,11 @@ public class IFWFurnaceBlock extends AbstractFurnaceBlock {
         super(properties);
     }
 
+    @NotNull
     @Override
     protected MapCodec<? extends AbstractFurnaceBlock> codec() {
         return CODEC;
     }
-
 
     @Override
     protected void openContainer(Level level, BlockPos pos, Player player) {

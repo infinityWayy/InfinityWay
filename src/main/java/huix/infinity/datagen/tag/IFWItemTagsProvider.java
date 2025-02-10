@@ -9,6 +9,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -91,6 +92,7 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
                 , IFWItems.axolotl_ancient_metal_bucket.get(), IFWItems.pufferfish_mithril_bucket.get(), IFWItems.salmon_mithril_bucket.get(), IFWItems.cod_mithril_bucket.get()
                 , IFWItems.axolotl_mithril_bucket.get(), IFWItems.pufferfish_adamantium_bucket.get(), IFWItems.salmon_adamantium_bucket.get(), IFWItems.cod_adamantium_bucket.get()
                 , IFWItems.axolotl_adamantium_bucket.get());
+        tag(IFWItemTags.HAS_ENCHANTING_RECIPE).add(Items.GOLDEN_APPLE);
 
     }
 }

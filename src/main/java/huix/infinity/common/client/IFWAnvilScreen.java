@@ -22,7 +22,6 @@ public class IFWAnvilScreen extends ItemCombinerScreen<IFWAnvilMenu> {
     private static final ResourceLocation TEXT_FIELD_DISABLED_SPRITE = ResourceLocation.withDefaultNamespace("container/anvil/text_field_disabled");
     private static final ResourceLocation ERROR_SPRITE = ResourceLocation.withDefaultNamespace("container/anvil/error");
     private static final ResourceLocation ANVIL_LOCATION = ResourceLocation.withDefaultNamespace("textures/gui/container/anvil.png");
-    private static final Component TOO_EXPENSIVE_TEXT = Component.translatable("container.repair.expensive");
     private EditBox name;
 
     public IFWAnvilScreen(IFWAnvilMenu menu, Inventory playerInventory, Component title) {
@@ -81,33 +80,6 @@ public class IFWAnvilScreen extends ItemCombinerScreen<IFWAnvilMenu> {
         }
     }
 
-//    @Override
-//    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-//        super.renderLabels(guiGraphics, mouseX, mouseY);
-//        int i = this.menu.getCost();
-//        if (i > 0) {
-//            int j = 8453920;
-//            Component component;
-//            if (i >= 40 && !this.minecraft.player.getAbilities().instabuild) {
-//                component = TOO_EXPENSIVE_TEXT;
-//                j = 16736352;
-//            } else if (!this.menu.getSlot(2).hasItem()) {
-//                component = null;
-//            } else {
-//                component = Component.translatable("container.repair.cost", i);
-//                if (!this.menu.getSlot(2).mayPickup(this.player)) {
-//                    j = 16736352;
-//                }
-//            }
-//
-//            if (component != null) {
-//                int k = this.imageWidth - 8 - this.font.width(component) - 2;
-//                guiGraphics.fill(k - 2, 67, this.imageWidth - 8, 79, 1325400064);
-//                guiGraphics.drawString(this.font, component, k, 69, j);
-//            }
-//        }
-//    }
-
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         super.renderBg(guiGraphics, partialTick, mouseX, mouseY);
@@ -125,7 +97,6 @@ public class IFWAnvilScreen extends ItemCombinerScreen<IFWAnvilMenu> {
             guiGraphics.blitSprite(ERROR_SPRITE, x + 99, y + 45, 28, 21);
         }
     }
-
 
     @Override
     public void slotChanged(AbstractContainerMenu containerToSend, int slotInd, ItemStack stack) {

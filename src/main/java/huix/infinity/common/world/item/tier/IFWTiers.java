@@ -102,12 +102,12 @@ public enum IFWTiers implements IFWTier {
     }
 
     @Override
-    public int getDurability() {
+    public int durability() {
         return this.durability;
     }
 
     @Override
-    public EnumQuality getQuality() {
+    public IFWQuality quality() {
         return null;
     }
 

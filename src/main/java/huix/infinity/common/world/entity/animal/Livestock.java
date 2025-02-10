@@ -96,7 +96,7 @@ public abstract class Livestock extends Animal {
     @Override
     public void pickUpItem(@NotNull ItemEntity itemEntity) {
         if (isFood(itemEntity.getItem()) &&
-                ((LivingEntityAccess) this).getFoodOrRepairItemPickupCoolDown() == 0 &&
+                ((LivingEntityAccess) this).ifw_foodOrRepairItemPickupCoolDown() == 0 &&
                 (this.canFallInLove() || this.isBaby())) {
             ItemStack itemstack = itemEntity.getItem();
             this.onItemPickup(itemEntity);
@@ -114,7 +114,7 @@ public abstract class Livestock extends Animal {
             if (this.isBaby()) {
                 this.ageUp(getSpeedUpSecondsWhenFeeding(-age), true);
             }
-            ((LivingEntityAccess) this).setFoodOrRepairItemPickupCoolDown(400);
+            ((LivingEntityAccess) this).ifw_foodOrRepairItemPickupCoolDown(400);
         }
     }
 

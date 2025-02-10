@@ -9,6 +9,7 @@ public class MCCNLang extends LanguageProvider {
         super(output, "minecraft", "zh_cn");
     }
 
+    @Deprecated
     @Override
     protected void addTranslations() {
         add(Items.DIAMOND, "钻石");

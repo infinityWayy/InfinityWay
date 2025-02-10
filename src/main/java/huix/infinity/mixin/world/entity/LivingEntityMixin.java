@@ -59,11 +59,11 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityAc
     }
 
     @Override
-    public int getFoodOrRepairItemPickupCoolDown() {
+    public int ifw_foodOrRepairItemPickupCoolDown() {
         return food_or_repair_item_pickup_cooldown;
     }
 
-    public void setFoodOrRepairItemPickupCoolDown(int i) {
+    public void ifw_foodOrRepairItemPickupCoolDown(int i) {
         this.food_or_repair_item_pickup_cooldown = i;
     }
 

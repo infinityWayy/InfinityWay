@@ -1,6 +1,6 @@
 package huix.infinity.common.world.item.tier;
 
-public enum EnumQuality {
+public enum IFWQuality implements Quality{
 
     poor("poor", 0.75F),
     average("average", 1.0F),
@@ -11,10 +11,15 @@ public enum EnumQuality {
     legendary("legendary", 3.5F);
 
     private final String name;
-    private final float durability_modifier;
+    private final float durability_time;
 
-    EnumQuality(String name, float durability_modifier) {
+    IFWQuality(String name, float durability_time) {
         this.name = name;
-        this.durability_modifier = durability_modifier;
+        this.durability_time = durability_time;
+    }
+
+    @Override
+    public float durabilityTime() {
+        return this.durability_time;
     }
 }

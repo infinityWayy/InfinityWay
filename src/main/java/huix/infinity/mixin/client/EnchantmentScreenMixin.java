@@ -110,7 +110,7 @@ public class EnchantmentScreenMixin extends AbstractContainerScreen<EnchantmentM
                 List<Component> list = Lists.newArrayList();
                 if (!flag) {
                     if (this.minecraft.player.totalExperience < k) {
-                        list.add(Component.translatable("container.enchant.level.requirement", this.menu.costs[j]).withStyle(ChatFormatting.RED));
+                        list.add(Component.translatable("container.enchant.experience.requirement", this.menu.costs[j]).withStyle(ChatFormatting.RED));
                     }
                 }
                 guiGraphics.renderComponentTooltip(this.font, list, mouseX, mouseY);

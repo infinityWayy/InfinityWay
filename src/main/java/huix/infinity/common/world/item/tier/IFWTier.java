@@ -4,9 +4,9 @@ import net.minecraft.world.item.Tier;
 
 public interface IFWTier extends Tier {
 
-    int getDurability();
+    int durability();
 
-    EnumQuality getQuality();
+    IFWQuality quality();
 
     public float acidResistance();
 

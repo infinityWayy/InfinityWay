@@ -17,6 +17,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EnchantingTableBlock;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.event.EventHooks;
@@ -70,13 +71,19 @@ public abstract class EnchantmentMenuMixin extends AbstractContainerMenu {
 
     }
 
+    @Unique
+    private boolean ifw_canClick(Player player, int id, ItemStack enchantItem) {
+        boolean flag = false;
+        if (enchantItem.ifw_hasEncRecipe()) flag = player.totalExperience >= enchantItem.ifw_encRecipeXP();
+        return this.costs[id] > 0 && !enchantItem.isEmpty() && ((player.totalExperience >= this.costs[id] || flag) || player.getAbilities().instabuild);
+    }
+
     @Overwrite
     public boolean clickMenuButton(Player player, int id) {
         if (id >= 0 && id < this.costs.length) {
             ItemStack itemstack = this.enchantSlots.getItem(0);
             int i = id + 1;
-            if (this.costs[id] > 0 && !itemstack.isEmpty() && ((player.totalExperience >= this.costs[id])
-                    || player.getAbilities().instabuild)) {
+            if (ifw_canClick(player, id, itemstack)) {
                 this.access.execute((level, pos) -> {
                     ItemStack result = itemstack.copy();
                     if (itemstack.ifw_hasEncRecipe()) {
@@ -93,12 +100,7 @@ public abstract class EnchantmentMenuMixin extends AbstractContainerMenu {
                             this.enchantSlots.setItem(0, result);
                         }
                     }
-
-                    player.awardStat(Stats.ENCHANT_ITEM);
-                    if (player instanceof ServerPlayer) CriteriaTriggers.ENCHANTED_ITEM.trigger((ServerPlayer)player, result, i);
-                    this.enchantSlots.setChanged();
-                    this.slotsChanged(this.enchantSlots);
-                    level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.random.nextFloat() * 0.1F + 0.9F);
+                    ifw_enchantEnd(level, pos, player, i, result);
                 });
                 return true;
             } else return false;
@@ -106,6 +108,15 @@ public abstract class EnchantmentMenuMixin extends AbstractContainerMenu {
             Util.logAndPauseIfInIde(player.getName() + " pressed invalid button id: " + id);
             return false;
         }
+    }
+
+    @Unique
+    private void ifw_enchantEnd(Level level, BlockPos pos, Player player, int id, ItemStack result) {
+        player.awardStat(Stats.ENCHANT_ITEM);
+        if (player instanceof ServerPlayer) CriteriaTriggers.ENCHANTED_ITEM.trigger((ServerPlayer)player, result, id);
+        this.enchantSlots.setChanged();
+        this.slotsChanged(this.enchantSlots);
+        level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.random.nextFloat() * 0.1F + 0.9F);
     }
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;selectEnchantment(Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/item/ItemStack;ILjava/util/stream/Stream;)Ljava/util/List;"),

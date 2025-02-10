@@ -1,7 +1,7 @@
 package huix.infinity.mixin.world.item;
 
 import huix.infinity.common.core.component.IFWDataComponents;
-import huix.infinity.common.world.item.crafting.EnchantmentRecipe;
+import huix.infinity.common.world.item.crafting.EnchantingRecipe;
 import huix.infinity.func_extension.ItemStackExtension;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -21,7 +21,7 @@ public class ItemStackMixin implements ItemStackExtension {
 
     @Unique
     @Override
-    public EnchantmentRecipe ifw_encRecipe() {
+    public EnchantingRecipe ifw_encRecipe() {
         return this.getItem().components().get(IFWDataComponents.enchantment_recipe.get());
     }
 
