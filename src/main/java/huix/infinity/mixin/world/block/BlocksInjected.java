@@ -23,6 +23,24 @@ public class BlocksInjected {
         return properties.strength(2.4F, 6.0F);
     }
 
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(F)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;")
+            , method = "log(Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;)Lnet/minecraft/world/level/block/Block;")
+    private static BlockBehaviour.Properties ifw_logHardness(BlockBehaviour.Properties properties, float strength) {
+        return properties.strength(1.2F);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(F)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;")
+            , method = "log(Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/block/SoundType;)Lnet/minecraft/world/level/block/Block;")
+    private static BlockBehaviour.Properties ifw_log1Hardness(BlockBehaviour.Properties properties, float strength) {
+        return properties.strength(1.2F);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 23), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_coalOreHardness(BlockBehaviour.Properties properties, float destroyTime, float explosionResistance) {
+        return properties.strength(1.2F, 3.0F);
+    }
+
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
             , ordinal = 33), method = "<clinit>")
     private static BlockBehaviour.Properties ifw_obsidianHardness(BlockBehaviour.Properties properties, float destroyTime, float explosionResistance) {

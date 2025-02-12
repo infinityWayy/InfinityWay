@@ -25,6 +25,11 @@ public class HatchetTool extends AxeTool {
     }
 
     @Override
+    public float getDecayRateForBreakingBlock(BlockState state) {
+        return super.getDecayRateForBreakingBlock(state) * 1.333F;
+    }
+
+    @Override
     public float getBaseHarvestEfficiency(BlockState state) {
         return super.getBaseHarvestEfficiency(state) * 0.5F;
     }
