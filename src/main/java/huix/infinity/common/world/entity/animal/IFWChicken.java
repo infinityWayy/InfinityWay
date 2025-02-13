@@ -13,7 +13,6 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -38,7 +37,7 @@ public class IFWChicken extends Livestock {
     private float nextFlap = 1.0F;
     public boolean isChickenJockey;
 
-    public IFWChicken(EntityType<? extends Animal> entityType, Level level) {
+    public IFWChicken(EntityType<? extends IFWChicken> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(PathType.WATER, 0.0F);
         if (!level.isClientSide) {

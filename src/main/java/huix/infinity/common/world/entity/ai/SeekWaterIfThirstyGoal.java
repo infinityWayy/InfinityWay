@@ -6,10 +6,13 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Unique;
 
 public class SeekWaterIfThirstyGoal extends Goal {
+
     protected final PathfinderMob mob;
     protected double posX;
     protected double posY;
@@ -49,14 +52,18 @@ public class SeekWaterIfThirstyGoal extends Goal {
         if (waterPos != null) {
             this.setTargetPosition(waterPos);
             return true;
+        } else {
+            Vec3 randomPos = DefaultRandomPos.getPos(this.mob, 5, 6);
+            if (randomPos != null) {
+                this.setTargetPosition(randomPos);
+                return true;
+            }
         }
         return false;
     }
 
     protected BlockPos lookForWater(BlockGetter level, Entity entity, int range) {
-        BlockPos blockpos = entity.blockPosition();
-        return !level.getBlockState(blockpos).getCollisionShape(level, blockpos).isEmpty() ?
-                null : BlockPos.findClosestMatch(entity.blockPosition(), range, range / 8,
+        return BlockPos.findClosestMatch(entity.blockPosition(), range, range / 4,
                 (p_196649_) -> level.getFluidState(p_196649_).is(FluidTags.WATER)).orElse(null);
     }
 
@@ -70,5 +77,17 @@ public class SeekWaterIfThirstyGoal extends Goal {
         this.posX = pos.getX();
         this.posY = pos.getY();
         this.posZ = pos.getZ();
+    }
+
+    /**
+     * Sets the target position using a Vec3.
+     *
+     * @param pos Vec3 containing target coordinates
+     */
+    @Unique
+    private void setTargetPosition(Vec3 pos) {
+        this.posX = pos.x;
+        this.posY = pos.y;
+        this.posZ = pos.z;
     }
 }

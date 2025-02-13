@@ -81,7 +81,8 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
                 IFWBlocks.adamantium_anvil.get(), IFWBlocks.chipped_adamantium_anvil.get(), IFWBlocks.damaged_adamantium_anvil.get());
         tag(IFWBlockTags.IFW_FURNACE).add(IFWBlocks.clay_furnace.get(), IFWBlocks.hardened_clay_furnace.get(), IFWBlocks.netherrack_furnace.get(), IFWBlocks.obsidian_furnace.get()
                                     , IFWBlocks.sandstone_furnace.get(), IFWBlocks.stone_furnace.get());
-        tag(IFWBlockTags.PORTABLE_BLOCK).addTags(BlockTags.ANVIL, IFWBlockTags.IFW_FURNACE).add(Blocks.CRAFTING_TABLE);
+        tag(IFWBlockTags.PORTABLE_BLOCK).addTags(BlockTags.ANVIL, IFWBlockTags.IFW_FURNACE)
+                .add(Blocks.CRAFTING_TABLE, Blocks.CHEST);
         tag(IFWBlockTags.SCYTHE_EFFECTIVE).add(Blocks.GLASS);
         tag(IFWBlockTags.SHEARS_EFFECTIVE).addTags(BlockTags.LEAVES, BlockTags.WOOL)
                 .add(Blocks.COBWEB, Blocks.SHORT_GRASS, Blocks.FERN, Blocks.DEAD_BUSH, Blocks.HANGING_ROOTS, Blocks.VINE,Blocks.TRIPWIRE)

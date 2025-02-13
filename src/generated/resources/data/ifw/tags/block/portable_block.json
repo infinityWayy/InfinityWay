@@ -2,6 +2,7 @@
   "values": [
     "#minecraft:anvil",
     "#ifw:ifw_furnace",
-    "minecraft:crafting_table"
+    "minecraft:crafting_table",
+    "minecraft:chest"
   ]
 }
