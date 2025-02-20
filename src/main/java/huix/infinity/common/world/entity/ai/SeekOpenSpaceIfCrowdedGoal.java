@@ -6,6 +6,8 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.EnumSet;
+
 public class SeekOpenSpaceIfCrowdedGoal extends Goal {
 
     protected final PathfinderMob mob;
@@ -16,6 +18,7 @@ public class SeekOpenSpaceIfCrowdedGoal extends Goal {
 
     public SeekOpenSpaceIfCrowdedGoal(PathfinderMob mob) {
         this.mob = mob;
+        this.setFlags(EnumSet.of(Flag.MOVE));
     }
 
     @Override

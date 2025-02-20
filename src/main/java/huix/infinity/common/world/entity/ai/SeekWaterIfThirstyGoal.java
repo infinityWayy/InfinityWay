@@ -11,6 +11,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Unique;
 
+import java.util.EnumSet;
+
 public class SeekWaterIfThirstyGoal extends Goal {
 
     protected final PathfinderMob mob;
@@ -21,6 +23,7 @@ public class SeekWaterIfThirstyGoal extends Goal {
 
     public SeekWaterIfThirstyGoal(PathfinderMob mob) {
         this.mob = mob;
+        this.setFlags(EnumSet.of(Flag.MOVE));
     }
 
     @Override

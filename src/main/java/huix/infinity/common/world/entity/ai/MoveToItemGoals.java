@@ -7,6 +7,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Comparator;
+import java.util.EnumSet;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -23,6 +24,7 @@ public class MoveToItemGoals extends Goal {
         this.mob = mob;
         this.itemStackFilter = itemStackFilter;
         this.maxDistance = maxDistance;
+        this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
     }
 
     @Override
@@ -48,6 +50,11 @@ public class MoveToItemGoals extends Goal {
     @Override
     public void stop() {
         this.isRunning = false;
+    }
+
+    @Override
+    public void tick() {
+        this.mob.getLookControl().setLookAt(this.posX, posY, posZ, (float)(this.mob.getMaxHeadYRot() + 20), (float)this.mob.getMaxHeadXRot());
     }
 
     private boolean findItemPosition() {
