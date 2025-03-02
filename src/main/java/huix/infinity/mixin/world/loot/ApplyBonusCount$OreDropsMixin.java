@@ -18,15 +18,12 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(value = ApplyBonusCount.class, priority = 2000)
 public class ApplyBonusCount$OreDropsMixin {
 
-
-    @Shadow @Final private ApplyBonusCount.Formula formula;
-
     @Shadow @Final private Holder<Enchantment> enchantment;
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;setCount(I)V"), method = "run")
     private void applyIFWFortune(ItemStack stack, int count, @Local(ordinal = 1) int enchLevel, @Local(argsOnly = true) LootContext context) {
         if (this.enchantment.is(Enchantments.FORTUNE))
-            stack.setCount(this.ifw_calculateNewCount(context.getRandom(), 1, enchLevel));
+            stack.setCount(this.ifw_calculateNewCount(context.getRandom(), stack.getCount(), enchLevel));
         else stack.setCount(count);
     }
 
