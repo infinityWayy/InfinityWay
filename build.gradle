@@ -52,6 +52,10 @@ dependencies {
 //    runtimeOnly "curse.maven:appleskin-248787:5864743"
     runtimeOnly "curse.maven:jade-324717:6155158"
     runtimeOnly "curse.maven:modern-ui-352491:5977413"
+
+    //with
+    runtimeOnly("maven.modrinth:curios:9.2.2+1.21.1")
+
     jarJar(implementation("maven.modrinth:sword-blocking-mechanics:v21.1.1-1.21.1-NeoForge")) {
         version {
             prefer 'v21.1.1-1.21.1-NeoForge'
