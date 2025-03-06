@@ -1,4 +1,4 @@
-package huix.infinity.common.world.entity.render.sheep;
+package huix.infinity.common.world.entity.render;
 
 import huix.infinity.common.world.entity.animal.IFWPig;
 import huix.infinity.init.InfinityWay;

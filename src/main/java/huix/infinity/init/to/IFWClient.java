@@ -1,21 +1,13 @@
 package huix.infinity.init.to;
 
 
-import com.google.common.collect.ImmutableList;
 import huix.infinity.common.client.IFWAnvilScreen;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWEntityType;
-import huix.infinity.common.world.entity.render.IFWChickenRenderer;
-import huix.infinity.common.world.entity.render.IFWCowRenderer;
-import huix.infinity.common.world.entity.render.IFWSheepRenderer;
-import huix.infinity.common.world.entity.render.sheep.IFWPigRenderer;
+import huix.infinity.common.world.entity.render.*;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
 import huix.infinity.common.world.item.IFWItems;
-import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
-import huix.infinity.enum_extesion.IFWRecipeBookCategories;
-import huix.infinity.enum_extesion.IFWRecipeBookTypes;
 import huix.infinity.init.InfinityWay;
-import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -73,6 +65,7 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.SHEEP.get(), IFWSheepRenderer::new);
         event.registerEntityRenderer(IFWEntityType.PIG.get(), IFWPigRenderer::new);
         event.registerEntityRenderer(IFWEntityType.COW.get(), IFWCowRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.ZOMBIE.get(), IFWZombieRenderer::new);
     }
 
 

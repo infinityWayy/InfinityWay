@@ -18,7 +18,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -367,12 +366,12 @@ public abstract class Livestock extends Animal {
         }
     }
 
-    public static boolean checkMobSpawnRules(
-            @NotNull EntityType<? extends Mob> type, @NotNull LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random
+    public static boolean checkAnimalSpawnRules(
+            @NotNull EntityType<? extends Animal> type, @NotNull LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random
     ) {
         if (spawnType == MobSpawnType.NATURAL && !WorldHelper.isBlueMoon(level)) {
             return false;
         }
-        return Animal.checkMobSpawnRules(type, level, spawnType, pos, random);
+        return Animal.checkAnimalSpawnRules(type, level, spawnType, pos, random);
     }
 }

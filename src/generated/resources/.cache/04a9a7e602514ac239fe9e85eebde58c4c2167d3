@@ -1,3 +1,4 @@
-// 1.21.1	2025-02-10T20:27:48.6076057	Tags for minecraft:entity_type mod id ifw
-2094da5d27e3be8ba28712e139e5cb532afe5b2a data/ifw/tags/entity_type/replace_animal.json
+// 1.21.1	2025-03-07T04:19:03.3880838	Tags for minecraft:entity_type mod id ifw
+319ec6ba81e4ad3d309ba5eed756aa1918b7912d data/ifw/tags/entity_type/ifw_replace_mob.json
 61e0a139f1e827bd5fb5fc102e6682222c772969 data/minecraft/tags/entity_type/fall_damage_immune.json
+6262132f0ae883dbf684b7e58eee1579ec656e6a data/minecraft/tags/entity_type/zombies.json

@@ -28,6 +28,7 @@
     "world.entity.MobMixin",
     "world.entity.PlayerMixin",
     "world.entity.ServerPlayerMixin",
+    "world.entity.ai.NearestAttackableTargetGoalMixin",
     "world.entity.ai.PanicGoalMixin",
     "world.entity.ai.TemptGoalMixin",
     "world.entity.animal.AbstractFishMixin",

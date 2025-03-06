@@ -4,6 +4,7 @@ import huix.infinity.common.world.entity.animal.IFWChicken;
 import huix.infinity.common.world.entity.animal.IFWCow;
 import huix.infinity.common.world.entity.animal.IFWPig;
 import huix.infinity.common.world.entity.animal.IFWSheep;
+import huix.infinity.common.world.entity.monster.IFWZombie;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -53,5 +54,16 @@ public class IFWEntityType {
                             .passengerAttachments(1.36875F)
                             .clientTrackingRange(10)
                             .build("cow")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWZombie>> ZOMBIE =
+            ENTITIES.register("zombie",
+                    () -> EntityType.Builder.<IFWZombie>of(IFWZombie::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.95F)
+                            .eyeHeight(1.74F)
+                            .passengerAttachments(2.0125F)
+                            .ridingOffset(-0.7F)
+                            .clientTrackingRange(8)
+                            .build("zombie")
             );
 }

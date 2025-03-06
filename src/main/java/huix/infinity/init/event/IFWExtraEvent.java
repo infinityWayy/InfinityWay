@@ -5,6 +5,7 @@ import huix.infinity.common.world.entity.animal.IFWChicken;
 import huix.infinity.common.world.entity.animal.IFWCow;
 import huix.infinity.common.world.entity.animal.IFWPig;
 import huix.infinity.common.world.entity.animal.IFWSheep;
+import huix.infinity.common.world.entity.monster.IFWZombie;
 import huix.infinity.init.InfinityWay;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -18,5 +19,6 @@ public class IFWExtraEvent {
         event.put(IFWEntityType.SHEEP.get(), IFWSheep.createAttributes().build());
         event.put(IFWEntityType.PIG.get(), IFWPig.createAttributes().build());
         event.put(IFWEntityType.COW.get(), IFWCow.createAttributes().build());
+        event.put(IFWEntityType.ZOMBIE.get(), IFWZombie.createAttributes().build());
     }
 }

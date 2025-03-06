@@ -3,6 +3,7 @@
     "minecraft:chicken",
     "minecraft:sheep",
     "minecraft:pig",
-    "minecraft:cow"
+    "minecraft:cow",
+    "minecraft:zombie"
   ]
 }

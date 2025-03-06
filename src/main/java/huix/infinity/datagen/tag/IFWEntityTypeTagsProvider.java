@@ -21,7 +21,10 @@ public class IFWEntityTypeTagsProvider extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
-        tag(IFWEntityTypeTags.ANIMAL).add(EntityType.CHICKEN, EntityType.SHEEP, EntityType.PIG, EntityType.COW);
+        tag(IFWEntityTypeTags.REPLACE).add(EntityType.CHICKEN, EntityType.SHEEP, EntityType.PIG, EntityType.COW,
+                EntityType.ZOMBIE);
+
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(IFWEntityType.CHICKEN.get());
+        this.tag(EntityTypeTags.ZOMBIES).add(IFWEntityType.ZOMBIE.get());
     }
 }

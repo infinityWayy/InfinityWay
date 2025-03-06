@@ -77,7 +77,8 @@ public class IFWFeatures {
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.CHICKEN.get(), 10, 4, 4),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.SHEEP.get(), 12, 4, 4),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.PIG.get(), 10, 4, 4),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.COW.get(), 8, 4, 4)
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.COW.get(), 8, 4, 4),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.ZOMBIE.get(), 100, 4, 4)
                         )
                 ));
 
@@ -91,7 +92,7 @@ public class IFWFeatures {
                 //remove animal
                 bootstrap.register(REMOVE_SPAWNS, new BiomeModifiers.RemoveSpawnsBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
-                        entities.getOrThrow(IFWEntityTypeTags.ANIMAL)
+                        entities.getOrThrow(IFWEntityTypeTags.REPLACE)
                 ));
             });
 
