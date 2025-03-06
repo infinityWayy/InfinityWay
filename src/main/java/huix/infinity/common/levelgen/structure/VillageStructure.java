@@ -35,14 +35,17 @@ public class VillageStructure extends AbstractJigsawStructure {
     @Override
     @NotNull
     public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext context) {
-        if (context.heightAccessor() instanceof ServerLevel level && WorldHelper.getDay(level) < 50) {
-            return Optional.empty();
+        if (context.heightAccessor() instanceof ServerLevel level) {
+            if (WorldHelper.getDay(level) > 50) {
+                ChunkPos chunkpos = context.chunkPos();
+                int i = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
+                BlockPos blockpos = new BlockPos(chunkpos.getMinBlockX(), i, chunkpos.getMinBlockZ());
+                return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.maxDepth, blockpos, this.useExpansionHack, this.projectStartToHeightmap, this.maxDistanceFromCenter, PoolAliasLookup.create(this.poolAliases, blockpos, context.seed()), this.dimensionPadding, this.liquidSettings);
+            }
         }
-        ChunkPos chunkpos = context.chunkPos();
-        int i = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
-        BlockPos blockpos = new BlockPos(chunkpos.getMinBlockX(), i, chunkpos.getMinBlockZ());
-        return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.maxDepth, blockpos, this.useExpansionHack, this.projectStartToHeightmap, this.maxDistanceFromCenter, PoolAliasLookup.create(this.poolAliases, blockpos, context.seed()), this.dimensionPadding, this.liquidSettings);
+        return Optional.empty();
     }
+
 
 
     @Override
