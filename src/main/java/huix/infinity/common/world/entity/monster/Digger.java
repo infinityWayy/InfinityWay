@@ -163,7 +163,7 @@ public class Digger extends Monster {
     }
 
     public Vec3 getLegPosition() {
-        return this.position().add(0, -1, 0);
+        return this.position().add(0, this.getBbHeight() * 0.25F, 0);
     }
 
 //    protected Vec3 getEyePosForBlockDestroying() {
@@ -222,7 +222,7 @@ public class Digger extends Monster {
         // 是否可以看到挖掘方块
         if (checkClipping) {
             ClipContext context = new ClipContext(
-                    this.getEyePosition(1.0f),
+                    this.getEyePosition(),
                     blockCenter,
                     ClipContext.Block.COLLIDER,
                     ClipContext.Fluid.NONE,

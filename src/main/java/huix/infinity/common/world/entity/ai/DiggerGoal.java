@@ -2,7 +2,6 @@ package huix.infinity.common.world.entity.ai;
 
 import huix.infinity.common.world.entity.monster.Digger;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -72,7 +71,7 @@ public class DiggerGoal extends Goal {
             return false;
         }
 
-        // 腿部挖掘检查
+        // 距离超过2时尝试沿目标路径寻找方块
         if (distance * distance > 2.0f) {
             BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos(
                     target.getBlockX(),
@@ -105,60 +104,56 @@ public class DiggerGoal extends Goal {
             return false;
         }
 
-        // 使用现代 BlockPos 和 Vec3 坐标系统
-        BlockPos targetBlockPos = target.blockPosition();
+        BlockPos targetHeadPos = BlockPos.containing(target.position().add(0, target.getBbHeight(), 0));
         Vec3 targetCenterPos = target.getBoundingBox().getCenter();
 
-        // 使用现代射线追踪系统
-        Level world = this.digger.level();
+        Level level = this.digger.level();
 
         // 第一部分检测（上方空间）
-        if (checkUpperSpace(world, targetBlockPos, targetCenterPos)) {
+        if (checkUpperSpace(level, targetHeadPos, targetCenterPos)) {
             return true;
         }
 
         // 第二部分检测（直接路径）
-        if (checkDirectPath(world, targetCenterPos)) {
+        if (checkPath(level, targetCenterPos)) {
             return true;
         }
 
         // 第三部分检测（腿部位置）
-        return checkLegacyPath(world, targetCenterPos);
+        return checkLegPath(level, targetCenterPos);
     }
 
-    private boolean checkUpperSpace(Level world, BlockPos targetPos, Vec3 targetCenter) {
-        // 检查上方方块是否为空气或可通行
-        BlockPos upperPos = targetPos.above();
-        if (world.getBlockState(upperPos).isAir() || world.getBlockState(upperPos).isCollisionShapeFullBlock(world, upperPos)) {
-            // 创建射线追踪上下文
+    private boolean checkUpperSpace(Level level, BlockPos targetHead, Vec3 targetCenter) {
+        BlockPos upperPos = targetHead.above();
+        if (level.getBlockState(upperPos).isAir()) {
             ClipContext context = new ClipContext(
-                    this.digger.getEyePosition(1.0f),
+                    this.digger.getEyePosition(),
                     targetCenter.add(0, 1, 0),
                     ClipContext.Block.COLLIDER,
                     ClipContext.Fluid.NONE,
                     this.digger
             );
 
-            BlockHitResult hitResult = world.clip(context);
-            return processHitResult(hitResult, world);
+            BlockHitResult hitResult = level.clip(context);
+            return processHitResult(hitResult, level);
         }
         return false;
     }
 
-    private boolean checkDirectPath(Level world, Vec3 targetCenter) {
+    private boolean checkPath(Level level, Vec3 targetCenter) {
         ClipContext context = new ClipContext(
-                this.digger.getEyePosition(1.0f),
+                this.digger.getEyePosition(),
                 targetCenter,
                 ClipContext.Block.COLLIDER,
                 ClipContext.Fluid.NONE,
                 this.digger
         );
 
-        BlockHitResult hitResult = world.clip(context);
-        return processHitResult(hitResult, world);
+        BlockHitResult hitResult = level.clip(context);
+        return processHitResult(hitResult, level);
     }
 
-    private boolean checkLegacyPath(Level world, Vec3 targetCenter) {
+    private boolean checkLegPath(Level world, Vec3 targetCenter) {
         // 获取腿部位置
         Vec3 legPos = this.digger.getLegPosition();
         ClipContext context = new ClipContext(
@@ -170,40 +165,37 @@ public class DiggerGoal extends Goal {
         );
 
         BlockHitResult hitResult = world.clip(context);
-        if (hitResult.getType() == HitResult.Type.MISS) return false;
+        if (hitResult.getType() == HitResult.Type.BLOCK) {
 
-        BlockPos hitPos = hitResult.getBlockPos();
-        BlockState state = world.getBlockState(hitPos);
+            BlockPos hitPos = hitResult.getBlockPos();
+            BlockState state = world.getBlockState(hitPos);
 
-        // 权限和有效性检查
-        if (isRestrictedBlock(state) &&
-                !this.digger.isEffectiveTool(state) &&
-                !this.digger.isTargetingPlayer()) {
-            return false;
+            if (!isValidBlock(state)) {
+                return false;
+            }
+
+            BlockPos upperPos = hitPos.above();
+            if (!world.getBlockState(upperPos).isAir() && !this.digger.blockWillFall(upperPos)) {
+                return false;
+            }
+
+            return this.digger.setBlockToDig(hitPos, false);
         }
-
-        // 检查上方方块状态
-        BlockPos upperPos = hitPos.above();
-        boolean upperBlockValid = world.getBlockState(upperPos).isAir() ||
-                this.digger.blockWillFall(upperPos);
-
-        return upperBlockValid && this.digger.setBlockToDig(hitPos, false);
+        return false;
     }
 
-    private boolean processHitResult(BlockHitResult hitResult, Level world) {
-        if (hitResult.getType() != HitResult.Type.BLOCK) return false;
-
-        BlockPos hitPos = hitResult.getBlockPos();
-        BlockState state = world.getBlockState(hitPos);
-
-        if (!isValidBlock(state)) return false;
-
-        // 遍历 Y 轴检测
-        int attackerY = Mth.floor(this.digger.getY());
-        for (int y = hitPos.getY() + 1; y >= attackerY; y--) {
-            BlockPos currentPos = new BlockPos(hitPos.getX(), y, hitPos.getZ());
-            if (this.digger.setBlockToDig(currentPos, true)) {
-                return true;
+    private boolean processHitResult(BlockHitResult hitResult, Level level) {
+        if (hitResult.getType() == HitResult.Type.BLOCK) {
+            BlockPos hitPos = hitResult.getBlockPos();
+            BlockState state = level.getBlockState(hitPos);
+            if (isValidBlock(state)) {
+                BlockPos.MutableBlockPos mutable = hitPos.above().mutable();
+                for (int y = hitPos.getY(); y >= this.digger.getBlockY(); y--) {
+                    mutable.setY(y);
+                    if (this.digger.setBlockToDig(mutable, true)) {
+                        return true;
+                    }
+                }
             }
         }
         return false;
@@ -217,16 +209,6 @@ public class DiggerGoal extends Goal {
 
     public boolean isRestrictedBlock(BlockState state) {
         return state.is(Tags.Blocks.FENCES);
-    }
-
-    private BlockHitResult getIntersectingBlock(Vec3 attackerEyePos, Vec3 targetPos) {
-        return this.digger.level().clip(new ClipContext(
-                attackerEyePos,
-                targetPos,
-                ClipContext.Block.COLLIDER,
-                ClipContext.Fluid.NONE,
-                this.digger
-        ));
     }
 
     private boolean couldGetCloserByPathing() {
@@ -266,7 +248,6 @@ public class DiggerGoal extends Goal {
             return false;
         }
 
-        // 替换旧的AI任务检查逻辑
         MeleeAttackGoal attackGoal = (MeleeAttackGoal) this.digger.goalSelector.getAvailableGoals()
                 .stream()
                 .filter(g -> g.getGoal() instanceof MeleeAttackGoal)
