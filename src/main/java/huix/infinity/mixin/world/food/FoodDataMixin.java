@@ -96,7 +96,7 @@ public class FoodDataMixin implements FoodDataExtension {
 
     @Overwrite
     public boolean needsFood() {
-        return this.foodLevel <= this.maxFoodLevel && this.saturationLevel <= this.maxFoodLevel;
+        return this.foodLevel < this.maxFoodLevel && this.saturationLevel < this.maxFoodLevel;
     }
 
     @Unique
