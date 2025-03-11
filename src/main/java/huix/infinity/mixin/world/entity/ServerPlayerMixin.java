@@ -9,13 +9,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Unit;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -100,7 +100,7 @@ public abstract class ServerPlayerMixin extends Player {
                     this.awardStat(Stats.SWIM_ONE_CM, i);
                     this.causeFoodExhaustion(0.015F * (float)i * 0.01F);
                 }
-            } else if (this.isEyeInFluid(FluidTags.WATER)) {
+            } else if (this.isEyeInFluidType(NeoForgeMod.WATER_TYPE.value())) {
                 int j = Math.round((float)Math.sqrt(dx * dx + dy * dy + dz * dz) * 100.0F);
                 if (j > 0) {
                     this.awardStat(Stats.WALK_UNDER_WATER_ONE_CM, j);

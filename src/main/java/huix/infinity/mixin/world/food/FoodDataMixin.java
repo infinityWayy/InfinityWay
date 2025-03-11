@@ -118,7 +118,7 @@ public class FoodDataMixin implements FoodDataExtension {
         this.lastFoodLevel = this.foodLevel;
         if (this.exhaustionLevel > 4.0F) {
             this.exhaustionLevel -= 4.0F;
-            if (this.saturationLevel > 0.0F)
+            if (this.saturationLevel > 1)
                 this.saturationLevel = Math.max(this.saturationLevel - 1.0F, 0.0F);
             else if (difficulty != Difficulty.PEACEFUL)
                 this.foodLevel = Math.max(this.foodLevel - 1, 0);
