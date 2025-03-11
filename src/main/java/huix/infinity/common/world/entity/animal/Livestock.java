@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
@@ -288,8 +289,16 @@ public abstract class Livestock extends Animal {
         return isNearFood(this.blockPosition());
     }
 
+    public boolean isNearWater() {
+        return isNearWater(this.blockPosition());
+    }
+
     protected boolean isNearFood(BlockPos pos) {
         return isNearFood(pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    protected boolean isNearWater(BlockPos pos) {
+        return isNearWater(pos.getX(), pos.getY(), pos.getZ());
     }
 
     protected boolean isNearFood(int x, int y, int z) {
@@ -304,6 +313,21 @@ public abstract class Livestock extends Animal {
                                 this.level().destroyBlock(blockpos, false);
                             }
                         }
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    protected boolean isNearWater(int x, int y, int z) {
+        int height = Mth.floor(this.getBbHeight());
+        for (int dx = -1; dx <= 1; ++dx) {
+            for (int dy = -1; dy <= height; ++dy) {
+                for (int dz = -1; dz <= 1; ++dz) {
+                    BlockPos blockpos = new BlockPos(x + dx, y + dy, z + dz);
+                    if (this.level().getFluidState(blockpos).is(Tags.Fluids.WATER)) {
                         return true;
                     }
                 }
@@ -339,7 +363,7 @@ public abstract class Livestock extends Animal {
             this.addFood(penalty);
         }
 
-        if (this.isInWater()) {
+        if (this.isInWater() || this.isNearWater()) {
             this.addWater(benefit);
         } else if (this.isInRain()) {
             this.addWater(benefit / 10.0F);

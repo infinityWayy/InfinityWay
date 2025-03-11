@@ -30,7 +30,7 @@ public class SeekWaterIfThirstyGoal extends Goal {
     public boolean canUse() {
         if (this.mob instanceof Livestock livestock) {
             if (!livestock.isThirsty() || livestock.isInWater() ||
-                    livestock.isInRain() || isRunning) {
+                    livestock.isInRain() || livestock.isNearWater() || isRunning) {
                 return false;
             }
             return getMovementPath(livestock);

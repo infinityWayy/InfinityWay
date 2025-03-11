@@ -1,4 +1,4 @@
-package huix.infinity.mixin.world.entity;
+package huix.infinity.mixin.world.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

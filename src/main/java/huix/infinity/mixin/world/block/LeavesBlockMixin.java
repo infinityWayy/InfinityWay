@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -40,12 +41,10 @@ public abstract class LeavesBlockMixin extends Block {
             @NotNull BlockPos pos,
             @NotNull CollisionContext context
     ) {
-        // 通过 CollisionContext 获取当前碰撞的实体
         if (context instanceof EntityCollisionContext entityContext) {
             Entity entity = entityContext.getEntity();
 
-            // 如果是目标实体（掉落物或箭），返回空碰撞箱
-            if (entity instanceof ItemEntity || entity instanceof AbstractArrow) {
+            if (entity instanceof ItemEntity || entity instanceof AbstractArrow || entity instanceof AbstractSkeleton) {
                 return Shapes.empty();
             }
         }
