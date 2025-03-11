@@ -319,12 +319,12 @@ public class Digger extends Monster {
         // 获取方块状态（替代旧版 blockID 获取方式）
         final BlockState state = level.getBlockState(destroyPos);
         if (state.isAir()) {
-            return 40; // 默认冷却时间
+            return 20; // 默认冷却时间
         }
 
         // 获取方块硬度（现代 API）
         float hardness = state.getDestroySpeed(level, destroyPos);
-        int coolOff = (int)(300.0f * hardness);
+        int coolOff = (int)(150.0f * hardness);
 
 
         // 狂暴状态加速
