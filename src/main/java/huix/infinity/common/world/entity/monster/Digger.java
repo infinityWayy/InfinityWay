@@ -36,7 +36,7 @@ public class Digger extends Monster {
     public boolean isDestroyingBlock;
     public BlockPos destroyBlockPos;
     protected int destroyBlockProgress;
-    public int destroyBlockCoolOff = 40;
+    public int destroyBlockCoolOff = 20;
     public int destroyPauseTicks;
     protected Digger(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -308,7 +308,7 @@ public class Digger extends Monster {
         this.level().destroyBlockProgress(this.getId(), destroyBlockPos, -1);
         this.isDestroyingBlock = false;
         this.destroyBlockProgress = -1;
-        this.destroyBlockCoolOff = 40;
+        this.destroyBlockCoolOff = 20;
     }
 
     public int getCoolOffForBlock() {
@@ -369,7 +369,7 @@ public class Digger extends Monster {
                 }
             }
         } else {
-            this.destroyBlockCoolOff = 40;
+            this.destroyBlockCoolOff = 20;
             this.destroyBlockProgress = -1;
         }
         super.aiStep();

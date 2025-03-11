@@ -201,8 +201,9 @@ public class IFWZombie extends Digger {
         super.onSyncedDataUpdated(key);
     }
 
+    // 暂时不会转换
     protected boolean convertsInWater() {
-        return true;
+        return false;
     }
 
     @Override

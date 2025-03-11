@@ -293,9 +293,9 @@ public class DiggerGoal extends Goal {
 
     @Override
     public void tick() {
-        BlockPos pos = this.digger.destroyBlockPos;
+        Vec3 pos = Vec3.atCenterOf(this.digger.destroyBlockPos);
         this.digger.getLookControl().setLookAt(
-                pos.getX(), pos.getY(), pos.getZ(),
+                pos.x, pos.y, pos.z,
                 (float)(this.digger.getMaxHeadYRot() + 20),
                 (float)this.digger.getMaxHeadXRot());
 
