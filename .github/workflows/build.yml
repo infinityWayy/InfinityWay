@@ -32,16 +32,9 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
 
-
-      - name: Get Version
-        id: version
-        run:
-          TIMESTAMP=$(date +%Y%m%d%H%M%S)
-          echo "name=ifw-$TIMESTAMP" >> $GITHUB_OUTPUT
-
-      - name: Upload a Build Artifact
+      - name: Upload Build Artifact
         uses: actions/upload-artifact@v4.6.2
         with:
-          name: ${{ steps.version.outputs.name }}
+          name: ifw-pre-${{ github.event.head_commit.id }}
           path: build/libs/*.jar
           retention-days: 7
