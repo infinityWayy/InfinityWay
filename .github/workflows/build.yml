@@ -22,17 +22,19 @@ jobs:
       - name: Build with Gradle
         uses: gradle/actions/setup-gradle@v3
         run:
-          echo "FILE=$(find app/build/outputs/ci -name '*arm32.apk')" >> $GITHUB_ENV
+          echo "FILE=$(find app/build/outputs/ci -name '*.jar')" >> $GITHUB_ENV
         with:
           arguments: build
-
-      - name: Upload Artifacts
-          uses: actions/upload-artifact@v4
+  release:
+    runs-on: ubuntu-latest
+      - name: Upload a Build Artifact
+          uses: actions/upload-artifact@v4.6.2
           with:
             path: ${{ env.FILE }}
             name: ifw-pre-${{ github.event.head_commit.id }}
-      - name: Download Artifacts
-        uses: actions/download-artifact@v4
+
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v4.2.1
         with:
           path: artifacts
 
