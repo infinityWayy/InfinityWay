@@ -26,6 +26,7 @@ jobs:
       - name: Build with Gradle
         run:
           ./gradlew build
+          ccache -s
           echo "FILE=$(find build/libs -name '*.jar')" >> $GITHUB_ENV
 
       - name: Upload a Build Artifact
