@@ -13,6 +13,8 @@ import net.minecraft.world.food.FoodConstants;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.Tags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -48,12 +50,14 @@ public class FoodDataMixin implements FoodDataExtension {
     private int insulinResponse;
     @Unique
     private int lastInsulinResponse;
+    @Unique
+    private float saturationExhaustionLevel;
 
     @Inject(at = @At("RETURN"), method = "<init>")
     private void giveValue(CallbackInfo ci){
         this.foodLevel = 6;
         this.lastFoodLevel = 6;
-        this.saturationLevel = 2.0F;
+        this.saturationLevel = 6.0F;
     }
 
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/nbt/CompoundTag;getFloat(Ljava/lang/String;)F"
@@ -65,6 +69,7 @@ public class FoodDataMixin implements FoodDataExtension {
         this.insulinResponse = compound.getInt("insulinResponse");
         this.nutritionalStatus = NutritionalStatus.values()[compound.getInt("nutritionalStatus")];
         this.nutritionalStageTimer = compound.getInt("nutritionalStageTimer");
+        this.saturationExhaustionLevel = compound.getFloat("saturationExhaustionLevel");
     }
 
     @Inject(at = @At("RETURN"), method = "addAdditionalSaveData")
@@ -75,6 +80,7 @@ public class FoodDataMixin implements FoodDataExtension {
         compound.putInt("insulinResponse", this.insulinResponse);
         compound.putInt("nutritionalStatus", this.nutritionalStatus.ordinal());
         compound.putInt("nutritionalStageTimer", this.nutritionalStageTimer);
+        compound.putFloat("saturationExhaustionLevel", this.saturationExhaustionLevel);
     }
 
 
@@ -112,20 +118,41 @@ public class FoodDataMixin implements FoodDataExtension {
         this.ifw_insulinResponse(this.insulinResponse + IR);
     }
 
+    @Unique
+    public float ifw_hungerPerTick() {
+        return 0.002F;
+    }
+
+    @Unique
+    public float ifw_hungerPerFoodUnit() {
+        return 4.0F;
+    }
+
     @Overwrite
     public void tick(Player player) {
         Difficulty difficulty = player.level().getDifficulty();
         this.lastFoodLevel = this.foodLevel;
-        if (this.exhaustionLevel > 4.0F) {
-            this.exhaustionLevel -= 4.0F;
-            if (this.saturationLevel > 0)
-                this.saturationLevel = Math.max(this.saturationLevel - 1.0F, 0.0F);
-            else if (difficulty != Difficulty.PEACEFUL)
-                this.foodLevel = Math.max(this.foodLevel - 1, 0);
+        if (difficulty != Difficulty.PEACEFUL) {
+            addExhaustion(ifw_hungerPerTick() * getWetnessAndMalnourishmentHungerMultiplier(player));
+            this.saturationExhaustionLevel += ifw_hungerPerTick() * 0.25F;
 
-            if (this.foodLevel == 0)
-                clearTickTimer();
+            if (this.exhaustionLevel >= ifw_hungerPerFoodUnit()) {
+                this.exhaustionLevel -= ifw_hungerPerFoodUnit();
+
+                if (this.saturationLevel > 0 || this.foodLevel > 0) {
+                    if (this.saturationLevel >= 1 && (this.saturationExhaustionLevel + 0.001F < ifw_hungerPerFoodUnit() || this.foodLevel <= 0))
+                        --this.saturationLevel;
+                    else {
+                        --this.foodLevel;
+                        this.saturationExhaustionLevel = 0.0F;
+                    }
+                }
+            }
         }
+
+        if (player.isSleeping())
+            addExhaustion(ifw_hungerPerTick() * 20.0F);
+
         ++this.tickTimer;
 
         //heal or damage
@@ -309,6 +336,25 @@ public class FoodDataMixin implements FoodDataExtension {
     @Unique
     private void clearTickTimer() {
         this.tickTimer = 0;
+    }
+
+    @Unique
+    public float getWetnessAndMalnourishmentHungerMultiplier(Player player) {
+        Level level = player.level();
+        float rain_factor = level.isRaining() ? (level.isThundering() ? 0.5F : 0.25F) : 0.0F;
+        float immersion_factor = level.getBlockState(player.getOnPos().above(1)).getFluidState().is(Tags.Fluids.WATER) ? 0.5F
+                : (level.getBlockState(player.getOnPos()).getFluidState().is(Tags.Fluids.WATER) ? 0.25F : 0.0F);
+        float wetness_factor = Math.max(rain_factor, immersion_factor);
+
+        if (level.isRaining() && !level.isThundering() && immersion_factor == 0.25F) wetness_factor += 0.125F;
+
+        if (level.getBiome(player.getOnPos()).is(Tags.Biomes.IS_COLD))
+            wetness_factor *= 2.0F;
+        else if (level.getBiome(player.getOnPos()).is(Tags.Biomes.IS_DESERT))
+            wetness_factor = 0.0F;
+
+        float malnourishment_factor = !this.hasNutrition() ? 0.5F : 0.0F;
+        return 1.0F + wetness_factor + malnourishment_factor;
     }
 
 

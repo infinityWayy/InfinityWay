@@ -22,10 +22,5 @@ public abstract class BlockItemMixin extends Item {
         super(properties);
     }
 
-    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/critereon/ItemUsedOnLocationTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;)V"), method = "place")
-    private void playerHungerOnPlace(BlockPlaceContext context, CallbackInfoReturnable<InteractionResult> cir, @Local(ordinal = 1) BlockState state, @Local Player player) {
-        player.causeFoodExhaustion(Math.min(state.getBlock().defaultDestroyTime(), 20.0F));
-    }
-
 
 }

@@ -9,11 +9,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
-
-import javax.annotation.Nullable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin( Block.class )
 public abstract class BlockMixin implements BlockExtension {
@@ -25,8 +24,8 @@ public abstract class BlockMixin implements BlockExtension {
     /**
      * Called by BlockItem after this block has been placed.
      */
-    @Overwrite
-    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+    @Inject(method = "setPlacedBy", at = @At("HEAD"))
+    public void injectPlaceHunger(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack, CallbackInfo ci) {
         if (placer instanceof Player player) {
             player.causeFoodExhaustion(Math.min(state.getDestroySpeed(level, pos), 20.0f));
         }

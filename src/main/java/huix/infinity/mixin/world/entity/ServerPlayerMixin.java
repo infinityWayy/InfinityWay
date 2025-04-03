@@ -12,6 +12,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Unit;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -140,6 +141,8 @@ public abstract class ServerPlayerMixin extends Player {
                     this.awardStat(Stats.FLY_ONE_CM, j1);
                 }
             }
+        } else if (this.getVehicle() instanceof Boat && this.moveDist != 0.0F) {
+            this.causeFoodExhaustion(Math.abs(this.moveDist) * 0.01F);
         }
 
     }
