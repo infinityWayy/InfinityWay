@@ -1,16 +1,16 @@
 {
-  "net/minecraft/world/item/ArmorItem": "huix/infinity/func_extension/ArmorExtension",
-  "net/minecraft/world/item/ArmorMaterial": "huix/infinity/func_extension/ArmorMaterialExtension",
-  "net/minecraft/world/level/block/state/BlockBehaviour": "huix/infinity/func_extension/BlockBehaviourExtension",
-  "net/minecraft/world/level/block/state/BlockBehaviour$BlockStateBase": "huix/infinity/func_extension/BlockStateBaseExtension",
-  "net/minecraft/world/level/block/Block": "huix/infinity/func_extension/BlockExtension",
-  "net/minecraft/world/entity/animal/AbstractFish": "huix/infinity/func_extension/BucketableExtension",
-  "net/minecraft/world/level/block/LiquidBlock": "huix/infinity/func_extension/BucketPickupExtension",
-  "net/minecraft/world/item/enchantment/Enchantment": "huix/infinity/func_extension/EnchantmentExtension",
-  "net/minecraft/world/level/material/Fluid": "huix/infinity/func_extension/FluidExtension",
-  "net/minecraft/world/food/FoodData": "huix/infinity/func_extension/FoodDataExtension",
-  "net/minecraft/world/item/Item": "huix/infinity/func_extension/ItemExtension",
-  "net/minecraft/world/item/ItemStack": "huix/infinity/func_extension/ItemStackExtension",
-  "net/minecraft/world/entity/player/Player": "huix/infinity/func_extension/PlayerExtension"
+  "net/minecraft/world/item/ArmorItem": "huix/infinity/extension/func/ArmorExtension",
+  "net/minecraft/world/item/ArmorMaterial": "huix/infinity/extension/func/ArmorMaterialExtension",
+  "net/minecraft/world/level/block/state/BlockBehaviour": "huix/infinity/extension/func/BlockBehaviourExtension",
+  "net/minecraft/world/level/block/state/BlockBehaviour$BlockStateBase": "huix/infinity/extension/func/BlockStateBaseExtension",
+  "net/minecraft/world/level/block/Block": "huix/infinity/extension/func/BlockExtension",
+  "net/minecraft/world/entity/animal/AbstractFish": "huix/infinity/extension/func/BucketableExtension",
+  "net/minecraft/world/level/block/LiquidBlock": "huix/infinity/extension/func/BucketPickupExtension",
+  "net/minecraft/world/item/enchantment/Enchantment": "huix/infinity/extension/func/EnchantmentExtension",
+  "net/minecraft/world/level/material/Fluid": "huix/infinity/extension/func/FluidExtension",
+  "net/minecraft/world/food/FoodData": "huix/infinity/extension/func/FoodDataExtension",
+  "net/minecraft/world/item/Item": "huix/infinity/extension/func/ItemExtension",
+  "net/minecraft/world/item/ItemStack": "huix/infinity/extension/func/ItemStackExtension",
+  "net/minecraft/world/entity/player/Player": "huix/infinity/extension/func/PlayerExtension"
 
 }

@@ -1,4 +1,4 @@
-package huix.infinity.func_extension;
+package huix.infinity.extension.func;
 
 import huix.infinity.common.world.item.crafting.EnchantingRecipe;
 import net.minecraft.world.item.ItemStack;

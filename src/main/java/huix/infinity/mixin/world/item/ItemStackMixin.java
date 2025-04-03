@@ -2,7 +2,7 @@ package huix.infinity.mixin.world.item;
 
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.item.crafting.EnchantingRecipe;
-import huix.infinity.func_extension.ItemStackExtension;
+import huix.infinity.extension.func.ItemStackExtension;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

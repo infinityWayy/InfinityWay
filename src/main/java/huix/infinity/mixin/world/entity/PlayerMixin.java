@@ -1,7 +1,7 @@
 package huix.infinity.mixin.world.entity;
 
 import huix.infinity.common.core.component.IFWDataComponents;
-import huix.infinity.func_extension.PlayerExtension;
+import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.util.ReflectHelper;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.sounds.SoundEvents;

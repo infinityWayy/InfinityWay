@@ -1,6 +1,6 @@
 package huix.infinity.mixin.world.item;
 
-import huix.infinity.func_extension.ArmorMaterialExtension;
+import huix.infinity.extension.func.ArmorMaterialExtension;
 import huix.infinity.util.ReflectHelper;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;

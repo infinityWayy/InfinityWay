@@ -1,6 +1,6 @@
 package huix.infinity.mixin.world.block;
 
-import huix.infinity.func_extension.BlockExtension;
+import huix.infinity.extension.func.BlockExtension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;

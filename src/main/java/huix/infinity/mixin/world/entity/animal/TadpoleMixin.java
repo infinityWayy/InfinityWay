@@ -1,8 +1,7 @@
 package huix.infinity.mixin.world.entity.animal;
 
 import huix.infinity.common.world.item.tier.IFWTier;
-import huix.infinity.common.world.item.tier.IFWTiers;
-import huix.infinity.func_extension.BucketableExtension;
+import huix.infinity.extension.func.BucketableExtension;
 import huix.infinity.util.BucketHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

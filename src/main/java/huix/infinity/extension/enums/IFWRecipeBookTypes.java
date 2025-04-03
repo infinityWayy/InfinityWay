@@ -1,7 +1,4 @@
-package huix.infinity.enum_extesion;
-
-import net.minecraft.world.inventory.RecipeBookType;
-import net.neoforged.fml.common.asm.enumextension.EnumProxy;
+package huix.infinity.extension.enums;
 
 public class IFWRecipeBookTypes {
 

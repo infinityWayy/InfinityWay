@@ -1,7 +1,6 @@
-package huix.infinity.func_extension;
+package huix.infinity.extension.func;
 
 import huix.infinity.common.world.item.tier.IFWTier;
-import huix.infinity.common.world.item.tier.IFWTiers;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;

@@ -1,8 +1,7 @@
-package huix.infinity.func_extension;
+package huix.infinity.extension.func;
 
 import huix.infinity.common.world.item.IFWBucketItem;
 import huix.infinity.common.world.item.tier.IFWTier;
-import huix.infinity.common.world.item.tier.IFWTiers;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;

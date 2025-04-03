@@ -1,8 +1,7 @@
 package huix.infinity.mixin.world.material;
 
 import huix.infinity.common.world.item.tier.IFWTier;
-import huix.infinity.common.world.item.tier.IFWTiers;
-import huix.infinity.func_extension.FluidExtension;
+import huix.infinity.extension.func.FluidExtension;
 import huix.infinity.util.BucketHelper;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;

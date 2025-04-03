@@ -3,7 +3,7 @@ package huix.infinity.mixin.world.food;
 import huix.infinity.common.world.effect.IFWMobEffects;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.common.world.food.IFWFoodProperties;
-import huix.infinity.func_extension.FoodDataExtension;
+import huix.infinity.extension.func.FoodDataExtension;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;

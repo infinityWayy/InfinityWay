@@ -1,4 +1,4 @@
-package huix.infinity.func_extension;
+package huix.infinity.extension.func;
 
 import huix.infinity.common.core.component.IFWDataComponents;
 import net.minecraft.core.Holder;

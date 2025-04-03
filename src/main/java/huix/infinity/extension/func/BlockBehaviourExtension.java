@@ -1,4 +1,4 @@
-package huix.infinity.func_extension;
+package huix.infinity.extension.func;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;

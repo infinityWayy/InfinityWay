@@ -1,8 +1,7 @@
 package huix.infinity.mixin.world.block;
 
 import huix.infinity.common.world.item.tier.IFWTier;
-import huix.infinity.common.world.item.tier.IFWTiers;
-import huix.infinity.func_extension.BucketPickupExtension;
+import huix.infinity.extension.func.BucketPickupExtension;
 import huix.infinity.util.BucketHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;

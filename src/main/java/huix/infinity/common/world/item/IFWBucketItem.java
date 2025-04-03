@@ -1,8 +1,7 @@
 package huix.infinity.common.world.item;
 
 import huix.infinity.common.world.item.tier.IFWTier;
-import huix.infinity.common.world.item.tier.IFWTiers;
-import huix.infinity.func_extension.BucketPickupExtension;
+import huix.infinity.extension.func.BucketPickupExtension;
 import huix.infinity.util.BucketHelper;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.advancements.CriteriaTriggers;

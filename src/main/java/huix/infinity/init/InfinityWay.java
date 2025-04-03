@@ -5,6 +5,7 @@ import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.levelgen.structure.IFWStructureTypes;
 import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.curse.Curses;
 import huix.infinity.common.world.effect.IFWMobEffects;
 import huix.infinity.common.world.entity.IFWAttributes;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
@@ -43,6 +44,7 @@ public final class InfinityWay {
         IFWItems.ITEMS.register(bus);
         IFWBlocks.BLOCKS.register(bus);
         IFWEntityType.ENTITIES.register(bus);
+        Curses.CURSES.register(bus);
 
         IFWEvents.init();
     }
