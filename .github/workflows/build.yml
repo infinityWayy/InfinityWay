@@ -21,16 +21,21 @@ jobs:
 
       - name: Build with Gradle
         uses: gradle/actions/setup-gradle@v3
+        run:
+          echo "FILE=$(find app/build/outputs/ci -name '*arm32.apk')" >> $GITHUB_ENV
         with:
           arguments: build
 
-      - name: Commit files
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git commit -a -m "Add changes"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - name: Upload Artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            path: ${{ env.FILE }}
+            name: ifw-pre-${{ github.event.head_commit.id }}
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          path: artifacts
+
+      - name: Release
+        run: |
+          export file=$(find artifacts -name "*.jar")
