@@ -19,27 +19,24 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v3.5.0
-
+      - name: Cache Gradle
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
       - name: Build with Gradle
-        run:
-          ./gradlew build
-          ccache -s
-          echo "FILE=$(find build/libs -name '*.jar')" >> $GITHUB_ENV
+        run: ./gradlew build --no-daemon
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.6.2
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
         with:
-          path: ${{ env.FILE }}
-          name: ifw-pre-${{ github.event.head_commit.id }}
-
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v4.2.1
-        with:
-          path: artifacts
-
-      - name: Release
-        run: |
-          export file=$(find artifacts -name "*.jar")
+          name: build-artifacts
+          path: |
+            build/libs/*.jar
+            build/reports/**
+          retention-days: 7
