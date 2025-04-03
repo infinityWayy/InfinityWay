@@ -1,8 +1,0 @@
-permissions:                    # Global permissions configuration starts here
-  contents: read                # 'read' access to repository contents
-  pull-requests: write          # 'write' access to pull requests
-jobs:
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
