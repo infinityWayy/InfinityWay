@@ -22,22 +22,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3.5.0
 
+
       - name: Build with Gradle
         run:
-          echo 'org.gradle.parallel=true' >> gradle.properties
-          echo 'org.gradle.vfs.watch=true' >> gradle.properties
-          echo 'qauxv.override.ninja.path=/usr/bin/ninja' >> local.properties
-          sed -i 's/org.gradle.configuration-cache=true//g' gradle.properties
-          echo 'buildCache { local { removeUnusedEntriesAfterDays = 1 } }' >> settings.gradle.kts
-          echo ${{ secrets.SIGN_KEYSTORE_BASE64 }} | base64 -d > keystore.jks
-          ./gradlew :app:synthesizeDistReleaseApksCI :app:extractReleaseNativeDebugMetadata
-          ccache -s
+          ./gradlew build
           echo "FILE=$(find build/libs -name '*.jar')" >> $GITHUB_ENV
-        env:
-          KEYSTORE_PATH: "../keystore.jks"
-          KEYSTORE_PASSWORD: ${{ secrets.SIGN_KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.SIGN_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.6.2
