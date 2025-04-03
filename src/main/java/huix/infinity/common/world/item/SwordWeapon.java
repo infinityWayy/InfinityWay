@@ -85,8 +85,8 @@ public class SwordWeapon extends IFWTieredItem {
         return net.neoforged.neoforge.common.ItemAbilities.DEFAULT_SWORD_ACTIONS.contains(itemAbility);
     }
 
-    @Override
-    public float getReachBonus() {
-        return 0.75F;
-    }
+//    @Override
+//    public float getReachBonus() {
+//        return 0.75F;
+//    }
 }

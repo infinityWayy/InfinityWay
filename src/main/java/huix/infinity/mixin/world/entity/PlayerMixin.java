@@ -111,7 +111,7 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     public static AttributeSupplier.Builder createAttributes() {
         return LivingEntity.createLivingAttributes().add(Attributes.ATTACK_DAMAGE, 1.0F).add(Attributes.MOVEMENT_SPEED, 0.1F)
                 .add(Attributes.ATTACK_SPEED).add(Attributes.LUCK)
-                .add(Attributes.BLOCK_INTERACTION_RANGE, 3.0F).add(Attributes.ENTITY_INTERACTION_RANGE, 1.5F)
+                .add(Attributes.BLOCK_INTERACTION_RANGE, 3.0F).add(Attributes.ENTITY_INTERACTION_RANGE, 2.0F)
                 .add(Attributes.BLOCK_BREAK_SPEED).add(Attributes.SUBMERGED_MINING_SPEED).add(Attributes.SNEAKING_SPEED).add(Attributes.MINING_EFFICIENCY)
                 .add(Attributes.SWEEPING_DAMAGE_RATIO).add(NeoForgeMod.CREATIVE_FLIGHT);
     }
