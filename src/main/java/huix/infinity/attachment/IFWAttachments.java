@@ -1,6 +1,9 @@
 package huix.infinity.attachment;
 
 import com.mojang.serialization.Codec;
+import huix.infinity.common.world.curse.Curse;
+import huix.infinity.common.world.effect.PersistentEffect;
+import huix.infinity.common.world.curse.Curses;
 import huix.infinity.init.InfinityWay;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -41,9 +44,15 @@ public class IFWAttachments {
     public static final Supplier<AttachmentType<Integer>> manure_countdown = ATTACHMENT_TYPES.register(
             "manure_countdown", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
     );
-
     public static final Supplier<AttachmentType<Boolean>> is_panic = ATTACHMENT_TYPES.register(
             "is_panic", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
+    );
+
+    public static final Supplier<AttachmentType<PersistentEffect>> player_curse = ATTACHMENT_TYPES.register(
+            "player_curse", () -> AttachmentType.builder(Curses.none).serialize(Curse.CODEC).build()
+    );
+    public static final Supplier<AttachmentType<Boolean>> learned_curse = ATTACHMENT_TYPES.register(
+            "learned_curse", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
     );
 
 }

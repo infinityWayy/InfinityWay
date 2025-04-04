@@ -1,0 +1,9 @@
+{
+    "sources": [
+        {
+            "type": "directory",
+            "source": "persistent_effect",
+            "prefix": ""
+        }
+    ]
+}

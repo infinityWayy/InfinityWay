@@ -15,8 +15,14 @@ public class IFWNetwork {
     private static void register(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar("1").optional();
         registrar.playToClient(
-                        ClientBoundSetHealthPayload.TYPE,
-                        ClientBoundSetHealthPayload.STREAM_CODEC,
-                        ClientPayloadHandler::handle);
+                        ClientBoundSetFoodPayload.TYPE,
+                        ClientBoundSetFoodPayload.STREAM_CODEC,
+                        ClientPayloadHandler::handleFood);
+        registrar.playToClient(
+                ClientBoundSetCursePayload.TYPE,
+                ClientBoundSetCursePayload.STREAM_CODEC,
+                ClientPayloadHandler::handleCurse);
+
+
     }
 }

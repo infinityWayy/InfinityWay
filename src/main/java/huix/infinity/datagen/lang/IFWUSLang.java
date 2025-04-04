@@ -1,18 +1,49 @@
 package huix.infinity.datagen.lang;
 
 import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.curse.Curses;
+import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
+import huix.infinity.util.IFWLanguageProvider;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class IFWUSLang extends LanguageProvider {
+public class IFWUSLang extends IFWLanguageProvider {
     public IFWUSLang(PackOutput output) {
         super(output, InfinityWay.MOD_ID, "en_us");
     }
 
     @Override
     protected void addTranslations() {
+        add(Curses.none.get(), "Empty");
+        add(Curses.equipment_decays_faster.get(), "EquipmentDecay");
+        add(Curses.cannot_hold_breath.get(), "CantHoldBreath");
+        add(Curses.cannot_run.get(), "CantRun");
+        add(Curses.cannot_eat_meats.get(), "CantEatAnimals");
+        add(Curses.cannot_eat_plants.get(), "CantEatPlants");
+        add(Curses.cannot_drink.get(), "CantDrink");
+        add(Curses.endermen_aggro.get(), "EndermenEnemy");
+        add(Curses.clumsiness.get(), "Elumsiness");
+        add(Curses.entanglement.get(), "Entanglement");
+        add(Curses.cannot_wear_armor.get(), "CantWearArmor");
+        add(Curses.cannot_open_chests.get(), "CantOpenChests");
+        add(Curses.cannot_sleep.get(), "CantSleep");
+        add(Curses.fear_of_spiders.get(), "FearOfSpiders");
+        add(Curses.fear_of_wolves.get(), "FearOfWolves");
+        add(Curses.fear_of_creepers.get(), "FearOfCreepers");
+        add(Curses.fear_of_undead.get(), "FearOfUndead");
+        add(IFWEntityType.CHICKEN.get(), "Chicken");
+        add(IFWEntityType.SHEEP.get(), "Sheep");
+        add(IFWEntityType.PIG.get(), "Pig");
+        add(IFWEntityType.COW.get(), "Cow");
+        add(IFWEntityType.ZOMBIE.get(), "Zombie");
+        add("commands.give.curse.player", "Applied curse %s to %s");
+        add("commands.give.curse.players", "Applied curse %s to %s players");
+        add("commands.clear.curse.player", "Removed curse from %s");
+        add("commands.clear.curse.players", "Removed curse from %s targets");
+        add("ifw.witch_curse.discurse", "The curse is gone");
+        add("ifw.witch_curse.curse", "You have been cursed");
         add("itemGroup.ifw.block", "IFW| Block");
         add("itemGroup.ifw.item", "IFW| Item");
         add("itemGroup.ifw.tool", "IFW| Tool");

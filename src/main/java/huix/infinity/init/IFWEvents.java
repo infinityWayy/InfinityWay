@@ -7,6 +7,8 @@ import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.event.IFWLoading;
+import huix.infinity.init.to.IFWClient;
+import huix.infinity.util.IFWConstants;
 import huix.infinity.util.IFWEnchantmentHelper;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.ChatFormatting;
@@ -28,7 +30,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
@@ -48,9 +53,7 @@ import java.util.Map;
 
 public class IFWEvents {
 
-    public static void init() {
-        final IEventBus bus = NeoForge.EVENT_BUS;
-
+    public static void init(IEventBus bus) {
         bus.addListener(IFWEvents::armorModify);
         bus.addListener(IFWEvents::onBreakSpeed);
         bus.addListener(IFWEvents::playerAttacklHit);

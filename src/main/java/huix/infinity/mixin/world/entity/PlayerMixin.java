@@ -1,9 +1,14 @@
 package huix.infinity.mixin.world.entity;
 
 import huix.infinity.common.core.component.IFWDataComponents;
+import huix.infinity.common.core.registries.IFWRegistries;
+import huix.infinity.common.world.curse.Curse;
 import huix.infinity.extension.func.PlayerExtension;
+import huix.infinity.init.InfinityWay;
 import huix.infinity.util.ReflectHelper;
 import huix.infinity.util.WorldHelper;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
@@ -36,6 +41,41 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
 
     @Shadow public abstract FoodData getFoodData();
 
+    @Unique
+    public Curse curse;
+    @Unique
+    public boolean learnedCurse;
+
+    @Override
+    public boolean knownCurse() {
+        return this.hasCurse() && this.learnedCurse;
+    }
+
+    @Override
+    public void curse(Curse curse) {
+        this.curse = curse;
+    }
+
+    @Override
+    public Curse curse() {
+        return this.curse;
+    }
+
+    @Inject(at = @At(value = "RETURN"), method = "readAdditionalSaveData")
+    private void readNBT(CompoundTag compound, CallbackInfo ci){
+        System.out.println("=======");
+        System.out.println(compound.contains("curse"));
+        System.out.println(compound.getCompound("curse"));
+        this.curse = (Curse) Curse.load(compound.getCompound("curse"));
+        this.learnedCurse = compound.getBoolean("learnedCurse");
+    }
+
+    @Inject(at = @At("RETURN"), method = "addAdditionalSaveData")
+    private void saveNBT(CompoundTag compound, CallbackInfo ci) {
+        if (this.curse != null)
+            compound.putString("curse", this.curse.save().getAsString());
+        compound.putBoolean("learnedCurse", this.learnedCurse);
+    }
 
     @Overwrite
     public int getXpNeededForNextLevel() {

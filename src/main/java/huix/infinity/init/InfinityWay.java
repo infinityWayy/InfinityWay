@@ -17,35 +17,41 @@ import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
 import huix.infinity.common.world.item.group.IFWItemGroups;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.loot.IFWLootModifiers;
+import huix.infinity.init.to.IFWClient;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
 @Mod(InfinityWay.MOD_ID)
 public final class InfinityWay {
     public static final String MOD_ID = "ifw";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
 
-    public InfinityWay(final ModContainer mod, final IEventBus bus) {
-        IFWAttachments.ATTACHMENT_TYPES.register(bus);
-        IFWRecipeTypes.RECIPES.register(bus);
-        IFWMenuTypes.MENUS.register(bus);
-        IFWStructureTypes.STRUCTURE_TYPES.register(bus);
-        IFWLootModifiers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(bus);
-        IFWBlockEntityTypes.BLOCK_ENTITY_TYPES.register(bus);
-        IFWRecipeSerializers.RECIPE_SERIALIZERS.register(bus);
-        IFWArmorMaterials.ARMOR_MATERIALS.register(bus);
-        IFWDataComponents.DATA_COMPONENTS.register(bus);
-        IFWItemGroups.CREATIVE_TABS.register(bus);
-        IFWAttributes.ATTRIBUTES.register(bus);
-        IFWMobEffects.MOB_EFFECTS.register(bus);
-        IFWItems.ITEMS.register(bus);
-        IFWBlocks.BLOCKS.register(bus);
-        IFWEntityType.ENTITIES.register(bus);
-        Curses.CURSES.register(bus);
+    public InfinityWay(final IEventBus modBus) {
+        final IEventBus eventBus = NeoForge.EVENT_BUS;
+        IFWAttachments.ATTACHMENT_TYPES.register(modBus);
+        IFWRecipeTypes.RECIPES.register(modBus);
+        IFWMenuTypes.MENUS.register(modBus);
+        IFWStructureTypes.STRUCTURE_TYPES.register(modBus);
+        IFWLootModifiers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modBus);
+        IFWBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modBus);
+        IFWRecipeSerializers.RECIPE_SERIALIZERS.register(modBus);
+        IFWArmorMaterials.ARMOR_MATERIALS.register(modBus);
+        IFWDataComponents.DATA_COMPONENTS.register(modBus);
+        IFWItemGroups.CREATIVE_TABS.register(modBus);
+        IFWAttributes.ATTRIBUTES.register(modBus);
+        IFWMobEffects.MOB_EFFECTS.register(modBus);
+        IFWItems.ITEMS.register(modBus);
+        IFWBlocks.BLOCKS.register(modBus);
+        IFWEntityType.ENTITIES.register(modBus);
+        Curses.CURSES.register(modBus);
 
-        IFWEvents.init();
+        IFWEvents.init(eventBus);
     }
 }

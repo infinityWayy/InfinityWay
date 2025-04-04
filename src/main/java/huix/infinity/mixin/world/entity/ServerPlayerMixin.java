@@ -3,9 +3,16 @@ package huix.infinity.mixin.world.entity;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.authlib.GameProfile;
 import com.mojang.datafixers.util.Either;
+import huix.infinity.common.world.curse.Curse;
+import huix.infinity.common.world.curse.Curses;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
-import huix.infinity.network.ClientBoundSetHealthPayload;
+import huix.infinity.extension.func.PlayerExtension;
+import huix.infinity.network.ClientBoundSetCursePayload;
+import huix.infinity.network.ClientBoundSetFoodPayload;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.stats.Stats;
@@ -29,7 +36,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(value = ServerPlayer.class)
-public abstract class ServerPlayerMixin extends Player {
+public abstract class ServerPlayerMixin extends Player implements PlayerExtension {
 
     @Inject(at = @At("RETURN"), method = "setExperienceLevels")
     private void updateTotalXP_0(int level, CallbackInfo ci){
@@ -46,10 +53,21 @@ public abstract class ServerPlayerMixin extends Player {
     @Unique
     private NutritionalStatus ifw_lastStats;
 
+    @Unique
+    @Override
+    public void curse(Curse curse) {
+        super.curse(curse);
+        if (curse == Curses.none.get())
+            this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.discurse").withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD)));
+        else
+            this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.curse").withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.BOLD)));
+        this.connection.send(new ClientBoundSetCursePayload(curse));
+    }
+
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;getHealth()F", ordinal = 0, shift = At.Shift.BEFORE), method = "doTick")
     private void updateHealth(CallbackInfo ci){
         if (this.ifw_lastMaxFoodLevel !=  this.foodData.ifw_maxFoodLevel() || this.ifw_lastStats != foodData.ifw_nutritionalStatus()) {
-            this.connection.send(new ClientBoundSetHealthPayload(foodData.ifw_maxFoodLevel(), foodData.ifw_nutritionalStatusByINT(), foodData.ifw_phytonutrients(), foodData.ifw_protein()));
+            this.connection.send(new ClientBoundSetFoodPayload(foodData.ifw_maxFoodLevel(), foodData.ifw_nutritionalStatusByINT(), foodData.ifw_phytonutrients(), foodData.ifw_protein()));
             this.ifw_lastMaxFoodLevel = this.foodData.ifw_maxFoodLevel();
             this.ifw_lastStats = foodData.ifw_nutritionalStatus();
         }

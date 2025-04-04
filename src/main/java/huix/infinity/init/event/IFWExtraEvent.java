@@ -26,6 +26,6 @@ public class IFWExtraEvent {
 
     @SubscribeEvent
     static void registerRegistries(NewRegistryEvent event) {
-        event.register(IFWRegistries.CURSE_REGISTRY);
+        event.register(IFWRegistries.persistent_eff_registry);
     }
 }

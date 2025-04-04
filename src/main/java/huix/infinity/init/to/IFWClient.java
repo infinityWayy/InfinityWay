@@ -2,15 +2,19 @@ package huix.infinity.init.to;
 
 
 import huix.infinity.common.client.IFWAnvilScreen;
+import huix.infinity.common.client.resources.PersistentEffectTextureManager;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.entity.render.*;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
+import huix.infinity.util.IFWConstants;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.renderer.texture.atlas.SpriteSources;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.FishingRodItem;
@@ -20,16 +24,15 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.ChunkRenderTypeSet;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
+import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.textures.NamespacedDirectoryLister;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = InfinityWay.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public final class IFWClient {
 
     @SubscribeEvent
     @SuppressWarnings("deprecation")
-    private static void clientSetup(final FMLClientSetupEvent event) {
+    static void clientSetup(final FMLClientSetupEvent event) {
         final RenderType cutout = RenderType.cutout();
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.adamantium_door.get(), ChunkRenderTypeSet.of(cutout));
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.adamantium_bars.get(), ChunkRenderTypeSet.of(cutout));
@@ -51,16 +54,24 @@ public final class IFWClient {
     }
 
     @SubscribeEvent
-    public static void registerMenuScreens(final RegisterMenuScreensEvent event) {
+    static void registerReloadListenerEvent(RegisterClientReloadListenersEvent event) {
+        IFWConstants.persistentEffectTextureManager = new PersistentEffectTextureManager(Minecraft.getInstance().getTextureManager());
+        //assert IFWConstants.persistentEffectTextureManager != null;
+        event.registerReloadListener(IFWConstants.persistentEffectTextureManager);
+    }
+
+
+    @SubscribeEvent
+    static void registerMenuScreens(final RegisterMenuScreensEvent event) {
         event.register(IFWMenuTypes.anvil_menu.get(), IFWAnvilScreen::new);
     }
 
     @SubscribeEvent
-    public static void registerRecipeBookCategories(final RegisterRecipeBookCategoriesEvent event) {
+    static void registerRecipeBookCategories(final RegisterRecipeBookCategoriesEvent event) {
     }
 
     @SubscribeEvent
-    public static void onRegisterRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+    static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(IFWEntityType.CHICKEN.get(), IFWChickenRenderer::new);
         event.registerEntityRenderer(IFWEntityType.SHEEP.get(), IFWSheepRenderer::new);
         event.registerEntityRenderer(IFWEntityType.PIG.get(), IFWPigRenderer::new);
@@ -69,7 +80,7 @@ public final class IFWClient {
     }
 
 
-    public static void registerFishingRodModel(Item fishingRod) {
+    static void registerFishingRodModel(Item fishingRod) {
         ItemProperties.register(fishingRod, ResourceLocation.withDefaultNamespace("cast"), (stack, level, entity, i) -> {
             if (entity == null) {
                 return 0.0F;

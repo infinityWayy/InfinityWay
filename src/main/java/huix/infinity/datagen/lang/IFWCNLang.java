@@ -1,18 +1,50 @@
 package huix.infinity.datagen.lang;
 
 import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.curse.Curses;
+import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
+import huix.infinity.util.IFWLanguageProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class IFWCNLang extends LanguageProvider {
+public class IFWCNLang extends IFWLanguageProvider {
     public IFWCNLang(PackOutput output) {
         super(output, InfinityWay.MOD_ID, "zh_cn");
     }
 
     @Override
     protected void addTranslations() {
+        add(Curses.none.get(), "空诅咒");
+        add(Curses.equipment_decays_faster.get(), "腐蚀性皮肤");
+        add(Curses.cannot_hold_breath.get(), "无法呼吸");
+        add(Curses.cannot_run.get(), "不能疾跑");
+        add(Curses.cannot_eat_meats.get(), "不能食腥");
+        add(Curses.cannot_eat_plants.get(), "不能食素");
+        add(Curses.cannot_drink.get(), "不能饮用");
+        add(Curses.endermen_aggro.get(), "末影仇恨");
+        add(Curses.clumsiness.get(), "我是弱智?");
+        add(Curses.entanglement.get(), "植物恐惧");
+        add(Curses.cannot_wear_armor.get(), "盔甲排斥");
+        add(Curses.cannot_open_chests.get(), "箱子恐惧");
+        add(Curses.cannot_sleep.get(), "失眠症");
+        add(Curses.fear_of_spiders.get(), "蜘蛛恐惧");
+        add(Curses.fear_of_wolves.get(), "恶狼恐惧");
+        add(Curses.fear_of_creepers.get(), "苦力怕恐惧");
+        add(Curses.fear_of_undead.get(), "亡灵生物恐惧");
+        add(IFWEntityType.CHICKEN.get(), "鸡");
+        add(IFWEntityType.SHEEP.get(), "羊");
+        add(IFWEntityType.PIG.get(), "猪");
+        add(IFWEntityType.COW.get(), "牛");
+        add(IFWEntityType.ZOMBIE.get(), "僵尸");
+        add("commands.give.curse.player", "应用诅咒 %s 至 %s");
+        add("commands.give.curse.players", "应用诅咒 %s 至 %s 个玩家");
+        add("commands.clear.curse.player", "已为 %s 清除诅咒");
+        add("commands.clear.curse.players", "已为个 %s 玩家清除诅咒");
+        add("ifw.witch_curse.discurse", "诅咒消逝");
+        add("ifw.witch_curse.curse", "你已经被诅咒");
         add("itemGroup.ifw.block", "IFW| 方块");
         add("itemGroup.ifw.item", "IFW| 物品");
         add("itemGroup.ifw.tool", "IFW| 工具");
@@ -361,4 +393,5 @@ public class IFWCNLang extends LanguageProvider {
         add(IFWItems.golden_chainmail_leggings.get(), "金锁链护腿");
         add(IFWItems.golden_chainmail_boots.get(), "金锁链鞋子");
     }
+
 }
