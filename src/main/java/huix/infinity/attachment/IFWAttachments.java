@@ -49,10 +49,10 @@ public class IFWAttachments {
     );
 
     public static final Supplier<AttachmentType<PersistentEffect>> player_curse = ATTACHMENT_TYPES.register(
-            "player_curse", () -> AttachmentType.builder(Curses.none).serialize(Curse.CODEC).build()
+            "player_curse", () -> AttachmentType.builder(Curses.none).serialize(Curse.CODEC).copyOnDeath().build()
     );
     public static final Supplier<AttachmentType<Boolean>> learned_curse = ATTACHMENT_TYPES.register(
-            "learned_curse", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
+            "learned_curse", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).copyOnDeath().build()
     );
 
 }

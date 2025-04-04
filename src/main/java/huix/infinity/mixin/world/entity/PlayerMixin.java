@@ -40,42 +40,7 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     @Shadow public abstract void causeFoodExhaustion(float exhaustion);
 
     @Shadow public abstract FoodData getFoodData();
-
-    @Unique
-    public Curse curse;
-    @Unique
-    public boolean learnedCurse;
-
-    @Override
-    public boolean knownCurse() {
-        return this.hasCurse() && this.learnedCurse;
-    }
-
-    @Override
-    public void curse(Curse curse) {
-        this.curse = curse;
-    }
-
-    @Override
-    public Curse curse() {
-        return this.curse;
-    }
-
-    @Inject(at = @At(value = "RETURN"), method = "readAdditionalSaveData")
-    private void readNBT(CompoundTag compound, CallbackInfo ci){
-        System.out.println("=======");
-        System.out.println(compound.contains("curse"));
-        System.out.println(compound.getCompound("curse"));
-        this.curse = (Curse) Curse.load(compound.getCompound("curse"));
-        this.learnedCurse = compound.getBoolean("learnedCurse");
-    }
-
-    @Inject(at = @At("RETURN"), method = "addAdditionalSaveData")
-    private void saveNBT(CompoundTag compound, CallbackInfo ci) {
-        if (this.curse != null)
-            compound.putString("curse", this.curse.save().getAsString());
-        compound.putBoolean("learnedCurse", this.learnedCurse);
-    }
+    
 
     @Overwrite
     public int getXpNeededForNextLevel() {

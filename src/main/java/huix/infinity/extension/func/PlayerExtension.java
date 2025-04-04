@@ -25,22 +25,28 @@ public interface PlayerExtension {
     }
 
     default boolean hasCurse() {
-        if (instance().curse() == null) curse(Curses.none.get());
-        return curse() != Curses.none.get();
+        Player player = (Player) this;
+        return player.hasData(IFWAttachments.player_curse) && !curse().equals(Curses.none.get());
     }
 
     default boolean knownCurse() {
-        return false;
+        Player player = (Player) this;
+        return hasCurse() && player.hasData(IFWAttachments.learned_curse) && player.getData(IFWAttachments.learned_curse);
     }
 
     default boolean hasCurse(Curse curse) {
-        return hasCurse() && instance().curse() == curse;
+        Player player = (Player) this;
+        return hasCurse() && player.getData(IFWAttachments.player_curse) == curse;
     }
 
     default Curse curse() {
-        return Curses.none.get();
+        Player player = (Player) this;
+        return (Curse) player.getData(IFWAttachments.player_curse);
     }
 
-    default void curse(Curse curse) {}
+    default void curse(Curse curse) {
+        Player player = (Player) this;
+        player.setData(IFWAttachments.player_curse, curse);
+    }
 
 }
