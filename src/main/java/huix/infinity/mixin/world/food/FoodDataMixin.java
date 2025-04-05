@@ -294,13 +294,8 @@ public class FoodDataMixin implements FoodDataExtension {
     }
     @Unique
     private void decreaseNutrition() {
-        if (this.phytonutrients > 0) {
-            --this.phytonutrients;
-        }
-
-        if (this.protein > 0) {
-            --this.protein;
-        }
+        if (this.phytonutrients > 0) --this.phytonutrients;
+        if (this.protein > 0) --this.protein;
     }
     @Unique
     private boolean hasNutrition() {

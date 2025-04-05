@@ -16,7 +16,7 @@ public class IFWAttachments {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, InfinityWay.MOD_ID);
 
     public static final Supplier<AttachmentType<Integer>> respawn_xp = ATTACHMENT_TYPES.register(
-            "respawn_xp", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
+            "respawn_xp", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).copyOnDeath().build()
     );
 
     public static final Supplier<AttachmentType<Integer>> armor_effect = ATTACHMENT_TYPES.register(
@@ -50,7 +50,7 @@ public class IFWAttachments {
     );
 
     public static final Supplier<AttachmentType<PersistentEffectInstance>> player_curse = ATTACHMENT_TYPES.register(
-            "player_curse", () -> AttachmentType.serializable(attachmentHolder -> new PersistentEffectInstance(Curses.none)).copyOnDeath().build()
+            "player_curse", () -> AttachmentType.builder(() -> new PersistentEffectInstance(Curses.none)).serialize(PersistentEffectInstance.CODEC).copyOnDeath().build()
     );
     public static final Supplier<AttachmentType<Boolean>> learned_curse = ATTACHMENT_TYPES.register(
             "learned_curse", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).copyOnDeath().build()

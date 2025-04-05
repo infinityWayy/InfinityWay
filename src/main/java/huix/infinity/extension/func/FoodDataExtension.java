@@ -30,8 +30,11 @@ public interface FoodDataExtension {
     default int ifw_nutritionalStatusByINT() {
         return 0;
     }
+
     default NutritionalStatus ifw_nutritionalStatus() {
         return null;
     }
+
     default void eat(IFWFoodProperties foodProperties){}
+
 }

@@ -58,13 +58,11 @@ public abstract class ServerPlayerMixin extends Player implements PlayerExtensio
     @Override
     public void curse(PersistentEffectInstance curse) {
         super.curse(curse);
-        if (this.connection != null) {
-            if (curse.persistentEff() == Curses.none)
-                this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.discurse").withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD)));
-            else
-                this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.curse").withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.BOLD)));
-            this.connection.send(new ClientBoundSetCursePayload(curse));
-        }
+        if (curse.persistentEff() == Curses.none)
+            this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.discurse").withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD)));
+        else
+            this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.curse").withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.BOLD)));
+        this.connection.send(new ClientBoundSetCursePayload(curse));
     }
 
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;getHealth()F", ordinal = 0, shift = At.Shift.BEFORE), method = "doTick")

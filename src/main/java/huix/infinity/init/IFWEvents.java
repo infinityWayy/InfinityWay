@@ -2,13 +2,13 @@ package huix.infinity.init;
 
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.core.component.IFWDataComponents;
+import huix.infinity.common.world.curse.Curses;
+import huix.infinity.common.world.curse.PersistentEffectInstance;
 import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.event.IFWLoading;
-import huix.infinity.init.to.IFWClient;
-import huix.infinity.util.IFWConstants;
 import huix.infinity.util.IFWEnchantmentHelper;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.ChatFormatting;
@@ -30,11 +30,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -55,7 +51,7 @@ public class IFWEvents {
 
     public static void init(IEventBus bus) {
         bus.addListener(IFWEvents::armorModify);
-        bus.addListener(IFWEvents::onBreakSpeed);
+        bus.addListener(IFWEvents::playerBreakSpeed);
         bus.addListener(IFWEvents::playerAttacklHit);
         bus.addListener(IFWEvents::playerDie);
         bus.addListener(IFWEvents::playerClone);
@@ -64,7 +60,8 @@ public class IFWEvents {
         bus.addListener(IFWEvents::nonRemoveUnClearEffect);
         bus.addListener(IFWEvents::injectFuel);
         bus.addListener(IFWEvents::injectItem);
-        bus.addListener(IFWEvents::onServerTick);
+        bus.addListener(IFWEvents::serverTick);
+        bus.addListener(IFWEvents::playerLoggedIn);
     }
 
     public static void injectItem(final DataMapsUpdatedEvent event) {
@@ -74,7 +71,7 @@ public class IFWEvents {
     }
 
 
-    public static void onServerTick(final ServerTickEvent.Post event) {
+    public static void serverTick(final ServerTickEvent.Post event) {
         for (Map.Entry<ResourceKey<Level>, Map<BlockPos, Integer>> entry : WorldHelper.DELAYED_BLOCKS.entrySet()) {
             ResourceKey<Level> dimension = entry.getKey();
             Map<BlockPos, Integer> blocks = entry.getValue();
@@ -108,8 +105,15 @@ public class IFWEvents {
         }
 
     }
+    public static void playerLoggedIn(final PlayerEvent.PlayerLoggedInEvent event) {
+        Player entity = event.getEntity();
+        entity.curse(Curses.cannot_eat_meats);
+        entity.learnCurse();
+        entity.experienceLevel = 20;
+    }
 
-    public static void onBreakSpeed(final PlayerEvent.BreakSpeed event) {
+
+    public static void playerBreakSpeed(final PlayerEvent.BreakSpeed event) {
         event.setNewSpeed(event.getOriginalSpeed() + LevelBonusStats.HARVESTING.calcBonusFor(event.getEntity()));
     }
 
@@ -122,8 +126,7 @@ public class IFWEvents {
 
     public static void playerDie(final LivingDeathEvent event) {
         if (event.getEntity() instanceof Player entity) {
-            Integer respawn_experience = entity.getData(IFWAttachments.respawn_xp);
-
+            int respawn_experience = entity.getData(IFWAttachments.respawn_xp);
             if (entity.totalExperience < 20) {
                 entity.setData(IFWAttachments.respawn_xp, entity.totalExperience - 20);
 
@@ -136,8 +139,7 @@ public class IFWEvents {
 
     public static void playerClone(final PlayerEvent.Clone event) {
         final Player cloned = event.getEntity();
-        final Player original = event.getOriginal();
-        cloned.giveExperiencePoints(original.getData(IFWAttachments.respawn_xp));
+        cloned.giveExperiencePoints(event.getOriginal().getData(IFWAttachments.respawn_xp));
     }
 
     public static void daySleep(final CanContinueSleepingEvent event) {

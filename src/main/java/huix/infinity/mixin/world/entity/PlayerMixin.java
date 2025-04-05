@@ -1,5 +1,8 @@
 package huix.infinity.mixin.world.entity;
 
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.DataResult;
+import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.core.registries.IFWRegistries;
 import huix.infinity.common.world.curse.Curse;
@@ -10,77 +13,77 @@ import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.util.ReflectHelper;
 import huix.infinity.util.WorldHelper;
+import net.minecraft.core.GlobalPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Abilities;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.inventory.PlayerEnderChestContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
+import org.slf4j.Logger;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import javax.annotation.Nullable;
 import java.util.Objects;
+import java.util.Optional;
 
-@Mixin( Player.class )
+@Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity implements PlayerExtension {
 
-    @Shadow public abstract void causeFoodExhaustion(float exhaustion);
-
-    @Shadow public abstract FoodData getFoodData();
-
-
     @Unique
-    private PersistentEffectInstance curse;
-
-    @Unique
-    public boolean learnedCurse = false;
+    private PersistentEffectInstance curse = PersistentEffectInstance.of(Curses.none);
+    @Override
+    public Curse curse() {
+        return (Curse) this.curse.persistentEff().value();
+    }
 
     @Override
     public boolean knownCurse() {
-        return this.hasCurse() && this.learnedCurse;
+        return learnedCurse;
     }
 
-//    @Override
-//    public void curse(PersistentEffectInstance curse) {
-//        this.curse = curse;
-//    }
+    @Override
+    public void learnCurse() {
+        learnedCurse = true;
+    }
 
-//    @Override
-//    public Curse curse() {
-//        System.out.println(this.curse);
-//        return (Curse) this.curse.persistentEff().value();
-//    }
+    @Unique
+    private boolean learnedCurse = false;
 
-    @Inject(at = @At(value = "RETURN"), method = "readAdditionalSaveData")
+    @Inject(at = @At("RETURN"), method = "readAdditionalSaveData")
     private void readNBT(CompoundTag compound, CallbackInfo ci){
-//        this.curse(PersistentEffectInstance.load(compound.getCompound("curse")));
-        this.curse(Curses.cannot_eat_meats);
-        System.out.println("11111111111" + this.curse);
         this.learnedCurse = compound.getBoolean("learnedCurse");
     }
 
     @Inject(at = @At("RETURN"), method = "addAdditionalSaveData")
-    private void saveNBT(CompoundTag compound, CallbackInfo ci) {
-        if (curse != null) compound.put("curse", this.curse.save());
+    private void injectNBT(CompoundTag compound, CallbackInfo ci){
         compound.putBoolean("learnedCurse", this.learnedCurse);
     }
 
+    @Override
+    public void curse(PersistentEffectInstance curse) {
+        this.curse =  curse;
+    }
 
     @Overwrite
     public int getXpNeededForNextLevel() {
@@ -231,6 +234,29 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     private int lastLevelUpTime;
     @Shadow
     public float experienceProgress;
+    @Shadow @Final private GameProfile gameProfile;
+    @Shadow private int currentImpulseContextResetGraceTime;
+    @Shadow private boolean ignoreFallDamageFromCurrentImpulse;
+    @Shadow @Nullable public Vec3 currentImpulseImpactPos;
+
+    @Shadow public abstract void setLastDeathLocation(Optional<GlobalPos> lastDeathLocation);
+
+    @Shadow protected abstract void setShoulderEntityRight(CompoundTag entityCompound);
+
+    @Shadow protected abstract void setShoulderEntityLeft(CompoundTag entityCompound);
+
+    @Shadow protected PlayerEnderChestContainer enderChestInventory;
+    @Shadow @Final private Abilities abilities;
+    @Shadow protected FoodData foodData;
+
+    @Shadow public abstract void setScore(int score);
+
+    @Shadow public int enchantmentSeed;
+    @Shadow @Final private Inventory inventory;
+
+    @Shadow public abstract void causeFoodExhaustion(float exhaustion);
+
+    @Shadow public abstract FoodData getFoodData();
     @Shadow
     public void increaseScore(int score) {
     }

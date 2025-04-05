@@ -30,7 +30,7 @@ public interface PlayerExtension {
     }
 
     default boolean hasCurse() {
-        return instance().hasData(IFWAttachments.player_curse) && !curse().equals(Curses.none.value());
+        return !curse().equals(Curses.none.value());
     }
 
     default boolean knownCurse() {
@@ -42,7 +42,7 @@ public interface PlayerExtension {
     }
 
     default Curse curse() {
-        return (Curse) instance().getData(IFWAttachments.player_curse).persistentEff().value();
+        return (Curse) Curses.none.value();
     }
 
     default void curse(Holder<PersistentEffect> curse) {
@@ -50,7 +50,9 @@ public interface PlayerExtension {
     }
 
     default void curse(PersistentEffectInstance curse) {
-        instance().setData(IFWAttachments.player_curse, curse);
+    }
+
+    default void learnCurse() {
     }
 
 
