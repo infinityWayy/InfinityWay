@@ -2,6 +2,7 @@ package huix.infinity.attachment;
 
 import com.mojang.serialization.Codec;
 import huix.infinity.common.world.curse.Curse;
+import huix.infinity.common.world.curse.PersistentEffectInstance;
 import huix.infinity.common.world.effect.PersistentEffect;
 import huix.infinity.common.world.curse.Curses;
 import huix.infinity.init.InfinityWay;
@@ -48,8 +49,8 @@ public class IFWAttachments {
             "is_panic", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
     );
 
-    public static final Supplier<AttachmentType<PersistentEffect>> player_curse = ATTACHMENT_TYPES.register(
-            "player_curse", () -> AttachmentType.builder(Curses.none).serialize(Curse.CODEC).copyOnDeath().build()
+    public static final Supplier<AttachmentType<PersistentEffectInstance>> player_curse = ATTACHMENT_TYPES.register(
+            "player_curse", () -> AttachmentType.serializable(attachmentHolder -> new PersistentEffectInstance(Curses.none)).copyOnDeath().build()
     );
     public static final Supplier<AttachmentType<Boolean>> learned_curse = ATTACHMENT_TYPES.register(
             "learned_curse", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).copyOnDeath().build()

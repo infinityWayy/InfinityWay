@@ -5,6 +5,7 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.datafixers.util.Either;
 import huix.infinity.common.world.curse.Curse;
 import huix.infinity.common.world.curse.Curses;
+import huix.infinity.common.world.curse.PersistentEffectInstance;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.network.ClientBoundSetCursePayload;
@@ -55,13 +56,15 @@ public abstract class ServerPlayerMixin extends Player implements PlayerExtensio
 
     @Unique
     @Override
-    public void curse(Curse curse) {
+    public void curse(PersistentEffectInstance curse) {
         super.curse(curse);
-        if (curse == Curses.none.get())
-            this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.discurse").withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD)));
-        else
-            this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.curse").withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.BOLD)));
-        this.connection.send(new ClientBoundSetCursePayload(curse));
+        if (this.connection != null) {
+            if (curse.persistentEff() == Curses.none)
+                this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.discurse").withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD)));
+            else
+                this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.curse").withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.BOLD)));
+            this.connection.send(new ClientBoundSetCursePayload(curse));
+        }
     }
 
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;getHealth()F", ordinal = 0, shift = At.Shift.BEFORE), method = "doTick")

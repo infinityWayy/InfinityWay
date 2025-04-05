@@ -1,17 +1,12 @@
 package huix.infinity.mixin.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import huix.infinity.common.world.curse.Curse;
-import huix.infinity.common.world.effect.PersistentEffect;
-import huix.infinity.init.InfinityWay;
-import huix.infinity.init.to.IFWClient;
 import huix.infinity.util.IFWConstants;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -28,13 +23,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class EffectRenderingInventoryScreenMixin extends AbstractContainerScreen {
 
     @Unique
-    private int yOffset = 0;
+    private int extra_yOffset = 0;
 
     @Inject(at = @At(value = "RETURN"), method = "render")
     private void injectCurseRender(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         Player player = this.minecraft.player;
         if (player.hasCurse()) {
-            this.yOffset = 33;
+            this.extra_yOffset = 33;
             int renderX = this.leftPos + this.imageWidth + 2;
             int j = this.width - renderX;
             if (j >= 32) {
@@ -45,10 +40,10 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
                 flag = !event.isCompact();
                 renderX = event.getHorizontalOffset();
 
-                this.renderExtraBackgrounds(guiGraphics, renderX, this.yOffset, flag);
-                this.renderExtraIcons(guiGraphics, renderX, this.yOffset, flag);
+                this.renderExtraBackgrounds(guiGraphics, renderX, this.extra_yOffset, flag);
+                this.renderExtraIcons(guiGraphics, renderX, this.extra_yOffset, flag);
                 if (flag)
-                    this.renderExtraLabels(guiGraphics, renderX, this.yOffset, player);
+                    this.renderExtraLabels(guiGraphics, renderX, this.extra_yOffset, player);
             }
         }
     }
@@ -71,7 +66,8 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
     @Unique
     private void renderExtraLabels(GuiGraphics guiGraphics, int renderX, int yOffset, Player player) {
         Component component = Component.translatable("render.unkonwn.curse");
-        if (player.knownCurse()) component = Component.translatable(player.curse().desc());
+        if (player.knownCurse())
+            component = Component.translatable(player.curse().desc());
 
         guiGraphics.drawString(this.font, component, renderX + 10 + 18, this.topPos + 6, 16777215);
     }
@@ -84,7 +80,7 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
 
     @Redirect(at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/inventory/EffectRenderingInventoryScreen;topPos:I"), method = {"renderBackgrounds", "renderEffects", "renderIcons", "renderLabels"})
     private int redirectTopPos(EffectRenderingInventoryScreen instance) {
-        return this.topPos + this.yOffset;
+        return this.topPos + this.extra_yOffset;
     }
 
     @Shadow @Final private static ResourceLocation EFFECT_BACKGROUND_LARGE_SPRITE;

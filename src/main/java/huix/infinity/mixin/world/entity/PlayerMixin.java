@@ -3,6 +3,9 @@ package huix.infinity.mixin.world.entity;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.core.registries.IFWRegistries;
 import huix.infinity.common.world.curse.Curse;
+import huix.infinity.common.world.curse.Curses;
+import huix.infinity.common.world.curse.PersistentEffectInstance;
+import huix.infinity.common.world.effect.PersistentEffect;
 import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.util.ReflectHelper;
@@ -40,12 +43,50 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     @Shadow public abstract void causeFoodExhaustion(float exhaustion);
 
     @Shadow public abstract FoodData getFoodData();
-    
+
+
+    @Unique
+    private PersistentEffectInstance curse;
+
+    @Unique
+    public boolean learnedCurse = false;
+
+    @Override
+    public boolean knownCurse() {
+        return this.hasCurse() && this.learnedCurse;
+    }
+
+//    @Override
+//    public void curse(PersistentEffectInstance curse) {
+//        this.curse = curse;
+//    }
+
+//    @Override
+//    public Curse curse() {
+//        System.out.println(this.curse);
+//        return (Curse) this.curse.persistentEff().value();
+//    }
+
+    @Inject(at = @At(value = "RETURN"), method = "readAdditionalSaveData")
+    private void readNBT(CompoundTag compound, CallbackInfo ci){
+//        this.curse(PersistentEffectInstance.load(compound.getCompound("curse")));
+        this.curse(Curses.cannot_eat_meats);
+        System.out.println("11111111111" + this.curse);
+        this.learnedCurse = compound.getBoolean("learnedCurse");
+    }
+
+    @Inject(at = @At("RETURN"), method = "addAdditionalSaveData")
+    private void saveNBT(CompoundTag compound, CallbackInfo ci) {
+        if (curse != null) compound.put("curse", this.curse.save());
+        compound.putBoolean("learnedCurse", this.learnedCurse);
+    }
+
 
     @Overwrite
     public int getXpNeededForNextLevel() {
         return Math.abs(this.experienceLevel < 0 ? 20 : 10 * this.experienceLevel + 20);
     }
+
     @Overwrite
     public void giveExperiencePoints(int xpPoints) {
         PlayerXpEvent.XpChange event = new PlayerXpEvent.XpChange(ReflectHelper.dyCast(this), xpPoints);
@@ -95,6 +136,7 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
         }
         this.ifw_updateTotalExperience();
     }
+
     @Overwrite
     protected int getBaseExperienceReward() {
         if (this.experienceLevel > 0 && !this.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && !this.isSpectator()) {

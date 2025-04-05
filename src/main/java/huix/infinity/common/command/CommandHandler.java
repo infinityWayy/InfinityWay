@@ -18,7 +18,7 @@ public class CommandHandler {
             if (entity instanceof Player player && peffect.value() instanceof Curse curse) {
                 if (entities.size() == 1) stack.sendSuccess(() -> Component.translatable("commands.give.curse.player", curse.getDisplayName(), entities.iterator().next().getDisplayName()), true);
                 else stack.sendSuccess(() -> Component.translatable("commands.give.curse.players", curse.getDisplayName(), entities.size()), true);
-                player.curse(curse);
+                player.curse(peffect);
             }
         }
         return entities.size();
@@ -29,7 +29,7 @@ public class CommandHandler {
             if (entity instanceof Player player) {
                 if (entities.size() == 1) stack.sendSuccess(() -> Component.translatable("commands.clear.curse.player", entities.iterator().next().getDisplayName()), true);
                 else stack.sendSuccess(() -> Component.translatable("commands.clear.curse.players", entities.size()), true);
-                player.curse((Curse) Curses.none.get());
+                player.curse(Curses.none);
             }
         }
         return entities.size();

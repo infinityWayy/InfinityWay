@@ -2,10 +2,15 @@ package huix.infinity.extension.func;
 
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.world.curse.Curse;
+import huix.infinity.common.world.curse.PersistentEffectInstance;
 import huix.infinity.common.world.effect.PersistentEffect;
 import huix.infinity.common.world.curse.Curses;
+import net.minecraft.core.Holder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import org.checkerframework.checker.units.qual.C;
+
+import java.util.function.Supplier;
 
 public interface PlayerExtension {
 
@@ -25,28 +30,28 @@ public interface PlayerExtension {
     }
 
     default boolean hasCurse() {
-        Player player = (Player) this;
-        return player.hasData(IFWAttachments.player_curse) && !curse().equals(Curses.none.get());
+        return instance().hasData(IFWAttachments.player_curse) && !curse().equals(Curses.none.value());
     }
 
     default boolean knownCurse() {
-        Player player = (Player) this;
-        return hasCurse() && player.hasData(IFWAttachments.learned_curse) && player.getData(IFWAttachments.learned_curse);
+        return false;
     }
 
     default boolean hasCurse(Curse curse) {
-        Player player = (Player) this;
-        return hasCurse() && player.getData(IFWAttachments.player_curse) == curse;
+        return hasCurse() && !curse().equals(curse);
     }
 
     default Curse curse() {
-        Player player = (Player) this;
-        return (Curse) player.getData(IFWAttachments.player_curse);
+        return (Curse) instance().getData(IFWAttachments.player_curse).persistentEff().value();
     }
 
-    default void curse(Curse curse) {
-        Player player = (Player) this;
-        player.setData(IFWAttachments.player_curse, curse);
+    default void curse(Holder<PersistentEffect> curse) {
+        curse(new PersistentEffectInstance(curse));
     }
+
+    default void curse(PersistentEffectInstance curse) {
+        instance().setData(IFWAttachments.player_curse, curse);
+    }
+
 
 }
