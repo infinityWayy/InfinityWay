@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class IFWFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
 
-
     public IFWFurnaceBlockEntity(BlockPos pos, BlockState blockState) {
         super(IFWBlockEntityTypes.ifw_furnace.value(), pos, blockState, RecipeType.SMELTING);
     }

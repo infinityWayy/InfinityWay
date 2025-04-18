@@ -1,8 +1,10 @@
 package huix.infinity.common.world.entity;
 
+import com.mojang.datafixers.types.Type;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.block.entity.AnvilBlockEntity;
 import huix.infinity.common.world.block.entity.IFWFurnaceBlockEntity;
+import huix.infinity.common.world.block.entity.PrivateChestBlockEntity;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -10,6 +12,7 @@ import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
 
 public class IFWBlockEntityTypes {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, InfinityWay.MOD_ID);
@@ -19,7 +22,7 @@ public class IFWBlockEntityTypes {
             "ifw_furnace", () -> BlockEntityType.Builder.of(IFWFurnaceBlockEntity::new
                     , IFWBlocks.clay_furnace.get(), IFWBlocks.hardened_clay_furnace.get(), IFWBlocks.sandstone_furnace.get()
                     , IFWBlocks.stone_furnace.get(), IFWBlocks.obsidian_furnace.get(), IFWBlocks.netherrack_furnace.get())
-                            .build(Util.fetchChoiceType(References.BLOCK_ENTITY, "ifw_furnace")));
+                            .build(dataType("ifw_furnace")));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AnvilBlockEntity>> ifw_anvil = BLOCK_ENTITY_TYPES.register(
             "ifw_anvil", () -> BlockEntityType.Builder.of(AnvilBlockEntity::new,
@@ -30,5 +33,14 @@ public class IFWBlockEntityTypes {
                             IFWBlocks.ancient_metal_anvil.get(), IFWBlocks.chipped_ancient_metal_anvil.get(), IFWBlocks.damaged_ancient_metal_anvil.get(),
                             IFWBlocks.mithril_anvil.get(), IFWBlocks.chipped_mithril_anvil.get(), IFWBlocks.damaged_mithril_anvil.get(),
                             IFWBlocks.adamantium_anvil.get(), IFWBlocks.chipped_adamantium_anvil.get(), IFWBlocks.damaged_adamantium_anvil.get())
-                    .build(Util.fetchChoiceType(References.BLOCK_ENTITY, "ifw_anvil")));
+                    .build(dataType("ifw_anvil")));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PrivateChestBlockEntity>> private_chest = BLOCK_ENTITY_TYPES.register(
+            "private_chest", () -> BlockEntityType.Builder.of(PrivateChestBlockEntity::new,
+                            IFWBlocks.copper_anvil.get())
+                    .build(dataType("private_chest")));
+
+    private static Type<?> dataType(String name) {
+        return Util.fetchChoiceType(References.BLOCK_ENTITY, name);
+    }
 }
