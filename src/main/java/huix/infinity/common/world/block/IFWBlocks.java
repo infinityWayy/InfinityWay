@@ -274,5 +274,9 @@ public class IFWBlocks {
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(4.5F, 3.0F)), BlockBehaviour.Properties.of());
     public static final DeferredItem<BlockItem> deepslate_silver_ore_item = ITEM_BLOCKS.registerSimpleBlockItem("deepslate_silver_ore", deepslate_silver_ore, new Item.Properties().stacksTo(4));
 
+
+    public static final DeferredBlock<Block> copper_private_chest = BLOCKS.registerBlock("copper_private_chest",
+            block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> copper_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_private_chest", copper_private_chest, new Item.Properties().stacksTo(4));
 }
 

@@ -37,7 +37,7 @@ public class IFWBlockEntityTypes {
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PrivateChestBlockEntity>> private_chest = BLOCK_ENTITY_TYPES.register(
             "private_chest", () -> BlockEntityType.Builder.of(PrivateChestBlockEntity::new,
-                            IFWBlocks.copper_anvil.get())
+                            IFWBlocks.copper_private_chest.get())
                     .build(dataType("private_chest")));
 
     private static Type<?> dataType(String name) {

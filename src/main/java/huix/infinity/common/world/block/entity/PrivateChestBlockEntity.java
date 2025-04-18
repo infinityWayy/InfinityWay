@@ -4,11 +4,11 @@ import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class PrivateChestBlockEntity extends BlockEntity {
+public class PrivateChestBlockEntity extends ChestBlockEntity {
     private String owner_name;
 
     public PrivateChestBlockEntity(BlockPos pos, BlockState blockState) {
@@ -31,8 +31,13 @@ public class PrivateChestBlockEntity extends BlockEntity {
         return owner_name;
     }
 
-    public PrivateChestBlockEntity owner_name(String owner_name) {
-        this.owner_name = owner_name;
+    public PrivateChestBlockEntity setOwner(Player player) {
+        this.owner_name = player.getDisplayName().getString();
+        return this;
+    }
+
+    public PrivateChestBlockEntity emptyOwner() {
+        this.owner_name = "";
         return this;
     }
 }
