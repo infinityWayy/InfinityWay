@@ -3,10 +3,12 @@ package huix.infinity.common.world.block;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.init.InfinityWay;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -277,6 +279,7 @@ public class IFWBlocks {
 
     public static final DeferredBlock<Block> copper_private_chest = BLOCKS.registerBlock("copper_private_chest",
             block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
-    public static final DeferredItem<BlockItem> copper_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_private_chest", copper_private_chest, new Item.Properties().stacksTo(4));
+    public static final DeferredItem<BlockItem> copper_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_private_chest", copper_private_chest,
+            new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).stacksTo(4));
 }
 

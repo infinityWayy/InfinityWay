@@ -4,6 +4,7 @@ package huix.infinity.init.to;
 import huix.infinity.common.client.IFWAnvilScreen;
 import huix.infinity.common.client.resources.PersistentEffectTextureManager;
 import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.entity.render.*;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
@@ -13,12 +14,15 @@ import huix.infinity.util.IFWConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.texture.atlas.SpriteSources;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -43,6 +47,9 @@ public final class IFWClient {
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.copper_bars.get(), ChunkRenderTypeSet.of(cutout));
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.silver_door.get(), ChunkRenderTypeSet.of(cutout));
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.silver_bars.get(), ChunkRenderTypeSet.of(cutout));
+
+        ItemBlockRenderTypes.setRenderLayer(IFWBlocks.silver_bars.get(), ChunkRenderTypeSet.of(cutout));
+
         registerFishingRodModel(IFWItems.copper_fishing_rod.get());
         registerFishingRodModel(IFWItems.silver_fishing_rod.get());
         registerFishingRodModel(IFWItems.gold_fishing_rod.get());
@@ -51,6 +58,8 @@ public final class IFWClient {
         registerFishingRodModel(IFWItems.adamantium_fishing_rod.get());
         registerFishingRodModel(IFWItems.obsidian_fishing_rod.get());
         registerFishingRodModel(IFWItems.flint_fishing_rod.get());
+
+        BlockEntityRenderers.register(IFWBlockEntityTypes.private_chest.get(), ChestRenderer::new);
     }
 
     @SubscribeEvent

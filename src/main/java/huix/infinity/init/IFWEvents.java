@@ -107,9 +107,6 @@ public class IFWEvents {
     }
     public static void playerLoggedIn(final PlayerEvent.PlayerLoggedInEvent event) {
         Player entity = event.getEntity();
-        entity.curse(Curses.cannot_eat_meats);
-        entity.learnCurse();
-        entity.experienceLevel = 20;
     }
 
 
