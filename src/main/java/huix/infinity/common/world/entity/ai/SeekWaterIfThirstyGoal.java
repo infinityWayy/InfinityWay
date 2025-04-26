@@ -54,11 +54,18 @@ public class SeekWaterIfThirstyGoal extends Goal {
         BlockPos waterPos = this.lookForWater(this.mob.level(), this.mob, waterCheckDistance);
         if (waterPos != null) {
             this.setTargetPosition(waterPos);
+            livestock.setMemoryWater(waterPos);
             return true;
         } else {
-            Vec3 randomPos = DefaultRandomPos.getPos(this.mob, 5, 6);
-            if (randomPos != null) {
-                this.setTargetPosition(randomPos);
+            BlockPos memoryWater = livestock.getMemoryWater();
+            if (memoryWater != null && livestock.distanceToSqr(memoryWater.getCenter()) <= 32 * 32
+                    && livestock.level().isWaterAt(memoryWater)) {
+                this.setTargetPosition(memoryWater);
+                return true;
+            }
+            Vec3 posAway = DefaultRandomPos.getPosAway(this.mob, 32, 16, this.mob.position());
+            if (posAway != null) {
+                this.setTargetPosition(posAway);
                 return true;
             }
         }

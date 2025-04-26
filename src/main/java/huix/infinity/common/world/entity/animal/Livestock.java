@@ -9,6 +9,7 @@ import huix.infinity.common.world.entity.ai.SeekWaterIfThirstyGoal;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -37,6 +38,7 @@ import java.util.Set;
 public abstract class Livestock extends Animal {
     private final static EntityDataAccessor<Boolean> IS_WELL = SynchedEntityData.defineId(Livestock.class, EntityDataSerializers.BOOLEAN);
     private final static EntityDataAccessor<Boolean> IS_THIRSTY = SynchedEntityData.defineId(Livestock.class, EntityDataSerializers.BOOLEAN);
+    private BlockPos memoryWater;
 
 
     protected Livestock(EntityType<? extends Animal> entityType, Level level) {
@@ -359,6 +361,7 @@ public abstract class Livestock extends Animal {
 
         if (isNearFood()) {
             this.addFood(benefit);
+            this.addWater(penalty / 2.0F);
         } else {
             this.addFood(penalty);
         }
@@ -387,6 +390,32 @@ public abstract class Livestock extends Animal {
     protected void dropFromLootTable(@NotNull DamageSource damageSource, boolean attackedRecently) {
         if (this.isWell() && !damageSource.is(DamageTypes.FALL)) {
             super.dropFromLootTable(damageSource, attackedRecently);
+        }
+    }
+
+    public BlockPos getMemoryWater() {
+        return memoryWater;
+    }
+
+    public void setMemoryWater(BlockPos pos) {
+        memoryWater = pos;
+    }
+
+    @Override
+    public void readAdditionalSaveData(@NotNull CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        if (compound.contains("MemoryWater")) {
+            int[] pos = compound.getIntArray("MemoryWater");
+            this.memoryWater = new BlockPos(pos[0], pos[1], pos[2]);
+        }
+    }
+
+    @Override
+    public void addAdditionalSaveData(@NotNull CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        if (this.memoryWater != null) {
+            int[] pos = new int[] { this.memoryWater.getX(), this.memoryWater.getY(), this.memoryWater.getZ() };
+            compound.putIntArray("MemoryWater", pos);
         }
     }
 

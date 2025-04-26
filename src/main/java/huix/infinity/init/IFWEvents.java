@@ -2,8 +2,6 @@ package huix.infinity.init;
 
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.core.component.IFWDataComponents;
-import huix.infinity.common.world.curse.Curses;
-import huix.infinity.common.world.curse.PersistentEffectInstance;
 import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.food.IFWFoodProperties;
@@ -30,9 +28,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
+import net.neoforged.neoforge.event.LootTableLoadEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
@@ -62,6 +66,7 @@ public class IFWEvents {
         bus.addListener(IFWEvents::injectItem);
         bus.addListener(IFWEvents::serverTick);
         bus.addListener(IFWEvents::playerLoggedIn);
+        bus.addListener(IFWEvents::onLootTableLoad);
     }
 
     public static void injectItem(final DataMapsUpdatedEvent event) {
@@ -189,6 +194,27 @@ public class IFWEvents {
             event.setBurnTime(3200);
     }
 
-
+    public static void onLootTableLoad(final LootTableLoadEvent event) {
+        if (event.getName().equals(BuiltInLootTables.SPAWN_BONUS_CHEST.location())) {
+            event.setTable(LootTable.lootTable()
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantValue.exactly(3))
+                            .add(LootItem.lootTableItem(IFWItems.worm))
+                            .add(LootItem.lootTableItem(IFWItems.manure))
+                    )
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantValue.exactly(3))
+                            .add(LootItem.lootTableItem(Items.APPLE))
+                            .add(LootItem.lootTableItem(Items.WHEAT_SEEDS))
+                            .add(LootItem.lootTableItem(IFWItems.banana))
+                    )
+                    .withPool(LootPool.lootPool()
+                            .setRolls(ConstantValue.exactly(3))
+                            .add(LootItem.lootTableItem(Items.STICK).setWeight(20))
+                            .add(LootItem.lootTableItem(IFWItems.flint_shard).setWeight(10))
+                    )
+                    .build());
+        }
+    }
 
 }
