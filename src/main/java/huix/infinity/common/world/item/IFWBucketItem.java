@@ -4,11 +4,13 @@ import huix.infinity.common.world.item.tier.IFWTier;
 import huix.infinity.extension.func.BucketPickupExtension;
 import huix.infinity.util.BucketHelper;
 import huix.infinity.util.WorldHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -21,6 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -38,6 +41,7 @@ import net.neoforged.neoforge.fluids.FluidUtil;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 public class IFWBucketItem extends BucketItem {
@@ -190,7 +194,13 @@ public class IFWBucketItem extends BucketItem {
         }
     }
 
-
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        {
+            tooltipComponents.add(Component.translatable("item.ifw.placeBucketAsSource", this.content).withStyle(ChatFormatting.BLUE));
+        }
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
     public IFWTier tier() {
         return this.tier;
     }

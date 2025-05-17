@@ -334,14 +334,22 @@ public class FoodDataMixin implements FoodDataExtension {
     }
 
     @Unique
-    public float getWetnessAndMalnourishmentHungerMultiplier(Player player) {
+    private float getWetnessAndMalnourishmentHungerMultiplier(Player player) {
         Level level = player.level();
         float rain_factor = level.isRaining() ? (level.isThundering() ? 0.5F : 0.25F) : 0.0F;
-        float immersion_factor = level.getBlockState(player.getOnPos().above(1)).getFluidState().is(Tags.Fluids.WATER) ? 0.5F
-                : (level.getBlockState(player.getOnPos()).getFluidState().is(Tags.Fluids.WATER) ? 0.25F : 0.0F);
+        float immersion_factor = 0.0F;
+        if (!player.isPassenger() && player.isInWater()) {
+            immersion_factor = 0.5F;
+        } else if (!player.isPassenger()) {
+            if (level.getBlockState(player.getOnPos()).getFluidState().is(Tags.Fluids.WATER)) {
+                immersion_factor = 0.25F;
+            }
+        }
+
         float wetness_factor = Math.max(rain_factor, immersion_factor);
 
-        if (level.isRaining() && !level.isThundering() && immersion_factor == 0.25F) wetness_factor += 0.125F;
+        if (level.isRaining() && !level.isThundering() && immersion_factor == 0.25F)
+            wetness_factor += 0.125F;
 
         if (level.getBiome(player.getOnPos()).is(Tags.Biomes.IS_COLD))
             wetness_factor *= 2.0F;

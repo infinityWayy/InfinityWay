@@ -368,5 +368,7 @@
   "persistent_eff.ifw.fear_of_undead": "FearOfUndead",
   "persistent_eff.ifw.fear_of_wolves": "FearOfWolves",
   "persistent_eff.ifw.none": "Empty",
-  "tooltip.infinity.gem.xp": "+%s Experience Value"
+  "tooltip.infinity.gem.xp": "+%s Experience Value",
+  "item.ifw.placeBucketAsSource": "Ctrl:Consume 100 EXP to place as source",
+  "item.ifw.chanceOfBucketMelting": "%d%% Chance of melting"
 }

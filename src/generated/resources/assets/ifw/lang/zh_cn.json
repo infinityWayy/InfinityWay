@@ -242,6 +242,8 @@
   "item.ifw.obsidian_shard": "黑曜石碎片",
   "item.ifw.onion": "洋葱",
   "item.ifw.orange": "橘子",
+  "item.ifw.placeBucketAsSource": "Ctrl: 消耗100XP放置无限源",
+  "item.ifw.chanceOfBucketMelting": "有%d%%的几率融毁",
   "item.ifw.porridge": "燕麦粥",
   "item.ifw.powder_snow_adamantium_bucket": "艾德曼细雪桶",
   "item.ifw.powder_snow_ancient_metal_bucket": "远古金属细雪桶",
