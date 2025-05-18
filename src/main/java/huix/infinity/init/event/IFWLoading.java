@@ -132,7 +132,6 @@ public class IFWLoading {
         ReplaceHelper.stackSize(Items.STICK, 32);
         ReplaceHelper.stackSize(Items.FLINT, 16);
         ReplaceHelper.stackSize(Items.WHEAT, 16);
-        ReplaceHelper.stackSize(Items.WHEAT_SEEDS, 64);
         ReplaceHelper.stackSize(Items.BONE, 16);
         ReplaceHelper.stackSize(Tags.Items.INGOTS, 10);
         ReplaceHelper.stackSize(ItemTags.ARROWS, 16);
@@ -197,6 +196,7 @@ public class IFWLoading {
         ReplaceHelper.stackSize(ItemTags.SLABS, 8);
         ReplaceHelper.stackSize(ItemTags.WALLS, 8);
         ReplaceHelper.stackSize(ItemTags.WART_BLOCKS, 4);
+        ReplaceHelper.stackSize(ItemTags.VILLAGER_PLANTABLE_SEEDS, 64);
         //glass_pane
         ReplaceHelper.stackSize(Items.LIME_STAINED_GLASS_PANE, 16);
         ReplaceHelper.stackSize(Items.BLACK_STAINED_GLASS_PANE, 16);
