@@ -158,19 +158,19 @@ public class IFWEvents {
     private static void showFoodInfo(final FoodProperties food, final List<Component> list) {
         if (food != null && Screen.hasShiftDown()) {
             if (food.nutrition() != 0)
-                list.add(Component.translatable("foodtips.nutrition", food.nutrition()).withStyle(ChatFormatting.RED));
+                list.add(Component.translatable("foodtips.nutrition", food.nutrition()).withStyle(ChatFormatting.AQUA));
             if (food.saturation() != 0)
-                list.add(Component.translatable("foodtips.saturation", food.saturation()).withStyle(ChatFormatting.RED));
+                list.add(Component.translatable("foodtips.saturation", food.saturation()).withStyle(ChatFormatting.AQUA));
         }
     }
     private static void showMoreFoodInfo(final IFWFoodProperties extraFood, final List<Component> list) {
         if (extraFood != null && Screen.hasAltDown())  {
             if (extraFood.protein() != 0)
-                list.add(Component.translatable("foodtips.protein", extraFood.protein()).withStyle(ChatFormatting.GREEN));
+                list.add(Component.translatable("foodtips.protein", extraFood.protein()).withStyle(ChatFormatting.GOLD));
             if (extraFood.phytonutrients() != 0)
                 list.add(Component.translatable("foodtips.phytonutrients", extraFood.phytonutrients()).withStyle(ChatFormatting.GREEN));
             if (extraFood.insulinResponse() != 0)
-                list.add(Component.translatable("foodtips.insulinresponse", extraFood.insulinResponse()).withStyle(ChatFormatting.YELLOW));
+                list.add(Component.translatable("foodtips.insulinresponse", extraFood.insulinResponse()).withStyle(ChatFormatting.LIGHT_PURPLE));
         }
     }
 
