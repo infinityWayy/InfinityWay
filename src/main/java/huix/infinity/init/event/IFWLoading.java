@@ -460,6 +460,7 @@ public class IFWLoading {
         ReplaceHelper.foodAdd(Items.BEETROOT_SOUP, IFWFoods.beefroot_soup);
         ReplaceHelper.foodOverride(Items.SWEET_BERRIES, RebuildFoods.SWEET_BERRIES);
         ReplaceHelper.foodAdd(Items.SWEET_BERRIES, IFWFoods.sweet_berries);
+        ReplaceHelper.foodAdd(Items.GLOW_BERRIES, IFWFoods.glow_berries);
         ReplaceHelper.foodOverride(Items.HONEY_BOTTLE, RebuildFoods.HONEY_BOTTLE);
         ReplaceHelper.foodAdd(Items.HONEY_BOTTLE, IFWFoods.honey_bottle);
         ReplaceHelper.foodOverride(Items.POTATO, RebuildFoods.POTATO);

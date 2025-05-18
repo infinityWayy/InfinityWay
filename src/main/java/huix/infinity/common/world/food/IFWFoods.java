@@ -36,7 +36,7 @@ public class IFWFoods {
     public static final IFWFoodProperties salmon = (new IFWFoodProperties.Builder()).protein(16000).meat().build();
     public static final IFWFoodProperties spider_eye = (new IFWFoodProperties.Builder()).protein(8000).meat().build();
     public static final IFWFoodProperties sweet_berries = (new IFWFoodProperties.Builder()).phytonutrients(8000).insulinResponse(4800).build();
-
+    public static final IFWFoodProperties glow_berries = (new IFWFoodProperties.Builder()).phytonutrients(8000).insulinResponse(4800).build();
 
 
     public static final FoodProperties wheat_seeds = (new FoodProperties.Builder()).saturationModifier(1).build();
