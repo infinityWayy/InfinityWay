@@ -93,6 +93,7 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
                 , IFWItems.axolotl_mithril_bucket.get(), IFWItems.pufferfish_adamantium_bucket.get(), IFWItems.salmon_adamantium_bucket.get(), IFWItems.cod_adamantium_bucket.get()
                 , IFWItems.axolotl_adamantium_bucket.get());
         tag(IFWItemTags.HAS_ENCHANTING_RECIPE).add(Items.GOLDEN_APPLE);
+        tag(IFWItemTags.HAS_ENCHANTING_RECIPE).add(Items.POTION);
 
     }
 }

@@ -33,6 +33,7 @@ public class IFWLoading {
 
     private static void buildEnchantmentRecipe() {
         ReplaceHelper.enchantmentRecipe(Items.GOLDEN_APPLE, Recipes.enchanted_golden_apple);
+        ReplaceHelper.enchantmentRecipe(Items.POTION, Recipes.experience_bottle);
     }
 
     public static void injectCookingLevel() {
