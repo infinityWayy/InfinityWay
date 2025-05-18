@@ -34,7 +34,7 @@ public class GemItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if (this.xpRewards > 0) {
-            tooltipComponents.add(Component.translatable("tooltip.infinity.gem.xp", this.xpRewards).withStyle(ChatFormatting.DARK_BLUE));
+            tooltipComponents.add(Component.translatable("tooltip.infinity.gem.xp", this.xpRewards).withStyle(ChatFormatting.GREEN));
         }
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }

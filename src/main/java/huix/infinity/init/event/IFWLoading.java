@@ -132,6 +132,7 @@ public class IFWLoading {
         ReplaceHelper.stackSize(Items.STICK, 32);
         ReplaceHelper.stackSize(Items.FLINT, 16);
         ReplaceHelper.stackSize(Items.WHEAT, 16);
+        ReplaceHelper.stackSize(Items.WHEAT_SEEDS, 64);
         ReplaceHelper.stackSize(Items.BONE, 16);
         ReplaceHelper.stackSize(Tags.Items.INGOTS, 10);
         ReplaceHelper.stackSize(ItemTags.ARROWS, 16);

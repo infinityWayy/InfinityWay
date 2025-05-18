@@ -43,6 +43,7 @@ public class IFWFoods {
     public static final FoodProperties salad = (new FoodProperties.Builder()).nutrition(1).saturationModifier(1).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_salad = (new IFWFoodProperties.Builder()).phytonutrients(8000).build();
     public static final FoodProperties milk_bowl = (new FoodProperties.Builder()).nutrition(1).usingConvertsTo(Items.BOWL).build();
+    public static final FoodProperties water_bowl = (new FoodProperties.Builder()).nutrition(0).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_milk_bowl = (new IFWFoodProperties.Builder()).protein(8000).soup().build();
     public static final FoodProperties milk_bucket = (new FoodProperties.Builder()).nutrition(4).build();
     public static final IFWFoodProperties ifw_milk_bucket = (new IFWFoodProperties.Builder()).protein(32000).build();

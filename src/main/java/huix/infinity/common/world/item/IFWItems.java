@@ -4,6 +4,7 @@ import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.item.tier.IFWTiers;
 import huix.infinity.init.InfinityWay;
+import huix.infinity.util.BucketHelper;
 import huix.infinity.util.DurabilityHelper;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
@@ -52,7 +53,7 @@ public class IFWItems {
     public static final DeferredItem<Item> water_copper_bucket =
             ITEMS.register("water_copper_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.COPPER, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> lava_copper_bucket =
-            ITEMS.register("lava_copper_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.COPPER, new Item.Properties().stacksTo(1)));
+            ITEMS.register("lava_copper_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.COPPER, new Item.Properties().stacksTo(1).craftRemainder(BucketHelper.emptyBucket(IFWTiers.COPPER).getItem())));
     public static final DeferredItem<Item> powder_snow_copper_bucket =
             ITEMS.register("powder_snow_copper_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.COPPER, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> milk_copper_bucket =
@@ -102,12 +103,12 @@ public class IFWItems {
     public static final DeferredItem<Item> water_silver_bucket =
             ITEMS.register("water_silver_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.SILVER, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> lava_silver_bucket =
-            ITEMS.register("lava_silver_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.SILVER, new Item.Properties().stacksTo(1)));
+            ITEMS.register("lava_silver_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.SILVER, new Item.Properties().stacksTo(1).craftRemainder(BucketHelper.emptyBucket(IFWTiers.SILVER).getItem())));
     public static final DeferredItem<Item> powder_snow_silver_bucket =
             ITEMS.register("powder_snow_silver_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.SILVER, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> milk_silver_bucket =
             ITEMS.register("milk_silver_bucket", item -> new MilkBucketItem(new Item.Properties().craftRemainder(silver_bucket.get()).stacksTo(1)));
-    public static final DeferredItem<Item> stone_silver_bucket =
+    public static final DeferredItem<Item>stone_silver_bucket=
             ITEMS.registerSimpleItem("stone_silver_bucket", new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> pufferfish_silver_bucket =
             ITEMS.register("pufferfish_silver_bucket", item -> new IFWMobBucketItem(EntityType.PUFFERFISH,
@@ -132,7 +133,7 @@ public class IFWItems {
     public static final DeferredItem<Item> water_gold_bucket =
             ITEMS.register("water_gold_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.GOLD, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> lava_gold_bucket =
-            ITEMS.register("lava_gold_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.GOLD, new Item.Properties().stacksTo(1)));
+            ITEMS.register("lava_gold_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.GOLD, new Item.Properties().stacksTo(1).craftRemainder(BucketHelper.emptyBucket(IFWTiers.GOLD).getItem())));
     public static final DeferredItem<Item> powder_snow_gold_bucket =
             ITEMS.register("powder_snow_gold_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.GOLD, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> milk_gold_bucket =
@@ -162,7 +163,7 @@ public class IFWItems {
     public static final DeferredItem<Item> water_ancient_metal_bucket =
             ITEMS.register("water_ancient_metal_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> lava_ancient_metal_bucket =
-            ITEMS.register("lava_ancient_metal_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1)));
+            ITEMS.register("lava_ancient_metal_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1).craftRemainder(BucketHelper.emptyBucket(IFWTiers.ANCIENT_METAL).getItem())));
     public static final DeferredItem<Item> powder_snow_ancient_metal_bucket =
             ITEMS.register("powder_snow_ancient_metal_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.ANCIENT_METAL, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> milk_ancient_metal_bucket =
@@ -192,7 +193,7 @@ public class IFWItems {
     public static final DeferredItem<Item> water_mithril_bucket =
             ITEMS.register("water_mithril_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> lava_mithril_bucket =
-            ITEMS.register("lava_mithril_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1)));
+            ITEMS.register("lava_mithril_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1).craftRemainder(BucketHelper.emptyBucket(IFWTiers.MITHRIL).getItem())));
     public static final DeferredItem<Item> powder_snow_mithril_bucket =
             ITEMS.register("powder_snow_mithril_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.MITHRIL, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> milk_mithril_bucket =
@@ -222,7 +223,7 @@ public class IFWItems {
     public static final DeferredItem<Item> water_adamantium_bucket =
             ITEMS.register("water_adamantium_bucket", item -> new IFWBucketItem(Fluids.WATER, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> lava_adamantium_bucket =
-            ITEMS.register("lava_adamantium_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1)));
+            ITEMS.register("lava_adamantium_bucket", item -> new IFWBucketItem(Fluids.LAVA, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1).craftRemainder(BucketHelper.emptyBucket(IFWTiers.ADAMANTIUM).getItem())));
     public static final DeferredItem<Item> powder_snow_adamantium_bucket =
             ITEMS.register("powder_snow_adamantium_bucket", item -> new IFWSolidBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> milk_adamantium_bucket =
@@ -749,7 +750,7 @@ public class IFWItems {
     public static final DeferredItem<Item> milk_bowl =
             ITEMS.registerSimpleItem("milk_bowl", new Item.Properties().stacksTo(4).food(IFWFoods.milk_bowl));
     public static final DeferredItem<Item> water_bowl =
-            ITEMS.registerSimpleItem("water_bowl", new Item.Properties().stacksTo(4));
+            ITEMS.registerSimpleItem("water_bowl", new Item.Properties().stacksTo(4).food(IFWFoods.water_bowl));
     public static final DeferredItem<Item> cheese =
             ITEMS.registerSimpleItem("cheese", new Item.Properties().stacksTo(8).food(IFWFoods.cheese));
     public static final DeferredItem<Item> dough =

@@ -5,6 +5,7 @@ import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -660,6 +661,46 @@ public class IFWRecipeProvider extends RecipeProvider {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.cooked_worm), RecipeCategory.FOOD, IFWItems.worm,
                         1.0F, 200)
                 .unlockedBy("has_worm", has(IFWItems.worm)).save(recipeOutput, "worm_smelting");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.BOWL, 1)
+                .requires(IFWItems.water_bowl.get(),1)
+                .unlockedBy("has_water_bowl", has(IFWItems.water_bowl.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "water_bowl_to_bowl"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.copper_bucket.get(), 1)
+                .requires(IFWItems.stone_copper_bucket.get(), 1)
+                .unlockedBy("has_stone_copper_bucket", has(IFWItems.stone_copper_bucket.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "copper_bucket_filled_with_stone"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.silver_bucket.get(), 1)
+                .requires(IFWItems.stone_silver_bucket.get(), 1)
+                .unlockedBy("has_stone_silver_bucket", has(IFWItems.stone_silver_bucket.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "silver_bucket_filled_with_stone"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.gold_bucket.get(), 1)
+                .requires(IFWItems.stone_gold_bucket.get(), 1)
+                .unlockedBy("has_stone_gold_bucket", has(IFWItems.stone_gold_bucket.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "gold_bucket_filled_with_stone"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, Items.BUCKET, 1)
+                .requires(IFWItems.stone_iron_bucket.get(), 1)
+                .unlockedBy("has_stone_iron_bucket", has(IFWItems.stone_iron_bucket.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "iron_bucket_filled_with_stone"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.ancient_metal_bucket.get(), 1)
+                .requires(IFWItems.stone_ancient_metal_bucket.get(), 1)
+                .unlockedBy("has_stone_ancient_metal_bucket", has(IFWItems.stone_ancient_metal_bucket.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "ancient_metal_bucket_filled_with_stone"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.mithril_bucket.get(), 1)
+                .requires(IFWItems.stone_mithril_bucket.get(), 1)
+                .unlockedBy("has_stone_mithril_bucket", has(IFWItems.stone_mithril_bucket.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "mithril_bucket_filled_with_stone"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.adamantium_bucket.get(), 1)
+                .requires(IFWItems.stone_adamantium_bucket.get(), 1)
+                .unlockedBy("has_stone_adamantium_bucket", has(IFWItems.stone_adamantium_bucket.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "adamantium_bucket_filled_with_stone"));
 
     }
 }
