@@ -667,6 +667,12 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_water_bowl", has(IFWItems.water_bowl.get()))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "water_bowl_to_bowl"));
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.ENCHANTED_GOLDEN_APPLE, 1)
+                .requires(Items.EXPERIENCE_BOTTLE,1)
+                .requires(Items.GOLDEN_APPLE,1)
+                .unlockedBy("has_experience_bottle", has(Items.EXPERIENCE_BOTTLE))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "crafting_enchanted_golden_apple"));
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.copper_bucket.get(), 1)
                 .requires(IFWItems.stone_copper_bucket.get(), 1)
                 .unlockedBy("has_stone_copper_bucket", has(IFWItems.stone_copper_bucket.get()))
