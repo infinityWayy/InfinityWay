@@ -38,6 +38,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidUtil;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -195,10 +196,8 @@ public class IFWBucketItem extends BucketItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        {
-            tooltipComponents.add(Component.translatable("item.ifw.placeBucketAsSource", this.content).withStyle(ChatFormatting.BLUE));
-        }
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("item.ifw.placeBucketAsSource").withStyle(ChatFormatting.BLUE));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
     public IFWTier tier() {

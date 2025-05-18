@@ -5,7 +5,6 @@ import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class IFWItemModelProvider extends ItemModelProvider {
@@ -387,5 +386,10 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.ancient_metal_chain.get());
         basicItem(IFWItems.mithril_chain.get());
         basicItem(IFWItems.adamantium_chain.get());
+        spawnEggItem(IFWItems.chicken_spawn_egg.get());
+        spawnEggItem(IFWItems.cow_spawn_egg.get());
+        spawnEggItem(IFWItems.pig_spawn_egg.get());
+        spawnEggItem(IFWItems.sheep_spawn_egg.get());
+        spawnEggItem(IFWItems.zombie_spawn_egg.get());
     }
 }

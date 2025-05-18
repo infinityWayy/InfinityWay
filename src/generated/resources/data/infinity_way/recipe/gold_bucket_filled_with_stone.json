@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "ifw:stone_gold_bucket"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:gold_bucket"
+  }
+}

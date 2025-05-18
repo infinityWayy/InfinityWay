@@ -7,8 +7,6 @@ import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.util.IFWLanguageProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class IFWCNLang extends IFWLanguageProvider {
     public IFWCNLang(PackOutput output) {
@@ -48,7 +46,10 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("itemGroup.ifw.block", "IFW| 方块");
         add("itemGroup.ifw.item", "IFW| 物品");
         add("itemGroup.ifw.tool", "IFW| 工具");
+        add("itemGroup.ifw.entity", "IFW| 刷怪蛋");
         add("container.enchant.experience.requirement", "经验需要: %s");
+        add("item.ifw.placeBucketAsSource", "Ctrl: 消耗100XP放置无限源");
+        add("item.ifw.chanceOfBucketMelting", "有%d%%的几率融毁");
         add(IFWItems.copper_horse_armor.get(), "铜马铠");
         add(IFWItems.silver_horse_armor.get(), "银马铠");
         add(IFWItems.ancient_metal_horse_armor.get(), "远古金属马铠");
@@ -392,6 +393,11 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.golden_chainmail_chestplate.get(), "金锁链胸甲");
         add(IFWItems.golden_chainmail_leggings.get(), "金锁链护腿");
         add(IFWItems.golden_chainmail_boots.get(), "金锁链鞋子");
+        add(IFWItems.chicken_spawn_egg.get(), "鸡刷怪蛋");
+        add(IFWItems.cow_spawn_egg.get(), "牛刷怪蛋");
+        add(IFWItems.pig_spawn_egg.get(), "猪刷怪蛋");
+        add(IFWItems.sheep_spawn_egg.get(), "羊刷怪蛋");
+        add(IFWItems.zombie_spawn_egg.get(), "僵尸刷怪蛋");
     }
 
 }

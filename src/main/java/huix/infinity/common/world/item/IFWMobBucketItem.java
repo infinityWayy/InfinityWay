@@ -24,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -52,7 +53,7 @@ public class IFWMobBucketItem extends IFWBucketItem {
     }
 
     @Override
-    protected void playEmptySound(@Nullable Player player, LevelAccessor level, BlockPos pos) {
+    protected void playEmptySound(@Nullable Player player, LevelAccessor level, @NotNull BlockPos pos) {
         level.playSound(player, pos, this.emptySound, SoundSource.NEUTRAL, 1.0F, 1.0F);
     }
 
@@ -60,7 +61,7 @@ public class IFWMobBucketItem extends IFWBucketItem {
     private void spawn(ServerLevel serverLevel, ItemStack bucketedMobStack, BlockPos pos) {
         Entity var5 = this.type.spawn(serverLevel, bucketedMobStack, null, pos, MobSpawnType.BUCKET, true, false);
         if (var5 instanceof Bucketable bucketable) {
-            CustomData customdata = (CustomData)bucketedMobStack.getOrDefault(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY);
+            CustomData customdata = bucketedMobStack.getOrDefault(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY);
             bucketable.loadFromBucketTag(customdata.copyTag());
             bucketable.setFromBucket(true);
         }
@@ -68,7 +69,7 @@ public class IFWMobBucketItem extends IFWBucketItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText(@NotNull ItemStack stack, Item.@NotNull TooltipContext context, List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
         if (this.type == EntityType.TROPICAL_FISH) {
             CustomData customdata = stack.getOrDefault(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY);
             if (customdata.isEmpty()) {
@@ -77,7 +78,7 @@ public class IFWMobBucketItem extends IFWBucketItem {
 
             Optional<TropicalFish.Variant> optional = customdata.read(VARIANT_FIELD_CODEC).result();
             if (optional.isPresent()) {
-                TropicalFish.Variant tropicalfish$variant = (TropicalFish.Variant)optional.get();
+                TropicalFish.Variant tropicalfish$variant = optional.get();
                 ChatFormatting[] achatformatting = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
                 String s = "color.minecraft." + tropicalfish$variant.baseColor();
                 String s1 = "color.minecraft." + tropicalfish$variant.patternColor();

@@ -151,7 +151,7 @@ public class FoodDataMixin implements FoodDataExtension {
         }
 
         if (player.isSleeping())
-            addExhaustion(ifw_hungerPerTick() * 20.0F);
+            addExhaustion(ifw_hungerPerTick() * 8.0F);
 
         ++this.tickTimer;
 

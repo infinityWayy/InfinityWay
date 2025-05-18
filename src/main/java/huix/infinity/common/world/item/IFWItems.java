@@ -1,5 +1,6 @@
 package huix.infinity.common.world.item;
 
+import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.item.tier.IFWTiers;
@@ -13,6 +14,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -791,4 +793,16 @@ public class IFWItems {
             ITEMS.registerSimpleItem("worm", new Item.Properties().stacksTo(16).food(IFWFoods.worm));
     public static final DeferredItem<Item> onion =
             ITEMS.registerSimpleItem("onion", new Item.Properties().stacksTo(16).food(IFWFoods.onion));
+
+    // spawn_egg
+    public static final DeferredItem<Item> chicken_spawn_egg = ITEMS.register("chicken_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.CHICKEN, 10592673, 16711680, new Item.Properties()));
+    public static final DeferredItem<Item> cow_spawn_egg = ITEMS.register("cow_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.COW, 4470310, 10592673, new Item.Properties()));
+    public static final DeferredItem<Item> pig_spawn_egg = ITEMS.register("pig_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.PIG, 15771042, 14377823, new Item.Properties()));
+    public static final DeferredItem<Item> sheep_spawn_egg = ITEMS.register("sheep_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.SHEEP, 15198183, 16758197, new Item.Properties()));
+    public static final DeferredItem<Item> zombie_spawn_egg = ITEMS.register("zombie_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.ZOMBIE, 44975, 7969893, new Item.Properties()));
 }

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "ifw:stone_ancient_metal_bucket"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:ancient_metal_bucket"
+  }
+}

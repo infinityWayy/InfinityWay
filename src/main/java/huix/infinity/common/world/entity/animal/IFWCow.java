@@ -1,6 +1,7 @@
 package huix.infinity.common.world.entity.animal;
 
 import huix.infinity.common.world.entity.IFWEntityType;
+import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -127,11 +129,17 @@ public class IFWCow extends Livestock {
     @Override
     public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
-        if (itemstack.is(Items.BUCKET) && !this.isBaby() && this.getMilk() == 100) {
+        if (!this.isBaby() && this.getMilk() == 100 && itemstack.is(Tags.Items.BUCKETS_EMPTY)) {
             player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
             ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, player, Items.MILK_BUCKET.getDefaultInstance());
             player.setItemInHand(hand, itemstack1);
             this.setMilk(0);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
+        } else if (!this.isBaby() && this.getMilk() >= 25 && itemstack.is(Items.BOWL)) {
+            player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
+            ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, player, IFWItems.milk_bowl.get().getDefaultInstance());
+            player.setItemInHand(hand, itemstack1);
+            this.setMilk(this.getMilk() - 25);
             return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else {
             return super.mobInteract(player, hand);

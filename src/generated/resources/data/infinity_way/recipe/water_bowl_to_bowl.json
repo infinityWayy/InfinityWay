@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "ifw:water_bowl"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bowl"
+  }
+}

@@ -7,7 +7,6 @@ import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.util.IFWLanguageProvider;
 import net.minecraft.data.PackOutput;
-import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class IFWUSLang extends IFWLanguageProvider {
     public IFWUSLang(PackOutput output) {
@@ -47,7 +46,10 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("itemGroup.ifw.block", "IFW| Block");
         add("itemGroup.ifw.item", "IFW| Item");
         add("itemGroup.ifw.tool", "IFW| Tool");
+        add("itemGroup.ifw.entity", "IFW| Spawn Eggs");
         add("container.enchant.experience.requirement", "Experience Requirement: %s");
+        add("item.ifw.placeBucketAsSource", "Ctrl:Consume 100 EXP to place as source");
+        add("item.ifw.chanceOfBucketMelting", "%d%% Chance of melting");
         add(IFWItems.copper_horse_armor.get(), "Copper Horse Armor");
         add(IFWItems.silver_horse_armor.get(), "Silver Horse Armor");
         add(IFWItems.ancient_metal_horse_armor.get(), "Ancient Metal Horse Armor");
@@ -393,5 +395,10 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.golden_chainmail_chestplate.get(), "Gold Chainmail Chestplate");
         add(IFWItems.golden_chainmail_leggings.get(), "Gold Chainmail Leggings");
         add(IFWItems.golden_chainmail_boots.get(), "Gold Chainmail Boots");
+        add(IFWItems.chicken_spawn_egg.get(), "Chicken Spawn Egg");
+        add(IFWItems.cow_spawn_egg.get(), "Cow Spawn Egg");
+        add(IFWItems.pig_spawn_egg.get(), "Pig Spawn Egg");
+        add(IFWItems.sheep_spawn_egg.get(), "Sheep Spawn Egg");
+        add(IFWItems.zombie_spawn_egg.get(), "Zombie Spawn Egg");
     }
 }

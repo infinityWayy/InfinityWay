@@ -400,5 +400,14 @@ public class IFWItemGroups {
                         output.accept(IFWBlocks.deepslate_silver_ore_item.get());
                     }).build());
 
-
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> entity_tab =
+            CREATIVE_TABS.register("entity_tab", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.ifw.entity"))
+                    .icon(() -> IFWItems.zombie_spawn_egg.get().getDefaultInstance())
+                    .displayItems((parameters, output) -> {
+                        output.accept(IFWItems.chicken_spawn_egg.get());
+                        output.accept(IFWItems.cow_spawn_egg.get());
+                        output.accept(IFWItems.pig_spawn_egg.get());
+                        output.accept(IFWItems.sheep_spawn_egg.get());
+                        output.accept(IFWItems.zombie_spawn_egg.get());
+                    }).build());
 }
