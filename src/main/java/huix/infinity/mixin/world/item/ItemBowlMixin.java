@@ -18,10 +18,9 @@ public abstract class ItemBowlMixin {
 
     @Inject(
             method = "use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder;",
-            at = @At("HEAD"),
-            cancellable = true
+            at = @At("HEAD")
     )
-    private void onUse(Level level, Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
+    private void scoopWater(Level level, Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
         ItemStack handItem = player.getItemInHand(hand);
         if (!handItem.is(Items.BOWL)) return;
 
@@ -29,20 +28,10 @@ public abstract class ItemBowlMixin {
 
         if (!result.isEmpty()) {
             if (!level.isClientSide()) {
-                // 消耗一个空碗
-                if (!player.isCreative()) {
-                    handItem.shrink(1);
-                }
-
-                // 尝试将水碗放入背包（优先堆叠到已有堆栈）
                 if (!player.getInventory().add(result)) {
-                    // 如果背包已满，丢出水碗
                     player.drop(result, false);
                 }
             }
-
-            // 手部堆栈未变（仍保留剩余空碗）
-            cir.setReturnValue(InteractionResultHolder.success(ItemStack.EMPTY));
         }
     }
 }
