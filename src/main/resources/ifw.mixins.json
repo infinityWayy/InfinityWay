@@ -53,6 +53,7 @@
     "world.item.BlockItemMixin",
     "world.item.EquipsInjected",
     "world.item.Item$PropertiesMixin",
+    "world.item.ItemBowlMixin",
     "world.item.ItemMixin",
     "world.item.ItemsInjected",
     "world.item.ItemStackMixin",
