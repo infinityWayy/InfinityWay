@@ -1,7 +1,11 @@
 package huix.infinity.common.world.entity.animal;
 
 import huix.infinity.common.world.entity.IFWEntityType;
+import huix.infinity.common.world.item.IFWBucketItem;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.common.world.item.tier.IFWTier;
+import huix.infinity.common.world.item.tier.IFWTiers;
+import huix.infinity.util.BucketHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -129,19 +133,29 @@ public class IFWCow extends Livestock {
     @Override
     public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
+
         if (!this.isBaby() && this.getMilk() == 100 && itemstack.is(Tags.Items.BUCKETS_EMPTY)) {
             player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
-            ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, player, Items.MILK_BUCKET.getDefaultInstance());
-            player.setItemInHand(hand, itemstack1);
-            this.setMilk(0);
-            return InteractionResult.sidedSuccess(this.level().isClientSide);
-        } else if (!this.isBaby() && this.getMilk() >= 25 && itemstack.is(Items.BOWL)) {
+            IFWTier tier = IFWTiers.IRON;
+            if (itemstack.getItem() instanceof IFWBucketItem ifwBucket) {
+                tier = ifwBucket.tier();
+            }
+            ItemStack milkBucket = BucketHelper.milkBucket(tier);
+            if (!milkBucket.isEmpty()) {
+                player.setItemInHand(hand, ItemUtils.createFilledResult(itemstack, player, milkBucket));
+                this.setMilk(0);
+                return InteractionResult.sidedSuccess(this.level().isClientSide());
+            }
+            return super.mobInteract(player, hand);
+        }
+        else if (!this.isBaby() && this.getMilk() >= 25 && itemstack.is(Items.BOWL)) {
             player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
-            ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, player, IFWItems.milk_bowl.get().getDefaultInstance());
-            player.setItemInHand(hand, itemstack1);
+            ItemStack milkBowl = ItemUtils.createFilledResult(itemstack, player, IFWItems.milk_bowl.get().getDefaultInstance());
+            player.setItemInHand(hand, milkBowl);
             this.setMilk(this.getMilk() - 25);
-            return InteractionResult.sidedSuccess(this.level().isClientSide);
-        } else {
+            return InteractionResult.sidedSuccess(this.level().isClientSide());
+        }
+        else {
             return super.mobInteract(player, hand);
         }
     }
