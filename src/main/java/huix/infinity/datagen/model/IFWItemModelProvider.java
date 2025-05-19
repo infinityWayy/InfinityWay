@@ -81,7 +81,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
                 .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
                 .end();
 
-
+        simpleBlockItem(IFWBlocks.emerald_enchanting_table.get());
         simpleBlockItem(IFWBlocks.silver_block.get());
         simpleBlockItem(IFWBlocks.silver_ore.get());
         simpleBlockItem(IFWBlocks.raw_adamantium_block.get());
@@ -95,6 +95,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         simpleBlockItem(IFWBlocks.ancient_metal_block.get());
         simpleBlockItem(IFWBlocks.adamantium_ore.get());
         simpleBlockItem(IFWBlocks.adamantium_block.get());
+        simpleBlockItem(IFWBlocks.emerald_enchanting_table.get());
         basicItem(IFWItems.flint_shard.get());
         basicItem(IFWItems.diamond_shard.get());
         basicItem(IFWItems.emerald_shard.get());

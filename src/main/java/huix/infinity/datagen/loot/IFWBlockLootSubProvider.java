@@ -47,6 +47,7 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.silver_anvil.get());
         dropSelf(IFWBlocks.chipped_silver_anvil.get());
         dropSelf(IFWBlocks.damaged_silver_anvil.get());
+        dropSelf(IFWBlocks.emerald_enchanting_table.get());
         add(IFWBlocks.adamantium_ore.get(), block -> this.createOreDrop(block, IFWItems.raw_adamantium.get()));
         add(IFWBlocks.deepslate_adamantium_ore.get(), block -> this.createOreDrop(block, IFWItems.raw_adamantium.get()));
         add(IFWBlocks.mithril_ore.get(), block -> this.createOreDrop(block, IFWItems.raw_mithril.get()));

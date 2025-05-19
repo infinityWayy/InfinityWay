@@ -17,10 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
-import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class IFWBlockStateProvider extends BlockStateProvider {
@@ -200,23 +197,24 @@ public class IFWBlockStateProvider extends BlockStateProvider {
                 .forAllStates(state -> ConfiguredModel.builder()
                         .modelFile(damagedSilverAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
         simpleBlockItem(IFWBlocks.damaged_silver_anvil.get(), damagedSilverAnvil);
+
         simpleBlock(IFWBlocks.adamantium_block.get());
         simpleBlock(IFWBlocks.adamantium_ore.get());
-        paneBlock((IronBarsBlock) IFWBlocks.adamantium_bars.get(), modLoc("block/adamantium_bars") , modLoc("block/adamantium_bars"));
+        paneBlock((IronBarsBlock) IFWBlocks.adamantium_bars.get(), modLoc("block/adamantium_bars"), modLoc("block/adamantium_bars"));
         doorBlock((DoorBlock) IFWBlocks.adamantium_door.get(), "adamantium", modLoc("block/door_adamantium_upper"), modLoc("block/door_adamantium_upper"));
         simpleBlock(IFWBlocks.mithril_block.get());
         simpleBlock(IFWBlocks.mithril_ore.get());
-        paneBlock((IronBarsBlock) IFWBlocks.mithril_bars.get(), modLoc("block/mithril_bars") , modLoc("block/mithril_bars"));
+        paneBlock((IronBarsBlock) IFWBlocks.mithril_bars.get(), modLoc("block/mithril_bars"), modLoc("block/mithril_bars"));
         doorBlock((DoorBlock) IFWBlocks.mithril_door.get(), "mithril", modLoc("block/door_mithril_upper"), modLoc("block/door_mithril_upper"));
         simpleBlock(IFWBlocks.ancient_metal_block.get());
-        paneBlock((IronBarsBlock) IFWBlocks.ancient_metal_bars.get(), modLoc("block/ancient_metal_bars") , modLoc("block/ancient_metal_bars"));
+        paneBlock((IronBarsBlock) IFWBlocks.ancient_metal_bars.get(), modLoc("block/ancient_metal_bars"), modLoc("block/ancient_metal_bars"));
         doorBlock((DoorBlock) IFWBlocks.ancient_metal_door.get(), "ancient_metal", modLoc("block/door_ancient_metal_upper"), modLoc("block/door_ancient_metal_upper"));
-        paneBlock((IronBarsBlock) IFWBlocks.copper_bars.get(), modLoc("block/copper_bars") , modLoc("block/copper_bars"));
-        paneBlock((IronBarsBlock) IFWBlocks.gold_bars.get(), modLoc("block/gold_bars") , modLoc("block/gold_bars"));
+        paneBlock((IronBarsBlock) IFWBlocks.copper_bars.get(), modLoc("block/copper_bars"), modLoc("block/copper_bars"));
+        paneBlock((IronBarsBlock) IFWBlocks.gold_bars.get(), modLoc("block/gold_bars"), modLoc("block/gold_bars"));
         doorBlock((DoorBlock) IFWBlocks.gold_door.get(), "gold", modLoc("block/door_gold_upper"), modLoc("block/door_gold_upper"));
         simpleBlock(IFWBlocks.silver_block.get());
         simpleBlock(IFWBlocks.silver_ore.get());
-        paneBlock((IronBarsBlock) IFWBlocks.silver_bars.get(), modLoc("block/silver_bars") , modLoc("block/silver_bars"));
+        paneBlock((IronBarsBlock) IFWBlocks.silver_bars.get(), modLoc("block/silver_bars"), modLoc("block/silver_bars"));
         doorBlock((DoorBlock) IFWBlocks.silver_door.get(), "silver", modLoc("block/door_silver_upper"), modLoc("block/door_silver_upper"));
         simpleBlock(IFWBlocks.raw_adamantium_block.get());
         simpleBlock(IFWBlocks.raw_mithril_block.get());
@@ -225,6 +223,52 @@ public class IFWBlockStateProvider extends BlockStateProvider {
         simpleBlock(IFWBlocks.deepslate_mithril_ore.get());
         simpleBlock(IFWBlocks.deepslate_silver_ore.get());
         Block stoneFurnaceBlock = IFWBlocks.stone_furnace.get();
+
+        ModelFile blockModel = models().withExistingParent(
+                        "block/emerald_enchanting_table",
+                        mcLoc("block/block")
+                )
+                .texture("particle", modLoc("block/emerald_enchanting_table_bottom"))
+                .texture("bottom", modLoc("block/emerald_enchanting_table_bottom"))
+                .texture("top", modLoc("block/emerald_enchanting_table_top"))
+                .texture("side", modLoc("block/emerald_enchanting_table_side"))
+                .element()
+                .from(0, 0, 0)
+                .to(16, 12, 16)
+                .face(Direction.DOWN)
+                .texture("#bottom")
+                .uvs(0, 0, 16, 16)
+                .cullface(Direction.DOWN)
+                .end()
+                .face(Direction.UP)
+                .texture("#top")
+                .uvs(0, 0, 16, 16)
+                .end()
+                .face(Direction.NORTH)
+                .texture("#side")
+                .uvs(0, 4, 16, 16)
+                .cullface(Direction.NORTH)
+                .end()
+                .face(Direction.SOUTH)
+                .texture("#side")
+                .uvs(0, 4, 16, 16)
+                .cullface(Direction.SOUTH)
+                .end()
+                .face(Direction.WEST)
+                .texture("#side")
+                .uvs(0, 4, 16, 16)
+                .cullface(Direction.WEST)
+                .end()
+                .face(Direction.EAST)
+                .texture("#side")
+                .uvs(0, 4, 16, 16)
+                .cullface(Direction.EAST)
+                .end()
+                .end();
+        // 注册方块模型和物品模型
+        simpleBlock(IFWBlocks.emerald_enchanting_table.get(), blockModel);
+        simpleBlockItem(IFWBlocks.emerald_enchanting_table.get(), blockModel);
+
         ModelFile stoneFurnaceModel = models().orientable("stone_furnace", modLoc("block/stone_furnace_side"),
                  modLoc("block/stone_furnace_front"), modLoc("block/stone_furnace_top"));
         ModelFile stoneFurnaceOnModel = models().orientable("stone_furnace_on", modLoc("block/stone_furnace_side"),

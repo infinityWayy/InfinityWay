@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-19T02:40:05.3010159	Recipes
+// 1.21.1	2025-05-19T19:52:36.7068264	Recipes
 8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
@@ -104,6 +104,7 @@ b1f8889c1638a7cfe52697732ea70db5257b8978 data/ifw/advancement/recipes/misc/adama
 4b4a6094936c1d4c75d7492ff23beabf12788f65 data/ifw/advancement/recipes/misc/ancient_metal_chain.json
 aa3df29bb90adcf1bb53904d8ade677c0bd856c3 data/ifw/advancement/recipes/misc/clay_furnace.json
 a207c375cd7f4731b37553b0271634ad6d9cd62e data/ifw/advancement/recipes/misc/copper_chain.json
+9d37ceb9aed301f60b3510f0d4459b1882e96e92 data/ifw/advancement/recipes/misc/emerald_enchanting_table.json
 57efe3d2cbe81a674d9f774be8e02d942a1a2683 data/ifw/advancement/recipes/misc/golden_chain.json
 ce4c8fd2278a7e2e746f5254b08746bc786abe2d data/ifw/advancement/recipes/misc/hardened_clay_furnace.json
 6d17bf9e7115e9c5f5d959c457783eda1fe65de1 data/ifw/advancement/recipes/misc/iron_chain.json
@@ -280,6 +281,7 @@ cc521bfed360534b143ac6da7275c5d382b1b708 data/ifw/recipe/copper_shovel.json
 ff0a2e2737d8b890dd37f5dc24f735d40d6c5731 data/ifw/recipe/copper_sword.json
 c2106def915636be92d6c9540f83d60f7d399715 data/ifw/recipe/copper_war_hammer.json
 30502a999523c0134ea54fe55e362e59d10e3e0b data/ifw/recipe/dough.json
+d07d4edb8e9fe25e2b8be3b20c144f7ca8a6c7b3 data/ifw/recipe/emerald_enchanting_table.json
 459b134c25c7aed25458224d4394d5315b14a785 data/ifw/recipe/flint_axe.json
 0f7846556a2a4a85938cedc5e73a01fa72780985 data/ifw/recipe/flint_fishing_rod.json
 ca92aa6b4bccc965f86eabf0def116e755a93931 data/ifw/recipe/flint_hatchet.json

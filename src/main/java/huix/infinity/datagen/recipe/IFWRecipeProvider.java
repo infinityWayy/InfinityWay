@@ -325,6 +325,15 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .requires(IFWItems.flint_shard, 4)
                 .unlockedBy("has_flint_shard", has(IFWItems.flint_shard)).save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWBlocks.emerald_enchanting_table)
+                .pattern(" B ")
+                .pattern("EOE")
+                .pattern("OOO")
+                .define('O', Blocks.OBSIDIAN)
+                .define('B', Items.BOOK)
+                .define('E', Items.EMERALD)
+                .unlockedBy("has_emerald", has(Items.EMERALD)).save(recipeOutput);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, IFWBlocks.clay_furnace_item)
                 .pattern("YY")
                 .pattern("YY")

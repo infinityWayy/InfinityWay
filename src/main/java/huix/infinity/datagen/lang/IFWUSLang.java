@@ -55,6 +55,15 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.ancient_metal_horse_armor.get(), "Ancient Metal Horse Armor");
         add(IFWItems.mithril_horse_armor.get(), "Mithril Horse Armor");
         add(IFWItems.adamantium_horse_armor.get(), "Adamantium Horse Armor");
+        add(IFWItems.flint_fishing_rod.get(), "Flint Fishing Rod");
+        add(IFWItems.obsidian_fishing_rod.get(), "Obsidian Fishing Rod");
+        add(IFWItems.copper_fishing_rod.get(), "Copper Fishing Rod");
+        add(IFWItems.silver_fishing_rod.get(), "Silver Fishing Rod");
+        add(IFWItems.gold_fishing_rod.get(), "Gold Fishing Rod");
+        add(IFWItems.iron_fishing_rod.get(), "Iron Fishing Rod");
+        add(IFWItems.ancient_metal_fishing_rod.get(), "Ancient Metal Fishing Rod");
+        add(IFWItems.mithril_fishing_rod.get(), "Mithril Fishing Rod");
+        add(IFWItems.adamantium_fishing_rod.get(), "Adamantium Fishing Rod");
         add(IFWItems.copper_bucket.get(), "Copper Bucket");
         add(IFWItems.water_copper_bucket.get(), "Copper Water Bucket");
         add(IFWItems.lava_copper_bucket.get(), "Copper Lava Bucket");
@@ -181,6 +190,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("foodtips.insulinresponse", "+%s Insulin Response");
         add("tooltip.infinity.gem.xp", "+%s Experience Value");
         //Blocks
+        add(IFWBlocks.emerald_enchanting_table.get(), "Emerald Enchanting Table");
         add(IFWBlocks.adamantium_block_item.get(), "Adamantium Block");
         add(IFWBlocks.adamantium_ore_item.get(), "Adamantium Ore");
         add(IFWBlocks.adamantium_bars_item.get(), "Adamantium Bars");

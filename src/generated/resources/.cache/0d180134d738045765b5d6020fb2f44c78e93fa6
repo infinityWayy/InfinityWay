@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-18T23:07:10.4942684	Block States: ifw
+// 1.21.1	2025-05-19T20:22:39.4811781	Block States: ifw
 044660bb88278a354615632365a7a1d69f8bf3e9 assets/ifw/blockstates/adamantium_anvil.json
 946d1ee0e16e6764047acdb20e22d0390e68eed9 assets/ifw/blockstates/adamantium_bars.json
 5d74aec16c1765c863c3b307aa12c18dbcf03f7a assets/ifw/blockstates/adamantium_block.json
@@ -28,6 +28,7 @@ a8cf71a0c5745e894372d82a7c0e300cfc2a94da assets/ifw/blockstates/damaged_ancient_
 94e1af6f045ef20d7d9b5dffb90ca2eccd14f6f3 assets/ifw/blockstates/deepslate_adamantium_ore.json
 a065eea8e4b25f5ce979cb0eb88fb07cf25b8579 assets/ifw/blockstates/deepslate_mithril_ore.json
 a4388f10ec4caac56dd46c60f3ff4e19d7553612 assets/ifw/blockstates/deepslate_silver_ore.json
+b62358e944955a8b80aea4538ea703959048e015 assets/ifw/blockstates/emerald_enchanting_table.json
 4ee65049b1a2a078d01db013fb8a747082e7401b assets/ifw/blockstates/gold_anvil.json
 a9aee237b9ca2405a35845003f4da7002893dfc1 assets/ifw/blockstates/gold_bars.json
 095b97f9bd1cc9327267385f092855eaf7f37632 assets/ifw/blockstates/gold_door.json
@@ -106,6 +107,7 @@ dcd94c463ca957380c4908ccd87849245ed0a8c5 assets/ifw/models/block/damaged_mithril
 3da8146c8f7b0b4a13822da2206fdb40918d245b assets/ifw/models/block/deepslate_adamantium_ore.json
 4d151b4a8c7150b48308e1e59ba954227d921346 assets/ifw/models/block/deepslate_mithril_ore.json
 81715d852fbfbebe1aae619c9b8b05ff08e5650a assets/ifw/models/block/deepslate_silver_ore.json
+6b0be144fc763e2e97ae3f6633bedee69c18a6bd assets/ifw/models/block/emerald_enchanting_table.json
 24a0382d1ce14f3dec4e03ab6dc9d1879ec34998 assets/ifw/models/block/gold_anvil.json
 bbe8fa2d80b8f7a12347463423cc4e1fcbf3dc7c assets/ifw/models/block/gold_bars_noside.json
 eae470e8aecc8dae062ed7bb18c042654144dca1 assets/ifw/models/block/gold_bars_noside_alt.json
@@ -184,6 +186,7 @@ e0d050370f1e4c89ee90a30e7586c6e4fe514b71 assets/ifw/models/item/damaged_adamanti
 bd07e288a38453f0f925357da55e9e38b85c13c8 assets/ifw/models/item/damaged_iron_anvil.json
 a5e8331a25ac23fdb39b4b6f96f38a75573234d9 assets/ifw/models/item/damaged_mithril_anvil.json
 c22b0bb627836db0657f10017a322bc51357f11e assets/ifw/models/item/damaged_silver_anvil.json
+efa8ef12d6bfc417aa334d6db1a6a5e54836f9c8 assets/ifw/models/item/emerald_enchanting_table.json
 49c24614932a3613bea90e5cd0baa89d3f01f77b assets/ifw/models/item/gold_anvil.json
 9f1b1b2e48c86c981c56a4fd1b3fe181265acfa3 assets/ifw/models/item/hardened_clay_furnace.json
 1e9d92fd9094c70b703cb479c427d8ae3dad9637 assets/ifw/models/item/iron_anvil.json

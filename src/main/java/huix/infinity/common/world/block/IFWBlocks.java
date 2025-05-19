@@ -129,8 +129,10 @@ public class IFWBlocks {
     public static final DeferredItem<BlockItem> damaged_adamantium_anvil_item = ITEM_BLOCKS.registerSimpleBlockItem("damaged_adamantium_anvil", damaged_adamantium_anvil,
             new Item.Properties().stacksTo(1).durability(12697200));
 
-
-
+    public static final DeferredBlock<Block> emerald_enchanting_table = BLOCKS.registerBlock("emerald_enchanting_table",
+            block -> new IFWEnchantingTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED)
+                    .instrument(NoteBlockInstrument.BIT).strength(5.0F).lightLevel(state -> 7)));
+    public static final DeferredItem<BlockItem> emerald_enchanting_table_item = ITEM_BLOCKS.registerSimpleBlockItem("emerald_enchanting_table", emerald_enchanting_table, new Item.Properties().stacksTo(1));
 
     public static final DeferredBlock<Block> adamantium_block = BLOCKS.registerSimpleBlock("adamantium_block",
             BlockBehaviour.Properties.of().mapColor(MapColor.METAL).instrument(NoteBlockInstrument.XYLOPHONE).requiresCorrectToolForDrops()
@@ -149,7 +151,7 @@ public class IFWBlocks {
                     .strength(5.0F).noOcclusion().pushReaction(PushReaction.DESTROY)),
             BlockBehaviour.Properties.of());
     public static final DeferredItem<BlockItem> adamantium_door_item = ITEM_BLOCKS.register("adamantium_door",
-                    item -> new DoubleHighBlockItem(adamantium_door.get(), new Item.Properties().stacksTo(1)));
+            item -> new DoubleHighBlockItem(adamantium_door.get(), new Item.Properties().stacksTo(1)));
 
     public static final DeferredBlock<Block> clay_furnace = BLOCKS.registerBlock("clay_furnace",
             block -> new IFWFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)

@@ -55,6 +55,15 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.ancient_metal_horse_armor.get(), "远古金属马铠");
         add(IFWItems.mithril_horse_armor.get(), "秘银马铠");
         add(IFWItems.adamantium_horse_armor.get(), "艾德曼马铠");
+        add(IFWItems.flint_fishing_rod.get(), "燧石钓鱼竿");
+        add(IFWItems.obsidian_fishing_rod.get(), "黑曜石钓鱼竿");
+        add(IFWItems.copper_fishing_rod.get(), "铜钓鱼竿");
+        add(IFWItems.silver_fishing_rod.get(), "银钓鱼竿");
+        add(IFWItems.gold_fishing_rod.get(), "金钓鱼竿");
+        add(IFWItems.iron_fishing_rod.get(), "铁钓鱼竿");
+        add(IFWItems.ancient_metal_fishing_rod.get(), "远古金属钓鱼竿");
+        add(IFWItems.mithril_fishing_rod.get(), "秘银钓鱼竿");
+        add(IFWItems.adamantium_fishing_rod.get(), "艾德曼钓鱼竿");
         add(IFWItems.copper_bucket.get(), "铜桶");
         add(IFWItems.water_copper_bucket.get(), "铜水桶");
         add(IFWItems.lava_copper_bucket.get(), "铜熔岩桶");
@@ -180,6 +189,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("foodtips.phytonutrients", "+%s 植物营养素");
         add("foodtips.insulinresponse", "+%s 胰岛素反应");
         add("tooltip.infinity.gem.xp", "+%s 玩家经验");
+        add(IFWBlocks.emerald_enchanting_table.get(), "绿宝石附魔台");
         add(IFWBlocks.adamantium_block_item.get(), "艾德曼块");
         add(IFWBlocks.adamantium_ore_item.get(), "艾德曼矿石");
         add(IFWBlocks.adamantium_bars_item.get(), "艾德曼栏杆");

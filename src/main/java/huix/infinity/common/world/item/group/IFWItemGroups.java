@@ -368,6 +368,7 @@ public class IFWItemGroups {
                         output.accept(IFWBlocks.silver_anvil.get());
                         output.accept(IFWBlocks.chipped_silver_anvil.get());
                         output.accept(IFWBlocks.damaged_silver_anvil.get());
+                        output.accept(IFWBlocks.emerald_enchanting_table_item.get());
                         output.accept(IFWBlocks.clay_furnace_item.get());
                         output.accept(IFWBlocks.hardened_clay_furnace_item.get());
                         output.accept(IFWBlocks.sandstone_furnace_item.get());

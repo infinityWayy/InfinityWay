@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-18T23:07:10.4792655	Loot Tables
+// 1.21.1	2025-05-19T19:59:11.6517583	Loot Tables
 39ca8695010fbfadce1cd3e2a0ca92acd68b795b data/ifw/loot_table/blocks/adamantium_anvil.json
 e83ac5ba844b67d2d69c691887b951b8f7166f9d data/ifw/loot_table/blocks/adamantium_bars.json
 b75574a0827bdf12669b4631f5e8a591ffe3b2db data/ifw/loot_table/blocks/adamantium_block.json
@@ -28,6 +28,7 @@ be9fb242e0bb55b9cc3f3f8c869253b281c1cc7f data/ifw/loot_table/blocks/damaged_mith
 bdec58aec5b75afbed20179f2b727b4592bb5cb6 data/ifw/loot_table/blocks/deepslate_adamantium_ore.json
 4eb0a30ebcc5198e408b5c23ba8a07929bb6a59b data/ifw/loot_table/blocks/deepslate_mithril_ore.json
 cd30ba5a178ce44b4d2dc845dba070fa819980fe data/ifw/loot_table/blocks/deepslate_silver_ore.json
+cf84af3df2750a5f8ff47109c1d9ee60f4636e7d data/ifw/loot_table/blocks/emerald_enchanting_table.json
 9759e939ca37f11bc63a031e05d82c76b132f596 data/ifw/loot_table/blocks/gold_anvil.json
 809b8708cec911a2c2e744d29b4af8e84f40bf69 data/ifw/loot_table/blocks/gold_bars.json
 7cba7be2019e08f3a633ad62810166f9a9bfedf2 data/ifw/loot_table/blocks/gold_door.json
