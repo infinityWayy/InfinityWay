@@ -3,6 +3,7 @@ package huix.infinity.common.world.entity;
 import com.mojang.datafixers.types.Type;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.block.entity.AnvilBlockEntity;
+import huix.infinity.common.world.block.entity.EmeraldEnchantingTableBlockEntity;
 import huix.infinity.common.world.block.entity.IFWFurnaceBlockEntity;
 import huix.infinity.common.world.block.entity.PrivateChestBlockEntity;
 import huix.infinity.init.InfinityWay;
@@ -39,6 +40,11 @@ public class IFWBlockEntityTypes {
             "private_chest", () -> BlockEntityType.Builder.of(PrivateChestBlockEntity::new,
                             IFWBlocks.copper_private_chest.get())
                     .build(dataType("private_chest")));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EmeraldEnchantingTableBlockEntity>> emerald_enchanting_table = BLOCK_ENTITY_TYPES.register(
+            "emerald_enchanting_table", () -> BlockEntityType.Builder.of(EmeraldEnchantingTableBlockEntity::new,
+                    IFWBlocks.emerald_enchanting_table.get())
+                    .build(dataType("emerald_enchanting_table")));
 
     private static Type<?> dataType(String name) {
         return Util.fetchChoiceType(References.BLOCK_ENTITY, name);

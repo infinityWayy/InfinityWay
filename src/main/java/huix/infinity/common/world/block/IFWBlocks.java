@@ -130,8 +130,7 @@ public class IFWBlocks {
             new Item.Properties().stacksTo(1).durability(12697200));
 
     public static final DeferredBlock<Block> emerald_enchanting_table = BLOCKS.registerBlock("emerald_enchanting_table",
-            block -> new IFWEnchantingTableBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED)
-                    .instrument(NoteBlockInstrument.BIT).strength(5.0F).lightLevel(state -> 7)));
+            block -> new EmeraldEnchantingTableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ENCHANTING_TABLE)));
     public static final DeferredItem<BlockItem> emerald_enchanting_table_item = ITEM_BLOCKS.registerSimpleBlockItem("emerald_enchanting_table", emerald_enchanting_table, new Item.Properties().stacksTo(1));
 
     public static final DeferredBlock<Block> adamantium_block = BLOCKS.registerSimpleBlock("adamantium_block",

@@ -1,8 +1,9 @@
 package huix.infinity.init.to;
 
 
-import huix.infinity.common.client.IFWAnvilScreen;
+import huix.infinity.common.client.screen.IFWAnvilScreen;
 import huix.infinity.common.client.resources.PersistentEffectTextureManager;
+import huix.infinity.common.client.screen.EmeraldEnchantmentScreen;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import huix.infinity.common.world.entity.IFWEntityType;
@@ -17,19 +18,16 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.client.renderer.texture.atlas.SpriteSources;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.ChunkRenderTypeSet;
 import net.neoforged.neoforge.client.event.*;
-import net.neoforged.neoforge.client.textures.NamespacedDirectoryLister;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = InfinityWay.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public final class IFWClient {
@@ -73,6 +71,7 @@ public final class IFWClient {
     @SubscribeEvent
     static void registerMenuScreens(final RegisterMenuScreensEvent event) {
         event.register(IFWMenuTypes.anvil_menu.get(), IFWAnvilScreen::new);
+        event.register(IFWMenuTypes.emerald_enchantment_menu.get(), EmeraldEnchantmentScreen::new);
     }
 
     @SubscribeEvent

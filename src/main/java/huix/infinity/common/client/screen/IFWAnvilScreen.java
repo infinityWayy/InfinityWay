@@ -1,4 +1,4 @@
-package huix.infinity.common.client;
+package huix.infinity.common.client.screen;
 
 import huix.infinity.common.world.inventory.IFWAnvilMenu;
 import net.minecraft.client.Minecraft;
