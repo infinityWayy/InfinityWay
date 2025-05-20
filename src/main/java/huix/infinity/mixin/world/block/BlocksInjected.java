@@ -36,6 +36,72 @@ public class BlocksInjected {
     }
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 8), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_oak_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 9), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_spruce_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 10), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_birch_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 11), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_jungle_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 12), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_acacia_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 13), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_cherry_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 14), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_dark_oak_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 15), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_mangrove_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 16), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_bamboo_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 160), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_crimson_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
+            , ordinal = 161), method = "<clinit>")
+    private static BlockBehaviour.Properties ifw_warped_plankHardness(BlockBehaviour.Properties instance, float destroyTime, float explosionResistance) {
+        return instance.strength(0.8F, explosionResistance);
+    }
+
+    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
             , ordinal = 23), method = "<clinit>")
     private static BlockBehaviour.Properties ifw_coalOreHardness(BlockBehaviour.Properties properties, float destroyTime, float explosionResistance) {
         return properties.strength(1.2F, 3.0F);
@@ -49,25 +115,25 @@ public class BlocksInjected {
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;instabreak()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
             , ordinal = 30), method = "<clinit>")
-    private static BlockBehaviour.Properties ifw_touchHardness(BlockBehaviour.Properties properties) {
+    private static BlockBehaviour.Properties ifw_torchHardness(BlockBehaviour.Properties properties) {
         return properties.instabreak().replaceable();
     }
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;instabreak()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
             , ordinal = 31), method = "<clinit>")
-    private static BlockBehaviour.Properties ifw_wallTouchHardness(BlockBehaviour.Properties properties) {
+    private static BlockBehaviour.Properties ifw_wallTorchHardness(BlockBehaviour.Properties properties) {
         return properties.instabreak().replaceable();
     }
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;instabreak()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
             , ordinal = 39), method = "<clinit>")
-    private static BlockBehaviour.Properties ifw_soulTouchHardness(BlockBehaviour.Properties properties) {
+    private static BlockBehaviour.Properties ifw_soulTorchHardness(BlockBehaviour.Properties properties) {
         return properties.instabreak().replaceable();
     }
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;instabreak()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
             , ordinal = 40), method = "<clinit>")
-    private static BlockBehaviour.Properties ifw_soulWallTouchHardness(BlockBehaviour.Properties properties) {
+    private static BlockBehaviour.Properties ifw_soulWallTorchHardness(BlockBehaviour.Properties properties) {
         return properties.instabreak().replaceable();
     }
 
