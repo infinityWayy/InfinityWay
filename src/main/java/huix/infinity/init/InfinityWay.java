@@ -17,6 +17,7 @@ import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
 import huix.infinity.common.world.item.group.IFWItemGroups;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.loot.IFWLootModifiers;
+import huix.infinity.init.event.IFWSoundEvents;
 import huix.infinity.init.to.IFWClient;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
@@ -50,6 +51,7 @@ public final class InfinityWay {
         IFWItems.ITEMS.register(modBus);
         IFWBlocks.BLOCKS.register(modBus);
         IFWEntityType.ENTITIES.register(modBus);
+        IFWSoundEvents.register(modBus);
         Curses.CURSES.register(modBus);
 
         IFWEvents.init(eventBus);

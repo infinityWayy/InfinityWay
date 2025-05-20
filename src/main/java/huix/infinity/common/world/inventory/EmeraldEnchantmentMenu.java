@@ -9,7 +9,8 @@ import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
+import huix.infinity.init.event.IFWSoundEvents;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.EnchantmentTags;
@@ -187,7 +188,7 @@ public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
                                         this.enchantmentSeed.set(player.getEnchantmentSeed());
                                         this.slotsChanged(this.enchantSlots);
                                         p_347276_.playSound(
-                                                null, p_347277_, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, p_347276_.random.nextFloat() * 0.1F + 0.9F
+                                                null, p_347277_, IFWSoundEvents.CLASSIC_HURT.get(), SoundSource.BLOCKS, 1.0F, p_347276_.random.nextFloat() * 0.1F + 0.9F
                                         );
                                     }
                                 }

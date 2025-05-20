@@ -1,0 +1,10 @@
+{
+  "classic_hurt": {
+    "sounds": [
+      {
+        "name": "ifw:classic_hurt",
+        "stream": false
+      }
+    ]
+  }
+}
