@@ -27,6 +27,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -44,6 +45,7 @@ import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.neoforged.neoforge.event.level.block.CropGrowEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.registries.datamaps.DataMapsUpdatedEvent;
 
@@ -67,6 +69,7 @@ public class IFWEvents {
         bus.addListener(IFWEvents::serverTick);
         bus.addListener(IFWEvents::playerLoggedIn);
         bus.addListener(IFWEvents::onLootTableLoad);
+        bus.addListener(IFWEvents::onCropGrow);
     }
 
     public static void injectItem(final DataMapsUpdatedEvent event) {
@@ -216,5 +219,18 @@ public class IFWEvents {
                     .build());
         }
     }
+
+    public static void onCropGrow(final CropGrowEvent.Pre event) {
+        LevelAccessor world = event.getLevel();
+
+        // 1/8概率触发生长
+        if (world.getRandom().nextInt(8) != 0) {
+            event.setResult(CropGrowEvent.Pre.Result.DO_NOT_GROW);
+        }
+    }
+
+//    public static void onSleepFinished(final SleepFinishedTimeEvent event) {
+//
+//    }
 
 }
