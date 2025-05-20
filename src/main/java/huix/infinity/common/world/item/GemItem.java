@@ -2,6 +2,7 @@ package huix.infinity.common.world.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -23,12 +24,22 @@ public class GemItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         ItemStack itemstack = player.getItemInHand(usedHand);
-        if (itemstack != ItemStack.EMPTY && this.xpRewards > 0) {
-            player.giveExperiencePoints(this.xpRewards);
-            itemstack.shrink(1);
-            return InteractionResultHolder.consume(itemstack);
+        if (itemstack.isEmpty() || this.xpRewards <= 0) {
+            return InteractionResultHolder.pass(itemstack);
         }
-        return InteractionResultHolder.pass(player.getItemInHand(usedHand));
+        int count = itemstack.getCount();
+        boolean isShiftKeyDown = player.isShiftKeyDown();
+        int totalXp;
+        if (isShiftKeyDown) {
+            totalXp = this.xpRewards * count;
+            itemstack.shrink(count);
+        } else {
+            totalXp = this.xpRewards;
+            itemstack.shrink(1);
+        }
+        player.giveExperiencePoints(totalXp);
+        player.playSound(SoundEvents.GLASS_BREAK, 1.0F, 1.0F);
+        return InteractionResultHolder.consume(itemstack);
     }
 
     @Override
