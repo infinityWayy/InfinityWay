@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": {
+      "item": "ifw:mithril_nugget"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    " M ",
+    "MOM",
+    " M "
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:mithril_runestone_quas"
+  }
+}

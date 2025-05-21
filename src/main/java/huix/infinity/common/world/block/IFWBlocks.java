@@ -441,7 +441,17 @@ public class IFWBlocks {
                     .strength(2.4F, 1200.0F).sound(SoundType.METAL));
     public static final DeferredItem<BlockItem> adamantium_runestone_sanct_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_sanct", adamantium_runestone_sanct, new Item.Properties().stacksTo(4));
 
+    public static final List<DeferredItem<BlockItem>> MITHRILRUNESTONES = List.of(
+            mithril_runestone_nul_item, mithril_runestone_quas_item, mithril_runestone_por_item, mithril_runestone_an_item, mithril_runestone_nox_item, mithril_runestone_flam_item,
+            mithril_runestone_vas_item, mithril_runestone_des_item, mithril_runestone_ort_item, mithril_runestone_tym_item, mithril_runestone_corp_item, mithril_runestone_lor_item,
+            mithril_runestone_mani_item, mithril_runestone_jux_item, mithril_runestone_ylem_item, mithril_runestone_sanct_item
+    );
 
+    public static final List<DeferredItem<BlockItem>> ADAMANTIUMRUNESTONES = List.of(
+            adamantium_runestone_nul_item, adamantium_runestone_quas_item, adamantium_runestone_por_item, adamantium_runestone_an_item, adamantium_runestone_nox_item, adamantium_runestone_flam_item,
+            adamantium_runestone_vas_item, adamantium_runestone_des_item, adamantium_runestone_ort_item, adamantium_runestone_tym_item, adamantium_runestone_corp_item, adamantium_runestone_lor_item,
+            adamantium_runestone_mani_item, adamantium_runestone_jux_item, adamantium_runestone_ylem_item, adamantium_runestone_sanct_item
+    );
 
     public static final DeferredBlock<Block> copper_private_chest = BLOCKS.registerBlock("copper_private_chest",
             block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));

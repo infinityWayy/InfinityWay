@@ -2,16 +2,19 @@ package huix.infinity.datagen.recipe;
 
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.init.InfinityWay;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -26,6 +29,37 @@ public class IFWRecipeProvider extends RecipeProvider {
         cookingRecipe(recipeOutput);
         foodRecipe(recipeOutput);
         rebuildRecipe(recipeOutput);
+        for (DeferredItem<BlockItem> runestone : IFWBlocks.MITHRILRUNESTONES) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, runestone.get())
+                    .pattern(" M ")
+                    .pattern("MOM")
+                    .pattern(" M ")
+                    .define('M', IFWItems.mithril_nugget.get())
+                    .define('O', Items.OBSIDIAN)
+                    .unlockedBy("has_mithril_nugget", has(IFWItems.mithril_nugget.get()))
+                    .save(recipeOutput,
+                            ResourceLocation.fromNamespaceAndPath(
+                                    InfinityWay.MOD_ID,
+                                    "runestone/" + runestone.getId().getPath()
+                            )
+                    );
+        }
+
+        for (DeferredItem<BlockItem> runestone : IFWBlocks.ADAMANTIUMRUNESTONES) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, runestone.get())
+                    .pattern(" A ")
+                    .pattern("AOA")
+                    .pattern(" A ")
+                    .define('A', IFWItems.adamantium_nugget.get())
+                    .define('O', Items.OBSIDIAN)
+                    .unlockedBy("has_adamantium_nugget", has(IFWItems.adamantium_nugget.get()))
+                    .save(recipeOutput,
+                            ResourceLocation.fromNamespaceAndPath(
+                                    InfinityWay.MOD_ID,
+                                    "runestone/" + runestone.getId().getPath()
+                            )
+                    );
+        }
 
 
         {
