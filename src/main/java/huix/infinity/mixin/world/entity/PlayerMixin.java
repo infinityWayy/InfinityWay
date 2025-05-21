@@ -130,6 +130,8 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
             levels = event.getLevels();
             this.experienceLevel += levels;
 
+            this.experienceLevel = Math.max(this.experienceLevel, -40);
+
             if (levels > 0 && this.experienceLevel % 5 == 0 && (float)this.lastLevelUpTime < (float)this.tickCount - 100.0F) {
                 float f = this.experienceLevel > 30 ? 1.0F : (float)this.experienceLevel / 30.0F;
                 this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.PLAYER_LEVELUP, this.getSoundSource(), f * 0.75F, 1.0F);

@@ -16,7 +16,7 @@ public enum LevelBonusStats {
    }
 
    public float calcBonusFor(final int level) {
-      return level > 0 ? this.bonusPerLevel * (float)level : this.bonusPerNegativeLevel * (float)level;
+      return level > 0 ? this.bonusPerLevel * (float)level : -this.bonusPerNegativeLevel * (float)level;
    }
 
    public float calcBonusFor(final Player player) {

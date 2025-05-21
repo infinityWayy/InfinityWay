@@ -169,7 +169,7 @@ public class IFWEvents {
     private static void showMoreFoodInfo(final IFWFoodProperties extraFood, final List<Component> list) {
         if (extraFood != null && Screen.hasAltDown())  {
             if (extraFood.protein() != 0)
-                list.add(Component.translatable("foodtips.protein", extraFood.protein()).withStyle(ChatFormatting.GOLD));
+                list.add(Component.translatable("foodtips.protein", extraFood.protein()).withStyle(ChatFormatting.YELLOW));
             if (extraFood.phytonutrients() != 0)
                 list.add(Component.translatable("foodtips.phytonutrients", extraFood.phytonutrients()).withStyle(ChatFormatting.GREEN));
             if (extraFood.insulinResponse() != 0)
