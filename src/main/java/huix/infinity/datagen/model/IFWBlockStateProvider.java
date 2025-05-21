@@ -198,6 +198,40 @@ public class IFWBlockStateProvider extends BlockStateProvider {
                         .modelFile(damagedSilverAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
         simpleBlockItem(IFWBlocks.damaged_silver_anvil.get(), damagedSilverAnvil);
 
+        //Runestones
+        simpleBlock(IFWBlocks.mithril_runestone_nul.get());
+        simpleBlock(IFWBlocks.mithril_runestone_quas.get());
+        simpleBlock(IFWBlocks.mithril_runestone_por.get());
+        simpleBlock(IFWBlocks.mithril_runestone_an.get());
+        simpleBlock(IFWBlocks.mithril_runestone_nox.get());
+        simpleBlock(IFWBlocks.mithril_runestone_flam.get());
+        simpleBlock(IFWBlocks.mithril_runestone_vas.get());
+        simpleBlock(IFWBlocks.mithril_runestone_des.get());
+        simpleBlock(IFWBlocks.mithril_runestone_ort.get());
+        simpleBlock(IFWBlocks.mithril_runestone_tym.get());
+        simpleBlock(IFWBlocks.mithril_runestone_corp.get());
+        simpleBlock(IFWBlocks.mithril_runestone_lor.get());
+        simpleBlock(IFWBlocks.mithril_runestone_mani.get());
+        simpleBlock(IFWBlocks.mithril_runestone_jux.get());
+        simpleBlock(IFWBlocks.mithril_runestone_ylem.get());
+        simpleBlock(IFWBlocks.mithril_runestone_sanct.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_nul.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_quas.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_por.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_an.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_nox.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_flam.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_vas.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_des.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_ort.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_tym.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_corp.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_lor.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_mani.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_jux.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_ylem.get());
+        simpleBlock(IFWBlocks.adamantium_runestone_sanct.get());
+
         simpleBlock(IFWBlocks.adamantium_block.get());
         simpleBlock(IFWBlocks.adamantium_ore.get());
         paneBlock((IronBarsBlock) IFWBlocks.adamantium_bars.get(), modLoc("block/adamantium_bars"), modLoc("block/adamantium_bars"));

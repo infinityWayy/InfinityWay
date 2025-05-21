@@ -80,7 +80,38 @@ public class IFWItemModelProvider extends ItemModelProvider {
                 .predicate(mcLoc("cast"), 1)
                 .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
                 .end();
-
+        simpleBlockItem(IFWBlocks.mithril_runestone_nul.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_quas.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_por.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_an.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_nox.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_flam.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_vas.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_des.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_ort.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_tym.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_corp.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_lor.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_mani.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_jux.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_ylem.get());
+        simpleBlockItem(IFWBlocks.mithril_runestone_sanct.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_nul.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_quas.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_por.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_an.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_nox.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_flam.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_vas.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_des.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_ort.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_tym.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_corp.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_lor.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_mani.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_jux.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_ylem.get());
+        simpleBlockItem(IFWBlocks.adamantium_runestone_sanct.get());
         simpleBlockItem(IFWBlocks.emerald_enchanting_table.get());
         simpleBlockItem(IFWBlocks.silver_block.get());
         simpleBlockItem(IFWBlocks.silver_ore.get());
@@ -95,7 +126,6 @@ public class IFWItemModelProvider extends ItemModelProvider {
         simpleBlockItem(IFWBlocks.ancient_metal_block.get());
         simpleBlockItem(IFWBlocks.adamantium_ore.get());
         simpleBlockItem(IFWBlocks.adamantium_block.get());
-        simpleBlockItem(IFWBlocks.emerald_enchanting_table.get());
         basicItem(IFWItems.flint_shard.get());
         basicItem(IFWItems.diamond_shard.get());
         basicItem(IFWItems.emerald_shard.get());

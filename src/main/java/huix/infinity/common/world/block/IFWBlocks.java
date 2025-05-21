@@ -19,6 +19,8 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
+
 public class IFWBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(InfinityWay.MOD_ID);
     public static final DeferredRegister.Items ITEM_BLOCKS = IFWItems.ITEMS;
@@ -276,6 +278,169 @@ public class IFWBlocks {
             block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(4.5F, 3.0F)), BlockBehaviour.Properties.of());
     public static final DeferredItem<BlockItem> deepslate_silver_ore_item = ITEM_BLOCKS.registerSimpleBlockItem("deepslate_silver_ore", deepslate_silver_ore, new Item.Properties().stacksTo(4));
+
+    //Runestones
+
+    public static final DeferredBlock<Block> mithril_runestone_nul = BLOCKS.registerSimpleBlock("mithril_runestone_nul",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_nul_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_nul", mithril_runestone_nul, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_quas = BLOCKS.registerSimpleBlock("mithril_runestone_quas",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_quas_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_quas", mithril_runestone_quas, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_por = BLOCKS.registerSimpleBlock("mithril_runestone_por",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_por_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_por", mithril_runestone_por, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_an = BLOCKS.registerSimpleBlock("mithril_runestone_an",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_an_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_an", mithril_runestone_an, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_nox = BLOCKS.registerSimpleBlock("mithril_runestone_nox",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_nox_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_nox", mithril_runestone_nox, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_flam = BLOCKS.registerSimpleBlock("mithril_runestone_flam",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_flam_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_flam", mithril_runestone_flam, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_vas = BLOCKS.registerSimpleBlock("mithril_runestone_vas",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_vas_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_vas", mithril_runestone_vas, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_des = BLOCKS.registerSimpleBlock("mithril_runestone_des",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_des_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_des", mithril_runestone_des, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_ort = BLOCKS.registerSimpleBlock("mithril_runestone_ort",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_ort_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_ort", mithril_runestone_ort, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_tym = BLOCKS.registerSimpleBlock("mithril_runestone_tym",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_tym_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_tym", mithril_runestone_tym, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_corp = BLOCKS.registerSimpleBlock("mithril_runestone_corp",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_corp_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_corp", mithril_runestone_corp, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_lor = BLOCKS.registerSimpleBlock("mithril_runestone_lor",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_lor_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_lor", mithril_runestone_lor, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_mani = BLOCKS.registerSimpleBlock("mithril_runestone_mani",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_mani_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_mani", mithril_runestone_mani, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_jux = BLOCKS.registerSimpleBlock("mithril_runestone_jux",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_jux_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_jux", mithril_runestone_jux, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_ylem = BLOCKS.registerSimpleBlock("mithril_runestone_ylem",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_ylem_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_ylem", mithril_runestone_ylem, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_runestone_sanct = BLOCKS.registerSimpleBlock("mithril_runestone_sanct",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> mithril_runestone_sanct_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_runestone_sanct", mithril_runestone_sanct, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_nul = BLOCKS.registerSimpleBlock("adamantium_runestone_nul",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_nul_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_nul", adamantium_runestone_nul, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_quas = BLOCKS.registerSimpleBlock("adamantium_runestone_quas",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_quas_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_quas", adamantium_runestone_quas, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_por = BLOCKS.registerSimpleBlock("adamantium_runestone_por",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_por_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_por", adamantium_runestone_por, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_an = BLOCKS.registerSimpleBlock("adamantium_runestone_an",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_an_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_an", adamantium_runestone_an, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_nox = BLOCKS.registerSimpleBlock("adamantium_runestone_nox",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_nox_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_nox", adamantium_runestone_nox, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_flam = BLOCKS.registerSimpleBlock("adamantium_runestone_flam",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_flam_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_flam", adamantium_runestone_flam, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_vas = BLOCKS.registerSimpleBlock("adamantium_runestone_vas",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_vas_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_vas", adamantium_runestone_vas, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_des = BLOCKS.registerSimpleBlock("adamantium_runestone_des",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_des_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_des", adamantium_runestone_des, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_ort = BLOCKS.registerSimpleBlock("adamantium_runestone_ort",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_ort_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_ort", adamantium_runestone_ort, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_tym = BLOCKS.registerSimpleBlock("adamantium_runestone_tym",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_tym_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_tym", adamantium_runestone_tym, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_corp = BLOCKS.registerSimpleBlock("adamantium_runestone_corp",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_corp_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_corp", adamantium_runestone_corp, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_lor = BLOCKS.registerSimpleBlock("adamantium_runestone_lor",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_lor_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_lor", adamantium_runestone_lor, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_mani = BLOCKS.registerSimpleBlock("adamantium_runestone_mani",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_mani_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_mani", adamantium_runestone_mani, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_jux = BLOCKS.registerSimpleBlock("adamantium_runestone_jux",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_jux_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_jux", adamantium_runestone_jux, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_ylem = BLOCKS.registerSimpleBlock("adamantium_runestone_ylem",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_ylem_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_ylem", adamantium_runestone_ylem, new Item.Properties().stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_runestone_sanct = BLOCKS.registerSimpleBlock("adamantium_runestone_sanct",
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+                    .strength(2.4F, 1200.0F).sound(SoundType.METAL));
+    public static final DeferredItem<BlockItem> adamantium_runestone_sanct_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_runestone_sanct", adamantium_runestone_sanct, new Item.Properties().stacksTo(4));
+
 
 
     public static final DeferredBlock<Block> copper_private_chest = BLOCKS.registerBlock("copper_private_chest",

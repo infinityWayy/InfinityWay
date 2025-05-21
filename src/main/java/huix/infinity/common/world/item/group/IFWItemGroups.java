@@ -399,6 +399,40 @@ public class IFWItemGroups {
                         output.accept(IFWBlocks.deepslate_adamantium_ore_item.get());
                         output.accept(IFWBlocks.deepslate_mithril_ore_item.get());
                         output.accept(IFWBlocks.deepslate_silver_ore_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_nul_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_quas_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_por_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_an_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_nox_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_flam_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_vas_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_des_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_ort_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_tym_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_corp_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_lor_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_mani_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_jux_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_ylem_item.get());
+                        output.accept(IFWBlocks.mithril_runestone_sanct_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_nul_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_quas_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_por_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_an_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_nox_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_flam_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_vas_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_des_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_ort_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_tym_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_corp_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_lor_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_mani_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_jux_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_ylem_item.get());
+                        output.accept(IFWBlocks.adamantium_runestone_sanct_item.get());
+
+
                     }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> entity_tab =

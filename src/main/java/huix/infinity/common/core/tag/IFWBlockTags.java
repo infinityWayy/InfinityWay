@@ -30,6 +30,7 @@ public class IFWBlockTags {
     public static final TagKey<Block> IFW_FURNACE = create("ifw_furnace");
     public static final TagKey<Block> METAL_DOORS = create("ifw_furnace");
     public static final TagKey<Block> FALLEN_DIRT = create("fallen_dirt");
+    public static final TagKey<Block> RUNESTONE = create("runestone");
 
     public static TagKey<Block> create(String name) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, name));

@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-19T19:52:36.7068264	Recipes
+// 1.21.1	2025-05-22T02:58:57.0220117	Recipes
 8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
@@ -14,6 +14,7 @@ e5cf198dc659e7708ab8e59cb96a20d1cb56119d data/ifw/advancement/recipes/building_b
 c9194eb8b0fe9ede3dbd1d5533c96cac70c1556b data/ifw/advancement/recipes/building_blocks/mithril_anvil.json
 910a6735b0a7d3fb3eeff5d77264ba880a16a1e9 data/ifw/advancement/recipes/building_blocks/mithril_bars.json
 c400010b4ba074f3f3ff16cc5a3bf14b6c23cfcd data/ifw/advancement/recipes/building_blocks/mithril_door.json
+5518ea721a5ba2b21a374dde9b6501cb3611328a data/ifw/advancement/recipes/building_blocks/mithril_runestone_nul.json
 c871ccfcf18d6acefcf51a35364f538f7879015b data/ifw/advancement/recipes/building_blocks/raw_adamantium_block.json
 d85b92770d9ece0a53e679bb7cbad1bfa8b8e829 data/ifw/advancement/recipes/building_blocks/raw_mithril_block.json
 a296fdf83247ed874d7a9980046eb1bfa795b028 data/ifw/advancement/recipes/building_blocks/raw_silver_block.json
@@ -347,6 +348,7 @@ d4cc53868918a5da1a467cbeda504e8f26da13eb data/ifw/recipe/mithril_helmet.json
 c747014387825aa496907d5784cf0bfb7638c8d9 data/ifw/recipe/mithril_leggings.json
 37edae8d60fb0bd76a81da8c15aa4f497d3f6b0d data/ifw/recipe/mithril_mattock.json
 b3eb8bceb7ace36680c5518f46cb0461290bd697 data/ifw/recipe/mithril_pickaxe.json
+b9aa365114dd5efcc42f3d7742f84665a1368156 data/ifw/recipe/mithril_runestone_nul.json
 727a5b5f754b7f2208278d4e3b93a340d1329087 data/ifw/recipe/mithril_scythe.json
 6475b7d9c1e1a9e40d1ca4b3a81ed34ae1412680 data/ifw/recipe/mithril_shears.json
 01ec6fadf7d26d65f7a93a83b5652e5b0a29272f data/ifw/recipe/mithril_shovel.json

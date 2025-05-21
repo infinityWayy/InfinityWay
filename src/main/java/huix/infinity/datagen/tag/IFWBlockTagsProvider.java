@@ -45,7 +45,15 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
                 Blocks.RAW_GOLD_BLOCK, Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE, Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, Blocks.RAW_IRON_BLOCK, Blocks.LAPIS_BLOCK, Blocks.LAPIS_ORE,
                 Blocks.DEEPSLATE_LAPIS_ORE, Blocks.RAW_COPPER_BLOCK, Blocks.CUT_COPPER_SLAB, Blocks.RESPAWN_ANCHOR, Blocks.GOLD_BLOCK,
                 IFWBlocks.deepslate_mithril_ore.get(), IFWBlocks.mithril_ore.get(), IFWBlocks.copper_bars.get(), IFWBlocks.silver_block.get(), IFWBlocks.silver_bars.get(),
-                IFWBlocks.silver_door.get(), IFWBlocks.gold_door.get()
+                IFWBlocks.silver_door.get(), IFWBlocks.gold_door.get(),
+                IFWBlocks.mithril_runestone_nul.get(), IFWBlocks.mithril_runestone_quas.get(), IFWBlocks.mithril_runestone_por.get(), IFWBlocks.mithril_runestone_an.get(), IFWBlocks.mithril_runestone_nox.get(),
+                IFWBlocks.mithril_runestone_flam.get(), IFWBlocks.mithril_runestone_vas.get(), IFWBlocks.mithril_runestone_des.get(), IFWBlocks.mithril_runestone_ort.get(), IFWBlocks.mithril_runestone_tym.get(),
+                IFWBlocks.mithril_runestone_corp.get(), IFWBlocks.mithril_runestone_lor.get(), IFWBlocks.mithril_runestone_mani.get(), IFWBlocks.mithril_runestone_jux.get(), IFWBlocks.mithril_runestone_ylem.get(),
+                IFWBlocks.mithril_runestone_sanct.get(),
+                IFWBlocks.adamantium_runestone_nul.get(), IFWBlocks.adamantium_runestone_quas.get(), IFWBlocks.adamantium_runestone_por.get(), IFWBlocks.adamantium_runestone_an.get(), IFWBlocks.adamantium_runestone_nox.get(),
+                IFWBlocks.adamantium_runestone_flam.get(), IFWBlocks.adamantium_runestone_vas.get(), IFWBlocks.adamantium_runestone_des.get(), IFWBlocks.adamantium_runestone_ort.get(), IFWBlocks.adamantium_runestone_tym.get(),
+                IFWBlocks.adamantium_runestone_corp.get(), IFWBlocks.adamantium_runestone_lor.get(), IFWBlocks.adamantium_runestone_mani.get(), IFWBlocks.adamantium_runestone_jux.get(), IFWBlocks.adamantium_runestone_ylem.get(),
+                IFWBlocks.adamantium_runestone_sanct.get()
         );
         tag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).add(
                 Blocks.IRON_BLOCK, Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.EMERALD_BLOCK, Blocks.ANCIENT_DEBRIS, Blocks.IRON_BARS,
@@ -69,7 +77,15 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IFWBlocks.adamantium_ore.get(), IFWBlocks.deepslate_adamantium_ore.get(),
                 IFWBlocks.mithril_bars.get(), IFWBlocks.mithril_door.get(), IFWBlocks.mithril_block.get(), IFWBlocks.deepslate_mithril_ore.get(), IFWBlocks.mithril_ore.get(),
                 IFWBlocks.deepslate_silver_ore.get(), IFWBlocks.silver_ore.get(), IFWBlocks.copper_bars.get(), IFWBlocks.silver_block.get(), IFWBlocks.silver_bars.get(),
-                IFWBlocks.silver_door.get(), IFWBlocks.gold_door.get(), IFWBlocks.ancient_metal_block.get(), IFWBlocks.ancient_metal_bars.get(), IFWBlocks.ancient_metal_door.get()
+                IFWBlocks.silver_door.get(), IFWBlocks.gold_door.get(), IFWBlocks.ancient_metal_block.get(), IFWBlocks.ancient_metal_bars.get(), IFWBlocks.ancient_metal_door.get(), IFWBlocks.mithril_runestone_nul.get(),
+                IFWBlocks.mithril_runestone_nul.get(), IFWBlocks.mithril_runestone_quas.get(), IFWBlocks.mithril_runestone_por.get(), IFWBlocks.mithril_runestone_an.get(), IFWBlocks.mithril_runestone_nox.get(),
+                IFWBlocks.mithril_runestone_flam.get(), IFWBlocks.mithril_runestone_vas.get(), IFWBlocks.mithril_runestone_des.get(), IFWBlocks.mithril_runestone_ort.get(), IFWBlocks.mithril_runestone_tym.get(),
+                IFWBlocks.mithril_runestone_corp.get(), IFWBlocks.mithril_runestone_lor.get(), IFWBlocks.mithril_runestone_mani.get(), IFWBlocks.mithril_runestone_jux.get(), IFWBlocks.mithril_runestone_ylem.get(),
+                IFWBlocks.mithril_runestone_sanct.get(),
+                IFWBlocks.adamantium_runestone_nul.get(), IFWBlocks.adamantium_runestone_quas.get(), IFWBlocks.adamantium_runestone_por.get(), IFWBlocks.adamantium_runestone_an.get(), IFWBlocks.adamantium_runestone_nox.get(),
+                IFWBlocks.adamantium_runestone_flam.get(), IFWBlocks.adamantium_runestone_vas.get(), IFWBlocks.adamantium_runestone_des.get(), IFWBlocks.adamantium_runestone_ort.get(), IFWBlocks.adamantium_runestone_tym.get(),
+                IFWBlocks.adamantium_runestone_corp.get(), IFWBlocks.adamantium_runestone_lor.get(), IFWBlocks.adamantium_runestone_mani.get(), IFWBlocks.adamantium_runestone_jux.get(), IFWBlocks.adamantium_runestone_ylem.get(),
+                IFWBlocks.adamantium_runestone_sanct.get()
         ).addTag(BlockTags.DOORS);
 
         tag(BlockTags.ANVIL).add(IFWBlocks.copper_anvil.get(), IFWBlocks.chipped_copper_anvil.get(), IFWBlocks.damaged_copper_anvil.get(),
@@ -88,5 +104,20 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
                 .add(Blocks.COBWEB, Blocks.SHORT_GRASS, Blocks.FERN, Blocks.DEAD_BUSH, Blocks.HANGING_ROOTS, Blocks.VINE,Blocks.TRIPWIRE)
                 ;
         tag(IFWBlockTags.FALLEN_DIRT).add(Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT, Blocks.FARMLAND, Blocks.MUD);
+
+        tag(IFWBlockTags.RUNESTONE)
+                .add(IFWBlocks.mithril_bars.get(), IFWBlocks.mithril_door.get(), IFWBlocks.mithril_block.get(), IFWBlocks.deepslate_mithril_ore.get(), IFWBlocks.mithril_ore.get(),
+                        IFWBlocks.deepslate_silver_ore.get(), IFWBlocks.silver_ore.get(), IFWBlocks.copper_bars.get(), IFWBlocks.silver_block.get(), IFWBlocks.silver_bars.get(),
+                        IFWBlocks.silver_door.get(), IFWBlocks.gold_door.get(), IFWBlocks.ancient_metal_block.get(), IFWBlocks.ancient_metal_bars.get(), IFWBlocks.ancient_metal_door.get(), IFWBlocks.mithril_runestone_nul.get(),
+                        IFWBlocks.mithril_runestone_nul.get(), IFWBlocks.mithril_runestone_quas.get(), IFWBlocks.mithril_runestone_por.get(), IFWBlocks.mithril_runestone_an.get(), IFWBlocks.mithril_runestone_nox.get(),
+                        IFWBlocks.mithril_runestone_flam.get(), IFWBlocks.mithril_runestone_vas.get(), IFWBlocks.mithril_runestone_des.get(), IFWBlocks.mithril_runestone_ort.get(), IFWBlocks.mithril_runestone_tym.get(),
+                        IFWBlocks.mithril_runestone_corp.get(), IFWBlocks.mithril_runestone_lor.get(), IFWBlocks.mithril_runestone_mani.get(), IFWBlocks.mithril_runestone_jux.get(), IFWBlocks.mithril_runestone_ylem.get(),
+                        IFWBlocks.mithril_runestone_sanct.get(),
+                        IFWBlocks.adamantium_runestone_nul.get(), IFWBlocks.adamantium_runestone_quas.get(), IFWBlocks.adamantium_runestone_por.get(), IFWBlocks.adamantium_runestone_an.get(), IFWBlocks.adamantium_runestone_nox.get(),
+                        IFWBlocks.adamantium_runestone_flam.get(), IFWBlocks.adamantium_runestone_vas.get(), IFWBlocks.adamantium_runestone_des.get(), IFWBlocks.adamantium_runestone_ort.get(), IFWBlocks.adamantium_runestone_tym.get(),
+                        IFWBlocks.adamantium_runestone_corp.get(), IFWBlocks.adamantium_runestone_lor.get(), IFWBlocks.adamantium_runestone_mani.get(), IFWBlocks.adamantium_runestone_jux.get(), IFWBlocks.adamantium_runestone_ylem.get(),
+                        IFWBlocks.adamantium_runestone_sanct.get()
+                );
+
     }
 }

@@ -78,6 +78,37 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.stone_furnace.get());
         dropSelf(IFWBlocks.obsidian_furnace.get());
         dropSelf(IFWBlocks.netherrack_furnace.get());
+        dropSelf(IFWBlocks.mithril_runestone_quas.get());
+        dropSelf(IFWBlocks.mithril_runestone_por.get());
+        dropSelf(IFWBlocks.mithril_runestone_an.get());
+        dropSelf(IFWBlocks.mithril_runestone_nox.get());
+        dropSelf(IFWBlocks.mithril_runestone_flam.get());
+        dropSelf(IFWBlocks.mithril_runestone_vas.get());
+        dropSelf(IFWBlocks.mithril_runestone_des.get());
+        dropSelf(IFWBlocks.mithril_runestone_ort.get());
+        dropSelf(IFWBlocks.mithril_runestone_tym.get());
+        dropSelf(IFWBlocks.mithril_runestone_corp.get());
+        dropSelf(IFWBlocks.mithril_runestone_lor.get());
+        dropSelf(IFWBlocks.mithril_runestone_mani.get());
+        dropSelf(IFWBlocks.mithril_runestone_jux.get());
+        dropSelf(IFWBlocks.mithril_runestone_ylem.get());
+        dropSelf(IFWBlocks.mithril_runestone_sanct.get());
+        dropSelf(IFWBlocks.adamantium_runestone_nul.get());
+        dropSelf(IFWBlocks.adamantium_runestone_quas.get());
+        dropSelf(IFWBlocks.adamantium_runestone_por.get());
+        dropSelf(IFWBlocks.adamantium_runestone_an.get());
+        dropSelf(IFWBlocks.adamantium_runestone_nox.get());
+        dropSelf(IFWBlocks.adamantium_runestone_flam.get());
+        dropSelf(IFWBlocks.adamantium_runestone_vas.get());
+        dropSelf(IFWBlocks.adamantium_runestone_des.get());
+        dropSelf(IFWBlocks.adamantium_runestone_ort.get());
+        dropSelf(IFWBlocks.adamantium_runestone_tym.get());
+        dropSelf(IFWBlocks.adamantium_runestone_corp.get());
+        dropSelf(IFWBlocks.adamantium_runestone_lor.get());
+        dropSelf(IFWBlocks.adamantium_runestone_mani.get());
+        dropSelf(IFWBlocks.adamantium_runestone_jux.get());
+        dropSelf(IFWBlocks.adamantium_runestone_ylem.get());
+        dropSelf(IFWBlocks.adamantium_runestone_sanct.get());
     }
 
     @Override
