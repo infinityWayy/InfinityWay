@@ -1,6 +1,7 @@
 package huix.infinity.init.to;
 
 
+import huix.infinity.common.client.render.EmeraldEnchantTableRenderer;
 import huix.infinity.common.client.screen.IFWAnvilScreen;
 import huix.infinity.common.client.resources.PersistentEffectTextureManager;
 import huix.infinity.common.client.screen.EmeraldEnchantmentScreen;
@@ -58,6 +59,7 @@ public final class IFWClient {
         registerFishingRodModel(IFWItems.flint_fishing_rod.get());
 
         BlockEntityRenderers.register(IFWBlockEntityTypes.private_chest.get(), ChestRenderer::new);
+        BlockEntityRenderers.register(IFWBlockEntityTypes.emerald_enchanting_table.get(), EmeraldEnchantTableRenderer::new);
     }
 
     @SubscribeEvent

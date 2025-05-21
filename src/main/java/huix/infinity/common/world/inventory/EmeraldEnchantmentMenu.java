@@ -1,16 +1,16 @@
 package huix.infinity.common.world.inventory;
 
-import com.mojang.datafixers.util.Pair;
 import huix.infinity.common.world.block.EmeraldEnchantingTableBlock;
 import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.init.event.IFWSoundEvents;
+import huix.infinity.util.IFWEnchantmentHelper;
 import net.minecraft.Util;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import huix.infinity.init.event.IFWSoundEvents;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.EnchantmentTags;
@@ -19,20 +19,24 @@ import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.*;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.DataSlot;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Optional;
 
 public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
-    static final ResourceLocation EMPTY_SLOT_LAPIS_LAZULI = ResourceLocation.withDefaultNamespace("item/empty_slot_lapis_lazuli");
-    private final Container enchantSlots = new SimpleContainer(2) {
+    private final Container enchantSlots = new SimpleContainer(1) {
         @Override
         public void setChanged() {
             super.setChanged();
@@ -45,6 +49,7 @@ public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
     public final int[] costs = new int[3];
     public final int[] enchantClue = new int[]{-1, -1, -1};
     public final int[] levelClue = new int[]{-1, -1, -1};
+    private final int ifw_enchantingModify = 1;
 
     public EmeraldEnchantmentMenu(int containerId, Inventory playerInventory) {
         this(containerId, playerInventory, ContainerLevelAccess.NULL);
@@ -57,17 +62,6 @@ public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
             @Override
             public int getMaxStackSize() {
                 return 1;
-            }
-        });
-        this.addSlot(new Slot(this.enchantSlots, 1, 35, 47) {
-            @Override
-            public boolean mayPlace(@NotNull ItemStack p_39517_) {
-                return p_39517_.is(Items.LAPIS_LAZULI); // Neo: TODO - replace with the tag once we have client tags
-            }
-
-            @Override
-            public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
-                return Pair.of(InventoryMenu.BLOCK_ATLAS, EmeraldEnchantmentMenu.EMPTY_SLOT_LAPIS_LAZULI);
             }
         });
 
@@ -100,37 +94,32 @@ public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
     public void slotsChanged(@NotNull Container inventory) {
         if (inventory == this.enchantSlots) {
             ItemStack itemstack = inventory.getItem(0);
-            if (!itemstack.isEmpty() && itemstack.isEnchantable()) {
-                this.access.execute((p_344366_, p_344367_) -> {
-                    IdMap<Holder<Enchantment>> idmap = p_344366_.registryAccess().registryOrThrow(Registries.ENCHANTMENT).asHolderIdMap();
-                    float j = 0;
+            if (!itemstack.isEmpty() && itemstack.isEnchantable() || itemstack.ifw_hasEncRecipe()) {
+                this.access.execute((level, pos) -> {
+//                    IdMap<Holder<Enchantment>> idmap = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).asHolderIdMap();
+                    float bookShelves = 0;
 
                     for (BlockPos blockpos : EmeraldEnchantingTableBlock.BOOKSHELF_OFFSETS) {
-                        if (EmeraldEnchantingTableBlock.isValidBookShelf(p_344366_, p_344367_, blockpos)) {
-                            j += p_344366_.getBlockState(p_344367_.offset(blockpos)).getEnchantPowerBonus(p_344366_, p_344367_.offset(blockpos));
+                        if (EmeraldEnchantingTableBlock.isValidBookShelf(level, pos, blockpos)) {
+                            bookShelves += level.getBlockState(pos.offset(blockpos)).getEnchantPowerBonus(level, pos.offset(blockpos));
                         }
                     }
 
                     this.random.setSeed(this.enchantmentSeed.get());
 
                     for (int k = 0; k < 3; k++) {
-                        this.costs[k] = EnchantmentHelper.getEnchantmentCost(this.random, k, (int)j, itemstack);
-                        this.enchantClue[k] = -1;
-                        this.levelClue[k] = -1;
+                        this.costs[k] = IFWEnchantmentHelper.getExperienceCost(IFWEnchantmentHelper.calculateRequiredExperienceLevel(this.random, k, (int)bookShelves, itemstack, this.ifw_enchantingModify));
                         if (this.costs[k] < k + 1) {
                             this.costs[k] = 0;
                         }
-                        this.costs[k] = net.neoforged.neoforge.event.EventHooks.onEnchantmentLevelSet(p_344366_, p_344367_, k, (int)j, itemstack, costs[k]);
+                        this.costs[k] = EventHooks.onEnchantmentLevelSet(level, pos, k, (int)bookShelves, itemstack, costs[k]);
                     }
 
                     for (int l = 0; l < 3; l++) {
                         if (this.costs[l] > 0) {
-                            List<EnchantmentInstance> list = this.getEnchantmentList(p_344366_.registryAccess(), itemstack, l, this.costs[l]);
-                            if (list != null && !list.isEmpty()) {
-                                EnchantmentInstance enchantmentinstance = list.get(this.random.nextInt(list.size()));
-                                this.enchantClue[l] = idmap.getId(enchantmentinstance.enchantment);
-                                this.levelClue[l] = enchantmentinstance.level;
-                            }
+                            this.getEnchantmentList(level.registryAccess(), itemstack, l, this.costs[l]);
+                        } else if (itemstack.ifw_hasEncRecipe()) {
+                            this.costs[l] = itemstack.ifw_encRecipeXP();
                         }
                     }
 
@@ -139,8 +128,8 @@ public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
             } else {
                 for (int i = 0; i < 3; i++) {
                     this.costs[i] = 0;
-                    this.enchantClue[i] = -1;
-                    this.levelClue[i] = -1;
+//                    this.enchantClue[i] = -1;
+//                    this.levelClue[i] = -1;
                 }
             }
         }
@@ -153,52 +142,48 @@ public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
     public boolean clickMenuButton(@NotNull Player player, int id) {
         if (id >= 0 && id < this.costs.length) {
             ItemStack itemstack = this.enchantSlots.getItem(0);
-            ItemStack itemstack1 = this.enchantSlots.getItem(1);
             int i = id + 1;
-            if ((itemstack1.isEmpty() || itemstack1.getCount() < i) && !player.hasInfiniteMaterials()) {
-                return false;
-            } else if (this.costs[id] <= 0
-                    || itemstack.isEmpty()
-                    || (player.experienceLevel < i || player.experienceLevel < this.costs[id]) && !player.getAbilities().instabuild) {
-                return false;
-            } else {
-                this.access
-                        .execute(
-                                (p_347276_, p_347277_) -> {
-                                    ItemStack itemstack2 = itemstack;
-                                    List<EnchantmentInstance> list = this.getEnchantmentList(p_347276_.registryAccess(), itemstack, id, this.costs[id]);
-                                    if (!list.isEmpty()) {
-                                        player.onEnchantmentPerformed(itemstack, i);
-                                        // Neo: Allow items to transform themselves when enchanted, instead of relying on hardcoded transformations for Items.BOOK
-                                        itemstack2 = itemstack.getItem().applyEnchantments(itemstack, list);
-                                        this.enchantSlots.setItem(0, itemstack2);
-                                        net.neoforged.neoforge.common.CommonHooks.onPlayerEnchantItem(player, itemstack2, list);
-
-                                        itemstack1.consume(i, player);
-                                        if (itemstack1.isEmpty()) {
-                                            this.enchantSlots.setItem(1, ItemStack.EMPTY);
-                                        }
-
-                                        player.awardStat(Stats.ENCHANT_ITEM);
-                                        if (player instanceof ServerPlayer) {
-                                            CriteriaTriggers.ENCHANTED_ITEM.trigger((ServerPlayer)player, itemstack2, i);
-                                        }
-
-                                        this.enchantSlots.setChanged();
-                                        this.enchantmentSeed.set(player.getEnchantmentSeed());
-                                        this.slotsChanged(this.enchantSlots);
-                                        p_347276_.playSound(
-                                                null, p_347277_, IFWSoundEvents.CLASSIC_HURT.get(), SoundSource.BLOCKS, 1.0F, p_347276_.random.nextFloat() * 0.1F + 0.9F
-                                        );
-                                    }
-                                }
-                        );
+            if (canClick(player, id , itemstack)) {
+                this.access.execute((level, pos) -> {
+                    ItemStack result = itemstack.copy();
+                    if (itemstack.ifw_hasEncRecipe()) {
+                        result = itemstack.ifw_encRecipeResult();
+                        player.onEnchantmentPerformedPoints(itemstack, itemstack.ifw_encRecipeXP());
+                        //must copy
+                        this.enchantSlots.setItem(0, result.copy());
+                    } else {
+                        List<EnchantmentInstance> list = this.getEnchantmentList(level.registryAccess(), itemstack, id, this.costs[id]);
+                        if (!list.isEmpty()) {
+                            player.onEnchantmentPerformedPoints(itemstack, this.costs[id]);
+                            // Neo: Allow items to transform themselves when enchanted, instead of relying on hardcoded transformations for Items.BOOK
+                            result = itemstack.getItem().applyEnchantments(itemstack, list);
+                            this.enchantSlots.setItem(0, result);
+                            CommonHooks.onPlayerEnchantItem(player, result, list);
+                        }
+                    }
+                    enchantEnd(level, pos, player, i, result);
+                });
                 return true;
-            }
+            } else return false;
         } else {
             Util.logAndPauseIfInIde(player.getName() + " pressed invalid button id: " + id);
             return false;
         }
+    }
+
+    private void enchantEnd(Level level, BlockPos pos, Player player, int id, ItemStack result) {
+        player.awardStat(Stats.ENCHANT_ITEM);
+        this.enchantmentSeed.set(player.getEnchantmentSeed());
+        if (player instanceof ServerPlayer) CriteriaTriggers.ENCHANTED_ITEM.trigger((ServerPlayer)player, result, id);
+        this.enchantSlots.setChanged();
+        this.slotsChanged(this.enchantSlots);
+        level.playSound(null, pos, IFWSoundEvents.CLASSIC_HURT.get(), SoundSource.BLOCKS, 1.0F, level.random.nextFloat() * 0.1F + 0.9F);
+    }
+
+    private boolean canClick(Player player, int id, ItemStack enchantItem) {
+        boolean flag = false;
+        if (enchantItem.ifw_hasEncRecipe()) flag = player.totalExperience >= enchantItem.ifw_encRecipeXP();
+        return this.costs[id] > 0 && !enchantItem.isEmpty() && ((player.totalExperience >= this.costs[id] || flag) || player.getAbilities().instabuild);
     }
 
     private List<EnchantmentInstance> getEnchantmentList(RegistryAccess registryAccess, ItemStack stack, int slot, int cost) {
@@ -207,18 +192,13 @@ public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
         if (optional.isEmpty()) {
             return List.of();
         } else {
-            List<EnchantmentInstance> list = EnchantmentHelper.selectEnchantment(this.random, stack, cost, optional.get().stream());
+            List<EnchantmentInstance> list = IFWEnchantmentHelper.selectEnchantment(this.random, stack, cost, optional.get().stream());
             if (stack.is(Items.BOOK) && list.size() > 1) {
                 list.remove(this.random.nextInt(list.size()));
             }
 
             return list;
         }
-    }
-
-    public int getGoldCount() {
-        ItemStack itemstack = this.enchantSlots.getItem(1);
-        return itemstack.isEmpty() ? 0 : itemstack.getCount();
     }
 
     public int getEnchantmentSeed() {
@@ -253,15 +233,7 @@ public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
             if (index == 0) {
-                if (!this.moveItemStackTo(itemstack1, 2, 38, true)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (index == 1) {
-                if (!this.moveItemStackTo(itemstack1, 2, 38, true)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (itemstack1.is(Items.LAPIS_LAZULI)) { // Neo: TODO - replace with the tag once we have client tags
-                if (!this.moveItemStackTo(itemstack1, 1, 2, true)) {
+                if (!this.moveItemStackTo(itemstack1, 1, 37, true)) {
                     return ItemStack.EMPTY;
                 }
             } else {
@@ -269,9 +241,9 @@ public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
                     return ItemStack.EMPTY;
                 }
 
-                ItemStack itemstack2 = itemstack1.copyWithCount(1);
+                ItemStack result = itemstack1.copyWithCount(1);
                 itemstack1.shrink(1);
-                this.slots.getFirst().setByPlayer(itemstack2);
+                this.slots.getFirst().setByPlayer(result);
             }
 
             if (itemstack1.isEmpty()) {

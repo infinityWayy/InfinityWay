@@ -1,5 +1,6 @@
 package huix.infinity.mixin.inventory;
 
+import huix.infinity.init.event.IFWSoundEvents;
 import huix.infinity.util.IFWEnchantmentHelper;
 import net.minecraft.Util;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -7,8 +8,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.server.level.ServerPlayer;
-import huix.infinity.init.event.IFWSoundEvents;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
@@ -22,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EnchantingTableBlock;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.event.EventHooks;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,10 +34,10 @@ import java.util.stream.Stream;
 public abstract class EnchantmentMenuMixin extends AbstractContainerMenu {
 
     @Unique
-    private int ifw_enchantingModify = 2;
+    private final int ifw_enchantingModify = 2;
 
     @Overwrite
-    public void slotsChanged(Container inventory) {
+    public void slotsChanged(@NotNull Container inventory) {
         if (inventory == this.enchantSlots) {
             ItemStack itemstack = inventory.getItem(0);
             if (!itemstack.isEmpty() && (itemstack.isEnchantable() || itemstack.ifw_hasEncRecipe())) {
@@ -73,14 +73,14 @@ public abstract class EnchantmentMenuMixin extends AbstractContainerMenu {
     }
 
     @Unique
-    private boolean ifw_canClick(Player player, int id, ItemStack enchantItem) {
-        boolean flag = false;
-        if (enchantItem.ifw_hasEncRecipe()) flag = player.totalExperience >= enchantItem.ifw_encRecipeXP();
-        return this.costs[id] > 0 && !enchantItem.isEmpty() && ((player.totalExperience >= this.costs[id] || flag) || player.getAbilities().instabuild);
-    }
+private boolean ifw_canClick(Player player, int id, ItemStack enchantItem) {
+boolean flag = false;
+if (enchantItem.ifw_hasEncRecipe()) flag = player.totalExperience >= enchantItem.ifw_encRecipeXP();
+return this.costs[id] > 0 && !enchantItem.isEmpty() && ((player.totalExperience >= this.costs[id] || flag) || player.getAbilities().instabuild);
+}
 
     @Overwrite
-    public boolean clickMenuButton(Player player, int id) {
+    public boolean clickMenuButton(@NotNull Player player, int id) {
         if (id >= 0 && id < this.costs.length) {
             ItemStack itemstack = this.enchantSlots.getItem(0);
             int i = id + 1;
@@ -95,10 +95,10 @@ public abstract class EnchantmentMenuMixin extends AbstractContainerMenu {
                     } else {
                         List<EnchantmentInstance> list = this.getEnchantmentList(level.registryAccess(), itemstack, id, this.costs[id]);
                         if (!list.isEmpty()) {
-                            result = itemstack.getItem().applyEnchantments(itemstack, list);
-                            CommonHooks.onPlayerEnchantItem(player, result, list);
                             player.onEnchantmentPerformedPoints(itemstack, this.costs[id]);
+                            result = itemstack.getItem().applyEnchantments(itemstack, list);
                             this.enchantSlots.setItem(0, result);
+                            CommonHooks.onPlayerEnchantItem(player, result, list);
                         }
                     }
                     ifw_enchantEnd(level, pos, player, i, result);
