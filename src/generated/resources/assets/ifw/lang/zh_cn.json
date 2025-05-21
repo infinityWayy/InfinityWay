@@ -64,6 +64,7 @@
   "commands.status.melee_damage": "近战伤害: %s",
   "commands.xp.message": "你当前的经验值为 %s",
   "container.enchant.experience.requirement": "经验需要: %s",
+  "enchantment.ifw.speed": "速度",
   "entity.ifw.chicken": "鸡",
   "entity.ifw.cow": "牛",
   "entity.ifw.pig": "猪",

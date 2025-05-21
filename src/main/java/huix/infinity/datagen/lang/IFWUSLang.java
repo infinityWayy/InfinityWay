@@ -419,5 +419,8 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.pig_spawn_egg.get(), "Pig Spawn Egg");
         add(IFWItems.sheep_spawn_egg.get(), "Sheep Spawn Egg");
         add(IFWItems.zombie_spawn_egg.get(), "Zombie Spawn Egg");
+        //Enchanted_Books
+        add("enchantment.ifw.speed", "Speed");
     }
+
 }

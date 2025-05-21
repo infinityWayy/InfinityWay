@@ -2,11 +2,8 @@ package huix.infinity.common.enchantment;
 
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EnchantmentTags;
@@ -15,16 +12,10 @@ import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.item.enchantment.effects.AddValue;
 import net.minecraft.world.item.enchantment.effects.EnchantmentAttributeEffect;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 public class IFWEnchantments {
     private static final ResourceLocation ifw_speed = ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "speed");
@@ -50,7 +41,7 @@ public class IFWEnchantments {
                                                 Attributes.MOVEMENT_SPEED,
                                                 LevelBasedValue.perLevel(0.0F, 0.005F),
                                                 AttributeModifier.Operation.ADD_VALUE))
-                                .build(ifw_speed));
-            });
+                                .build(ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "speed")));
 
+            });
 }

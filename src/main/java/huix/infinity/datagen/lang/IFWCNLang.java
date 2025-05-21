@@ -417,6 +417,8 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.pig_spawn_egg.get(), "猪刷怪蛋");
         add(IFWItems.sheep_spawn_egg.get(), "羊刷怪蛋");
         add(IFWItems.zombie_spawn_egg.get(), "僵尸刷怪蛋");
+        //附魔书
+        add("enchantment.ifw.speed", "速度");
     }
 
 }

@@ -64,6 +64,7 @@
   "commands.status.melee_damage": "Melee Damage: %s",
   "commands.xp.message": "You have %s experience",
   "container.enchant.experience.requirement": "Experience Requirement: %s",
+  "enchantment.ifw.speed": "Speed",
   "entity.ifw.chicken": "Chicken",
   "entity.ifw.cow": "Cow",
   "entity.ifw.pig": "Pig",
