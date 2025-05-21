@@ -17,11 +17,11 @@ public abstract class BlockBehaviourMixin implements BlockBehaviourExtension {
     protected float getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos) {
         float f = state.getDestroySpeed(level, pos) * 100;
         if (f != -1.0F && player.getFoodData().ifw_hasAnyEnergy()) {
-            int i = net.neoforged.neoforge.event.EventHooks.doPlayerHarvestCheck(player, state, level, pos) ? 4 : -1;
+            float i = net.neoforged.neoforge.event.EventHooks.doPlayerHarvestCheck(player, state, level, pos) ? 4 : -1;
             if (state.is(IFWBlockTags.PORTABLE_BLOCK))
-                i = (int)((float)i / 5.0F);
+                i /= 12.0F;
 
-            return player.getDigSpeed(state, pos) / f / (float)i;
+            return player.getDigSpeed(state, pos) / f / i;
         }
         return 0.0F;
     }
