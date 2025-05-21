@@ -41,7 +41,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("commands.day.message", "It is day %s of this world");
         add("commands.stats.phytonutrients", "Phytonutrients: %d/%d (%.1f%%/%.1f%%)");
         add("commands.stats.protein", "Protein: %d/%d (%.1f%%/%.1f%%)");
-        add("commands.stats.insulin", "Insulin Resistance: %d/%d (%.1f%%/%.1f%%)");
+        add("commands.stats.insulinResponse", "Insulin Response: %d/%d (%.1f%%/%.1f%%)");
         add("commands.status.harvesting", "Harvesting: %s");
         add("commands.status.crafting", "Crafting: %s");
         add("commands.status.melee_damage", "Melee Damage: %s");

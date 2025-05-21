@@ -55,7 +55,7 @@
   "commands.day.message": "It is day %s of this world",
   "commands.give.curse.player": "Applied curse %s to %s",
   "commands.give.curse.players": "Applied curse %s to %s players",
-  "commands.stats.insulin": "Insulin Resistance: %d/%d (%.1f%%/%.1f%%)",
+  "commands.stats.insulinResponse": "Insulin Response: %d/%d (%.1f%%/%.1f%%)",
   "commands.stats.phytonutrients": "Phytonutrients: %d/%d (%.1f%%/%.1f%%)",
   "commands.stats.protein": "Protein: %d/%d (%.1f%%/%.1f%%)",
   "commands.status.armor": "ArmorValue: %f",

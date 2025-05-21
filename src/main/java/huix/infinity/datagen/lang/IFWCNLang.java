@@ -41,7 +41,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("commands.day.message", "今天是第 %s 天");
         add("commands.stats.phytonutrients", "植物营养素: %d/%d (%.1f%%/%.1f%%)");
         add("commands.stats.protein", "蛋白质: %d/%d (%.1f%%/%.1f%%)");
-        add("commands.stats.insulin", "胰岛素抵抗: %d/%d (%.1f%%/%.1f%%)");
+        add("commands.stats.insulinResponse", "胰岛素抵抗: %d/%d (%.1f%%/%.1f%%)");
         add("commands.status.harvesting", "采集速度: %s");
         add("commands.status.crafting", "合成速度: %s");
         add("commands.status.melee_damage", "近战伤害: %s");

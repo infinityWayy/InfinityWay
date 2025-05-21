@@ -69,7 +69,7 @@ public class PlayerCommands {
                                 // 计算百分比
                                 double phytPercent = (double) phytonutrients / PHYTONUTRIENTS_MAX * 100;
                                 double proteinPercent = (double) protein / PROTEIN_MAX * 100;
-                                double insulinPercent = (double) insulinResponse / INSULIN_RESPONSE_MAX * 100;
+                                double insulinResponsePercent = (double) insulinResponse / INSULIN_RESPONSE_MAX * 100;
 
                                 // 构建带颜色的 Component
                                 Component phytComponent = Component.translatable(
@@ -83,8 +83,8 @@ public class PlayerCommands {
                                 ).withStyle(ChatFormatting.YELLOW);
 
                                 Component insulinComponent = Component.translatable(
-                                        "commands.stats.insulin",
-                                        insulinResponse, INSULIN_RESPONSE_MAX, insulinPercent, 100.0
+                                        "commands.stats.insulinResponse",
+                                        insulinResponse, INSULIN_RESPONSE_MAX, insulinResponsePercent, 100.0
                                 ).withStyle(ChatFormatting.LIGHT_PURPLE);
 
                                 // 拼接为多行 Component
