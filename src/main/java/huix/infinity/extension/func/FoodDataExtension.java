@@ -26,6 +26,11 @@ public interface FoodDataExtension {
         return 0;
     }
 
+    default void ifw_insulinResponse(int protein) {}
+    default int ifw_insulinResponse() {
+        return 0;
+    }
+
     default void ifw_nutritionalStatusByINT(int nutritionalStatus) {}
     default int ifw_nutritionalStatusByINT() {
         return 0;

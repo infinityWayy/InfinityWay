@@ -37,6 +37,15 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.PIG.value(), "Pig");
         add(IFWEntityType.COW.value(), "Cow");
         add(IFWEntityType.ZOMBIE.value(), "Zombie");
+        add("commands.xp.message", "You have %s experience");
+        add("commands.day.message", "It is day %s of this world");
+        add("commands.stats.phytonutrients", "Phytonutrients: %d/%d (%.1f%%/%.1f%%)");
+        add("commands.stats.protein", "Protein: %d/%d (%.1f%%/%.1f%%)");
+        add("commands.stats.insulin", "Insulin Resistance: %d/%d (%.1f%%/%.1f%%)");
+        add("commands.status.harvesting", "Harvesting: %s");
+        add("commands.status.crafting", "Crafting: %s");
+        add("commands.status.melee_damage", "Melee Damage: %s");
+        add("commands.status.armor", "ArmorValue: %f");
         add("commands.give.curse.player", "Applied curse %s to %s");
         add("commands.give.curse.players", "Applied curse %s to %s players");
         add("commands.clear.curse.player", "Removed curse from %s");

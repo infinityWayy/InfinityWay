@@ -37,6 +37,15 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.PIG.value(), "猪");
         add(IFWEntityType.COW.value(), "牛");
         add(IFWEntityType.ZOMBIE.value(), "僵尸");
+        add("commands.xp.message", "你当前的经验值为 %s");
+        add("commands.day.message", "今天是第 %s 天");
+        add("commands.stats.phytonutrients", "植物营养素: %d/%d (%.1f%%/%.1f%%)");
+        add("commands.stats.protein", "蛋白质: %d/%d (%.1f%%/%.1f%%)");
+        add("commands.stats.insulin", "胰岛素抵抗: %d/%d (%.1f%%/%.1f%%)");
+        add("commands.status.harvesting", "采集速度: %s");
+        add("commands.status.crafting", "合成速度: %s");
+        add("commands.status.melee_damage", "近战伤害: %s");
+        add("commands.status.armor", "护甲值: %f");
         add("commands.give.curse.player", "应用诅咒 %s 至 %s");
         add("commands.give.curse.players", "应用诅咒 %s 至 %s 个玩家");
         add("commands.clear.curse.player", "已为 %s 清除诅咒");
