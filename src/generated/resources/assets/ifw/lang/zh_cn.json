@@ -55,7 +55,7 @@
   "commands.day.message": "今天是第 %s 天",
   "commands.give.curse.player": "应用诅咒 %s 至 %s",
   "commands.give.curse.players": "应用诅咒 %s 至 %s 个玩家",
-  "commands.stats.insulin": "胰岛素抵抗值: %d/%d (%.1f%%/%.1f%%)",
+  "commands.stats.insulin": "胰岛素抵抗: %d/%d (%.1f%%/%.1f%%)",
   "commands.stats.phytonutrients": "植物营养素: %d/%d (%.1f%%/%.1f%%)",
   "commands.stats.protein": "蛋白质: %d/%d (%.1f%%/%.1f%%)",
   "commands.status.armor": "护甲值: %f",
