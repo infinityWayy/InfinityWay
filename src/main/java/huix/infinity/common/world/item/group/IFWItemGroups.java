@@ -399,6 +399,7 @@ public class IFWItemGroups {
                         output.accept(IFWBlocks.deepslate_adamantium_ore_item.get());
                         output.accept(IFWBlocks.deepslate_mithril_ore_item.get());
                         output.accept(IFWBlocks.deepslate_silver_ore_item.get());
+                        output.accept(IFWBlocks.mantle.get());
                         output.accept(IFWBlocks.mithril_runestone_nul_item.get());
                         output.accept(IFWBlocks.mithril_runestone_quas_item.get());
                         output.accept(IFWBlocks.mithril_runestone_por_item.get());

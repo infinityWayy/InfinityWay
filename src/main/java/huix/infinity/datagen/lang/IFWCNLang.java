@@ -198,6 +198,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("foodtips.phytonutrients", "+%s 植物营养素");
         add("foodtips.insulinresponse", "+%s 胰岛素反应");
         add("tooltip.infinity.gem.xp", "+%s 玩家经验");
+        add(IFWBlocks.mantle_item.get(), "地幔");
         add(IFWBlocks.mithril_runestone_nul_item.get(), "秘银符文石 \"Nul\"");
         add(IFWBlocks.mithril_runestone_quas_item.get(), "秘银符文石 \"Quas\"");
         add(IFWBlocks.mithril_runestone_por_item.get(), "秘银符文石 \"Por\"");

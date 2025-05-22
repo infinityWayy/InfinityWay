@@ -453,6 +453,11 @@ public class IFWBlocks {
             adamantium_runestone_mani_item, adamantium_runestone_jux_item, adamantium_runestone_ylem_item, adamantium_runestone_sanct_item
     );
 
+    public static final DeferredBlock<Block> mantle = BLOCKS.registerBlock("mantle",
+            block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(-1.0F, 3600000.0F)), BlockBehaviour.Properties.of());
+    public static final DeferredItem<BlockItem> mantle_item = ITEM_BLOCKS.registerSimpleBlockItem("mantle", mantle, new Item.Properties().stacksTo(4));
+
     public static final DeferredBlock<Block> copper_private_chest = BLOCKS.registerBlock("copper_private_chest",
             block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
     public static final DeferredItem<BlockItem> copper_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_private_chest", copper_private_chest,

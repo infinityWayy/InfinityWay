@@ -80,6 +80,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
                 .predicate(mcLoc("cast"), 1)
                 .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
                 .end();
+        simpleBlockItem(IFWBlocks.mantle.get());
         simpleBlockItem(IFWBlocks.mithril_runestone_nul.get());
         simpleBlockItem(IFWBlocks.mithril_runestone_quas.get());
         simpleBlockItem(IFWBlocks.mithril_runestone_por.get());

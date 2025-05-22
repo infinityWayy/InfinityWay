@@ -199,6 +199,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("foodtips.insulinresponse", "+%s Insulin Response");
         add("tooltip.infinity.gem.xp", "+%s Experience Value");
         //Blocks
+        add(IFWBlocks.mantle_item.get(), "Mantle");
         add(IFWBlocks.mithril_runestone_nul_item.get(), "Mithril Runestone \"Nul\"");
         add(IFWBlocks.mithril_runestone_quas_item.get(), "Mithril Runestone \"Quas\"");
         add(IFWBlocks.mithril_runestone_por_item.get(), "Mithril Runestone \"Por\"");

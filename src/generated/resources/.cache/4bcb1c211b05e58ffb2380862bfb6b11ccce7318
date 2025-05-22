@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-22T02:36:00.1200351	Item Models: ifw
+// 1.21.1	2025-05-22T13:14:33.8388908	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -172,6 +172,7 @@ af989f2c263ac4cd5cbd55e9590a9050c3b4fcfb assets/ifw/models/item/lava_copper_buck
 6cc539043bfd6fdb1f5b35c0ddcbfefae53d858a assets/ifw/models/item/lava_gold_bucket.json
 a59650639a9ecebb9e58be4988989551dcaf9c3f assets/ifw/models/item/lava_mithril_bucket.json
 6cdcb72f150e7cd5c14d0ffebe2e3ccabe2effb0 assets/ifw/models/item/lava_silver_bucket.json
+f4eb587b1f058c855df330970ced398ef5461872 assets/ifw/models/item/mantle.json
 2417be09d4a59baa0de4b4022b9a0b843cabd8e8 assets/ifw/models/item/manure.json
 a516bc79b03c09a5f7857ad7582ceb3dc5fb2f4b assets/ifw/models/item/mashed_potato.json
 8e0054c1b5fc83a09b388a9af262ea538ad40796 assets/ifw/models/item/milk_adamantium_bucket.json

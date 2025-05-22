@@ -198,6 +198,7 @@ public class IFWBlockStateProvider extends BlockStateProvider {
                         .modelFile(damagedSilverAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
         simpleBlockItem(IFWBlocks.damaged_silver_anvil.get(), damagedSilverAnvil);
 
+        simpleBlock(IFWBlocks.mantle.get());
         //Runestones
         simpleBlock(IFWBlocks.mithril_runestone_nul.get());
         simpleBlock(IFWBlocks.mithril_runestone_quas.get());
