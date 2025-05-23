@@ -1,0 +1,18 @@
+{
+  "type": "ifw:modify_biome_spawns",
+  "biomes": "#c:is_overworld",
+  "modifications": {
+    "minecraft:cod": {
+      "type": "minecraft:cod",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 15
+    },
+    "minecraft:salmon": {
+      "type": "minecraft:salmon",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 15
+    }
+  }
+}

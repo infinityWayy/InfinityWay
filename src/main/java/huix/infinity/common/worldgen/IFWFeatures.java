@@ -2,6 +2,7 @@ package huix.infinity.common.worldgen;
 
 import huix.infinity.common.core.tag.IFWEntityTypeTags;
 import huix.infinity.common.world.entity.IFWEntityType;
+import huix.infinity.datagen.worldgen.ModifySpawnsBiomeModifier;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -27,6 +28,7 @@ import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class IFWFeatures {
@@ -39,8 +41,8 @@ public class IFWFeatures {
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_spawns"));
     public static final ResourceKey<BiomeModifier> REMOVE_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_spawns"));
-
-
+    public static final ResourceKey<BiomeModifier> MODIFY_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_modify_spawns"));
 
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, context -> {
@@ -93,6 +95,17 @@ public class IFWFeatures {
                 bootstrap.register(REMOVE_SPAWNS, new BiomeModifiers.RemoveSpawnsBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
                         entities.getOrThrow(IFWEntityTypeTags.REPLACE)
+                ));
+
+                //modify
+                bootstrap.register(MODIFY_SPAWNS, new ModifySpawnsBiomeModifier(
+                        biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
+                        Map.of(
+                                EntityType.getKey(EntityType.SALMON), new MobSpawnSettings.SpawnerData(
+                                EntityType.SALMON, 15, 1, 2),
+                                EntityType.getKey(EntityType.COD), new MobSpawnSettings.SpawnerData(
+                                EntityType.COD, 15, 1, 2)
+                        )
                 ));
             });
 

@@ -17,14 +17,10 @@ import huix.infinity.common.world.item.crafting.IFWRecipeTypes;
 import huix.infinity.common.world.item.group.IFWItemGroups;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.loot.IFWLootModifiers;
+import huix.infinity.datagen.worldgen.IFWBiomeModifiers;
 import huix.infinity.init.event.IFWSoundEvents;
-import huix.infinity.init.to.IFWClient;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
@@ -51,6 +47,7 @@ public final class InfinityWay {
         IFWItems.ITEMS.register(modBus);
         IFWBlocks.BLOCKS.register(modBus);
         IFWEntityType.ENTITIES.register(modBus);
+        IFWBiomeModifiers.BIOME_MODIFIERS.register(modBus);
         IFWSoundEvents.register(modBus);
         Curses.CURSES.register(modBus);
 
