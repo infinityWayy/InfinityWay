@@ -409,7 +409,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.adamantium_chainmail_chestplate.get());
         basicItem(IFWItems.adamantium_chainmail_leggings.get());
         basicItem(IFWItems.adamantium_chainmail_boots.get());
-        //chain
+        // Chain
         basicItem(IFWItems.copper_chain.get());
         basicItem(IFWItems.silver_chain.get());
         basicItem(IFWItems.golden_chain.get());
@@ -418,10 +418,18 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.ancient_metal_chain.get());
         basicItem(IFWItems.mithril_chain.get());
         basicItem(IFWItems.adamantium_chain.get());
+        // Spawn Eggs
         spawnEggItem(IFWItems.chicken_spawn_egg.get());
         spawnEggItem(IFWItems.cow_spawn_egg.get());
         spawnEggItem(IFWItems.pig_spawn_egg.get());
         spawnEggItem(IFWItems.sheep_spawn_egg.get());
         spawnEggItem(IFWItems.zombie_spawn_egg.get());
+        spawnEggItem(IFWItems.inferno_creeper_spawn_egg.get());
+        spawnEggItem(IFWItems.spider_spawn_egg.get());
+        spawnEggItem(IFWItems.wood_spider_spawn_egg.get());
+        spawnEggItem(IFWItems.black_widow_spider_spawn_egg.get());
+        spawnEggItem(IFWItems.phase_spider_spawn_egg.get());
+        spawnEggItem(IFWItems.cave_spider_spawn_egg.get());
+        spawnEggItem(IFWItems.demon_spider_spawn_egg.get());
     }
 }

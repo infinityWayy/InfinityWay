@@ -445,5 +445,14 @@ public class IFWItemGroups {
                         output.accept(IFWItems.pig_spawn_egg.get());
                         output.accept(IFWItems.sheep_spawn_egg.get());
                         output.accept(IFWItems.zombie_spawn_egg.get());
+                        output.accept(IFWItems.inferno_creeper_spawn_egg.get());
+                        output.accept(IFWItems.spider_spawn_egg.get());
+                        output.accept(IFWItems.wood_spider_spawn_egg.get());
+                        output.accept(IFWItems.black_widow_spider_spawn_egg.get());
+                        output.accept(IFWItems.phase_spider_spawn_egg.get());
+                        output.accept(IFWItems.cave_spider_spawn_egg.get());
+                        output.accept(IFWItems.demon_spider_spawn_egg.get());
+
+
                     }).build());
 }

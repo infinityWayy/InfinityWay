@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-22T13:14:33.8388908	Item Models: ifw
+// 1.21.1	2025-05-25T03:31:27.3608043	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -79,7 +79,9 @@ ec8d32ca8254f0d97c2786745ce43a9f7330938d assets/ifw/models/item/axolotl_mithril_
 f794456444dcaa525e9be5a4f37df11b26b67da2 assets/ifw/models/item/axolotl_silver_bucket.json
 1d415568d47cf8a4977eabd5219d29794d4524bf assets/ifw/models/item/banana.json
 aa50639a2f49d36eff86485122cb855251407d54 assets/ifw/models/item/beef_stew.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/black_widow_spider_spawn_egg.json
 a3348deef0d095298887251ea972b6e4f4de7b08 assets/ifw/models/item/blueberry.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/cave_spider_spawn_egg.json
 4d4b4c3bf529abe5e355c9810cffb05df656bbb9 assets/ifw/models/item/cereal.json
 c94008cfc66a738ab0539be5f54fbee69cbf4b76 assets/ifw/models/item/cheese.json
 9594a7d630775e629e5f6f76d9bf0114463d2a9f assets/ifw/models/item/chicken_soup.json
@@ -121,6 +123,7 @@ d08ebf266731bc04ddd4daee055639064e5ce9c3 assets/ifw/models/item/copper_mattock.j
 3f33ff51dc7675fd6c0c52ba87e1d4bd35633144 assets/ifw/models/item/deepslate_adamantium_ore.json
 91be8ca48c50f4b2b29e4ebce7bfb90da39491e0 assets/ifw/models/item/deepslate_mithril_ore.json
 bdf58386b051960f0d26eeac6c1c261ab5c4070f assets/ifw/models/item/deepslate_silver_ore.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/demon_spider_spawn_egg.json
 0955c32d3a2cc0cf31a008e92cb33d5343ef2eb5 assets/ifw/models/item/diamond_shard.json
 daf6346ca531b34d4767b2afbcfc25245933aa70 assets/ifw/models/item/dough.json
 efa8ef12d6bfc417aa334d6db1a6a5e54836f9c8 assets/ifw/models/item/emerald_enchanting_table.json
@@ -153,6 +156,7 @@ c93b2e3662bb6ee422fe0045e4a64131c603143d assets/ifw/models/item/golden_war_hamme
 37d51f90d897bddc8a9db76709d485a70aff72ba assets/ifw/models/item/gold_door.json
 b7db7c441377ed9a1349d8bdbac54a2d23746367 assets/ifw/models/item/gold_fishing_rod.json
 6e1b24d388884ee48afb4e19595cad3003885c1a assets/ifw/models/item/ice_cream.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/inferno_creeper_spawn_egg.json
 300083a89aac3816b28fb60d23aa2cfe3d102ade assets/ifw/models/item/iron_axe.json
 ae20e8de7408f01fb71649a24b74b4e2cc7134ed assets/ifw/models/item/iron_battle_axe.json
 1608ae092313f49c2ed04d9c2f0586a3b2575db4 assets/ifw/models/item/iron_chain.json
@@ -231,6 +235,7 @@ e7e5e99b90e689830029c1329d84dc8b2f584384 assets/ifw/models/item/mithril_sword.js
 4cb0fc2b77fa53b56d5ec1355a47c62ca7cb6832 assets/ifw/models/item/obsidian_shard.json
 91ba90af7c0c8342ea9ca0fa1ea5b092c936d923 assets/ifw/models/item/onion.json
 c9539f0edf9c64c651341986f29a904bb6d1479c assets/ifw/models/item/orange.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/phase_spider_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/pig_spawn_egg.json
 6c3b875b743da5b59c159e526f72315ed5dad45d assets/ifw/models/item/porridge.json
 de5fcca88f8a82f0c541153cbc8686049417575c assets/ifw/models/item/powder_snow_adamantium_bucket.json
@@ -313,6 +318,7 @@ a6134b0c228ea1fcedfd2af9527535dc5a4cbfeb assets/ifw/models/item/silver_sword.jso
 e2836533d26188c92350608a705bc0340ce4c0a0 assets/ifw/models/item/silver_war_hammer.json
 3b2b2e0a567d7b6e59a122e11f2613ba515f316b assets/ifw/models/item/sinew.json
 c54213e738fe51df3a1c5b4c2923764a45623424 assets/ifw/models/item/sorbet.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/spider_spawn_egg.json
 875cde1bf804b0a00a10e78c4e68ddaf6f8dc961 assets/ifw/models/item/stone_adamantium_bucket.json
 16f8bf81c82a64262ebdd86357df44cfca4c4226 assets/ifw/models/item/stone_ancient_metal_bucket.json
 3179ffcee23ab80aeadeee045c72a312bc4d1193 assets/ifw/models/item/stone_copper_bucket.json
@@ -345,5 +351,6 @@ e429c19fedfbb7eca0fe83f4d6b1a08bbeb2a4a1 assets/ifw/models/item/water_mithril_bu
 b69f90d530c83720f53651aa9c99cf35cc23f0b2 assets/ifw/models/item/water_silver_bucket.json
 39c92357c5e3bf67d7aff6f9d9b7362e8a391756 assets/ifw/models/item/wooden_club.json
 800bb34bc00e80a6084e66e54dfcab075dc08d9a assets/ifw/models/item/wooden_shovel.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/wood_spider_spawn_egg.json
 06f6d430d39c6b02346ba55b15e7fc8d1e6d7353 assets/ifw/models/item/worm.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/zombie_spawn_egg.json

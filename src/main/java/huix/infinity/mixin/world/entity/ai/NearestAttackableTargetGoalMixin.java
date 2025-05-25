@@ -1,6 +1,6 @@
 package huix.infinity.mixin.world.entity.ai;
 
-import huix.infinity.common.world.entity.monster.Digger;
+import huix.infinity.common.world.entity.monster.digger.Digger;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;

@@ -15,6 +15,9 @@ public class IFWUSLang extends IFWLanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("ifw.witch_curse.curse", "You have been cursed");
+        add("ifw.witch_curse.discurse", "The curse has gone");
+        //Curses
         add(Curses.none.value(), "Empty");
         add(Curses.equipment_decays_faster.value(), "EquipmentDecay");
         add(Curses.cannot_hold_breath.value(), "CantHoldBreath");
@@ -32,11 +35,38 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(Curses.fear_of_wolves.value(), "FearOfWolves");
         add(Curses.fear_of_creepers.value(), "FearOfCreepers");
         add(Curses.fear_of_undead.value(), "FearOfUndead");
+        //Curse_Description
+        add("Curses.ifw.none.desc", "You are not cursed");
+        add("Curses.ifw.equipment_decays_faster.desc","Your equipment is wearing|out faster than usual");
+        add("Curses.ifw.cannot_hold_breath.desc","You seem unable to hold your|breath for very long");
+        add("Curses.ifw.cannot_run.desc", "You find that you legs don't|obey when you try to run");
+        add("Curses.ifw.cannot_eat_meats.desc", "You find yourself unable to eat|meat or animal products");
+        add("Curses.ifw.cannot_eat_plants.desc", "You find yourself unable to eat|seeds and other plant foods");
+        add("Curses.ifw.cannot_drink.desc", "You find yourself unable to|drink liquids");
+        add("Curses.ifw.endermen_aggro.desc", "Endermen seem to have taken|a strong disliking to you");
+        add("Curses.ifw.clumsiness.desc", "Everything feels clumsy in your|hands and crafting is difficult");
+        add("Curses.ifw.entanglement.desc", "You find yourself having great|difficulty moving through vines|and other plants");
+        add("Curses.ifw.cannot_wear_armor.desc", "You find yourself unable to|wear armor of any sort");
+        add("Curses.ifw.cannot_open_chests.desc", "Can't Open Chests");
+        add("Curses.ifw.cannot_sleep.desc", "You find yourself unable to|sleep at night");
+        add("Curses.ifw.fear_of_spiders.desc", "You've become fearful of spiders|and have difficulty striking them|in melee combat");
+        add("Curses.ifw.fear_of_wolves.desc", "You've become fearful of wolves|and have difficulty striking them|in melee combat");
+        add("Curses.ifw.fear_of_creepers.desc", "You've become fearful of creepers|and have difficulty striking them|in melee combat");
+        add("Curses.ifw.fear_of_undead.desc", "You've become fearful of undead|and have difficulty striking them|in melee combat");
+        //Entity
         add(IFWEntityType.CHICKEN.value(), "Chicken");
         add(IFWEntityType.SHEEP.value(), "Sheep");
         add(IFWEntityType.PIG.value(), "Pig");
         add(IFWEntityType.COW.value(), "Cow");
         add(IFWEntityType.ZOMBIE.value(), "Zombie");
+        add(IFWEntityType.INFERNO_CREEPER.value(), "Inferno Creeper");
+        add(IFWEntityType.SPIDER.value(), "Spider");
+        add(IFWEntityType.WOOD_SPIDER.value(), "Wood Spider");
+        add(IFWEntityType.BLACK_WIDOW_SPIDER.value(), "Black Widow Spider");
+        add(IFWEntityType.PHASE_SPIDER.value(), "Phase Spider");
+        add(IFWEntityType.CAVE_SPIDER.value(), "Cave Spider");
+        add(IFWEntityType.DEMON_SPIDER.value(), "Demon Spider");
+        //Commands
         add("commands.xp.message", "You have %s experience");
         add("commands.day.message", "It is day %s of this world");
         add("commands.stats.phytonutrients", "Phytonutrients: %d/%d (%.1f%%/%.1f%%)");
@@ -50,12 +80,12 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("commands.give.curse.players", "Applied curse %s to %s players");
         add("commands.clear.curse.player", "Removed curse from %s");
         add("commands.clear.curse.players", "Removed curse from %s targets");
-        add("ifw.witch_curse.discurse", "The curse is gone");
-        add("ifw.witch_curse.curse", "You have been cursed");
+        //ItemGruop
         add("itemGroup.ifw.block", "IFW| Block");
         add("itemGroup.ifw.item", "IFW| Item");
         add("itemGroup.ifw.tool", "IFW| Tool");
         add("itemGroup.ifw.entity", "IFW| Spawn Eggs");
+        //MoreInformation
         add("container.enchant.experience.requirement", "Experience Requirement: %s");
         add("item.ifw.placeBucketAsSource", "Ctrl:Consume 100 EXP to place as source");
         add("item.ifw.chanceOfBucketMelting", "%d%% Chance of melting");
@@ -252,6 +282,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWBlocks.silver_door_item.get(), "Silver Door");
         add(IFWBlocks.copper_bars_item.get(), "Copper Bars");
         add(IFWBlocks.raw_adamantium_block_item.get(), "Raw Adamantium Block");
+        add(IFWBlocks.raw_mithril_block_item.get(), "Raw Mithril Block");
         add(IFWBlocks.raw_silver_block_item.get(), "Raw Silver Block");
         add(IFWBlocks.deepslate_adamantium_ore_item.get(), "Deepslate Adamantium Ore");
         add(IFWBlocks.deepslate_mithril_ore_item.get(), "Deepslate Mithril Ore");
@@ -452,8 +483,18 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.pig_spawn_egg.get(), "Pig Spawn Egg");
         add(IFWItems.sheep_spawn_egg.get(), "Sheep Spawn Egg");
         add(IFWItems.zombie_spawn_egg.get(), "Zombie Spawn Egg");
+        add(IFWItems.inferno_creeper_spawn_egg.get(), "Inferno Creeper Spawn Egg");
+        add(IFWItems.spider_spawn_egg.get(), "Spider Spawn Egg");
+        add(IFWItems.wood_spider_spawn_egg.get(), "Wood Spider Spawn Egg");
+        add(IFWItems.black_widow_spider_spawn_egg.get(), "Black Widow Spider Spawn Egg");
+        add(IFWItems.phase_spider_spawn_egg.get(), "Phase Spider Spawn Egg");
+        add(IFWItems.cave_spider_spawn_egg.get(), "Cave Spider Spawn Egg");
+        add(IFWItems.demon_spider_spawn_egg.get(), "Demon Spider Spawn Egg");
         //Enchanted_Books
         add("enchantment.ifw.speed", "Speed");
+        //Effect
+        add("effect.ifw.unkonwn.curse", "You have been cursed");
+        add("effect.ifw.insulin_resistance", "Insulin Resistance");
     }
 
 }

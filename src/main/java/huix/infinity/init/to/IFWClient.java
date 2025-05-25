@@ -1,6 +1,5 @@
 package huix.infinity.init.to;
 
-
 import huix.infinity.common.client.render.EmeraldEnchantTableRenderer;
 import huix.infinity.common.client.screen.IFWAnvilScreen;
 import huix.infinity.common.client.resources.PersistentEffectTextureManager;
@@ -8,7 +7,14 @@ import huix.infinity.common.client.screen.EmeraldEnchantmentScreen;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import huix.infinity.common.world.entity.IFWEntityType;
-import huix.infinity.common.world.entity.render.*;
+import huix.infinity.common.world.entity.render.animal.IFWChickenRenderer;
+import huix.infinity.common.world.entity.render.animal.IFWCowRenderer;
+import huix.infinity.common.world.entity.render.animal.IFWPigRenderer;
+import huix.infinity.common.world.entity.render.animal.IFWSheepRenderer;
+import huix.infinity.common.world.entity.render.creeper.IFWInfernoCreeperRenderer;
+import huix.infinity.common.world.entity.render.projectile.IFWWebProjectileRenderer;
+import huix.infinity.common.world.entity.render.spider.IFWSpiderRenderer;
+import huix.infinity.common.world.entity.render.zombie.IFWZombieRenderer;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
@@ -49,6 +55,7 @@ public final class IFWClient {
 
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.silver_bars.get(), ChunkRenderTypeSet.of(cutout));
 
+        // 注册渔具模型
         registerFishingRodModel(IFWItems.copper_fishing_rod.get());
         registerFishingRodModel(IFWItems.silver_fishing_rod.get());
         registerFishingRodModel(IFWItems.gold_fishing_rod.get());
@@ -69,7 +76,6 @@ public final class IFWClient {
         event.registerReloadListener(IFWConstants.persistentEffectTextureManager);
     }
 
-
     @SubscribeEvent
     static void registerMenuScreens(final RegisterMenuScreensEvent event) {
         event.register(IFWMenuTypes.anvil_menu.get(), IFWAnvilScreen::new);
@@ -82,13 +88,27 @@ public final class IFWClient {
 
     @SubscribeEvent
     static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+        // 动物渲染器
         event.registerEntityRenderer(IFWEntityType.CHICKEN.get(), IFWChickenRenderer::new);
         event.registerEntityRenderer(IFWEntityType.SHEEP.get(), IFWSheepRenderer::new);
         event.registerEntityRenderer(IFWEntityType.PIG.get(), IFWPigRenderer::new);
         event.registerEntityRenderer(IFWEntityType.COW.get(), IFWCowRenderer::new);
-        event.registerEntityRenderer(IFWEntityType.ZOMBIE.get(), IFWZombieRenderer::new);
-    }
 
+        // 怪物渲染器
+        event.registerEntityRenderer(IFWEntityType.ZOMBIE.get(), IFWZombieRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.INFERNO_CREEPER.get(), IFWInfernoCreeperRenderer::new);
+
+        // 蜘蛛类渲染器 - 所有蜘蛛都使用通用渲染器
+        event.registerEntityRenderer(IFWEntityType.SPIDER.get(), IFWSpiderRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.WOOD_SPIDER.get(), IFWSpiderRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.BLACK_WIDOW_SPIDER.get(), IFWSpiderRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.CAVE_SPIDER.get(), IFWSpiderRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.DEMON_SPIDER.get(), IFWSpiderRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.PHASE_SPIDER.get(), IFWSpiderRenderer::new);
+
+        // 投射物渲染器
+        event.registerEntityRenderer(IFWEntityType.WEB_PROJECTILE.get(), IFWWebProjectileRenderer::new);
+    }
 
     static void registerFishingRodModel(Item fishingRod) {
         ItemProperties.register(fishingRod, ResourceLocation.withDefaultNamespace("cast"), (stack, level, entity, i) -> {
@@ -104,5 +124,4 @@ public final class IFWClient {
             }
         });
     }
-
 }

@@ -6,7 +6,8 @@ import huix.infinity.common.world.entity.animal.IFWChicken;
 import huix.infinity.common.world.entity.animal.IFWCow;
 import huix.infinity.common.world.entity.animal.IFWPig;
 import huix.infinity.common.world.entity.animal.IFWSheep;
-import huix.infinity.common.world.entity.monster.IFWZombie;
+import huix.infinity.common.world.entity.monster.arachnid.*;
+import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.init.InfinityWay;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -17,11 +18,22 @@ import net.neoforged.neoforge.registries.NewRegistryEvent;
 public class IFWExtraEvent {
     @SubscribeEvent
     public static void onRegisterAttributes(final EntityAttributeCreationEvent event) {
+        // 动物实体属性注册
         event.put(IFWEntityType.CHICKEN.get(), IFWChicken.createAttributes().build());
         event.put(IFWEntityType.SHEEP.get(), IFWSheep.createAttributes().build());
         event.put(IFWEntityType.PIG.get(), IFWPig.createAttributes().build());
         event.put(IFWEntityType.COW.get(), IFWCow.createAttributes().build());
+
+        // 怪物实体属性注册
         event.put(IFWEntityType.ZOMBIE.get(), IFWZombie.createAttributes().build());
+        event.put(IFWEntityType.INFERNO_CREEPER.get(), IFWInfernoCreeper.createAttributes().build());
+
+        event.put(IFWEntityType.SPIDER.get(), IFWSpider.createAttributes().build());
+        event.put(IFWEntityType.WOOD_SPIDER.get(), IFWWoodSpider.createAttributes().build());
+        event.put(IFWEntityType.BLACK_WIDOW_SPIDER.get(), IFWBlackWidowSpider.createAttributes().build());
+        event.put(IFWEntityType.PHASE_SPIDER.get(), IFWPhaseSpider.createAttributes().build());
+        event.put(IFWEntityType.CAVE_SPIDER.get(), IFWCaveSpider.createAttributes().build());
+        event.put(IFWEntityType.DEMON_SPIDER.get(), IFWDemonSpider.createAttributes().build());
     }
 
     @SubscribeEvent

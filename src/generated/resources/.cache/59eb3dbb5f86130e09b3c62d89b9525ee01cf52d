@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-22T02:48:48.0187646	Loot Tables
+// 1.21.1	2025-05-25T14:51:32.4486706	Loot Tables
 39ca8695010fbfadce1cd3e2a0ca92acd68b795b data/ifw/loot_table/blocks/adamantium_anvil.json
 e83ac5ba844b67d2d69c691887b951b8f7166f9d data/ifw/loot_table/blocks/adamantium_bars.json
 b75574a0827bdf12669b4631f5e8a591ffe3b2db data/ifw/loot_table/blocks/adamantium_block.json
@@ -82,8 +82,13 @@ baa21fe1a891504b2f09febaa4fe9cf3c8645f72 data/ifw/loot_table/blocks/sandstone_fu
 8d2c8fa0b9a1b3f3e456c8442d6ea4f97701118a data/ifw/loot_table/blocks/silver_door.json
 79793cd34871dc8973a73a48efdd9f4f7339b06e data/ifw/loot_table/blocks/silver_ore.json
 30543095b5f0833411fbd0f70081abc410bd6d6c data/ifw/loot_table/blocks/stone_furnace.json
+473b7607cdb1ddd66835a9686fe874f48f2a20f1 data/ifw/loot_table/entities/black_widow_spider.json
+9b67cc4d49d73996b4234d31602ae77c169de111 data/ifw/loot_table/entities/cave_spider.json
 ee492443e21444488daf7a6cbffa23cdb26effc9 data/ifw/loot_table/entities/chicken.json
 96c4bb0c211dfc80fe549a42b6bc846841d8b03c data/ifw/loot_table/entities/cow.json
+fedd3747f8ab16cdd1dff215a7f0520a0942021d data/ifw/loot_table/entities/demon_spider.json
+45f5e310e4dba862280317269193aaf186df4538 data/ifw/loot_table/entities/inferno_creeper.json
+c8eb92b9241c07c9c1b860eb4adb2f533657b450 data/ifw/loot_table/entities/phase_spider.json
 c39af567c6e245c58907f0598afa58760b335dab data/ifw/loot_table/entities/pig.json
 be9d4887e896547663e68b5c07922ac88790a180 data/ifw/loot_table/entities/sheep.json
 a9cd98e723c07f8b83f8d778b13fda9835ca819b data/ifw/loot_table/entities/sheep/black.json
@@ -102,4 +107,6 @@ ff1ed6739a18f12a53842a36b36ee59540e33030 data/ifw/loot_table/entities/sheep/purp
 89dd5cc8e1e90fb2894f8233b6e268db11903457 data/ifw/loot_table/entities/sheep/red.json
 8963271e236739d3aaa03982e34f109dea1dfdc7 data/ifw/loot_table/entities/sheep/white.json
 475cad686c1dd37663beb775392545e6c78da211 data/ifw/loot_table/entities/sheep/yellow.json
+74c603498c85c130fd8169d9df67c52d2dd3efda data/ifw/loot_table/entities/spider.json
+8473723c53d2dbbe8d872771e015b79ccaa4ce95 data/ifw/loot_table/entities/wood_spider.json
 516cc6e372f56acd7ebd1baf6c5813eeed5f0833 data/ifw/loot_table/entities/zombie.json

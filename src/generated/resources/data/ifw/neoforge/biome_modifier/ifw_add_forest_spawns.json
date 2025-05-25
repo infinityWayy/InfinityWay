@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_forest",
+  "spawners": {
+    "type": "ifw:wood_spider",
+    "maxCount": 1,
+    "minCount": 1,
+    "weight": 20
+  }
+}

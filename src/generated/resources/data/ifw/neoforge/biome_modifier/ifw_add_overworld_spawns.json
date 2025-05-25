@@ -1,0 +1,54 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_overworld",
+  "spawners": [
+    {
+      "type": "ifw:chicken",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "ifw:sheep",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "ifw:pig",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "ifw:cow",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "ifw:spider",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 80
+    },
+    {
+      "type": "ifw:zombie",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 100
+    },
+    {
+      "type": "minecraft:enderman",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "minecraft:creeper",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 100
+    }
+  ]
+}

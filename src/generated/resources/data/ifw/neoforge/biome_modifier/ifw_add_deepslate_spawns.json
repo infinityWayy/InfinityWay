@@ -1,0 +1,50 @@
+{
+  "type": "ifw:height_based_add_spawns",
+  "biomes": "#c:is_overworld",
+  "max_height": 0,
+  "min_height": -64,
+  "spawners": [
+    {
+      "type": "ifw:spider",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 80
+    },
+    {
+      "type": "ifw:zombie",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 100
+    },
+    {
+      "type": "minecraft:enderman",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "minecraft:creeper",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 100
+    },
+    {
+      "type": "ifw:demon_spider",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "ifw:phase_spider",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 5
+    },
+    {
+      "type": "ifw:inferno_creeper",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 30
+    }
+  ]
+}

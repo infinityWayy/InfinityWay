@@ -15,12 +15,15 @@ import net.neoforged.api.distmarker.OnlyIn;
 public class PersistentEffectTextureManager extends TextureAtlasHolder {
 
     public PersistentEffectTextureManager(TextureManager textureManager) {
-        super(textureManager, IFWConstants.LOCATION_P_EFFECT_TEXTURE_ATLAS, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "persistent_effects"));
+        super(textureManager, IFWConstants.LOCATION_P_EFFECT_TEXTURE_ATLAS, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "atlases/persistent_effects"));
     }
 
-
     public TextureAtlasSprite getCurse() {
-        return this.getSprite(ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "curse"));
+        return this.getSprite(ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "gui/sprites/curse"));
+    }
+
+    public TextureAtlasSprite getInsulinResistance() {
+        return this.getSprite(ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "gui/sprites/insulin_resistance"));
     }
 
 }

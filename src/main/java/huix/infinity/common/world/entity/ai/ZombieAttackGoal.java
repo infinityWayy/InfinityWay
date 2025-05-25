@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.ai;
 
-import huix.infinity.common.world.entity.monster.IFWZombie;
+import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
 public class ZombieAttackGoal extends MeleeAttackGoal {

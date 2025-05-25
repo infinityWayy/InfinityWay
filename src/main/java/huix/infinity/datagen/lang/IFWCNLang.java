@@ -15,28 +15,55 @@ public class IFWCNLang extends IFWLanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add(Curses.none.value(), "空诅咒");
+        //诅咒
+        add(Curses.none.value(), "无诅咒");
         add(Curses.equipment_decays_faster.value(), "腐蚀性皮肤");
-        add(Curses.cannot_hold_breath.value(), "无法呼吸");
-        add(Curses.cannot_run.value(), "不能疾跑");
-        add(Curses.cannot_eat_meats.value(), "不能食腥");
-        add(Curses.cannot_eat_plants.value(), "不能食素");
-        add(Curses.cannot_drink.value(), "不能饮用");
+        add(Curses.cannot_hold_breath.value(), "呼吸困难");
+        add(Curses.cannot_run.value(), "腿脚僵硬");
+        add(Curses.cannot_eat_meats.value(), "肉奶厌食");
+        add(Curses.cannot_eat_plants.value(), "蔬果厌食");
+        add(Curses.cannot_drink.value(), "汤煲厌食");
         add(Curses.endermen_aggro.value(), "末影仇恨");
-        add(Curses.clumsiness.value(), "我是弱智?");
-        add(Curses.entanglement.value(), "植物恐惧");
+        add(Curses.clumsiness.value(), "智力下降");
+        add(Curses.entanglement.value(), "植物缠绕");
         add(Curses.cannot_wear_armor.value(), "盔甲排斥");
-        add(Curses.cannot_open_chests.value(), "箱子恐惧");
+        add(Curses.cannot_open_chests.value(), "柜子动了");
         add(Curses.cannot_sleep.value(), "失眠症");
         add(Curses.fear_of_spiders.value(), "蜘蛛恐惧");
         add(Curses.fear_of_wolves.value(), "恶狼恐惧");
         add(Curses.fear_of_creepers.value(), "苦力怕恐惧");
         add(Curses.fear_of_undead.value(), "亡灵生物恐惧");
+        //诅咒描述
+        add("Curses.ifw.unknown.desc", "你没有被诅咒");
+        add("Curses.ifw.equipment_decays_faster.desc","你发现你的的装备、武器与工具的耐久度下降的更快");
+        add("Curses.ifw.cannot_hold_breath.desc","你发现你不能屏息很长时间");
+        add("Curses.ifw.cannot_run.desc", "你发现你不能疾跑");
+        add("Curses.ifw.cannot_eat_meats.desc", "你发现你不能食用任何动物制品");
+        add("Curses.ifw.cannot_eat_plants.desc", "你发现你不能食用任何植物制品");
+        add("Curses.ifw.cannot_drink.desc", "你发现你不能食用任何汤、煲类食物");
+        add("Curses.ifw.endermen_aggro.desc", "你发现末影人总是对你无缘无故的发起攻击");
+        add("Curses.ifw.clumsiness.desc", "你发现制作物品变得十分困难");
+        add("Curses.ifw.entanglement.desc", "你发现你很难穿越草、藤蔓等植物");
+        add("Curses.ifw.cannot_wear_armor.desc", "你发现你不能穿着盔甲");
+        add("Curses.ifw.cannot_open_chests.desc", "你发现你无法打开箱子(我柜子怎么动了)");
+        add("Curses.ifw.cannot_sleep.desc", "你发现你在晚上无法入睡");
+        add("Curses.ifw.fear_of_spiders.desc", "你发现你难以对蜘蛛发起有效攻击");
+        add("Curses.ifw.fear_of_wolves.desc", "你发现你难以对狼发起有效攻击");
+        add("Curses.ifw.fear_of_creepers.desc", "你发现你难以对狼发起有效攻击");
+        add("Curses.ifw.fear_of_undead.desc", "你发现你难以对亡灵生物发起有效攻击");
+
         add(IFWEntityType.CHICKEN.value(), "鸡");
         add(IFWEntityType.SHEEP.value(), "羊");
         add(IFWEntityType.PIG.value(), "猪");
         add(IFWEntityType.COW.value(), "牛");
         add(IFWEntityType.ZOMBIE.value(), "僵尸");
+        add(IFWEntityType.INFERNO_CREEPER.value(), "地狱苦力怕");
+        add(IFWEntityType.SPIDER.value(), "蜘蛛");
+        add(IFWEntityType.WOOD_SPIDER.value(), "木蜘蛛");
+        add(IFWEntityType.BLACK_WIDOW_SPIDER.value(), "黑寡妇蜘蛛");
+        add(IFWEntityType.PHASE_SPIDER.value(), "相位蜘蛛");
+        add(IFWEntityType.CAVE_SPIDER.value(), "洞穴蜘蛛");
+        add(IFWEntityType.DEMON_SPIDER.value(), "恶魔蜘蛛");
         add("commands.xp.message", "你当前的经验值为 %s");
         add("commands.day.message", "今天是第 %s 天");
         add("commands.stats.phytonutrients", "植物营养素: %d/%d (%.1f%%/%.1f%%)");
@@ -251,6 +278,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWBlocks.silver_door_item.get(), "银门");
         add(IFWBlocks.copper_bars_item.get(), "铜栏杆");
         add(IFWBlocks.raw_adamantium_block_item.get(), "粗艾德曼块");
+        add(IFWBlocks.raw_mithril_block_item.get(), "粗秘银块");
         add(IFWBlocks.raw_silver_block_item.get(), "粗银块");
         add(IFWBlocks.deepslate_adamantium_ore_item.get(), "深层艾德曼矿石");
         add(IFWBlocks.deepslate_mithril_ore_item.get(), "深层秘银矿石");
@@ -450,8 +478,18 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.pig_spawn_egg.get(), "猪刷怪蛋");
         add(IFWItems.sheep_spawn_egg.get(), "羊刷怪蛋");
         add(IFWItems.zombie_spawn_egg.get(), "僵尸刷怪蛋");
+        add(IFWItems.inferno_creeper_spawn_egg.get(), "地狱苦力怕刷怪蛋");
+        add(IFWItems.spider_spawn_egg.get(), "蜘蛛刷怪蛋");
+        add(IFWItems.wood_spider_spawn_egg.get(), "木蜘蛛刷怪蛋");
+        add(IFWItems.black_widow_spider_spawn_egg.get(), "黑寡妇蜘蛛刷怪蛋");
+        add(IFWItems.phase_spider_spawn_egg.get(), "相位蜘蛛刷怪蛋");
+        add(IFWItems.cave_spider_spawn_egg.get(), "洞穴蜘蛛刷怪蛋");
+        add(IFWItems.demon_spider_spawn_egg.get(), "恶魔蜘蛛刷怪蛋");
         //附魔书
         add("enchantment.ifw.speed", "速度");
+        //Effect
+        add("effect.ifw.unkonwn.curse", "你已经被诅咒了！");
+        add("effect.ifw.insulin_resistance", "胰岛素抵抗");
     }
 
 }

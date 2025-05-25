@@ -1,6 +1,8 @@
 package huix.infinity.mixin.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import huix.infinity.common.world.effect.IFWMobEffects;
+import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.util.IFWConstants;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -23,13 +25,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class EffectRenderingInventoryScreenMixin extends AbstractContainerScreen {
 
     @Unique
-    private int extra_yOffset = 0;
+    private int curse_yOffset = 0;
+    @Unique
+    private int insulin_response_yOffset = 0;
 
     @Inject(at = @At(value = "RETURN"), method = "render")
     private void injectCurseRender(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         Player player = this.minecraft.player;
         if (player.hasCurse()) {
-            this.extra_yOffset = 33;
+            this.curse_yOffset = 33;
             int renderX = this.leftPos + this.imageWidth + 2;
             int j = this.width - renderX;
             if (j >= 32) {
@@ -40,37 +44,88 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
                 flag = !event.isCompact();
                 renderX = event.getHorizontalOffset();
 
-                this.renderExtraBackgrounds(guiGraphics, renderX, this.extra_yOffset, flag);
-                this.renderExtraIcons(guiGraphics, renderX, this.extra_yOffset, flag);
+                this.renderCurseBackgrounds(guiGraphics, renderX, this.curse_yOffset, flag);
+                this.renderCurseIcons(guiGraphics, renderX, this.curse_yOffset, flag);
                 if (flag)
-                    this.renderExtraLabels(guiGraphics, renderX, this.extra_yOffset, player);
+                    this.renderCurseLabels(guiGraphics, renderX, this.curse_yOffset, player);}
+        }
+
+        if (player.suffering_insulinResistance_mild()) {
+            this.insulin_response_yOffset = 33; // 同级偏移量
+            int renderX = this.leftPos + this.imageWidth + 2;
+            int j = this.width - renderX;
+            if (j >= 32) {
+                boolean flag = j >= 120;
+
+                ScreenEvent.RenderInventoryMobEffects event = ClientHooks.onScreenPotionSize(this, j, !flag, renderX);
+                if (event.isCanceled()) return;
+                flag = !event.isCompact();
+                renderX = event.getHorizontalOffset();
+
+                this.renderInsulinResponseBackgrounds(guiGraphics, renderX, this.insulin_response_yOffset, flag);
+                this.renderInsulinResponseIcons(guiGraphics, renderX, this.insulin_response_yOffset, flag);
+                if (flag)
+                    this.renderInsulinResponseLabels(guiGraphics, renderX, this.insulin_response_yOffset, player);
+
             }
         }
     }
 
+    //Curse
     @Unique
-    private void renderExtraBackgrounds(GuiGraphics guiGraphics, int renderX, int yOffset, boolean isSmall) {
+    private void renderCurseBackgrounds(GuiGraphics guiGraphics, int renderX, int yOffset, boolean isSmall) {
         if (isSmall) guiGraphics.blitSprite(EFFECT_BACKGROUND_LARGE_SPRITE, renderX, this.topPos, 120, 32);
         else guiGraphics.blitSprite(EFFECT_BACKGROUND_SMALL_SPRITE, renderX, this.topPos, 32, 32);
     }
 
     @Unique
-    private void renderExtraIcons(GuiGraphics guiGraphics, int renderX, int yOffset, boolean isSmall) {
+    private void renderCurseIcons(GuiGraphics guiGraphics, int renderX, int yOffset, boolean isSmall) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, IFWConstants.LOCATION_P_EFFECT_TEXTURE_ATLAS);
         TextureAtlasSprite textureatlassprite = IFWConstants.persistentEffectTextureManager.getCurse();
         guiGraphics.blit(renderX + (isSmall ? 6 : 7), this.topPos + 7, 0, 18, 18, textureatlassprite);
     }
 
-
     @Unique
-    private void renderExtraLabels(GuiGraphics guiGraphics, int renderX, int yOffset, Player player) {
-        Component component = Component.translatable("render.unkonwn.curse");
+    private void renderCurseLabels(GuiGraphics guiGraphics, int renderX, int yOffset, Player player) {
+        Component component = Component.translatable("effect.unkonwn.curse");
         if (player.knownCurse())
             component = Component.translatable(player.curse().desc());
 
         guiGraphics.drawString(this.font, component, renderX + 10 + 18, this.topPos + 6, 16777215);
+        Component curseDescription = Component.translatable("curse.ifw." + player.curse().desc() + ".desc");
+        guiGraphics.drawString(this.font, curseDescription, renderX + 10 + 18, this.topPos + 6 + this.font.lineHeight, 16711680);
+
+
+
     }
+
+    //InsulinResponse
+    @Unique
+    private void renderInsulinResponseBackgrounds(GuiGraphics guiGraphics, int renderX, int yOffset, boolean isSmall) {
+        if (isSmall)
+            guiGraphics.blitSprite(EFFECT_BACKGROUND_LARGE_SPRITE, renderX, this.topPos + yOffset, 120, 32);
+        else
+            guiGraphics.blitSprite(EFFECT_BACKGROUND_SMALL_SPRITE, renderX, this.topPos + yOffset, 32, 32);
+    }
+
+    @Unique
+    private void renderInsulinResponseIcons(GuiGraphics guiGraphics, int renderX, int yOffset, boolean isSmall) {
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderTexture(0, IFWConstants.LOCATION_P_EFFECT_TEXTURE_ATLAS);
+        TextureAtlasSprite textureatlassprite = IFWConstants.persistentEffectTextureManager.getInsulinResistance();
+        guiGraphics.blit(renderX + (isSmall ? 6 : 7), this.topPos + yOffset + 7, 0, 18, 18, textureatlassprite);
+    }
+
+    @Unique
+    private void renderInsulinResponseLabels(GuiGraphics guiGraphics, int renderX, int yOffset, Player player) {
+        Component component = Component.translatable("effect.insulin_resistance_mild");
+        guiGraphics.drawString(this.font, component, renderX + 10 + 18, this.topPos + yOffset + 6, 0xFF55FF);
+//        Component description = UnClearEffect.getDescriptionComponent();
+//        guiGraphics.drawString(this.font, description, renderX + 10 + 18, this.topPos + yOffset + 6 + this.font.lineHeight, 0xCC5500);
+
+    }
+
 
     @ModifyConstant(constant = @Constant(intValue = 5), method = "renderEffects")
     private int modifyRenderSize(int constant) {
@@ -78,9 +133,11 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
         return constant;
     }
 
-    @Redirect(at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/inventory/EffectRenderingInventoryScreen;topPos:I"), method = {"renderBackgrounds", "renderEffects", "renderIcons", "renderLabels"})
+
+    @Redirect(at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/inventory/EffectRenderingInventoryScreen;topPos:I"),
+            method = {"renderBackgrounds", "renderEffects", "renderIcons", "renderLabels"})
     private int redirectTopPos(EffectRenderingInventoryScreen instance) {
-        return this.topPos + this.extra_yOffset;
+        return this.topPos + this.curse_yOffset + this.insulin_response_yOffset; // 叠加偏移
     }
 
     @Shadow @Final private static ResourceLocation EFFECT_BACKGROUND_LARGE_SPRITE;

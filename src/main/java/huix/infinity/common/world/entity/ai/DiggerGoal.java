@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.ai;
 
-import huix.infinity.common.world.entity.monster.Digger;
+import huix.infinity.common.world.entity.monster.digger.Digger;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;

@@ -21,10 +21,43 @@ public class IFWEntityTypeTagsProvider extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
-        tag(IFWEntityTypeTags.REPLACE).add(EntityType.CHICKEN, EntityType.SHEEP, EntityType.PIG, EntityType.COW,
-                EntityType.ZOMBIE);
+        // 替换标签
+        tag(IFWEntityTypeTags.REPLACE).add(
+                EntityType.CHICKEN, EntityType.SHEEP, EntityType.PIG, EntityType.COW,
+                EntityType.ZOMBIE, EntityType.SPIDER, EntityType.CAVE_SPIDER
+        );
 
+        // 基础标签
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(IFWEntityType.CHICKEN.get());
         this.tag(EntityTypeTags.ZOMBIES).add(IFWEntityType.ZOMBIE.get());
+        this.tag(EntityTypeTags.RAIDERS).add(IFWEntityType.INFERNO_CREEPER.get());
+
+        // 亡灵生物标签
+        this.tag(EntityTypeTags.UNDEAD)
+                .add(IFWEntityType.ZOMBIE.get());
+
+        // 节肢动物标签
+        this.tag(EntityTypeTags.ARTHROPOD)
+                .add(IFWEntityType.SPIDER.get())
+                .add(IFWEntityType.WOOD_SPIDER.get())
+                .add(IFWEntityType.BLACK_WIDOW_SPIDER.get())
+                .add(IFWEntityType.PHASE_SPIDER.get())
+                .add(IFWEntityType.CAVE_SPIDER.get())
+                .add(IFWEntityType.DEMON_SPIDER.get());
+
+        // 火焰免疫标签
+        this.tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)
+                .add(IFWEntityType.DEMON_SPIDER.get())
+                .add(IFWEntityType.INFERNO_CREEPER.get());
+
+        // 毒性生物标签
+        this.tag(IFWEntityTypeTags.VENOMOUS)
+                .add(IFWEntityType.WOOD_SPIDER.get())
+                .add(IFWEntityType.BLACK_WIDOW_SPIDER.get())
+                .add(IFWEntityType.CAVE_SPIDER.get())
+                .add(IFWEntityType.DEMON_SPIDER.get());
+
+
+
     }
 }

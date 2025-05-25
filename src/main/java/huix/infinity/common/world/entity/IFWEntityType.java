@@ -4,7 +4,9 @@ import huix.infinity.common.world.entity.animal.IFWChicken;
 import huix.infinity.common.world.entity.animal.IFWCow;
 import huix.infinity.common.world.entity.animal.IFWPig;
 import huix.infinity.common.world.entity.animal.IFWSheep;
-import huix.infinity.common.world.entity.monster.IFWZombie;
+import huix.infinity.common.world.entity.monster.arachnid.*;
+import huix.infinity.common.world.entity.monster.digger.IFWZombie;
+import huix.infinity.common.world.entity.projectile.IFWWebProjectileEntity;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -65,5 +67,78 @@ public class IFWEntityType {
                             .ridingOffset(-0.7F)
                             .clientTrackingRange(8)
                             .build("zombie")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWInfernoCreeper>> INFERNO_CREEPER =
+            ENTITIES.register("inferno_creeper",
+                    () -> EntityType.Builder.<IFWInfernoCreeper>of(IFWInfernoCreeper::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.7F)
+                            .eyeHeight(1.7F)
+                            .clientTrackingRange(8)
+                            .build("inferno_creeper")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWSpider>> SPIDER =
+            ENTITIES.register("spider",
+                    () -> EntityType.Builder.of(IFWSpider::new, MobCategory.MONSTER)
+                            .sized(1.4F, 0.9F)
+                            .eyeHeight(0.65F)
+                            .clientTrackingRange(8)
+                            .build("spider")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWWebProjectileEntity>> WEB_PROJECTILE =
+            ENTITIES.register("web_projectile",
+                    () -> EntityType.Builder.<IFWWebProjectileEntity>of(IFWWebProjectileEntity::new, MobCategory.MISC)
+                            .sized(0.25F, 0.25F)
+                            .clientTrackingRange(8)
+                            .updateInterval(10)
+                            .build("web_projectile")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWWoodSpider>> WOOD_SPIDER =
+            ENTITIES.register("wood_spider",
+                    () -> EntityType.Builder.of(IFWWoodSpider::new, MobCategory.MONSTER)
+                            .sized(0.84F, 0.54F)
+                            .eyeHeight(0.65F)
+                            .clientTrackingRange(8)
+                            .build("wood_spider")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWBlackWidowSpider>> BLACK_WIDOW_SPIDER =
+            ENTITIES.register("black_widow_spider",
+                    () -> EntityType.Builder.of(IFWBlackWidowSpider::new, MobCategory.MONSTER)
+                            .sized(0.84F, 0.54F)
+                            .eyeHeight(0.65F)
+                            .clientTrackingRange(8)
+                            .build("black_widow_spider")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWPhaseSpider>> PHASE_SPIDER =
+            ENTITIES.register("phase_spider",
+                    () -> EntityType.Builder.of(IFWPhaseSpider::new, MobCategory.MONSTER)
+                            .sized(0.84F, 0.54F)
+                            .eyeHeight(0.65F)
+                            .clientTrackingRange(8)
+                            .build("phase_spider")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWCaveSpider>> CAVE_SPIDER =
+            ENTITIES.register("cave_spider",
+                    () -> EntityType.Builder.of(IFWCaveSpider::new, MobCategory.MONSTER)
+                            .sized(0.7F, 0.5F)
+                            .eyeHeight(0.45F)
+                            .clientTrackingRange(8)
+                            .build("cave_spider")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWDemonSpider>> DEMON_SPIDER =
+            ENTITIES.register("demon_spider",
+                    () -> EntityType.Builder.of(IFWDemonSpider::new, MobCategory.MONSTER)
+                            .sized(1.4F, 0.9F)
+                            .eyeHeight(0.65F)
+                            .fireImmune()
+                            .clientTrackingRange(8)
+                            .build("demon_spider")
             );
 }

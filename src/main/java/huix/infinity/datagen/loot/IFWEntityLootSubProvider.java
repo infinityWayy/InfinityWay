@@ -37,6 +37,7 @@ public class IFWEntityLootSubProvider extends EntityLootSubProvider {
 
     @Override
     public void generate() {
+        // 动物类实体掉落
         this.add(
                 IFWEntityType.CHICKEN.get(),
                 LootTable.lootTable()
@@ -159,6 +160,112 @@ public class IFWEntityLootSubProvider extends EntityLootSubProvider {
                                         .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(this.registries, 0.025F, 0.01F))
                         )
         );
+
+        this.add(
+                IFWEntityType.INFERNO_CREEPER.get(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(Items.GUNPOWDER)
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)))
+                                )
+                        )
+        );
+
+        // ========== 蜘蛛掉落系统（修改版）==========
+
+        // 普通蜘蛛和恶魔蜘蛛 - 标准掉落
+        this.add(IFWEntityType.SPIDER.get(), createStandardSpiderTable());
+        this.add(IFWEntityType.DEMON_SPIDER.get(), createStandardSpiderTable());
+
+        // 其他有蛛网储存的蜘蛛 - 只掉落蛛网转化的丝线
+        this.add(IFWEntityType.WOOD_SPIDER.get(), createWebOnlySpiderTable());
+        this.add(IFWEntityType.BLACK_WIDOW_SPIDER.get(), createWebOnlySpiderTable());
+        this.add(IFWEntityType.CAVE_SPIDER.get(), createWebOnlySpiderTable());
+
+        // 相位蜘蛛 - 只掉落蜘蛛眼，不掉落任何丝线
+        this.add(IFWEntityType.PHASE_SPIDER.get(), createPhaseSpiderTable());
+    }
+
+    /**
+     * 标准蜘蛛掉落表（普通蜘蛛、恶魔蜘蛛）
+     * 包含蛛网转化丝线 + 蜘蛛眼
+     */
+    protected LootTable.Builder createStandardSpiderTable() {
+        return LootTable.lootTable()
+                // 剩余蛛网掉落为丝线（MITE逻辑：在代码中已处理，这里只是备用）
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(
+                                        LootItem.lootTableItem(Items.STRING)
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F))) // 0-3个蛛网转化为丝线
+                                                .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                )
+                )
+                // 蜘蛛眼掉落（1/3概率或抢夺附魔加成）
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(
+                                        LootItem.lootTableItem(Items.SPIDER_EYE)
+                                                .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                                .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(
+                                                        this.registries, 0.33F, 0.02F  // 33%基础概率，抢夺附魔加成
+                                                ))
+                                )
+                );
+    }
+
+    /**
+     * 仅蛛网掉落蜘蛛表（木蜘蛛、黑寡妇蜘蛛、洞穴蜘蛛）
+     * 只包含蛛网转化丝线 + 蜘蛛眼，不包含基础丝线
+     */
+    protected LootTable.Builder createWebOnlySpiderTable() {
+        return LootTable.lootTable()
+                // 剩余蛛网掉落为丝线（MITE逻辑：实际在代码中处理）
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(
+                                        LootItem.lootTableItem(Items.STRING)
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 3.0F))) // 0-3个蛛网转化为丝线
+                                                .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                )
+                )
+                // 蜘蛛眼掉落（1/3概率或抢夺附魔加成）
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(
+                                        LootItem.lootTableItem(Items.SPIDER_EYE)
+                                                .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                                .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(
+                                                        this.registries, 0.33F, 0.02F  // 33%基础概率，抢夺附魔加成
+                                                ))
+                                )
+                );
+    }
+
+    /**
+     * 相位蜘蛛掉落表
+     * 只掉落蜘蛛眼，不掉落任何丝线
+     */
+    protected LootTable.Builder createPhaseSpiderTable() {
+        return LootTable.lootTable()
+                // 只有蜘蛛眼掉落
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(
+                                        LootItem.lootTableItem(Items.SPIDER_EYE)
+                                                .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                                .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(
+                                                        this.registries, 0.33F, 0.02F  // 33%基础概率，抢夺附魔加成
+                                                ))
+                                )
+                );
     }
 
     protected static LootTable.@NotNull Builder createSheepTable(ItemLike woolItem) {
@@ -176,8 +283,6 @@ public class IFWEntityLootSubProvider extends EntityLootSubProvider {
 
     @Override
     protected void add(@NotNull EntityType<?> type, @NotNull LootTable.Builder table) {
-        //Overwrite the core register method to add to our list of known entity types
-        //Note: This isn't the actual core method as that one takes a ResourceLocation, but all our things wil pass through this one
         super.add(type, table);
         knownEntityTypes.add(type);
     }

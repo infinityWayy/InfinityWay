@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.render.zombie;
 
-import huix.infinity.common.world.entity.monster.IFWZombie;
+import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import net.minecraft.client.model.AbstractZombieModel;
 import net.minecraft.client.model.geom.ModelPart;
 

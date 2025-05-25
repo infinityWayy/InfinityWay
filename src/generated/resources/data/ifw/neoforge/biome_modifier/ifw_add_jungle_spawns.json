@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_jungle",
+  "spawners": {
+    "type": "ifw:black_widow_spider",
+    "maxCount": 1,
+    "minCount": 1,
+    "weight": 25
+  }
+}

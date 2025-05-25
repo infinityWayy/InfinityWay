@@ -2,8 +2,8 @@
     "sources": [
         {
             "type": "directory",
-            "source": "persistent_effect",
-            "prefix": ""
+            "source": "textures/gui/sprites",
+            "prefix": "gui/sprites/"
         }
     ]
 }

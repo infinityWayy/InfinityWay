@@ -1,5 +1,6 @@
 package huix.infinity.common.world.effect;
 
+import huix.infinity.common.core.registries.IFWRegistries;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;

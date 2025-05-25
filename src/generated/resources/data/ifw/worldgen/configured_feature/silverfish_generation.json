@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 9,
+    "targets": [
+      {
+        "state": {
+          "Name": "minecraft:infested_stone"
+        },
+        "target": {
+          "block": "minecraft:stone",
+          "predicate_type": "minecraft:block_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "minecraft:infested_cobblestone"
+        },
+        "target": {
+          "block": "minecraft:cobblestone",
+          "predicate_type": "minecraft:block_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "minecraft:infested_stone_bricks"
+        },
+        "target": {
+          "block": "minecraft:stone_bricks",
+          "predicate_type": "minecraft:block_match"
+        }
+      }
+    ]
+  }
+}

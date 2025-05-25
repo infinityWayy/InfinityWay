@@ -38,6 +38,11 @@ public class Curse extends PersistentEffect {
     }
 
     @Override
+    public String getDescriptionId() {
+        return "curse." + InfinityWay.MOD_ID + "." + this.desc;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         return desc.equals(((Curse) obj).desc());
     }
