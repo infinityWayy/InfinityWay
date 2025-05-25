@@ -2,7 +2,7 @@ package huix.infinity.common.worldgen;
 
 import huix.infinity.common.core.tag.IFWEntityTypeTags;
 import huix.infinity.common.world.entity.IFWEntityType;
-import huix.infinity.datagen.worldgen.ModifySpawnsBiomeModifier;
+import huix.infinity.datagen.worldgen.IFWBiomeModifiers.ModifySpawnsBiomeModifier;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
