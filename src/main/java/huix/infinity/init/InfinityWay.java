@@ -18,14 +18,10 @@ import huix.infinity.common.world.item.group.IFWItemGroups;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.loot.IFWLootModifiers;
 import huix.infinity.init.event.IFWSoundEvents;
-import huix.infinity.init.to.IFWClient;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
@@ -35,31 +31,43 @@ public final class InfinityWay {
     public static final Logger LOGGER = LogUtils.getLogger();
     public static boolean FarmersDelightLoaded = false;
 
-
     public InfinityWay(final IEventBus modBus) {
         final IEventBus eventBus = NeoForge.EVENT_BUS;
+
+        // 基础系统注册
         IFWAttachments.ATTACHMENT_TYPES.register(modBus);
-        IFWRecipeTypes.RECIPES.register(modBus);
-        IFWMenuTypes.MENUS.register(modBus);
-        IFWStructureTypes.STRUCTURE_TYPES.register(modBus);
-        IFWLootModifiers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modBus);
-        IFWBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modBus);
-        IFWRecipeSerializers.RECIPE_SERIALIZERS.register(modBus);
-        IFWArmorMaterials.ARMOR_MATERIALS.register(modBus);
         IFWDataComponents.DATA_COMPONENTS.register(modBus);
-        IFWItemGroups.CREATIVE_TABS.register(modBus);
         IFWAttributes.ATTRIBUTES.register(modBus);
-        IFWMobEffects.MOB_EFFECTS.register(modBus);
-        IFWItems.ITEMS.register(modBus);
+
+        // 内容注册
         IFWBlocks.BLOCKS.register(modBus);
+        IFWItems.ITEMS.register(modBus);
         IFWEntityType.ENTITIES.register(modBus);
-        IFWSoundEvents.register(modBus);
-        Curses.CURSES.register(modBus);
+        IFWItemGroups.CREATIVE_TABS.register(modBus);
+        IFWArmorMaterials.ARMOR_MATERIALS.register(modBus);
+
+        // 游戏机制注册
+        IFWMobEffects.MOB_EFFECTS.register(modBus);
+        IFWMenuTypes.MENUS.register(modBus);
+        IFWBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modBus);
+        IFWRecipeTypes.RECIPES.register(modBus);
+        IFWRecipeSerializers.RECIPE_SERIALIZERS.register(modBus);
+
+        // 世界生成注册
+        IFWStructureTypes.STRUCTURE_TYPES.register(modBus);
         IFWBiomeModifierTypes.BIOME_MODIFIER_SERIALIZERS.register(modBus);
 
-        if (ModList.get().isLoaded("farmersdelight")) {
-            FarmersDelightLoaded = true;}
+        // 其他系统
+        IFWLootModifiers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modBus);
+        IFWSoundEvents.register(modBus);
+        Curses.CURSES.register(modBus);
 
+        // 兼容性检查
+        if (ModList.get().isLoaded("farmersdelight")) {
+            FarmersDelightLoaded = true;
+        }
+
+        // 事件注册
         IFWEvents.init(eventBus);
     }
 }

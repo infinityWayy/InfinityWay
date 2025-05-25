@@ -2,6 +2,7 @@ package huix.infinity.common.worldgen;
 
 import huix.infinity.common.core.tag.IFWEntityTypeTags;
 import huix.infinity.common.world.entity.IFWEntityType;
+import huix.infinity.datagen.worldgen.ModifySpawnsBiomeModifier;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -36,6 +37,7 @@ import huix.infinity.common.worldgen.HeightBasedAddSpawnsBiomeModifier;
 
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class IFWFeatures {
@@ -49,6 +51,10 @@ public class IFWFeatures {
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_overworld_features"));
     public static final ResourceKey<BiomeModifier> REMOVE_OVERWORLD_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_overworld_spawns"));
+
+    // 自定义生物生成修饰器
+    public static final ResourceKey<BiomeModifier> MODIFY_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_modify_spawns"));
 
     // 特定生物群系生物修饰器
     public static final ResourceKey<BiomeModifier> ADD_FOREST_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
@@ -207,6 +213,17 @@ public class IFWFeatures {
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.SLIME.get(), 100, 1, 4),
                                 new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 10, 1, 4),
                                 new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 1, 2)
+                        )
+                ));
+
+                // 自定义其他生物生成
+                bootstrap.register(MODIFY_SPAWNS, new ModifySpawnsBiomeModifier(
+                        biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
+                        Map.of(
+                                EntityType.getKey(EntityType.SALMON), new MobSpawnSettings.SpawnerData(
+                                        EntityType.SALMON, 15, 1, 2),
+                                EntityType.getKey(EntityType.COD), new MobSpawnSettings.SpawnerData(
+                                        EntityType.COD, 15, 1, 2)
                         )
                 ));
 
