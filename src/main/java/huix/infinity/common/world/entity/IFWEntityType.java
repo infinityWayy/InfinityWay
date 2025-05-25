@@ -6,6 +6,7 @@ import huix.infinity.common.world.entity.animal.IFWPig;
 import huix.infinity.common.world.entity.animal.IFWSheep;
 import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
+import huix.infinity.common.world.entity.monster.digger.Revenant;
 import huix.infinity.common.world.entity.projectile.IFWWebProjectileEntity;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -67,6 +68,17 @@ public class IFWEntityType {
                             .ridingOffset(-0.7F)
                             .clientTrackingRange(8)
                             .build("zombie")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Revenant>> REVENANT =
+            ENTITIES.register("revenant",
+                    () -> EntityType.Builder.<Revenant>of(Revenant::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.95F)
+                            .eyeHeight(1.74F)
+                            .passengerAttachments(2.0125F)
+                            .ridingOffset(-0.7F)
+                            .clientTrackingRange(8)
+                            .build("revenant")
             );
 
     public static final DeferredHolder<EntityType<?>, EntityType<IFWInfernoCreeper>> INFERNO_CREEPER =

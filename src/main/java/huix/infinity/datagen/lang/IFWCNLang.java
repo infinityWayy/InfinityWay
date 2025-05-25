@@ -57,6 +57,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.PIG.value(), "猪");
         add(IFWEntityType.COW.value(), "牛");
         add(IFWEntityType.ZOMBIE.value(), "僵尸");
+        add(IFWEntityType.REVENANT.value(), "亡魂");
         add(IFWEntityType.INFERNO_CREEPER.value(), "地狱苦力怕");
         add(IFWEntityType.SPIDER.value(), "蜘蛛");
         add(IFWEntityType.WOOD_SPIDER.value(), "木蜘蛛");
@@ -478,6 +479,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.pig_spawn_egg.get(), "猪刷怪蛋");
         add(IFWItems.sheep_spawn_egg.get(), "羊刷怪蛋");
         add(IFWItems.zombie_spawn_egg.get(), "僵尸刷怪蛋");
+        add(IFWItems.revenant_spawn_egg.get(), "亡灵刷怪蛋");
         add(IFWItems.inferno_creeper_spawn_egg.get(), "地狱苦力怕刷怪蛋");
         add(IFWItems.spider_spawn_egg.get(), "蜘蛛刷怪蛋");
         add(IFWItems.wood_spider_spawn_egg.get(), "木蜘蛛刷怪蛋");

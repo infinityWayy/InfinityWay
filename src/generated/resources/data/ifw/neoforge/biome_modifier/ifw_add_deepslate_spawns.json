@@ -29,6 +29,12 @@
       "weight": 100
     },
     {
+      "type": "ifw:revenant",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
       "type": "ifw:demon_spider",
       "maxCount": 1,
       "minCount": 1,

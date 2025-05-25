@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-25T03:31:27.3608043	Item Models: ifw
+// 1.21.1	2025-05-25T19:29:33.8357586	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -259,6 +259,7 @@ da1777edae0cfa7375c7bc5e64753ae6dd0f3455 assets/ifw/models/item/raw_mithril.json
 de1768d31308908d0e3a61428812099eaa8a03d9 assets/ifw/models/item/raw_mithril_block.json
 50aff0935e8994cdb473b1bc7941ba86f5a6b100 assets/ifw/models/item/raw_silver.json
 49b7ccda336008252c1123c119d1ab18f65c9d8b assets/ifw/models/item/raw_silver_block.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/revenant_spawn_egg.json
 90fde3a986bcf6b72b17030050ea1f38e7e236ea assets/ifw/models/item/rusted_iron_axe.json
 c784af18012aef31eb2ffff2e7fd435b52f2c234 assets/ifw/models/item/rusted_iron_battle_axe.json
 58aeb42b57fda6549e2132a4cac0248dd9294046 assets/ifw/models/item/rusted_iron_boots.json

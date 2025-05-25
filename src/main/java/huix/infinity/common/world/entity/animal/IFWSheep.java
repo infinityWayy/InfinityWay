@@ -157,7 +157,12 @@ public class IFWSheep extends Livestock implements Shearable {
     }
 
     /**
-     * Handler for {@link World#setEntityState}
+     * Handles client-side entity events.
+     * <p>
+     * Event ID 10: Triggers eating animation (sets eatAnimationTick to 40)
+     *
+     * @param id the event identifier
+     * @see net.minecraft.world.entity.Entity#handleEntityEvent(byte)
      */
     @Override
     public void handleEntityEvent(byte id) {

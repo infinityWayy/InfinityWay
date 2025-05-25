@@ -59,6 +59,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.PIG.value(), "Pig");
         add(IFWEntityType.COW.value(), "Cow");
         add(IFWEntityType.ZOMBIE.value(), "Zombie");
+        add(IFWEntityType.REVENANT.value(), "Revenant");
         add(IFWEntityType.INFERNO_CREEPER.value(), "Inferno Creeper");
         add(IFWEntityType.SPIDER.value(), "Spider");
         add(IFWEntityType.WOOD_SPIDER.value(), "Wood Spider");
@@ -483,6 +484,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.pig_spawn_egg.get(), "Pig Spawn Egg");
         add(IFWItems.sheep_spawn_egg.get(), "Sheep Spawn Egg");
         add(IFWItems.zombie_spawn_egg.get(), "Zombie Spawn Egg");
+        add(IFWItems.revenant_spawn_egg.get(), "Revenant Spawn Egg");
         add(IFWItems.inferno_creeper_spawn_egg.get(), "Inferno Creeper Spawn Egg");
         add(IFWItems.spider_spawn_egg.get(), "Spider Spawn Egg");
         add(IFWItems.wood_spider_spawn_egg.get(), "Wood Spider Spawn Egg");
