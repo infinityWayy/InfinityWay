@@ -1,13 +1,25 @@
 package huix.infinity.datagen.loot;
 
+import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
+import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
+import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
@@ -109,8 +121,32 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.adamantium_runestone_jux.get());
         dropSelf(IFWBlocks.adamantium_runestone_ylem.get());
         dropSelf(IFWBlocks.adamantium_runestone_sanct.get());
+        add(Blocks.OBSIDIAN, this::createObsidianExplosionTable);
+        add(Blocks.CRYING_OBSIDIAN, this::createObsidianExplosionTable);
     }
 
+    private LootTable.Builder createObsidianExplosionTable(Block block) {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(block)
+                                .when(AnyOfCondition.anyOf(
+                                        MatchTool.toolMatches(ItemPredicate.Builder.item()
+                                                .of(ItemTags.PICKAXES)),
+                                        MatchTool.toolMatches(ItemPredicate.Builder.item()
+                                                .of(IFWItemTags.WAR_HAMMER))
+                                ))))
+                .withPool(LootPool.lootPool()
+                        .setRolls(UniformGenerator.between(1.0F, 3.0F))
+                        .add(LootItem.lootTableItem(IFWItems.obsidian_shard.get())
+                                .when(InvertedLootItemCondition.invert(
+                                        AnyOfCondition.anyOf(
+                                                MatchTool.toolMatches(ItemPredicate.Builder.item()
+                                                        .of(ItemTags.PICKAXES)),
+                                                MatchTool.toolMatches(ItemPredicate.Builder.item()
+                                                        .of(IFWItemTags.WAR_HAMMER))
+                                        )))));
+    }
     @Override
     protected void add(@NotNull Block block, LootTable.@NotNull Builder builder) {
         super.add(block, builder);

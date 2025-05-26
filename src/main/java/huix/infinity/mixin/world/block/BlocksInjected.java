@@ -110,7 +110,7 @@ public class BlocksInjected {
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
             , ordinal = 33), method = "<clinit>")
     private static BlockBehaviour.Properties ifw_obsidianHardness(BlockBehaviour.Properties properties, float destroyTime, float explosionResistance) {
-        return properties.strength(2.4F, 1200.0F);
+        return properties.strength(2.4F, 12.0F);
     }
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;instabreak()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
@@ -164,7 +164,7 @@ public class BlocksInjected {
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;strength(FF)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;"
             , ordinal = 172), method = "<clinit>")
     private static BlockBehaviour.Properties ifw_cryingObsidianHardness(BlockBehaviour.Properties properties, float destroyTime, float explosionResistance) {
-        return properties.strength(2.4F, 1200.0F);
+        return properties.strength(2.4F, 12.0F);
     }
 
     @Redirect(at = @At(value = "NEW", target = "(Lnet/minecraft/util/ColorRGBA;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/ColoredFallingBlock;"
