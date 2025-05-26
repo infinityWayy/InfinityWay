@@ -1,14 +1,13 @@
 package huix.infinity.common.world.item.tier;
 
-public enum IFWQuality implements Quality{
+public enum IFWQuality implements Quality {
 
-    poor("poor", 0.75F),
-    average("average", 1.0F),
-    fine("fine", 1.5F),
-    excellent("excellent", 2.0F),
-    superb("superb", 2.5F),
-    masterwork("masterwork", 3.0F),
-    legendary("legendary", 3.5F);
+    POOR("poor", 0.75F),
+    INFERIOR("inferior", 0.9F),
+    AVERAGE("average", 1.0F),
+    GOOD("good", 1.25F),
+    SUPERIOR("superior", 1.5F),
+    LEGENDARY("legendary", 2.0F);
 
     private final String name;
     private final float durability_time;
@@ -21,5 +20,31 @@ public enum IFWQuality implements Quality{
     @Override
     public float durabilityTime() {
         return this.durability_time;
+    }
+
+    /**
+     * 获取品质名称
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * 获取本地化键
+     */
+    public String getTranslationKey() {
+        return "quality.infinityway." + name;
+    }
+
+    /**
+     * 根据名称获取品质
+     */
+    public static IFWQuality fromName(String name) {
+        for (IFWQuality quality : values()) {
+            if (quality.name.equalsIgnoreCase(name)) {
+                return quality;
+            }
+        }
+        return AVERAGE; // 默认返回普通品质
     }
 }
