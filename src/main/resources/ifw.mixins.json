@@ -12,6 +12,8 @@
     "server.commands.SpawnArmorTrimsCommandMixin",
     "server.player.SleepStatusMixin",
     "world.block.BlockBehaviourMixin",
+    "world.block.BlockWallMixin",
+    "world.block.BlockFenceMixin",
     "world.block.BlockMixin",
     "world.block.BlocksInjected",
     "world.block.BlockStateBaseMixin",

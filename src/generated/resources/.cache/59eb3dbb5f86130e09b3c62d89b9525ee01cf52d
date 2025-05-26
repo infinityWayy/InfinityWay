@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-25T14:51:32.4486706	Loot Tables
+// 1.21.1	2025-05-26T14:57:53.641466	Loot Tables
 39ca8695010fbfadce1cd3e2a0ca92acd68b795b data/ifw/loot_table/blocks/adamantium_anvil.json
 e83ac5ba844b67d2d69c691887b951b8f7166f9d data/ifw/loot_table/blocks/adamantium_bars.json
 b75574a0827bdf12669b4631f5e8a591ffe3b2db data/ifw/loot_table/blocks/adamantium_block.json
@@ -110,3 +110,4 @@ ff1ed6739a18f12a53842a36b36ee59540e33030 data/ifw/loot_table/entities/sheep/purp
 74c603498c85c130fd8169d9df67c52d2dd3efda data/ifw/loot_table/entities/spider.json
 8473723c53d2dbbe8d872771e015b79ccaa4ce95 data/ifw/loot_table/entities/wood_spider.json
 516cc6e372f56acd7ebd1baf6c5813eeed5f0833 data/ifw/loot_table/entities/zombie.json
+e16ced75ab4cb23184ac3b1a137ebaed432782e1 data/minecraft/loot_table/blocks/obsidian.json
