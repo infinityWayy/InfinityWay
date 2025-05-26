@@ -17,6 +17,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -56,7 +57,7 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
     private int swell;
     private int maxSwell = 30;
     private int explosionRadius = 6;
-    private float maxExplosionDamage = 33.0F; // 新增：最大爆炸伤害
+    private float maxExplosionDamage = 33.0F;
     private int droppedSkulls;
 
     public IFWInfernoCreeper(EntityType<? extends IFWInfernoCreeper> entityType, Level level) {
@@ -115,7 +116,7 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
         }
         compound.putShort("Fuse", (short)this.maxSwell);
         compound.putByte("ExplosionRadius", (byte)this.explosionRadius);
-        compound.putFloat("MaxExplosionDamage", this.maxExplosionDamage); // 保存最大伤害
+        compound.putFloat("MaxExplosionDamage", this.maxExplosionDamage);
         compound.putBoolean("ignited", this.isIgnited());
     }
 
@@ -128,7 +129,7 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
         if (compound.contains("ExplosionRadius", 99)) {
             this.explosionRadius = compound.getByte("ExplosionRadius");
         }
-        if (compound.contains("MaxExplosionDamage", 99)) { // 读取最大伤害
+        if (compound.contains("MaxExplosionDamage", 99)) {
             this.maxExplosionDamage = compound.getFloat("MaxExplosionDamage");
         }
         if (compound.getBoolean("ignited")) {
@@ -211,9 +212,13 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
         this.entityData.set(DATA_SWELL_DIR, state);
     }
 
+    @Override
     public void thunderHit(ServerLevel level, LightningBolt lightning) {
         super.thunderHit(level, lightning);
         this.entityData.set(DATA_IS_POWERED, true);
+        // 播放充能音效
+        this.level().playSound(null, this.getX(), this.getY(), this.getZ(),
+                SoundEvents.LIGHTNING_BOLT_THUNDER, this.getSoundSource(), 1.0F, 0.8F);
     }
 
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
@@ -254,23 +259,27 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
         }
     }
 
-    // 新增：自定义爆炸方法
+    // 自定义爆炸方法
     private void customExplosion(float powerMultiplier) {
         if (this.level().isClientSide) return;
 
+        // 如果是充能状态，使用更大的爆炸范围和伤害
+        float actualExplosionRadius = this.isPowered() ? this.explosionRadius * 2.0F : this.explosionRadius;
+        float actualMaxDamage = this.isPowered() ? this.maxExplosionDamage * 2.0F : this.maxExplosionDamage;
+
         // 创建视觉和声音效果（使用较小的爆炸强度以避免过度破坏方块）
         this.level().explode(this, this.getX(), this.getY(), this.getZ(),
-                Math.min(3.0F, (float)this.explosionRadius * powerMultiplier * 0.5F),
+                Math.min(6.0F, actualExplosionRadius * powerMultiplier * 0.7F),
                 ExplosionInteraction.MOB);
 
         // 自定义伤害计算
-        this.dealCustomExplosionDamage(powerMultiplier);
+        this.dealCustomExplosionDamage(powerMultiplier, actualExplosionRadius, actualMaxDamage);
     }
 
-    // 新增：自定义伤害计算方法
-    private void dealCustomExplosionDamage(float powerMultiplier) {
-        float maxDamage = this.maxExplosionDamage * powerMultiplier;
-        double explosionRange = this.explosionRadius * powerMultiplier;
+    // 自定义伤害计算方法
+    private void dealCustomExplosionDamage(float powerMultiplier, float explosionRadius, float maxDamage) {
+        float actualMaxDamage = maxDamage * powerMultiplier;
+        double explosionRange = explosionRadius * powerMultiplier;
 
         // 获取爆炸范围内的所有实体
         AABB explosionBounds = new AABB(
@@ -289,7 +298,7 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
                 double damageMultiplier = 1.0 - (distance / explosionRange);
                 damageMultiplier = Math.max(0.0, damageMultiplier); // 确保不为负数
 
-                float damage = (float)(maxDamage * damageMultiplier);
+                float damage = (float)(actualMaxDamage * damageMultiplier);
 
                 // 应用伤害
                 if (damage > 0) {
@@ -307,6 +316,24 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
                             knockbackDirection.y * knockbackStrength * 0.5, // 减少垂直击退
                             knockbackDirection.z * knockbackStrength
                     ));
+
+                    // 对玩家添加失明效果
+                    if (entity instanceof Player) {
+                        // 计算失明持续时间：距离越近，失明时间越长
+                        // 最远处(边缘)：1秒(20 ticks)，最近处(中心)：6秒(120 ticks)
+                        // 充能状态下失明时长翻倍
+                        int baseDuration = (int)(20 + (100 * damageMultiplier));
+                        int blindnessDuration = this.isPowered() ? baseDuration * 2 : baseDuration;
+
+                        MobEffectInstance blindnessEffect = new MobEffectInstance(
+                                MobEffects.BLINDNESS,
+                                blindnessDuration,
+                                0,
+                                false,
+                                true
+                        );
+                        entity.addEffect(blindnessEffect);
+                    }
                 }
             }
         }
@@ -315,7 +342,7 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
     private void spawnFireBlocks(float powerMultiplier) {
         if (this.level().isClientSide) return;
 
-        int radius = (int)((float)this.explosionRadius * powerMultiplier);
+        int radius = (int)((this.isPowered() ? this.explosionRadius * 0.8F : this.explosionRadius) * powerMultiplier);
         BlockPos center = this.blockPosition();
 
         for (int x = -radius; x <= radius; x++) {
@@ -377,7 +404,7 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
         return true;
     }
 
-    // 新增：获取和设置最大爆炸伤害的方法
+    // 获取和设置最大爆炸伤害的方法
     public float getMaxExplosionDamage() {
         return this.maxExplosionDamage;
     }

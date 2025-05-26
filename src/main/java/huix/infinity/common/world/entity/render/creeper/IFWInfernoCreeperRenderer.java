@@ -14,6 +14,7 @@ public class IFWInfernoCreeperRenderer extends MobRenderer<IFWInfernoCreeper, Cr
 
     public IFWInfernoCreeperRenderer(EntityRendererProvider.Context context) {
         super(context, new CreeperModel<>(context.bakeLayer(ModelLayers.CREEPER)), 0.5F);
+        this.addLayer(new InfernoCreeperPowerLayer(this, context.getModelSet()));
     }
 
     @Override
