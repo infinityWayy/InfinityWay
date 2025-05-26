@@ -182,7 +182,7 @@ public class IFWZombie extends Digger {
      */
     @Override
     public void setBaby(boolean childZombie) {
-        this.getEntityData().set(DATA_BABY_ID, childZombie);
+        this.getEntityData().set(DATA_BABY_ID, false);
         if (this.level() != null && !this.level().isClientSide) {
             AttributeInstance attributeinstance = this.getAttribute(Attributes.MOVEMENT_SPEED);
             attributeinstance.removeModifier(SPEED_MODIFIER_BABY_ID);
@@ -514,30 +514,32 @@ public class IFWZombie extends Digger {
         }
 
         if (spawnGroupData instanceof net.minecraft.world.entity.monster.Zombie.ZombieGroupData zombie$zombiegroupdata) {
-            if (zombie$zombiegroupdata.isBaby) {
-                this.setBaby(true);
-                if (zombie$zombiegroupdata.canSpawnJockey) {
-                    if ((double) randomsource.nextFloat() < 0.05) {
-                        List<Chicken> list = level.getEntitiesOfClass(
-                                Chicken.class, this.getBoundingBox().inflate(5.0, 3.0, 5.0), EntitySelector.ENTITY_NOT_BEING_RIDDEN
-                        );
-                        if (!list.isEmpty()) {
-                            Chicken chicken = list.getFirst();
-                            chicken.setChickenJockey(true);
-                            this.startRiding(chicken);
-                        }
-                    } else if ((double) randomsource.nextFloat() < 0.05) {
-                        Chicken chicken1 = EntityType.CHICKEN.create(this.level());
-                        if (chicken1 != null) {
-                            chicken1.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-                            chicken1.finalizeSpawn(level, difficulty, MobSpawnType.JOCKEY, null);
-                            chicken1.setChickenJockey(true);
-                            this.startRiding(chicken1);
-                            level.addFreshEntity(chicken1);
-                        }
+        if (zombie$zombiegroupdata.isBaby) {
+            this.setBaby(true);
+            if (zombie$zombiegroupdata.canSpawnJockey) {
+                if ((double) randomsource.nextFloat() < 0.05) {
+                    List<Chicken> list = level.getEntitiesOfClass(
+                            Chicken.class, this.getBoundingBox().inflate(5.0, 3.0, 5.0), EntitySelector.ENTITY_NOT_BEING_RIDDEN
+                    );
+                    if (!list.isEmpty()) {
+                        Chicken chicken = list.getFirst();
+                        chicken.setChickenJockey(true);
+                        this.startRiding(chicken);
+                    }
+                } else if ((double) randomsource.nextFloat() < 0.05) {
+                    Chicken chicken1 = EntityType.CHICKEN.create(this.level());
+                    if (chicken1 != null) {
+                        chicken1.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
+                        chicken1.finalizeSpawn(level, difficulty, MobSpawnType.JOCKEY, null);
+                        chicken1.setChickenJockey(true);
+                        this.startRiding(chicken1);
+                        level.addFreshEntity(chicken1);
                     }
                 }
             }
+        }
+            // 确保僵尸始终是成年的
+            this.setBaby(false);
 
             this.setCanBreakDoors(this.supportsBreakDoorGoal() && randomsource.nextFloat() < f * 0.1F);
             this.populateDefaultEquipmentSlots(randomsource, difficulty);
@@ -559,7 +561,7 @@ public class IFWZombie extends Digger {
     }
 
     public static boolean getSpawnAsBabyOdds(RandomSource random) {
-        return random.nextFloat() < 0.05F;
+        return false;
     }
 
     protected void handleAttributes(float difficulty) {

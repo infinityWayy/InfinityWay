@@ -20,6 +20,13 @@ public class IFWSoundEvents {
                     )
             );
 
+    public static final Supplier<SoundEvent> REVENANT_AMBIENT =
+            SOUND_EVENTS.register("revenant_ambient", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "revenant_ambient")
+                    )
+            );
+
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }

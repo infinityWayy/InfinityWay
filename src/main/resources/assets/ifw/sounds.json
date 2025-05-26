@@ -6,5 +6,21 @@
         "stream": false
       }
     ]
+  },
+  "revenant_ambient": {
+    "sounds": [
+      {
+        "name": "ifw:revenant_ambient1",
+        "stream": false
+      },
+      {
+        "name": "ifw:revenant_ambient2",
+        "stream": false
+      },
+      {
+        "name": "ifw:revenant_ambient3",
+        "stream": false
+      }
+    ]
   }
 }
