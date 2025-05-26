@@ -44,21 +44,24 @@ import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -76,10 +79,6 @@ public class IFWZombie extends Digger {
     private static final EntityDataAccessor<Boolean> DATA_BABY_ID = SynchedEntityData.defineId(IFWZombie.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_SPECIAL_TYPE_ID = SynchedEntityData.defineId(IFWZombie.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_DROWNED_CONVERSION_ID = SynchedEntityData.defineId(IFWZombie.class, EntityDataSerializers.BOOLEAN);
-    public static final float ZOMBIE_LEADER_CHANCE = 0.05F;
-    public static final int REINFORCEMENT_ATTEMPTS = 50;
-    public static final int REINFORCEMENT_RANGE_MAX = 40;
-    public static final int REINFORCEMENT_RANGE_MIN = 7;
     private static final EntityDimensions BABY_DIMENSIONS = IFWEntityType.ZOMBIE.get().getDimensions().scale(0.5F).withEyeHeight(0.93F);
     private static final Predicate<Difficulty> DOOR_BREAKING_PREDICATE = p_34284_ -> p_34284_ == Difficulty.HARD;
     private final BreakDoorGoal breakDoorGoal = new BreakDoorGoal(this, DOOR_BREAKING_PREDICATE);
@@ -274,7 +273,7 @@ public class IFWZombie extends Digger {
     protected void convertToZombieType(EntityType<? extends IFWZombie> entityType) {
         IFWZombie zombie = this.convertTo(entityType, true);
         if (zombie != null) {
-            zombie.handleAttributes(zombie.level().getCurrentDifficultyAt(zombie.blockPosition()).getSpecialMultiplier());
+            zombie.handleAttributes();
             zombie.setCanBreakDoors(zombie.supportsBreakDoorGoal() && this.canBreakDoors());
             net.neoforged.neoforge.event.EventHooks.onLivingConvert(this, zombie);
         }
@@ -331,7 +330,7 @@ public class IFWZombie extends Digger {
                             attributeinstance.addPermanentModifier(
                                     new AttributeModifier(REINFORCEMENT_CALLER_CHARGE_ID, d0 - 0.05, AttributeModifier.Operation.ADD_VALUE)
                             );
-                            zombie.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE).addPermanentModifier(ZOMBIE_REINFORCEMENT_CALLEE_CHARGE);
+                            Objects.requireNonNull(zombie.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE)).addPermanentModifier(ZOMBIE_REINFORCEMENT_CALLEE_CHARGE);
                             break;
                         }
                     }
@@ -504,44 +503,41 @@ public class IFWZombie extends Digger {
 
     @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, @NotNull DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, @NotNull DifficultyInstance difficulty, @NotNull MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
         RandomSource randomsource = level.getRandom();
         spawnGroupData = super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
-        float f = difficulty.getSpecialMultiplier();
-        this.setCanPickUpLoot(randomsource.nextFloat() < 0.55F * f);
+        this.setCanPickUpLoot(true);
         if (spawnGroupData == null) {
-            spawnGroupData = new net.minecraft.world.entity.monster.Zombie.ZombieGroupData(getSpawnAsBabyOdds(randomsource), true);
+            spawnGroupData = new ZombieGroupData(getSpawnAsBabyOdds(randomsource), true);
         }
 
-        if (spawnGroupData instanceof net.minecraft.world.entity.monster.Zombie.ZombieGroupData zombie$zombiegroupdata) {
-        if (zombie$zombiegroupdata.isBaby) {
-            this.setBaby(true);
-            if (zombie$zombiegroupdata.canSpawnJockey) {
-                if ((double) randomsource.nextFloat() < 0.05) {
-                    List<Chicken> list = level.getEntitiesOfClass(
-                            Chicken.class, this.getBoundingBox().inflate(5.0, 3.0, 5.0), EntitySelector.ENTITY_NOT_BEING_RIDDEN
-                    );
-                    if (!list.isEmpty()) {
-                        Chicken chicken = list.getFirst();
-                        chicken.setChickenJockey(true);
-                        this.startRiding(chicken);
-                    }
-                } else if ((double) randomsource.nextFloat() < 0.05) {
-                    Chicken chicken1 = EntityType.CHICKEN.create(this.level());
-                    if (chicken1 != null) {
-                        chicken1.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-                        chicken1.finalizeSpawn(level, difficulty, MobSpawnType.JOCKEY, null);
-                        chicken1.setChickenJockey(true);
-                        this.startRiding(chicken1);
-                        level.addFreshEntity(chicken1);
+        if (spawnGroupData instanceof ZombieGroupData zombie$zombiegroupdata) {
+            if (false && zombie$zombiegroupdata.isBaby) {
+                this.setBaby(true);
+                if (zombie$zombiegroupdata.canSpawnJockey) {
+                    if ((double) randomsource.nextFloat() < 0.05) {
+                        List<Chicken> list = level.getEntitiesOfClass(
+                                Chicken.class, this.getBoundingBox().inflate(5.0, 3.0, 5.0), EntitySelector.ENTITY_NOT_BEING_RIDDEN
+                        );
+                        if (!list.isEmpty()) {
+                            Chicken chicken = list.getFirst();
+                            chicken.setChickenJockey(true);
+                            this.startRiding(chicken);
+                        }
+                    } else if ((double) randomsource.nextFloat() < 0.05) {
+                        Chicken chicken1 = EntityType.CHICKEN.create(this.level());
+                        if (chicken1 != null) {
+                            chicken1.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
+                            chicken1.finalizeSpawn(level, difficulty, MobSpawnType.JOCKEY, null);
+                            chicken1.setChickenJockey(true);
+                            this.startRiding(chicken1);
+                            level.addFreshEntity(chicken1);
+                        }
                     }
                 }
             }
-        }
-            // 确保僵尸始终是成年的
-            this.setBaby(false);
 
-            this.setCanBreakDoors(this.supportsBreakDoorGoal() && randomsource.nextFloat() < f * 0.1F);
+            this.setCanBreakDoors(this.supportsBreakDoorGoal() && randomsource.nextFloat() < 0.1F);
             this.populateDefaultEquipmentSlots(randomsource, difficulty);
             this.populateDefaultEquipmentEnchantments(level, randomsource, difficulty);
         }
@@ -556,32 +552,87 @@ public class IFWZombie extends Digger {
             }
         }
 
-        this.handleAttributes(f);
+        this.handleAttributes();
         return spawnGroupData;
+    }
+
+    @Override
+    protected boolean canReplaceCurrentItem(@NotNull ItemStack candidate, ItemStack existing) {
+        if (existing.isEmpty()) {
+            return true;
+        } else if (candidate.is(Tags.Items.MELEE_WEAPON_TOOLS)) {
+            if (!(existing.is(Tags.Items.MELEE_WEAPON_TOOLS))) {
+                return true;
+            } else {
+                double d2 = this.getApproximateAttackDamageWithItem(candidate);
+                double d3 = this.getApproximateAttackDamageWithItem(existing);
+                return d2 != d3 ? d2 > d3 : this.canReplaceEqualItem(candidate, existing);
+            }
+        } else if (candidate.getItem() instanceof ArmorItem armoritem) {
+            if (EnchantmentHelper.has(existing, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)) {
+                return false;
+            } else if (!(existing.getItem() instanceof ArmorItem armoritem1)) {
+                return true;
+            } else {
+                if (armoritem.getDefense() != armoritem1.getDefense()) {
+                    return armoritem.getDefense() > armoritem1.getDefense();
+                } else {
+                    return armoritem.getToughness() != armoritem1.getToughness()
+                            ? armoritem.getToughness() > armoritem1.getToughness()
+                            : this.canReplaceEqualItem(candidate, existing);
+                }
+            }
+        } else {
+            if (candidate.is(Tags.Items.TOOLS)) {
+                if (existing.getItem() instanceof BlockItem) {
+                    return true;
+                }
+
+                if (existing.is(Tags.Items.TOOLS)) {
+                    double d1 = this.getApproximateAttackDamageWithItem(candidate);
+                    double d0 = this.getApproximateAttackDamageWithItem(existing);
+                    if (d1 != d0) {
+                        return d1 > d0;
+                    }
+
+                    return this.canReplaceEqualItem(candidate, existing);
+                }
+            }
+
+            return false;
+        }
+    }
+
+    private double getApproximateAttackDamageWithItem(ItemStack itemStack) {
+
+        // Neo: Respect gameplay modifiers
+        ItemAttributeModifiers itemattributemodifiers = itemStack.getAttributeModifiers();
+
+        return itemattributemodifiers.compute(this.getAttributeBaseValue(Attributes.ATTACK_DAMAGE), EquipmentSlot.MAINHAND);
     }
 
     public static boolean getSpawnAsBabyOdds(RandomSource random) {
         return false;
     }
 
-    protected void handleAttributes(float difficulty) {
+    protected void handleAttributes() {
         this.randomizeReinforcementsChance();
-        this.getAttribute(Attributes.KNOCKBACK_RESISTANCE)
+        Objects.requireNonNull(this.getAttribute(Attributes.KNOCKBACK_RESISTANCE))
                 .addOrReplacePermanentModifier(
                         new AttributeModifier(RANDOM_SPAWN_BONUS_ID, this.random.nextDouble() * 0.05F, AttributeModifier.Operation.ADD_VALUE)
                 );
-        double d0 = this.random.nextDouble() * 1.5 * (double) difficulty;
+        double d0 = this.random.nextDouble() * 1.5;
         if (d0 > 1.0) {
-            this.getAttribute(Attributes.FOLLOW_RANGE)
+            Objects.requireNonNull(this.getAttribute(Attributes.FOLLOW_RANGE))
                     .addOrReplacePermanentModifier(new AttributeModifier(ZOMBIE_RANDOM_SPAWN_BONUS_ID, d0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         }
 
-        if (this.random.nextFloat() < difficulty * 0.05F) {
-            this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE)
+        if (this.random.nextFloat() < 0.05F) {
+            Objects.requireNonNull(this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE))
                     .addOrReplacePermanentModifier(
                             new AttributeModifier(LEADER_ZOMBIE_BONUS_ID, this.random.nextDouble() * 0.25 + 0.5, AttributeModifier.Operation.ADD_VALUE)
                     );
-            this.getAttribute(Attributes.MAX_HEALTH)
+            Objects.requireNonNull(this.getAttribute(Attributes.MAX_HEALTH))
                     .addOrReplacePermanentModifier(
                             new AttributeModifier(LEADER_ZOMBIE_BONUS_ID, this.random.nextDouble() * 3.0 + 1.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
                     );
@@ -590,7 +641,7 @@ public class IFWZombie extends Digger {
     }
 
     protected void randomizeReinforcementsChance() {
-        this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE).setBaseValue(this.random.nextDouble() + 0.1F);
+        Objects.requireNonNull(this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE)).setBaseValue(this.random.nextDouble() + 0.1F);
     }
 
     @Override
@@ -630,13 +681,6 @@ public class IFWZombie extends Digger {
         }
     }
 
-    public static class ZombieGroupData implements SpawnGroupData {
-        public final boolean isBaby;
-        public final boolean canSpawnJockey;
-
-        public ZombieGroupData(boolean isBaby, boolean canSpawnJockey) {
-            this.isBaby = isBaby;
-            this.canSpawnJockey = canSpawnJockey;
-        }
+    public record ZombieGroupData(boolean isBaby, boolean canSpawnJockey) implements SpawnGroupData {
     }
 }

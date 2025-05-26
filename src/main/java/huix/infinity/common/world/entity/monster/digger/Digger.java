@@ -17,7 +17,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -28,6 +27,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 
 import static net.minecraft.world.level.block.Block.dropResources;
@@ -44,8 +44,9 @@ public class Digger extends Monster {
     }
 
     public boolean isHoldingItemThatPreventsDigging() {
-        Item handItem = this.getMainHandItem().getItem();
-        return handItem instanceof SwordItem || handItem instanceof ClubWeapon || handItem instanceof ScytheTool;
+        ItemStack handItem = this.getMainHandItem();
+        return handItem.is(Tags.Items.MELEE_WEAPON_TOOLS) ||
+                handItem.getItem() instanceof ClubWeapon || handItem.getItem() instanceof ScytheTool;
     }
 
     public boolean isEffectiveTool(BlockState state) {
