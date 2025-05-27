@@ -6,6 +6,7 @@ import huix.infinity.common.world.entity.animal.IFWPig;
 import huix.infinity.common.world.entity.animal.IFWSheep;
 import huix.infinity.common.world.entity.monster.Ghoul;
 import huix.infinity.common.world.entity.monster.InfernoCreeper;
+import huix.infinity.common.world.entity.monster.InvisibleStalker;
 import huix.infinity.common.world.entity.monster.Wight;
 import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
@@ -101,6 +102,24 @@ public class IFWEntityType {
                             .clientTrackingRange(8)
                             .build("wight")
             );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<InvisibleStalker>> INVISIBLE_STALKER =
+            ENTITIES.register("invisible_stalker",
+                    () -> EntityType.Builder.<InvisibleStalker>of(InvisibleStalker::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.95F)
+                            .eyeHeight(1.74F)
+                            .clientTrackingRange(8)
+                            .build("invisible_stalker")
+            );
+
+//    public static final DeferredHolder<EntityType<?>, EntityType<InvisibleStalker>> SHADOW =
+//            ENTITIES.register("shadow",
+//                    () -> EntityType.Builder.<Shadow>of(InvisibleStalker::new, MobCategory.MONSTER)
+//                            .sized(0.6F, 1.95F)
+//                            .eyeHeight(1.74F)
+//                            .clientTrackingRange(8)
+//                            .build("shadow")
+//          );
 
     public static final DeferredHolder<EntityType<?>, EntityType<InfernoCreeper>> INFERNO_CREEPER =
             ENTITIES.register("inferno_creeper",

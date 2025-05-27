@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-27T13:03:04.2690739	Item Models: ifw
+// 1.21.1	2025-05-27T18:50:52.6310931	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -158,6 +158,7 @@ c93b2e3662bb6ee422fe0045e4a64131c603143d assets/ifw/models/item/golden_war_hamme
 b7db7c441377ed9a1349d8bdbac54a2d23746367 assets/ifw/models/item/gold_fishing_rod.json
 6e1b24d388884ee48afb4e19595cad3003885c1a assets/ifw/models/item/ice_cream.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/inferno_creeper_spawn_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/invisible_stalker_spawn_egg.json
 300083a89aac3816b28fb60d23aa2cfe3d102ade assets/ifw/models/item/iron_axe.json
 ae20e8de7408f01fb71649a24b74b4e2cc7134ed assets/ifw/models/item/iron_battle_axe.json
 1608ae092313f49c2ed04d9c2f0586a3b2575db4 assets/ifw/models/item/iron_chain.json

@@ -27,7 +27,6 @@ public class IFWSoundEvents {
                     )
             );
 
-    // 食尸鬼音效
     public static final Supplier<SoundEvent> GHOUL_AMBIENT =
             SOUND_EVENTS.register("ghoul_ambient", () ->
                     SoundEvent.createVariableRangeEvent(
@@ -49,7 +48,6 @@ public class IFWSoundEvents {
                     )
             );
 
-    // 尸妖音效
     public static final Supplier<SoundEvent> WIGHT_AMBIENT =
             SOUND_EVENTS.register("wight_ambient", () ->
                     SoundEvent.createVariableRangeEvent(
@@ -68,6 +66,27 @@ public class IFWSoundEvents {
             SOUND_EVENTS.register("wight_death", () ->
                     SoundEvent.createVariableRangeEvent(
                             ResourceLocation.fromNamespaceAndPath("ifw", "wight_death")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> INVISIBLE_STALKER_AMBIENT =
+            SOUND_EVENTS.register("invisible_stalker_ambient", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "invisible_stalker_ambient")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> INVISIBLE_STALKER_HURT =
+            SOUND_EVENTS.register("invisible_stalker_hurt", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "invisible_stalker_hurt")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> INVISIBLE_STALKER_DEATH =
+            SOUND_EVENTS.register("invisible_stalker_death", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "invisible_stalker_death")
                     )
             );
 

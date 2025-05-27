@@ -86,5 +86,41 @@
         "stream": false
       }
     ]
+  },
+  "invisible_stalker_ambient": {
+    "sounds": [
+      {
+        "name": "ifw:mob/invisible_stalker/ambient1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/invisible_stalker/ambient2",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/invisible_stalker/ambient3",
+        "stream": false
+      }
+    ]
+  },
+  "invisible_stalker_hurt": {
+    "sounds": [
+      {
+        "name": "ifw:mob/invisible_stalker/hurt1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/invisible_stalker/hurt2",
+        "stream": false
+      }
+    ]
+  },
+  "invisible_stalker_death": {
+    "sounds": [
+      {
+        "name": "ifw:mob/invisible_stalker/death",
+        "stream": false
+      }
+    ]
   }
 }

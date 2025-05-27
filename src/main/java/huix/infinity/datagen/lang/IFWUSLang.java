@@ -63,6 +63,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.REVENANT.value(), "Revenant");
         add(IFWEntityType.GHOUL.value(), "Ghoul");
         add(IFWEntityType.WIGHT.value(), "Wight");
+        add(IFWEntityType.INVISIBLE_STALKER.value(), "Invisible Stalker");
         add(IFWEntityType.INFERNO_CREEPER.value(), "Inferno Creeper");
         add(IFWEntityType.SPIDER.value(), "Spider");
         add(IFWEntityType.WOOD_SPIDER.value(), "Wood Spider");
@@ -80,6 +81,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.revenant_spawn_egg.get(), "Revenant Spawn Egg");
         add(IFWItems.ghoul_spawn_egg.get(), "Ghoul Spawn Egg");
         add(IFWItems.wight_spawn_egg.get(), "Wight Spawn Egg");
+        add(IFWItems.invisible_stalker_spawn_egg.get(), "Invisible Stalker Spawn Egg");
         add(IFWItems.inferno_creeper_spawn_egg.get(), "Inferno Creeper Spawn Egg");
         add(IFWItems.spider_spawn_egg.get(), "Spider Spawn Egg");
         add(IFWItems.wood_spider_spawn_egg.get(), "Wood Spider Spawn Egg");

@@ -61,7 +61,6 @@ public class Ghoul extends IFWZombie {
 
         // 寻找食物的行为
         this.goalSelector.addGoal(1, new MoveToItemGoal(this, 1.0F, true));
-        this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0, true)); // 攻击动物
 
         // 目标选择AI
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
@@ -76,7 +75,8 @@ public class Ghoul extends IFWZombie {
                 .add(Attributes.FOLLOW_RANGE, 40.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.28F)
                 .add(Attributes.ATTACK_DAMAGE, 5.0)
-                .add(Attributes.MAX_HEALTH, 20.0);
+                .add(Attributes.MAX_HEALTH, 20.0)
+                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
     }
 
     @Override

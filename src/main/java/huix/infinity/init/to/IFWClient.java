@@ -16,6 +16,7 @@ import huix.infinity.common.world.entity.render.creeper.InfernoCreeperRenderer;
 import huix.infinity.common.world.entity.render.projectile.IFWWebProjectileRenderer;
 import huix.infinity.common.world.entity.render.spider.IFWSpiderRenderer;
 import huix.infinity.common.world.entity.render.zombie.IFWZombieRenderer;
+import huix.infinity.common.world.entity.render.zombie.InvisibleStalkerRender;
 import huix.infinity.common.world.entity.render.zombie.RevenantRenderer;
 import huix.infinity.common.world.inventory.IFWMenuTypes;
 import huix.infinity.common.world.item.IFWItems;
@@ -101,6 +102,7 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.REVENANT.get(), RevenantRenderer::new);
         event.registerEntityRenderer(IFWEntityType.GHOUL.get(), HumanoidTypeRenderer::new);
         event.registerEntityRenderer(IFWEntityType.WIGHT.get(), HumanoidTypeRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.INVISIBLE_STALKER.get(), InvisibleStalkerRender::new);
         event.registerEntityRenderer(IFWEntityType.INFERNO_CREEPER.get(), InfernoCreeperRenderer::new);
 
         // 蜘蛛类渲染器 - 所有蜘蛛都使用通用渲染器
