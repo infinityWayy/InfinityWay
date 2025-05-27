@@ -813,6 +813,12 @@ public class IFWItems {
     public static final DeferredItem<Item> revenant_spawn_egg = ITEMS.register("revenant_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.REVENANT, 0x3C2414, 0xB22222, new Item.Properties()));
 
+    public static final DeferredItem<Item> ghoul_spawn_egg = ITEMS.register("ghoul_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.GHOUL, 0x6B7B8C, 0x2F2F2F, new Item.Properties()));
+
+    public static final DeferredItem<Item> wight_spawn_egg = ITEMS.register("wight_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.WIGHT, 0xF5F5F5, 0xE8E8E8, new Item.Properties()));
+
     public static final DeferredItem<Item> inferno_creeper_spawn_egg = ITEMS.register("inferno_creeper_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.INFERNO_CREEPER, 0xFFAA0000, 0, new Item.Properties()));
 

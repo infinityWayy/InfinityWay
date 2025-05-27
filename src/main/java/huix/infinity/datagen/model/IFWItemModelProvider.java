@@ -418,13 +418,15 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.ancient_metal_chain.get());
         basicItem(IFWItems.mithril_chain.get());
         basicItem(IFWItems.adamantium_chain.get());
-        // Spawn Eggs
+        // Spawn Egg
         spawnEggItem(IFWItems.chicken_spawn_egg.get());
         spawnEggItem(IFWItems.cow_spawn_egg.get());
         spawnEggItem(IFWItems.pig_spawn_egg.get());
         spawnEggItem(IFWItems.sheep_spawn_egg.get());
         spawnEggItem(IFWItems.zombie_spawn_egg.get());
         spawnEggItem(IFWItems.revenant_spawn_egg.get());
+        spawnEggItem(IFWItems.ghoul_spawn_egg.get());
+        spawnEggItem(IFWItems.wight_spawn_egg.get());
         spawnEggItem(IFWItems.inferno_creeper_spawn_egg.get());
         spawnEggItem(IFWItems.spider_spawn_egg.get());
         spawnEggItem(IFWItems.wood_spider_spawn_egg.get());

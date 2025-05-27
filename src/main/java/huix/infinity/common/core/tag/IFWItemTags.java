@@ -18,6 +18,7 @@ public class IFWItemTags {
     public static final TagKey<Item> BUCKETS_TROPICAL_FISH = bind("buckets_tropical_fish");
     public static final TagKey<Item> BUCKETS_STONE = bind("buckets_stone");
     public static final TagKey<Item> HAS_ENCHANTING_RECIPE = bind("has_enchanting_recipe");
+    public static final TagKey<Item> SILVER_ITEM = bind("silver_item");
 
     public static TagKey<Item> bind(String name) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, name));

@@ -6,6 +6,9 @@ import huix.infinity.common.world.entity.animal.IFWChicken;
 import huix.infinity.common.world.entity.animal.IFWCow;
 import huix.infinity.common.world.entity.animal.IFWPig;
 import huix.infinity.common.world.entity.animal.IFWSheep;
+import huix.infinity.common.world.entity.monster.Ghoul;
+import huix.infinity.common.world.entity.monster.Wight;
+import huix.infinity.common.world.entity.monster.InfernoCreeper;
 import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
@@ -28,7 +31,9 @@ public class IFWExtraEvent {
         // 怪物实体属性注册
         event.put(IFWEntityType.ZOMBIE.get(), IFWZombie.createAttributes().build());
         event.put(IFWEntityType.REVENANT.get(), Revenant.createAttributes().build());
-        event.put(IFWEntityType.INFERNO_CREEPER.get(), IFWInfernoCreeper.createAttributes().build());
+        event.put(IFWEntityType.GHOUL.get(), Ghoul.createAttributes().build());
+        event.put(IFWEntityType.WIGHT.get(), Wight.createAttributes().build());
+        event.put(IFWEntityType.INFERNO_CREEPER.get(), InfernoCreeper.createAttributes().build());
 
         event.put(IFWEntityType.SPIDER.get(), IFWSpider.createAttributes().build());
         event.put(IFWEntityType.WOOD_SPIDER.get(), IFWWoodSpider.createAttributes().build());

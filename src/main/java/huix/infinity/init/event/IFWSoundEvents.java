@@ -27,6 +27,50 @@ public class IFWSoundEvents {
                     )
             );
 
+    // 食尸鬼音效
+    public static final Supplier<SoundEvent> GHOUL_AMBIENT =
+            SOUND_EVENTS.register("ghoul_ambient", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "ghoul_ambient")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> GHOUL_HURT =
+            SOUND_EVENTS.register("ghoul_hurt", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "ghoul_hurt")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> GHOUL_DEATH =
+            SOUND_EVENTS.register("ghoul_death", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "ghoul_death")
+                    )
+            );
+
+    // 尸妖音效
+    public static final Supplier<SoundEvent> WIGHT_AMBIENT =
+            SOUND_EVENTS.register("wight_ambient", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "wight_ambient")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> WIGHT_HURT =
+            SOUND_EVENTS.register("wight_hurt", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "wight_hurt")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> WIGHT_DEATH =
+            SOUND_EVENTS.register("wight_death", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "wight_death")
+                    )
+            );
+
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }

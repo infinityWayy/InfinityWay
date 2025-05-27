@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-25T19:29:33.8357586	Item Models: ifw
+// 1.21.1	2025-05-27T13:03:04.2690739	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -135,6 +135,7 @@ cb414e841673adbd3efae70839c2905968c6618e assets/ifw/models/item/flint_knife.json
 33513bb693bfb4e90a3746f419fdb289bf0d250d assets/ifw/models/item/flint_shard.json
 a1e0d77948f528e09e69d1dde3c9375abe845732 assets/ifw/models/item/flint_shovel.json
 95fbbee886ce84d3c574697e4b72e871126bc9b5 assets/ifw/models/item/flour.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/ghoul_spawn_egg.json
 507aecd05385c0f3f9087233c7fc2aa5dd269150 assets/ifw/models/item/glass_shard.json
 9808b78fbbfa7e439440067101f699bc7b4a74ca assets/ifw/models/item/golden_axe.json
 f39a0f62dbc00a047f7bc8bb7fd5ad0d10c52e27 assets/ifw/models/item/golden_battle_axe.json
@@ -350,6 +351,7 @@ c104c9f79af66ca93416debbac547e4e018cb221 assets/ifw/models/item/water_copper_buc
 496cd2cfc1ebec89247f36dbc7ef4d714a8362e2 assets/ifw/models/item/water_gold_bucket.json
 e429c19fedfbb7eca0fe83f4d6b1a08bbeb2a4a1 assets/ifw/models/item/water_mithril_bucket.json
 b69f90d530c83720f53651aa9c99cf35cc23f0b2 assets/ifw/models/item/water_silver_bucket.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/wight_spawn_egg.json
 39c92357c5e3bf67d7aff6f9d9b7362e8a391756 assets/ifw/models/item/wooden_club.json
 800bb34bc00e80a6084e66e54dfcab075dc08d9a assets/ifw/models/item/wooden_shovel.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/wood_spider_spawn_egg.json

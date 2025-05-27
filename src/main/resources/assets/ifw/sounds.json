@@ -2,7 +2,7 @@
   "classic_hurt": {
     "sounds": [
       {
-        "name": "ifw:classic_hurt",
+        "name": "ifw:classic/classic_hurt",
         "stream": false
       }
     ]
@@ -10,15 +10,79 @@
   "revenant_ambient": {
     "sounds": [
       {
-        "name": "ifw:revenant_ambient1",
+        "name": "ifw:mob/revenant/ambient1",
         "stream": false
       },
       {
-        "name": "ifw:revenant_ambient2",
+        "name": "ifw:mob/revenant/ambient2",
         "stream": false
       },
       {
-        "name": "ifw:revenant_ambient3",
+        "name": "ifw:mob/revenant/ambient3",
+        "stream": false
+      }
+    ]
+  },
+  "ghoul_ambient": {
+    "sounds": [
+      {
+        "name": "ifw:mob/ghoul/ambient1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/ghoul/ambient2",
+        "stream": false
+      }
+    ]
+  },
+  "ghoul_hurt": {
+    "sounds": [
+      {
+        "name": "ifw:mob/ghoul/hurt1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/ghoul/hurt2",
+        "stream": false
+      }
+    ]
+  },
+  "ghoul_death": {
+    "sounds": [
+      {
+        "name": "ifw:mob/ghoul/death",
+        "stream": false
+      }
+    ]
+  },
+  "wight_ambient": {
+    "sounds": [
+      {
+        "name": "ifw:mob/wight/ambient1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/wight/ambient2",
+        "stream": false
+      }
+    ]
+  },
+  "wight_hurt": {
+    "sounds": [
+      {
+        "name": "ifw:mob/wight/hurt1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/wight/hurt2",
+        "stream": false
+      }
+    ]
+  },
+  "wight_death": {
+    "sounds": [
+      {
+        "name": "ifw:mob/wight/death",
         "stream": false
       }
     ]

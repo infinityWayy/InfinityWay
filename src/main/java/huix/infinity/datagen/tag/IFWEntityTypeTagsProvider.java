@@ -34,8 +34,8 @@ public class IFWEntityTypeTagsProvider extends EntityTypeTagsProvider {
 
         // 亡灵生物标签
         this.tag(EntityTypeTags.UNDEAD)
-                .add(IFWEntityType.ZOMBIE.get());
-
+                .add(IFWEntityType.ZOMBIE.get())
+                .add(IFWEntityType.WIGHT.get());
         // 节肢动物标签
         this.tag(EntityTypeTags.ARTHROPOD)
                 .add(IFWEntityType.SPIDER.get())

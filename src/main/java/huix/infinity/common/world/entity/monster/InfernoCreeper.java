@@ -1,4 +1,4 @@
-package huix.infinity.common.world.entity.monster.arachnid;
+package huix.infinity.common.world.entity.monster;
 
 import java.util.Collection;
 import java.util.List;
@@ -49,7 +49,7 @@ import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
-public class IFWInfernoCreeper extends Monster implements PowerableMob {
+public class InfernoCreeper extends Monster implements PowerableMob {
     private static final EntityDataAccessor<Integer> DATA_SWELL_DIR;
     private static final EntityDataAccessor<Boolean> DATA_IS_POWERED;
     private static final EntityDataAccessor<Boolean> DATA_IS_IGNITED;
@@ -60,7 +60,7 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
     private float maxExplosionDamage = 33.0F;
     private int droppedSkulls;
 
-    public IFWInfernoCreeper(EntityType<? extends IFWInfernoCreeper> entityType, Level level) {
+    public InfernoCreeper(EntityType<? extends InfernoCreeper> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(PathType.WATER, -1.0F);
         this.setPathfindingMalus(PathType.LAVA, 8.0F);
@@ -180,7 +180,7 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
     protected void dropCustomDeathLoot(ServerLevel level, DamageSource damageSource, boolean recentlyHit) {
         super.dropCustomDeathLoot(level, damageSource, recentlyHit);
         Entity entity = damageSource.getEntity();
-        if (entity != this && entity instanceof IFWInfernoCreeper infernoCreeper) {
+        if (entity != this && entity instanceof InfernoCreeper infernoCreeper) {
             if (infernoCreeper.canDropMobsSkull()) {
                 infernoCreeper.increaseDroppedSkulls();
                 this.spawnAtLocation(Items.CREEPER_HEAD);
@@ -414,16 +414,16 @@ public class IFWInfernoCreeper extends Monster implements PowerableMob {
     }
 
     static {
-        DATA_SWELL_DIR = SynchedEntityData.defineId(IFWInfernoCreeper.class, EntityDataSerializers.INT);
-        DATA_IS_POWERED = SynchedEntityData.defineId(IFWInfernoCreeper.class, EntityDataSerializers.BOOLEAN);
-        DATA_IS_IGNITED = SynchedEntityData.defineId(IFWInfernoCreeper.class, EntityDataSerializers.BOOLEAN);
+        DATA_SWELL_DIR = SynchedEntityData.defineId(InfernoCreeper.class, EntityDataSerializers.INT);
+        DATA_IS_POWERED = SynchedEntityData.defineId(InfernoCreeper.class, EntityDataSerializers.BOOLEAN);
+        DATA_IS_IGNITED = SynchedEntityData.defineId(InfernoCreeper.class, EntityDataSerializers.BOOLEAN);
     }
 
     public static class InfernoCreeperSwellGoal extends net.minecraft.world.entity.ai.goal.Goal {
-        private final IFWInfernoCreeper creeper;
+        private final InfernoCreeper creeper;
         private LivingEntity target;
 
-        public InfernoCreeperSwellGoal(IFWInfernoCreeper creeper) {
+        public InfernoCreeperSwellGoal(InfernoCreeper creeper) {
             this.creeper = creeper;
             this.setFlags(java.util.EnumSet.of(Flag.MOVE));
         }

@@ -95,5 +95,17 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
         tag(IFWItemTags.HAS_ENCHANTING_RECIPE).add(Items.GOLDEN_APPLE);
         tag(IFWItemTags.HAS_ENCHANTING_RECIPE).add(Items.POTION);
 
+        tag(IFWItemTags.SILVER_ITEM).add(
+                IFWItems.silver_sword.get(), IFWItems.silver_axe.get(), IFWItems.silver_pickaxe.get(), IFWItems.silver_shovel.get(), IFWItems.silver_hoe.get(),
+                IFWItems.silver_battle_axe.get(), IFWItems.silver_dagger.get(), IFWItems.silver_mattock.get(), IFWItems.silver_scythe.get(),
+                IFWItems.silver_shears.get(), IFWItems.silver_war_hammer.get(),
+                IFWItems.silver_helmet.get(), IFWItems.silver_chestplate.get(), IFWItems.silver_leggings.get(), IFWItems.silver_boots.get(),
+                IFWItems.silver_chainmail_helmet.get(), IFWItems.silver_chainmail_chestplate.get(), IFWItems.silver_chainmail_leggings.get(), IFWItems.silver_chainmail_boots.get(),
+                IFWItems.silver_ingot.get(), IFWItems.silver_nugget.get(),
+                IFWItems.silver_fishing_rod.get(),
+                IFWItems.silver_bucket.get(), IFWItems.water_silver_bucket.get(), IFWItems.lava_silver_bucket.get(), IFWItems.milk_silver_bucket.get(),
+                IFWItems.powder_snow_silver_bucket.get(), IFWItems.tropical_silver_bucket.get(), IFWItems.stone_silver_bucket.get(), IFWItems.pufferfish_silver_bucket.get(),
+                IFWItems.salmon_silver_bucket.get(), IFWItems.cod_silver_bucket.get(), IFWItems.axolotl_silver_bucket.get()
+        );
     }
 }

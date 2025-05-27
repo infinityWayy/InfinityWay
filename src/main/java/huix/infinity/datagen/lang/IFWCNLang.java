@@ -52,12 +52,15 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("Curses.ifw.fear_of_creepers.desc", "你发现你难以对狼发起有效攻击");
         add("Curses.ifw.fear_of_undead.desc", "你发现你难以对亡灵生物发起有效攻击");
 
+        // 生物名称
         add(IFWEntityType.CHICKEN.value(), "鸡");
         add(IFWEntityType.SHEEP.value(), "羊");
         add(IFWEntityType.PIG.value(), "猪");
         add(IFWEntityType.COW.value(), "牛");
         add(IFWEntityType.ZOMBIE.value(), "僵尸");
         add(IFWEntityType.REVENANT.value(), "亡魂");
+        add(IFWEntityType.GHOUL.value(), "食尸鬼");
+        add(IFWEntityType.WIGHT.value(), "尸妖");
         add(IFWEntityType.INFERNO_CREEPER.value(), "地狱苦力怕");
         add(IFWEntityType.SPIDER.value(), "蜘蛛");
         add(IFWEntityType.WOOD_SPIDER.value(), "木蜘蛛");
@@ -65,6 +68,24 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.PHASE_SPIDER.value(), "相位蜘蛛");
         add(IFWEntityType.CAVE_SPIDER.value(), "洞穴蜘蛛");
         add(IFWEntityType.DEMON_SPIDER.value(), "恶魔蜘蛛");
+
+        // 刷怪蛋
+        add(IFWItems.chicken_spawn_egg.get(), "鸡刷怪蛋");
+        add(IFWItems.cow_spawn_egg.get(), "牛刷怪蛋");
+        add(IFWItems.pig_spawn_egg.get(), "猪刷怪蛋");
+        add(IFWItems.sheep_spawn_egg.get(), "羊刷怪蛋");
+        add(IFWItems.zombie_spawn_egg.get(), "僵尸刷怪蛋");
+        add(IFWItems.revenant_spawn_egg.get(), "亡灵刷怪蛋");
+        add(IFWItems.ghoul_spawn_egg.get(), "食尸鬼刷怪蛋");
+        add(IFWItems.wight_spawn_egg.get(), "尸妖刷怪蛋");
+        add(IFWItems.inferno_creeper_spawn_egg.get(), "地狱苦力怕刷怪蛋");
+        add(IFWItems.spider_spawn_egg.get(), "蜘蛛刷怪蛋");
+        add(IFWItems.wood_spider_spawn_egg.get(), "木蜘蛛刷怪蛋");
+        add(IFWItems.black_widow_spider_spawn_egg.get(), "黑寡妇蜘蛛刷怪蛋");
+        add(IFWItems.phase_spider_spawn_egg.get(), "相位蜘蛛刷怪蛋");
+        add(IFWItems.cave_spider_spawn_egg.get(), "洞穴蜘蛛刷怪蛋");
+        add(IFWItems.demon_spider_spawn_egg.get(), "恶魔蜘蛛刷怪蛋");
+
         add("commands.xp.message", "你当前的经验值为 %s");
         add("commands.day.message", "今天是第 %s 天");
         add("commands.stats.phytonutrients", "植物营养素: %d/%d (%.1f%%/%.1f%%)");
@@ -474,19 +495,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.golden_chainmail_chestplate.get(), "金锁链胸甲");
         add(IFWItems.golden_chainmail_leggings.get(), "金锁链护腿");
         add(IFWItems.golden_chainmail_boots.get(), "金锁链鞋子");
-        add(IFWItems.chicken_spawn_egg.get(), "鸡刷怪蛋");
-        add(IFWItems.cow_spawn_egg.get(), "牛刷怪蛋");
-        add(IFWItems.pig_spawn_egg.get(), "猪刷怪蛋");
-        add(IFWItems.sheep_spawn_egg.get(), "羊刷怪蛋");
-        add(IFWItems.zombie_spawn_egg.get(), "僵尸刷怪蛋");
-        add(IFWItems.revenant_spawn_egg.get(), "亡灵刷怪蛋");
-        add(IFWItems.inferno_creeper_spawn_egg.get(), "地狱苦力怕刷怪蛋");
-        add(IFWItems.spider_spawn_egg.get(), "蜘蛛刷怪蛋");
-        add(IFWItems.wood_spider_spawn_egg.get(), "木蜘蛛刷怪蛋");
-        add(IFWItems.black_widow_spider_spawn_egg.get(), "黑寡妇蜘蛛刷怪蛋");
-        add(IFWItems.phase_spider_spawn_egg.get(), "相位蜘蛛刷怪蛋");
-        add(IFWItems.cave_spider_spawn_egg.get(), "洞穴蜘蛛刷怪蛋");
-        add(IFWItems.demon_spider_spawn_egg.get(), "恶魔蜘蛛刷怪蛋");
+
         //附魔书
         add("enchantment.ifw.speed", "速度");
         //Effect

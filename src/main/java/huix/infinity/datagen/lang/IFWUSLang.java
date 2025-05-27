@@ -53,6 +53,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("Curses.ifw.fear_of_wolves.desc", "You've become fearful of wolves|and have difficulty striking them|in melee combat");
         add("Curses.ifw.fear_of_creepers.desc", "You've become fearful of creepers|and have difficulty striking them|in melee combat");
         add("Curses.ifw.fear_of_undead.desc", "You've become fearful of undead|and have difficulty striking them|in melee combat");
+
         //Entity
         add(IFWEntityType.CHICKEN.value(), "Chicken");
         add(IFWEntityType.SHEEP.value(), "Sheep");
@@ -60,6 +61,8 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.COW.value(), "Cow");
         add(IFWEntityType.ZOMBIE.value(), "Zombie");
         add(IFWEntityType.REVENANT.value(), "Revenant");
+        add(IFWEntityType.GHOUL.value(), "Ghoul");
+        add(IFWEntityType.WIGHT.value(), "Wight");
         add(IFWEntityType.INFERNO_CREEPER.value(), "Inferno Creeper");
         add(IFWEntityType.SPIDER.value(), "Spider");
         add(IFWEntityType.WOOD_SPIDER.value(), "Wood Spider");
@@ -67,6 +70,24 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.PHASE_SPIDER.value(), "Phase Spider");
         add(IFWEntityType.CAVE_SPIDER.value(), "Cave Spider");
         add(IFWEntityType.DEMON_SPIDER.value(), "Demon Spider");
+
+        // Spawn Egg
+        add(IFWItems.chicken_spawn_egg.get(), "Chicken Spawn Egg");
+        add(IFWItems.cow_spawn_egg.get(), "Cow Spawn Egg");
+        add(IFWItems.pig_spawn_egg.get(), "Pig Spawn Egg");
+        add(IFWItems.sheep_spawn_egg.get(), "Sheep Spawn Egg");
+        add(IFWItems.zombie_spawn_egg.get(), "Zombie Spawn Egg");
+        add(IFWItems.revenant_spawn_egg.get(), "Revenant Spawn Egg");
+        add(IFWItems.ghoul_spawn_egg.get(), "Ghoul Spawn Egg");
+        add(IFWItems.wight_spawn_egg.get(), "Wight Spawn Egg");
+        add(IFWItems.inferno_creeper_spawn_egg.get(), "Inferno Creeper Spawn Egg");
+        add(IFWItems.spider_spawn_egg.get(), "Spider Spawn Egg");
+        add(IFWItems.wood_spider_spawn_egg.get(), "Wood Spider Spawn Egg");
+        add(IFWItems.black_widow_spider_spawn_egg.get(), "Black Widow Spider Spawn Egg");
+        add(IFWItems.phase_spider_spawn_egg.get(), "Phase Spider Spawn Egg");
+        add(IFWItems.cave_spider_spawn_egg.get(), "Cave Spider Spawn Egg");
+        add(IFWItems.demon_spider_spawn_egg.get(), "Demon Spider Spawn Egg");
+
         //Commands
         add("commands.xp.message", "You have %s experience");
         add("commands.day.message", "It is day %s of this world");
@@ -479,19 +500,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.golden_chainmail_chestplate.get(), "Gold Chainmail Chestplate");
         add(IFWItems.golden_chainmail_leggings.get(), "Gold Chainmail Leggings");
         add(IFWItems.golden_chainmail_boots.get(), "Gold Chainmail Boots");
-        add(IFWItems.chicken_spawn_egg.get(), "Chicken Spawn Egg");
-        add(IFWItems.cow_spawn_egg.get(), "Cow Spawn Egg");
-        add(IFWItems.pig_spawn_egg.get(), "Pig Spawn Egg");
-        add(IFWItems.sheep_spawn_egg.get(), "Sheep Spawn Egg");
-        add(IFWItems.zombie_spawn_egg.get(), "Zombie Spawn Egg");
-        add(IFWItems.revenant_spawn_egg.get(), "Revenant Spawn Egg");
-        add(IFWItems.inferno_creeper_spawn_egg.get(), "Inferno Creeper Spawn Egg");
-        add(IFWItems.spider_spawn_egg.get(), "Spider Spawn Egg");
-        add(IFWItems.wood_spider_spawn_egg.get(), "Wood Spider Spawn Egg");
-        add(IFWItems.black_widow_spider_spawn_egg.get(), "Black Widow Spider Spawn Egg");
-        add(IFWItems.phase_spider_spawn_egg.get(), "Phase Spider Spawn Egg");
-        add(IFWItems.cave_spider_spawn_egg.get(), "Cave Spider Spawn Egg");
-        add(IFWItems.demon_spider_spawn_egg.get(), "Demon Spider Spawn Egg");
+
         //Enchanted_Books
         add("enchantment.ifw.speed", "Speed");
         //Effect

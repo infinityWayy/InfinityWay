@@ -1,6 +1,7 @@
 package huix.infinity.datagen.loot;
 
 import huix.infinity.common.world.entity.IFWEntityType;
+import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.common.world.loot.IFWBuiltInLootTables;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import net.minecraft.advancements.critereon.EntityFlagsPredicate;
@@ -173,7 +174,33 @@ public class IFWEntityLootSubProvider extends EntityLootSubProvider {
                         )
         );
 
-        // ========== 蜘蛛掉落系统（修改版）==========
+        this.add(
+                IFWEntityType.WIGHT.get(),
+                LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.ROTTEN_FLESH)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                                        .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                                        .when(LootItemRandomChanceCondition.randomChance(0.5F))
+                                        )
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(LootItem.lootTableItem(IFWItems.copper_nugget).setWeight(25))
+                                        .add(LootItem.lootTableItem(IFWItems.silver_nugget).setWeight(25))
+                                        .add(LootItem.lootTableItem(Items.GOLD_NUGGET).setWeight(25))
+                                        .add(LootItem.lootTableItem(Items.IRON_NUGGET).setWeight(25))
+                                        .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                        .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(
+                                                this.registries, 0.05F, 0.01F
+                                        ))
+                        ));
+
+        // ========== 蜘蛛掉落系统 ==========
 
         // 普通蜘蛛和恶魔蜘蛛 - 标准掉落
         this.add(IFWEntityType.SPIDER.get(), createStandardSpiderTable());
@@ -194,7 +221,7 @@ public class IFWEntityLootSubProvider extends EntityLootSubProvider {
      */
     protected LootTable.Builder createStandardSpiderTable() {
         return LootTable.lootTable()
-                // 剩余蛛网掉落为丝线（MITE逻辑：在代码中已处理，这里只是备用）
+                // 剩余蛛网掉落为丝线
                 .withPool(
                         LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
