@@ -51,8 +51,8 @@ public class Revenant extends IFWZombie {
                 .add(Attributes.FOLLOW_RANGE, 40.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.26)
                 .add(Attributes.ATTACK_DAMAGE, 7.0)
-                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE)
-                .add(Attributes.MAX_HEALTH, 30.0);
+                .add(Attributes.MAX_HEALTH, 30.0)
+                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
     }
 
     @Override

@@ -62,10 +62,8 @@ public class InvisibleStalkerRender extends HumanoidMobRenderer<InvisibleStalker
         @Override
         public void setupAnim(InvisibleStalker entity, float limbSwing, float limbSwingAmount,
                               float ageInTicks, float netHeadYaw, float headPitch) {
-            // 先调用父类的setupAnim
             super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-            // 强制设置僵尸手臂姿态
             this.rightArm.xRot = -1.5F;
             this.leftArm.xRot = -1.5F;
             this.rightArm.yRot = 0.0F;

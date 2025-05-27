@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-27T18:50:52.6310931	Item Models: ifw
+// 1.21.1	2025-05-28T02:03:58.287346	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -290,6 +290,7 @@ f7c5c518a65d7122943b7edaa3d10c0e25247513 assets/ifw/models/item/salmon_ancient_m
 ff1d6793922eb524789b743fac47982a347b4bd3 assets/ifw/models/item/salmon_iron_bucket.json
 2be42cebc167212d2044a758ecfdd887ceed9d3d assets/ifw/models/item/salmon_mithril_bucket.json
 0607403e0992f502f683716ca61a751bcc85688f assets/ifw/models/item/salmon_silver_bucket.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/shadow_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/sheep_spawn_egg.json
 3b144bd649516418923ed6d664b0b0c8f8b32956 assets/ifw/models/item/silver_axe.json
 7b001dc7aab0f1f7148ba284cd150d36e469f197 assets/ifw/models/item/silver_battle_axe.json

@@ -103,6 +103,7 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.GHOUL.get(), HumanoidTypeRenderer::new);
         event.registerEntityRenderer(IFWEntityType.WIGHT.get(), HumanoidTypeRenderer::new);
         event.registerEntityRenderer(IFWEntityType.INVISIBLE_STALKER.get(), InvisibleStalkerRender::new);
+        event.registerEntityRenderer(IFWEntityType.SHADOW.get(), HumanoidTypeRenderer::new);
         event.registerEntityRenderer(IFWEntityType.INFERNO_CREEPER.get(), InfernoCreeperRenderer::new);
 
         // 蜘蛛类渲染器 - 所有蜘蛛都使用通用渲染器

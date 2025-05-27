@@ -90,6 +90,27 @@ public class IFWSoundEvents {
                     )
             );
 
+    public static final Supplier<SoundEvent> SHADOW_AMBIENT =
+            SOUND_EVENTS.register("shadow_ambient", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "shadow_ambient")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> SHADOW_HURT =
+            SOUND_EVENTS.register("shadow_hurt", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "shadow_hurt")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> SHADOW_DEATH =
+            SOUND_EVENTS.register("shadow_death", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "shadow_death")
+                    )
+            );
+
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }

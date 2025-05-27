@@ -122,5 +122,45 @@
         "stream": false
       }
     ]
+  },
+  "shadow_ambient": {
+    "sounds": [
+      {
+        "name": "ifw:mob/shadow/ambient1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/shadow/ambient2",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/shadow/ambient3",
+        "stream": false
+      }
+    ]
+  },
+  "shadow_hurt": {
+    "sounds": [
+      {
+        "name": "ifw:mob/shadow/hurt1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/shadow/hurt2",
+        "stream": false
+      }
+    ]
+  },
+  "shadow_death": {
+    "sounds": [
+      {
+        "name": "ifw:mob/shadow/death1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/shadow/death2",
+        "stream": false
+      }
+    ]
   }
 }

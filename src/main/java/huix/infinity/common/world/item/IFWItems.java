@@ -822,8 +822,8 @@ public class IFWItems {
     public static final DeferredItem<Item> invisible_stalker_spawn_egg = ITEMS.register("invisible_stalker_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.INVISIBLE_STALKER, 0xC0C0C0, 0xA0A0A0, new Item.Properties()));
 
-//    public static final DeferredItem<Item> shadow_spawn_egg = ITEMS.register("shadow_spawn_egg",
-//            () -> new DeferredSpawnEggItem(IFWEntityType.SHADOW, 0x2F2F2F, 0x1A1A1A, new Item.Properties()));
+    public static final DeferredItem<Item> shadow_spawn_egg = ITEMS.register("shadow_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.SHADOW, 0x2F2F2F, 0x1A1A1A, new Item.Properties()));
 
     public static final DeferredItem<Item> inferno_creeper_spawn_egg = ITEMS.register("inferno_creeper_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.INFERNO_CREEPER, 0xFFAA0000, 0, new Item.Properties()));

@@ -6,10 +6,7 @@ import huix.infinity.common.world.entity.animal.IFWChicken;
 import huix.infinity.common.world.entity.animal.IFWCow;
 import huix.infinity.common.world.entity.animal.IFWPig;
 import huix.infinity.common.world.entity.animal.IFWSheep;
-import huix.infinity.common.world.entity.monster.Ghoul;
-import huix.infinity.common.world.entity.monster.InvisibleStalker;
-import huix.infinity.common.world.entity.monster.Wight;
-import huix.infinity.common.world.entity.monster.InfernoCreeper;
+import huix.infinity.common.world.entity.monster.*;
 import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
@@ -34,6 +31,7 @@ public class IFWExtraEvent {
         event.put(IFWEntityType.REVENANT.get(), Revenant.createAttributes().build());
         event.put(IFWEntityType.GHOUL.get(), Ghoul.createAttributes().build());
         event.put(IFWEntityType.WIGHT.get(), Wight.createAttributes().build());
+        event.put(IFWEntityType.SHADOW.get(), Shadow.createAttributes().build());
         event.put(IFWEntityType.INVISIBLE_STALKER.get(), InvisibleStalker.createAttributes().build());
         event.put(IFWEntityType.INFERNO_CREEPER.get(), InfernoCreeper.createAttributes().build());
 

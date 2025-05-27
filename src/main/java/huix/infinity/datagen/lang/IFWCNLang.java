@@ -61,6 +61,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.REVENANT.value(), "亡魂");
         add(IFWEntityType.GHOUL.value(), "食尸鬼");
         add(IFWEntityType.WIGHT.value(), "尸妖");
+        add(IFWEntityType.SHADOW.value(), "暗影");
         add(IFWEntityType.INVISIBLE_STALKER.value(), "隐形潜伏者");
         add(IFWEntityType.INFERNO_CREEPER.value(), "地狱苦力怕");
         add(IFWEntityType.SPIDER.value(), "蜘蛛");
@@ -79,6 +80,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.revenant_spawn_egg.get(), "亡灵刷怪蛋");
         add(IFWItems.ghoul_spawn_egg.get(), "食尸鬼刷怪蛋");
         add(IFWItems.wight_spawn_egg.get(), "尸妖刷怪蛋");
+        add(IFWItems.shadow_spawn_egg.get(), "暗影刷怪蛋");
         add(IFWItems.invisible_stalker_spawn_egg.get(), "隐形潜伏者刷怪蛋");
         add(IFWItems.inferno_creeper_spawn_egg.get(), "地狱苦力怕刷怪蛋");
         add(IFWItems.spider_spawn_egg.get(), "蜘蛛刷怪蛋");

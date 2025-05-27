@@ -35,7 +35,8 @@ public class IFWEntityTypeTagsProvider extends EntityTypeTagsProvider {
         // 亡灵生物标签
         this.tag(EntityTypeTags.UNDEAD)
                 .add(IFWEntityType.ZOMBIE.get())
-                .add(IFWEntityType.WIGHT.get());
+                .add(IFWEntityType.WIGHT.get())
+                .add(IFWEntityType.SHADOW.get());
 
         // 节肢动物标签
         this.tag(EntityTypeTags.ARTHROPOD)
@@ -49,7 +50,8 @@ public class IFWEntityTypeTagsProvider extends EntityTypeTagsProvider {
         // 火焰免疫标签
         this.tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)
                 .add(IFWEntityType.DEMON_SPIDER.get())
-                .add(IFWEntityType.INFERNO_CREEPER.get());
+                .add(IFWEntityType.INFERNO_CREEPER.get())
+                .add(IFWEntityType.SHADOW.get());
 
         // 毒性生物标签
         this.tag(IFWEntityTypeTags.VENOMOUS)

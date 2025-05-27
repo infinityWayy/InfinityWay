@@ -1,6 +1,7 @@
 package huix.infinity.common.world.entity.render.zombie;
 
 import huix.infinity.common.world.entity.monster.Ghoul;
+import huix.infinity.common.world.entity.monster.Shadow;
 import huix.infinity.common.world.entity.monster.Wight;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.init.InfinityWay;
@@ -11,13 +12,15 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * IFW食尸鬼和亡灵渲染器 - 具有僵尸特征的不死生物
+ * IFW食尸鬼、亡灵和暗影渲染器 - 具有僵尸特征的不死生物
  */
 public class HumanoidTypeRenderer<T extends IFWZombie> extends MobRenderer<T, ZombieModel<T>> {
     private static final ResourceLocation GHOUL_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "textures/entity/zombie/ghoul.png");
     private static final ResourceLocation WIGHT_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "textures/entity/zombie/wight.png");
+    private static final ResourceLocation SHADOW_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "textures/entity/zombie/shadow.png");
 
     public HumanoidTypeRenderer(EntityRendererProvider.Context context) {
         super(context, new ZombieModel<>(context.bakeLayer(ModelLayers.ZOMBIE)), 0.5F);
@@ -28,6 +31,7 @@ public class HumanoidTypeRenderer<T extends IFWZombie> extends MobRenderer<T, Zo
         return switch (entity) {
             case Wight wight -> WIGHT_TEXTURE;
             case Ghoul ghoul -> GHOUL_TEXTURE;
+            case Shadow shadow -> SHADOW_TEXTURE;
             default -> GHOUL_TEXTURE; // 默认纹理
         };
     }
