@@ -4,8 +4,10 @@ import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
+import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.extension.func.FoodDataExtension;
 import huix.infinity.init.event.IFWLoading;
 import huix.infinity.util.IFWEnchantmentHelper;
 import huix.infinity.util.WorldHelper;
@@ -19,6 +21,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -29,6 +32,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
@@ -45,18 +49,14 @@ import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
-import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
-import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.neoforged.neoforge.event.level.SleepFinishedTimeEvent;
 import net.neoforged.neoforge.event.level.block.CropGrowEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.registries.datamaps.DataMapsUpdatedEvent;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class IFWEvents {
 
@@ -172,7 +172,7 @@ public class IFWEvents {
     }
 
     private static void showMoreFoodInfo(final IFWFoodProperties extraFood, final List<Component> list) {
-        if (extraFood != null && Screen.hasAltDown())  {
+        if (extraFood != null && Screen.hasAltDown()) {
             if (extraFood.protein() != 0)
                 list.add(Component.translatable("foodtips.protein", extraFood.protein()).withStyle(ChatFormatting.YELLOW));
             if (extraFood.phytonutrients() != 0)
@@ -240,24 +240,95 @@ public class IFWEvents {
 
     @SubscribeEvent
     public static void onCalculatePlayerTurn(CalculatePlayerTurnEvent event) {
-        // 获取玩家
+
         LocalPlayer player = Minecraft.getInstance().player;
 
         if (player != null && player.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)) {
-            // 获取缓慢效果等级
-            int amplifier = player.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getAmplifier();
-            // 获取当前灵敏度
+
+            int amplifier = Objects.requireNonNull(player.getEffect(MobEffects.MOVEMENT_SLOWDOWN)).getAmplifier();
+
             double sensitivity = event.getMouseSensitivity();
-            // 根据缓慢等级降低灵敏度 (每级减少20%)
+
             double reduction = 1.0 - ((amplifier + 1) * 0.2);
-            // 设置新的灵敏度
+
             event.setMouseSensitivity(sensitivity * reduction);
         }
     }
 
-//    @SubscribeEvent
-//    public static void onSleepFinished(final SleepFinishedTimeEvent event) {
-//
-//    }
+    private static final Map<UUID, Long> playerSleepStartTime = new HashMap<>();
 
+    @SubscribeEvent
+    public static void onCanPlayerSleep(final CanPlayerSleepEvent event) {
+        ServerPlayer player = event.getEntity();
+
+        if (event.getProblem() == null) {
+            long currentTime = player.level().getDayTime();
+            playerSleepStartTime.put(player.getUUID(), currentTime);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onSleepFinished(final SleepFinishedTimeEvent event) {
+        if (!(event.getLevel() instanceof ServerLevel serverLevel)) return;
+
+        long newTime = event.getNewTime();
+
+        // 为所有参与睡眠的玩家处理恢复
+        for (ServerPlayer player : serverLevel.players()) {
+            UUID playerUUID = player.getUUID();
+            Long sleepStartTime = playerSleepStartTime.get(playerUUID);
+
+            if (sleepStartTime != null) {
+                // 计算实际跳过的游戏时间
+                long actualSkippedTime = newTime - sleepStartTime;
+
+                // 确保跳过时间是合理的（至少1000 ticks）
+                if (actualSkippedTime > 1000) {
+                    calculateSleepHealing(player, actualSkippedTime);
+                }
+
+                playerSleepStartTime.remove(playerUUID);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerWakeUp(final PlayerWakeUpEvent event) {
+        Player player = event.getEntity();
+        if (player.level().isClientSide()) return;
+
+        // 清理可能残留的睡眠记录（处理睡眠被打断等情况）
+        playerSleepStartTime.remove(player.getUUID());
+    }
+
+    private static void calculateSleepHealing(Player player, long skippedTime) {
+        if (!player.level().getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION)) {
+            return;
+        }
+
+        if (player.getHealth() >= player.getMaxHealth()) {
+            return;
+        }
+
+        FoodDataExtension foodData = (FoodDataExtension) player.getFoodData();
+        NutritionalStatus nutritionalStatus = foodData.ifw_nutritionalStatus();
+
+        int baseHealInterval = 1280;
+        int adjustedInterval = baseHealInterval * nutritionalStatus.naturalHealSpeedTimes();
+        int sleepHealInterval = adjustedInterval / 8;
+        int healCount = (int) (skippedTime / sleepHealInterval);
+
+        if (healCount > 0) {
+            float maxHealth = player.getMaxHealth();
+            float currentHealth = player.getHealth();
+            float maxPossibleHeal = maxHealth - currentHealth;
+            float actualHeal = Math.min(healCount, maxPossibleHeal);
+
+            if (actualHeal > 0) {
+                player.heal(actualHeal);
+                float exhaustionCost = actualHeal * 6.0F;
+                player.getFoodData().addExhaustion(exhaustionCost);
+            }
+        }
+    }
 }
