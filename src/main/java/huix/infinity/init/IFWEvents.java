@@ -18,7 +18,11 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -35,6 +39,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
@@ -70,6 +75,8 @@ public class IFWEvents {
         bus.addListener(IFWEvents::playerLoggedIn);
         bus.addListener(IFWEvents::onLootTableLoad);
         bus.addListener(IFWEvents::onCropGrow);
+        bus.addListener(IFWEvents::onMobEffectApplied);
+        bus.addListener(IFWEvents::onMobEffectRemoved);
     }
 
     public static void injectItem(final DataMapsUpdatedEvent event) {
@@ -217,6 +224,42 @@ public class IFWEvents {
                             .add(LootItem.lootTableItem(IFWItems.flint_shard).setWeight(10))
                     )
                     .build());
+        }
+    }
+
+    @SubscribeEvent
+    public static void onMobEffectApplied(MobEffectEvent.Added event) {
+        MobEffectInstance effectInstance = event.getEffectInstance();
+        if (effectInstance != null && effectInstance.getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
+            LivingEntity living = event.getEntity();
+            int amplifier = effectInstance.getAmplifier();
+
+            AttributeInstance speedAttribute = living.getAttribute(Attributes.MOVEMENT_SPEED);
+            if (speedAttribute != null) {
+                ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_slowness");
+                speedAttribute.removeModifier(modifierId);
+
+                double reduction = -0.2 * (amplifier + 1);
+                speedAttribute.addTransientModifier(new AttributeModifier(
+                        modifierId,
+                        reduction,
+                        AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                ));
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onMobEffectRemoved(MobEffectEvent.Remove event) {
+        MobEffectInstance effectInstance = event.getEffectInstance();
+        if (effectInstance != null && effectInstance.getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
+            LivingEntity living = event.getEntity();
+
+            AttributeInstance speedAttribute = living.getAttribute(Attributes.MOVEMENT_SPEED);
+            if (speedAttribute != null) {
+                ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_slowness");
+                speedAttribute.removeModifier(modifierId);
+            }
         }
     }
 
