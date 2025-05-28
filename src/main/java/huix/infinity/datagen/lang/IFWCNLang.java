@@ -64,6 +64,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.SHADOW.value(), "暗影");
         add(IFWEntityType.INVISIBLE_STALKER.value(), "隐形潜伏者");
         add(IFWEntityType.INFERNO_CREEPER.value(), "地狱苦力怕");
+        add(IFWEntityType.HELLHOUND.value(), "地狱犬");
         add(IFWEntityType.SPIDER.value(), "蜘蛛");
         add(IFWEntityType.WOOD_SPIDER.value(), "木蜘蛛");
         add(IFWEntityType.BLACK_WIDOW_SPIDER.value(), "黑寡妇蜘蛛");
@@ -83,6 +84,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.shadow_spawn_egg.get(), "暗影刷怪蛋");
         add(IFWItems.invisible_stalker_spawn_egg.get(), "隐形潜伏者刷怪蛋");
         add(IFWItems.inferno_creeper_spawn_egg.get(), "地狱苦力怕刷怪蛋");
+        add(IFWItems.hellhound_spawn_egg.get(), "地狱犬刷怪蛋");
         add(IFWItems.spider_spawn_egg.get(), "蜘蛛刷怪蛋");
         add(IFWItems.wood_spider_spawn_egg.get(), "木蜘蛛刷怪蛋");
         add(IFWItems.black_widow_spider_spawn_egg.get(), "黑寡妇蜘蛛刷怪蛋");

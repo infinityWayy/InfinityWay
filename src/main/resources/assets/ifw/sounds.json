@@ -10,15 +10,15 @@
   "revenant_ambient": {
     "sounds": [
       {
-        "name": "ifw:mob/revenant/ambient1",
+        "name": "ifw:mob/revenant/revenant_ambient1",
         "stream": false
       },
       {
-        "name": "ifw:mob/revenant/ambient2",
+        "name": "ifw:mob/revenant/revenant_ambient2",
         "stream": false
       },
       {
-        "name": "ifw:mob/revenant/ambient3",
+        "name": "ifw:mob/revenant/revenant_ambient3",
         "stream": false
       }
     ]
@@ -159,6 +159,50 @@
       },
       {
         "name": "ifw:mob/shadow/death2",
+        "stream": false
+      }
+    ]
+  },
+  "hellhound_ambient": {
+    "sounds": [
+      {
+        "name": "ifw:mob/hound/ambient1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/hound/ambient2",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/hound/ambient3",
+        "stream": false
+      }
+    ]
+  },
+  "hellhound_hurt": {
+    "sounds": [
+      {
+        "name": "ifw:mob/hound/hurt1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/hound/hurt2",
+        "stream": false
+      }
+    ]
+  },
+  "hellhound_death": {
+    "sounds": [
+      {
+        "name": "ifw:mob/hound/death",
+        "stream": false
+      }
+    ]
+  },
+  "hellhound_breath": {
+    "sounds": [
+      {
+        "name": "ifw:mob/hound/breath",
         "stream": false
       }
     ]

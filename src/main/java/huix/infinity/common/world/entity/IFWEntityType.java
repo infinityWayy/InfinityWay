@@ -190,4 +190,13 @@ public class IFWEntityType {
                             .clientTrackingRange(8)
                             .build("demon_spider")
             );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Hellhound>> HELLHOUND =
+            ENTITIES.register("hellhound",
+                    () -> EntityType.Builder.of(Hellhound::new, MobCategory.MONSTER)
+                            .sized(0.6F, 0.8F)
+                            .eyeHeight(0.68F)
+                            .fireImmune()
+                            .clientTrackingRange(8)
+                            .build("hellhound"));
 }

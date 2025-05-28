@@ -1,5 +1,6 @@
 package huix.infinity.init.to;
 
+import huix.infinity.common.client.model.ModelLayers;
 import huix.infinity.common.client.render.EmeraldEnchantTableRenderer;
 import huix.infinity.common.client.screen.IFWAnvilScreen;
 import huix.infinity.common.client.resources.PersistentEffectTextureManager;
@@ -11,6 +12,8 @@ import huix.infinity.common.world.entity.render.animal.IFWChickenRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWCowRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWPigRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWSheepRenderer;
+import huix.infinity.common.world.entity.render.hound.HellhoundRenderer;
+import huix.infinity.common.world.entity.render.hound.HellhoundModel;
 import huix.infinity.common.world.entity.render.zombie.HumanoidTypeRenderer;
 import huix.infinity.common.world.entity.render.creeper.InfernoCreeperRenderer;
 import huix.infinity.common.world.entity.render.projectile.IFWWebProjectileRenderer;
@@ -89,6 +92,12 @@ public final class IFWClient {
     static void registerRecipeBookCategories(final RegisterRecipeBookCategoriesEvent event) {
     }
 
+    // 模型层注册
+    @SubscribeEvent
+    static void registerLayerDefinitions(final EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(ModelLayers.HELLHOUND, HellhoundModel::createBodyLayer);
+    }
+
     @SubscribeEvent
     static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
         // 动物渲染器
@@ -105,6 +114,7 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.INVISIBLE_STALKER.get(), InvisibleStalkerRender::new);
         event.registerEntityRenderer(IFWEntityType.SHADOW.get(), HumanoidTypeRenderer::new);
         event.registerEntityRenderer(IFWEntityType.INFERNO_CREEPER.get(), InfernoCreeperRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.HELLHOUND.get(), HellhoundRenderer::new);
 
         // 蜘蛛类渲染器 - 所有蜘蛛都使用通用渲染器
         event.registerEntityRenderer(IFWEntityType.SPIDER.get(), IFWSpiderRenderer::new);

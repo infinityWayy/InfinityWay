@@ -111,6 +111,34 @@ public class IFWSoundEvents {
                     )
             );
 
+    public static final Supplier<SoundEvent> HELLHOUND_AMBIENT =
+            SOUND_EVENTS.register("hellhound_ambient", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "hellhound_ambient")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> HELLHOUND_HURT =
+            SOUND_EVENTS.register("hellhound_hurt", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "hellhound_hurt")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> HELLHOUND_DEATH =
+            SOUND_EVENTS.register("hellhound_death", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "hellhound_death")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> HELLHOUND_BREATH =
+            SOUND_EVENTS.register("hellhound_breath", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "hellhound_breath")
+                    )
+            );
+
     public static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }
