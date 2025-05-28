@@ -10,7 +10,9 @@ import huix.infinity.init.event.IFWLoading;
 import huix.infinity.util.IFWEnchantmentHelper;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -18,11 +20,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -40,6 +39,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.CalculatePlayerTurnEvent;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
@@ -61,31 +61,19 @@ import java.util.Map;
 public class IFWEvents {
 
     public static void init(IEventBus bus) {
-        bus.addListener(IFWEvents::armorModify);
-        bus.addListener(IFWEvents::playerBreakSpeed);
-        bus.addListener(IFWEvents::playerAttacklHit);
-        bus.addListener(IFWEvents::playerDie);
-        bus.addListener(IFWEvents::playerClone);
-        bus.addListener(IFWEvents::daySleep);
-        bus.addListener(IFWEvents::addFoodInfo);
-        bus.addListener(IFWEvents::nonRemoveUnClearEffect);
-        bus.addListener(IFWEvents::injectFuel);
-        bus.addListener(IFWEvents::injectItem);
-        bus.addListener(IFWEvents::serverTick);
-        bus.addListener(IFWEvents::playerLoggedIn);
-        bus.addListener(IFWEvents::onLootTableLoad);
-        bus.addListener(IFWEvents::onCropGrow);
-        bus.addListener(IFWEvents::onMobEffectApplied);
-        bus.addListener(IFWEvents::onMobEffectRemoved);
+        // Register this class to receive forge bus events
+        bus.register(IFWEvents.class);
+
     }
 
+    @SubscribeEvent
     public static void injectItem(final DataMapsUpdatedEvent event) {
         IFWLoading.rebuildStackSize();
         IFWLoading.injectCookingLevel();
         IFWLoading.injectAnvil();
     }
 
-
+    @SubscribeEvent
     public static void serverTick(final ServerTickEvent.Post event) {
         for (Map.Entry<ResourceKey<Level>, Map<BlockPos, Integer>> entry : WorldHelper.DELAYED_BLOCKS.entrySet()) {
             ResourceKey<Level> dimension = entry.getKey();
@@ -110,6 +98,7 @@ public class IFWEvents {
         }
     }
 
+    @SubscribeEvent
     public static void armorModify(final ItemAttributeModifierEvent event) {
         if (event.getItemStack().getItem() instanceof ArmorItem armorItem) {
             ArmorItem.Type type = armorItem.getType();
@@ -120,15 +109,18 @@ public class IFWEvents {
         }
 
     }
+
+    @SubscribeEvent
     public static void playerLoggedIn(final PlayerEvent.PlayerLoggedInEvent event) {
         Player entity = event.getEntity();
     }
 
-
+    @SubscribeEvent
     public static void playerBreakSpeed(final PlayerEvent.BreakSpeed event) {
         event.setNewSpeed(event.getOriginalSpeed() + LevelBonusStats.HARVESTING.calcBonusFor(event.getEntity()));
     }
 
+    @SubscribeEvent
     public static void playerAttacklHit(final CriticalHitEvent event) {
         if (!event.getEntity().getFoodData().ifw_hasAnyEnergy()) {
             event.setDamageMultiplier(0.5F);
@@ -136,6 +128,7 @@ public class IFWEvents {
         event.setDamageMultiplier(1.0F + LevelBonusStats.MELEE_DAMAGE.calcBonusFor(event.getEntity()));
     }
 
+    @SubscribeEvent
     public static void playerDie(final LivingDeathEvent event) {
         if (event.getEntity() instanceof Player entity) {
             int respawn_experience = entity.getData(IFWAttachments.respawn_xp);
@@ -149,15 +142,18 @@ public class IFWEvents {
         }
     }
 
+    @SubscribeEvent
     public static void playerClone(final PlayerEvent.Clone event) {
         final Player cloned = event.getEntity();
         cloned.giveExperiencePoints(event.getOriginal().getData(IFWAttachments.respawn_xp));
     }
 
+    @SubscribeEvent
     public static void daySleep(final CanContinueSleepingEvent event) {
         event.setContinueSleeping(true);
     }
 
+    @SubscribeEvent
     public static void addFoodInfo(final ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
         if (stack.getItem().ifw_isFood()) {
@@ -165,6 +161,7 @@ public class IFWEvents {
             showMoreFoodInfo(stack.get(IFWDataComponents.ifw_food_data), event.getToolTip());
         }
     }
+
     private static void showFoodInfo(final FoodProperties food, final List<Component> list) {
         if (food != null && Screen.hasShiftDown()) {
             if (food.nutrition() != 0)
@@ -173,6 +170,7 @@ public class IFWEvents {
                 list.add(Component.translatable("foodtips.saturation", food.saturation()).withStyle(ChatFormatting.AQUA));
         }
     }
+
     private static void showMoreFoodInfo(final IFWFoodProperties extraFood, final List<Component> list) {
         if (extraFood != null && Screen.hasAltDown())  {
             if (extraFood.protein() != 0)
@@ -184,11 +182,13 @@ public class IFWEvents {
         }
     }
 
+    @SubscribeEvent
     public static void nonRemoveUnClearEffect(final MobEffectEvent.Remove event) {
         if (event.getEffect().value() instanceof UnClearEffect)
             event.setCanceled(true);
     }
 
+    @SubscribeEvent
     public static void injectFuel(final FurnaceFuelBurnTimeEvent event) {
         if (event.getItemStack().is(Items.TORCH))
             event.setBurnTime(800);
@@ -204,6 +204,7 @@ public class IFWEvents {
             event.setBurnTime(3200);
     }
 
+    @SubscribeEvent
     public static void onLootTableLoad(final LootTableLoadEvent event) {
         if (event.getName().equals(BuiltInLootTables.SPAWN_BONUS_CHEST.location())) {
             event.setTable(LootTable.lootTable()
@@ -228,41 +229,6 @@ public class IFWEvents {
     }
 
     @SubscribeEvent
-    public static void onMobEffectApplied(MobEffectEvent.Added event) {
-        MobEffectInstance effectInstance = event.getEffectInstance();
-        if (effectInstance != null && effectInstance.getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
-            LivingEntity living = event.getEntity();
-            int amplifier = effectInstance.getAmplifier();
-
-            AttributeInstance speedAttribute = living.getAttribute(Attributes.MOVEMENT_SPEED);
-            if (speedAttribute != null) {
-                ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_slowness");
-                speedAttribute.removeModifier(modifierId);
-
-                double reduction = -0.2 * (amplifier + 1);
-                speedAttribute.addTransientModifier(new AttributeModifier(
-                        modifierId,
-                        reduction,
-                        AttributeModifier.Operation.ADD_MULTIPLIED_BASE
-                ));
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void onMobEffectRemoved(MobEffectEvent.Remove event) {
-        MobEffectInstance effectInstance = event.getEffectInstance();
-        if (effectInstance != null && effectInstance.getEffect() == MobEffects.MOVEMENT_SLOWDOWN) {
-            LivingEntity living = event.getEntity();
-
-            AttributeInstance speedAttribute = living.getAttribute(Attributes.MOVEMENT_SPEED);
-            if (speedAttribute != null) {
-                ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_slowness");
-                speedAttribute.removeModifier(modifierId);
-            }
-        }
-    }
-
     public static void onCropGrow(final CropGrowEvent.Pre event) {
         LevelAccessor world = event.getLevel();
 
@@ -272,6 +238,24 @@ public class IFWEvents {
         }
     }
 
+    @SubscribeEvent
+    public static void onCalculatePlayerTurn(CalculatePlayerTurnEvent event) {
+        // 获取玩家
+        LocalPlayer player = Minecraft.getInstance().player;
+
+        if (player != null && player.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)) {
+            // 获取缓慢效果等级
+            int amplifier = player.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getAmplifier();
+            // 获取当前灵敏度
+            double sensitivity = event.getMouseSensitivity();
+            // 根据缓慢等级降低灵敏度 (每级减少20%)
+            double reduction = 1.0 - ((amplifier + 1) * 0.2);
+            // 设置新的灵敏度
+            event.setMouseSensitivity(sensitivity * reduction);
+        }
+    }
+
+//    @SubscribeEvent
 //    public static void onSleepFinished(final SleepFinishedTimeEvent event) {
 //
 //    }
