@@ -111,6 +111,27 @@ public class IFWSoundEvents {
                     )
             );
 
+    public static final Supplier<SoundEvent> DEMON_SPIDER_AMBIENT =
+            SOUND_EVENTS.register("demon_spider_ambient", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "demon_spider_ambient")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> DEMON_SPIDER_HURT =
+            SOUND_EVENTS.register("demon_spider_hurt", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "demon_spider_hurt")
+                    )
+            );
+
+    public static final Supplier<SoundEvent> DEMON_SPIDER_DEATH =
+            SOUND_EVENTS.register("demon_spider_death", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "demon_spider_death")
+                    )
+            );
+
     public static final Supplier<SoundEvent> HELLHOUND_AMBIENT =
             SOUND_EVENTS.register("hellhound_ambient", () ->
                     SoundEvent.createVariableRangeEvent(

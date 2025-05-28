@@ -206,5 +206,41 @@
         "stream": false
       }
     ]
+  },
+  "demon_spider_ambient": {
+    "sounds": [
+      {
+        "name": "ifw:mob/demonspider/ambient1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/demonspider/ambient2",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/demonspider/ambient3",
+        "stream": false
+      }
+    ]
+  },
+  "demon_spider_hurt": {
+    "sounds": [
+      {
+        "name": "ifw:mob/demonspider/hurt1",
+        "stream": false
+      },
+      {
+        "name": "ifw:mob/demonspider/hurt2",
+        "stream": false
+      }
+    ]
+  },
+  "demon_spider_death": {
+    "sounds": [
+      {
+        "name": "ifw:mob/demonspider/death",
+        "stream": false
+      }
+    ]
   }
 }

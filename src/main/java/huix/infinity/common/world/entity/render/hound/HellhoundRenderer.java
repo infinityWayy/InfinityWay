@@ -25,7 +25,6 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
 
     public HellhoundRenderer(EntityRendererProvider.Context context) {
         super(context, new HellhoundModel(context.bakeLayer(ModelLayers.HELLHOUND)), 0.5F);
-
         this.addLayer(new HellhoundGlowLayer(this));
     }
 
@@ -37,6 +36,10 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
     @Override
     public void render(Hellhound hellhound, float entityYaw, float partialTicks,
                        PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+
+        if (this.model instanceof HellhoundModel) {
+            ((HellhoundModel) this.model).prepareMobModel(hellhound, 0, 0, partialTicks);
+        }
 
         super.render(hellhound, entityYaw, partialTicks, poseStack, buffer, packedLight);
 
@@ -57,7 +60,6 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
                            float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
 
             VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.eyes(HELLHOUND_GLOW_TEXTURE));
-
             this.getParentModel().renderToBuffer(poseStack, vertexConsumer, 15728640, OverlayTexture.NO_OVERLAY);
         }
     }
@@ -65,42 +67,47 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
     private void handleParticleEffects(Hellhound hellhound) {
         this.particleTimer++;
 
-        // 检测是否在移动
-        boolean isMoving = hellhound.getDeltaMovement().lengthSqr() > 0.01D;
+        if (hellhound.isInSittingPose()) {
 
-        // 基础火焰粒子 - 移动时适当增加
-        if (isMoving) {
-            // 移动时增加频率
-            if (this.particleTimer % 10 == 0 && hellhound.getRandom().nextFloat() < 0.35F) {
-                this.spawnBasicFireParticles(hellhound);
+            if (this.particleTimer % 40 == 0 && hellhound.getRandom().nextFloat() < 0.08F) {
+                this.spawnSittingFireParticles(hellhound);
+            }
+
+            if (this.particleTimer % 50 == 0 && hellhound.getRandom().nextFloat() < 0.05F) {
+                this.spawnSittingSmokeParticles(hellhound);
             }
         } else {
 
-            if (this.particleTimer % 20 == 0 && hellhound.getRandom().nextFloat() < 0.15F) {
-                this.spawnBasicFireParticles(hellhound);
-            }
-        }
+            boolean isMoving = hellhound.getDeltaMovement().lengthSqr() > 0.01D;
 
-        // 烟雾粒子 - 移动时适当增加
-        if (isMoving) {
-            if (this.particleTimer % 18 == 0 && hellhound.getRandom().nextFloat() < 0.2F) {
-                this.spawnSmokeParticles(hellhound);
+            if (isMoving) {
+                if (this.particleTimer % 10 == 0 && hellhound.getRandom().nextFloat() < 0.35F) {
+                    this.spawnBasicFireParticles(hellhound);
+                }
+            } else {
+                if (this.particleTimer % 20 == 0 && hellhound.getRandom().nextFloat() < 0.15F) {
+                    this.spawnBasicFireParticles(hellhound);
+                }
             }
-        } else {
-            if (this.particleTimer % 25 == 0 && hellhound.getRandom().nextFloat() < 0.1F) {
-                this.spawnSmokeParticles(hellhound);
+
+            if (isMoving) {
+                if (this.particleTimer % 18 == 0 && hellhound.getRandom().nextFloat() < 0.2F) {
+                    this.spawnSmokeParticles(hellhound);
+                }
+            } else {
+                if (this.particleTimer % 25 == 0 && hellhound.getRandom().nextFloat() < 0.1F) {
+                    this.spawnSmokeParticles(hellhound);
+                }
             }
-        }
 
-        // 移动时的脚步火焰效果
-        if (isMoving && this.particleTimer % 12 == 0 && hellhound.getRandom().nextFloat() < 0.35F) {
-            this.spawnMovementFireParticles(hellhound);
-        }
+            if (isMoving && this.particleTimer % 12 == 0 && hellhound.getRandom().nextFloat() < 0.35F) {
+                this.spawnMovementFireParticles(hellhound);
+            }
 
-        // 战斗火焰粒子
-        if (hellhound.getTarget() != null && hellhound.distanceTo(hellhound.getTarget()) < 2.0F) {
-            if (this.particleTimer % 8 == 0 && hellhound.getRandom().nextFloat() < 0.4F) {
-                this.spawnCombatFireParticles(hellhound);
+            if (hellhound.getTarget() != null && hellhound.distanceTo(hellhound.getTarget()) < 2.0F) {
+                if (this.particleTimer % 8 == 0 && hellhound.getRandom().nextFloat() < 0.4F) {
+                    this.spawnCombatFireParticles(hellhound);
+                }
             }
         }
 
@@ -109,6 +116,33 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
         }
     }
 
+    // 坐下时的火焰粒子
+    private void spawnSittingFireParticles(Hellhound hellhound) {
+        double offsetX = (hellhound.getRandom().nextDouble() - 0.5D) * 0.25D;
+        double offsetZ = (hellhound.getRandom().nextDouble() - 0.5D) * 0.25D;
+        double offsetY = hellhound.getRandom().nextDouble() * 0.2D;
+
+        double x = hellhound.getX() + offsetX;
+        double y = hellhound.getY() + offsetY;
+        double z = hellhound.getZ() + offsetZ;
+
+        hellhound.level().addParticle(ParticleTypes.FLAME, x, y, z, 0.0D, 0.015D, 0.0D);
+    }
+
+    // 坐下时的烟雾粒子
+    private void spawnSittingSmokeParticles(Hellhound hellhound) {
+        double offsetX = (hellhound.getRandom().nextDouble() - 0.5D) * 0.3D;
+        double offsetZ = (hellhound.getRandom().nextDouble() - 0.5D) * 0.3D;
+        double offsetY = hellhound.getRandom().nextDouble() * 0.3D;
+
+        double x = hellhound.getX() + offsetX;
+        double y = hellhound.getY() + offsetY;
+        double z = hellhound.getZ() + offsetZ;
+
+        hellhound.level().addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.03D, 0.0D);
+    }
+
+    // 其他粒子
     private void spawnBasicFireParticles(Hellhound hellhound) {
         double offsetX = (hellhound.getRandom().nextDouble() - 0.5D) * 0.3D;
         double offsetZ = (hellhound.getRandom().nextDouble() - 0.5D) * 0.3D;
@@ -134,7 +168,6 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
     }
 
     private void spawnMovementFireParticles(Hellhound hellhound) {
-
         double offsetX = (hellhound.getRandom().nextDouble() - 0.5D) * 0.35D;
         double offsetZ = (hellhound.getRandom().nextDouble() - 0.5D) * 0.35D;
         double offsetY = hellhound.getRandom().nextDouble() * 0.18D;

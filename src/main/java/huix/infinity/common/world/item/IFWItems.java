@@ -254,6 +254,12 @@ public class IFWItems {
             ITEMS.registerSimpleItem("manure", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> flour =
             ITEMS.registerSimpleItem("flour", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> wither_bone =
+            ITEMS.registerSimpleItem("wither_bone", new Item.Properties().stacksTo(16).fireResistant());
+    public static final DeferredItem<Item> wither_bone_handle =
+            ITEMS.registerSimpleItem("wither_bone_handle", new Item.Properties().stacksTo(16).fireResistant());
+    public static final DeferredItem<Item> blazing_wither_bone =
+            ITEMS.registerSimpleItem("blazing_wither_bone", new Item.Properties().stacksTo(16).fireResistant());
     public static final DeferredItem<Item> copper_chain =
             ITEMS.registerSimpleItem("copper_chain", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> silver_chain =
@@ -794,7 +800,7 @@ public class IFWItems {
     public static final DeferredItem<Item> onion =
             ITEMS.registerSimpleItem("onion", new Item.Properties().stacksTo(16).food(IFWFoods.onion));
 
-    // spawn_egg
+    // Spawn Egg
     public static final DeferredItem<Item> chicken_spawn_egg = ITEMS.register("chicken_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.CHICKEN, 10592673, 16711680, new Item.Properties()));
 

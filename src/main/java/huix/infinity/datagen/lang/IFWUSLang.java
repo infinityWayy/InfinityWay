@@ -239,6 +239,9 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWBlocks.damaged_adamantium_anvil.get(), "Damaged Adamantium Anvil");
         add(IFWItems.manure.get(), "Manure");
         add(IFWItems.flour.get(), "Flour");
+        add(IFWItems.wither_bone.get(), "Wither Bone");
+        add(IFWItems.wither_bone_handle.get(), "Wither Bone Handle");
+        add(IFWItems.blazing_wither_bone.get(), "Blazing Wither Bone");
         add(IFWItems.copper_chain.get(), "Copper Chain");
         add(IFWItems.silver_chain.get(), "Silver Chain");
         add(IFWItems.golden_chain.get(), "Golden Chain");

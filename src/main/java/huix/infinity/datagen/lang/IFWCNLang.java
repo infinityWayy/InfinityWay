@@ -236,6 +236,9 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWBlocks.damaged_adamantium_anvil.get(), "损坏的艾德曼砧");
         add(IFWItems.manure.get(), "肥料");
         add(IFWItems.flour.get(), "面粉");
+        add(IFWItems.wither_bone.get(), "凋零之骨");
+        add(IFWItems.wither_bone_handle.get(), "凋零之骨手柄");
+        add(IFWItems.blazing_wither_bone.get(), "赤焰凋零之骨");
         add(IFWItems.copper_chain.get(), "铜锁链");
         add(IFWItems.silver_chain.get(), "银锁链");
         add(IFWItems.golden_chain.get(), "金锁链");

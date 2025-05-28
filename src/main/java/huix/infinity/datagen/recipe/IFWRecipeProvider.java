@@ -751,5 +751,17 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stone_adamantium_bucket", has(IFWItems.stone_adamantium_bucket.get()))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "adamantium_bucket_filled_with_stone"));
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, IFWItems.wither_bone_handle.get(), 1)
+                .requires(Items.STRING, 1)
+                .requires(Items.STICK, 1)
+                .requires(IFWItems.wither_bone.get(), 1)
+                .unlockedBy("has_wither_bone", has(IFWItems.wither_bone.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "wither_bone_handle"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, IFWItems.blazing_wither_bone.get(), 1)
+                .requires(Items.BONE, 1)
+                .unlockedBy("has_bone", has(Items.BONE))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "blazing_wither_bone"));
+
     }
 }

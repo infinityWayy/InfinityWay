@@ -1,5 +1,6 @@
 package huix.infinity.common.world.entity.monster.arachnid;
 
+import huix.infinity.init.event.IFWSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.EnumSet;
 
@@ -179,20 +181,18 @@ public class IFWDemonSpider extends IFWArachnid {
         }
     }
 
-    // 自定义音效（可选）
     @Override
     protected SoundEvent getAmbientSound() {
-        // 可以返回自定义音效
-        return super.getAmbientSound();
+        return IFWSoundEvents.DEMON_SPIDER_AMBIENT.get();
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return super.getHurtSound(damageSource);
+    protected SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
+        return IFWSoundEvents.DEMON_SPIDER_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return super.getDeathSound();
+        return IFWSoundEvents.DEMON_SPIDER_DEATH.get();
     }
 }

@@ -267,11 +267,11 @@ public class IFWFeatures {
                                 // 特殊怪物
                                   new MobSpawnSettings.SpawnerData(IFWEntityType.REVENANT.get(), 10, 1, 1),
                                   new MobSpawnSettings.SpawnerData(IFWEntityType.DEMON_SPIDER.get(), 10, 1, 1),
-//                                new MobSpawnSettings.SpawnerData(IFWEntityType.GHOUL.get(), 10, 1, 1),
-//                                new MobSpawnSettings.SpawnerData(IFWEntityType.WIGHT.get(), 10, 1, 1),
-//                                new MobSpawnSettings.SpawnerData(IFWEntityType.INVISIBLE_STALKER.get(), 10, 1, 1),
-//                                new MobSpawnSettings.SpawnerData(IFWEntityType.HELLHOUND.get(), 10, 1, 2),
-//                                new MobSpawnSettings.SpawnerData(IFWEntityType.SHADOW.get(), 10, 1, 1),
+                                  new MobSpawnSettings.SpawnerData(IFWEntityType.GHOUL.get(), 10, 1, 1),
+                                  new MobSpawnSettings.SpawnerData(IFWEntityType.WIGHT.get(), 10, 1, 1),
+                                  new MobSpawnSettings.SpawnerData(IFWEntityType.INVISIBLE_STALKER.get(), 10, 1, 1),
+                                  new MobSpawnSettings.SpawnerData(IFWEntityType.HELLHOUND.get(), 10, 1, 2),
+                                  new MobSpawnSettings.SpawnerData(IFWEntityType.SHADOW.get(), 10, 1, 1),
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.EARTH_ELEMENTAL.get(), 10, 1, 1),
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.CLAY_GOLEM.get(), 50, 1, 1),
 

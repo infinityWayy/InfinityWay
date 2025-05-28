@@ -41,6 +41,36 @@
       "weight": 10
     },
     {
+      "type": "ifw:ghoul",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "ifw:wight",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "ifw:invisible_stalker",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "ifw:hellhound",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
+      "type": "ifw:shadow",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 10
+    },
+    {
       "type": "ifw:phase_spider",
       "maxCount": 4,
       "minCount": 1,

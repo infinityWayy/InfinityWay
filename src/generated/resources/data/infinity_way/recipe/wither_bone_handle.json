@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "ifw:wither_bone"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "ifw:wither_bone_handle"
+  }
+}

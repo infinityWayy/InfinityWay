@@ -68,6 +68,9 @@ public class IFWItemGroups {
                 output.accept(IFWItems.worm.get());
                 output.accept(IFWItems.flour.get());
                 output.accept(IFWItems.manure.get());
+                output.accept(IFWItems.wither_bone.get());
+                output.accept(IFWItems.wither_bone_handle.get());
+                output.accept(IFWItems.blazing_wither_bone.get());
                 output.accept(IFWItems.copper_bucket.get());
                 output.accept(IFWItems.water_copper_bucket.get());
                 output.accept(IFWItems.lava_copper_bucket.get());
