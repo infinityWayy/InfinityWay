@@ -28,6 +28,7 @@ import net.minecraft.world.level.levelgen.placement.CountPlacement;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.world.BiomeModifier;
@@ -50,6 +51,10 @@ public class IFWFeatures {
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_overworld_features"));
     public static final ResourceKey<BiomeModifier> REMOVE_OVERWORLD_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_overworld_spawns"));
+
+    // 深层矿石修饰器 - 新增用于秘银和艾德曼
+    public static final ResourceKey<BiomeModifier> ADD_DEEP_ORES = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_deep_ores"));
 
     // 自定义生物生成修饰器
     public static final ResourceKey<BiomeModifier> MODIFY_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
@@ -106,9 +111,9 @@ public class IFWFeatures {
                 // 银矿在主世界生成
                 FeatureUtils.register(context, IFWOreFeatures.ore_silver, Feature.ORE, IFWOreFeatures.ore_silver_cong);
 
-//                // 秘银和艾德曼只在地下世界生成 - 暂时注释
-//                 FeatureUtils.register(context, IFWOreFeatures.ore_mithril, Feature.ORE, IFWOreFeatures.mithril_ore_cong);
-//                 FeatureUtils.register(context, IFWOreFeatures.ore_adamantium, Feature.ORE, IFWOreFeatures.adamantium_ore_cong);
+                // 秘银和艾德曼在深板岩层生成 - 恢复启用
+                FeatureUtils.register(context, IFWOreFeatures.ore_mithril, Feature.ORE, IFWOreFeatures.mithril_ore_cong);
+                FeatureUtils.register(context, IFWOreFeatures.ore_adamantium, Feature.ORE, IFWOreFeatures.adamantium_ore_cong);
 
                 // 蠹虫方块生成特征 - 用于主世界山地
                 FeatureUtils.register(context, SILVERFISH_GENERATION, Feature.ORE,
@@ -141,7 +146,35 @@ public class IFWFeatures {
                 context.register(IFWOrePlacements.ore_silver, new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_silver),
                         OrePlacements.commonOrePlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.absolute(112)))));
 
-                // 秘银和艾德曼放置
+                // 秘银和艾德曼放置-深板岩层生成
+                // 秘银矿石 - 类似钻石但稍微稀有，主要在深板岩层
+                context.register(IFWOrePlacements.ore_mithril, new PlacedFeature(
+                        context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_mithril),
+                        List.of(
+                                CountPlacement.of(2), // 每个区块2次尝试
+                                InSquarePlacement.spread(),
+                                HeightRangePlacement.triangle(
+                                        VerticalAnchor.absolute(-64),
+                                        VerticalAnchor.absolute(16)
+                                ),
+                                BiomeFilter.biome()
+                        )
+                ));
+
+                // 艾德曼矿石 - 极其稀有，只在深层
+                context.register(IFWOrePlacements.ore_adamantium, new PlacedFeature(
+                        context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_adamantium),
+                        List.of(
+                                CountPlacement.of(1), // 每个区块1次尝试
+                                InSquarePlacement.spread(),
+                                HeightRangePlacement.triangle(
+                                        VerticalAnchor.absolute(-64),
+                                        VerticalAnchor.absolute(-16)
+                                ),
+                                BiomeFilter.biome()
+                        )
+                ));
+
 //
 //                context.register(IFWOrePlacements.ore_mithril, new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_mithril),
 //                        OrePlacements.rareOrePlacement(55, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
@@ -185,6 +218,15 @@ public class IFWFeatures {
                         biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
                         HolderSet.direct(
                                 placedFeatures.getOrThrow(IFWOrePlacements.ore_silver)
+                        ),
+                        GenerationStep.Decoration.UNDERGROUND_ORES));
+
+                // 深层矿石生成 - 新增秘银和艾德曼矿石生成
+                bootstrap.register(ADD_DEEP_ORES, new BiomeModifiers.AddFeaturesBiomeModifier(
+                        biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
+                        HolderSet.direct(
+                                placedFeatures.getOrThrow(IFWOrePlacements.ore_mithril),
+                                placedFeatures.getOrThrow(IFWOrePlacements.ore_adamantium)
                         ),
                         GenerationStep.Decoration.UNDERGROUND_ORES));
 
