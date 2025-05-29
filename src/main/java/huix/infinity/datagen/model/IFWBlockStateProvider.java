@@ -198,6 +198,43 @@ public class IFWBlockStateProvider extends BlockStateProvider {
                         .modelFile(damagedSilverAnvil).rotationY(((int) state.getValue(AnvilBlock.FACING).toYRot() + 180) % 360).build());
         simpleBlockItem(IFWBlocks.damaged_silver_anvil.get(), damagedSilverAnvil);
 
+        Block runePortalBlock = IFWBlocks.rune_portal.get();
+        ModelFile runePortalNS = models().withExistingParent("rune_portal_ns", mcLoc("block/block"))
+                .texture("particle", modLoc("block/rune_portal"))
+                .texture("portal", modLoc("block/rune_portal"))
+                .element()
+                .from(6, 0, 0)
+                .to(10, 16, 16)
+                .face(Direction.EAST)
+                .texture("#portal")
+                .end()
+                .face(Direction.WEST)
+                .texture("#portal")
+                .end()
+                .end()
+                .renderType("translucent");
+
+        ModelFile runePortalEW = models().withExistingParent("rune_portal_ew", mcLoc("block/block"))
+                .texture("particle", modLoc("block/rune_portal"))
+                .texture("portal", modLoc("block/rune_portal"))
+                .element()
+                .from(0, 0, 6)
+                .to(16, 16, 10)
+                .face(Direction.NORTH)
+                .texture("#portal")
+                .end()
+                .face(Direction.SOUTH)
+                .texture("#portal")
+                .end()
+                .end()
+                .renderType("translucent");
+
+        getVariantBuilder(runePortalBlock)
+                .partialState().with(NetherPortalBlock.AXIS, Direction.Axis.X)
+                .modelForState().modelFile(runePortalEW).addModel()
+                .partialState().with(NetherPortalBlock.AXIS, Direction.Axis.Z)
+                .modelForState().modelFile(runePortalNS).addModel();
+
         simpleBlock(IFWBlocks.mantle.get());
         //Runestones
         simpleBlock(IFWBlocks.mithril_runestone_nul.get());

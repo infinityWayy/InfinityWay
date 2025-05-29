@@ -453,6 +453,9 @@ public class IFWBlocks {
             adamantium_runestone_mani_item, adamantium_runestone_jux_item, adamantium_runestone_ylem_item, adamantium_runestone_sanct_item
     );
 
+    public static final DeferredBlock<Block> rune_portal = BLOCKS.registerBlock("rune_portal",
+            block -> new RunePortalBlock(BlockBehaviour.Properties.of()));
+
     public static final DeferredBlock<Block> mantle = BLOCKS.registerBlock("mantle",
             block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
                     .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(-1.0F, 3600000.0F)), BlockBehaviour.Properties.of());

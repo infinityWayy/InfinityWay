@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "faces": {
+        "north": {
+          "texture": "#portal"
+        },
+        "south": {
+          "texture": "#portal"
+        }
+      },
+      "from": [
+        0,
+        0,
+        6
+      ],
+      "to": [
+        16,
+        16,
+        10
+      ]
+    }
+  ],
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "particle": "ifw:block/rune_portal",
+    "portal": "ifw:block/rune_portal"
+  }
+}

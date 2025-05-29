@@ -314,6 +314,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWBlocks.deepslate_adamantium_ore_item.get(), "深层艾德曼矿石");
         add(IFWBlocks.deepslate_mithril_ore_item.get(), "深层秘银矿石");
         add(IFWBlocks.deepslate_silver_ore_item.get(), "深层银矿石");
+        add(IFWBlocks.rune_portal.get(), "符文传送门");
         add(IFWItems.sinew.get(), "皮革绳");
         add(IFWItems.salad.get(), "沙拉");
         add(IFWItems.milk_bowl.get(), "牛奶碗");

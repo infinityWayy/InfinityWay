@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-22T13:14:33.8518791	Block States: ifw
+// 1.21.1	2025-05-29T21:46:58.7002163	Block States: ifw
 044660bb88278a354615632365a7a1d69f8bf3e9 assets/ifw/blockstates/adamantium_anvil.json
 946d1ee0e16e6764047acdb20e22d0390e68eed9 assets/ifw/blockstates/adamantium_bars.json
 5d74aec16c1765c863c3b307aa12c18dbcf03f7a assets/ifw/blockstates/adamantium_block.json
@@ -77,6 +77,7 @@ e740f31c04c01a3eb8ae1b509ce87d7bd1f3686c assets/ifw/blockstates/obsidian_furnace
 936dda3c78ac66af0bcccb521b9ad61d70d2c0d8 assets/ifw/blockstates/raw_adamantium_block.json
 20fa54dc02f53c156421e2497656daf668fb40e3 assets/ifw/blockstates/raw_mithril_block.json
 17a7091dcf35bec14a57884b51f0041b6f09cb76 assets/ifw/blockstates/raw_silver_block.json
+d617282031c4082ae04983ee4181744d1a5fb057 assets/ifw/blockstates/rune_portal.json
 096ce889f9be9b0fd89f84e0ec8678bcd8c9d8dc assets/ifw/blockstates/sandstone_furnace.json
 be20e22ea713f4fb29baad065dc23903b706ee69 assets/ifw/blockstates/silver_anvil.json
 8efc84f4a800c78d05161be09186072273f41361 assets/ifw/blockstates/silver_bars.json
@@ -214,6 +215,8 @@ bf95422a7ff46920dcfb147a3e97f13ea42a55c7 assets/ifw/models/block/obsidian_furnac
 fd6d253792aaa58fdf183cacb30a4f14be768bc3 assets/ifw/models/block/raw_adamantium_block.json
 066fd58e2970911fbe708655b04635f2cf0a99a1 assets/ifw/models/block/raw_mithril_block.json
 829cdc1f767e02928b6ff21f2d11858d09bd6bd9 assets/ifw/models/block/raw_silver_block.json
+8edaf80170ec328652306a173863fb70647c795c assets/ifw/models/block/rune_portal_ew.json
+6ff2aa9ef5961418b1148996f2e4265b7b3fef06 assets/ifw/models/block/rune_portal_ns.json
 9c7e2eb2bbf7c57e2af406c4b22e267b11cf7ae9 assets/ifw/models/block/sandstone_furnace.json
 64f883db5172c1e72a6b2f0a9e5861e31d04a4bf assets/ifw/models/block/sandstone_furnace_on.json
 e8a3c5e08021a4314112bfef00bd3a9a9fd38789 assets/ifw/models/block/silver_anvil.json

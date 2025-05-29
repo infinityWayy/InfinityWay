@@ -318,6 +318,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWBlocks.deepslate_adamantium_ore_item.get(), "Deepslate Adamantium Ore");
         add(IFWBlocks.deepslate_mithril_ore_item.get(), "Deepslate Mithril Ore");
         add(IFWBlocks.deepslate_silver_ore_item.get(), "Deepslate Silver Ore");
+        add(IFWBlocks.rune_portal.get(), "Rune Portal");
         //Items
         add(IFWItems.sinew.get(), "Sinew");
         add(IFWItems.salad.get(), "Salad");

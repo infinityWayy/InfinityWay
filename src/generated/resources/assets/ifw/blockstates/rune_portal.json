@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ifw:block/rune_portal_ew"
+    },
+    "axis=z": {
+      "model": "ifw:block/rune_portal_ns"
+    }
+  }
+}
