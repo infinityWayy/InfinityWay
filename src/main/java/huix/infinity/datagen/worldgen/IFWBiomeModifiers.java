@@ -1,5 +1,7 @@
 package huix.infinity.datagen.worldgen;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import huix.infinity.common.worldgen.IFWFeatures;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.init.IFWBiomeModifierTypes;
@@ -42,18 +44,30 @@ public class IFWBiomeModifiers extends DatapackBuiltinEntriesProvider {
      */
     public static record ModifySpawnsBiomeModifier(
             HolderSet<Biome> biomes,
-            Map<ResourceLocation, MobSpawnSettings.SpawnerData> modifications // key: 要修改的EntityType, value: 新的SpawnerData
+            Map<ResourceLocation, MobSpawnSettings.SpawnerData> modifications
     ) implements BiomeModifier {
+
+        public static final MapCodec<ModifySpawnsBiomeModifier> CODEC = RecordCodecBuilder.mapCodec(
+                builder -> builder.group(
+                        Biome.LIST_CODEC.fieldOf("biomes").forGetter(ModifySpawnsBiomeModifier::biomes),
+                        com.mojang.serialization.Codec.unboundedMap(
+                                ResourceLocation.CODEC,
+                                MobSpawnSettings.SpawnerData.CODEC
+                        ).fieldOf("modifications").forGetter(ModifySpawnsBiomeModifier::modifications)
+                ).apply(builder, ModifySpawnsBiomeModifier::new)
+        );
 
         @Override
         public void modify(@NotNull Holder<Biome> biome, @NotNull Phase phase, ModifiableBiomeInfo.BiomeInfo.@NotNull Builder builder) {
             if (phase != Phase.ADD || !this.biomes.contains(biome) || modifications == null || modifications.isEmpty()) {
                 return;
             }
+
             MobSpawnSettingsBuilder spawns = builder.getMobSpawnSettings();
             for (MobCategory cat : MobCategory.values()) {
                 List<MobSpawnSettings.SpawnerData> list = spawns.getSpawner(cat);
                 if (list.isEmpty()) continue;
+
                 ListIterator<MobSpawnSettings.SpawnerData> it = list.listIterator();
                 while (it.hasNext()) {
                     MobSpawnSettings.SpawnerData oldData = it.next();
@@ -67,8 +81,8 @@ public class IFWBiomeModifiers extends DatapackBuiltinEntriesProvider {
         }
 
         @Override
-        public @NotNull com.mojang.serialization.MapCodec<? extends BiomeModifier> codec() {
-            return IFWBiomeModifierTypes.MODIFY_BIOME_SPAWNS.get(); // 引用统一注册器
+        public @NotNull MapCodec<? extends BiomeModifier> codec() {
+            return IFWBiomeModifierTypes.MODIFY_BIOME_SPAWNS.get();
         }
     }
 }

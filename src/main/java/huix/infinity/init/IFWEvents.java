@@ -8,6 +8,7 @@ import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.extension.func.FoodDataExtension;
+import huix.infinity.init.event.HeightBasedSpawnHandler;
 import huix.infinity.init.event.IFWLoading;
 import huix.infinity.util.IFWEnchantmentHelper;
 import huix.infinity.util.WorldHelper;
@@ -63,7 +64,7 @@ public class IFWEvents {
     public static void init(IEventBus bus) {
         // Register this class to receive forge bus events
         bus.register(IFWEvents.class);
-
+        bus.register(HeightBasedSpawnHandler.class);
     }
 
     @SubscribeEvent

@@ -26,49 +26,49 @@
       "type": "minecraft:creeper",
       "maxCount": 2,
       "minCount": 1,
-      "weight": 100
+      "weight": 25
     },
     {
       "type": "ifw:revenant",
       "maxCount": 1,
       "minCount": 1,
-      "weight": 10
+      "weight": 50
     },
     {
       "type": "ifw:demon_spider",
       "maxCount": 1,
       "minCount": 1,
-      "weight": 10
+      "weight": 50
     },
     {
       "type": "ifw:ghoul",
       "maxCount": 1,
       "minCount": 1,
-      "weight": 10
+      "weight": 50
     },
     {
       "type": "ifw:wight",
       "maxCount": 1,
       "minCount": 1,
-      "weight": 10
+      "weight": 50
     },
     {
       "type": "ifw:invisible_stalker",
       "maxCount": 1,
       "minCount": 1,
-      "weight": 10
+      "weight": 50
     },
     {
       "type": "ifw:hellhound",
       "maxCount": 2,
       "minCount": 1,
-      "weight": 10
+      "weight": 50
     },
     {
       "type": "ifw:shadow",
       "maxCount": 1,
       "minCount": 1,
-      "weight": 10
+      "weight": 50
     },
     {
       "type": "ifw:phase_spider",
@@ -80,7 +80,7 @@
       "type": "ifw:inferno_creeper",
       "maxCount": 1,
       "minCount": 1,
-      "weight": 30
+      "weight": 25
     }
   ]
 }

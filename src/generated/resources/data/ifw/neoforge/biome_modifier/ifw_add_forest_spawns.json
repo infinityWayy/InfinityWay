@@ -5,6 +5,6 @@
     "type": "ifw:wood_spider",
     "maxCount": 1,
     "minCount": 1,
-    "weight": 20
+    "weight": 100
   }
 }

@@ -35,7 +35,6 @@ import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import huix.infinity.common.worldgen.HeightBasedAddSpawnsBiomeModifier;
 
-
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -70,9 +69,9 @@ public class IFWFeatures {
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_underworld_spawns"));
     */
 
-    // 浅层洞穴修饰器
-    public static final ResourceKey<BiomeModifier> ADD_CAVE_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_cave_spawns"));
+    // 浅层洞穴修饰器 - 恢复配置
+    public static final ResourceKey<BiomeModifier> ADD_SHALLOW_CAVE_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_shallow_cave_spawns"));
 
     // 深板岩层修饰器(Y=0以下，深板岩层)
     public static final ResourceKey<BiomeModifier> ADD_DEEPSLATE_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
@@ -107,9 +106,9 @@ public class IFWFeatures {
                 // 银矿在主世界生成
                 FeatureUtils.register(context, IFWOreFeatures.ore_silver, Feature.ORE, IFWOreFeatures.ore_silver_cong);
 
-                // 秘银和艾德曼只在地下世界生成 - 暂时注释
-                // FeatureUtils.register(context, IFWOreFeatures.ore_mithril, Feature.ORE, IFWOreFeatures.mithril_ore_cong);
-                // FeatureUtils.register(context, IFWOreFeatures.ore_adamantium, Feature.ORE, IFWOreFeatures.adamantium_ore_cong);
+//                // 秘银和艾德曼只在地下世界生成 - 暂时注释
+//                 FeatureUtils.register(context, IFWOreFeatures.ore_mithril, Feature.ORE, IFWOreFeatures.mithril_ore_cong);
+//                 FeatureUtils.register(context, IFWOreFeatures.ore_adamantium, Feature.ORE, IFWOreFeatures.adamantium_ore_cong);
 
                 // 蠹虫方块生成特征 - 用于主世界山地
                 FeatureUtils.register(context, SILVERFISH_GENERATION, Feature.ORE,
@@ -143,12 +142,11 @@ public class IFWFeatures {
                         OrePlacements.commonOrePlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.absolute(112)))));
 
                 // 秘银和艾德曼放置
-                /*
-                context.register(IFWOrePlacements.ore_mithril, new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_mithril),
-                        OrePlacements.rareOrePlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
-                context.register(IFWOrePlacements.ore_adamantium, new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_adamantium),
-                        OrePlacements.rareOrePlacement(1, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
-                */
+//
+//                context.register(IFWOrePlacements.ore_mithril, new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_mithril),
+//                        OrePlacements.rareOrePlacement(55, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
+//                context.register(IFWOrePlacements.ore_adamantium, new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_adamantium),
+//                        OrePlacements.rareOrePlacement(44, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
 
                 // 蠹虫方块放置 - 主世界山地生物群系
                 context.register(SILVERFISH_PLACEMENT, new PlacedFeature(
@@ -231,7 +229,7 @@ public class IFWFeatures {
                 bootstrap.register(ADD_FOREST_SPAWNS, new BiomeModifiers.AddSpawnsBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_FOREST),
                         List.of(
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.WOOD_SPIDER.get(), 20, 1, 1)
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.WOOD_SPIDER.get(), 100, 1, 1)
                         )
                 ));
 
@@ -239,21 +237,27 @@ public class IFWFeatures {
                 bootstrap.register(ADD_JUNGLE_SPAWNS, new BiomeModifiers.AddSpawnsBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_JUNGLE),
                         List.of(
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.BLACK_WIDOW_SPIDER.get(), 25, 1, 1)
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.BLACK_WIDOW_SPIDER.get(), 100, 1, 1)
                         )
                 ));
 
-//                // 浅层洞穴生物
-//                bootstrap.register(ADD_CAVE_SPAWNS, new BiomeModifiers.AddSpawnsBiomeModifier(
-//                        biomes.getOrThrow(Tags.Biomes.IS_CAVE),
-//                        List.of(
-//                                new MobSpawnSettings.SpawnerData(IFWEntityType.GHOUL.get(), 5, 1, 1),
-//                                new MobSpawnSettings.SpawnerData(IFWEntityType.JELLY.get(), 10, 1, 2)
-//
-//                        )
-//                ));
+                // 浅层洞穴生物（Y=0到Y=63）
+                bootstrap.register(ADD_SHALLOW_CAVE_SPAWNS, new HeightBasedAddSpawnsBiomeModifier(
+                        biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
+                        List.of(
+                                // 浅层洞穴特有生物
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.GHOUL.get(), 50, 1, 1),
+//                                new MobSpawnSettings.SpawnerData(IFWEntityType.JELLY.get(), 30, 1, 4),
 
-                // 深板岩层生物（Y=0以下）
+                                // 基础怪物
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.SPIDER.get(), 80, 1, 2),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.ZOMBIE.get(), 100, 1, 4),
+                                new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 25, 1, 2)
+                        ),
+                        0, 63 // Y=0到Y=63 (浅层洞穴区域)
+                ));
+
+                // 深板岩层生物（Y=-64到Y=0）
                 bootstrap.register(ADD_DEEPSLATE_SPAWNS, new HeightBasedAddSpawnsBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
                         List.of(
@@ -262,19 +266,18 @@ public class IFWFeatures {
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.SPIDER.get(), 80, 1, 2),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.ZOMBIE.get(), 100, 1, 4),
                                 new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 10, 1, 4),
-                                new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 1, 2),
+                                new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 25, 1, 2),
 
                                 // 特殊怪物
-                                  new MobSpawnSettings.SpawnerData(IFWEntityType.REVENANT.get(), 10, 1, 1),
-                                  new MobSpawnSettings.SpawnerData(IFWEntityType.DEMON_SPIDER.get(), 10, 1, 1),
-                                  new MobSpawnSettings.SpawnerData(IFWEntityType.GHOUL.get(), 10, 1, 1),
-                                  new MobSpawnSettings.SpawnerData(IFWEntityType.WIGHT.get(), 10, 1, 1),
-                                  new MobSpawnSettings.SpawnerData(IFWEntityType.INVISIBLE_STALKER.get(), 10, 1, 1),
-                                  new MobSpawnSettings.SpawnerData(IFWEntityType.HELLHOUND.get(), 10, 1, 2),
-                                  new MobSpawnSettings.SpawnerData(IFWEntityType.SHADOW.get(), 10, 1, 1),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.REVENANT.get(), 50, 1, 1),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.DEMON_SPIDER.get(), 50, 1, 1),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.GHOUL.get(), 50, 1, 1),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.WIGHT.get(), 50, 1, 1),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.INVISIBLE_STALKER.get(), 50, 1, 1),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.HELLHOUND.get(), 50, 1, 2),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.SHADOW.get(), 50, 1, 1),
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.EARTH_ELEMENTAL.get(), 10, 1, 1),
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.CLAY_GOLEM.get(), 50, 1, 1),
-
 
                                 // 软泥类生物
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.JELLY.get(), 30, 1, 4),
@@ -285,7 +288,7 @@ public class IFWFeatures {
                                 // 高级怪物
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.BONE_LORD.get(), 5, 1, 1),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.PHASE_SPIDER.get(), 5, 1, 4),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.INFERNO_CREEPER.get(), 30, 1, 1)
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.INFERNO_CREEPER.get(), 25, 1, 1)
 
                                 // 深层洞穴飞行生物
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.VAMPIRE_BAT.get(), 20, 6, 8),

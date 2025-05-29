@@ -53,7 +53,7 @@ public final class InfinityWay {
         IFWRecipeTypes.RECIPES.register(modBus);
         IFWRecipeSerializers.RECIPE_SERIALIZERS.register(modBus);
 
-        // 世界生成注册
+        // 世界生成注册 - 确保只注册一次
         IFWStructureTypes.STRUCTURE_TYPES.register(modBus);
         IFWBiomeModifierTypes.BIOME_MODIFIER_SERIALIZERS.register(modBus);
 
@@ -65,9 +65,12 @@ public final class InfinityWay {
         // 兼容性检查
         if (ModList.get().isLoaded("farmersdelight")) {
             FarmersDelightLoaded = true;
+            LOGGER.info("Farmers Delight compatibility enabled");
         }
 
         // 事件注册
         IFWEvents.init(eventBus);
+
+        LOGGER.info("InfinityWay mod initialized successfully");
     }
 }

@@ -1,0 +1,32 @@
+{
+  "type": "ifw:height_based_add_spawns",
+  "biomes": "#c:is_overworld",
+  "max_height": 63,
+  "min_height": 0,
+  "spawners": [
+    {
+      "type": "ifw:ghoul",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 50
+    },
+    {
+      "type": "ifw:spider",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 80
+    },
+    {
+      "type": "ifw:zombie",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 100
+    },
+    {
+      "type": "minecraft:creeper",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 25
+    }
+  ]
+}
