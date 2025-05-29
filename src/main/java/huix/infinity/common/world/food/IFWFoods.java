@@ -65,7 +65,7 @@ public class IFWFoods {
     public static final FoodProperties cereal = (new FoodProperties.Builder()).nutrition(4).saturationModifier(2).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_cereal = (new IFWFoodProperties.Builder()).protein(16000).build();
     public static final FoodProperties pumpkin_soup = (new FoodProperties.Builder()).nutrition(1).saturationModifier(2).usingConvertsTo(Items.BOWL).build();
-    public static final IFWFoodProperties ifw_pumpkin_soup = (new IFWFoodProperties.Builder()).protein(16000).soup().build();
+    public static final IFWFoodProperties ifw_pumpkin_soup = (new IFWFoodProperties.Builder()).phytonutrients(16000).soup().build();
     public static final FoodProperties mushroom_soup_cream = (new FoodProperties.Builder()).nutrition(3).saturationModifier(5).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_mushroom_soup_cream = (new IFWFoodProperties.Builder()).protein(40000).soup().build();
     public static final FoodProperties vegetable_soup = (new FoodProperties.Builder()).nutrition(7).saturationModifier(6).usingConvertsTo(Items.BOWL).build();
