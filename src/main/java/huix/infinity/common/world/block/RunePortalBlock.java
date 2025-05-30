@@ -1,5 +1,6 @@
 package huix.infinity.common.world.block;
 
+import huix.infinity.util.RunePortalUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -20,10 +21,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 
 import java.util.HashMap;
@@ -72,9 +71,33 @@ public class RunePortalBlock extends Block {
         Direction.Axis direction$axis1 = state.getValue(AXIS);
         boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
 
-        return !flag && !facingState.is(this) && !(new PortalShape(level, currentPos, direction$axis1)).isComplete()
-                ? Blocks.AIR.defaultBlockState()
-                : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+        if (!flag && !facingState.is(this) && !facingState.is(Blocks.OBSIDIAN)) {
+            if (!hasValidFrameSupport(level, currentPos, direction$axis1)) {
+                return Blocks.AIR.defaultBlockState();
+            }
+        }
+
+        return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+    }
+
+    private boolean hasValidFrameSupport(LevelAccessor level, BlockPos pos, Direction.Axis axis) {
+        Direction[] checkDirections;
+        if (axis == Direction.Axis.X) {
+            checkDirections = new Direction[]{Direction.NORTH, Direction.SOUTH, Direction.UP, Direction.DOWN};
+        } else {
+            checkDirections = new Direction[]{Direction.EAST, Direction.WEST, Direction.UP, Direction.DOWN};
+        }
+
+        int supportCount = 0;
+        for (Direction dir : checkDirections) {
+            BlockPos checkPos = pos.relative(dir);
+            BlockState checkState = level.getBlockState(checkPos);
+            if (checkState.is(Blocks.OBSIDIAN) || checkState.is(this)) {
+                supportCount++;
+            }
+        }
+
+        return supportCount >= 2;
     }
 
     @Override
@@ -111,7 +134,6 @@ public class RunePortalBlock extends Block {
             UUID playerId = player.getUUID();
             long currentTime = level.getGameTime();
 
-            // 检查传送冷却
             if (TELEPORT_COOLDOWN.containsKey(playerId)) {
                 long lastTeleport = TELEPORT_COOLDOWN.get(playerId);
                 if (currentTime - lastTeleport < COOLDOWN_TICKS) {
@@ -125,7 +147,7 @@ public class RunePortalBlock extends Block {
                 long elapsedTicks = currentTime - startTime;
 
                 if (elapsedTicks >= TELEPORT_DELAY_TICKS) {
-                    executeActualTeleport(player, (ServerLevel) level);
+                    executeActualTeleport(player, (ServerLevel) level, pos);
                     TELEPORT_START_TIME.remove(playerId);
                     TELEPORT_COOLDOWN.put(playerId, currentTime);
                 }
@@ -137,18 +159,12 @@ public class RunePortalBlock extends Block {
         }
     }
 
-    /**
-     * 开始传送缓冲效果
-     */
     private void startTeleportBuffer(ServerPlayer player, ServerLevel level, BlockPos portalPos) {
         level.playSound(null, portalPos.getX(), portalPos.getY(), portalPos.getZ(),
                 SoundEvents.BEACON_POWER_SELECT, SoundSource.PLAYERS, 1.0F, 1.2F);
         createTeleportParticles(level, portalPos);
     }
 
-    /**
-     * 创建传送粒子效果
-     */
     private void createTeleportParticles(ServerLevel level, BlockPos pos) {
         for (int i = 0; i < 50; i++) {
             double x = pos.getX() + 0.5 + (level.random.nextDouble() - 0.5) * 4;
@@ -159,28 +175,22 @@ public class RunePortalBlock extends Block {
         }
     }
 
-    /**
-     * 执行实际传送
-     */
-    private void executeActualTeleport(ServerPlayer player, ServerLevel level) {
-        // 直接获取世界重生点并传送
-        BlockPos spawnPos = level.getSharedSpawnPos();
+    private void executeActualTeleport(ServerPlayer player, ServerLevel level, BlockPos portalPos) {
+        RunePortalUtil.RunestoneType runeType = RunePortalUtil.detectPortalRunestones(level, portalPos);
+        BlockPos destination = RunePortalUtil.calculateTeleportDestination(level, portalPos, runeType);
 
         player.teleportTo(
-                spawnPos.getX() + 0.5,
-                spawnPos.getY(),
-                spawnPos.getZ() + 0.5
+                destination.getX() + 0.5,
+                destination.getY(),
+                destination.getZ() + 0.5
         );
 
-        level.playSound(null, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(),
+        level.playSound(null, destination.getX(), destination.getY(), destination.getZ(),
                 SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.PLAYERS, 1.0F, 0.8F);
 
-        createArrivalParticles(level, spawnPos);
+        createArrivalParticles(level, destination);
     }
 
-    /**
-     * 创建到达粒子效果
-     */
     private void createArrivalParticles(ServerLevel level, BlockPos pos) {
         for (int i = 0; i < 30; i++) {
             double x = pos.getX() + 0.5 + (level.random.nextDouble() - 0.5) * 2;
