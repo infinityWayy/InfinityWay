@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.render.hound;
 
-import huix.infinity.common.world.entity.monster.Hellhound;
+import huix.infinity.common.world.entity.monster.HellHound;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -8,7 +8,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 
-public class HellhoundModel extends HierarchicalModel<Hellhound> {
+public class HellHoundModel extends HierarchicalModel<HellHound> {
 
     private final ModelPart root;
     private final ModelPart head;
@@ -20,7 +20,7 @@ public class HellhoundModel extends HierarchicalModel<Hellhound> {
     private final ModelPart tail;
     private final ModelPart upperBody;
 
-    public HellhoundModel(ModelPart root) {
+    public HellHoundModel(ModelPart root) {
         this.root = root;
         this.head = root.getChild("head");
         this.body = root.getChild("body");
@@ -110,7 +110,7 @@ public class HellhoundModel extends HierarchicalModel<Hellhound> {
         return this.root;
     }
 
-    public void prepareMobModel(Hellhound hellhound, float limbSwing, float limbSwingAmount, float partialTick) {
+    public void prepareMobModel(HellHound hellhound, float limbSwing, float limbSwingAmount, float partialTick) {
 
         if (hellhound.isInSittingPose()) {
 
@@ -154,7 +154,7 @@ public class HellhoundModel extends HierarchicalModel<Hellhound> {
     }
 
     @Override
-    public void setupAnim(Hellhound hellhound, float limbSwing, float limbSwingAmount,
+    public void setupAnim(HellHound hellhound, float limbSwing, float limbSwingAmount,
                           float ageInTicks, float netHeadYaw, float headPitch) {
 
         this.prepareMobModel(hellhound, limbSwing, limbSwingAmount, 0);

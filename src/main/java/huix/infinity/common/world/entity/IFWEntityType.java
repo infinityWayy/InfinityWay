@@ -191,9 +191,9 @@ public class IFWEntityType {
                             .build("demon_spider")
             );
 
-    public static final DeferredHolder<EntityType<?>, EntityType<Hellhound>> HELL_HOUND =
+    public static final DeferredHolder<EntityType<?>, EntityType<HellHound>> HELL_HOUND =
             ENTITIES.register("hell_hound",
-                    () -> EntityType.Builder.of(Hellhound::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(HellHound::new, MobCategory.MONSTER)
                             .sized(0.6F, 0.8F)
                             .eyeHeight(0.68F)
                             .fireImmune()
