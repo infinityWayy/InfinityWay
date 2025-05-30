@@ -1,8 +1,4 @@
-// 1.21.1	2025-05-30T12:43:41.4177275	Recipes
-c9a7e4f1ec03d5803305d287e37764e89a4eb897 data/farmersdelight/advancement/recipes/decorations/cooking_pot.json
-8434904ac12cff186182512f27d9003a147c0c61 data/farmersdelight/advancement/recipes/decorations/cooking_pot_alternative.json
-1869323e18c31c0391f3c1b3e004d6af0a255c53 data/farmersdelight/recipe/cooking_pot.json
-31cbd51241f0efac21075948fdb1934740447b0c data/farmersdelight/recipe/cooking_pot_alternative.json
+// 1.21.1	2025-05-30T15:08:09.0957426	Recipes
 8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json

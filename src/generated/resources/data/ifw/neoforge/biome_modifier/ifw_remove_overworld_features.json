@@ -7,7 +7,7 @@
     "minecraft:patch_melon_sparse"
   ],
   "steps": [
-    "vegetal_decoration",
-    "lakes"
+    "lakes",
+    "vegetal_decoration"
   ]
 }

@@ -2,7 +2,8 @@ package huix.infinity.common.world.entity.monster;
 
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.event.IFWSoundEvents;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -18,8 +19,6 @@ import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -27,21 +26,17 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.nbt.CompoundTag;
 
 public class Hellhound extends Wolf {
 
-    private boolean aiNeedsUpdate = false;
-
     public Hellhound(EntityType<? extends Wolf> entityType, Level level) {
         super(entityType, level);
         this.getNavigation().setCanFloat(true);
     }
 
-    // 自定义AI目标：被驯服物品吸引
     public static class TemptedByTamingItemGoal extends Goal {
         private static final double TEMP_SPEED_MODIFIER = 1.0D;
         private static final int COOLDOWN_TIME = 100;
@@ -62,7 +57,6 @@ public class Hellhound extends Wolf {
                 return false;
             }
 
-            // 只有未驯服的地狱犬才会被吸引
             if (this.hellhound.isTame()) {
                 return false;
             }
@@ -73,7 +67,6 @@ public class Hellhound extends Wolf {
                 return false;
             }
 
-            // 检查玩家是否手持驯服物品
             return this.isTemptingItem(this.temptingPlayer.getMainHandItem()) ||
                     this.isTemptingItem(this.temptingPlayer.getOffhandItem());
         }
@@ -99,7 +92,6 @@ public class Hellhound extends Wolf {
 
         @Override
         public void start() {
-            // 清除当前目标，停止攻击
             this.hellhound.setTarget(null);
         }
 
@@ -123,6 +115,35 @@ public class Hellhound extends Wolf {
         }
     }
 
+    public static class SafeHurtByTargetGoal extends HurtByTargetGoal {
+        private final Hellhound hellhound;
+
+        public SafeHurtByTargetGoal(Hellhound hellhound) {
+            super(hellhound);
+            this.hellhound = hellhound;
+        }
+
+        @Override
+        public boolean canUse() {
+
+            LivingEntity attacker = this.hellhound.getLastHurtByMob();
+            if (this.hellhound.isTame() && attacker instanceof Player player && this.hellhound.isOwnedBy(player)) {
+                return false;
+            }
+            return super.canUse();
+        }
+
+        @Override
+        public void start() {
+
+            LivingEntity target = this.hellhound.getLastHurtByMob();
+            if (this.hellhound.isTame() && target instanceof Player player && this.hellhound.isOwnedBy(player)) {
+                return;
+            }
+            super.start();
+        }
+    }
+
     @Override
     public boolean isBaby() {
         return false;
@@ -136,51 +157,104 @@ public class Hellhound extends Wolf {
     public void tick() {
         super.tick();
 
-        // 检查是否需要更新AI
-        if (this.aiNeedsUpdate && !this.level().isClientSide) {
-            this.updateAI();
-            this.aiNeedsUpdate = false;
+        if (!this.level().isClientSide && this.isTame()) {
+            LivingEntity target = this.getTarget();
+            if (target instanceof Player player && this.isOwnedBy(player)) {
+                this.setTarget(null);
+                this.setAggressive(false);
+                this.getNavigation().stop();
+            }
+
+            if (this.getLastHurtByMob() instanceof Player player && this.isOwnedBy(player)) {
+                this.setLastHurtByMob(null);
+            }
+
+            if (this.getLastHurtMob() instanceof Player player && this.isOwnedBy(player)) {
+                this.setLastHurtMob(null);
+            }
         }
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.removeAllGoals(goal -> true);
-        this.targetSelector.removeAllGoals(goal -> true);
-
         this.goalSelector.addGoal(1, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
+        this.goalSelector.addGoal(3, new TemptedByTamingItemGoal(this));
+        this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, 0.4F));
+        this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
+        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(9, new RandomLookAroundGoal(this));
 
-        // 根据驯服状态注册不同的AI
-        if (this.isTame()) {
-            // 驯服后的AI
-            this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
-            this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
-            this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, true));
-            this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-            this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
-            this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
+        this.targetSelector.addGoal(3, new SafeHurtByTargetGoal(this));
 
-            this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
-            this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
-            this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
-        } else {
-            // 未驯服时的AI - 添加被驯服物品吸引的目标作为最高优先级
-            this.goalSelector.addGoal(2, new TemptedByTamingItemGoal(this));
-            this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
-            this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, true));
-            this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-            this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
-            this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (target) -> {
+            return !this.isTame() && this.isAngryAt(target);
+        }));
 
-            this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-            this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-            this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Animal.class, 20, true, false, null));
-        }
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Animal.class, 20, true, false, (target) -> {
+            return !this.isTame();
+        }));
     }
 
-    // 新方法：更新AI
-    private void updateAI() {
-        this.registerGoals();
+    @Override
+    public boolean canAttack(LivingEntity target) {
+
+        if (this.isTame() && this.isOwnedBy(target)) {
+            return false;
+        }
+        return super.canAttack(target);
+    }
+
+    @Override
+    public void setTarget(LivingEntity target) {
+
+        if (this.isTame() && target instanceof Player player && this.isOwnedBy(player)) {
+            return;
+        }
+        super.setTarget(target);
+    }
+
+    @Override
+    public boolean hurt(DamageSource damageSource, float damage) {
+
+        if (this.isTame() && damageSource.getEntity() instanceof Player player && this.isOwnedBy(player)) {
+
+            boolean result = super.hurt(damageSource, damage);
+
+            this.setLastHurtByMob(null);
+            this.setTarget(null);
+            this.setAggressive(false);
+            return result;
+        }
+        return super.hurt(damageSource, damage);
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity target) {
+
+        if (this.isTame() && target instanceof Player player && this.isOwnedBy(player)) {
+            return false;
+        }
+
+        boolean result = super.doHurtTarget(target);
+        if (result && this.getRandom().nextFloat() < 0.4F) {
+            this.playSound(IFWSoundEvents.HELLHOUND_BREATH.get(), 1.0F, 1.0F);
+            target.setRemainingFireTicks(20 * (1 + this.random.nextInt(8)));
+        }
+        return result;
+    }
+
+    @Override
+    public boolean wantsToAttack(LivingEntity target, LivingEntity owner) {
+
+        if (this.isTame() && target instanceof Player player && this.isOwnedBy(player)) {
+            return false;
+        }
+        return super.wantsToAttack(target, owner);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -219,67 +293,59 @@ public class Hellhound extends Wolf {
     }
 
     @Override
-    public boolean doHurtTarget(Entity target) {
-        boolean result = super.doHurtTarget(target);
-        if (result && this.getRandom().nextFloat() < 0.4F) {
-            this.playSound(IFWSoundEvents.HELLHOUND_BREATH.get(), 1.0F, 1.0F);
-            target.setRemainingFireTicks(20 * (1 + this.random.nextInt(8)));
-        }
-        return result;
-    }
-
-    @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
 
-        // 如果已经驯服且玩家是主人
         if (this.isTame() && this.isOwnedBy(player)) {
-            // 如果手里有食物，处理喂食
+
+            if (this.getTarget() == player) {
+                this.setTarget(null);
+                this.setAggressive(false);
+                this.getNavigation().stop();
+            }
+
             if (this.isFood(itemstack)) {
                 return super.mobInteract(player, hand);
             }
 
-            // 否则切换坐下状态
             if (!this.level().isClientSide) {
                 boolean wasSitting = this.isOrderedToSit();
                 this.setOrderedToSit(!wasSitting);
+                this.jumping = false;
+                this.navigation.stop();
+                this.setTarget(null);
 
-                // 播放音效
                 if (this.isOrderedToSit()) {
                     this.playSound(SoundEvents.WOLF_WHINE, 1.0F, 1.0F);
                 } else {
                     this.playSound(SoundEvents.WOLF_PANT, 1.0F, 1.0F);
                 }
+
+                return InteractionResult.SUCCESS_NO_ITEM_USED;
             }
-            return InteractionResult.sidedSuccess(this.level().isClientSide);
+            return InteractionResult.SUCCESS;
         }
 
-        // 如果已经驯服但不是主人，使用原版逻辑
         if (this.isTame()) {
             return super.mobInteract(player, hand);
         }
 
-        // 未驯服的情况下的驯服逻辑
         if (itemstack.is(IFWItems.blazing_wither_bone.get()) && !this.isAggressive() && this.getTarget() != player) {
             if (!player.getAbilities().instabuild) {
                 itemstack.shrink(1);
             }
 
-            // 33%的驯服成功率
             if (this.getRandom().nextInt(3) == 0) {
-                // 驯服成功
+
                 this.tame(player);
                 this.setOrderedToSit(true);
 
-                // 立即清除当前目标并停止攻击
                 this.setTarget(null);
                 this.setLastHurtByMob(null);
                 this.setLastHurtMob(null);
+                this.setAggressive(false);
+                this.getNavigation().stop();
 
-                // 立即更新AI
-                this.updateAI();
-
-                // 播放成功音效和粒子效果
                 if (this.level() instanceof ServerLevel serverLevel) {
                     for (int i = 0; i < 7; ++i) {
                         double d0 = this.random.nextGaussian() * 0.02D;
@@ -294,7 +360,7 @@ public class Hellhound extends Wolf {
 
                 return InteractionResult.SUCCESS;
             } else {
-                // 驯服失败，播放失败音效和粒子效果
+
                 if (this.level() instanceof ServerLevel serverLevel) {
                     for (int i = 0; i < 7; ++i) {
                         double d0 = this.random.nextGaussian() * 0.02D;
@@ -322,8 +388,6 @@ public class Hellhound extends Wolf {
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        // 读取数据后标记需要更新AI
-        this.aiNeedsUpdate = true;
     }
 
     @Override
@@ -332,12 +396,37 @@ public class Hellhound extends Wolf {
     }
 
     @Override
+    public boolean canBreed() {
+        return false;
+    }
+
+    @Override
+    public boolean isInLove() {
+        return false;
+    }
+
+    @Override
+    public void setInLove(Player player) {
+    }
+
+    @Override
+    public void setInLoveTime(int time) {
+    }
+
+    @Override
+    public int getInLoveTime() {
+        return 0;
+    }
+
+    @Override
+    public boolean canFallInLove() {
+        return false;
+    }
+
+    @Override
     public boolean isFood(ItemStack stack) {
-        // 驯服后可以喂食来恢复血量
         if (this.isTame()) {
-            return stack.is(IFWItems.cooked_worm.get()) ||
-                    stack.is(net.minecraft.world.item.Items.COOKED_BEEF) ||
-                    stack.is(net.minecraft.world.item.Items.COOKED_PORKCHOP);
+            return stack.is(ItemTags.WOLF_FOOD);
         }
         return false;
     }
