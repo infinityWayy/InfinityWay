@@ -10,31 +10,31 @@ import org.slf4j.Logger;
  * 农夫乐事MOD兼容性管理器
  * 负责初始化和管理与农夫乐事MOD的所有集成功能
  */
-public class FarmersDelightCompat {
+public class FDCompat {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public static void init(IEventBus eventBus) {
         LOGGER.info("Initializing Farmers Delight compatibility...");
 
         // 注册营养系统适配器
-        FarmersDelightNutritionAdapter.init();
+        FDFoodAdapter.init();
 
         // 注册服务器启动事件来应用营养数据
-        eventBus.addListener(FarmersDelightCompat::onServerStarting);
-        eventBus.addListener(FarmersDelightCompat::onServerStarted);
+        eventBus.addListener(FDCompat::onServerStarting);
+        eventBus.addListener(FDCompat::onServerStarted);
 
         LOGGER.info("Farmers Delight compatibility initialized successfully! Ready to register {} nutrition entries",
-                FarmersDelightNutritionAdapter.getNutritionEntryCount());
+                FDFoodAdapter.getNutritionEntryCount());
     }
 
     private static void onServerStarting(ServerStartingEvent event) {
         LOGGER.info("Server starting - preparing Farmers Delight integration...");
-        FarmersDelightNutritionAdapter.prepareNutritionData();
+        FDFoodAdapter.prepareNutritionData();
     }
 
     private static void onServerStarted(ServerStartedEvent event) {
         LOGGER.info("Server started - applying Farmers Delight integration...");
-        FarmersDelightNutritionAdapter.applyNutritionData(event.getServer());
+        FDFoodAdapter.applyNutritionData(event.getServer());
         LOGGER.info("Farmers Delight integration fully applied!");
     }
 

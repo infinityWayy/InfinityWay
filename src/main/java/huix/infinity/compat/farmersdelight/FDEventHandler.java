@@ -18,11 +18,11 @@ import org.slf4j.Logger;
  * 农夫乐事事件处理器
  * 处理与农夫乐事食物相关的游戏事件
  */
-public class FarmersDelightEventHandler {
+public class FDEventHandler {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public static void register() {
-        NeoForge.EVENT_BUS.register(new FarmersDelightEventHandler());
+        NeoForge.EVENT_BUS.register(new FDEventHandler());
         LOGGER.info("Farmers Delight event handler registered");
     }
 
@@ -38,8 +38,8 @@ public class FarmersDelightEventHandler {
         ItemStack itemStack = event.getItem();
         Item item = itemStack.getItem();
 
-        if (FarmersDelightNutritionAdapter.isFarmersDelightFood(item)) {
-            IFWFoodProperties ifwProps = FarmersDelightNutritionAdapter.getNutritionProperties(item);
+        if (FDFoodAdapter.isFarmersDelightFood(item)) {
+            IFWFoodProperties ifwProps = FDFoodAdapter.getNutritionProperties(item);
 
             if (ifwProps != null) {
                 applyIFWNutrition(player, ifwProps);

@@ -18,9 +18,8 @@ import huix.infinity.common.world.item.group.IFWItemGroups;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.loot.IFWLootModifiers;
 import huix.infinity.init.event.IFWSoundEvents;
-import huix.infinity.compat.farmersdelight.FarmersDelightCompat;
+import huix.infinity.compat.farmersdelight.FDCompat;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
@@ -68,7 +67,7 @@ public final class InfinityWay {
         if (ModList.get().isLoaded(FARMERS_DELIGHT_MODID)) {
             FarmersDelightLoaded = true;
             LOGGER.info("Farmers Delight detected! Initializing compatibility module...");
-            FarmersDelightCompat.init(eventBus);
+            FDCompat.init(eventBus);
         }
 
         // 事件注册

@@ -18,7 +18,7 @@ import java.util.Map;
  * 农夫乐事营养系统适配器
  * 负责为农夫乐事的食物物品添加IFW营养系统支持
  */
-public class FarmersDelightNutritionAdapter {
+public class FDFoodAdapter {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final String FARMERS_DELIGHT_MODID = "farmersdelight";
 
@@ -29,7 +29,7 @@ public class FarmersDelightNutritionAdapter {
         LOGGER.info("Initializing Farmers Delight nutrition adapter...");
 
         // 注册玩家登录事件，确保客户端也能获得营养数据
-        NeoForge.EVENT_BUS.addListener(FarmersDelightNutritionAdapter::onPlayerLoggedIn);
+        NeoForge.EVENT_BUS.addListener(FDFoodAdapter::onPlayerLoggedIn);
     }
 
     public static int getNutritionEntryCount() {

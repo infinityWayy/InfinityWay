@@ -7,8 +7,8 @@ import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.common.world.item.IFWItems;
-import huix.infinity.compat.farmersdelight.FarmersDelightEventHandler;
-import huix.infinity.compat.farmersdelight.FarmersDelightNutritionAdapter;
+import huix.infinity.compat.farmersdelight.FDEventHandler;
+import huix.infinity.compat.farmersdelight.FDFoodAdapter;
 import huix.infinity.extension.func.FoodDataExtension;
 import huix.infinity.init.event.IFWLoading;
 import huix.infinity.util.IFWEnchantmentHelper;
@@ -67,7 +67,7 @@ public class IFWEvents {
         // Register this class to receive forge bus events
         bus.register(IFWEvents.class);
         if (InfinityWay.FarmersDelightLoaded) {
-            FarmersDelightEventHandler.register();
+            FDEventHandler.register();
         }
     }
 
@@ -192,7 +192,7 @@ public class IFWEvents {
 
         if (InfinityWay.FarmersDelightLoaded) {
             try {
-                IFWFoodProperties nutrition = FarmersDelightNutritionAdapter.getNutritionProperties(item);
+                IFWFoodProperties nutrition = FDFoodAdapter.getNutritionProperties(item);
                 if (nutrition != null) {
                     return nutrition;
                 }
