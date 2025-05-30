@@ -7,6 +7,8 @@ import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.common.world.food.IFWFoodProperties;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.compat.farmersdelight.FarmersDelightEventHandler;
+import huix.infinity.compat.farmersdelight.FarmersDelightNutritionAdapter;
 import huix.infinity.extension.func.FoodDataExtension;
 import huix.infinity.init.event.HeightBasedSpawnHandler;
 import huix.infinity.init.event.IFWLoading;
@@ -31,6 +33,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
@@ -65,6 +68,9 @@ public class IFWEvents {
         // Register this class to receive forge bus events
         bus.register(IFWEvents.class);
         bus.register(HeightBasedSpawnHandler.class);
+        if (InfinityWay.FarmersDelightLoaded) {
+            FarmersDelightEventHandler.register();
+        }
     }
 
     @SubscribeEvent
@@ -157,10 +163,47 @@ public class IFWEvents {
     @SubscribeEvent
     public static void addFoodInfo(final ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
-        if (stack.getItem().ifw_isFood()) {
-            showFoodInfo(stack.get(DataComponents.FOOD), event.getToolTip());
-            showMoreFoodInfo(stack.get(IFWDataComponents.ifw_food_data), event.getToolTip());
+        Item item = stack.getItem();
+
+        boolean isFood = item.ifw_isFood();
+        FoodProperties food = stack.get(DataComponents.FOOD);
+        IFWFoodProperties ifwFoodData = stack.get(IFWDataComponents.ifw_food_data);
+        IFWFoodProperties compatNutrition = null;
+
+        if (isFood || food != null) {
+            compatNutrition = getCompatibilityNutrition(item);
         }
+        else if (InfinityWay.FarmersDelightLoaded) {
+            compatNutrition = getCompatibilityNutrition(item);
+        }
+        if (!isFood && food == null && ifwFoodData == null && compatNutrition == null) {
+            return;
+        }
+        if (food != null) {
+            showFoodInfo(food, event.getToolTip());
+        }
+        if (ifwFoodData != null) {
+            showMoreFoodInfo(ifwFoodData, event.getToolTip());
+            return;
+        }
+        if (compatNutrition != null) {
+            showMoreFoodInfo(compatNutrition, event.getToolTip());
+        }
+    }
+    private static IFWFoodProperties getCompatibilityNutrition(Item item) {
+
+        if (InfinityWay.FarmersDelightLoaded) {
+            try {
+                IFWFoodProperties nutrition = FarmersDelightNutritionAdapter.getNutritionProperties(item);
+                if (nutrition != null) {
+                    return nutrition;
+                }
+            } catch (Exception e) {
+                InfinityWay.LOGGER.warn("Error getting Farmers Delight nutrition for item: {}", item, e);
+            }
+        }
+        // 未来可以在这里添加其他MOD的支持
+        return null;
     }
 
     private static void showFoodInfo(final FoodProperties food, final List<Component> list) {

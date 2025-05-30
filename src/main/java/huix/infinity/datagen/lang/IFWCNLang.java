@@ -92,7 +92,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.cave_spider_spawn_egg.get(), "洞穴蜘蛛刷怪蛋");
         add(IFWItems.demon_spider_spawn_egg.get(), "恶魔蜘蛛刷怪蛋");
 
-        add("commands.xp.message", "你当前的经验值为 %s");
+        add("commands.exp.message", "你当前的经验值为 %s");
         add("commands.day.message", "今天是第 %s 天");
         add("commands.stats.phytonutrients", "植物营养素: %d/%d (%.1f%%/%.1f%%)");
         add("commands.stats.protein", "蛋白质: %d/%d (%.1f%%/%.1f%%)");

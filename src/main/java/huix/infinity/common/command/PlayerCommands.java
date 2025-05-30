@@ -18,15 +18,15 @@ public class PlayerCommands {
     public static void onRegisterCommands(RegisterCommandsEvent event) {
         var dispatcher = event.getDispatcher();
 
-        // 注册 /xp 命令
+        // 注册 /exp 命令
         dispatcher.register(
-                Commands.literal("xp")
+                Commands.literal("exp")
                         .executes(context -> {
                             CommandSourceStack source = context.getSource();
                             if (source.getEntity() instanceof Player player) {
-                                int xp = player.totalExperience;
+                                int exp = player.totalExperience;
                                 source.sendSuccess(() ->
-                                        Component.translatable("commands.xp.message", xp)
+                                        Component.translatable("commands.exp.message", exp)
                                                 .withStyle(ChatFormatting.YELLOW), false);
                             }
                             return 1;

@@ -18,6 +18,7 @@ import huix.infinity.common.world.item.group.IFWItemGroups;
 import huix.infinity.common.world.item.tier.IFWArmorMaterials;
 import huix.infinity.common.world.loot.IFWLootModifiers;
 import huix.infinity.init.event.IFWSoundEvents;
+import huix.infinity.compat.farmersdelight.FarmersDelightCompat;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -29,6 +30,7 @@ import org.slf4j.Logger;
 public final class InfinityWay {
     public static final String MOD_ID = "ifw";
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final String FARMERS_DELIGHT_MODID = "farmersdelight";
     public static boolean FarmersDelightLoaded = false;
 
     public InfinityWay(final IEventBus modBus) {
@@ -62,10 +64,11 @@ public final class InfinityWay {
         IFWSoundEvents.register(modBus);
         Curses.CURSES.register(modBus);
 
-        // 兼容性检查
-        if (ModList.get().isLoaded("farmersdelight")) {
+        // 农夫乐事兼容性检查和初始化
+        if (ModList.get().isLoaded(FARMERS_DELIGHT_MODID)) {
             FarmersDelightLoaded = true;
-            LOGGER.info("Farmers Delight compatibility enabled");
+            LOGGER.info("Farmers Delight detected! Initializing compatibility module...");
+            FarmersDelightCompat.init(eventBus);
         }
 
         // 事件注册

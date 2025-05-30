@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "ifw:water_copper_bucket",
+    "ifw:water_silver_bucket",
+    "ifw:water_gold_bucket",
+    "minecraft:water_bucket",
+    "ifw:water_ancient_metal_bucket",
+    "ifw:water_mithril_bucket",
+    "ifw:water_adamantium_bucket"
+  ]
+}

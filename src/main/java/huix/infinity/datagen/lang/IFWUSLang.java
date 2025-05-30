@@ -95,7 +95,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.demon_spider_spawn_egg.get(), "Demon Spider Spawn Egg");
 
         //Commands
-        add("commands.xp.message", "You have %s experience");
+        add("commands.exp.message", "You have %s experience");
         add("commands.day.message", "It is day %s of this world");
         add("commands.stats.phytonutrients", "Phytonutrients: %d/%d (%.1f%%/%.1f%%)");
         add("commands.stats.protein", "Protein: %d/%d (%.1f%%/%.1f%%)");
