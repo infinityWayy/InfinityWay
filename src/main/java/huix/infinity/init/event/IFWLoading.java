@@ -8,6 +8,7 @@ import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
+import huix.infinity.util.HeightSpawnHandler;
 import huix.infinity.util.ReplaceHelper;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -525,20 +526,20 @@ public class IFWLoading {
         event.register(IFWEntityType.COW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Livestock::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 
         // 怪物类实体
-        event.register(IFWEntityType.ZOMBIE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.REVENANT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.GHOUL.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.WIGHT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.INVISIBLE_STALKER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.SHADOW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.INFERNO_CREEPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.HELLHOUND.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Livestock::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.ZOMBIE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkUniversalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.REVENANT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.GHOUL.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkShallowCaveSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.WIGHT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.INVISIBLE_STALKER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.SHADOW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.INFERNO_CREEPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.HELL_HOUND.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 
-        event.register(IFWEntityType.SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.WOOD_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.BLACK_WIDOW_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.PHASE_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkUniversalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.WOOD_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, HeightSpawnHandler::checkWoodSpiderSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.BLACK_WIDOW_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkSurfaceLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.PHASE_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(IFWEntityType.CAVE_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
-        event.register(IFWEntityType.DEMON_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.DEMON_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }

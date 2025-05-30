@@ -64,7 +64,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.SHADOW.value(), "暗影");
         add(IFWEntityType.INVISIBLE_STALKER.value(), "隐形潜伏者");
         add(IFWEntityType.INFERNO_CREEPER.value(), "地狱苦力怕");
-        add(IFWEntityType.HELLHOUND.value(), "地狱犬");
+        add(IFWEntityType.HELL_HOUND.value(), "地狱犬");
         add(IFWEntityType.SPIDER.value(), "蜘蛛");
         add(IFWEntityType.WOOD_SPIDER.value(), "木蜘蛛");
         add(IFWEntityType.BLACK_WIDOW_SPIDER.value(), "黑寡妇蜘蛛");

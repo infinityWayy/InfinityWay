@@ -34,7 +34,7 @@ public class IFWExtraEvent {
         event.put(IFWEntityType.SHADOW.get(), Shadow.createAttributes().build());
         event.put(IFWEntityType.INVISIBLE_STALKER.get(), InvisibleStalker.createAttributes().build());
         event.put(IFWEntityType.INFERNO_CREEPER.get(), InfernoCreeper.createAttributes().build());
-        event.put(IFWEntityType.HELLHOUND.get(), Hellhound.createAttributes().build());
+        event.put(IFWEntityType.HELL_HOUND.get(), Hellhound.createAttributes().build());
 
         event.put(IFWEntityType.SPIDER.get(), IFWSpider.createAttributes().build());
         event.put(IFWEntityType.WOOD_SPIDER.get(), IFWWoodSpider.createAttributes().build());

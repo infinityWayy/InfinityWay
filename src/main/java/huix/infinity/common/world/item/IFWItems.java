@@ -853,5 +853,5 @@ public class IFWItems {
             () -> new DeferredSpawnEggItem(IFWEntityType.DEMON_SPIDER, 0x8B0000, 0xFF4500, new Item.Properties()));
 
     public static final DeferredItem<Item> hellhound_spawn_egg = ITEMS.register("hellhound_spawn_egg",
-            () -> new DeferredSpawnEggItem(IFWEntityType.HELLHOUND, 0x1A0A0A, 0xCC2200, new Item.Properties()));
+            () -> new DeferredSpawnEggItem(IFWEntityType.HELL_HOUND, 0x1A0A0A, 0xCC2200, new Item.Properties()));
 }

@@ -73,7 +73,7 @@ public class IFWEntityType {
 
     public static final DeferredHolder<EntityType<?>, EntityType<Revenant>> REVENANT =
             ENTITIES.register("revenant",
-                    () -> EntityType.Builder.<Revenant>of(Revenant::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(Revenant::new, MobCategory.MONSTER)
                             .sized(0.6F, 1.95F)
                             .eyeHeight(1.74F)
                             .passengerAttachments(2.0125F)
@@ -102,7 +102,7 @@ public class IFWEntityType {
 
     public static final DeferredHolder<EntityType<?>, EntityType<InvisibleStalker>> INVISIBLE_STALKER =
             ENTITIES.register("invisible_stalker",
-                    () -> EntityType.Builder.<InvisibleStalker>of(InvisibleStalker::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(InvisibleStalker::new, MobCategory.MONSTER)
                             .sized(0.6F, 1.95F)
                             .eyeHeight(1.74F)
                             .clientTrackingRange(8)
@@ -120,7 +120,7 @@ public class IFWEntityType {
 
     public static final DeferredHolder<EntityType<?>, EntityType<InfernoCreeper>> INFERNO_CREEPER =
             ENTITIES.register("inferno_creeper",
-                    () -> EntityType.Builder.<InfernoCreeper>of(InfernoCreeper::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(InfernoCreeper::new, MobCategory.MONSTER)
                             .sized(0.6F, 1.7F)
                             .eyeHeight(1.7F)
                             .clientTrackingRange(8)
@@ -191,12 +191,12 @@ public class IFWEntityType {
                             .build("demon_spider")
             );
 
-    public static final DeferredHolder<EntityType<?>, EntityType<Hellhound>> HELLHOUND =
-            ENTITIES.register("hellhound",
+    public static final DeferredHolder<EntityType<?>, EntityType<Hellhound>> HELL_HOUND =
+            ENTITIES.register("hell_hound",
                     () -> EntityType.Builder.of(Hellhound::new, MobCategory.MONSTER)
                             .sized(0.6F, 0.8F)
                             .eyeHeight(0.68F)
                             .fireImmune()
                             .clientTrackingRange(8)
-                            .build("hellhound"));
+                            .build("hell_hound"));
 }
