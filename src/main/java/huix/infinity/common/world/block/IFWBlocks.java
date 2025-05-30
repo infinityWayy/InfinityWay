@@ -456,10 +456,14 @@ public class IFWBlocks {
     public static final DeferredBlock<Block> rune_portal = BLOCKS.registerBlock("rune_portal",
             block -> new RunePortalBlock(BlockBehaviour.Properties.of()));
 
-    public static final DeferredBlock<Block> mantle = BLOCKS.registerBlock("mantle",
-            block -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of().mapColor(MapColor.STONE)
-                    .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(-1.0F, 3600000.0F)), BlockBehaviour.Properties.of());
-    public static final DeferredItem<BlockItem> mantle_item = ITEM_BLOCKS.registerSimpleBlockItem("mantle", mantle, new Item.Properties().stacksTo(4));
+    public static final DeferredBlock<MantleBlock> mantle = BLOCKS.registerBlock("mantle",
+            block -> new MantleBlock(BlockBehaviour.Properties.of()
+                   .instrument(NoteBlockInstrument.BASEDRUM).strength(-1.0F, 3600000.0F)
+                   .lightLevel(state -> 15).isValidSpawn((state, level, pos, type) -> false).isRedstoneConductor((state, level, pos) -> true)
+                   .isSuffocating((state, level, pos) -> true).isViewBlocking((state, level, pos) -> true).randomTicks()), BlockBehaviour.Properties.of());
+
+    public static final DeferredItem<BlockItem> mantle_item = ITEM_BLOCKS.registerSimpleBlockItem("mantle", mantle,
+            new Item.Properties().stacksTo(4).fireResistant());
 
     public static final DeferredBlock<Block> copper_private_chest = BLOCKS.registerBlock("copper_private_chest",
             block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
