@@ -28,13 +28,11 @@ import net.minecraft.world.level.levelgen.placement.CountPlacement;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
-import huix.infinity.common.worldgen.HeightBasedAddSpawnsBiomeModifier;
 
 import java.util.List;
 import java.util.Map;
@@ -316,7 +314,7 @@ public class IFWFeatures {
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.GHOUL.get(), 50, 1, 1),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.WIGHT.get(), 50, 1, 1),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.INVISIBLE_STALKER.get(), 50, 1, 1),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.HELLHOUND.get(), 50, 1, 2),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.HELL_HOUND.get(), 50, 1, 2),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.SHADOW.get(), 50, 1, 1),
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.EARTH_ELEMENTAL.get(), 10, 1, 1),
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.CLAY_GOLEM.get(), 50, 1, 1),
@@ -367,7 +365,7 @@ public class IFWFeatures {
                                 // 地下世界精英生物
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.WIGHT.get(), 10, 1, 1),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.INVISIBLE_STALKER.get(), 10, 1, 1),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.HELLHOUND.get(), 10, 1, 2),
+                                new MobSpawnSettings.SpawnerData(IFWEntityType.HELL_HOUND.get(), 10, 1, 2),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.SHADOW.get(), 10, 1, 1),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.EARTH_ELEMENTAL.get(), 10, 1, 1),
 

@@ -59,7 +59,7 @@
       "weight": 50
     },
     {
-      "type": "ifw:hellhound",
+      "type": "ifw:hell_hound",
       "maxCount": 2,
       "minCount": 1,
       "weight": 50
