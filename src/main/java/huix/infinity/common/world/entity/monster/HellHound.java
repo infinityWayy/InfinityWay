@@ -30,9 +30,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.nbt.CompoundTag;
 
-public class Hellhound extends Wolf {
+public class HellHound extends Wolf {
 
-    public Hellhound(EntityType<? extends Wolf> entityType, Level level) {
+    public HellHound(EntityType<? extends Wolf> entityType, Level level) {
         super(entityType, level);
         this.getNavigation().setCanFloat(true);
     }
@@ -41,11 +41,11 @@ public class Hellhound extends Wolf {
         private static final double TEMP_SPEED_MODIFIER = 1.0D;
         private static final int COOLDOWN_TIME = 100;
 
-        private final Hellhound hellhound;
+        private final HellHound hellhound;
         private Player temptingPlayer;
         private int calmDown;
 
-        public TemptedByTamingItemGoal(Hellhound hellhound) {
+        public TemptedByTamingItemGoal(HellHound hellhound) {
             this.hellhound = hellhound;
             this.setFlags(java.util.EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
         }
@@ -116,9 +116,9 @@ public class Hellhound extends Wolf {
     }
 
     public static class SafeHurtByTargetGoal extends HurtByTargetGoal {
-        private final Hellhound hellhound;
+        private final HellHound hellhound;
 
-        public SafeHurtByTargetGoal(Hellhound hellhound) {
+        public SafeHurtByTargetGoal(HellHound hellhound) {
             super(hellhound);
             this.hellhound = hellhound;
         }
@@ -463,7 +463,7 @@ public class Hellhound extends Wolf {
         }
     }
 
-    public static boolean canSpawn(EntityType<Hellhound> entityType, LevelAccessor level,
+    public static boolean canSpawn(EntityType<HellHound> entityType, LevelAccessor level,
                                    net.minecraft.world.entity.MobSpawnType spawnType, BlockPos pos, RandomSource random) {
         return checkMonsterSpawnRules(entityType, (ServerLevelAccessor) level, spawnType, pos, random);
     }

@@ -1,10 +1,10 @@
 package huix.infinity.common.world.entity.render.hound;
 
 import huix.infinity.common.client.model.ModelLayers;
+import huix.infinity.common.world.entity.monster.HellHound;
 import huix.infinity.init.InfinityWay;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import huix.infinity.common.world.entity.monster.Hellhound;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.particles.ParticleTypes;
 
-public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
+public class HellHoundRenderer extends MobRenderer<HellHound, HellHoundModel> {
 
     private static final ResourceLocation HELLHOUND_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "textures/entity/hound/hellhound.png");
@@ -23,22 +23,22 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
 
     private int particleTimer = 0;
 
-    public HellhoundRenderer(EntityRendererProvider.Context context) {
-        super(context, new HellhoundModel(context.bakeLayer(ModelLayers.HELLHOUND)), 0.5F);
+    public HellHoundRenderer(EntityRendererProvider.Context context) {
+        super(context, new HellHoundModel(context.bakeLayer(ModelLayers.HELLHOUND)), 0.5F);
         this.addLayer(new HellhoundGlowLayer(this));
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Hellhound hellhound) {
+    public ResourceLocation getTextureLocation(HellHound hellhound) {
         return HELLHOUND_TEXTURE;
     }
 
     @Override
-    public void render(Hellhound hellhound, float entityYaw, float partialTicks,
+    public void render(HellHound hellhound, float entityYaw, float partialTicks,
                        PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
 
-        if (this.model instanceof HellhoundModel) {
-            ((HellhoundModel) this.model).prepareMobModel(hellhound, 0, 0, partialTicks);
+        if (this.model instanceof HellHoundModel) {
+            ((HellHoundModel) this.model).prepareMobModel(hellhound, 0, 0, partialTicks);
         }
 
         super.render(hellhound, entityYaw, partialTicks, poseStack, buffer, packedLight);
@@ -48,15 +48,15 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
         }
     }
 
-    public static class HellhoundGlowLayer extends RenderLayer<Hellhound, HellhoundModel> {
+    public static class HellhoundGlowLayer extends RenderLayer<HellHound, HellHoundModel> {
 
-        public HellhoundGlowLayer(HellhoundRenderer renderer) {
+        public HellhoundGlowLayer(HellHoundRenderer renderer) {
             super(renderer);
         }
 
         @Override
         public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight,
-                           Hellhound hellhound, float limbSwing, float limbSwingAmount,
+                           HellHound hellhound, float limbSwing, float limbSwingAmount,
                            float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
 
             VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.eyes(HELLHOUND_GLOW_TEXTURE));
@@ -64,7 +64,7 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
         }
     }
 
-    private void handleParticleEffects(Hellhound hellhound) {
+    private void handleParticleEffects(HellHound hellhound) {
         this.particleTimer++;
 
         if (hellhound.isInSittingPose()) {
@@ -117,7 +117,7 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
     }
 
     // 坐下时的火焰粒子
-    private void spawnSittingFireParticles(Hellhound hellhound) {
+    private void spawnSittingFireParticles(HellHound hellhound) {
         double offsetX = (hellhound.getRandom().nextDouble() - 0.5D) * 0.25D;
         double offsetZ = (hellhound.getRandom().nextDouble() - 0.5D) * 0.25D;
         double offsetY = hellhound.getRandom().nextDouble() * 0.2D;
@@ -130,7 +130,7 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
     }
 
     // 坐下时的烟雾粒子
-    private void spawnSittingSmokeParticles(Hellhound hellhound) {
+    private void spawnSittingSmokeParticles(HellHound hellhound) {
         double offsetX = (hellhound.getRandom().nextDouble() - 0.5D) * 0.3D;
         double offsetZ = (hellhound.getRandom().nextDouble() - 0.5D) * 0.3D;
         double offsetY = hellhound.getRandom().nextDouble() * 0.3D;
@@ -143,7 +143,7 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
     }
 
     // 其他粒子
-    private void spawnBasicFireParticles(Hellhound hellhound) {
+    private void spawnBasicFireParticles(HellHound hellhound) {
         double offsetX = (hellhound.getRandom().nextDouble() - 0.5D) * 0.3D;
         double offsetZ = (hellhound.getRandom().nextDouble() - 0.5D) * 0.3D;
         double offsetY = hellhound.getRandom().nextDouble() * 0.5D;
@@ -155,7 +155,7 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
         hellhound.level().addParticle(ParticleTypes.FLAME, x, y, z, 0.0D, 0.02D, 0.0D);
     }
 
-    private void spawnSmokeParticles(Hellhound hellhound) {
+    private void spawnSmokeParticles(HellHound hellhound) {
         double offsetX = (hellhound.getRandom().nextDouble() - 0.5D) * 0.4D;
         double offsetZ = (hellhound.getRandom().nextDouble() - 0.5D) * 0.4D;
         double offsetY = hellhound.getRandom().nextDouble() * 0.6D;
@@ -167,7 +167,7 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
         hellhound.level().addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.04D, 0.0D);
     }
 
-    private void spawnMovementFireParticles(Hellhound hellhound) {
+    private void spawnMovementFireParticles(HellHound hellhound) {
         double offsetX = (hellhound.getRandom().nextDouble() - 0.5D) * 0.35D;
         double offsetZ = (hellhound.getRandom().nextDouble() - 0.5D) * 0.35D;
         double offsetY = hellhound.getRandom().nextDouble() * 0.18D;
@@ -187,7 +187,7 @@ public class HellhoundRenderer extends MobRenderer<Hellhound, HellhoundModel> {
         }
     }
 
-    private void spawnCombatFireParticles(Hellhound hellhound) {
+    private void spawnCombatFireParticles(HellHound hellhound) {
         double offsetX = (hellhound.getRandom().nextDouble() - 0.5D) * 0.5D;
         double offsetZ = (hellhound.getRandom().nextDouble() - 0.5D) * 0.5D;
         double offsetY = hellhound.getRandom().nextDouble() * 0.8D;

@@ -12,8 +12,8 @@ import huix.infinity.common.world.entity.render.animal.IFWChickenRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWCowRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWPigRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWSheepRenderer;
-import huix.infinity.common.world.entity.render.hound.HellhoundRenderer;
-import huix.infinity.common.world.entity.render.hound.HellhoundModel;
+import huix.infinity.common.world.entity.render.hound.HellHoundRenderer;
+import huix.infinity.common.world.entity.render.hound.HellHoundModel;
 import huix.infinity.common.world.entity.render.zombie.HumanoidTypeRenderer;
 import huix.infinity.common.world.entity.render.creeper.InfernoCreeperRenderer;
 import huix.infinity.common.world.entity.render.projectile.IFWWebProjectileRenderer;
@@ -95,7 +95,7 @@ public final class IFWClient {
     // 模型层注册
     @SubscribeEvent
     static void registerLayerDefinitions(final EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(ModelLayers.HELLHOUND, HellhoundModel::createBodyLayer);
+        event.registerLayerDefinition(ModelLayers.HELLHOUND, HellHoundModel::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -114,7 +114,7 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.INVISIBLE_STALKER.get(), InvisibleStalkerRender::new);
         event.registerEntityRenderer(IFWEntityType.SHADOW.get(), HumanoidTypeRenderer::new);
         event.registerEntityRenderer(IFWEntityType.INFERNO_CREEPER.get(), InfernoCreeperRenderer::new);
-        event.registerEntityRenderer(IFWEntityType.HELL_HOUND.get(), HellhoundRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.HELL_HOUND.get(), HellHoundRenderer::new);
 
         // 蜘蛛类渲染器 - 所有蜘蛛都使用通用渲染器
         event.registerEntityRenderer(IFWEntityType.SPIDER.get(), IFWSpiderRenderer::new);
