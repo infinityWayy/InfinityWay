@@ -17,6 +17,7 @@ public class IFWEntityTypeTags {
 
     // 自定义标签
     public static final TagKey<EntityType<?>> VENOMOUS = create("venomous");
+    public static final TagKey<EntityType<?>> CORROSIVE = create("corrosive");
 
 
 }

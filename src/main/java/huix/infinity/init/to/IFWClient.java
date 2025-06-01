@@ -8,12 +8,15 @@ import huix.infinity.common.client.screen.EmeraldEnchantmentScreen;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import huix.infinity.common.world.entity.IFWEntityType;
+import huix.infinity.common.world.entity.projectile.ThrownSlimeBall;
 import huix.infinity.common.world.entity.render.animal.IFWChickenRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWCowRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWPigRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWSheepRenderer;
+import huix.infinity.common.world.entity.render.gelatinous.GelatinousCubeRenderer;
 import huix.infinity.common.world.entity.render.hound.HellHoundRenderer;
 import huix.infinity.common.world.entity.render.hound.HellHoundModel;
+import huix.infinity.common.world.entity.render.projectile.ThrownSlimeBallRenderer;
 import huix.infinity.common.world.entity.render.zombie.HumanoidTypeRenderer;
 import huix.infinity.common.world.entity.render.creeper.InfernoCreeperRenderer;
 import huix.infinity.common.world.entity.render.projectile.IFWWebProjectileRenderer;
@@ -30,6 +33,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
+import net.minecraft.client.renderer.entity.MagmaCubeRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -124,8 +128,17 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.DEMON_SPIDER.get(), IFWSpiderRenderer::new);
         event.registerEntityRenderer(IFWEntityType.PHASE_SPIDER.get(), IFWSpiderRenderer::new);
 
+        // 史莱姆类渲染器
+        event.registerEntityRenderer(IFWEntityType.SLIME.get(), GelatinousCubeRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.JELLY.get(), GelatinousCubeRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.BLOB.get(), GelatinousCubeRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.PUDDING.get(), GelatinousCubeRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.OOZE.get(), GelatinousCubeRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.MAGMA_CUBE.get(), GelatinousCubeRenderer::new);
+
         // 投射物渲染器
         event.registerEntityRenderer(IFWEntityType.WEB_PROJECTILE.get(), IFWWebProjectileRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.THROWN_SLIME_BALL.get(), ThrownSlimeBallRenderer::new);
     }
 
     static void registerFishingRodModel(Item fishingRod) {

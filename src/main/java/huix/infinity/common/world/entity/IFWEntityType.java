@@ -8,7 +8,9 @@ import huix.infinity.common.world.entity.monster.*;
 import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
+import huix.infinity.common.world.entity.monster.gelatinous.*;
 import huix.infinity.common.world.entity.projectile.IFWWebProjectileEntity;
+import huix.infinity.common.world.entity.projectile.ThrownSlimeBall;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -190,6 +192,68 @@ public class IFWEntityType {
                             .clientTrackingRange(8)
                             .build("demon_spider")
             );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Slime>> SLIME =
+            ENTITIES.register("slime",
+                    () -> EntityType.Builder.of(Slime::new, MobCategory.MONSTER)
+                            .sized(0.52F, 0.52F)
+                            .eyeHeight(0.325F)
+                            .clientTrackingRange(10)
+                            .build("slime")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Jelly>> JELLY =
+            ENTITIES.register("jelly",
+                    () -> EntityType.Builder.of(Jelly::new, MobCategory.MONSTER)
+                            .sized(0.52F, 0.52F)
+                            .eyeHeight(0.325F)
+                            .clientTrackingRange(10)
+                            .build("jelly")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Blob>> BLOB =
+            ENTITIES.register("blob",
+                    () -> EntityType.Builder.of(Blob::new, MobCategory.MONSTER)
+                            .sized(0.52F, 0.52F)
+                            .eyeHeight(0.325F)
+                            .clientTrackingRange(10)
+                            .build("blob")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Pudding>> PUDDING =
+            ENTITIES.register("pudding",
+                    () -> EntityType.Builder.of(Pudding::new, MobCategory.MONSTER)
+                            .sized(0.52F, 0.52F)
+                            .eyeHeight(0.325F)
+                            .clientTrackingRange(10)
+                            .build("pudding")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Ooze>> OOZE =
+            ENTITIES.register("ooze",
+                    () -> EntityType.Builder.of(Ooze::new, MobCategory.MONSTER)
+                            .sized(0.52F, 0.52F)
+                            .eyeHeight(0.325F)
+                            .clientTrackingRange(10)
+                            .build("ooze")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<MagmaCube>> MAGMA_CUBE =
+            ENTITIES.register("magma_cube",
+                    () -> EntityType.Builder.of(MagmaCube::new, MobCategory.MONSTER)
+                            .sized(0.52F, 0.52F)
+                            .eyeHeight(0.325F)
+                            .fireImmune()
+                            .clientTrackingRange(10)
+                            .build("magma_cube")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ThrownSlimeBall>> THROWN_SLIME_BALL =
+            ENTITIES.register("thrown_slime_ball", () -> EntityType.Builder.<ThrownSlimeBall>of(ThrownSlimeBall::new, MobCategory.MISC)
+                    .sized(0.25F, 0.25F)
+                    .clientTrackingRange(4)
+                    .updateInterval(10)
+                    .build("thrown_slime_ball"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<HellHound>> HELL_HOUND =
             ENTITIES.register("hell_hound",

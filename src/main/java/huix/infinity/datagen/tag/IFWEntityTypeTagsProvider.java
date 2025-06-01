@@ -24,7 +24,7 @@ public class IFWEntityTypeTagsProvider extends EntityTypeTagsProvider {
         // 替换标签
         tag(IFWEntityTypeTags.REPLACE).add(
                 EntityType.CHICKEN, EntityType.SHEEP, EntityType.PIG, EntityType.COW,
-                EntityType.ZOMBIE, EntityType.SPIDER, EntityType.CAVE_SPIDER
+                EntityType.ZOMBIE, EntityType.SPIDER, EntityType.CAVE_SPIDER, EntityType.SLIME
         );
 
         // 基础标签
@@ -60,7 +60,13 @@ public class IFWEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(IFWEntityType.CAVE_SPIDER.get())
                 .add(IFWEntityType.DEMON_SPIDER.get());
 
-
+        //腐蚀性生物标签
+        this.tag(IFWEntityTypeTags.CORROSIVE)
+                .add(IFWEntityType.SLIME.get())
+                .add(IFWEntityType.JELLY.get())
+                .add(IFWEntityType.BLOB.get())
+                .add(IFWEntityType.OOZE.get())
+                .add(IFWEntityType.PUDDING.get());
 
     }
 }

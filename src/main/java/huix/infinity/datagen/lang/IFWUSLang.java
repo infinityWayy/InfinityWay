@@ -73,6 +73,13 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.PHASE_SPIDER.value(), "Phase Spider");
         add(IFWEntityType.CAVE_SPIDER.value(), "Cave Spider");
         add(IFWEntityType.DEMON_SPIDER.value(), "Demon Spider");
+        add(IFWEntityType.SLIME.value(), "Slime");
+        add(IFWEntityType.JELLY.value(), "Jelly");
+        add(IFWEntityType.BLOB.value(), "Blob");
+        add(IFWEntityType.PUDDING.value(), "Pudding");
+        add(IFWEntityType.OOZE.value(), "Ooze");
+        add(IFWEntityType.MAGMA_CUBE.value(), "Magma Cube");
+
 
         // Spawn Egg
         add(IFWItems.chicken_spawn_egg.get(), "Chicken Spawn Egg");
@@ -93,6 +100,12 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.phase_spider_spawn_egg.get(), "Phase Spider Spawn Egg");
         add(IFWItems.cave_spider_spawn_egg.get(), "Cave Spider Spawn Egg");
         add(IFWItems.demon_spider_spawn_egg.get(), "Demon Spider Spawn Egg");
+        add(IFWItems.slime_spawn_egg.get(), "Slime Spawn Egg");
+        add(IFWItems.jelly_spawn_egg.get(), "Jelly Spawn Egg");
+        add(IFWItems.blob_spawn_egg.get(), "Blob Spawn Egg");
+        add(IFWItems.pudding_spawn_egg.get(), "Pudding Spawn Egg");
+        add(IFWItems.ooze_spawn_egg.get(), "Ooze Spawn Egg");
+        add(IFWItems.magma_cube_spawn_egg.get(), "Magma Cube Spawn Egg");
 
         //Commands
         add("commands.exp.message", "You have %s experience");
@@ -510,6 +523,11 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.golden_chainmail_chestplate.get(), "Gold Chainmail Chestplate");
         add(IFWItems.golden_chainmail_leggings.get(), "Gold Chainmail Leggings");
         add(IFWItems.golden_chainmail_boots.get(), "Gold Chainmail Boots");
+        add(IFWItems.jelly_ball.get(), "Jelly Ball");
+        add(IFWItems.blob_ball.get(), "Blob Ball");
+        add(IFWItems.ooze_ball.get(), "Ooze Ball");
+        add(IFWItems.pudding_ball.get(), "Pudding Ball");
+
 
         //Enchanted_Books
         add("enchantment.ifw.speed", "Speed");

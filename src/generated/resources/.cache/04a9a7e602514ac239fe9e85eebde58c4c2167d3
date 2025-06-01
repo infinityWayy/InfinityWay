@@ -1,5 +1,6 @@
-// 1.21.1	2025-05-28T00:58:44.8752038	Tags for minecraft:entity_type mod id ifw
-53caae438d3fcf64f17c0c61a2542698b0da2402 data/ifw/tags/entity_type/ifw_replace_mob.json
+// 1.21.1	2025-05-31T21:27:02.2861744	Tags for minecraft:entity_type mod id ifw
+481e5a3550dc5ea47cab046ac93301c54ec00c78 data/ifw/tags/entity_type/corrosive.json
+efc4e3c75ce57d62bcbfb7ec73a33cc8603d0f6c data/ifw/tags/entity_type/ifw_replace_mob.json
 ec2ca1b3840c680cddd3165242e71373cd37906a data/ifw/tags/entity_type/venomous.json
 9fd527ce2bb6bc33e8d91948bc4ec144b6c76cab data/minecraft/tags/entity_type/arthropod.json
 61e0a139f1e827bd5fb5fc102e6682222c772969 data/minecraft/tags/entity_type/fall_damage_immune.json

@@ -6,6 +6,7 @@
     "minecraft:cow",
     "minecraft:zombie",
     "minecraft:spider",
-    "minecraft:cave_spider"
+    "minecraft:cave_spider",
+    "minecraft:slime"
   ]
 }

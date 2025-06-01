@@ -127,6 +127,10 @@ public class IFWItemModelProvider extends ItemModelProvider {
         simpleBlockItem(IFWBlocks.ancient_metal_block.get());
         simpleBlockItem(IFWBlocks.adamantium_ore.get());
         simpleBlockItem(IFWBlocks.adamantium_block.get());
+        basicItem(IFWItems.jelly_ball.get());
+        basicItem(IFWItems.blob_ball.get());
+        basicItem(IFWItems.ooze_ball.get());
+        basicItem(IFWItems.pudding_ball.get());
         basicItem(IFWItems.flint_shard.get());
         basicItem(IFWItems.diamond_shard.get());
         basicItem(IFWItems.emerald_shard.get());
@@ -440,5 +444,12 @@ public class IFWItemModelProvider extends ItemModelProvider {
         spawnEggItem(IFWItems.phase_spider_spawn_egg.get());
         spawnEggItem(IFWItems.cave_spider_spawn_egg.get());
         spawnEggItem(IFWItems.demon_spider_spawn_egg.get());
+        spawnEggItem(IFWItems.demon_spider_spawn_egg.get());
+        spawnEggItem(IFWItems.slime_spawn_egg.get());
+        spawnEggItem(IFWItems.jelly_spawn_egg.get());
+        spawnEggItem(IFWItems.blob_spawn_egg.get());
+        spawnEggItem(IFWItems.pudding_spawn_egg.get());
+        spawnEggItem(IFWItems.ooze_spawn_egg.get());
+        spawnEggItem(IFWItems.magma_cube_spawn_egg.get());
     }
 }

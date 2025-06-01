@@ -71,6 +71,10 @@ public class IFWItemGroups {
                 output.accept(IFWItems.wither_bone.get());
                 output.accept(IFWItems.wither_bone_handle.get());
                 output.accept(IFWItems.blazing_wither_bone.get());
+                output.accept(IFWItems.jelly_ball.get());
+                output.accept(IFWItems.blob_ball.get());
+                output.accept(IFWItems.pudding_ball.get());
+                output.accept(IFWItems.ooze_ball.get());
                 output.accept(IFWItems.copper_bucket.get());
                 output.accept(IFWItems.water_copper_bucket.get());
                 output.accept(IFWItems.lava_copper_bucket.get());
@@ -461,6 +465,13 @@ public class IFWItemGroups {
                         output.accept(IFWItems.phase_spider_spawn_egg.get());
                         output.accept(IFWItems.cave_spider_spawn_egg.get());
                         output.accept(IFWItems.demon_spider_spawn_egg.get());
+                        output.accept(IFWItems.demon_spider_spawn_egg.get());
+                        output.accept(IFWItems.slime_spawn_egg.get());
+                        output.accept(IFWItems.jelly_spawn_egg.get());
+                        output.accept(IFWItems.blob_spawn_egg.get());
+                        output.accept(IFWItems.pudding_spawn_egg.get());
+                        output.accept(IFWItems.ooze_spawn_egg.get());
+                        output.accept(IFWItems.magma_cube_spawn_egg.get());
 
 
                     }).build());

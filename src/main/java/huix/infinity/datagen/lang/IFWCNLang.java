@@ -71,6 +71,12 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.PHASE_SPIDER.value(), "相位蜘蛛");
         add(IFWEntityType.CAVE_SPIDER.value(), "洞穴蜘蛛");
         add(IFWEntityType.DEMON_SPIDER.value(), "恶魔蜘蛛");
+        add(IFWEntityType.SLIME.value(), "史莱姆");
+        add(IFWEntityType.JELLY.value(), "果冻怪");
+        add(IFWEntityType.BLOB.value(), "泡泡怪");
+        add(IFWEntityType.PUDDING.value(), "布丁怪");
+        add(IFWEntityType.OOZE.value(), "软泥怪");
+        add(IFWEntityType.MAGMA_CUBE.value(), "岩浆怪");
 
         // 刷怪蛋
         add(IFWItems.chicken_spawn_egg.get(), "鸡刷怪蛋");
@@ -91,6 +97,12 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.phase_spider_spawn_egg.get(), "相位蜘蛛刷怪蛋");
         add(IFWItems.cave_spider_spawn_egg.get(), "洞穴蜘蛛刷怪蛋");
         add(IFWItems.demon_spider_spawn_egg.get(), "恶魔蜘蛛刷怪蛋");
+        add(IFWItems.slime_spawn_egg.get(), "史莱姆刷怪蛋");
+        add(IFWItems.jelly_spawn_egg.get(), "果冻刷怪蛋");
+        add(IFWItems.blob_spawn_egg.get(), "泡泡刷怪蛋");
+        add(IFWItems.pudding_spawn_egg.get(), "布丁刷怪蛋");
+        add(IFWItems.ooze_spawn_egg.get(), "软泥刷怪蛋");
+        add(IFWItems.magma_cube_spawn_egg.get(), "岩浆怪刷怪蛋");
 
         add("commands.exp.message", "你当前的经验值为 %s");
         add("commands.day.message", "今天是第 %s 天");
@@ -505,6 +517,10 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.golden_chainmail_chestplate.get(), "金锁链胸甲");
         add(IFWItems.golden_chainmail_leggings.get(), "金锁链护腿");
         add(IFWItems.golden_chainmail_boots.get(), "金锁链鞋子");
+        add(IFWItems.jelly_ball.get(), "果冻怪球");
+        add(IFWItems.blob_ball.get(), "泡泡怪球");
+        add(IFWItems.ooze_ball.get(), "软泥怪球");
+        add(IFWItems.pudding_ball.get(), "布丁怪球");
 
         //附魔书
         add("enchantment.ifw.speed", "速度");

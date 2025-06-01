@@ -59,6 +59,7 @@
     "world.item.ItemMixin",
     "world.item.ItemsInjected",
     "world.item.ItemStackMixin",
+    "world.item.SlimeBallMixin",
     "world.item.enchantment.EnchantmentMixin",
     "world.levelgen.structure.structures.JigsawStructureMixin",
     "world.loot.ApplyBonusCount$OreDropsMixin",

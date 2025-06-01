@@ -250,6 +250,14 @@ public class IFWItems {
     public static final DeferredItem<Item> tadpole_adamantium_bucket =
             ITEMS.register("tadpole_adamantium_bucket", item -> new IFWMobBucketItem(EntityType.TADPOLE,
                     Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, IFWTiers.ADAMANTIUM, new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)));
+    public static final DeferredItem<Item> jelly_ball =
+            ITEMS.register("jelly_ball", () -> new SlimeBallItem(new Item.Properties().stacksTo(16), 2.0F, 2.0F, true));
+    public static final DeferredItem<Item> blob_ball =
+            ITEMS.register("blob_ball", () -> new SlimeBallItem(new Item.Properties().stacksTo(16), 3.0F, 3.0F, true));
+    public static final DeferredItem<Item> ooze_ball =
+            ITEMS.register("ooze_ball", () -> new SlimeBallItem(new Item.Properties().stacksTo(16), 3.0F, 5.0F, true));
+    public static final DeferredItem<Item> pudding_ball =
+            ITEMS.register("pudding_ball", () -> new SlimeBallItem(new Item.Properties().stacksTo(16), 4.0F, 4.0F, true));
     public static final DeferredItem<Item> manure =
             ITEMS.registerSimpleItem("manure", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> flour =
@@ -854,4 +862,22 @@ public class IFWItems {
 
     public static final DeferredItem<Item> hellhound_spawn_egg = ITEMS.register("hellhound_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.HELL_HOUND, 0x1A0A0A, 0xCC2200, new Item.Properties()));
+
+    public static final DeferredItem<Item> slime_spawn_egg = ITEMS.register("slime_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.SLIME, 0x51A03E, 0x7EBF68, new Item.Properties()));
+
+    public static final DeferredItem<Item> jelly_spawn_egg = ITEMS.register("jelly_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.JELLY, 0xD4A574, 0xE8C297, new Item.Properties()));
+
+    public static final DeferredItem<Item> blob_spawn_egg = ITEMS.register("blob_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.BLOB, 0xFF3333, 0xFF6666, new Item.Properties()));
+
+    public static final DeferredItem<Item> pudding_spawn_egg = ITEMS.register("pudding_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.PUDDING, 0x1A1A1A, 0x333333, new Item.Properties()));
+
+    public static final DeferredItem<Item> ooze_spawn_egg = ITEMS.register("ooze_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.OOZE, 0xC0C0C0, 0xE0E0E0, new Item.Properties()));
+
+    public static final DeferredItem<Item> magma_cube_spawn_egg = ITEMS.register("magma_cube_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.MAGMA_CUBE, 0x340000, 0xFF2000, new Item.Properties()));
 }

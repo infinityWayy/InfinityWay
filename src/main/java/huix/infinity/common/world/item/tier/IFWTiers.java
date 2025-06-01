@@ -19,7 +19,7 @@ public enum IFWTiers implements IFWTier {
     FLINT(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL, 1, 1.25F, 0.5F, 0,
             2, -1, 0, () -> Ingredient.of(IFWItems.flint_shard)),
     OBSIDIAN(IFWBlockTags.INCORRECT_FOR_LEVEL_0_TOOL, 2, 1.5F, 0.5F, 0,
-            2, -1, 0, () -> Ingredient.of(IFWItems.obsidian_shard)),
+            4000, -1, 0, () -> Ingredient.of(IFWItems.obsidian_shard)),
     RUSTED_IRON(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.25F, 2.0F, 0,
             4, 600, 2, () -> Ingredient.of(Tags.Items.NUGGETS_IRON)),
     COPPER(IFWBlockTags.INCORRECT_FOR_LEVEL_1_TOOL, 4, 1.75F, 3.0F, 30,
