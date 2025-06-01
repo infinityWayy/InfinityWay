@@ -49,6 +49,11 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
         tag(IFWItemTags.WAR_HAMMER).add(IFWItems.adamantium_war_hammer.get(), IFWItems.mithril_war_hammer.get(), IFWItems.ancient_metal_war_hammer.get(),
                 IFWItems.iron_war_hammer.get(), IFWItems.copper_war_hammer.get(), IFWItems.golden_war_hammer.get(), IFWItems.silver_war_hammer.get(), IFWItems.rusted_iron_war_hammer.get());
 
+        tag(Tags.Items.MELEE_WEAPON_TOOLS).addTags(IFWItemTags.BATTLE_AXE, IFWItemTags.DAGGER, IFWItemTags.SCYTHE, IFWItemTags.WAR_HAMMER).add(IFWItems.wooden_club.get());
+        tag(Tags.Items.TOOLS).addTags(IFWItemTags.MATTOCK);
+
+        tag(IFWItemTags.NO_MINING_TOOLS).addTags(ItemTags.SWORDS, IFWItemTags.DAGGER, IFWItemTags.SCYTHE).add(IFWItems.wooden_club.get());
+
         tag(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(IFWItems.copper_helmet.get(), IFWItems.copper_chainmail_helmet.get(), IFWItems.silver_helmet.get(),
                 IFWItems.silver_chainmail_helmet.get(), IFWItems.golden_chainmail_helmet.get(), IFWItems.ancient_metal_helmet.get(), IFWItems.ancient_metal_chainmail_helmet.get()
                 , IFWItems.mithril_helmet.get(), IFWItems.mithril_chainmail_helmet.get(), IFWItems.adamantium_helmet.get(), IFWItems.adamantium_chainmail_helmet.get());

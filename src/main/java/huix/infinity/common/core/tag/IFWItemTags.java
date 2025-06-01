@@ -5,7 +5,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 
 public class IFWItemTags {
 
@@ -19,6 +18,7 @@ public class IFWItemTags {
     public static final TagKey<Item> BUCKETS_STONE = bind("buckets_stone");
     public static final TagKey<Item> HAS_ENCHANTING_RECIPE = bind("has_enchanting_recipe");
     public static final TagKey<Item> SILVER_ITEM = bind("silver_item");
+    public static final TagKey<Item> NO_MINING_TOOLS = bind("no_mining_tools");
 
     public static TagKey<Item> bind(String name) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, name));

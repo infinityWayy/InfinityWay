@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-27T13:31:10.9757849	Tags for minecraft:item mod id vanilla
+// 1.21.1	2025-06-01T01:00:05.8607639	Tags for minecraft:item mod id vanilla
 20de0e0f4a475259665e322b8fce4c6dc9bd398e data/c/tags/item/buckets/empty.json
 c8bdd264e6a8f676f43d71732fa26d39c6cb405e data/c/tags/item/buckets/entity_water.json
 443176368149964cb5339e006ca44d79e5343a0e data/c/tags/item/buckets/lava.json
@@ -6,6 +6,8 @@ c8bdd264e6a8f676f43d71732fa26d39c6cb405e data/c/tags/item/buckets/entity_water.j
 5cec9e17dd3afc2804b9f34765750518bc05872d data/c/tags/item/buckets/powder_snow.json
 6d22b348406e3916f860cf2e2537b30dd2ca3fea data/c/tags/item/buckets/water.json
 b0b74270bcd293fe8797cfa8541ee7752d9776f2 data/c/tags/item/strings.json
+70241bb1b1f0ffaaabbec1684fc8a614d18d0068 data/c/tags/item/tools.json
+816ec6d0fd4ada9f076b1bd208de66958e8aa07d data/c/tags/item/tools/melee_weapon.json
 6ea18528bc024774f162ffb9c6936139f8b96cda data/c/tags/item/tools/shear.json
 96f50b5a6a3bf46756af20ca13251571d3e39bec data/ifw/tags/item/anvil.json
 bdd81346635b7b10de96229750d71f72b3168a47 data/ifw/tags/item/battle_axe.json
@@ -14,6 +16,7 @@ bdd81346635b7b10de96229750d71f72b3168a47 data/ifw/tags/item/battle_axe.json
 91e6fcd988d4016348a8188dcd9e1c6d02f0f8c2 data/ifw/tags/item/dagger.json
 6807f04f2cbec6fafec09761de05d1251d5bc484 data/ifw/tags/item/has_enchanting_recipe.json
 48b2817554b707fbe61227fa136541f66a3677f5 data/ifw/tags/item/mattock.json
+268ef79988c8844763d231174b9d9d019b24c0f0 data/ifw/tags/item/no_mining_tools.json
 850a9fa4bd0ea0aba50d76a39b0a8fd594295c92 data/ifw/tags/item/scythe.json
 0dc3743e3a00046744151c9359511cb6ff886e8a data/ifw/tags/item/silver_item.json
 fa031f0a44015a033e136278f19b9714d7246219 data/ifw/tags/item/war_hammer.json
