@@ -94,6 +94,9 @@ public abstract class IFWTieredItem extends Item implements RepairableItem {
 
     @Override
     public float getDestroySpeed(ItemStack itemStack, BlockState state) {
-        return this.getBaseHarvestEfficiency(state) * this.ifwTier().getSpeed();
+        if (this.isCorrectToolForDrops(itemStack, state)) {
+            return this.getBaseHarvestEfficiency(state) * this.ifwTier().getSpeed();
+        }
+        return 1.0F;
     }
 }
