@@ -45,7 +45,6 @@
     "world.entity.animal.TadpoleMixin",
     "world.entity.animal.ThrownEggMixin",
     "world.entity.animal.TropicalMixin",
-    "world.entity.monster.AbstractSkeletonMixin",
     "world.entity.projectile.FishingHookMixin",
     "world.food.FoodDataMixin",
     "world.food.FoodProperties$BuilderMixin",

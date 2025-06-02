@@ -24,19 +24,30 @@ public class IFWEntityTypeTagsProvider extends EntityTypeTagsProvider {
         // 替换标签
         tag(IFWEntityTypeTags.REPLACE).add(
                 EntityType.CHICKEN, EntityType.SHEEP, EntityType.PIG, EntityType.COW,
-                EntityType.ZOMBIE, EntityType.SPIDER, EntityType.CAVE_SPIDER, EntityType.SLIME
+                EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.CAVE_SPIDER, EntityType.SLIME
         );
 
         // 基础标签
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(IFWEntityType.CHICKEN.get());
         this.tag(EntityTypeTags.ZOMBIES).add(IFWEntityType.ZOMBIE.get());
         this.tag(EntityTypeTags.RAIDERS).add(IFWEntityType.INFERNO_CREEPER.get());
+        this.tag(EntityTypeTags.SKELETONS)
+                .add(IFWEntityType.SKELETON.get())
+                .add(IFWEntityType.LONGDEAD.get())
+                .add(IFWEntityType.LONGDEAD_GUARDIAN.get())
+                .add(IFWEntityType.BONE_LORD.get())
+                .add(IFWEntityType.ANCIENT_BONE_LORD.get());
 
         // 亡灵生物标签
         this.tag(EntityTypeTags.UNDEAD)
                 .add(IFWEntityType.ZOMBIE.get())
                 .add(IFWEntityType.WIGHT.get())
-                .add(IFWEntityType.SHADOW.get());
+                .add(IFWEntityType.SHADOW.get())
+                .add(IFWEntityType.SKELETON.get())
+                .add(IFWEntityType.LONGDEAD.get())
+                .add(IFWEntityType.LONGDEAD_GUARDIAN.get())
+                .add(IFWEntityType.BONE_LORD.get())
+                .add(IFWEntityType.ANCIENT_BONE_LORD.get());
 
         // 节肢动物标签
         this.tag(EntityTypeTags.ARTHROPOD)

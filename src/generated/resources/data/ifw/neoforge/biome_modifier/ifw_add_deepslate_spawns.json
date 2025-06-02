@@ -17,6 +17,12 @@
       "weight": 100
     },
     {
+      "type": "ifw:skeleton",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 100
+    },
+    {
       "type": "minecraft:enderman",
       "maxCount": 4,
       "minCount": 1,
@@ -69,6 +75,36 @@
       "maxCount": 1,
       "minCount": 1,
       "weight": 50
+    },
+    {
+      "type": "ifw:jelly",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 30
+    },
+    {
+      "type": "ifw:blob",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 30
+    },
+    {
+      "type": "ifw:ooze",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 20
+    },
+    {
+      "type": "ifw:pudding",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 30
+    },
+    {
+      "type": "ifw:bone_lord",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 5
     },
     {
       "type": "ifw:phase_spider",

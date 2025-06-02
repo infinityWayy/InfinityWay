@@ -1,10 +1,11 @@
-// 1.21.1	2025-05-31T21:27:02.2861744	Tags for minecraft:entity_type mod id ifw
+// 1.21.1	2025-06-02T14:55:53.8005282	Tags for minecraft:entity_type mod id ifw
 481e5a3550dc5ea47cab046ac93301c54ec00c78 data/ifw/tags/entity_type/corrosive.json
-efc4e3c75ce57d62bcbfb7ec73a33cc8603d0f6c data/ifw/tags/entity_type/ifw_replace_mob.json
+3176dc9db74027c4db7222682b0e78c49aba9ee9 data/ifw/tags/entity_type/ifw_replace_mob.json
 ec2ca1b3840c680cddd3165242e71373cd37906a data/ifw/tags/entity_type/venomous.json
 9fd527ce2bb6bc33e8d91948bc4ec144b6c76cab data/minecraft/tags/entity_type/arthropod.json
 61e0a139f1e827bd5fb5fc102e6682222c772969 data/minecraft/tags/entity_type/fall_damage_immune.json
 63cebd8ec56d7cb772b650855d4a3dd7d469a018 data/minecraft/tags/entity_type/freeze_immune_entity_types.json
 887421c10a1d0f42a7e1eb6fa811d6a0ecdae85b data/minecraft/tags/entity_type/raiders.json
-25d51d933985b9567a23a473377f99d34b006c96 data/minecraft/tags/entity_type/undead.json
+92bf8d8879aa43069e3f664b543381ab29d71a1a data/minecraft/tags/entity_type/skeletons.json
+3d7a61a7b13ab3aa17410742f3a911bd43830583 data/minecraft/tags/entity_type/undead.json
 6262132f0ae883dbf684b7e58eee1579ec656e6a data/minecraft/tags/entity_type/zombies.json

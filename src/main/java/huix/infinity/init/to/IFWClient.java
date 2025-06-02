@@ -17,6 +17,7 @@ import huix.infinity.common.world.entity.render.gelatinous.GelatinousCubeRendere
 import huix.infinity.common.world.entity.render.hound.HellHoundRenderer;
 import huix.infinity.common.world.entity.render.hound.HellHoundModel;
 import huix.infinity.common.world.entity.render.projectile.ThrownSlimeBallRenderer;
+import huix.infinity.common.world.entity.render.skeleton.IFWSkeletonRenderer;
 import huix.infinity.common.world.entity.render.zombie.HumanoidTypeRenderer;
 import huix.infinity.common.world.entity.render.creeper.InfernoCreeperRenderer;
 import huix.infinity.common.world.entity.render.projectile.IFWWebProjectileRenderer;
@@ -119,6 +120,13 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.SHADOW.get(), HumanoidTypeRenderer::new);
         event.registerEntityRenderer(IFWEntityType.INFERNO_CREEPER.get(), InfernoCreeperRenderer::new);
         event.registerEntityRenderer(IFWEntityType.HELL_HOUND.get(), HellHoundRenderer::new);
+
+        // 骷髅类渲染器
+        event.registerEntityRenderer(IFWEntityType.SKELETON.get(), IFWSkeletonRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.LONGDEAD.get(), IFWSkeletonRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.LONGDEAD_GUARDIAN.get(), IFWSkeletonRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.BONE_LORD.get(), IFWSkeletonRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.ANCIENT_BONE_LORD.get(), IFWSkeletonRenderer::new);
 
         // 蜘蛛类渲染器 - 所有蜘蛛都使用通用渲染器
         event.registerEntityRenderer(IFWEntityType.SPIDER.get(), IFWSpiderRenderer::new);

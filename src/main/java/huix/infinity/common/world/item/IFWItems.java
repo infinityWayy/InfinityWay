@@ -839,6 +839,21 @@ public class IFWItems {
     public static final DeferredItem<Item> shadow_spawn_egg = ITEMS.register("shadow_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.SHADOW, 0x2F2F2F, 0x1A1A1A, new Item.Properties()));
 
+    public static final DeferredItem<Item> skeleton_spawn_egg = ITEMS.register("skeleton_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.SKELETON, 0xC1C1C1, 0x494949, new Item.Properties()));
+
+    public static final DeferredItem<Item> longdead_spawn_egg = ITEMS.register("longdead_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.LONGDEAD, 0xB8A485, 0x5A4A3A, new Item.Properties()));
+
+    public static final DeferredItem<Item> longdead_guardian_spawn_egg = ITEMS.register("longdead_guardian_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.LONGDEAD_GUARDIAN, 0xC5C1B8, 0xD4AF37, new Item.Properties()));
+
+    public static final DeferredItem<Item> bone_lord_spawn_egg = ITEMS.register("bone_lord_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.BONE_LORD, 0xC1C1C1, 0x8B0000, new Item.Properties()));
+
+    public static final DeferredItem<Item> ancient_bone_lord_spawn_egg = ITEMS.register("ancient_bone_lord_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.ANCIENT_BONE_LORD, 0x9E9E9E, 0xFFD700, new Item.Properties()));
+
     public static final DeferredItem<Item> inferno_creeper_spawn_egg = ITEMS.register("inferno_creeper_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.INFERNO_CREEPER, 0xFFAA0000, 0, new Item.Properties()));
 

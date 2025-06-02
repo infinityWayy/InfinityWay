@@ -11,6 +11,7 @@ import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
 import huix.infinity.common.world.entity.monster.gelatinous.GelatinousCube;
+import huix.infinity.common.world.entity.monster.skeleton.*;
 import huix.infinity.init.InfinityWay;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -32,10 +33,16 @@ public class IFWExtraEvent {
         event.put(IFWEntityType.REVENANT.get(), Revenant.createAttributes().build());
         event.put(IFWEntityType.GHOUL.get(), Ghoul.createAttributes().build());
         event.put(IFWEntityType.WIGHT.get(), Wight.createAttributes().build());
-        event.put(IFWEntityType.SHADOW.get(), Shadow.createAttributes().build());
         event.put(IFWEntityType.INVISIBLE_STALKER.get(), InvisibleStalker.createAttributes().build());
+        event.put(IFWEntityType.SHADOW.get(), Shadow.createAttributes().build());
+
+        event.put(IFWEntityType.SKELETON.get(), IFWSkeleton.createAttributes().build());
+        event.put(IFWEntityType.LONGDEAD.get(), Longdead.createAttributes().build());
+        event.put(IFWEntityType.LONGDEAD_GUARDIAN.get(), LongdeadGuardian.createAttributes().build());
+        event.put(IFWEntityType.BONE_LORD.get(), BoneLord.createAttributes().build());
+        event.put(IFWEntityType.ANCIENT_BONE_LORD.get(), AncientBoneLord.createAttributes().build());
+
         event.put(IFWEntityType.INFERNO_CREEPER.get(), InfernoCreeper.createAttributes().build());
-        event.put(IFWEntityType.HELL_HOUND.get(), HellHound.createAttributes().build());
 
         event.put(IFWEntityType.SPIDER.get(), IFWSpider.createAttributes().build());
         event.put(IFWEntityType.WOOD_SPIDER.get(), IFWWoodSpider.createAttributes().build());
@@ -50,6 +57,8 @@ public class IFWExtraEvent {
         event.put(IFWEntityType.PUDDING.get(), GelatinousCube.createAttributes().build());
         event.put(IFWEntityType.OOZE.get(), GelatinousCube.createAttributes().build());
         event.put(IFWEntityType.MAGMA_CUBE.get(), GelatinousCube.createAttributes().build());
+
+        event.put(IFWEntityType.HELL_HOUND.get(), HellHound.createAttributes().build());
 
     }
 

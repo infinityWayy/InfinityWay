@@ -63,6 +63,11 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.WIGHT.value(), "尸妖");
         add(IFWEntityType.SHADOW.value(), "暗影");
         add(IFWEntityType.INVISIBLE_STALKER.value(), "隐形潜伏者");
+        add(IFWEntityType.SKELETON.value(), "骷髅");
+        add(IFWEntityType.LONGDEAD.value(), "古尸");
+        add(IFWEntityType.LONGDEAD_GUARDIAN.value(), "古尸守卫");
+        add(IFWEntityType.BONE_LORD.value(), "亡骸领主");
+        add(IFWEntityType.ANCIENT_BONE_LORD.value(), "远古亡骸领主");
         add(IFWEntityType.INFERNO_CREEPER.value(), "地狱苦力怕");
         add(IFWEntityType.HELL_HOUND.value(), "地狱犬");
         add(IFWEntityType.SPIDER.value(), "蜘蛛");
@@ -89,6 +94,11 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.wight_spawn_egg.get(), "尸妖刷怪蛋");
         add(IFWItems.shadow_spawn_egg.get(), "暗影刷怪蛋");
         add(IFWItems.invisible_stalker_spawn_egg.get(), "隐形潜伏者刷怪蛋");
+        add(IFWItems.skeleton_spawn_egg.get(), "骷髅刷怪蛋");
+        add(IFWItems.longdead_spawn_egg.get(), "古尸刷怪蛋");
+        add(IFWItems.longdead_guardian_spawn_egg.get(), "古尸守卫刷怪蛋");
+        add(IFWItems.bone_lord_spawn_egg.get(), "亡骸领主刷怪蛋");
+        add(IFWItems.ancient_bone_lord_spawn_egg.get(), "远古亡骸领主刷怪蛋");
         add(IFWItems.inferno_creeper_spawn_egg.get(), "地狱苦力怕刷怪蛋");
         add(IFWItems.hellhound_spawn_egg.get(), "地狱犬刷怪蛋");
         add(IFWItems.spider_spawn_egg.get(), "蜘蛛刷怪蛋");
@@ -268,6 +278,8 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("foodtips.phytonutrients", "+%s 植物营养素");
         add("foodtips.insulinresponse", "+%s 胰岛素反应");
         add("tooltip.infinity.gem.xp", "+%s 玩家经验");
+        add("tooltip.infinity.effective_against_skeletons", "对骷髅类生物+50%伤害");
+        add("tooltip.infinity.armor_penetration", "无视骷髅3点护甲值");
         add(IFWBlocks.mantle_item.get(), "地幔");
         add(IFWBlocks.mithril_runestone_nul_item.get(), "秘银符文石 \"Nul\"");
         add(IFWBlocks.mithril_runestone_quas_item.get(), "秘银符文石 \"Quas\"");

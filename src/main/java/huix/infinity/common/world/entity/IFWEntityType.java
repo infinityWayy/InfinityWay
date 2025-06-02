@@ -9,6 +9,7 @@ import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
 import huix.infinity.common.world.entity.monster.gelatinous.*;
+import huix.infinity.common.world.entity.monster.skeleton.*;
 import huix.infinity.common.world.entity.projectile.IFWWebProjectileEntity;
 import huix.infinity.common.world.entity.projectile.ThrownSlimeBall;
 import huix.infinity.init.InfinityWay;
@@ -118,6 +119,51 @@ public class IFWEntityType {
                             .eyeHeight(1.74F)
                             .clientTrackingRange(8)
                             .build("shadow")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWSkeleton>> SKELETON =
+            ENTITIES.register("skeleton",
+                    () -> EntityType.Builder.<IFWSkeleton>of(IFWSkeleton::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.99F)
+                            .eyeHeight(1.74F)
+                            .clientTrackingRange(8)
+                            .build("skeleton")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Longdead>> LONGDEAD =
+            ENTITIES.register("longdead",
+                    () -> EntityType.Builder.<Longdead>of(Longdead::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.99F)
+                            .eyeHeight(1.74F)
+                            .clientTrackingRange(8)
+                            .build("longdead")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<LongdeadGuardian>> LONGDEAD_GUARDIAN =
+            ENTITIES.register("longdead_guardian",
+                    () -> EntityType.Builder.<LongdeadGuardian>of(LongdeadGuardian::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.99F)
+                            .eyeHeight(1.74F)
+                            .clientTrackingRange(8)
+                            .build("longdead_guardian")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BoneLord>> BONE_LORD =
+            ENTITIES.register("bone_lord",
+                    () -> EntityType.Builder.<BoneLord>of(BoneLord::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.99F)
+                            .eyeHeight(1.74F)
+                            .clientTrackingRange(8)
+                            .build("bone_lord")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<AncientBoneLord>> ANCIENT_BONE_LORD =
+            ENTITIES.register("ancient_bone_lord",
+                    () -> EntityType.Builder.<AncientBoneLord>of(AncientBoneLord::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.99F)
+                            .eyeHeight(1.74F)
+                            .clientTrackingRange(8)
+                            .build("ancient_bone_lord")
             );
 
     public static final DeferredHolder<EntityType<?>, EntityType<InfernoCreeper>> INFERNO_CREEPER =

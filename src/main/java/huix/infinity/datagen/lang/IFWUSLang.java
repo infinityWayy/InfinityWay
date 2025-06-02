@@ -65,6 +65,11 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.WIGHT.value(), "Wight");
         add(IFWEntityType.INVISIBLE_STALKER.value(), "Invisible Stalker");
         add(IFWEntityType.SHADOW.value(), "Shadow");
+        add(IFWEntityType.SKELETON.value(), "Skeleton");
+        add(IFWEntityType.LONGDEAD.value(), "Longdead");
+        add(IFWEntityType.LONGDEAD_GUARDIAN.value(), "Longdead Guardian");
+        add(IFWEntityType.BONE_LORD.value(), "Bone Lord");
+        add(IFWEntityType.ANCIENT_BONE_LORD.value(), "Ancient Bone Lord");
         add(IFWEntityType.INFERNO_CREEPER.value(), "Inferno Creeper");
         add(IFWEntityType.HELL_HOUND.value(), "Hell Hound");
         add(IFWEntityType.SPIDER.value(), "Spider");
@@ -92,6 +97,11 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.wight_spawn_egg.get(), "Wight Spawn Egg");
         add(IFWItems.shadow_spawn_egg.get(), "Shadow Spawn Egg");
         add(IFWItems.invisible_stalker_spawn_egg.get(), "Invisible Stalker Spawn Egg");
+        add(IFWItems.skeleton_spawn_egg.get(), "Skeleton Spawn Egg");
+        add(IFWItems.longdead_spawn_egg.get(), "Longdead Spawn Egg");
+        add(IFWItems.longdead_guardian_spawn_egg.get(), "Longdead Guardian Spawn Egg");
+        add(IFWItems.bone_lord_spawn_egg.get(), "Bone Lord Spawn Egg");
+        add(IFWItems.ancient_bone_lord_spawn_egg.get(), "Ancient Bone Lord Spawn Egg");
         add(IFWItems.inferno_creeper_spawn_egg.get(), "Inferno Creeper Spawn Egg");
         add(IFWItems.hellhound_spawn_egg.get(), "HellHound Spawn Egg");
         add(IFWItems.spider_spawn_egg.get(), "Spider Spawn Egg");
@@ -272,6 +282,8 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("foodtips.phytonutrients", "+%s Phytonutrients Value");
         add("foodtips.insulinresponse", "+%s Insulin Response");
         add("tooltip.infinity.gem.xp", "+%s Experience Value");
+        add("tooltip.infinity.effective_against_skeletons", "+50% Damage Against Skeletons");
+        add("tooltip.infinity.armor_penetration", "Ignores 3 armor against skeletons");
         //Blocks
         add(IFWBlocks.mantle_item.get(), "Mantle");
         add(IFWBlocks.mithril_runestone_nul_item.get(), "Mithril Runestone \"Nul\"");

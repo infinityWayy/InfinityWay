@@ -457,6 +457,11 @@ public class IFWItemGroups {
                         output.accept(IFWItems.wight_spawn_egg.get());
                         output.accept(IFWItems.invisible_stalker_spawn_egg.get());
                         output.accept(IFWItems.shadow_spawn_egg.get());
+                        output.accept(IFWItems.skeleton_spawn_egg.get());
+                        output.accept(IFWItems.longdead_spawn_egg.get());
+                        output.accept(IFWItems.longdead_guardian_spawn_egg.get());
+                        output.accept(IFWItems.bone_lord_spawn_egg.get());
+                        output.accept(IFWItems.ancient_bone_lord_spawn_egg.get());
                         output.accept(IFWItems.inferno_creeper_spawn_egg.get());
                         output.accept(IFWItems.hellhound_spawn_egg.get());
                         output.accept(IFWItems.spider_spawn_egg.get());
