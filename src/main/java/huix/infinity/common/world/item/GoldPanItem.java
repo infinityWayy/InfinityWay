@@ -1,5 +1,6 @@
 package huix.infinity.common.world.item;
 
+import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -17,10 +18,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-@ParametersAreNonnullByDefault
 public class GoldPanItem extends Item {
 
     public GoldPanItem(Properties properties) {
@@ -51,19 +50,16 @@ public class GoldPanItem extends Item {
 
         if (level.getBlockState(pos).getBlock() == Blocks.GRAVEL) {
             if (!level.isClientSide) {
-                level.destroyBlock(pos, false);
-                level.playSound(null, pos, SoundEvents.GRAVEL_BREAK, SoundSource.PLAYERS, 1.0f, 1.0f);
 
-                ItemStack gravelPan = new ItemStack(IFWItems.gold_pan_gravel.get());
-                if (stack.isDamaged()) {
-                    gravelPan.setDamageValue(stack.getDamageValue());
-                }
+                level.destroyBlock(pos, false);
+
+                level.playSound(null, pos, SoundEvents.GRAVEL_BREAK, SoundSource.PLAYERS, 1.0f, 1.0f);
 
                 stack.shrink(1);
                 if (stack.isEmpty()) {
-                    player.setItemInHand(context.getHand(), gravelPan);
+                    player.setItemInHand(context.getHand(), new ItemStack(IFWItems.gold_pan_gravel.get()));
                 } else {
-                    player.getInventory().add(gravelPan);
+                    player.getInventory().add(new ItemStack(IFWItems.gold_pan_gravel.get()));
                 }
             }
             return InteractionResult.SUCCESS;
@@ -71,25 +67,10 @@ public class GoldPanItem extends Item {
 
         return InteractionResult.PASS;
     }
-
-    @Override
-    public void appendHoverText( ItemStack stack,  TooltipContext context,  List<Component> tooltipComponents,  TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         tooltipComponents.add(Component.translatable("tooltip.infinity.goldpan.usage").withStyle(ChatFormatting.GRAY));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+
     }
 
-    @Override
-    public boolean isDamageable( ItemStack stack) {
-        return true;
-    }
-
-    @Override
-    public int getMaxDamage( ItemStack stack) {
-        return 16;
-    }
-
-    @Override
-    public boolean isEnchantable( ItemStack stack) {
-        return false;
-    }
 }
