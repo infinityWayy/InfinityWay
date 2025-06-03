@@ -271,6 +271,8 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.adamantium_chain.get(), "艾德曼锁链");
         add(IFWItems.onion.get(), "洋葱");
         add(IFWItems.blueberry.get(), "蓝莓");
+        add(IFWItems.gold_pan.get(), "淘金盘");
+        add(IFWItems.gold_pan_gravel.get(), "装满沙砾的淘金盘");
         //EXTRA
         add("foodtips.saturation", "+%s 饱和度");
         add("foodtips.nutrition", "+%s 饥饿值");
@@ -280,6 +282,11 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("tooltip.infinity.gem.xp", "+%s 玩家经验");
         add("tooltip.infinity.effective_against_skeletons", "对骷髅类生物+50%伤害");
         add("tooltip.infinity.armor_penetration", "无视骷髅3点护甲值");
+        add("tooltip.infinity.goldpan.usage", "可以从砂砾中淘取矿物粒");
+        add("tooltip.infinity.goldpan.empty", "右键点击砂砾方块来装载砂砾");
+        add("tooltip.infinity.goldpan.filled", "装满了砂砾");
+        add("tooltip.infinity.goldpan.instruction", "在水中使用来淘取宝物");
+        add("tooltip.infinity.goldpan.need_water", "你需要在水中才能淘金！");
         add(IFWBlocks.mantle_item.get(), "地幔");
         add(IFWBlocks.mithril_runestone_nul_item.get(), "秘银符文石 \"Nul\"");
         add(IFWBlocks.mithril_runestone_quas_item.get(), "秘银符文石 \"Quas\"");

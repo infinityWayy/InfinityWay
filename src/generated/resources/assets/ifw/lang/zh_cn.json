@@ -293,6 +293,8 @@
   "item.ifw.glass_shard": "玻璃碎片",
   "item.ifw.gold_bucket": "金桶",
   "item.ifw.gold_fishing_rod": "金钓鱼竿",
+  "item.ifw.gold_pan": "淘金盘",
+  "item.ifw.gold_pan_gravel": "装满沙砾的淘金盘",
   "item.ifw.golden_axe": "金斧",
   "item.ifw.golden_battle_axe": "金战斧",
   "item.ifw.golden_chain": "金锁链",
@@ -507,5 +509,10 @@
   "itemGroup.ifw.tool": "IFW| 工具",
   "tooltip.infinity.armor_penetration": "无视骷髅3点护甲值",
   "tooltip.infinity.effective_against_skeletons": "对骷髅类生物+50%伤害",
-  "tooltip.infinity.gem.xp": "+%s 玩家经验"
+  "tooltip.infinity.gem.xp": "+%s 玩家经验",
+  "tooltip.infinity.goldpan.empty": "右键点击砂砾方块来装载砂砾",
+  "tooltip.infinity.goldpan.filled": "装满了砂砾",
+  "tooltip.infinity.goldpan.instruction": "在水中使用来淘取宝物",
+  "tooltip.infinity.goldpan.need_water": "你需要在水中才能淘金！",
+  "tooltip.infinity.goldpan.usage": "可以从砂砾中淘取矿物粒"
 }

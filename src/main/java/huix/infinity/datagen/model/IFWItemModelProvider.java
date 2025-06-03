@@ -3,7 +3,10 @@ package huix.infinity.datagen.model;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -80,6 +83,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
                 .predicate(mcLoc("cast"), 1)
                 .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
                 .end();
+        generateGoldPanModels();
         simpleBlockItem(IFWBlocks.mantle.get());
         simpleBlockItem(IFWBlocks.mithril_runestone_nul.get());
         simpleBlockItem(IFWBlocks.mithril_runestone_quas.get());
@@ -456,5 +460,267 @@ public class IFWItemModelProvider extends ItemModelProvider {
         spawnEggItem(IFWItems.pudding_spawn_egg.get());
         spawnEggItem(IFWItems.ooze_spawn_egg.get());
         spawnEggItem(IFWItems.magma_cube_spawn_egg.get());
+    }
+
+    /**
+     * 生成完整的淘金盘模型系统
+     */
+    private void generateGoldPanModels() {
+        // 1. 先生成并注册基础模型
+        generateEmptyGoldPan();
+        generateFullGoldPan();
+        generateHalfGoldPan();
+        generateResultGoldPan();
+
+        // 2. 生成主要的金盘物品模型（包括空的和装砂砾的）
+        generateMainGoldPan();
+    }
+
+    private void generateEmptyGoldPan() {
+        ItemModelBuilder builder = withExistingParent("gold_pan_empty", "block/block")
+                .texture("0", modLoc("item/interior"))
+                .texture("1", modLoc("item/grid"))
+                .texture("particle", modLoc("item/interior"));
+
+        addPanTransforms(builder);
+        addGoldPanBaseElements(builder);
+    }
+
+    /**
+     * 生成满砂砾模型
+     */
+    private void generateFullGoldPan() {
+        ItemModelBuilder builder = withExistingParent("gold_pan_full", "block/block")
+                .texture("0", modLoc("item/interior"))
+                .texture("1", modLoc("item/grid"))
+                .texture("2", mcLoc("block/gravel"))
+                .texture("particle", modLoc("item/interior"));
+
+        addPanTransforms(builder);
+        addGoldPanBaseElements(builder);
+        addFullGravelLayer(builder);
+    }
+
+    /**
+     * 生成半满砂砾模型
+     */
+    private void generateHalfGoldPan() {
+        ItemModelBuilder builder = withExistingParent("gold_pan_half", "block/block")
+                .texture("0", modLoc("item/interior"))
+                .texture("1", modLoc("item/grid"))
+                .texture("2", mcLoc("block/gravel"))
+                .texture("particle", modLoc("item/interior"));
+
+        addPanTransforms(builder);
+        addGoldPanBaseElements(builder);
+        addHalfGravelLayer(builder);
+    }
+
+    /**
+     * 生成结果模型（散落的砂砾颗粒）
+     */
+    private void generateResultGoldPan() {
+        ItemModelBuilder builder = withExistingParent("gold_pan_result", "block/block")
+                .texture("0", modLoc("item/interior"))
+                .texture("1", modLoc("item/grid"))
+                .texture("2", mcLoc("block/gravel"))
+                .texture("particle", modLoc("item/interior"));
+
+        addPanTransforms(builder);
+        addGoldPanBaseElements(builder);
+        addScatteredGravelParticles(builder);
+    }
+
+    /**
+     * 生成主要的金盘物品模型（这个是实际注册给物品的模型）
+     */
+    private void generateMainGoldPan() {
+        // 为空淘金盘生成基础模型
+        ItemModelBuilder builder = withExistingParent("gold_pan", "block/block")
+                .texture("0", modLoc("item/interior"))
+                .texture("1", modLoc("item/grid"))
+                .texture("particle", modLoc("item/interior"));
+
+        addPanTransforms(builder);
+        addGoldPanBaseElements(builder);
+
+        // 为装砂砾的淘金盘生成带动态切换的模型
+        ItemModelBuilder gravelBuilder = withExistingParent("gold_pan_gravel", "block/block")
+                .texture("0", modLoc("item/interior"))
+                .texture("1", modLoc("item/grid"))
+                .texture("2", mcLoc("block/gravel"))
+                .texture("particle", modLoc("item/interior"));
+
+        addPanTransforms(gravelBuilder);
+        addGoldPanBaseElements(gravelBuilder);
+        addFullGravelLayer(gravelBuilder); // 默认满砂砾状态
+
+        // 添加动态模型切换
+        gravelBuilder.override()
+                .predicate(modLoc("gravel_amount"), 0.25f)
+                .model(getExistingFile(modLoc("item/gold_pan_result"))) // 散落颗粒
+                .end()
+                .override()
+                .predicate(modLoc("gravel_amount"), 0.5f)
+                .model(getExistingFile(modLoc("item/gold_pan_half"))) // 半满
+                .end()
+                .override()
+                .predicate(modLoc("gravel_amount"), 0.75f)
+                .model(getExistingFile(modLoc("item/gold_pan_full"))) // 满砂砾
+                .end();
+        // 默认状态（1.0f）使用基础模型，即满砂砾
+    }
+
+    /**
+     * 添加淘金盘的display transforms
+     */
+    private ItemModelBuilder addPanTransforms(ItemModelBuilder builder) {
+        return builder.transforms()
+                // 第一人称右手 - 关键的调整
+                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
+                .rotation(0, 45, 0)      // 改为TFC的标准角度
+                .translation(0, 0, 0)    // 重置位置偏移
+                .scale(1.00f, 1.00f, 1.00f) // 重置缩放
+                .end()
+                // 第一人称左手
+                .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
+                .rotation(0, 45, 0)      // 改为TFC的标准角度
+                .translation(0, 0, 0)    // 重置位置偏移
+                .scale(1.00f, 1.00f, 1.00f) // 重置缩放
+                .end()
+                // 第三人称保持你的设置
+                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
+                .rotation(75, 45, 0)
+                .translation(0, 2.5f, 0)
+                .scale(0.375f, 0.375f, 0.375f)
+                .end()
+                .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
+                .rotation(75, 45, 0)
+                .translation(0, 2.5f, 0)
+                .scale(0.375f, 0.375f, 0.375f)
+                .end()
+                // GUI显示 - 调整为更好的显示角度
+                .transform(ItemDisplayContext.GUI)
+                .rotation(30, 315, 0)    // 调整GUI显示角度
+                .scale(0.625f, 0.625f, 0.625f)
+                .end()
+                // 地面显示
+                .transform(ItemDisplayContext.GROUND)
+                .translation(0, 3, 0)
+                .scale(0.25f, 0.25f, 0.25f)
+                .end()
+                .transform(ItemDisplayContext.GUI)
+                .rotation(30, 225, 0)
+                .scale(0.625f, 0.625f, 0.625f)
+                .end()
+                .end();
+    }
+
+    /**
+     * 添加淘金盘的基础几何结构
+     */
+    private void addGoldPanBaseElements(ItemModelBuilder builder) {
+        // 底部网格层 [2,5,2] to [14,6,14]
+        builder.element()
+                .from(2, 5, 2).to(14, 6, 14)
+                .face(Direction.NORTH).uvs(0, 0, 12, 1).texture("#0").end()
+                .face(Direction.EAST).uvs(0, 0, 12, 1).texture("#0").end()
+                .face(Direction.SOUTH).uvs(0, 0, 12, 1).texture("#0").end()
+                .face(Direction.WEST).uvs(0, 0, 12, 1).texture("#0").end()
+                .face(Direction.UP).uvs(0, 0, 12, 12).texture("#1").end()
+                .face(Direction.DOWN).uvs(2, 1, 14, 13).texture("#1").end()
+                .end();
+
+        // 前边框 [1,6,1] to [15,8,2]
+        builder.element()
+                .from(1, 6, 1).to(15, 8, 2)
+                .face(Direction.NORTH).uvs(0, 0, 14, 2).texture("#0").end()
+                .face(Direction.EAST).uvs(0, 0, 1, 2).texture("#0").end()
+                .face(Direction.SOUTH).uvs(0, 0, 14, 2).texture("#0").end()
+                .face(Direction.WEST).uvs(0, 0, 1, 2).texture("#0").end()
+                .face(Direction.UP).uvs(0, 0, 14, 1).texture("#0").end()
+                .face(Direction.DOWN).uvs(0, 0, 14, 1).texture("#0").end()
+                .end();
+
+        // 后边框 [1,6,14] to [15,8,15]
+        builder.element()
+                .from(1, 6, 14).to(15, 8, 15)
+                .face(Direction.NORTH).uvs(0, 0, 14, 2).texture("#0").end()
+                .face(Direction.EAST).uvs(0, 0, 1, 2).texture("#0").end()
+                .face(Direction.SOUTH).uvs(0, 0, 14, 2).texture("#0").end()
+                .face(Direction.WEST).uvs(0, 0, 1, 2).texture("#0").end()
+                .face(Direction.UP).uvs(0, 0, 14, 1).texture("#0").end()
+                .face(Direction.DOWN).uvs(0, 0, 14, 1).texture("#0").end()
+                .end();
+
+        // 左边框 [1,6,2] to [2,8,14]
+        builder.element()
+                .from(1, 6, 2).to(2, 8, 14)
+                .face(Direction.EAST).uvs(0, 0, 12, 2).texture("#0").end()
+                .face(Direction.WEST).uvs(0, 0, 12, 2).texture("#0").end()
+                .face(Direction.UP).uvs(0, 0, 1, 12).texture("#0").end()
+                .face(Direction.DOWN).uvs(0, 0, 1, 12).texture("#0").end()
+                .end();
+
+        // 右边框 [14,6,2] to [15,8,14]
+        builder.element()
+                .from(14, 6, 2).to(15, 8, 14)
+                .face(Direction.EAST).uvs(0, 0, 12, 2).texture("#0").end()
+                .face(Direction.WEST).uvs(0, 0, 12, 2).texture("#0").end()
+                .face(Direction.UP).uvs(0, 0, 1, 12).texture("#0").end()
+                .face(Direction.DOWN).uvs(0, 0, 1, 12).texture("#0").end()
+                .end();
+    }
+
+    /**
+     * 添加满砂砾层
+     */
+    private void addFullGravelLayer(ItemModelBuilder builder) {
+        builder.element()
+                .from(2, 7, 2).to(14, 8, 14)
+                .face(Direction.NORTH).uvs(0, 0, 12, 1).texture("#2").end()
+                .face(Direction.EAST).uvs(0, 0, 12, 1).texture("#2").end()
+                .face(Direction.SOUTH).uvs(0, 0, 12, 1).texture("#2").end()
+                .face(Direction.WEST).uvs(0, 0, 12, 1).texture("#2").end()
+                .face(Direction.UP).uvs(0, 0, 12, 12).texture("#2").end()
+                .face(Direction.DOWN).uvs(0, 0, 12, 12).texture("#2").end()
+                .end();
+    }
+
+    /**
+     * 添加半满砂砾层
+     */
+    private void addHalfGravelLayer(ItemModelBuilder builder) {
+        builder.element()
+                .from(2, 7, 2).to(14, 7, 14)
+                .face(Direction.NORTH).uvs(0, 0, 12, 0).texture("#2").end()
+                .face(Direction.EAST).uvs(0, 0, 12, 0).texture("#2").end()
+                .face(Direction.SOUTH).uvs(0, 0, 12, 0).texture("#2").end()
+                .face(Direction.WEST).uvs(0, 0, 12, 0).texture("#2").end()
+                .face(Direction.UP).uvs(0, 0, 12, 12).texture("#2").end()
+                .face(Direction.DOWN).uvs(0, 0, 12, 12).texture("#2").end()
+                .end();
+    }
+
+    /**
+     * 添加散落的砂砾颗粒
+     */
+    private void addScatteredGravelParticles(ItemModelBuilder builder) {
+        int[][] particlePositions = {
+                {5, 6, 10, 6, 7, 11}, {3, 6, 4, 4, 7, 5}, {10, 6, 4, 11, 7, 5},
+                {8, 6, 6, 9, 7, 7}, {8, 6, 11, 9, 7, 12}, {10, 6, 7, 11, 7, 8}, {3, 6, 12, 4, 7, 13}
+        };
+
+        for (int[] pos : particlePositions) {
+            builder.element()
+                    .from(pos[0], pos[1], pos[2]).to(pos[3], pos[4], pos[5])
+                    .face(Direction.NORTH).uvs(0, 0, 1, 1).texture("#2").end()
+                    .face(Direction.EAST).uvs(0, 0, 1, 1).texture("#2").end()
+                    .face(Direction.SOUTH).uvs(0, 0, 1, 1).texture("#2").end()
+                    .face(Direction.WEST).uvs(0, 0, 1, 1).texture("#2").end()
+                    .face(Direction.UP).uvs(0, 0, 1, 1).texture("#2").end()
+                    .face(Direction.DOWN).uvs(0, 0, 1, 1).texture("#2").end()
+                    .end();
+        }
     }
 }

@@ -8,7 +8,6 @@ import huix.infinity.common.client.screen.EmeraldEnchantmentScreen;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import huix.infinity.common.world.entity.IFWEntityType;
-import huix.infinity.common.world.entity.projectile.ThrownSlimeBall;
 import huix.infinity.common.world.entity.render.animal.IFWChickenRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWCowRenderer;
 import huix.infinity.common.world.entity.render.animal.IFWPigRenderer;
@@ -30,22 +29,34 @@ import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.util.IFWConstants;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
-import net.minecraft.client.renderer.entity.MagmaCubeRenderer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.ChunkRenderTypeSet;
 import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 
 @EventBusSubscriber(value = Dist.CLIENT, modid = InfinityWay.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public final class IFWClient {
@@ -64,9 +75,6 @@ public final class IFWClient {
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.silver_door.get(), ChunkRenderTypeSet.of(cutout));
         ItemBlockRenderTypes.setRenderLayer(IFWBlocks.silver_bars.get(), ChunkRenderTypeSet.of(cutout));
 
-        ItemBlockRenderTypes.setRenderLayer(IFWBlocks.silver_bars.get(), ChunkRenderTypeSet.of(cutout));
-
-        // 注册渔具模型
         registerFishingRodModel(IFWItems.copper_fishing_rod.get());
         registerFishingRodModel(IFWItems.silver_fishing_rod.get());
         registerFishingRodModel(IFWItems.gold_fishing_rod.get());
@@ -76,14 +84,29 @@ public final class IFWClient {
         registerFishingRodModel(IFWItems.obsidian_fishing_rod.get());
         registerFishingRodModel(IFWItems.flint_fishing_rod.get());
 
+        ItemProperties.register(IFWItems.gold_pan_gravel.get(),
+                ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "gravel_amount"),
+                (stack, level, entity, seed) -> {
+                    if (entity instanceof Player player && player.isUsingItem() && player.getUseItem() == stack) {
+                        int useTicks = player.getTicksUsingItem();
+                        int totalTime = stack.getUseDuration(player);
+
+                        float progress = (float) useTicks / totalTime;
+
+                        return Math.max(0.25f, 1.0f - progress * 0.75f);
+                    }
+                    return 1.0f;
+                });
+
         BlockEntityRenderers.register(IFWBlockEntityTypes.private_chest.get(), ChestRenderer::new);
         BlockEntityRenderers.register(IFWBlockEntityTypes.emerald_enchanting_table.get(), EmeraldEnchantTableRenderer::new);
+
+        NeoForge.EVENT_BUS.addListener(IFWClient::onHandRender);
     }
 
     @SubscribeEvent
     static void registerReloadListenerEvent(RegisterClientReloadListenersEvent event) {
         IFWConstants.persistentEffectTextureManager = new PersistentEffectTextureManager(Minecraft.getInstance().getTextureManager());
-        //assert IFWConstants.persistentEffectTextureManager != null;
         event.registerReloadListener(IFWConstants.persistentEffectTextureManager);
     }
 
@@ -147,6 +170,104 @@ public final class IFWClient {
         // 投射物渲染器
         event.registerEntityRenderer(IFWEntityType.WEB_PROJECTILE.get(), IFWWebProjectileRenderer::new);
         event.registerEntityRenderer(IFWEntityType.THROWN_SLIME_BALL.get(), ThrownSlimeBallRenderer::new);
+    }
+
+    @SubscribeEvent
+    static void registerItemExtensions(final RegisterClientExtensionsEvent event) {
+
+    }
+
+    public static void onHandRender(RenderHandEvent event) {
+        final Player player = Minecraft.getInstance().player;
+        if (player == null) {
+            return;
+        }
+
+        final ItemStack mainHand = player.getMainHandItem();
+        if (mainHand.getItem() == IFWItems.gold_pan.get() || mainHand.getItem() == IFWItems.gold_pan_gravel.get()) {
+
+            if (event.getHand() == InteractionHand.MAIN_HAND) {
+                final PoseStack poseStack = event.getPoseStack();
+                poseStack.pushPose();
+                renderTwoHandedItem(poseStack, event.getMultiBufferSource(), event.getPackedLight(),
+                        event.getInterpolatedPitch(), event.getEquipProgress(), event.getSwingProgress(), mainHand);
+                poseStack.popPose();
+            }
+            event.setCanceled(true);
+        }
+    }
+
+    public static void renderTwoHandedItem(PoseStack poseStack, MultiBufferSource source, int combinedLight, float pitch, float equipProgress, float swingProgress, ItemStack stack) {
+        final Minecraft mc = Minecraft.getInstance();
+        if (mc.player == null) return;
+
+        final float swingSqrt = Mth.sqrt(swingProgress);
+        final float y = -0.2F * Mth.sin(swingProgress * (float) Math.PI);
+        final float z = -0.4F * Mth.sin(swingSqrt * (float) Math.PI);
+        poseStack.translate(0.0D, -y / 2.0F, z);
+
+        final float tilt = calculateTilt(pitch);
+        poseStack.translate(0.0D, 0.04F + equipProgress * -1.2F + tilt * -0.5F, -1.8F);
+
+        poseStack.mulPose(Axis.XP.rotationDegrees(Mth.clamp(tilt, 0.3F, 0.51F) * 85.0F));
+        if (!mc.player.isInvisible()) {
+            poseStack.pushPose();
+            poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
+            renderMapHand(mc, poseStack, source, combinedLight, HumanoidArm.RIGHT);
+            renderMapHand(mc, poseStack, source, combinedLight, HumanoidArm.LEFT);
+            poseStack.popPose();
+        }
+
+        addSiftingMovement(mc.player, poseStack);
+        poseStack.mulPose(Axis.XP.rotationDegrees(Mth.sin(swingSqrt * (float) Math.PI) * 20.0F));
+        poseStack.scale(2.0F, 2.0F, 2.0F);
+
+        final boolean right = mc.player.getMainArm() == HumanoidArm.RIGHT;
+        mc.getEntityRenderDispatcher().getItemInHandRenderer().renderItem(mc.player, stack,
+                right ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND,
+                !right, poseStack, source, combinedLight);
+    }
+
+    private static float calculateTilt(float pitch) {
+        final float deg = Mth.clamp(1.0F - pitch / 45.0F + 0.1F, 0.0F, 1.0F) * (float) Math.PI;
+        return -Mth.cos(deg) * 0.5F + 0.5F;
+    }
+
+    private static void renderMapHand(Minecraft mc, PoseStack poseStack, MultiBufferSource source, int combinedLight, HumanoidArm arm) {
+        assert mc.player != null;
+
+        final PlayerRenderer playerRenderer = (PlayerRenderer) mc.getEntityRenderDispatcher().<AbstractClientPlayer>getRenderer(mc.player);
+        poseStack.pushPose();
+        final float side = arm == HumanoidArm.RIGHT ? 1.0F : -1.0F;
+        poseStack.mulPose(Axis.YP.rotationDegrees(92.0F));
+        poseStack.mulPose(Axis.XP.rotationDegrees(45.0F));
+        float degrees = side * -41.0F + calculateArmMovement(mc.player);
+        poseStack.mulPose(Axis.ZP.rotationDegrees(degrees));
+
+        poseStack.translate(side * 0.5D, -1.5D, 0.1D);
+
+        if (arm == HumanoidArm.RIGHT) {
+            playerRenderer.renderRightHand(poseStack, source, combinedLight, mc.player);
+        } else {
+            playerRenderer.renderLeftHand(poseStack, source, combinedLight, mc.player);
+        }
+        poseStack.popPose();
+    }
+
+    private static void addSiftingMovement(LocalPlayer player, PoseStack stack) {
+        final float degrees = player.getUseItemRemainingTicks() * (float) Math.PI / 10F;
+        if (degrees > 0f) {
+            final float scale = 0.1f;
+            stack.translate(scale * Mth.cos(degrees), 0f, scale * Mth.sin(degrees));
+        }
+    }
+
+    private static float calculateArmMovement(LocalPlayer player) {
+        final float degrees = player.getUseItemRemainingTicks() * (float) Math.PI / 10F;
+        if (degrees > 0f) {
+            return 10f * Mth.cos(degrees);
+        }
+        return 0f;
     }
 
     static void registerFishingRodModel(Item fishingRod) {

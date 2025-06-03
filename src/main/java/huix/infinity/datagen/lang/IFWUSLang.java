@@ -275,6 +275,8 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.adamantium_chain.get(), "Adamantium Chain");
         add(IFWItems.onion.get(), "Onion");
         add(IFWItems.blueberry.get(), "Blueberry");
+        add(IFWItems.gold_pan.get(), "Gold Pan");
+        add(IFWItems.gold_pan_gravel.get(), "Gold Pan with Gravel");
         //extra
         add("foodtips.saturation", "+%s Saturation Value");
         add("foodtips.nutrition", "+%s  Food Value");
@@ -284,6 +286,11 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("tooltip.infinity.gem.xp", "+%s Experience Value");
         add("tooltip.infinity.effective_against_skeletons", "+50% Damage Against Skeletons");
         add("tooltip.infinity.armor_penetration", "Ignores 3 armor against skeletons");
+        add("tooltip.infinity.goldpan.usage", "Used for panning valuable materials from gravel");
+        add("tooltip.infinity.goldpan.empty", "Load gravel by right-clicking gravel blocks");
+        add("tooltip.infinity.goldpan.filled", "Filled with gravel");
+        add("tooltip.infinity.goldpan.instruction", "Use in water to pan for treasures");
+        add("tooltip.infinity.goldpan.need_water", "You need to be in water to use this!");
         //Blocks
         add(IFWBlocks.mantle_item.get(), "Mantle");
         add(IFWBlocks.mithril_runestone_nul_item.get(), "Mithril Runestone \"Nul\"");

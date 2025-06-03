@@ -258,6 +258,10 @@ public class IFWItems {
             ITEMS.register("ooze_ball", () -> new SlimeBallItem(new Item.Properties().stacksTo(16), 3.0F, 5.0F, true));
     public static final DeferredItem<Item> pudding_ball =
             ITEMS.register("pudding_ball", () -> new SlimeBallItem(new Item.Properties().stacksTo(16), 4.0F, 4.0F, true));
+    public static final DeferredItem<Item> gold_pan = ITEMS.register("gold_pan",
+            () -> new GoldPanItem(new Item.Properties().durability(16)));
+    public static final DeferredItem<Item> gold_pan_gravel = ITEMS.register("gold_pan_gravel",
+            () -> new GoldPanGravelItem(new Item.Properties().durability(16)));
     public static final DeferredItem<Item> manure =
             ITEMS.registerSimpleItem("manure", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> flour =
