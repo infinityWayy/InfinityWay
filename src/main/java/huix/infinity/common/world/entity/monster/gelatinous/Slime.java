@@ -4,7 +4,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -16,35 +15,12 @@ public class Slime extends GelatinousCube {
 
     public Slime(EntityType<? extends Slime> entityType, Level level) {
         super(entityType, level);
+        this.baseDamage = 1;
     }
 
     @Override
     public boolean canCorodeBlocks() {
         return false;
-    }
-
-    @Override
-    public boolean canDissolveItem(ItemStack item) {
-        return item.is(Items.BREAD) || item.is(Items.APPLE) || item.is(Items.WHEAT) ||
-                item.is(Items.CARROT) || item.is(Items.POTATO);
-    }
-
-    @Override
-    public boolean damageItem(ItemEntity item) {
-        ItemStack stack = item.getItem();
-        if (this.canDissolveItem(stack)) {
-            stack.shrink(1);
-            if (stack.isEmpty()) {
-                item.discard();
-            }
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean canDamageItem(ItemStack item) {
-        return item.isDamageableItem() && this.random.nextFloat() < 0.1f;
     }
 
     @Override
@@ -57,13 +33,14 @@ public class Slime extends GelatinousCube {
         return 1;
     }
 
-    protected boolean isDealsDamage() {
-        return this.getSize() > 1;
-    }
-
     @Override
     public boolean isPushable() {
         return true;
+    }
+
+    @Override
+    boolean canItemBeCorrodedByAcid(ItemStack itemStack) {
+        return false;
     }
 
     @Override

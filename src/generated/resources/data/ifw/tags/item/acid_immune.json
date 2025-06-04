@@ -1,0 +1,24 @@
+{
+  "values": [
+    "minecraft:lapis_lazuli",
+    "minecraft:emerald",
+    "minecraft:diamond",
+    "minecraft:redstone",
+    "minecraft:quartz",
+    "minecraft:amethyst_shard",
+    "ifw:gold_bucket",
+    "ifw:golden_chain",
+    "minecraft:gold_ingot",
+    "minecraft:gold_nugget",
+    "ifw:mithril_bucket",
+    "ifw:mithril_chain",
+    "ifw:mithril_ingot",
+    "ifw:mithril_nugget",
+    "ifw:adamantium_bucket",
+    "ifw:adamantium_chain",
+    "ifw:adamantium_ingot",
+    "ifw:adamantium_nugget",
+    "minecraft:netherite_ingot",
+    "minecraft:netherite_scrap"
+  ]
+}

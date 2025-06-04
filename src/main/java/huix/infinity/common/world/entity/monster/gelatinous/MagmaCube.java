@@ -7,7 +7,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -54,17 +53,7 @@ public class MagmaCube extends GelatinousCube {
     }
 
     @Override
-    public boolean canDissolveItem(ItemStack item) {
-        return false;
-    }
-
-    @Override
     public boolean damageItem(ItemEntity item) {
-        return false;
-    }
-
-    @Override
-    public boolean canDamageItem(ItemStack item) {
         return false;
     }
 
@@ -123,6 +112,11 @@ public class MagmaCube extends GelatinousCube {
     @Override
     protected net.minecraft.sounds.SoundEvent getDeathSound() {
         return this.getSize() > 1 ? SoundEvents.MAGMA_CUBE_DEATH : SoundEvents.MAGMA_CUBE_DEATH_SMALL;
+    }
+
+    @Override
+    boolean canItemBeCorrodedByAcid(ItemStack itemStack) {
+        return false;
     }
 
     @Override

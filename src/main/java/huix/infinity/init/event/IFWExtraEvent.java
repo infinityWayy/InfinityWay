@@ -11,6 +11,7 @@ import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
 import huix.infinity.common.world.entity.monster.gelatinous.GelatinousCube;
+import huix.infinity.common.world.entity.monster.gelatinous.Ooze;
 import huix.infinity.common.world.entity.monster.skeleton.*;
 import huix.infinity.init.InfinityWay;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -55,7 +56,7 @@ public class IFWExtraEvent {
         event.put(IFWEntityType.JELLY.get(), GelatinousCube.createAttributes().build());
         event.put(IFWEntityType.BLOB.get(), GelatinousCube.createAttributes().build());
         event.put(IFWEntityType.PUDDING.get(), GelatinousCube.createAttributes().build());
-        event.put(IFWEntityType.OOZE.get(), GelatinousCube.createAttributes().build());
+        event.put(IFWEntityType.OOZE.get(), Ooze.createAttributes().build());
         event.put(IFWEntityType.MAGMA_CUBE.get(), GelatinousCube.createAttributes().build());
 
         event.put(IFWEntityType.HELL_HOUND.get(), HellHound.createAttributes().build());

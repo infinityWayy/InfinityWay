@@ -1,6 +1,12 @@
 package huix.infinity.common.world.entity.monster.gelatinous;
 
+import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.common.world.item.IFWTieredItem;
+import huix.infinity.common.world.item.tier.IFWArmorMaterials;
+import huix.infinity.common.world.item.tier.IFWTiers;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -9,10 +15,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +28,8 @@ public class Pudding extends GelatinousCube {
 
     public Pudding(EntityType<? extends Pudding> entityType, Level level) {
         super(entityType, level);
+        this.randomDamage = 5;
+        this.baseDamage = 2;
     }
 
     /**
@@ -30,7 +38,7 @@ public class Pudding extends GelatinousCube {
     @Override
     public boolean isInvulnerableTo(@NotNull DamageSource damageSource) {
 
-        if (damageSource.is(net.minecraft.tags.DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+        if (damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             return false;
         }
 
@@ -62,31 +70,6 @@ public class Pudding extends GelatinousCube {
     }
 
     @Override
-    public boolean canDissolveItem(ItemStack item) {
-        return !item.is(Items.NETHERITE_INGOT) && !item.is(Items.NETHERITE_SCRAP) &&
-                !item.is(Items.BEDROCK);
-    }
-
-    @Override
-    public boolean damageItem(ItemEntity item) {
-        ItemStack stack = item.getItem();
-        if (this.canDissolveItem(stack)) {
-            int damage = this.random.nextInt(5) + 2;
-            stack.shrink(damage);
-            if (stack.isEmpty()) {
-                item.discard();
-            }
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean canDamageItem(ItemStack item) {
-        return item.isDamageableItem() && this.random.nextFloat() < 0.4f;
-    }
-
-    @Override
     public boolean isAcidic() {
         return true;
     }
@@ -113,12 +96,8 @@ public class Pudding extends GelatinousCube {
         return false;
     }
 
-    protected boolean isDealsDamage() {
-        return true;
-    }
-
     @Override
-    public MobCategory getClassification(boolean forSpawnCount) {
+    public @NotNull MobCategory getClassification(boolean forSpawnCount) {
         return MobCategory.MONSTER;
     }
 
@@ -141,6 +120,37 @@ public class Pudding extends GelatinousCube {
     public SpawnGroupData finalizeSpawn(@NotNull ServerLevelAccessor level, @NotNull DifficultyInstance difficulty,
                                         @NotNull MobSpawnType reason, @Nullable SpawnGroupData spawnData) {
         return super.finalizeSpawn(level, difficulty, reason, spawnData);
+    }
+
+    @Override
+    boolean canItemBeCorrodedByAcid(ItemStack itemStack) {
+        if (itemStack.is(IFWItemTags.ACID_IMMUNE)) {
+            return false;
+        }
+        if (itemStack.getItem() instanceof ItemNameBlockItem blockItem) {
+            if (blockItem.getBlock().defaultBlockState().is(BlockTags.MINEABLE_WITH_PICKAXE)) {
+                return false;
+            }
+        }
+        if (itemStack.getItem() instanceof IFWTieredItem ifwTieredItem) {
+            switch (ifwTieredItem.ifwTier()) {
+                case IFWTiers.GOLD, IFWTiers.MITHRIL, IFWTiers.ADAMANTIUM -> {
+                    return false;
+                }
+                default -> {
+                    return true;
+                }
+            }
+        }
+        if (itemStack.getItem() instanceof ArmorItem armorItem) {
+            if (armorItem.getMaterial().is(IFWArmorMaterials.golden) ||
+                    armorItem.getMaterial().is(IFWArmorMaterials.mithril) ||
+                    armorItem.getMaterial().is(IFWArmorMaterials.adamantium)) {
+                return false;
+            }
+            return true;
+        }
+        return true;
     }
 
     @Override

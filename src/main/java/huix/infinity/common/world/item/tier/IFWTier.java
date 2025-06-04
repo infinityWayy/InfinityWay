@@ -8,7 +8,7 @@ public interface IFWTier extends Tier {
 
     IFWQuality quality();
 
-        public float acidResistance();
+    float acidResistance();
 
     float repairDurability();
 

@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#minecraft:wooden_fences",
+    "#minecraft:fence_gates",
+    "#minecraft:beds",
+    "#minecraft:wooden_pressure_plates",
+    "minecraft:hay_block",
+    "minecraft:melon",
+    "minecraft:pumpkin",
+    "minecraft:cactus",
+    "minecraft:ladder",
+    "minecraft:scaffolding"
+  ]
+}

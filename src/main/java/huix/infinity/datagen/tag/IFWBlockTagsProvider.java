@@ -116,5 +116,20 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
                         IFWBlocks.adamantium_runestone_corp.get(), IFWBlocks.adamantium_runestone_lor.get(), IFWBlocks.adamantium_runestone_mani.get(), IFWBlocks.adamantium_runestone_jux.get(), IFWBlocks.adamantium_runestone_ylem.get(),
                         IFWBlocks.adamantium_runestone_sanct.get()
                 );
+
+        tag(IFWBlockTags.CORROSIVE_DIRT).add(Blocks.GRASS_BLOCK, Blocks.ROOTED_DIRT, Blocks.MOSS_BLOCK, Blocks.MUDDY_MANGROVE_ROOTS);
+
+        tag(IFWBlockTags.SLOW_CORROSION)
+                .addTags(BlockTags.WOODEN_FENCES, BlockTags.FENCE_GATES, BlockTags.BEDS, BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(Blocks.HAY_BLOCK, Blocks.MELON, Blocks.PUMPKIN, Blocks.CACTUS, Blocks.LADDER, Blocks.SCAFFOLDING);
+
+        tag(IFWBlockTags.ACID_DEGRADABLE)
+                .addTags(IFWBlockTags.CORROSIVE_DIRT, BlockTags.REPLACEABLE_BY_TREES,
+                        BlockTags.CROPS, BlockTags.FLOWERS, BlockTags.WOOL, BlockTags.WOOL_CARPETS, BlockTags.CAVE_VINES)
+                .add(Blocks.KELP, Blocks.KELP_PLANT, Blocks.LILY_PAD, Blocks.BROWN_MUSHROOM, Blocks.RED_MUSHROOM,
+                        Blocks.CRIMSON_FUNGUS, Blocks.WARPED_FUNGUS, Blocks.CRIMSON_ROOTS,  Blocks.WARPED_ROOTS,
+                        Blocks.NETHER_SPROUTS, Blocks.NETHER_WART, Blocks.COCOA, Blocks.SWEET_BERRY_BUSH,
+                        Blocks.WEEPING_VINES, Blocks.WEEPING_VINES_PLANT, Blocks.TWISTING_VINES, Blocks.TWISTING_VINES_PLANT)
+                .remove(Blocks.WATER);
     }
 }

@@ -1,0 +1,31 @@
+{
+  "remove": [
+    "minecraft:water"
+  ],
+  "values": [
+    "#ifw:corrosive_dirt",
+    "#minecraft:replaceable_by_trees",
+    "#minecraft:crops",
+    "#minecraft:flowers",
+    "#minecraft:wool",
+    "#minecraft:wool_carpets",
+    "#minecraft:cave_vines",
+    "minecraft:kelp",
+    "minecraft:kelp_plant",
+    "minecraft:lily_pad",
+    "minecraft:brown_mushroom",
+    "minecraft:red_mushroom",
+    "minecraft:crimson_fungus",
+    "minecraft:warped_fungus",
+    "minecraft:crimson_roots",
+    "minecraft:warped_roots",
+    "minecraft:nether_sprouts",
+    "minecraft:nether_wart",
+    "minecraft:cocoa",
+    "minecraft:sweet_berry_bush",
+    "minecraft:weeping_vines",
+    "minecraft:weeping_vines_plant",
+    "minecraft:twisting_vines",
+    "minecraft:twisting_vines_plant"
+  ]
+}

@@ -1,5 +1,7 @@
 package huix.infinity.common.world.entity.monster.gelatinous;
 
+import huix.infinity.common.core.tag.IFWBlockTags;
+import huix.infinity.common.world.item.IFWTieredItem;
 import huix.infinity.common.world.item.tier.IFWTier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -10,7 +12,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -21,9 +22,10 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
-import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -32,20 +34,16 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class GelatinousCube extends Monster {
-
     private static final EntityDataAccessor<Boolean> DATA_IS_FEEDING =
             SynchedEntityData.defineId(GelatinousCube.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_SIZE =
@@ -62,9 +60,11 @@ public abstract class GelatinousCube extends Monster {
     private int blockFeedingCountdown;
     private int itemFeedingCountdown;
     private int ticksUntilNextFizzSound;
+    protected int randomDamage = 0;
+    protected int baseDamage = 0;
 
     // 修改：支持多个方块同时腐蚀，但有优化
-    private Map<BlockPos, Integer> corrosionProgress = new HashMap<>();
+    private final Map<BlockPos, Integer> corrosionProgress = new HashMap<>();
     private static final int BASE_CORROSION_TIME = 60; // 基础3秒（60 ticks）
 
     public GelatinousCube(EntityType<? extends GelatinousCube> entityType, Level level) {
@@ -93,44 +93,15 @@ public abstract class GelatinousCube extends Monster {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
         super.defineSynchedData(builder);
         builder.define(DATA_IS_FEEDING, false);
         builder.define(DATA_SIZE, 1);
     }
 
-    /**
-     * 控制是否可以被其他实体推动
-     * 子类可以重写此方法来自定义行为
-     */
-    protected boolean canBePushedByEntities() {
-        return false;
-    }
-
     @Override
     public boolean isPushable() {
-        return this.canBePushedByEntities();
-    }
-
-    @Override
-    public void push(@NotNull Entity entity) {
-        if (this.canBePushedByEntities()) {
-            super.push(entity);
-        }
-    }
-
-    protected boolean canBeKnockedBack() {
-        return true;
-    }
-
-    /**
-     * 控制击退抗性
-     */
-    @Override
-    public void knockback(double strength, double x, double z) {
-        if (this.canBeKnockedBack()) {
-            super.knockback(strength, x, z);
-        }
+        return false;
     }
 
     @Override
@@ -140,14 +111,16 @@ public abstract class GelatinousCube extends Monster {
         this.goalSelector.addGoal(3, new SlimeRandomDirectionGoal(this));
         this.goalSelector.addGoal(5, new SlimeKeepOnJumpingGoal(this));
 
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
+        this.targetSelector
+                .addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, p_352812_ -> Math.abs(p_352812_.getY() - this.getY()) <= 4.0));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 16.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.2)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1)
                 .add(Attributes.ATTACK_DAMAGE, 4.0)
                 .add(Attributes.FOLLOW_RANGE, 16.0);
     }
@@ -157,7 +130,6 @@ public abstract class GelatinousCube extends Monster {
     }
 
     public void setSize(int size) {
-        // 确保尺寸是有效的（1, 2, 4）
         if (size != 1 && size != 2 && size != 4) {
             size = 1;
         }
@@ -190,7 +162,7 @@ public abstract class GelatinousCube extends Monster {
     }
 
     @Override
-    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+    public void onSyncedDataUpdated(@NotNull EntityDataAccessor<?> key) {
         if (DATA_SIZE.equals(key)) {
             this.refreshDimensions();
         }
@@ -198,7 +170,7 @@ public abstract class GelatinousCube extends Monster {
     }
 
     @Override
-    public EntityDimensions getDefaultDimensions(Pose pose) {
+    public @NotNull EntityDimensions getDefaultDimensions(@NotNull Pose pose) {
         return super.getDefaultDimensions(pose).scale((float)this.getSize());
     }
 
@@ -235,7 +207,7 @@ public abstract class GelatinousCube extends Monster {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(@NotNull CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putInt("Size", this.getSize());
         compound.putBoolean("wasOnGround", this.wasOnGround);
@@ -249,7 +221,7 @@ public abstract class GelatinousCube extends Monster {
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(@NotNull CompoundTag compound) {
         super.readAdditionalSaveData(compound);
 
         int size = compound.getInt("Size");
@@ -346,7 +318,7 @@ public abstract class GelatinousCube extends Monster {
     }
 
     @Override
-    protected net.minecraft.sounds.SoundEvent getHurtSound(DamageSource damageSource) {
+    protected net.minecraft.sounds.SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
         return this.getSize() > 1 ? SoundEvents.SLIME_HURT : SoundEvents.SLIME_HURT_SMALL;
     }
 
@@ -368,16 +340,11 @@ public abstract class GelatinousCube extends Monster {
             if (this.isAcidic() && entity instanceof Player player) {
                 this.applyAcidicDamage(player);
             }
-
-            if (entity instanceof Player player) {
-                this.damagePlayerEquipment(player);
-            }
         }
 
         return success;
     }
 
-    // [保持之前的腐蚀方法不变...]
     private void applyAcidicDamage(Player player) {
         this.corrodeInventoryItems(player);
         this.corrodePlayerEquipment(player);
@@ -403,6 +370,7 @@ public abstract class GelatinousCube extends Monster {
                     stack.shrink(actualDamage);
 
                     this.playCorrosionEffects(player, actualDamage);
+                    return;
                 }
             }
         }
@@ -411,7 +379,7 @@ public abstract class GelatinousCube extends Monster {
     private void corrodePlayerEquipment(Player player) {
         for (EquipmentSlot slot : EquipmentSlot.values()) {
             ItemStack item = player.getItemBySlot(slot);
-            if (!item.isEmpty() && this.canItemBeCorrodedByAcid(item)) {
+            if (!item.isEmpty() && this.canEquipmentBeCorrodedByAcid(item)) {
                 int baseDamage = 2;
                 int sizeDamage = this.getSize();
                 int attackDamage = this.getAttackStrengthMultiplier();
@@ -423,45 +391,13 @@ public abstract class GelatinousCube extends Monster {
         }
     }
 
-    private void damagePlayerEquipment(Player player) {
-        for (EquipmentSlot slot : EquipmentSlot.values()) {
-            ItemStack item = player.getItemBySlot(slot);
-            if (!item.isEmpty() && this.canDamageItem(item)) {
-                float acidResistance = this.getAcidResistance(item);
-                if (this.random.nextFloat() > acidResistance / 100.0F) {
-                    item.hurtAndBreak(1, player, slot);
-                }
-            }
+    abstract boolean canItemBeCorrodedByAcid(ItemStack itemStack);
+
+    private boolean canEquipmentBeCorrodedByAcid(ItemStack itemStack) {
+        if (itemStack.getItem() instanceof IFWTieredItem) {
+            return true;
         }
-    }
-
-    private boolean canItemBeCorrodedByAcid(ItemStack itemStack) {
-        if (itemStack.isEmpty()) {
-            return false;
-        }
-
-        if (itemStack.getItem() instanceof TieredItem tieredItem) {
-            Tier tier = tieredItem.getTier();
-            if (tier instanceof IFWTier ifwTier) {
-                float acidResistance = ifwTier.acidResistance();
-
-                if (acidResistance >= 4000) {
-                    return false;
-                } else if (acidResistance >= 40) {
-                    return this.random.nextFloat() < 0.05F;
-                } else if (acidResistance >= 20) {
-                    return this.random.nextFloat() < 0.3F;
-                } else if (acidResistance >= 8) {
-                    return this.random.nextFloat() < 0.6F;
-                } else if (acidResistance >= 4) {
-                    return this.random.nextFloat() < 0.8F;
-                } else {
-                    return true;
-                }
-            }
-        }
-
-        return this.isItemVulnerableToAcidByName(itemStack);
+        return itemStack.is(Tags.Items.ARMORS);
     }
 
     private int calculateMaterialVulnerability(ItemStack itemStack) {
@@ -489,42 +425,6 @@ public abstract class GelatinousCube extends Monster {
         return 3;
     }
 
-    private boolean isItemVulnerableToAcidByName(ItemStack itemStack) {
-        String itemName = itemStack.getItem().toString().toLowerCase();
-
-        if (itemName.contains("stone") || itemName.contains("cobblestone")) {
-            return this.random.nextFloat() < 0.2F;
-        }
-
-        if (itemName.contains("diamond") || itemName.contains("emerald")) {
-            return this.random.nextFloat() < 0.1F;
-        }
-
-        if (itemName.contains("mithril")) {
-            return this.random.nextFloat() < 0.05F;
-        }
-        if (itemName.contains("adamantium")) {
-            return false;
-        }
-
-        if (itemName.contains("iron")) {
-            return this.random.nextFloat() < (itemName.contains("rusted") ? 0.8F : 0.3F);
-        }
-        if (itemName.contains("copper") || itemName.contains("silver")) {
-            return this.random.nextFloat() < 0.6F;
-        }
-        if (itemName.contains("gold")) {
-            return this.random.nextFloat() < 0.05F;
-        }
-
-        if (itemName.contains("wood") || itemName.contains("leather") ||
-                itemName.contains("string") || itemName.contains("wool")) {
-            return true;
-        }
-
-        return this.random.nextFloat() < 0.7F;
-    }
-
     private void playCorrosionEffects(Player player, int damageAmount) {
         float volume = Math.min(1.0F, 0.3F + damageAmount * 0.1F);
         player.playSound(SoundEvents.FIRE_EXTINGUISH, volume, 1.5F);
@@ -535,16 +435,6 @@ public abstract class GelatinousCube extends Monster {
                     player.getX(), player.getY() + 1.0, player.getZ(),
                     particleCount, 0.3, 0.3, 0.3, 0.1);
         }
-    }
-
-    private float getAcidResistance(ItemStack itemStack) {
-        if (itemStack.getItem() instanceof TieredItem tieredItem) {
-            Tier tier = tieredItem.getTier();
-            if (tier instanceof IFWTier ifwTier) {
-                return ifwTier.acidResistance();
-            }
-        }
-        return 2.0f;
     }
 
     // ===== 方块腐蚀系统（优化多方块处理） =====
@@ -576,13 +466,15 @@ public abstract class GelatinousCube extends Monster {
                     BlockPos pos = new BlockPos(x, y, z);
                     BlockState blockState = this.level().getBlockState(pos);
 
-                    if (!blockState.isAir() && this.canCorodeBlock(blockState)) {
+                    if (!blockState.isAir() &&
+                            (blockState.is(IFWBlockTags.ACID_DEGRADABLE) || blockState.is(IFWBlockTags.SLOW_CORROSION)))
+                    {
                         // 创建方块的碰撞箱
                         AABB blockAABB = new AABB(pos);
 
                         // 检查史莱姆碰撞箱是否与方块碰撞箱相交或接触
                         if (this.isCollisionBoxTouching(slimeBoundingBox, blockAABB)) {
-                            if (this.isBlockingBlock(blockState)) {
+                            if (blockState.is(IFWBlockTags.SLOW_CORROSION)) {
                                 timedCorrosionBlocks.add(pos);
                             } else {
                                 immediateCorrosionBlocks.add(pos);
@@ -643,7 +535,7 @@ public abstract class GelatinousCube extends Monster {
 
         for (BlockPos pos : timedCorrosionBlocks) {
             BlockState blockState = this.level().getBlockState(pos);
-            if (!blockState.isAir() && this.isBlockingBlock(blockState)) {
+            if (!blockState.isAir() && blockState.is(IFWBlockTags.SLOW_CORROSION)) {
 
                 // 获取或初始化腐蚀进度
                 int progress = this.corrosionProgress.getOrDefault(pos, 0);
@@ -707,108 +599,11 @@ public abstract class GelatinousCube extends Monster {
         }
     }
 
-    private boolean canCorodeBlock(BlockState blockState) {
-        Block block = blockState.getBlock();
-
-        // 草方块和菌丝方块
-        if (block == Blocks.GRASS_BLOCK || block == Blocks.MYCELIUM) {
-            return true;
-        }
-
-        // 树叶
-        if (blockState.is(BlockTags.LEAVES)) {
-            return true;
-        }
-
-        // 农作物
-        if (blockState.is(BlockTags.CROPS)) {
-            return true;
-        }
-
-        // 花朵（小花和高花）
-        if (blockState.is(BlockTags.SMALL_FLOWERS) || blockState.is(BlockTags.TALL_FLOWERS)) {
-            return true;
-        }
-
-        // 羊毛
-        if (blockState.is(BlockTags.WOOL)) {
-            return true;
-        }
-
-        // 地毯
-        if (blockState.is(BlockTags.WOOL_CARPETS)) {
-            return true;
-        }
-
-        // 木栅栏
-        if (blockState.is(BlockTags.WOODEN_FENCES)) {
-            return true;
-        }
-
-        // 木栅栏门
-        if (blockState.is(BlockTags.FENCE_GATES)) {
-            return true;
-        }
-
-        // 床
-        if (blockState.is(BlockTags.BEDS)) {
-            return true;
-        }
-
-        // 木压力板
-        if (blockState.is(BlockTags.WOODEN_PRESSURE_PLATES)) {
-            return true;
-        }
-
-        // 其他特殊方块（无法使用Tag的）
-        if (block == Blocks.SHORT_GRASS || block == Blocks.TALL_GRASS || block == Blocks.FERN ||
-                block == Blocks.LARGE_FERN || block == Blocks.DEAD_BUSH || block == Blocks.SEAGRASS ||
-                block == Blocks.TALL_SEAGRASS || block == Blocks.KELP || block == Blocks.KELP_PLANT ||
-                block == Blocks.LILY_PAD || block == Blocks.BROWN_MUSHROOM || block == Blocks.RED_MUSHROOM ||
-                block == Blocks.CRIMSON_FUNGUS || block == Blocks.WARPED_FUNGUS ||
-                block == Blocks.CRIMSON_ROOTS || block == Blocks.WARPED_ROOTS || block == Blocks.NETHER_SPROUTS ||
-                block == Blocks.NETHER_WART || block == Blocks.COCOA || block == Blocks.SWEET_BERRY_BUSH ||
-                block == Blocks.CAVE_VINES || block == Blocks.CAVE_VINES_PLANT ||
-                block == Blocks.HAY_BLOCK || block == Blocks.MELON || block == Blocks.CACTUS ||
-                block == Blocks.LADDER) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private boolean isBlockingBlock(BlockState blockState) {
-        Block block = blockState.getBlock();
-
-        // 会阻挡移动的方块需要时间腐蚀
-
-        // 干草块、西瓜块、仙人掌
-        if (block == Blocks.HAY_BLOCK || block == Blocks.MELON || block == Blocks.CACTUS) {
-            return true;
-        }
-
-        // 梯子
-        if (block == Blocks.LADDER) {
-            return true;
-        }
-
-        // 使用Tag判断
-        if (blockState.is(BlockTags.WOODEN_PRESSURE_PLATES) ||
-                blockState.is(BlockTags.WOODEN_FENCES) ||
-                blockState.is(BlockTags.FENCE_GATES) ||
-                blockState.is(BlockTags.BEDS)) {
-            return true;
-        }
-
-        return false;
-    }
-
     private void corrodeBlock(BlockPos pos, BlockState originalState) {
         if (!this.level().isClientSide) {
-            Block originalBlock = originalState.getBlock();
 
-            if (originalBlock == Blocks.GRASS_BLOCK || originalBlock == Blocks.MYCELIUM) {
-                // 草方块和菌丝方块转化成泥土
+            if (originalState.is(IFWBlockTags.CORROSIVE_DIRT)) {
+                // 转化成泥土
                 this.level().setBlock(pos, Blocks.DIRT.defaultBlockState(), 3);
 
                 this.level().playSound(null, pos, SoundEvents.LAVA_EXTINGUISH,
@@ -863,7 +658,7 @@ public abstract class GelatinousCube extends Monster {
         boolean refreshCounter = false;
 
         for (ItemEntity item : items) {
-            if (!item.isRemoved() && this.canDissolveItem(item.getItem())) {
+            if (!item.isRemoved() && this.canItemBeCorrodedByAcid(item.getItem())) {
                 if (item.hasPickUpDelay() && item.getAge() < 60) {
                     item.setPickUpDelay(60);
                 }
@@ -904,7 +699,7 @@ public abstract class GelatinousCube extends Monster {
 
         public SlimeAttackGoal(GelatinousCube slime) {
             this.slime = slime;
-            this.setFlags(java.util.EnumSet.of(Flag.LOOK));
+            this.setFlags(EnumSet.of(Flag.LOOK));
         }
 
         @Override
@@ -915,7 +710,7 @@ public abstract class GelatinousCube extends Monster {
 
         @Override
         public void start() {
-            this.growTiredTimer = 300;
+            this.growTiredTimer = reducedTickDelay(300);
             super.start();
         }
 
@@ -923,6 +718,11 @@ public abstract class GelatinousCube extends Monster {
         public boolean canContinueToUse() {
             LivingEntity target = this.slime.getTarget();
             return target != null && target.isAlive() && --this.growTiredTimer > 0;
+        }
+
+        @Override
+        public boolean requiresUpdateEveryTick() {
+            return true;
         }
 
         @Override
@@ -1041,12 +841,21 @@ public abstract class GelatinousCube extends Monster {
         return this.random.nextInt(20) + 10;
     }
 
+    public boolean damageItem(ItemEntity item) {
+        if (baseDamage + randomDamage == 0) return false;
+        ItemStack stack = item.getItem();
+        int random = randomDamage == 0? 0: this.random.nextInt(randomDamage);
+        int damage = random + baseDamage;
+        stack.shrink(damage);
+        if (stack.isEmpty()) {
+            item.discard();
+        }
+        return true;
+    }
+
     // ===== 抽象方法 =====
 
     public abstract boolean canCorodeBlocks();
-    public abstract boolean canDissolveItem(ItemStack item);
-    public abstract boolean damageItem(ItemEntity item);
-    public abstract boolean canDamageItem(ItemStack item);
     public abstract boolean isAcidic();
     public abstract int getAttackStrengthMultiplier();
 
@@ -1065,7 +874,7 @@ public abstract class GelatinousCube extends Monster {
     }
 
     @Override
-    public void die(DamageSource damageSource) {
+    public void die(@NotNull DamageSource damageSource) {
         if (!this.level().isClientSide && this.getSize() > 1) {
             this.spawnSmallerSlimes();
         }
@@ -1092,7 +901,8 @@ public abstract class GelatinousCube extends Monster {
 
     protected abstract GelatinousCube createSmallerSlime(int size);
 
-    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource damageSource, boolean wasRecentlyHit) {
+    protected void dropCustomDeathLoot(@NotNull ServerLevel serverLevel, @NotNull DamageSource damageSource,
+                                       boolean wasRecentlyHit) {
         super.dropCustomDeathLoot(serverLevel, damageSource, wasRecentlyHit);
 
         int ballCount = this.getSize() + this.random.nextInt(this.getSize() + 1);

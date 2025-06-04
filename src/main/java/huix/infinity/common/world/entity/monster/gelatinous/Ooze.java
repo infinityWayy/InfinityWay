@@ -1,26 +1,34 @@
 package huix.infinity.common.world.entity.monster.gelatinous;
 
+import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.item.IFWItems;
+import huix.infinity.common.world.item.IFWTieredItem;
+import huix.infinity.common.world.item.tier.IFWArmorMaterials;
+import huix.infinity.common.world.item.tier.IFWTiers;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -31,12 +39,14 @@ public class Ooze extends GelatinousCube {
 
     public Ooze(EntityType<? extends Ooze> entityType, Level level) {
         super(entityType, level);
+        this.randomDamage = 4;
+        this.baseDamage = 1;
         // 使用特殊的爬行移动控制器
         this.moveControl = new OozeMoveControl(this);
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
         super.defineSynchedData(builder);
         builder.define(DATA_IS_CLIMBING, false);
     }
@@ -50,8 +60,17 @@ public class Ooze extends GelatinousCube {
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
+        this.targetSelector
+                .addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, p_352812_ -> Math.abs(p_352812_.getY() - this.getY()) <= 4.0));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
+    }
+
+    public static AttributeSupplier.Builder createAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, 16.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.2)
+                .add(Attributes.ATTACK_DAMAGE, 4.0)
+                .add(Attributes.FOLLOW_RANGE, 16.0);
     }
 
     /**
@@ -106,44 +125,46 @@ public class Ooze extends GelatinousCube {
     }
 
     @Override
+    boolean canItemBeCorrodedByAcid(ItemStack itemStack) {
+        if (itemStack.is(IFWItemTags.ACID_IMMUNE)) {
+            return false;
+        }
+        if (itemStack.getItem() instanceof ItemNameBlockItem blockItem) {
+            BlockState state = blockItem.getBlock().defaultBlockState();
+            if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
+                return false;
+            }
+        }
+        if (itemStack.getItem() instanceof IFWTieredItem ifwTieredItem) {
+            switch (ifwTieredItem.ifwTier()) {
+                case IFWTiers.GOLD, IFWTiers.MITHRIL, IFWTiers.ADAMANTIUM -> {
+                    return false;
+                }
+                default -> {
+                    return true;
+                }
+            }
+        }
+        if (itemStack.getItem() instanceof ArmorItem armorItem) {
+            if (armorItem.getMaterial().is(IFWArmorMaterials.golden) ||
+                    armorItem.getMaterial().is(IFWArmorMaterials.mithril) ||
+                    armorItem.getMaterial().is(IFWArmorMaterials.adamantium)) {
+                return false;
+            }
+            return true;
+        }
+        return true;
+    }
+
+    @Override
     public void setSize(int size) {
 
         super.setSize(Math.min(size, 2));
     }
 
     @Override
-    protected boolean canBeKnockedBack() {
-        return false;
-    }
-
-    @Override
     public boolean canCorodeBlocks() {
         return true;
-    }
-
-    @Override
-    public boolean canDissolveItem(ItemStack item) {
-        return !item.is(Items.DIAMOND) && !item.is(Items.EMERALD) &&
-                !item.is(Items.NETHERITE_INGOT) && !item.is(Items.BEDROCK);
-    }
-
-    @Override
-    public boolean damageItem(ItemEntity item) {
-        ItemStack stack = item.getItem();
-        if (this.canDissolveItem(stack)) {
-            int damage = this.random.nextInt(4) + 1;
-            stack.shrink(damage);
-            if (stack.isEmpty()) {
-                item.discard();
-            }
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean canDamageItem(ItemStack item) {
-        return item.isDamageableItem() && this.random.nextFloat() < 0.3f;
     }
 
     @Override
@@ -172,12 +193,8 @@ public class Ooze extends GelatinousCube {
         return super.canBeAffected(effectInstance);
     }
 
-    protected boolean isDealsDamage() {
-        return true;
-    }
-
     @Override
-    public MobCategory getClassification(boolean forSpawnCount) {
+    public @NotNull MobCategory getClassification(boolean forSpawnCount) {
         return MobCategory.MONSTER;
     }
 
@@ -219,15 +236,13 @@ public class Ooze extends GelatinousCube {
 
     // 爬行攻击AI
     static class OozeMeleeAttackGoal extends MeleeAttackGoal {
-        private final Ooze ooze;
 
         public OozeMeleeAttackGoal(Ooze ooze, double speedModifier, boolean followingTargetEvenIfNotSeen) {
             super(ooze, speedModifier, followingTargetEvenIfNotSeen);
-            this.ooze = ooze;
         }
 
         @Override
-        protected void checkAndPerformAttack(LivingEntity enemy) {
+        protected void checkAndPerformAttack(@NotNull LivingEntity enemy) {
             if (this.canPerformAttack(enemy)) {
                 this.resetAttackCooldown();
                 this.mob.doHurtTarget(enemy);
@@ -235,7 +250,7 @@ public class Ooze extends GelatinousCube {
         }
 
         @Override
-        public boolean canPerformAttack(LivingEntity enemy) {
+        public boolean canPerformAttack(@NotNull LivingEntity enemy) {
             return this.getTicksUntilNextAttack() <= 0 &&
                     this.mob.distanceToSqr(enemy) < this.getAttackReachSqr(enemy);
         }

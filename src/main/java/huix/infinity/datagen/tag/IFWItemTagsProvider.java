@@ -112,5 +112,12 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
                 IFWItems.powder_snow_silver_bucket.get(), IFWItems.tropical_silver_bucket.get(), IFWItems.stone_silver_bucket.get(), IFWItems.pufferfish_silver_bucket.get(),
                 IFWItems.salmon_silver_bucket.get(), IFWItems.cod_silver_bucket.get(), IFWItems.axolotl_silver_bucket.get()
         );
+
+        tag(IFWItemTags.ACID_IMMUNE)
+                .add(Items.LAPIS_LAZULI, Items.EMERALD, Items.DIAMOND, Items.REDSTONE, Items.QUARTZ, Items.AMETHYST_SHARD)
+                .add(IFWItems.gold_bucket.get(), IFWItems.golden_chain.get(), Items.GOLD_INGOT, Items.GOLD_NUGGET)
+                .add(IFWItems.mithril_bucket.get(), IFWItems.mithril_chain.get(), IFWItems.mithril_ingot.get(), IFWItems.mithril_nugget.get())
+                .add(IFWItems.adamantium_bucket.get(), IFWItems.adamantium_chain.get(), IFWItems.adamantium_ingot.get(), IFWItems.adamantium_nugget.get())
+                .add(Items.NETHERITE_INGOT, Items.NETHERITE_SCRAP);
     }
 }

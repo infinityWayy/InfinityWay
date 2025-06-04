@@ -1,4 +1,6 @@
-// 1.21.1	2025-05-29T17:02:21.8582291	Tags for minecraft:block mod id ifw
+// 1.21.1	2025-06-04T21:37:00.0605966	Tags for minecraft:block mod id ifw
+a57428087e9da6acde3be57b776296773fedbbb5 data/ifw/tags/block/acid_degradable.json
+5da647fe8f09b8b9032c0be9a3f63752f470e49a data/ifw/tags/block/corrosive_dirt.json
 37a6c3a11450b21a8e0381b726b34e2085dd5d29 data/ifw/tags/block/fallen_dirt.json
 b147fcff5c0b4d72df1cb7809b063b2562180832 data/ifw/tags/block/harvest_level_0_tool.json
 7d3e39787ca0ec017e53abe718814453f9da57c3 data/ifw/tags/block/harvest_level_1_tool.json
@@ -15,6 +17,7 @@ a67f3a4fddfd43e8a8c7a9deb5d1bcba7508d06c data/ifw/tags/block/incorrect_for_level
 26151be7adf9997eef883643cb247d0ff6896d75 data/ifw/tags/block/runestone.json
 98a4ba37009d94811c7d545a36557a2185623315 data/ifw/tags/block/scythe_effective.json
 efd2bb655ee4be3e2915841b28a4d30b7f1249d4 data/ifw/tags/block/shears_effective.json
+32eb0ba595e948b56f8b16fc4b1c4cfe8c34696e data/ifw/tags/block/slow_corrosion.json
 96f50b5a6a3bf46756af20ca13251571d3e39bec data/minecraft/tags/block/anvil.json
 a8569e2a5cce0f462d322f77a525aba34562ddac data/minecraft/tags/block/doors.json
 0abf8ce06e1b7b0adeaa5954e087101f4b975520 data/minecraft/tags/block/mineable/pickaxe.json
