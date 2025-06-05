@@ -105,7 +105,7 @@ public class EmeraldEnchantmentMenu extends AbstractContainerMenu {
                         }
                     }
 
-                    this.random.setSeed(this.enchantmentSeed.get());
+                    this.enchantmentSeed.set(this.random.nextInt());
 
                     for (int k = 0; k < 3; k++) {
                         this.costs[k] = IFWEnchantmentHelper.getExperienceCost(IFWEnchantmentHelper.calculateRequiredExperienceLevel(this.random, k, (int)bookShelves, itemstack, this.ifw_enchantingModify));
