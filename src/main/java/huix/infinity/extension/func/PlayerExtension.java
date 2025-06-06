@@ -59,5 +59,4 @@ public interface PlayerExtension {
         instance().setData(IFWAttachments.player_curse, curse.ordinal());
     }
 
-    void changeDimension(ServerLevel targetLevel, DimensionTransition dimensionTransition);
 }
