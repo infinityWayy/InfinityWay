@@ -2,10 +2,10 @@ package huix.infinity.init;
 
 import com.mojang.logging.LogUtils;
 import huix.infinity.attachment.IFWAttachments;
+import huix.infinity.common.command.arguments.IFWCommandArguments;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.levelgen.structure.IFWStructureTypes;
 import huix.infinity.common.world.block.IFWBlocks;
-import huix.infinity.common.world.curse.Curses;
 import huix.infinity.common.world.dimension.IFWDimensionTypes;
 import huix.infinity.common.world.dimension.IFWDimensions;
 import huix.infinity.common.world.effect.IFWMobEffects;
@@ -66,7 +66,7 @@ public final class InfinityWay {
         // 其他系统
         IFWLootModifiers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modBus);
         IFWSoundEvents.register(modBus);
-        Curses.CURSES.register(modBus);
+        IFWCommandArguments.COMMAND_ARGUMENT_TYPE.register(modBus);
 
         // 农夫乐事兼容性检查和初始化
         if (ModList.get().isLoaded(FARMERS_DELIGHT_MODID)) {

@@ -1,13 +1,13 @@
 package huix.infinity.extension.func;
 
-import huix.infinity.common.world.curse.Curse;
-import huix.infinity.common.world.curse.PersistentEffectInstance;
-import huix.infinity.common.world.effect.PersistentEffect;
-import huix.infinity.common.world.curse.Curses;
-import net.minecraft.core.Holder;
+
+import huix.infinity.attachment.IFWAttachments;
+import huix.infinity.common.world.curse.CurseType;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.portal.DimensionTransition;
 
 
 public interface PlayerExtension {
@@ -27,10 +27,6 @@ public interface PlayerExtension {
         return false;
     }
 
-    default boolean hasCurse() {
-        return !curse().equals(Curses.none.value());
-    }
-
     default boolean suffering_insulinResistance_mild() {
         return this.getFoodData().ifw_insulinResponse() > 48000;
     }
@@ -47,23 +43,21 @@ public interface PlayerExtension {
         return false;
     }
 
-    default boolean hasCurse(Curse curse) {
-        return hasCurse() && !curse().equals(curse);
+    default boolean hasCurse() {
+        return getCurse() != CurseType.none;
     }
 
-    default Curse curse() {
-        return (Curse) Curses.none.value();
+    default boolean hasCurse(CurseType curse) {
+        return hasCurse() && !getCurse().equals(curse);
     }
 
-    default void curse(Holder<PersistentEffect> curse) {
-        curse(new PersistentEffectInstance(curse));
+    default CurseType getCurse() {
+        return CurseType.values()[instance().getData(IFWAttachments.player_curse)];
     }
 
-    default void curse(PersistentEffectInstance curse) {
+    default void setCurse(CurseType curse) {
+        instance().setData(IFWAttachments.player_curse, curse.ordinal());
     }
 
-    default void learnCurse() {
-    }
-
-
+    void changeDimension(ServerLevel targetLevel, DimensionTransition dimensionTransition);
 }

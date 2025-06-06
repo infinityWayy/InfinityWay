@@ -30,12 +30,7 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
     @Inject(at = @At(value = "RETURN"), method = "render")
     private void injectCurseRender(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         Player player = this.minecraft.player;
-
-        System.out.println(player.getCurse().name());
-        System.out.println(player.hasCurse());
-
         if (player.hasCurse()) {
-            System.out.println("111111111111");
             this.curse_yOffset = 33;
             int renderX = this.leftPos + this.imageWidth + 2;
             int j = this.width - renderX;

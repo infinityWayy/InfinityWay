@@ -120,9 +120,9 @@ public class IFWEvents {
         Player entity = event.getEntity();
 
         Integer i = entity.getData(IFWAttachments.player_curse);
-        System.out.println(i);
-        System.out.println(entity.getCurse().name());
-        System.out.println(entity.hasCurse());
+//        System.out.println(i);
+//        System.out.println(entity.getCurse().name());
+//        System.out.println(entity.hasCurse());
 
     }
 
