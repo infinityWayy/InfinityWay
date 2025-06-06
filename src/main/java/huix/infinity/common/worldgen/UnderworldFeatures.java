@@ -29,7 +29,6 @@ public class UnderworldFeatures {
     // Bootstrap 方法 - 配置特征（简化版）
     public static void bootstrapConfiguredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         try {
-            InfinityWay.LOGGER.info("Bootstrapping Underworld Configured Features (simplified)");
             // 暂时为空，避免复杂的特征配置导致崩溃
             // 后续可以逐步添加简单的特征
         } catch (Exception e) {
@@ -40,7 +39,6 @@ public class UnderworldFeatures {
     // Bootstrap 方法 - 放置特征（简化版）
     public static void bootstrapPlacedFeatures(BootstrapContext<PlacedFeature> context) {
         try {
-            InfinityWay.LOGGER.info("Bootstrapping Underworld Placed Features (simplified)");
             // 暂时为空，避免复杂的放置配置导致崩溃
             // 后续可以逐步添加简单的放置特征
         } catch (Exception e) {
@@ -56,25 +54,14 @@ public class UnderworldFeatures {
             // 简化的生物群系修饰器，不添加复杂特征
             bootstrap.register(ADD_UNDERWORLD_BASIC_FEATURES, new BiomeModifiers.AddFeaturesBiomeModifier(
                     HolderSet.direct(
-                            biomes.getOrThrow(UnderworldBiomes.UNDERWORLD_WASTELAND),
-                            biomes.getOrThrow(UnderworldBiomes.STALAGMITE_FOREST),
-                            biomes.getOrThrow(UnderworldBiomes.LUSH_CAVERNS),
-                            biomes.getOrThrow(UnderworldBiomes.DEEP_DARK_REALM)
+                            biomes.getOrThrow(UnderworldBiomes.UNDER_WORLD)
                     ),
-                    HolderSet.direct(), // 暂时不添加任何特征
+                    HolderSet.direct(),
                     GenerationStep.Decoration.UNDERGROUND_DECORATION
             ));
 
-            InfinityWay.LOGGER.info("Bootstrapping Underworld Biome Modifiers (simplified)");
         } catch (Exception e) {
             InfinityWay.LOGGER.error("Failed to bootstrap biome modifiers: " + e.getMessage(), e);
         }
     }
-
-    // 简化的 RegistrySetBuilder
-    public static final RegistrySetBuilder UNDERWORLD_BUILDER = new RegistrySetBuilder()
-            .add(Registries.BIOME, UnderworldBiomes::bootstrap)
-            .add(Registries.CONFIGURED_FEATURE, UnderworldFeatures::bootstrapConfiguredFeatures)
-            .add(Registries.PLACED_FEATURE, UnderworldFeatures::bootstrapPlacedFeatures)
-            .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, UnderworldFeatures::bootstrapBiomeModifiers);
 }

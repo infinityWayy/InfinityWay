@@ -59,7 +59,6 @@ public final class InfinityWay {
         // 世界生成注册 - 确保只注册一次
         IFWStructureTypes.STRUCTURE_TYPES.register(modBus);
         IFWBiomeModifierTypes.BIOME_MODIFIER_SERIALIZERS.register(modBus);
-        IFWDimensionTypes.DIMENSION_TYPES.register(modBus);
         IFWDimensions.BIOME_SOURCE_CODECS.register(modBus);
         IFWDimensions.CHUNK_GENERATOR_CODECS.register(modBus);
 
