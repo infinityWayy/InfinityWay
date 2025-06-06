@@ -2,10 +2,12 @@ package huix.infinity.init;
 
 import com.mojang.logging.LogUtils;
 import huix.infinity.attachment.IFWAttachments;
-import huix.infinity.common.command.arguments.IFWCommandArguments;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.levelgen.structure.IFWStructureTypes;
 import huix.infinity.common.world.block.IFWBlocks;
+import huix.infinity.common.world.curse.Curses;
+import huix.infinity.common.world.dimension.IFWDimensionTypes;
+import huix.infinity.common.world.dimension.IFWDimensions;
 import huix.infinity.common.world.effect.IFWMobEffects;
 import huix.infinity.common.world.entity.IFWAttributes;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
@@ -57,11 +59,14 @@ public final class InfinityWay {
         // 世界生成注册 - 确保只注册一次
         IFWStructureTypes.STRUCTURE_TYPES.register(modBus);
         IFWBiomeModifierTypes.BIOME_MODIFIER_SERIALIZERS.register(modBus);
+        IFWDimensionTypes.DIMENSION_TYPES.register(modBus);
+        IFWDimensions.BIOME_SOURCE_CODECS.register(modBus);
+        IFWDimensions.CHUNK_GENERATOR_CODECS.register(modBus);
 
         // 其他系统
         IFWLootModifiers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modBus);
         IFWSoundEvents.register(modBus);
-        IFWCommandArguments.COMMAND_ARGUMENT_TYPE.register(modBus);
+        Curses.CURSES.register(modBus);
 
         // 农夫乐事兼容性检查和初始化
         if (ModList.get().isLoaded(FARMERS_DELIGHT_MODID)) {

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ifw:block/cross_dimension_portal_ew"
+    },
+    "axis=z": {
+      "model": "ifw:block/cross_dimension_portal_ns"
+    }
+  }
+}

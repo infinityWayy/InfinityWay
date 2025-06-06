@@ -1,7 +1,10 @@
 package huix.infinity.extension.func;
 
-import huix.infinity.attachment.IFWAttachments;
-import huix.infinity.common.world.curse.CurseType;
+import huix.infinity.common.world.curse.Curse;
+import huix.infinity.common.world.curse.PersistentEffectInstance;
+import huix.infinity.common.world.effect.PersistentEffect;
+import huix.infinity.common.world.curse.Curses;
+import net.minecraft.core.Holder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +28,7 @@ public interface PlayerExtension {
     }
 
     default boolean hasCurse() {
-        return getCurse() != CurseType.none;
+        return !curse().equals(Curses.none.value());
     }
 
     default boolean suffering_insulinResistance_mild() {
@@ -41,20 +44,22 @@ public interface PlayerExtension {
     }
 
     default boolean knownCurse() {
-        return instance().getData(IFWAttachments.learned_curse);
+        return false;
     }
 
-    default boolean hasCurse(CurseType curse) {
-        return hasCurse() && !getCurse().equals(curse);
+    default boolean hasCurse(Curse curse) {
+        return hasCurse() && !curse().equals(curse);
     }
 
-    default CurseType getCurse() {
-        return CurseType.values()[(instance().getData(IFWAttachments.player_curse.get()))];
+    default Curse curse() {
+        return (Curse) Curses.none.value();
     }
 
+    default void curse(Holder<PersistentEffect> curse) {
+        curse(new PersistentEffectInstance(curse));
+    }
 
-    default void setCurse(CurseType curse) {
-        instance().setData(IFWAttachments.player_curse, curse.ordinal());
+    default void curse(PersistentEffectInstance curse) {
     }
 
     default void learnCurse() {

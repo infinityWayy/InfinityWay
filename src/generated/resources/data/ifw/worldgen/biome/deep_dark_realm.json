@@ -1,0 +1,44 @@
+{
+  "carvers": {},
+  "downfall": 0.0,
+  "effects": {
+    "ambient_sound": "minecraft:ambient.soul_sand_valley.loop",
+    "fog_color": 986911,
+    "sky_color": 1710634,
+    "water_color": 657946,
+    "water_fog_color": 328976
+  },
+  "features": [],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "minecraft:warden",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 5
+      },
+      {
+        "type": "minecraft:skeleton",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 80
+      },
+      {
+        "type": "minecraft:cave_spider",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 100
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.2
+}

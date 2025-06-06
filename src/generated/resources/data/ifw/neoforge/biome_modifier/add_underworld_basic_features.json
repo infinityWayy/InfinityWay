@@ -1,0 +1,11 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "ifw:underworld_wasteland",
+    "ifw:stalagmite_forest",
+    "ifw:lush_caverns",
+    "ifw:deep_dark_realm"
+  ],
+  "features": [],
+  "step": "underground_decoration"
+}

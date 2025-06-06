@@ -21,12 +21,14 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.joml.Vector3f;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 public class RunePortalBlock extends Block {
@@ -71,33 +73,84 @@ public class RunePortalBlock extends Block {
         Direction.Axis direction$axis1 = state.getValue(AXIS);
         boolean flag = direction$axis1 != direction$axis && direction$axis.isHorizontal();
 
-        if (!flag && !facingState.is(this) && !facingState.is(Blocks.OBSIDIAN)) {
-            if (!hasValidFrameSupport(level, currentPos, direction$axis1)) {
-                return Blocks.AIR.defaultBlockState();
+        if (!flag && !facingState.is(this) && !facingState.is(Blocks.OBSIDIAN) && !isRunestoneBlock(facingState)) {
+            if (level instanceof ServerLevel serverLevel) {
+                Optional<PortalShape> portalShape = findPortalShapeContaining(serverLevel, currentPos);
+                if (!portalShape.isPresent() || !isPortalShapeComplete(serverLevel, portalShape.get())) {
+                    return Blocks.AIR.defaultBlockState();
+                }
             }
         }
 
         return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
     }
 
-    private boolean hasValidFrameSupport(LevelAccessor level, BlockPos pos, Direction.Axis axis) {
-        Direction[] checkDirections;
-        if (axis == Direction.Axis.X) {
-            checkDirections = new Direction[]{Direction.NORTH, Direction.SOUTH, Direction.UP, Direction.DOWN};
-        } else {
-            checkDirections = new Direction[]{Direction.EAST, Direction.WEST, Direction.UP, Direction.DOWN};
-        }
-
-        int supportCount = 0;
-        for (Direction dir : checkDirections) {
-            BlockPos checkPos = pos.relative(dir);
-            BlockState checkState = level.getBlockState(checkPos);
-            if (checkState.is(Blocks.OBSIDIAN) || checkState.is(this)) {
-                supportCount++;
+    private Optional<PortalShape> findPortalShapeContaining(ServerLevel level, BlockPos pos) {
+        for (int dx = -2; dx <= 2; dx++) {
+            for (int dy = -3; dy <= 3; dy++) {
+                for (int dz = -2; dz <= 2; dz++) {
+                    BlockPos searchPos = pos.offset(dx, dy, dz);
+                    Optional<PortalShape> shape = PortalShape.findEmptyPortalShape(level, searchPos, Direction.Axis.X);
+                    if (!shape.isPresent()) {
+                        shape = PortalShape.findEmptyPortalShape(level, searchPos, Direction.Axis.Z);
+                    }
+                    if (shape.isPresent()) {
+                        return shape;
+                    }
+                }
             }
         }
+        return Optional.empty();
+    }
 
-        return supportCount >= 2;
+    private boolean isPortalShapeComplete(ServerLevel level, PortalShape shape) {
+        try {
+            java.lang.reflect.Field bottomLeftField = PortalShape.class.getDeclaredField("bottomLeft");
+            java.lang.reflect.Field widthField = PortalShape.class.getDeclaredField("width");
+            java.lang.reflect.Field heightField = PortalShape.class.getDeclaredField("height");
+            java.lang.reflect.Field axisField = PortalShape.class.getDeclaredField("axis");
+
+            bottomLeftField.setAccessible(true);
+            widthField.setAccessible(true);
+            heightField.setAccessible(true);
+            axisField.setAccessible(true);
+
+            BlockPos bottomLeft = (BlockPos) bottomLeftField.get(shape);
+            int width = widthField.getInt(shape);
+            int height = heightField.getInt(shape);
+            Direction.Axis axis = (Direction.Axis) axisField.get(shape);
+
+            for (int x = -1; x <= width; x++) {
+                for (int y = -1; y <= height; y++) {
+                    BlockPos framePos;
+                    if (axis == Direction.Axis.X) {
+                        framePos = bottomLeft.offset(x, y, 0);
+                    } else {
+                        framePos = bottomLeft.offset(0, y, x);
+                    }
+
+                    boolean isEdge = (x == -1 || x == width || y == -1 || y == height);
+
+                    if (isEdge) {
+                        BlockState frameState = level.getBlockState(framePos);
+                        if (!frameState.is(Blocks.OBSIDIAN) && !isRunestoneBlock(frameState)) {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private boolean isRunestoneBlock(BlockState state) {
+        try {
+            return state.is(huix.infinity.common.core.tag.IFWBlockTags.RUNESTONE);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
@@ -130,7 +183,7 @@ public class RunePortalBlock extends Block {
 
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!level.isClientSide && entity instanceof ServerPlayer player && level.dimension() == Level.OVERWORLD) {
+        if (!level.isClientSide && entity instanceof ServerPlayer player) {
             UUID playerId = player.getUUID();
             long currentTime = level.getGameTime();
 
@@ -147,7 +200,7 @@ public class RunePortalBlock extends Block {
                 long elapsedTicks = currentTime - startTime;
 
                 if (elapsedTicks >= TELEPORT_DELAY_TICKS) {
-                    executeActualTeleport(player, (ServerLevel) level, pos);
+                    executeRuneTeleport(player, (ServerLevel) level, pos, state);
                     TELEPORT_START_TIME.remove(playerId);
                     TELEPORT_COOLDOWN.put(playerId, currentTime);
                 }
@@ -155,11 +208,11 @@ public class RunePortalBlock extends Block {
             }
 
             TELEPORT_START_TIME.put(playerId, currentTime);
-            startTeleportBuffer(player, (ServerLevel) level, pos);
+            startTeleportBuffer(player, (ServerLevel) level, pos, state);
         }
     }
 
-    private void startTeleportBuffer(ServerPlayer player, ServerLevel level, BlockPos portalPos) {
+    private void startTeleportBuffer(ServerPlayer player, ServerLevel level, BlockPos portalPos, BlockState state) {
         level.playSound(null, portalPos.getX(), portalPos.getY(), portalPos.getZ(),
                 SoundEvents.BEACON_POWER_SELECT, SoundSource.PLAYERS, 1.0F, 1.2F);
         createTeleportParticles(level, portalPos);
@@ -175,20 +228,24 @@ public class RunePortalBlock extends Block {
         }
     }
 
-    private void executeActualTeleport(ServerPlayer player, ServerLevel level, BlockPos portalPos) {
-        RunePortalUtil.RunestoneType runeType = RunePortalUtil.detectPortalRunestones(level, portalPos);
-        BlockPos destination = RunePortalUtil.calculateTeleportDestination(level, portalPos, runeType);
+    private void executeRuneTeleport(ServerPlayer player, ServerLevel level, BlockPos portalPos, BlockState state) {
+        try {
+            RunePortalUtil.RunestoneType runeType = RunePortalUtil.detectPortalRunestones(level, portalPos);
+            BlockPos destination = RunePortalUtil.calculateTeleportDestination(level, portalPos, runeType);
 
-        player.teleportTo(
-                destination.getX() + 0.5,
-                destination.getY(),
-                destination.getZ() + 0.5
-        );
+            player.teleportTo(
+                    destination.getX() + 0.5,
+                    destination.getY(),
+                    destination.getZ() + 0.5
+            );
 
-        level.playSound(null, destination.getX(), destination.getY(), destination.getZ(),
-                SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.PLAYERS, 1.0F, 0.8F);
+            level.playSound(null, destination.getX(), destination.getY(), destination.getZ(),
+                    SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.PLAYERS, 1.0F, 0.8F);
 
-        createArrivalParticles(level, destination);
+            createArrivalParticles(level, destination);
+
+        } catch (Exception e) {
+        }
     }
 
     private void createArrivalParticles(ServerLevel level, BlockPos pos) {

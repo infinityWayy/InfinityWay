@@ -2,9 +2,11 @@ package huix.infinity.util;
 
 import huix.infinity.common.core.tag.IFWBlockTags;
 import huix.infinity.common.world.block.RunePortalBlock;
+import huix.infinity.common.world.dimension.IFWDimensionTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -13,11 +15,9 @@ import java.util.Map;
 
 public class RunePortalUtil {
 
-    // 传送半径
     public static final int MITHRIL_DOMAIN_RADIUS = 5000;
     public static final int ADAMANTIUM_DOMAIN_RADIUS = 40000;
 
-    // 符文石MetaData映射表
     private static final Map<String, Integer> RUNESTONE_METADATA = new HashMap<>();
 
     static {
@@ -26,6 +26,7 @@ public class RunePortalUtil {
         RUNESTONE_METADATA.put("ort", 8);        RUNESTONE_METADATA.put("tym", 9);        RUNESTONE_METADATA.put("corp", 10);        RUNESTONE_METADATA.put("lor", 11);
         RUNESTONE_METADATA.put("mani", 12);        RUNESTONE_METADATA.put("jux", 13);        RUNESTONE_METADATA.put("ylem", 14);        RUNESTONE_METADATA.put("sanct", 15);
     }
+
     public static RunestoneType detectPortalRunestones(ServerLevel level, BlockPos portalPos) {
         BlockState portalState = level.getBlockState(portalPos);
         if (!(portalState.getBlock() instanceof RunePortalBlock)) {
@@ -42,9 +43,6 @@ public class RunePortalUtil {
         return getRunegateType(level, bounds, axis);
     }
 
-    /**
-     * 获取框架边界
-     */
     private static FrameBounds getFrameBounds(ServerLevel level, BlockPos portalPos, Direction.Axis axis) {
         int minX, maxX, minY, maxY, minZ, maxZ;
 
@@ -62,31 +60,32 @@ public class RunePortalUtil {
             minX = maxX = portalPos.getX();
         }
 
+        if ((axis == Direction.Axis.X && (maxX - minX < 3 || maxY - minY < 4)) ||
+                (axis == Direction.Axis.Z && (maxZ - minZ < 3 || maxY - minY < 4))) {
+            return null;
+        }
+
         return new FrameBounds(minX, maxX, minY, maxY, minZ, maxZ);
     }
 
     private static int getFrameMinX(ServerLevel level, BlockPos pos) {
-        boolean xAligned = level.getBlockState(pos.offset(1, 0, 0)).getBlock() instanceof RunePortalBlock;
         int minX = pos.getX();
 
         while (level.getBlockState(new BlockPos(minX - 1, pos.getY(), pos.getZ())).getBlock() instanceof RunePortalBlock) {
             minX--;
-            xAligned = true;
         }
 
-        return xAligned ? minX - 1 : minX;
+        return minX - 1;
     }
 
     private static int getFrameMaxX(ServerLevel level, BlockPos pos) {
-        boolean xAligned = level.getBlockState(pos.offset(-1, 0, 0)).getBlock() instanceof RunePortalBlock;
         int maxX = pos.getX();
 
         while (level.getBlockState(new BlockPos(maxX + 1, pos.getY(), pos.getZ())).getBlock() instanceof RunePortalBlock) {
             maxX++;
-            xAligned = true;
         }
 
-        return xAligned ? maxX + 1 : maxX;
+        return maxX + 1;
     }
 
     private static int getFrameMinY(ServerLevel level, BlockPos pos) {
@@ -110,27 +109,23 @@ public class RunePortalUtil {
     }
 
     private static int getFrameMinZ(ServerLevel level, BlockPos pos) {
-        boolean zAligned = level.getBlockState(pos.offset(0, 0, 1)).getBlock() instanceof RunePortalBlock;
         int minZ = pos.getZ();
 
         while (level.getBlockState(new BlockPos(pos.getX(), pos.getY(), minZ - 1)).getBlock() instanceof RunePortalBlock) {
             minZ--;
-            zAligned = true;
         }
 
-        return zAligned ? minZ - 1 : minZ;
+        return minZ - 1;
     }
 
     private static int getFrameMaxZ(ServerLevel level, BlockPos pos) {
-        boolean zAligned = level.getBlockState(pos.offset(0, 0, -1)).getBlock() instanceof RunePortalBlock;
         int maxZ = pos.getZ();
 
         while (level.getBlockState(new BlockPos(pos.getX(), pos.getY(), maxZ + 1)).getBlock() instanceof RunePortalBlock) {
             maxZ++;
-            zAligned = true;
         }
 
-        return zAligned ? maxZ + 1 : maxZ;
+        return maxZ + 1;
     }
 
     private static RunestoneType getRunegateType(ServerLevel level, FrameBounds bounds, Direction.Axis axis) {
@@ -154,6 +149,7 @@ public class RunePortalUtil {
 
         boolean allMithril = true;
         boolean allAdamantium = true;
+        boolean hasValidRunestone = false;
 
         for (BlockPos corner : cornerPositions) {
             BlockState state = level.getBlockState(corner);
@@ -161,13 +157,19 @@ public class RunePortalUtil {
                 return RunestoneType.INVALID;
             }
 
-            String blockName = state.getBlock().getDescriptionId();
+            hasValidRunestone = true;
+            String blockName = state.getBlock().getDescriptionId().toLowerCase();
+
             if (!blockName.contains("mithril")) {
                 allMithril = false;
             }
             if (!blockName.contains("adamantium")) {
                 allAdamantium = false;
             }
+        }
+
+        if (!hasValidRunestone) {
+            return RunestoneType.INVALID;
         }
 
         if (allMithril) {
@@ -179,9 +181,6 @@ public class RunePortalUtil {
         }
     }
 
-    /**
-     * 生成符文门种子
-     */
     private static int getRunegateSeed(ServerLevel level, BlockPos portalPos, Direction.Axis axis) {
         FrameBounds bounds = getFrameBounds(level, portalPos, axis);
         if (bounds == null) return 0;
@@ -260,13 +259,95 @@ public class RunePortalUtil {
             case ADAMANTIUM_PURE:
                 return getRunegateDestinationCoords(level, portalPos, ADAMANTIUM_DOMAIN_RADIUS);
             default:
-                return level.getSharedSpawnPos();
+                return getSafeSpawnLocationInCurrentDimension(level);
         }
     }
 
-    /**
-     * 计算符文门目的地坐标
-     */
+    private static BlockPos getSafeSpawnLocationInCurrentDimension(ServerLevel level) {
+        if (level.dimension() == Level.OVERWORLD) {
+            return level.getSharedSpawnPos();
+        } else if (level.dimension() == Level.NETHER) {
+            return findSafeLocationInNether(level);
+        } else if (level.dimension() == IFWDimensionTypes.UNDERWORLD_LEVEL) {
+            return findSafeLocationInUnderworld(level);
+        } else {
+            return findSafeLocationInDimension(level);
+        }
+    }
+
+    private static BlockPos findSafeLocationInNether(ServerLevel level) {
+        BlockPos center = new BlockPos(0, 64, 0);
+
+        for (int radius = 10; radius <= 100; radius += 10) {
+            for (int attempts = 0; attempts < 20; attempts++) {
+                int x = level.random.nextInt(radius * 2) - radius;
+                int z = level.random.nextInt(radius * 2) - radius;
+
+                for (int y = 32; y <= 100; y++) {
+                    BlockPos testPos = new BlockPos(x, y, z);
+                    if (isSafeForTeleportMITE(level, testPos)) {
+                        return testPos;
+                    }
+                }
+            }
+        }
+
+        return createSafeLocation(level, center);
+    }
+
+    private static BlockPos findSafeLocationInUnderworld(ServerLevel level) {
+        BlockPos center = new BlockPos(0, 64, 0);
+
+        for (int radius = 10; radius <= 100; radius += 10) {
+            for (int attempts = 0; attempts < 20; attempts++) {
+                int x = level.random.nextInt(radius * 2) - radius;
+                int z = level.random.nextInt(radius * 2) - radius;
+
+                for (int y = level.getMinBuildHeight() + 10; y <= level.getMaxBuildHeight() - 10; y++) {
+                    BlockPos testPos = new BlockPos(x, y, z);
+                    if (isSafeForTeleportMITE(level, testPos)) {
+                        return testPos;
+                    }
+                }
+            }
+        }
+
+        return createSafeLocation(level, center);
+    }
+
+    private static BlockPos findSafeLocationInDimension(ServerLevel level) {
+        BlockPos center = new BlockPos(0, 64, 0);
+
+        for (int radius = 10; radius <= 100; radius += 10) {
+            for (int attempts = 0; attempts < 20; attempts++) {
+                int x = level.random.nextInt(radius * 2) - radius;
+                int z = level.random.nextInt(radius * 2) - radius;
+
+                for (int y = level.getMinBuildHeight() + 10; y <= level.getMaxBuildHeight() - 10; y++) {
+                    BlockPos testPos = new BlockPos(x, y, z);
+                    if (isSafeForTeleportMITE(level, testPos)) {
+                        return testPos;
+                    }
+                }
+            }
+        }
+
+        return createSafeLocation(level, center);
+    }
+
+    private static BlockPos createSafeLocation(ServerLevel level, BlockPos center) {
+        BlockPos safePos = new BlockPos(center.getX(), 64, center.getZ());
+
+        level.setBlock(safePos, Blocks.AIR.defaultBlockState(), 2);
+        level.setBlock(safePos.above(), Blocks.AIR.defaultBlockState(), 2);
+
+        if (!level.getBlockState(safePos.below()).isSolid()) {
+            level.setBlock(safePos.below(), Blocks.STONE.defaultBlockState(), 2);
+        }
+
+        return safePos;
+    }
+
     private static BlockPos getRunegateDestinationCoords(ServerLevel level, BlockPos portalPos, int domainRadius) {
         Direction.Axis axis = level.getBlockState(portalPos).getValue(RunePortalBlock.AXIS);
         int seed = getRunegateSeed(level, portalPos, axis);
@@ -277,7 +358,6 @@ public class RunePortalUtil {
             x = 0;
             z = 0;
         } else {
-            // 使用兼容的随机数生成器
             LegacyRandomGen random = new LegacyRandomGen(seed);
 
             x = 0; z = 0;
@@ -296,18 +376,13 @@ public class RunePortalUtil {
             }
         }
 
-        // 预加载区块
         preloadChunks(level, x, z);
 
-        // 寻找安全着陆点
         BlockPos destination = findSafeLandingSpotMITE(level, x, z);
 
         return destination;
     }
 
-    /**
-     * 预加载目标区域的区块
-     */
     private static void preloadChunks(ServerLevel level, int x, int z) {
         int chunkX = x >> 4;
         int chunkZ = z >> 4;
@@ -318,12 +393,7 @@ public class RunePortalUtil {
         }
     }
 
-    /**
-     * 安全着陆点寻找
-     * 允许在水中着陆，优先搜索海平面附近
-     */
     private static BlockPos findSafeLandingSpotMITE(ServerLevel level, int x, int z) {
-        // 首先检查海平面附近
         for (int y = 50; y <= 80; y++) {
             BlockPos testPos = new BlockPos(x, y, z);
             if (isSafeForTeleportMITE(level, testPos)) {
@@ -331,7 +401,6 @@ public class RunePortalUtil {
             }
         }
 
-        // 然后从高处向下搜索
         for (int y = level.getMaxBuildHeight() - 1; y >= level.getMinBuildHeight() + 1; y--) {
             BlockPos testPos = new BlockPos(x, y, z);
             if (isSafeForTeleportMITE(level, testPos)) {
@@ -339,7 +408,6 @@ public class RunePortalUtil {
             }
         }
 
-        // 最后强制创建安全位置
         BlockPos fallback = new BlockPos(x, 64, z);
         level.setBlock(fallback, Blocks.AIR.defaultBlockState(), 2);
         level.setBlock(fallback.above(), Blocks.AIR.defaultBlockState(), 2);
@@ -347,30 +415,22 @@ public class RunePortalUtil {
         return fallback;
     }
 
-    /**
-     * 安全检测
-     * 允许在水中着陆
-     */
     private static boolean isSafeForTeleportMITE(ServerLevel level, BlockPos pos) {
         BlockState feetState = level.getBlockState(pos);
         BlockState headState = level.getBlockState(pos.above());
         BlockState groundState = level.getBlockState(pos.below());
 
-        // 允许在水中着陆
         boolean feetSafe = feetState.isAir() || feetState.is(Blocks.WATER);
         boolean headSafe = headState.isAir() || headState.is(Blocks.WATER);
 
-        // 地面可以是固体方块或深水
         boolean groundSafe = groundState.isSolid() ||
                 (groundState.is(Blocks.WATER) && isDeepWater(level, pos.below())) ||
-                groundState.is(Blocks.WATER); // 原版可能允许浅水
+                groundState.is(Blocks.WATER);
 
-        // 禁止岩浆
         if (groundState.is(Blocks.LAVA) || feetState.is(Blocks.LAVA) || headState.is(Blocks.LAVA)) {
             return false;
         }
 
-        // 禁止危险方块
         if (feetState.is(Blocks.CACTUS) || headState.is(Blocks.CACTUS) ||
                 feetState.is(Blocks.FIRE) || headState.is(Blocks.FIRE)) {
             return false;
@@ -379,9 +439,6 @@ public class RunePortalUtil {
         return feetSafe && headSafe && groundSafe;
     }
 
-    /**
-     * 检查是否为深水
-     */
     private static boolean isDeepWater(ServerLevel level, BlockPos pos) {
         int waterDepth = 0;
         for (int i = 0; i < 5; i++) {
