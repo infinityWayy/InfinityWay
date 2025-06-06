@@ -21,10 +21,13 @@ public class WorldHelper {
         return (int) Math.round((time % 1000) * 0.06);
     }
 
-    public static long getDay(LevelAccessor level) {
-        return level.getLevelData().getGameTime() / 24000L + 1;
+    public static int getDay(LevelAccessor level) {
+        return (int) (level.getLevelData().getDayTime() / 24000L) + 1;
     }
 
+    public static boolean isBloodMoon(LevelAccessor level) {
+        return getDay(level) % 32 == 0 && !isBlueMoon(level);
+    }
     public static boolean isBlueMoon(LevelAccessor level) {
         return getDay(level) % 128 == 0;
     }

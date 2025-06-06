@@ -69,6 +69,9 @@
   "client": [
     "client.ChestRendererMixin",
     "client.GuiMixin",
+    "client.render.LevelRendererMoonMixin",
+    "client.render.LevelRendererRainMixin",
+    "client.render.RainParticleMixin",
     "client.screen.EffectRenderingInventoryScreenMixin",
     "client.screen.EnchantmentScreenMixin",
     "world.entity.LocalPlayerMixin"
