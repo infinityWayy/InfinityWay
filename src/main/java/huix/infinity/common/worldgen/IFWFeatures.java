@@ -38,41 +38,38 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * MITE主世界特征和生物生成配置
+ * 完全按照MITE规则实现主世界的特征生成和生物分布
+ */
 public class IFWFeatures {
 
-    // 主世界修饰器
+    // ===== 主世界生物群系修饰器 =====
+
+    // 主世界矿石生成
     public static final ResourceKey<BiomeModifier> ADD_OVERWORLD_FEATURES = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_overworld_features"));
-    public static final ResourceKey<BiomeModifier> ADD_OVERWORLD_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_overworld_spawns"));
-    public static final ResourceKey<BiomeModifier> REMOVE_OVERWORLD_FEATURES = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_overworld_features"));
-    public static final ResourceKey<BiomeModifier> REMOVE_OVERWORLD_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_overworld_spawns"));
 
-    // 深层矿石修饰器 - 新增用于秘银和艾德曼
+    // 深层矿石生成
     public static final ResourceKey<BiomeModifier> ADD_DEEP_ORES = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_deep_ores"));
 
-    // 自定义生物生成修饰器
+    // 主世界生物生成
+    public static final ResourceKey<BiomeModifier> ADD_OVERWORLD_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_overworld_spawns"));
+
+    // 修改生物生成属性
     public static final ResourceKey<BiomeModifier> MODIFY_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_modify_spawns"));
 
     // 特定生物群系生物修饰器
     public static final ResourceKey<BiomeModifier> ADD_FOREST_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_forest_spawns"));
+
     public static final ResourceKey<BiomeModifier> ADD_JUNGLE_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_jungle_spawns"));
 
-    // 地下世界维度修饰器
-    /*
-    public static final ResourceKey<BiomeModifier> ADD_UNDERWORLD_FEATURES = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_underworld_features"));
-    public static final ResourceKey<BiomeModifier> ADD_UNDERWORLD_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_underworld_spawns"));
-    */
-
-    // 浅层洞穴修饰器 - 恢复配置
+    // 浅层洞穴修饰器
     public static final ResourceKey<BiomeModifier> ADD_SHALLOW_CAVE_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_shallow_cave_spawns"));
 
@@ -84,32 +81,31 @@ public class IFWFeatures {
     public static final ResourceKey<BiomeModifier> ADD_SILVERFISH_BLOCKS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_silverfish_blocks"));
 
-    // 地下世界菌丝体生成
-    /*
-    public static final ResourceKey<BiomeModifier> ADD_MYCELIUM_GENERATION = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_add_mycelium_generation"));
-    */
+    // ===== 移除配置 =====
 
-    // 蠹虫特征定义
+    // 移除主世界不需要的特征
+    public static final ResourceKey<BiomeModifier> REMOVE_OVERWORLD_FEATURES = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_overworld_features"));
+
+    // 移除原版生物
+    public static final ResourceKey<BiomeModifier> REMOVE_OVERWORLD_SPAWNS = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "ifw_remove_overworld_spawns"));
+
+    // ===== 特征定义 =====
+
+    // 蠹虫方块生成特征
     public static final ResourceKey<net.minecraft.world.level.levelgen.feature.ConfiguredFeature<?, ?>> SILVERFISH_GENERATION =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "silverfish_generation"));
+
     public static final ResourceKey<PlacedFeature> SILVERFISH_PLACEMENT =
             ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "silverfish_placement"));
-
-    // 地下世界菌丝体特征
-    /*
-    public static final ResourceKey<net.minecraft.world.level.levelgen.feature.ConfiguredFeature<?, ?>> UNDERWORLD_MYCELIUM =
-            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "underworld_mycelium"));
-    public static final ResourceKey<PlacedFeature> UNDERWORLD_MYCELIUM_PLACEMENT =
-            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "underworld_mycelium_placement"));
-    */
 
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, context -> {
                 // 银矿在主世界生成
                 FeatureUtils.register(context, IFWOreFeatures.ore_silver, Feature.ORE, IFWOreFeatures.ore_silver_cong);
 
-                // 秘银和艾德曼在深板岩层生成 - 恢复启用
+                // 秘银和艾德曼在深板岩层生成
                 FeatureUtils.register(context, IFWOreFeatures.ore_mithril, Feature.ORE, IFWOreFeatures.mithril_ore_cong);
                 FeatureUtils.register(context, IFWOreFeatures.ore_adamantium, Feature.ORE, IFWOreFeatures.adamantium_ore_cong);
 
@@ -124,19 +120,6 @@ public class IFWFeatures {
                                 9 // 矿脉大小
                         )
                 );
-
-                // 地下世界菌丝体生成特征
-                /*
-                FeatureUtils.register(context, UNDERWORLD_MYCELIUM, Feature.ORE,
-                        new OreConfiguration(
-                                List.of(
-                                        OreConfiguration.target(new BlockMatchTest(Blocks.STONE), Blocks.MYCELIUM.defaultBlockState()),
-                                        OreConfiguration.target(new BlockMatchTest(Blocks.COBBLESTONE), Blocks.MYCELIUM.defaultBlockState())
-                                ),
-                                5 // 菌丝体补丁大小
-                        )
-                );
-                */
             })
 
             .add(Registries.PLACED_FEATURE, context -> {
@@ -144,7 +127,6 @@ public class IFWFeatures {
                 context.register(IFWOrePlacements.ore_silver, new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_silver),
                         OrePlacements.commonOrePlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-64), VerticalAnchor.absolute(112)))));
 
-                // 秘银和艾德曼放置-深板岩层生成
                 // 秘银矿石 - 类似钻石但稍微稀有，主要在深板岩层
                 context.register(IFWOrePlacements.ore_mithril, new PlacedFeature(
                         context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_mithril),
@@ -173,12 +155,6 @@ public class IFWFeatures {
                         )
                 ));
 
-//
-//                context.register(IFWOrePlacements.ore_mithril, new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_mithril),
-//                        OrePlacements.rareOrePlacement(55, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
-//                context.register(IFWOrePlacements.ore_adamantium, new PlacedFeature(context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(IFWOreFeatures.ore_adamantium),
-//                        OrePlacements.rareOrePlacement(44, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80)))));
-
                 // 蠹虫方块放置 - 主世界山地生物群系
                 context.register(SILVERFISH_PLACEMENT, new PlacedFeature(
                         context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(SILVERFISH_GENERATION),
@@ -189,19 +165,6 @@ public class IFWFeatures {
                                 BiomeFilter.biome()
                         )
                 ));
-
-                // 地下世界菌丝体放置 - 注释掉
-                /*
-                context.register(UNDERWORLD_MYCELIUM_PLACEMENT, new PlacedFeature(
-                        context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(UNDERWORLD_MYCELIUM),
-                        List.of(
-                                CountPlacement.of(UniformInt.of(1, 3)), // 每区块1-3次尝试
-                                InSquarePlacement.spread(),
-                                HeightRangePlacement.uniform(VerticalAnchor.absolute(24), VerticalAnchor.absolute(96)), // Y=24-96 模拟MITE
-                                BiomeFilter.biome()
-                        )
-                ));
-                */
             })
 
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, bootstrap -> {
@@ -219,7 +182,7 @@ public class IFWFeatures {
                         ),
                         GenerationStep.Decoration.UNDERGROUND_ORES));
 
-                // 深层矿石生成 - 新增秘银和艾德曼矿石生成
+                // 深层矿石生成 - 秘银和艾德曼矿石生成
                 bootstrap.register(ADD_DEEP_ORES, new BiomeModifiers.AddFeaturesBiomeModifier(
                         biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
                         HolderSet.direct(
@@ -248,7 +211,6 @@ public class IFWFeatures {
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.SPIDER.get(), 80, 1, 2),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.ZOMBIE.get(), 100, 1, 4),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.SKELETON.get(), 100, 1, 4),
-//                                new MobSpawnSettings.SpawnerData(IFWEntityType.SLIME.get(), 100, 1, 4),
                                 new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 10, 1, 4),
                                 new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 1, 2)
                         )
@@ -302,7 +264,6 @@ public class IFWFeatures {
                         biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
                         List.of(
                                 // 基础深层怪物
-//                                new MobSpawnSettings.SpawnerData(IFWEntityType.SKELETON.get(), 100, 1, 4),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.SPIDER.get(), 80, 1, 2),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.ZOMBIE.get(), 100, 1, 4),
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.SKELETON.get(), 100, 1, 4),
@@ -338,55 +299,6 @@ public class IFWFeatures {
                         -64, 0 // Y=-64到Y=0 (深板岩层)
                 ));
 
-                // ===== 地下世界维度配置 - 全部注释掉 =====
-                /*
-                // 地下世界特征生成
-                bootstrap.register(ADD_UNDERWORLD_FEATURES, new BiomeModifiers.AddFeaturesBiomeModifier(
-                        biomes.getOrThrow(Tags.Biomes.IS_NETHER), // 临时使用下界标签，后续替换为地下世界
-                        HolderSet.direct(
-                                placedFeatures.getOrThrow(UNDERWORLD_MYCELIUM_PLACEMENT) // 菌丝体生成
-                        ),
-                        GenerationStep.Decoration.VEGETAL_DECORATION));
-
-                // 地下世界生物生成
-                bootstrap.register(ADD_UNDERWORLD_SPAWNS, new BiomeModifiers.AddSpawnsBiomeModifier(
-                        biomes.getOrThrow(Tags.Biomes.IS_NETHER), // 临时使用下界标签
-                        List.of(
-                                // 地下世界主要生物 - 与MITE完全一致的权重
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.CAVE_SPIDER.get(), 40, 1, 2),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.LONGDEAD.get(), 40, 1, 2),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.ANCIENT_BONE_LORD.get(), 5, 1, 1),
-
-                                // 地下世界环境生物
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.OOZE.get(), 30, 1, 4),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.BLOB.get(), 30, 1, 4),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.JELLY.get(), 30, 1, 4),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.PUDDING.get(), 30, 1, 4),
-
-                                // 地下世界精英生物
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.WIGHT.get(), 10, 1, 1),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.INVISIBLE_STALKER.get(), 10, 1, 1),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.HELL_HOUND.get(), 10, 1, 2),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.SHADOW.get(), 10, 1, 1),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.EARTH_ELEMENTAL.get(), 10, 1, 1),
-
-                                // 地下世界稀有生物
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.DEMON_SPIDER.get(), 10, 1, 1),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.PHASE_SPIDER.get(), 5, 1, 4), // 在地下世界更常见一些
-
-                                // 地下世界洞穴生物
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.VAMPIRE_BAT.get(), 20, 8, 8),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.NIGHTWING.get(), 4, 1, 4)
-                        )
-                ));
-
-                // 地下世界菌丝体生成
-                bootstrap.register(ADD_MYCELIUM_GENERATION, new BiomeModifiers.AddFeaturesBiomeModifier(
-                        biomes.getOrThrow(Tags.Biomes.IS_NETHER), // 临时使用下界标签
-                        HolderSet.direct(placedFeatures.getOrThrow(UNDERWORLD_MYCELIUM_PLACEMENT)),
-                        GenerationStep.Decoration.VEGETAL_DECORATION));
-                */
-
                 // ===== 移除配置 =====
 
                 // 移除主世界不需要的特征
@@ -408,16 +320,9 @@ public class IFWFeatures {
 
     /**
      * MITE环境系统
-     * 地下世界环境参数：温度1.0F，降雨量0.0F，禁用降雨 - 注释掉地下世界相关
+     * 主世界环境参数控制和验证
      */
     public static class EnvironmentSystem {
-
-        // 地下世界环境常量 - 注释掉
-        /*
-        public static final float UNDERWORLD_TEMPERATURE = 1.0F;
-        public static final float UNDERWORLD_RAINFALL = 0.0F;
-        public static final boolean UNDERWORLD_ENABLE_RAIN = false;
-        */
 
         /**
          * 检查温度是否在有效范围内
@@ -458,14 +363,6 @@ public class IFWFeatures {
         public static boolean canSpawnLightningBolt(boolean enableSnow, boolean enableRain, boolean isBloodMoon) {
             return enableSnow ? false : enableRain || isBloodMoon;
         }
-
-        // 地下世界环境检查 - 注释掉
-        /*
-        public static boolean isUnderworldEnvironment(float temperature, float rainfall) {
-            return Math.abs(temperature - UNDERWORLD_TEMPERATURE) < 0.01F &&
-                    Math.abs(rainfall - UNDERWORLD_RAINFALL) < 0.01F;
-        }
-        */
     }
 
     /**
@@ -482,21 +379,4 @@ public class IFWFeatures {
             return Math.max(veinSize - 1, 1);
         }
     }
-
-    /**
-     * 地下世界菌丝体生成工具类 - 注释掉
-     */
-    /*
-    public static class UnderworldMyceliumGenerator {
-
-        // 菌丝体生成参数
-        public static final int MIN_Y = 24;
-        public static final int MAX_Y = 96;
-        public static final int MUSHROOM_CHANCE = 16; // 1/16概率生成蘑菇
-
-        public static int calculateMyceliumHeight(int baseY, boolean useExtendedRange) {
-            return baseY + (useExtendedRange ? 72 : 16);
-        }
-    }
-    */
 }
