@@ -1,18 +1,13 @@
 package huix.infinity.network;
 
-import huix.infinity.common.world.curse.Curses;
-import huix.infinity.common.world.curse.PersistentEffectInstance;
+import huix.infinity.common.world.curse.CurseType;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.ParticleStatus;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
-
-import java.util.Objects;
 
 
 public final class ClientPayloadHandler {
@@ -30,8 +25,9 @@ public final class ClientPayloadHandler {
         @SuppressWarnings("resource")
         final LocalPlayer player = Minecraft.getInstance().player;
         final Level level = Minecraft.getInstance().level;
-        player.curse(payload.curse());
-        if (!payload.curse().persistentEff().value().equals(Curses.none.value())) {
+        CurseType curseType = CurseType.values()[payload.curseID()];
+        player.setCurse(curseType);
+        if (curseType != CurseType.none) {
             level.addParticle(ParticleTypes.WITCH, player.getX(), player.getY(), player.getZ(), 0.0, 0.0, 0.0);
             level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.WITCH_AMBIENT, SoundSource.PLAYERS, 2.0F, 1.0F);
         }

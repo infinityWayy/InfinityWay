@@ -1,6 +1,5 @@
 package huix.infinity.common.client.resources;
 
-import huix.infinity.common.world.effect.PersistentEffect;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.util.IFWConstants;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;

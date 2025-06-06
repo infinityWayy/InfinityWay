@@ -3,9 +3,7 @@ package huix.infinity.mixin.world.entity;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.authlib.GameProfile;
 import com.mojang.datafixers.util.Either;
-import huix.infinity.common.world.curse.Curse;
-import huix.infinity.common.world.curse.Curses;
-import huix.infinity.common.world.curse.PersistentEffectInstance;
+import huix.infinity.common.world.curse.CurseType;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.network.ClientBoundSetCursePayload;
@@ -56,13 +54,13 @@ public abstract class ServerPlayerMixin extends Player implements PlayerExtensio
 
     @Unique
     @Override
-    public void curse(PersistentEffectInstance curse) {
-        super.curse(curse);
-        if (curse.persistentEff() == Curses.none)
+    public void setCurse(CurseType curse) {
+        super.setCurse(curse);
+        if (curse== CurseType.none)
             this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.discurse").withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD)));
         else
             this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.curse").withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.BOLD)));
-        this.connection.send(new ClientBoundSetCursePayload(curse));
+        this.connection.send(new ClientBoundSetCursePayload(curse.ordinal()));
     }
 
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;getHealth()F", ordinal = 0, shift = At.Shift.BEFORE), method = "doTick")
@@ -84,7 +82,6 @@ public abstract class ServerPlayerMixin extends Player implements PlayerExtensio
                 return Either.left(BedSleepingProblem.NOT_SAFE);
             }
         }
-
         return Either.right(Unit.INSTANCE);
     }
 

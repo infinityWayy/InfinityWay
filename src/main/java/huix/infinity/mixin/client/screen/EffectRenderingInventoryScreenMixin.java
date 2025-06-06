@@ -1,8 +1,6 @@
 package huix.infinity.mixin.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import huix.infinity.common.world.effect.IFWMobEffects;
-import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.util.IFWConstants;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -32,7 +30,12 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
     @Inject(at = @At(value = "RETURN"), method = "render")
     private void injectCurseRender(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         Player player = this.minecraft.player;
+
+        System.out.println(player.getCurse().name());
+        System.out.println(player.hasCurse());
+
         if (player.hasCurse()) {
+            System.out.println("111111111111");
             this.curse_yOffset = 33;
             int renderX = this.leftPos + this.imageWidth + 2;
             int j = this.width - renderX;
@@ -46,8 +49,7 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
 
                 this.renderCurseBackgrounds(guiGraphics, renderX, this.curse_yOffset, flag);
                 this.renderCurseIcons(guiGraphics, renderX, this.curse_yOffset, flag);
-                if (flag)
-                    this.renderCurseLabels(guiGraphics, renderX, this.curse_yOffset, player);}
+                if (flag) this.renderCurseLabels(guiGraphics, renderX, this.curse_yOffset, player);}
         }
 
         if (player.suffering_insulinResistance_mild()) {
@@ -90,14 +92,11 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
     private void renderCurseLabels(GuiGraphics guiGraphics, int renderX, int yOffset, Player player) {
         Component component = Component.translatable("effect.unkonwn.curse");
         if (player.knownCurse())
-            component = Component.translatable(player.curse().desc());
+            component = Component.translatable(player.getCurse().name());
 
         guiGraphics.drawString(this.font, component, renderX + 10 + 18, this.topPos + 6, 16777215);
-        Component curseDescription = Component.translatable("curse.ifw." + player.curse().desc() + ".desc");
+        Component curseDescription = Component.translatable("curse.ifw." + player.getCurse().name() + ".desc");
         guiGraphics.drawString(this.font, curseDescription, renderX + 10 + 18, this.topPos + 6 + this.font.lineHeight, 16711680);
-
-
-
     }
 
     //InsulinResponse
@@ -123,7 +122,6 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
         guiGraphics.drawString(this.font, component, renderX + 10 + 18, this.topPos + yOffset + 6, 0xFF55FF);
 //        Component description = UnClearEffect.getDescriptionComponent();
 //        guiGraphics.drawString(this.font, description, renderX + 10 + 18, this.topPos + yOffset + 6 + this.font.lineHeight, 0xCC5500);
-
     }
 
 

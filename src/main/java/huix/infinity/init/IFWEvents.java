@@ -1,6 +1,7 @@
 package huix.infinity.init;
 
 import huix.infinity.attachment.IFWAttachments;
+import huix.infinity.common.command.arguments.CurseArgument;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
@@ -17,6 +18,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.commands.synchronization.ArgumentTypeInfos;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -66,9 +68,7 @@ public class IFWEvents {
     public static void init(IEventBus bus) {
         // Register this class to receive forge bus events
         bus.register(IFWEvents.class);
-        if (InfinityWay.FarmersDelightLoaded) {
-            FDEventHandler.register();
-        }
+        if (InfinityWay.FarmersDelightLoaded) FDEventHandler.register();
     }
 
     @SubscribeEvent
@@ -118,6 +118,12 @@ public class IFWEvents {
     @SubscribeEvent
     public static void playerLoggedIn(final PlayerEvent.PlayerLoggedInEvent event) {
         Player entity = event.getEntity();
+
+        Integer i = entity.getData(IFWAttachments.player_curse);
+        System.out.println(i);
+        System.out.println(entity.getCurse().name());
+        System.out.println(entity.hasCurse());
+
     }
 
     @SubscribeEvent

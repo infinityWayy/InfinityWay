@@ -1,9 +1,7 @@
 package huix.infinity.util;
 
-import huix.infinity.common.world.curse.Curse;
-import huix.infinity.common.world.effect.PersistentEffect;
+import huix.infinity.common.world.curse.CurseType;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public abstract class IFWLanguageProvider extends LanguageProvider {
@@ -12,7 +10,7 @@ public abstract class IFWLanguageProvider extends LanguageProvider {
         super(output, modid, locale);
     }
 
-    public void add(PersistentEffect key, String name) {
-        this.add(key.getDescriptionId(), name);
+    public void add(CurseType instance, String translation) {
+        this.add(instance.name(), translation);
     }
 }

@@ -1,10 +1,6 @@
 package huix.infinity.attachment;
 
 import com.mojang.serialization.Codec;
-import huix.infinity.common.world.curse.Curse;
-import huix.infinity.common.world.curse.PersistentEffectInstance;
-import huix.infinity.common.world.effect.PersistentEffect;
-import huix.infinity.common.world.curse.Curses;
 import huix.infinity.init.InfinityWay;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -18,15 +14,12 @@ public class IFWAttachments {
     public static final Supplier<AttachmentType<Integer>> respawn_xp = ATTACHMENT_TYPES.register(
             "respawn_xp", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).copyOnDeath().build()
     );
-
     public static final Supplier<AttachmentType<Integer>> armor_effect = ATTACHMENT_TYPES.register(
             "armor_effect", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
     );
-
     public static final Supplier<AttachmentType<Integer>> cooking_level = ATTACHMENT_TYPES.register(
             "cooking_level", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).build()
     );
-
     public static final Supplier<AttachmentType<Float>> food = ATTACHMENT_TYPES.register(
             "food", () -> AttachmentType.builder(() -> 0.0F).serialize(Codec.FLOAT).build()
     );
@@ -49,8 +42,9 @@ public class IFWAttachments {
             "is_panic", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).build()
     );
 
-    public static final Supplier<AttachmentType<PersistentEffectInstance>> player_curse = ATTACHMENT_TYPES.register(
-            "player_curse", () -> AttachmentType.builder(() -> new PersistentEffectInstance(Curses.none)).serialize(PersistentEffectInstance.CODEC).copyOnDeath().build()
+
+    public static final Supplier<AttachmentType<Integer>> player_curse = ATTACHMENT_TYPES.register(
+            "player_curse", () -> AttachmentType.builder(() -> 3).serialize(Codec.INT).copyOnDeath().build()
     );
     public static final Supplier<AttachmentType<Boolean>> learned_curse = ATTACHMENT_TYPES.register(
             "learned_curse", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).copyOnDeath().build()

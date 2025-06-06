@@ -1,7 +1,7 @@
 package huix.infinity.datagen.lang;
 
 import huix.infinity.common.world.block.IFWBlocks;
-import huix.infinity.common.world.curse.Curses;
+import huix.infinity.common.world.curse.CurseType;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
@@ -16,41 +16,41 @@ public class IFWCNLang extends IFWLanguageProvider {
     @Override
     protected void addTranslations() {
         //诅咒
-        add(Curses.none.value(), "无诅咒");
-        add(Curses.equipment_decays_faster.value(), "腐蚀性皮肤");
-        add(Curses.cannot_hold_breath.value(), "呼吸困难");
-        add(Curses.cannot_run.value(), "腿脚僵硬");
-        add(Curses.cannot_eat_meats.value(), "肉奶厌食");
-        add(Curses.cannot_eat_plants.value(), "蔬果厌食");
-        add(Curses.cannot_drink.value(), "汤煲厌食");
-        add(Curses.endermen_aggro.value(), "末影仇恨");
-        add(Curses.clumsiness.value(), "智力下降");
-        add(Curses.entanglement.value(), "植物缠绕");
-        add(Curses.cannot_wear_armor.value(), "盔甲排斥");
-        add(Curses.cannot_open_chests.value(), "柜子动了");
-        add(Curses.cannot_sleep.value(), "失眠症");
-        add(Curses.fear_of_spiders.value(), "蜘蛛恐惧");
-        add(Curses.fear_of_wolves.value(), "恶狼恐惧");
-        add(Curses.fear_of_creepers.value(), "苦力怕恐惧");
-        add(Curses.fear_of_undead.value(), "亡灵生物恐惧");
+        add(CurseType.none, "无诅咒");
+        add(CurseType.equipment_decays_faster, "腐蚀性皮肤");
+        add(CurseType.cannot_hold_breath, "呼吸困难");
+        add(CurseType.cannot_run, "腿脚僵硬");
+        add(CurseType.cannot_eat_meats, "肉奶厌食");
+        add(CurseType.cannot_eat_plants, "蔬果厌食");
+        add(CurseType.cannot_drink, "汤煲厌食");
+        add(CurseType.endermen_aggro, "末影仇恨");
+        add(CurseType.clumsiness, "智力下降");
+        add(CurseType.entanglement, "植物缠绕");
+        add(CurseType.cannot_wear_armor, "盔甲排斥");
+        add(CurseType.cannot_open_chests, "柜子动了");
+        add(CurseType.cannot_sleep, "失眠症");
+        add(CurseType.fear_of_spiders, "蜘蛛恐惧");
+        add(CurseType.fear_of_wolves, "恶狼恐惧");
+        add(CurseType.fear_of_creepers, "苦力怕恐惧");
+        add(CurseType.fear_of_undead, "亡灵生物恐惧");
         //诅咒描述
-        add("Curses.ifw.unknown.desc", "你没有被诅咒");
-        add("Curses.ifw.equipment_decays_faster.desc","你发现你的的装备、武器与工具的耐久度下降的更快");
-        add("Curses.ifw.cannot_hold_breath.desc","你发现你不能屏息很长时间");
-        add("Curses.ifw.cannot_run.desc", "你发现你不能疾跑");
-        add("Curses.ifw.cannot_eat_meats.desc", "你发现你不能食用任何动物制品");
-        add("Curses.ifw.cannot_eat_plants.desc", "你发现你不能食用任何植物制品");
-        add("Curses.ifw.cannot_drink.desc", "你发现你不能食用任何汤、煲类食物");
-        add("Curses.ifw.endermen_aggro.desc", "你发现末影人总是对你无缘无故的发起攻击");
-        add("Curses.ifw.clumsiness.desc", "你发现制作物品变得十分困难");
-        add("Curses.ifw.entanglement.desc", "你发现你很难穿越草、藤蔓等植物");
-        add("Curses.ifw.cannot_wear_armor.desc", "你发现你不能穿着盔甲");
-        add("Curses.ifw.cannot_open_chests.desc", "你发现你无法打开箱子(我柜子怎么动了)");
-        add("Curses.ifw.cannot_sleep.desc", "你发现你在晚上无法入睡");
-        add("Curses.ifw.fear_of_spiders.desc", "你发现你难以对蜘蛛发起有效攻击");
-        add("Curses.ifw.fear_of_wolves.desc", "你发现你难以对狼发起有效攻击");
-        add("Curses.ifw.fear_of_creepers.desc", "你发现你难以对狼发起有效攻击");
-        add("Curses.ifw.fear_of_undead.desc", "你发现你难以对亡灵生物发起有效攻击");
+//        add("Curses.ifw.unknown.desc", "你没有被诅咒");
+//        add("Curses.ifw.equipment_decays_faster.desc","你发现你的的装备、武器与工具的耐久度下降的更快");
+//        add("Curses.ifw.cannot_hold_breath.desc","你发现你不能屏息很长时间");
+//        add("Curses.ifw.cannot_run.desc", "你发现你不能疾跑");
+//        add("Curses.ifw.cannot_eat_meats.desc", "你发现你不能食用任何动物制品");
+//        add("Curses.ifw.cannot_eat_plants.desc", "你发现你不能食用任何植物制品");
+//        add("Curses.ifw.cannot_drink.desc", "你发现你不能食用任何汤、煲类食物");
+//        add("Curses.ifw.endermen_aggro.desc", "你发现末影人总是对你无缘无故的发起攻击");
+//        add("Curses.ifw.clumsiness.desc", "你发现制作物品变得十分困难");
+//        add("Curses.ifw.entanglement.desc", "你发现你很难穿越草、藤蔓等植物");
+//        add("Curses.ifw.cannot_wear_armor.desc", "你发现你不能穿着盔甲");
+//        add("Curses.ifw.cannot_open_chests.desc", "你发现你无法打开箱子(我柜子怎么动了)");
+//        add("Curses.ifw.cannot_sleep.desc", "你发现你在晚上无法入睡");
+//        add("Curses.ifw.fear_of_spiders.desc", "你发现你难以对蜘蛛发起有效攻击");
+//        add("Curses.ifw.fear_of_wolves.desc", "你发现你难以对狼发起有效攻击");
+//        add("Curses.ifw.fear_of_creepers.desc", "你发现你难以对狼发起有效攻击");
+//        add("Curses.ifw.fear_of_undead.desc", "你发现你难以对亡灵生物发起有效攻击");
 
         // 生物名称
         add(IFWEntityType.CHICKEN.value(), "鸡");

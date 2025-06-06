@@ -1,6 +1,5 @@
 package huix.infinity.init.event;
 
-import huix.infinity.common.core.registries.IFWRegistries;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.entity.animal.IFWChicken;
 import huix.infinity.common.world.entity.animal.IFWCow;
@@ -65,6 +64,5 @@ public class IFWExtraEvent {
 
     @SubscribeEvent
     static void registerRegistries(NewRegistryEvent event) {
-        event.register(IFWRegistries.persistent_eff_registry);
     }
 }
