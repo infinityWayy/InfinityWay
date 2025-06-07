@@ -1,7 +1,6 @@
 package huix.infinity.init;
 
 import huix.infinity.attachment.IFWAttachments;
-import huix.infinity.common.command.arguments.CurseArgument;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
@@ -18,7 +17,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.commands.synchronization.ArgumentTypeInfos;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -50,6 +48,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.CalculatePlayerTurnEvent;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -59,7 +58,6 @@ import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.neoforged.neoforge.event.level.SleepFinishedTimeEvent;
 import net.neoforged.neoforge.event.level.block.CropGrowEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
-import net.neoforged.neoforge.registries.datamaps.DataMapsUpdatedEvent;
 
 import java.util.*;
 
@@ -72,7 +70,7 @@ public class IFWEvents {
     }
 
     @SubscribeEvent
-    public static void injectItem(final DataMapsUpdatedEvent event) {
+    public static void injectItem(final AddReloadListenerEvent event) {
         IFWLoading.rebuildStackSize();
         IFWLoading.injectCookingLevel();
         IFWLoading.injectAnvil();
