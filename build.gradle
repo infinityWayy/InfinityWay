@@ -1,9 +1,8 @@
 plugins {
+    id 'idea'
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.76'
-    id 'net.neoforged.gradle.common' version '7.0.173'
-    id 'net.neoforged.gradle.mixin' version '7.0.173'
+    id 'net.neoforged.moddev' version '2.0.89'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -16,8 +15,6 @@ base.archivesName = mod_id
 
 // Mojang ships Java 21 to end users starting in 1.20.5, so mods should target Java 21.
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
-
-mixin {config "${mod_id}.mixins.json"}
 
 configurations {runtimeClasspath.extendsFrom localRuntime}
 
