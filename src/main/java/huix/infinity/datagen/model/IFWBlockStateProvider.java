@@ -1,7 +1,6 @@
 package huix.infinity.datagen.model;
 
 
-import huix.infinity.common.world.block.CrossDimensionPortalBlock;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.Direction;
@@ -236,42 +235,42 @@ public class IFWBlockStateProvider extends BlockStateProvider {
                 .partialState().with(NetherPortalBlock.AXIS, Direction.Axis.Z)
                 .modelForState().modelFile(runePortalNS).addModel();
 
-        Block crossDimensionPortalBlock = IFWBlocks.cross_dimension_portal.get();
-        ModelFile crossDimensionPortalNS = models().withExistingParent("cross_dimension_portal_ns", mcLoc("block/block"))
-                .texture("particle", modLoc("block/cross_dimension_portal"))
-                .texture("portal", modLoc("block/cross_dimension_portal"))
-                .element()
-                .from(6, 0, 0)
-                .to(10, 16, 16)
-                .face(Direction.EAST)
-                .texture("#portal")
-                .end()
-                .face(Direction.WEST)
-                .texture("#portal")
-                .end()
-                .end()
-                .renderType("translucent");
+//        Block crossDimensionPortalBlock = IFWBlocks.cross_dimension_portal.get();
+//        ModelFile crossDimensionPortalNS = models().withExistingParent("cross_dimension_portal_ns", mcLoc("block/block"))
+//                .texture("particle", modLoc("block/cross_dimension_portal"))
+//                .texture("portal", modLoc("block/cross_dimension_portal"))
+//                .element()
+//                .from(6, 0, 0)
+//                .to(10, 16, 16)
+//                .face(Direction.EAST)
+//                .texture("#portal")
+//                .end()
+//                .face(Direction.WEST)
+//                .texture("#portal")
+//                .end()
+//                .end()
+//                .renderType("translucent");
 
-        ModelFile crossDimensionPortalEW = models().withExistingParent("cross_dimension_portal_ew", mcLoc("block/block"))
-                .texture("particle", modLoc("block/cross_dimension_portal"))
-                .texture("portal", modLoc("block/cross_dimension_portal"))
-                .element()
-                .from(0, 0, 6)
-                .to(16, 16, 10)
-                .face(Direction.NORTH)
-                .texture("#portal")
-                .end()
-                .face(Direction.SOUTH)
-                .texture("#portal")
-                .end()
-                .end()
-                .renderType("translucent");
+//        ModelFile crossDimensionPortalEW = models().withExistingParent("cross_dimension_portal_ew", mcLoc("block/block"))
+//                .texture("particle", modLoc("block/cross_dimension_portal"))
+//                .texture("portal", modLoc("block/cross_dimension_portal"))
+//                .element()
+//                .from(0, 0, 6)
+//                .to(16, 16, 10)
+//                .face(Direction.NORTH)
+//                .texture("#portal")
+//                .end()
+//                .face(Direction.SOUTH)
+//                .texture("#portal")
+//                .end()
+//                .end()
+//                .renderType("translucent");
 
-        getVariantBuilder(crossDimensionPortalBlock)
-                .partialState().with(CrossDimensionPortalBlock.AXIS, Direction.Axis.X)
-                .modelForState().modelFile(crossDimensionPortalEW).addModel()
-                .partialState().with(CrossDimensionPortalBlock.AXIS, Direction.Axis.Z)
-                .modelForState().modelFile(crossDimensionPortalNS).addModel();
+//        getVariantBuilder(crossDimensionPortalBlock)
+//                .partialState().with(CrossDimensionPortalBlock.AXIS, Direction.Axis.X)
+//                .modelForState().modelFile(crossDimensionPortalEW).addModel()
+//                .partialState().with(CrossDimensionPortalBlock.AXIS, Direction.Axis.Z)
+//                .modelForState().modelFile(crossDimensionPortalNS).addModel();
 
         simpleBlock(IFWBlocks.mantle.get());
         //Runestones

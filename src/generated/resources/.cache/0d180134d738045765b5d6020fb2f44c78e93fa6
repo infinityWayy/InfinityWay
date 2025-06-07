@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-03T23:12:02.751844	Block States: ifw
+// 1.21.1	2025-06-07T14:08:03.180794	Block States: ifw
 044660bb88278a354615632365a7a1d69f8bf3e9 assets/ifw/blockstates/adamantium_anvil.json
 946d1ee0e16e6764047acdb20e22d0390e68eed9 assets/ifw/blockstates/adamantium_bars.json
 5d74aec16c1765c863c3b307aa12c18dbcf03f7a assets/ifw/blockstates/adamantium_block.json
@@ -34,7 +34,6 @@ a724c874be96271916fbfb6742b006cb6e0f24e2 assets/ifw/blockstates/chipped_silver_a
 341e721b3cf87bf027edfa05ef4594cdb8146007 assets/ifw/blockstates/clay_furnace.json
 dd509f0dbabced318bbd915b1a12bba117352bea assets/ifw/blockstates/copper_anvil.json
 e306ad924c6ce04068778138681c09925ff3200b assets/ifw/blockstates/copper_bars.json
-a4c721912fffa480a0afe1b93bc1eb2653be9dff assets/ifw/blockstates/cross_dimension_portal.json
 357791fe773d26019439c03e0a9a9c15aa867232 assets/ifw/blockstates/damaged_adamantium_anvil.json
 a8cf71a0c5745e894372d82a7c0e300cfc2a94da assets/ifw/blockstates/damaged_ancient_metal_anvil.json
 9e70e94d0beec4da47fb403e6c2c05bfab1ae1e5 assets/ifw/blockstates/damaged_copper_anvil.json
@@ -148,8 +147,6 @@ f04b94a179f5dc15f14a748bf96199f74fcf510c assets/ifw/models/block/chipped_gold_an
 46767ba7223fd980974fcda25805323e6a87087c assets/ifw/models/block/copper_bars_post.json
 beb3ba078ae8b5ada1412d371f4d9ed337c5b4f5 assets/ifw/models/block/copper_bars_side.json
 7ea69df0f81c8d1fe4600d1b78e7e10c03d83d92 assets/ifw/models/block/copper_bars_side_alt.json
-7052697fd479cc8f635ebe16aad28b9d3b26c305 assets/ifw/models/block/cross_dimension_portal_ew.json
-8d287f35e602c97a505af1cb7db080deb312cf66 assets/ifw/models/block/cross_dimension_portal_ns.json
 1418bef559d07c21a56603e04721f34fc6465293 assets/ifw/models/block/damaged_adamantium_anvil_top.json
 71c1562b6ae4c54092a46d43e50670fe4d380e26 assets/ifw/models/block/damaged_ancient_metal_anvil_top.json
 7b81a5b910512400e24e7bc43eba8f7d2fbb3252 assets/ifw/models/block/damaged_copper_anvil_top.json
