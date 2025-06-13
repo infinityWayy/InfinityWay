@@ -7,8 +7,14 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
 public class PrivateChestBlockEntity extends ChestBlockEntity {
+    @Nullable
     private String owner_name;
 
     public PrivateChestBlockEntity(BlockPos pos, BlockState blockState) {
@@ -16,28 +22,37 @@ public class PrivateChestBlockEntity extends ChestBlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+    protected void saveAdditional(@NotNull CompoundTag tag, @NotNull HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
-        if (this.owner_name != null) tag.putString("OwnerName", this.owner_name);
+        if (this.owner_name != null) {
+            tag.putString("OwnerName", this.owner_name);
+        }
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+    protected void loadAdditional(@NotNull CompoundTag tag, @NotNull HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
-        if (tag.contains("OwnerName")) this.owner_name = tag.getString("OwnerName");
+        if (tag.contains("OwnerName")) {
+            this.owner_name = tag.getString("OwnerName");
+        }
     }
 
+    @Nullable
     public String owner_name() {
         return owner_name;
     }
 
-    public PrivateChestBlockEntity setOwner(Player player) {
+    @NotNull
+    public PrivateChestBlockEntity setOwner(@NotNull Player player) {
         this.owner_name = player.getDisplayName().getString();
+        this.setChanged();
         return this;
     }
 
+    @NotNull
     public PrivateChestBlockEntity emptyOwner() {
-        this.owner_name = "";
+        this.owner_name = null;
+        this.setChanged();
         return this;
     }
 }

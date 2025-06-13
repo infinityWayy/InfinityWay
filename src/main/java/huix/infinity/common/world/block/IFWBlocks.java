@@ -472,5 +472,35 @@ public class IFWBlocks {
             block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
     public static final DeferredItem<BlockItem> copper_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("copper_private_chest", copper_private_chest,
             new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).stacksTo(4));
+
+    public static final DeferredBlock<Block> silver_private_chest = BLOCKS.registerBlock("silver_private_chest",
+            block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> silver_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("silver_private_chest", silver_private_chest,
+            new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).stacksTo(4));
+
+    public static final DeferredBlock<Block> gold_private_chest = BLOCKS.registerBlock("gold_private_chest",
+            block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> gold_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("gold_private_chest", gold_private_chest,
+            new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).stacksTo(4));
+
+    public static final DeferredBlock<Block> iron_private_chest = BLOCKS.registerBlock("iron_private_chest",
+            block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> iron_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("iron_private_chest", iron_private_chest,
+            new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).stacksTo(4));
+
+    public static final DeferredBlock<Block> ancient_metal_private_chest = BLOCKS.registerBlock("ancient_metal_private_chest",
+            block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> ancient_metal_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("ancient_metal_private_chest", ancient_metal_private_chest,
+            new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).stacksTo(4));
+
+    public static final DeferredBlock<Block> mithril_private_chest = BLOCKS.registerBlock("mithril_private_chest",
+            block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> mithril_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("mithril_private_chest", mithril_private_chest,
+            new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).stacksTo(4));
+
+    public static final DeferredBlock<Block> adamantium_private_chest = BLOCKS.registerBlock("adamantium_private_chest",
+            block -> new PrivateChestBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(200.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> adamantium_private_chest_item = ITEM_BLOCKS.registerSimpleBlockItem("adamantium_private_chest", adamantium_private_chest,
+            new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).stacksTo(4));
 }
 

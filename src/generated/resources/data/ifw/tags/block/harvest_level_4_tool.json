@@ -2,6 +2,7 @@
   "values": [
     "ifw:mithril_bars",
     "ifw:mithril_door",
-    "ifw:mithril_block"
+    "ifw:mithril_block",
+    "ifw:mithril_private_chest"
   ]
 }

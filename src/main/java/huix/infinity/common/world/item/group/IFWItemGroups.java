@@ -383,6 +383,13 @@ public class IFWItemGroups {
                         output.accept(IFWBlocks.stone_furnace_item.get());
                         output.accept(IFWBlocks.obsidian_furnace_item.get());
                         output.accept(IFWBlocks.netherrack_furnace_item.get());
+                        output.accept(IFWBlocks.copper_private_chest_item.get());
+                        output.accept(IFWBlocks.silver_private_chest_item.get());
+                        output.accept(IFWBlocks.gold_private_chest_item.get());
+                        output.accept(IFWBlocks.iron_private_chest_item.get());
+                        output.accept(IFWBlocks.ancient_metal_private_chest_item.get());
+                        output.accept(IFWBlocks.mithril_private_chest_item.get());
+                        output.accept(IFWBlocks.adamantium_private_chest_item.get());
                         output.accept(IFWBlocks.adamantium_block_item.get());
                         output.accept(IFWBlocks.adamantium_ore_item.get());
                         output.accept(IFWBlocks.adamantium_bars_item.get());

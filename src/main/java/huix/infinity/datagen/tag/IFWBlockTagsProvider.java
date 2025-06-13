@@ -53,15 +53,16 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
                 IFWBlocks.adamantium_runestone_nul.get(), IFWBlocks.adamantium_runestone_quas.get(), IFWBlocks.adamantium_runestone_por.get(), IFWBlocks.adamantium_runestone_an.get(), IFWBlocks.adamantium_runestone_nox.get(),
                 IFWBlocks.adamantium_runestone_flam.get(), IFWBlocks.adamantium_runestone_vas.get(), IFWBlocks.adamantium_runestone_des.get(), IFWBlocks.adamantium_runestone_ort.get(), IFWBlocks.adamantium_runestone_tym.get(),
                 IFWBlocks.adamantium_runestone_corp.get(), IFWBlocks.adamantium_runestone_lor.get(), IFWBlocks.adamantium_runestone_mani.get(), IFWBlocks.adamantium_runestone_jux.get(), IFWBlocks.adamantium_runestone_ylem.get(),
-                IFWBlocks.adamantium_runestone_sanct.get()
+                IFWBlocks.adamantium_runestone_sanct.get(),
+                IFWBlocks.copper_private_chest.get(),IFWBlocks.silver_private_chest.get(),IFWBlocks.gold_private_chest.get()
         );
         tag(IFWBlockTags.HARVEST_LEVEL_3_TOOL).add(
                 Blocks.IRON_BLOCK, Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.EMERALD_BLOCK, Blocks.ANCIENT_DEBRIS, Blocks.IRON_BARS,
                 IFWBlocks.adamantium_ore.get(), IFWBlocks.deepslate_adamantium_ore.get(), Blocks.DIAMOND_BLOCK, Blocks.IRON_DOOR,
-                IFWBlocks.ancient_metal_block.get(), IFWBlocks.ancient_metal_bars.get(), IFWBlocks.ancient_metal_door.get()
+                IFWBlocks.ancient_metal_block.get(), IFWBlocks.ancient_metal_bars.get(), IFWBlocks.ancient_metal_door.get(),IFWBlocks.iron_private_chest.get(),IFWBlocks.ancient_metal_private_chest.get()
                 );
         tag(IFWBlockTags.HARVEST_LEVEL_4_TOOL).add(
-                IFWBlocks.mithril_bars.get(), IFWBlocks.mithril_door.get(), IFWBlocks.mithril_block.get()
+                IFWBlocks.mithril_bars.get(), IFWBlocks.mithril_door.get(), IFWBlocks.mithril_block.get(),IFWBlocks.mithril_private_chest.get()
         );
 
         tag(IFWBlockTags.INCORRECT_FOR_LEVEL_4_TOOL);

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/chest",
+  "textures": {
+    "particle": "ifw:entity/chest/ancient_metal_private_chest_left"
+  }
+}

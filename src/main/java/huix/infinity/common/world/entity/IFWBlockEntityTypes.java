@@ -38,7 +38,13 @@ public class IFWBlockEntityTypes {
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PrivateChestBlockEntity>> private_chest = BLOCK_ENTITY_TYPES.register(
             "private_chest", () -> BlockEntityType.Builder.of(PrivateChestBlockEntity::new,
-                            IFWBlocks.copper_private_chest.get())
+                            IFWBlocks.copper_private_chest.get(),
+                            IFWBlocks.silver_private_chest.get(),
+                            IFWBlocks.gold_private_chest.get(),
+                            IFWBlocks.iron_private_chest.get(),
+                            IFWBlocks.ancient_metal_private_chest.get(),
+                            IFWBlocks.mithril_private_chest.get(),
+                            IFWBlocks.adamantium_private_chest.get())
                     .build(dataType("private_chest")));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EmeraldEnchantingTableBlockEntity>> emerald_enchanting_table = BLOCK_ENTITY_TYPES.register(

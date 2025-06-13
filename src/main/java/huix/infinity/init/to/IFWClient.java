@@ -2,6 +2,7 @@ package huix.infinity.init.to;
 
 import huix.infinity.common.client.model.ModelLayers;
 import huix.infinity.common.client.render.EmeraldEnchantTableRenderer;
+import huix.infinity.common.client.render.PrivateChestRenderer;
 import huix.infinity.common.client.screen.IFWAnvilScreen;
 import huix.infinity.common.client.resources.PersistentEffectTextureManager;
 import huix.infinity.common.client.screen.EmeraldEnchantmentScreen;
@@ -100,7 +101,7 @@ public final class IFWClient {
 
         BlockEntityRenderers.register(IFWBlockEntityTypes.private_chest.get(), ChestRenderer::new);
         BlockEntityRenderers.register(IFWBlockEntityTypes.emerald_enchanting_table.get(), EmeraldEnchantTableRenderer::new);
-
+        BlockEntityRenderers.register(IFWBlockEntityTypes.private_chest.get(), PrivateChestRenderer::new);
         NeoForge.EVENT_BUS.addListener(IFWClient::onHandRender);
     }
 

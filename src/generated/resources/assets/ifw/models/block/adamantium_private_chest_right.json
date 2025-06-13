@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/chest",
+  "textures": {
+    "particle": "ifw:entity/chest/adamantium_private_chest_right"
+  }
+}

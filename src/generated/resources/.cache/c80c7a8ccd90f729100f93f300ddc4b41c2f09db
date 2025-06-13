@@ -1,12 +1,12 @@
-// 1.21.1	2025-06-04T21:37:00.0605966	Tags for minecraft:block mod id ifw
+// 1.21.1	2025-06-07T19:35:43.8564045	Tags for minecraft:block mod id ifw
 a57428087e9da6acde3be57b776296773fedbbb5 data/ifw/tags/block/acid_degradable.json
 5da647fe8f09b8b9032c0be9a3f63752f470e49a data/ifw/tags/block/corrosive_dirt.json
 37a6c3a11450b21a8e0381b726b34e2085dd5d29 data/ifw/tags/block/fallen_dirt.json
 b147fcff5c0b4d72df1cb7809b063b2562180832 data/ifw/tags/block/harvest_level_0_tool.json
 7d3e39787ca0ec017e53abe718814453f9da57c3 data/ifw/tags/block/harvest_level_1_tool.json
-dc641adb89b5dca2e4d00bd2e742cf5e7a73f4fa data/ifw/tags/block/harvest_level_2_tool.json
-b03df634c514d4c9b758fe68c00b7a5a5e8b9a33 data/ifw/tags/block/harvest_level_3_tool.json
-b49fb69e5b685551ebed1b6d6f88f3213dc72dd4 data/ifw/tags/block/harvest_level_4_tool.json
+8e0da81261ea42fdbf0fae8829363cda5a83acb2 data/ifw/tags/block/harvest_level_2_tool.json
+e45c8fbc303d9a47e99563997edc1909593176d8 data/ifw/tags/block/harvest_level_3_tool.json
+60f466ce0b3e15783e9b2647c3c02e94faf0b98f data/ifw/tags/block/harvest_level_4_tool.json
 18712097d6a3babc03fe737561de2d991f9290e3 data/ifw/tags/block/ifw_furnace.json
 8c2de2572d11d1afc7b9cc2e50531c416fee0545 data/ifw/tags/block/incorrect_for_level_0_tool.json
 a67f3a4fddfd43e8a8c7a9deb5d1bcba7508d06c data/ifw/tags/block/incorrect_for_level_1_tool.json

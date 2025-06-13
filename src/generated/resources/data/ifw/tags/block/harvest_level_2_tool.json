@@ -126,6 +126,9 @@
     "ifw:adamantium_runestone_mani",
     "ifw:adamantium_runestone_jux",
     "ifw:adamantium_runestone_ylem",
-    "ifw:adamantium_runestone_sanct"
+    "ifw:adamantium_runestone_sanct",
+    "ifw:copper_private_chest",
+    "ifw:silver_private_chest",
+    "ifw:gold_private_chest"
   ]
 }

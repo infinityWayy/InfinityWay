@@ -17,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.ChestType;
 import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -379,7 +380,7 @@ public class IFWBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(IFWBlocks.emerald_enchanting_table.get(), blockModel);
 
         ModelFile stoneFurnaceModel = models().orientable("stone_furnace", modLoc("block/stone_furnace_side"),
-                 modLoc("block/stone_furnace_front"), modLoc("block/stone_furnace_top"));
+                modLoc("block/stone_furnace_front"), modLoc("block/stone_furnace_top"));
         ModelFile stoneFurnaceOnModel = models().orientable("stone_furnace_on", modLoc("block/stone_furnace_side"),
                 modLoc("block/stone_furnace_front_on"), modLoc("block/stone_furnace_top"));
         horizontalBlock(stoneFurnaceBlock, state ->
@@ -425,6 +426,68 @@ public class IFWBlockStateProvider extends BlockStateProvider {
         horizontalBlock(netherrackFurnaceBlock, state ->
                 state.getValue(BlockStateProperties.LIT) ? netherrackFurnaceOnModel : netherrackFurnaceModel, 180);
         simpleBlockItem(netherrackFurnaceBlock, netherrackFurnaceModel);
+        generatePrivateChestModels();
     }
 
+    private void generatePrivateChestModels() {
+        generateChestModels("copper_private_chest");
+        generateChestModels("silver_private_chest");
+        generateChestModels("gold_private_chest");
+        generateChestModels("iron_private_chest");
+        generateChestModels("ancient_metal_private_chest");
+        generateChestModels("mithril_private_chest");
+        generateChestModels("adamantium_private_chest");
+    }
+    private void generateChestModels(String chestName) {
+        ModelFile singleChest = models().withExistingParent(chestName, mcLoc("block/chest"))
+                .texture("particle", modLoc("entity/chest/" + chestName));
+        ModelFile doubleChestLeft = models().withExistingParent(chestName + "_left", mcLoc("block/chest"))
+                .texture("particle", modLoc("entity/chest/" + chestName + "_left"));
+        ModelFile doubleChestRight = models().withExistingParent(chestName + "_right", mcLoc("block/chest"))
+                .texture("particle", modLoc("entity/chest/" + chestName + "_right"));
+        Block chestBlock = getChestBlock(chestName);
+        if (chestBlock != null) {
+            getVariantBuilder(chestBlock)
+                    .partialState().with(ChestBlock.TYPE, ChestType.SINGLE).with(ChestBlock.FACING, Direction.NORTH)
+                    .modelForState().modelFile(singleChest).rotationY(0).addModel()
+                    .partialState().with(ChestBlock.TYPE, ChestType.SINGLE).with(ChestBlock.FACING, Direction.SOUTH)
+                    .modelForState().modelFile(singleChest).rotationY(180).addModel()
+                    .partialState().with(ChestBlock.TYPE, ChestType.SINGLE).with(ChestBlock.FACING, Direction.EAST)
+                    .modelForState().modelFile(singleChest).rotationY(90).addModel()
+                    .partialState().with(ChestBlock.TYPE, ChestType.SINGLE).with(ChestBlock.FACING, Direction.WEST)
+                    .modelForState().modelFile(singleChest).rotationY(270).addModel()
+
+                    .partialState().with(ChestBlock.TYPE, ChestType.LEFT).with(ChestBlock.FACING, Direction.NORTH)
+                    .modelForState().modelFile(doubleChestLeft).rotationY(0).addModel()
+                    .partialState().with(ChestBlock.TYPE, ChestType.LEFT).with(ChestBlock.FACING, Direction.SOUTH)
+                    .modelForState().modelFile(doubleChestLeft).rotationY(180).addModel()
+                    .partialState().with(ChestBlock.TYPE, ChestType.LEFT).with(ChestBlock.FACING, Direction.EAST)
+                    .modelForState().modelFile(doubleChestLeft).rotationY(90).addModel()
+                    .partialState().with(ChestBlock.TYPE, ChestType.LEFT).with(ChestBlock.FACING, Direction.WEST)
+                    .modelForState().modelFile(doubleChestLeft).rotationY(270).addModel()
+
+                    .partialState().with(ChestBlock.TYPE, ChestType.RIGHT).with(ChestBlock.FACING, Direction.NORTH)
+                    .modelForState().modelFile(doubleChestRight).rotationY(0).addModel()
+                    .partialState().with(ChestBlock.TYPE, ChestType.RIGHT).with(ChestBlock.FACING, Direction.SOUTH)
+                    .modelForState().modelFile(doubleChestRight).rotationY(180).addModel()
+                    .partialState().with(ChestBlock.TYPE, ChestType.RIGHT).with(ChestBlock.FACING, Direction.EAST)
+                    .modelForState().modelFile(doubleChestRight).rotationY(90).addModel()
+                    .partialState().with(ChestBlock.TYPE, ChestType.RIGHT).with(ChestBlock.FACING, Direction.WEST)
+                    .modelForState().modelFile(doubleChestRight).rotationY(270).addModel();
+
+            simpleBlockItem(chestBlock, singleChest);
+        }
+    }
+    private Block getChestBlock(String chestName) {
+        return switch (chestName) {
+            case "copper_private_chest" -> IFWBlocks.copper_private_chest.get();
+            case "silver_private_chest" -> IFWBlocks.silver_private_chest.get();
+            case "gold_private_chest" -> IFWBlocks.gold_private_chest.get();
+            case "iron_private_chest" -> IFWBlocks.iron_private_chest.get();
+            case "ancient_metal_private_chest" -> IFWBlocks.ancient_metal_private_chest.get();
+            case "mithril_private_chest" -> IFWBlocks.mithril_private_chest.get();
+            case "adamantium_private_chest" -> IFWBlocks.adamantium_private_chest.get();
+            default -> null;
+        };
+    }
 }
