@@ -8,6 +8,7 @@ import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.network.ClientBoundSetCursePayload;
 import huix.infinity.network.ClientBoundSetFoodPayload;
+import huix.infinity.util.ReflectHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -56,11 +58,11 @@ public abstract class ServerPlayerMixin extends Player implements PlayerExtensio
     @Override
     public void setCurse(CurseType curse) {
         super.setCurse(curse);
-        if (curse== CurseType.none)
+        if (curse == CurseType.none)
             this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.discurse").withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD)));
         else
             this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.curse").withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.BOLD)));
-        this.connection.send(new ClientBoundSetCursePayload(curse.ordinal()));
+        PacketDistributor.sendToPlayer(ReflectHelper.dyCast(this), new ClientBoundSetCursePayload(curse.ordinal()));
     }
 
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;getHealth()F", ordinal = 0, shift = At.Shift.BEFORE), method = "doTick")

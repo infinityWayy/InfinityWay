@@ -44,7 +44,7 @@ public class IFWAttachments {
 
 
     public static final Supplier<AttachmentType<Integer>> player_curse = ATTACHMENT_TYPES.register(
-            "player_curse", () -> AttachmentType.builder(() -> 3).serialize(Codec.INT).copyOnDeath().build()
+            "player_curse", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).copyOnDeath().build()
     );
     public static final Supplier<AttachmentType<Boolean>> learned_curse = ATTACHMENT_TYPES.register(
             "learned_curse", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).copyOnDeath().build()

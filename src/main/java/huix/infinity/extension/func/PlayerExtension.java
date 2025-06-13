@@ -59,4 +59,8 @@ public interface PlayerExtension {
         instance().setData(IFWAttachments.player_curse, curse.ordinal());
     }
 
+    default void setCurse(int curseID) {
+        setCurse(CurseType.values()[curseID]);
+    }
+
 }

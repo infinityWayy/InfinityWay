@@ -25,6 +25,7 @@ public final class ClientPayloadHandler {
         @SuppressWarnings("resource")
         final LocalPlayer player = Minecraft.getInstance().player;
         final Level level = Minecraft.getInstance().level;
+
         CurseType curseType = CurseType.values()[payload.curseID()];
         player.setCurse(curseType);
         if (curseType != CurseType.none) {

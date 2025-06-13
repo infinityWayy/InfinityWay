@@ -117,11 +117,7 @@ public class IFWEvents {
     public static void playerLoggedIn(final PlayerEvent.PlayerLoggedInEvent event) {
         Player entity = event.getEntity();
 
-        Integer i = entity.getData(IFWAttachments.player_curse);
-//        System.out.println(i);
-//        System.out.println(entity.getCurse().name());
-//        System.out.println(entity.hasCurse());
-
+        entity.setCurse(entity.getData(IFWAttachments.player_curse));
     }
 
     @SubscribeEvent
@@ -154,7 +150,14 @@ public class IFWEvents {
     @SubscribeEvent
     public static void playerClone(final PlayerEvent.Clone event) {
         final Player cloned = event.getEntity();
-        cloned.giveExperiencePoints(event.getOriginal().getData(IFWAttachments.respawn_xp));
+        final Player original = event.getOriginal();
+        cloned.giveExperiencePoints(original.getData(IFWAttachments.respawn_xp));
+    }
+
+    @SubscribeEvent
+    public static void playerClone(final PlayerEvent.PlayerRespawnEvent event) {
+        final Player player = event.getEntity();
+        player.setCurse(player.getData(IFWAttachments.player_curse));
     }
 
     @SubscribeEvent
