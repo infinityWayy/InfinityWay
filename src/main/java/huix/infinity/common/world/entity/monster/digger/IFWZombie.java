@@ -2,7 +2,7 @@ package huix.infinity.common.world.entity.monster.digger;
 
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.entity.ai.ZombieAttackGoal;
-import huix.infinity.common.world.entity.animal.Livestock;
+import huix.infinity.common.world.entity.mob.Livestock;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.core.BlockPos;

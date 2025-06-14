@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.render.animal;
 
-import huix.infinity.common.world.entity.animal.IFWPig;
+import huix.infinity.common.world.entity.mob.IFWPig;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.client.model.PigModel;
 import net.minecraft.client.model.geom.ModelLayers;

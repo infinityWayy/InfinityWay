@@ -2,7 +2,7 @@ package huix.infinity.common.world.entity.render.animal;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import huix.infinity.common.world.entity.animal.IFWSheep;
+import huix.infinity.common.world.entity.mob.IFWSheep;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayers;

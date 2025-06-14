@@ -1,9 +1,9 @@
 package huix.infinity.common.world.entity;
 
-import huix.infinity.common.world.entity.animal.IFWChicken;
-import huix.infinity.common.world.entity.animal.IFWCow;
-import huix.infinity.common.world.entity.animal.IFWPig;
-import huix.infinity.common.world.entity.animal.IFWSheep;
+import huix.infinity.common.world.entity.mob.IFWChicken;
+import huix.infinity.common.world.entity.mob.IFWCow;
+import huix.infinity.common.world.entity.mob.IFWPig;
+import huix.infinity.common.world.entity.mob.IFWSheep;
 import huix.infinity.common.world.entity.monster.*;
 import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;

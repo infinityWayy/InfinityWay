@@ -1,7 +1,7 @@
 package huix.infinity.common.world.entity.monster;
 
 import huix.infinity.common.world.entity.IFWEntityType;
-import huix.infinity.common.world.entity.animal.Livestock;
+import huix.infinity.common.world.entity.mob.Livestock;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.init.event.IFWSoundEvents;
 import net.minecraft.core.BlockPos;
@@ -229,7 +229,7 @@ public class Ghoul extends IFWZombie {
             );
 
             if (!nearbyItems.isEmpty()) {
-                var target = nearbyItems.get(0);
+                var target = nearbyItems.getFirst();
                 this.ghoul.getNavigation().moveTo(target, this.speedModifier);
             }
         }

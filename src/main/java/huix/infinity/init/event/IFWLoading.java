@@ -3,7 +3,7 @@ package huix.infinity.init.event;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.enchantment.Recipes;
 import huix.infinity.common.world.entity.IFWEntityType;
-import huix.infinity.common.world.entity.animal.Livestock;
+import huix.infinity.common.world.entity.mob.Livestock;
 import huix.infinity.common.world.food.IFWFoods;
 import huix.infinity.common.world.food.RebuildFoods;
 import huix.infinity.common.world.item.IFWItems;

@@ -1,6 +1,6 @@
 package huix.infinity.mixin.world.entity.ai;
 
-import huix.infinity.common.world.entity.animal.Livestock;
+import huix.infinity.common.world.entity.mob.Livestock;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import org.spongepowered.asm.mixin.Final;

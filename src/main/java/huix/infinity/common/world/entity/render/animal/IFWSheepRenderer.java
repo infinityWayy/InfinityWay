@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.render.animal;
 
-import huix.infinity.common.world.entity.animal.IFWSheep;
+import huix.infinity.common.world.entity.mob.IFWSheep;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

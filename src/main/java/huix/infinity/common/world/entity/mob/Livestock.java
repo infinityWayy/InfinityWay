@@ -1,4 +1,4 @@
-package huix.infinity.common.world.entity.animal;
+package huix.infinity.common.world.entity.mob;
 
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.world.entity.LivingEntityAccess;

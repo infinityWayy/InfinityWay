@@ -1,23 +1,21 @@
 package huix.infinity.mixin.world.entity;
 
-import com.mojang.authlib.GameProfile;
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.util.ReflectHelper;
 import huix.infinity.util.WorldHelper;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Abilities;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.inventory.PlayerEnderChestContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
@@ -25,20 +23,19 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
-import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
-import java.util.Optional;
 
 @Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity implements PlayerExtension {
-
-
 
     @Overwrite
     public int getXpNeededForNextLevel() {
@@ -97,6 +94,10 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
         this.ifw_updateTotalExperience();
     }
 
+    /**
+     * @author Huix
+     * @reason 设置玩家重生经验保留比例
+     */
     @Overwrite
     protected int getBaseExperienceReward() {
         if (this.experienceLevel > 0 && !this.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && !this.isSpectator()) {
@@ -105,15 +106,27 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
             return 0;
         }
     }
+    /**
+     * @author Huix
+     * @reason 设置玩家方块交互交距离
+     */
     @Overwrite
     public double blockInteractionRange() {
         return this.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE) + this.getMainHandItem().getItem().getReachBonus();
     }
+    /**
+     * @author Huix
+     * @reason 设置玩家实体交互距离
+     */
     @Overwrite
     public double entityInteractionRange() {
         return this.getAttributeValue(Attributes.ENTITY_INTERACTION_RANGE) + this.getMainHandItem().getItem().getReachBonus();
     }
 
+    /**
+     * @author Huix
+     * @reason 重新设置玩家属性
+     */
     @Overwrite
     public static AttributeSupplier.Builder createAttributes() {
         return LivingEntity.createLivingAttributes().add(Attributes.ATTACK_DAMAGE, 1.0F).add(Attributes.MOVEMENT_SPEED, 0.1F)
@@ -173,11 +186,31 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
 
     @Unique
     @Override
-    public boolean canResetTimeBySleeping() {
+    public boolean infinityWay$canResetTimeBySleeping() {
         long hour = WorldHelper.worldHour(this.level().dayTime());
         return this.isSleeping() && this.sleepCounter >= 100 && (hour <= 5 || hour >= 21);
     }
 
+    @Inject(
+            method = "travel",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/world/entity/LivingEntity;travel(Lnet/minecraft/world/phys/Vec3;)V")
+    )
+    private void modifyWaterBuoyancy(Vec3 travelVector, CallbackInfo ci) {
+
+        if (!this.isAffectedByFluids()) {
+            return;
+        }
+
+        if (this.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) && this.isInWater()) {
+            Vec3 movement = this.getDeltaMovement();
+
+            if (movement.y > 0) {
+                double downwardForce = -0.01;
+                this.setDeltaMovement(movement.x, downwardForce, movement.z);
+            }
+        }
+    }
 
     protected PlayerMixin(EntityType<? extends LivingEntity> entityType, Level level) {
         super(entityType, level);
@@ -191,25 +224,6 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
     private int lastLevelUpTime;
     @Shadow
     public float experienceProgress;
-    @Shadow @Final private GameProfile gameProfile;
-    @Shadow private int currentImpulseContextResetGraceTime;
-    @Shadow private boolean ignoreFallDamageFromCurrentImpulse;
-    @Shadow @Nullable public Vec3 currentImpulseImpactPos;
-
-    @Shadow public abstract void setLastDeathLocation(Optional<GlobalPos> lastDeathLocation);
-
-    @Shadow protected abstract void setShoulderEntityRight(CompoundTag entityCompound);
-
-    @Shadow protected abstract void setShoulderEntityLeft(CompoundTag entityCompound);
-
-    @Shadow protected PlayerEnderChestContainer enderChestInventory;
-    @Shadow @Final private Abilities abilities;
-    @Shadow protected FoodData foodData;
-
-    @Shadow public abstract void setScore(int score);
-
-    @Shadow public int enchantmentSeed;
-    @Shadow @Final private Inventory inventory;
 
     @Shadow public abstract void causeFoodExhaustion(float exhaustion);
 
@@ -230,10 +244,5 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
 
     @Shadow
     public void setItemSlot(EquipmentSlot equipmentSlot, ItemStack itemStack) {
-    }
-
-    @Shadow
-    public HumanoidArm getMainArm() {
-        return null;
     }
 }

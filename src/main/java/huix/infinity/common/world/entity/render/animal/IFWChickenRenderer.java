@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.render.animal;
 
-import huix.infinity.common.world.entity.animal.IFWChicken;
+import huix.infinity.common.world.entity.mob.IFWChicken;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.client.model.ChickenModel;
 import net.minecraft.client.model.geom.ModelLayers;

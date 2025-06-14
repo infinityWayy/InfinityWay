@@ -3,11 +3,9 @@ package huix.infinity.extension.func;
 
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.world.curse.CurseType;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.portal.DimensionTransition;
 
 
 public interface PlayerExtension {
@@ -23,7 +21,7 @@ public interface PlayerExtension {
     default void ifw_updateTotalExperience() {
     }
 
-    default boolean canResetTimeBySleeping() {
+    default boolean infinityWay$canResetTimeBySleeping() {
         return false;
     }
 

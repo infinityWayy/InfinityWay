@@ -1,16 +1,12 @@
 package huix.infinity.common.world.entity.monster.digger;
 
-import huix.infinity.common.world.entity.IFWEntityType;
-import huix.infinity.common.world.entity.animal.Livestock;
-import huix.infinity.common.world.entity.monster.digger.IFWZombie;
+import huix.infinity.common.world.entity.mob.Livestock;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.event.IFWSoundEvents;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.WeightedEntry;
 import net.minecraft.util.random.WeightedRandom;

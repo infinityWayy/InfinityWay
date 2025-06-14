@@ -1,7 +1,7 @@
 package huix.infinity.mixin.world.entity.animal;
 
 import huix.infinity.common.world.entity.IFWEntityType;
-import huix.infinity.common.world.entity.animal.IFWChicken;
+import huix.infinity.common.world.entity.mob.IFWChicken;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;

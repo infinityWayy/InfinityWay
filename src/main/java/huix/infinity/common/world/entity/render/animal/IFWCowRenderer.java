@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.render.animal;
 
-import huix.infinity.common.world.entity.animal.IFWCow;
+import huix.infinity.common.world.entity.mob.IFWCow;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.client.model.CowModel;
 import net.minecraft.client.model.geom.ModelLayers;

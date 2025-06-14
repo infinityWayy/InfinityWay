@@ -1,4 +1,4 @@
-package huix.infinity.common.world.entity.animal;
+package huix.infinity.common.world.entity.mob;
 
 import com.google.common.collect.Maps;
 import huix.infinity.common.world.entity.IFWEntityType;

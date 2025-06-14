@@ -126,7 +126,7 @@ public class IFWEvents {
     }
 
     @SubscribeEvent
-    public static void playerAttacklHit(final CriticalHitEvent event) {
+    public static void playerAttackHit(final CriticalHitEvent event) {
         if (!event.getEntity().getFoodData().ifw_hasAnyEnergy()) {
             event.setDamageMultiplier(0.5F);
         }
@@ -359,7 +359,7 @@ public class IFWEvents {
             return;
         }
 
-        FoodDataExtension foodData = (FoodDataExtension) player.getFoodData();
+        FoodDataExtension foodData = player.getFoodData();
         NutritionalStatus nutritionalStatus = foodData.ifw_nutritionalStatus();
 
         int baseHealInterval = 1280;

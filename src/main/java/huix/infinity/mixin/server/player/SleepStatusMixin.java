@@ -16,6 +16,6 @@ public class SleepStatusMixin {
     @Redirect(at = @At(value = "INVOKE", target = "Ljava/util/List;stream()Ljava/util/stream/Stream;")
             , method = "areEnoughDeepSleeping")
     private Stream<ServerPlayer> ifw_fixSleep(List<ServerPlayer> instance) {
-        return instance.stream().filter(Player::canResetTimeBySleeping);
+        return instance.stream().filter(Player::infinityWay$canResetTimeBySleeping);
     }
 }

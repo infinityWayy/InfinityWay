@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.render.animal;
 
-import huix.infinity.common.world.entity.animal.IFWSheep;
+import huix.infinity.common.world.entity.mob.IFWSheep;
 import net.minecraft.client.model.QuadrupedModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;

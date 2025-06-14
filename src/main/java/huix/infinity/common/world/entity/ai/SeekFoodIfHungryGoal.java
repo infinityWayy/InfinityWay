@@ -1,6 +1,6 @@
 package huix.infinity.common.world.entity.ai;
 
-import huix.infinity.common.world.entity.animal.Livestock;
+import huix.infinity.common.world.entity.mob.Livestock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
