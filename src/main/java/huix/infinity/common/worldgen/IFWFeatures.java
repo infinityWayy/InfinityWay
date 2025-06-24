@@ -249,7 +249,7 @@ public class IFWFeatures {
                         List.of(
                                 // 浅层洞穴特有生物
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.GHOUL.get(), 50, 1, 1),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.JELLY.get(), 30, 1, 4),
+//                                new MobSpawnSettings.SpawnerData(IFWEntityType.JELLY.get(), 10, 1, 2),
 
                                 // 基础怪物
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.SPIDER.get(), 80, 1, 2),
@@ -282,10 +282,10 @@ public class IFWFeatures {
 //                                new MobSpawnSettings.SpawnerData(IFWEntityType.CLAY_GOLEM.get(), 50, 1, 1),
 
                                 // 软泥类生物
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.JELLY.get(), 30, 1, 4),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.BLOB.get(), 30, 1, 4),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.OOZE.get(), 20, 1, 4),
-                                new MobSpawnSettings.SpawnerData(IFWEntityType.PUDDING.get(), 30, 1, 4),
+//                                new MobSpawnSettings.SpawnerData(IFWEntityType.JELLY.get(), 30, 1, 4),
+//                                new MobSpawnSettings.SpawnerData(IFWEntityType.BLOB.get(), 30, 1, 4),
+//                                new MobSpawnSettings.SpawnerData(IFWEntityType.OOZE.get(), 20, 1, 4),
+//                                new MobSpawnSettings.SpawnerData(IFWEntityType.PUDDING.get(), 30, 1, 4),
 
                                 // 高级怪物
                                 new MobSpawnSettings.SpawnerData(IFWEntityType.BONE_LORD.get(), 5, 1, 1),

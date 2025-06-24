@@ -48,9 +48,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.CalculatePlayerTurnEvent;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
+import net.neoforged.neoforge.event.TagsUpdatedEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.*;
@@ -70,7 +70,7 @@ public class IFWEvents {
     }
 
     @SubscribeEvent
-    public static void injectItem(final AddReloadListenerEvent event) {
+    public static void injectItem(final TagsUpdatedEvent event) {
         IFWLoading.rebuildStackSize();
         IFWLoading.injectCookingLevel();
         IFWLoading.injectAnvil();
@@ -300,7 +300,7 @@ public class IFWEvents {
 
             double reduction = 1.0 - ((amplifier + 1) * 0.2);
 
-            event.setMouseSensitivity(sensitivity * reduction);
+            event.setMouseSensitivity(Math.max(0, sensitivity * reduction));
         }
     }
 
