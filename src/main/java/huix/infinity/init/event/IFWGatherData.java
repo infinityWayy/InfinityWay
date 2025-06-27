@@ -1,5 +1,6 @@
     package huix.infinity.init.event;
 
+    import huix.infinity.datagen.advancement.IFWAdvancementProvider;
     import huix.infinity.datagen.enchantment.IFWDataEnchantments;
     import huix.infinity.datagen.model.IFWBlockStateProvider;
     import huix.infinity.datagen.model.IFWItemModelProvider;
@@ -54,5 +55,6 @@
             generator.addProvider(event.includeServer(), (DataProvider.Factory<IFWBiomeModifiers>) packOutput -> new IFWBiomeModifiers(packOutput, lookupProvider));
             generator.addProvider(event.includeServer(), (DataProvider.Factory<IFWDataEnchantments>) packOutput -> new IFWDataEnchantments(packOutput, lookupProvider));
 
+            generator.addProvider(event.includeServer(), new IFWAdvancementProvider(output, lookupProvider, existingFileHelper));
         }
     }

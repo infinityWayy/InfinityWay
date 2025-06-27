@@ -3,7 +3,13 @@ package huix.infinity.datagen.loot;
 import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
-import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.*;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
@@ -15,9 +21,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
-import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.jetbrains.annotations.NotNull;
@@ -26,6 +29,8 @@ import java.util.Set;
 
 public class IFWBlockLootSubProvider extends BlockLootSubProvider {
     private final Set<Block> knownBlocks = new ReferenceOpenHashSet<>();
+    private static final float[] NORMAL_LEAVES_STICK_CHANCES = new float[]{0.04F, 0.033333336F, 0.05F, 0.06666667F, 0.2F};
+    private static final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
 
     protected IFWBlockLootSubProvider(HolderLookup.Provider registries) {
         super(Set.of(), FeatureFlags.DEFAULT_FLAGS, registries);
@@ -130,6 +135,16 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(IFWBlocks.adamantium_runestone_sanct.get());
         add(Blocks.OBSIDIAN, this::createObsidianExplosionTable);
         add(Blocks.CRYING_OBSIDIAN, this::createObsidianExplosionTable);
+        add(Blocks.OAK_LEAVES, oakLeavesBlock -> this.createOakLeavesDrops(oakLeavesBlock, Blocks.OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        add(Blocks.SPRUCE_LEAVES, leavesBlock -> this.createLeavesDrops(leavesBlock, Blocks.SPRUCE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        add(Blocks.BIRCH_LEAVES, leavesBlock -> this.createLeavesDrops(leavesBlock, Blocks.BIRCH_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        add(Blocks.JUNGLE_LEAVES, leavesBlock -> this.createLeavesDrops(leavesBlock, Blocks.JUNGLE_SAPLING, JUNGLE_LEAVES_SAPLING_CHANGES));
+        add(Blocks.ACACIA_LEAVES, leavesBlock -> this.createLeavesDrops(leavesBlock, Blocks.ACACIA_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        add(Blocks.DARK_OAK_LEAVES, oakLeavesBlock -> this.createOakLeavesDrops(oakLeavesBlock, Blocks.DARK_OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        add(Blocks.CHERRY_LEAVES, leavesBlock -> this.createLeavesDrops(leavesBlock, Blocks.CHERRY_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        add(Blocks.AZALEA_LEAVES, leavesBlock -> this.createLeavesDrops(leavesBlock, Blocks.AZALEA, NORMAL_LEAVES_SAPLING_CHANCES));
+        add(Blocks.FLOWERING_AZALEA_LEAVES, leavesBlock -> this.createLeavesDrops(leavesBlock, Blocks.FLOWERING_AZALEA, NORMAL_LEAVES_SAPLING_CHANCES));
+        add(Blocks.MANGROVE_LEAVES, this::createMangroveLeavesDrops);
     }
 
     private LootTable.Builder createObsidianExplosionTable(Block block) {
@@ -154,6 +169,67 @@ public class IFWBlockLootSubProvider extends BlockLootSubProvider {
                                                         .of(IFWItemTags.WAR_HAMMER))
                                         )))));
     }
+
+    @Override
+    protected LootTable.@NotNull Builder createOakLeavesDrops(@NotNull Block oakLeavesBlock, @NotNull Block saplingBlock, float @NotNull ... chances) {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return this.createLeavesDrops(oakLeavesBlock, saplingBlock, chances)
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .when(this.doesNotHaveShearsOrSilkTouch())
+                                .add(
+                                        ((LootPoolSingletonContainer.Builder<?>)this.applyExplosionCondition(oakLeavesBlock, LootItem.lootTableItem(Items.APPLE)))
+                                                .when(
+                                                        BonusLevelTableCondition.bonusLevelFlatChance(
+                                                                registrylookup.getOrThrow(Enchantments.FORTUNE), 0.01F, 0.0111111114F, 0.0125F, 0.016666668F, 0.05F
+                                                        )
+                                                )
+                                )
+                );
+    }
+
+    @Override
+    protected LootTable.@NotNull Builder createMangroveLeavesDrops(@NotNull Block block) {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return this.createSilkTouchOrShearsDispatchTable(
+                block,
+                ((LootPoolSingletonContainer.Builder<?>)this.applyExplosionDecay(
+                        Blocks.MANGROVE_LEAVES, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                ))
+                        .when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_STICK_CHANCES))
+        );
+    }
+
+    @Override
+    protected LootTable.@NotNull Builder createLeavesDrops(@NotNull Block leavesBlock, @NotNull Block saplingBlock, float @NotNull ... chances) {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return this.createSilkTouchOrShearsDispatchTable(
+                        leavesBlock,
+                        ((LootPoolSingletonContainer.Builder<?>)this.applyExplosionCondition(leavesBlock, LootItem.lootTableItem(saplingBlock)))
+                                .when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), chances))
+                )
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .when(this.doesNotHaveShearsOrSilkTouch())
+                                .add(
+                                        ((LootPoolSingletonContainer.Builder<?>)this.applyExplosionDecay(
+                                                leavesBlock, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                        ))
+                                                .when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_STICK_CHANCES))
+                                )
+                );
+    }
+
+    private LootItemCondition.Builder doesNotHaveShearsOrSilkTouch() {
+        return this.hasShearsOrSilkTouch().invert();
+    }
+
+    private LootItemCondition.Builder hasShearsOrSilkTouch() {
+        return HAS_SHEARS.or(this.hasSilkTouch());
+    }
+
     @Override
     protected void add(@NotNull Block block, LootTable.@NotNull Builder builder) {
         super.add(block, builder);

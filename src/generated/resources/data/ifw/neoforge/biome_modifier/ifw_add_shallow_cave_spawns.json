@@ -11,12 +11,6 @@
       "weight": 50
     },
     {
-      "type": "ifw:jelly",
-      "maxCount": 4,
-      "minCount": 1,
-      "weight": 30
-    },
-    {
       "type": "ifw:spider",
       "maxCount": 2,
       "minCount": 1,

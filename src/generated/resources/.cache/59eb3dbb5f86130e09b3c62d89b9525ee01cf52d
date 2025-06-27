@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-07T19:35:43.8533576	Loot Tables
+// 1.21.1	2025-06-26T16:00:41.0943685	Loot Tables
 39ca8695010fbfadce1cd3e2a0ca92acd68b795b data/ifw/loot_table/blocks/adamantium_anvil.json
 e83ac5ba844b67d2d69c691887b951b8f7166f9d data/ifw/loot_table/blocks/adamantium_bars.json
 b75574a0827bdf12669b4631f5e8a591ffe3b2db data/ifw/loot_table/blocks/adamantium_block.json
@@ -118,5 +118,15 @@ ff1ed6739a18f12a53842a36b36ee59540e33030 data/ifw/loot_table/entities/sheep/purp
 17ee8804ef0615bfc9e6151ebaa81ce9292b5ff3 data/ifw/loot_table/entities/wight.json
 8473723c53d2dbbe8d872771e015b79ccaa4ce95 data/ifw/loot_table/entities/wood_spider.json
 516cc6e372f56acd7ebd1baf6c5813eeed5f0833 data/ifw/loot_table/entities/zombie.json
+0ea73ac1747f1584e75db3d31c5b5de5ed30c1c0 data/minecraft/loot_table/blocks/acacia_leaves.json
+c4ed518c38a1735b4a2ffc6cb30162c3d2d9745c data/minecraft/loot_table/blocks/azalea_leaves.json
+961bfeec11cf18b3ed68cf0ca45b7225e6a4720f data/minecraft/loot_table/blocks/birch_leaves.json
+bb648f078e0d87d24bb3f3af16abc0cac9caf00d data/minecraft/loot_table/blocks/cherry_leaves.json
 9d980c9e93649698f6ba58bfe3aa98c8e2ba8516 data/minecraft/loot_table/blocks/crying_obsidian.json
+b23c79606e297b7c36001e052118906b9e06c43b data/minecraft/loot_table/blocks/dark_oak_leaves.json
+473524cf7a36284e18e5ffcc8dd2ba71a48c6952 data/minecraft/loot_table/blocks/flowering_azalea_leaves.json
+61a91a184e290e7d3f6e725411a94da20d422d9c data/minecraft/loot_table/blocks/jungle_leaves.json
+d6189055e19db6c1c056a0c3d04925326dea9cc2 data/minecraft/loot_table/blocks/mangrove_leaves.json
+554cb4b7344eecb9444b5404a1bb5b79620ebf94 data/minecraft/loot_table/blocks/oak_leaves.json
 e16ced75ab4cb23184ac3b1a137ebaed432782e1 data/minecraft/loot_table/blocks/obsidian.json
+6ad42f065053807faa7809359b170497057b11a2 data/minecraft/loot_table/blocks/spruce_leaves.json
