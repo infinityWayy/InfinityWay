@@ -1,0 +1,31 @@
+{
+  "parent": "ifw:obtain_wheat_seeds",
+  "criteria": {
+    "consume_egg": {
+      "conditions": {
+        "item": {
+          "items": "minecraft:egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.eat_egg.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:egg"
+    },
+    "title": {
+      "translate": "advancement.ifw.eat_egg"
+    }
+  },
+  "requirements": [
+    [
+      "consume_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "ifw:get_leather",
+  "criteria": {
+    "when_pigs_fly": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:pig"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.when_pigs_fly.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:saddle"
+    },
+    "title": {
+      "translate": "advancement.ifw.when_pigs_fly"
+    }
+  },
+  "requirements": [
+    [
+      "when_pigs_fly"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

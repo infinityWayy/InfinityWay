@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:get_emerald",
+  "criteria": {
+    "has_emerald_enchanting_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:emerald_enchanting_table"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.make_emerald_enchanting_table.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "ifw:emerald_enchanting_table"
+    },
+    "title": {
+      "translate": "advancement.ifw.make_emerald_enchanting_table"
+    }
+  },
+  "requirements": [
+    [
+      "has_emerald_enchanting_table"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

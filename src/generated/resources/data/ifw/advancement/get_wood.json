@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:make_flint_hatchet",
+  "criteria": {
+    "has_wood": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:oak_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.get_wood.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:oak_log"
+    },
+    "title": {
+      "translate": "advancement.ifw.get_wood"
+    }
+  },
+  "requirements": [
+    [
+      "has_wood"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

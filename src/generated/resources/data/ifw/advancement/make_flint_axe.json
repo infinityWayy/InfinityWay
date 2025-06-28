@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:make_crafting_table",
+  "criteria": {
+    "has_flint_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:flint_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.make_stone_axe.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "ifw:flint_axe"
+    },
+    "title": {
+      "translate": "advancement.ifw.make_stone_axe"
+    }
+  },
+  "requirements": [
+    [
+      "has_flint_axe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

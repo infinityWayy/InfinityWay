@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:open_inventory",
+  "criteria": {
+    "has_stick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.get_stick.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:stick"
+    },
+    "title": {
+      "translate": "advancement.ifw.get_stick"
+    }
+  },
+  "requirements": [
+    [
+      "has_stick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

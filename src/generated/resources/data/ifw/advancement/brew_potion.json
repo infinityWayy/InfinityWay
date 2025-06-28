@@ -1,0 +1,26 @@
+{
+  "parent": "ifw:get_blaze_rod",
+  "criteria": {
+    "brew_potion": {
+      "trigger": "minecraft:brewed_potion"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.brew_potion.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:potion"
+    },
+    "title": {
+      "translate": "advancement.ifw.brew_potion"
+    }
+  },
+  "requirements": [
+    [
+      "brew_potion"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

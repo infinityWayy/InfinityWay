@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:smelt_adamantite_ingot",
+  "criteria": {
+    "has_adamantium_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:adamantium_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.obtain_adamantium_pickaxe.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "ifw:adamantium_pickaxe"
+    },
+    "title": {
+      "translate": "advancement.ifw.obtain_adamantium_pickaxe"
+    }
+  },
+  "requirements": [
+    [
+      "has_adamantium_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

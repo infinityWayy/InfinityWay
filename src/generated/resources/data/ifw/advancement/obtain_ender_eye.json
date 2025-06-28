@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:get_blaze_rod",
+  "criteria": {
+    "has_ender_eye": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:ender_eye"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.obtain_ender_eye.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:ender_eye"
+    },
+    "title": {
+      "translate": "advancement.ifw.obtain_ender_eye"
+    }
+  },
+  "requirements": [
+    [
+      "has_ender_eye"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
