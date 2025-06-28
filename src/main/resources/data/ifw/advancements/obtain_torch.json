@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:make_crafting_table",
+  "criteria": {
+    "has_torch": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:torch"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.make_torch.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:torch"
+    },
+    "title": {
+      "translate": "advancement.ifw.make_torch"
+    }
+  },
+  "requirements": [
+    [
+      "has_torch"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

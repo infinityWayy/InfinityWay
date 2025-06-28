@@ -1,0 +1,26 @@
+{
+  "parent": "ifw:make_crafting_table",
+  "criteria": {
+    "slept_in_bed": {
+      "trigger": "minecraft:slept_in_bed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.sleep_on_bed.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:red_bed"
+    },
+    "title": {
+      "translate": "advancement.ifw.sleep_on_bed"
+    }
+  },
+  "requirements": [
+    [
+      "slept_in_bed"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

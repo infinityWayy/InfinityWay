@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:get_stick",
+  "criteria": {
+    "has_flint_hatchet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:flint_hatchet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.make_flint_hatchet.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "ifw:flint_hatchet"
+    },
+    "title": {
+      "translate": "advancement.ifw.make_flint_hatchet"
+    }
+  },
+  "requirements": [
+    [
+      "has_flint_hatchet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

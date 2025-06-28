@@ -1,0 +1,94 @@
+{
+  "parent": "ifw:make_any_advanced_hoe",
+  "criteria": {
+    "has_bone_meal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bone_meal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fertilizer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:manure"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "used_bone_meal_on_farmland": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "minecraft:farmland"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": "minecraft:bone_meal"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    },
+    "used_fertilizer_on_farmland": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "minecraft:farmland"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": "ifw:manure"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.fertilize_land.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "ifw:manure"
+    },
+    "title": {
+      "translate": "advancement.ifw.fertilize_land"
+    }
+  },
+  "requirements": [
+    [
+      "has_fertilizer"
+    ],
+    [
+      "used_fertilizer_on_farmland"
+    ],
+    [
+      "has_bone_meal"
+    ],
+    [
+      "used_bone_meal_on_farmland"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

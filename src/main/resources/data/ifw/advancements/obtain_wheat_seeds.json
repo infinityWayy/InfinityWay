@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:open_inventory",
+  "criteria": {
+    "has_wheat_seeds": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wheat_seeds"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.obtain_wheat_seeds.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:wheat_seeds"
+    },
+    "title": {
+      "translate": "advancement.ifw.obtain_wheat_seeds"
+    }
+  },
+  "requirements": [
+    [
+      "has_wheat_seeds"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

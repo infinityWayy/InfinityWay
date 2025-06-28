@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "has_inventory": {
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "ifw:textures/gui/advancements/backgrounds/xh.png",
+    "description": {
+      "translate": "advancement.ifw.open_inventory.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:book"
+    },
+    "title": {
+      "translate": "advancement.ifw.open_inventory"
+    }
+  },
+  "requirements": [
+    [
+      "has_inventory"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

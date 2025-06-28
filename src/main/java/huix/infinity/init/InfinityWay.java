@@ -72,7 +72,6 @@ public final class InfinityWay {
 
         // 事件注册
         IFWEvents.init(eventBus);
-
         LOGGER.info("InfinityWay mod initialized successfully");
     }
 }
