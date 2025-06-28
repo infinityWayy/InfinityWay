@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:make_crafting_table",
+  "criteria": {
+    "has_salad": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:salad"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.make_salad.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "ifw:salad"
+    },
+    "title": {
+      "translate": "advancement.ifw.make_salad"
+    }
+  },
+  "requirements": [
+    [
+      "has_salad"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

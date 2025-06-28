@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:make_flour",
+  "criteria": {
+    "has_bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bread"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.get_bread.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:bread"
+    },
+    "title": {
+      "translate": "advancement.ifw.get_bread"
+    }
+  },
+  "requirements": [
+    [
+      "has_bread"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
