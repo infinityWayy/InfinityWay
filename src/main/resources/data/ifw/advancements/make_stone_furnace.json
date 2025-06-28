@@ -1,11 +1,11 @@
 {
-  "parent": "ifw:make_crafting_table",
+  "parent": "ifw:make_copper_pickaxe",
   "criteria": {
-    "has_salad": {
+    "has_stone_furnace": {
       "conditions": {
         "items": [
           {
-            "items": "ifw:salad"
+            "items": "ifw:stone_furnace"
           }
         ]
       },
@@ -14,19 +14,19 @@
   },
   "display": {
     "description": {
-      "translate": "advancement.ifw.make_salad.desc"
+      "translate": "advancement.ifw.make_furnace.desc"
     },
     "icon": {
       "count": 1,
-      "id": "ifw:salad"
+      "id": "ifw:stone_furnace"
     },
     "title": {
-      "translate": "advancement.ifw.make_salad"
+      "translate": "advancement.ifw.make_furnace"
     }
   },
   "requirements": [
     [
-      "has_salad"
+      "has_stone_furnace"
     ]
   ],
   "sends_telemetry_event": true

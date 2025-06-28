@@ -1,5 +1,5 @@
 {
-  "parent": "ifw:make_furnace",
+  "parent": "ifw:make_stone_furnace",
   "criteria": {
     "has_iron_ingot": {
       "conditions": {

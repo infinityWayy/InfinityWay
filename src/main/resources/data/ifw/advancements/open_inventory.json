@@ -1,11 +1,11 @@
 {
+  "parent": "ifw:root",
   "criteria": {
     "has_inventory": {
       "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
-    "background": "ifw:textures/gui/advancements/backgrounds/xh.png",
     "description": {
       "translate": "advancement.ifw.open_inventory.desc"
     },

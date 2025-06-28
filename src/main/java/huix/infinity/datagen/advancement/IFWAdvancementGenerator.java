@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+
 public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementGenerator {
     @Override
     public void generate(HolderLookup.@NotNull Provider registries, @NotNull Consumer<AdvancementHolder> saver, @NotNull ExistingFileHelper existingFileHelper) {
@@ -243,13 +244,15 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
                         AdvancementType.TASK,
                         true, true, false)
                 .parent(getLeather)
-                .addCriterion(
-                        "wear_leather_armor",
-                        InventoryChangeTrigger.TriggerInstance.hasItems(
-                                Items.LEATHER_HELMET,
-                                Items.LEATHER_CHESTPLATE,
-                                Items.LEATHER_LEGGINGS,
-                                Items.LEATHER_BOOTS))
+                .addCriterion("has_leather_helmet",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(Items.LEATHER_HELMET))
+                .addCriterion("has_leather_chestplate",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(Items.LEATHER_CHESTPLATE))
+                .addCriterion("has_leather_leggings",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(Items.LEATHER_LEGGINGS))
+                .addCriterion("has_leather_boots",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(Items.LEATHER_BOOTS))
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(saver, "ifw:wear_leather_armor");
 //猪会飞
         AdvancementHolder whenPigsFly = Advancement.Builder.advancement()
@@ -348,7 +351,7 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
 //木铲
         AdvancementHolder makeWoodenShovel = Advancement.Builder.advancement()
                 .display(
-                        Items.WOODEN_SHOVEL,
+                        IFWItems.wooden_shovel,
                         Component.translatable("advancement.ifw.make_wooden_shovel"),
                         Component.translatable("advancement.ifw.make_wooden_shovel.desc"),
                         null,
@@ -357,28 +360,26 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
                 .parent(makeCraftingTable)
                 .addCriterion(
                         "has_wooden_shovel",
-                        InventoryChangeTrigger.TriggerInstance.hasItems(Items.WOODEN_SHOVEL))
+                        InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.wooden_shovel))
                 .save(saver, "ifw:make_wooden_shovel");
 //金属粒
         AdvancementHolder getAnyMetalNugget = Advancement.Builder.advancement()
                 .display(
-                        Items.IRON_NUGGET,
+                        IFWItems.copper_nugget,
                         Component.translatable("advancement.ifw.get_metal_nugget"),
                         Component.translatable("advancement.ifw.get_metal_nugget.desc"),
                         null,
                         AdvancementType.TASK,
                         true, true, false)
                 .parent(makeWoodenShovel)
-                .addCriterion(
-                        "has_metal_nugget",
-                        InventoryChangeTrigger.TriggerInstance.hasItems(
-                                IFWItems.silver_nugget,
-                                IFWItems.copper_nugget,
-                                Items.GOLD_NUGGET,
-                                Items.IRON_NUGGET,
-                                IFWItems.ancient_metal_nugget,
-                                IFWItems.mithril_nugget,
-                                IFWItems.adamantium_nugget))
+                .addCriterion("has_silver_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.silver_nugget))
+                .addCriterion("has_copper_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.copper_nugget))
+                .addCriterion("has_gold_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_NUGGET))
+                .addCriterion("has_iron_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_NUGGET))
+                .addCriterion("has_ancient_metal_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.ancient_metal_nugget))
+                .addCriterion("has_mithril_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.mithril_nugget))
+                .addCriterion("has_adamantium_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.adamantium_nugget))
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(saver, "ifw:get_metal_nugget");
 //铜工作台
         AdvancementHolder makeBetterCraftingTable = Advancement.Builder.advancement()
@@ -578,25 +579,17 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
 //锁链装备
         AdvancementHolder makeChainArmor = Advancement.Builder.advancement()
                 .display(
-                        Items.CHAINMAIL_CHESTPLATE,
+                        IFWItems.copper_chainmail_chestplate,
                         Component.translatable("advancement.ifw.make_chain_armor"),
                         Component.translatable("advancement.ifw.make_chain_armor.desc"),
                         null,
                         AdvancementType.TASK,
                         true, true, false)
                 .parent(makeBetterCraftingTable)
-                .addCriterion(
-                        "has_chainmail_helmet",
-                        InventoryChangeTrigger.TriggerInstance.hasItems(Items.CHAINMAIL_HELMET))
-                .addCriterion(
-                        "has_chainmail_chestplate",
-                        InventoryChangeTrigger.TriggerInstance.hasItems(Items.CHAINMAIL_CHESTPLATE))
-                .addCriterion(
-                        "has_chainmail_leggings",
-                        InventoryChangeTrigger.TriggerInstance.hasItems(Items.CHAINMAIL_LEGGINGS))
-                .addCriterion(
-                        "has_chainmail_boots",
-                        InventoryChangeTrigger.TriggerInstance.hasItems(Items.CHAINMAIL_BOOTS))
+                .addCriterion("has_copper_chainmail_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.copper_chainmail_chestplate))
+                .addCriterion("has_silver_chainmail_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.silver_chainmail_chestplate))
+                .addCriterion("has_mithril_chainmail_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.mithril_chainmail_chestplate))
+                .addCriterion("has_adamantium_chainmail_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.adamantium_chainmail_chestplate))
                 .requirements(AdvancementRequirements.Strategy.OR)
                 .save(saver, "ifw:make_chain_armor");
 //铁护甲
@@ -652,7 +645,7 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
 //熔炉
         AdvancementHolder makeFurnace = Advancement.Builder.advancement()
                 .display(
-                        Items.FURNACE,
+                        IFWBlocks. stone_furnace,
                         Component.translatable("advancement.ifw.make_furnace"),
                         Component.translatable("advancement.ifw.make_furnace.desc"),
                         null,
@@ -660,9 +653,9 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
                         true, true, false)
                 .parent(makeCopperPickaxe)
                 .addCriterion(
-                        "has_furnace",
-                        InventoryChangeTrigger.TriggerInstance.hasItems(Items.FURNACE))
-                .save(saver, "ifw:make_furnace");
+                        "has_stone_furnace",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(IFWBlocks. stone_furnace))
+                .save(saver, "ifw:make_stone_furnace");
 //铁锭
         AdvancementHolder smeltIronIngot = Advancement.Builder.advancement()
                 .display(
