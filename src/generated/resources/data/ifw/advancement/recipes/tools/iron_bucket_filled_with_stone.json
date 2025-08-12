@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stone_iron_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:stone_iron_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ifw:iron_bucket_filled_with_stone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stone_iron_bucket"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ifw:iron_bucket_filled_with_stone"
+    ]
+  }
+}

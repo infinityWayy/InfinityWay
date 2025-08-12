@@ -704,22 +704,110 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .save(recipeOutput);
     }
     private void cookingRecipe(RecipeOutput recipeOutput) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_silver), RecipeCategory.MISC, IFWItems.silver_ingot,
+
+//        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_COPPER), RecipeCategory.MISC, Items.COPPER_INGOT,
+//                        10.0F, 200)
+//                .unlockedBy("has_raw_copper", has(Items.RAW_COPPER))
+//                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "copper_ingot_from_smelting_raw_copper"));
+//        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Blocks.COPPER_ORE.asItem()), RecipeCategory.MISC, Items.COPPER_INGOT,
+//                        10.0F, 200)
+//                .unlockedBy("has_copper_ore", has(Blocks.COPPER_ORE.asItem()))
+//                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "copper_ingot_from_smelting_copper_ore"));
+//        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Blocks.DEEPSLATE_COPPER_ORE.asItem()), RecipeCategory.MISC, Items.COPPER_INGOT,
+//                        10.0F, 200)
+//                .unlockedBy("has_deepslate_copper_ore", has(Blocks.DEEPSLATE_COPPER_ORE.asItem()))
+//                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "copper_ingot_from_smelting_deepslate_copper_ore"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_COPPER_BLOCK), RecipeCategory.MISC, Items.COPPER_BLOCK,
+                        90.0F, 1000)
+                .unlockedBy("has_raw_copper_block", has(Items.RAW_COPPER_BLOCK))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "copper_block_from_smelting_raw_copper_block"));
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_silver.get()), RecipeCategory.MISC, IFWItems.silver_ingot.get(),
                         15.0F, 200)
-                .unlockedBy("has_raw_silver", has(IFWItems.raw_silver))
-                .save(recipeOutput);
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_GOLD), RecipeCategory.MISC, Items.GOLD_INGOT,
-                        20.0F, 200)
-                .unlockedBy("has_raw_gold", has(Items.RAW_GOLD))
-                .save(recipeOutput);
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_mithril), RecipeCategory.MISC, IFWItems.mithril_ingot,
+                .unlockedBy("has_raw_silver", has(IFWItems.raw_silver.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "silver_ingot_from_smelting_raw_silver"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWBlocks.silver_ore.get().asItem()), RecipeCategory.MISC, IFWItems.silver_ingot.get(),
+                        15.0F, 200)
+                .unlockedBy("has_silver_ore", has(IFWBlocks.silver_ore.get().asItem()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "silver_ingot_from_smelting_silver_ore"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWBlocks.deepslate_silver_ore.get().asItem()), RecipeCategory.MISC, IFWItems.silver_ingot.get(),
+                        15.0F, 200)
+                .unlockedBy("has_deepslate_silver_ore", has(IFWBlocks.deepslate_silver_ore.get().asItem()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "silver_ingot_from_smelting_deepslate_silver_ore"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWBlocks.raw_silver_block_item.get()), RecipeCategory.MISC, IFWBlocks.silver_block.get(),
+                        135.0F, 1000)
+                .unlockedBy("has_raw_silver_block", has(IFWBlocks.raw_silver_block_item.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "silver_block_from_smelting_raw_silver_block"));
+
+//        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_GOLD), RecipeCategory.MISC, Items.GOLD_INGOT,
+//                        20.0F, 200)
+//                .unlockedBy("has_raw_gold", has(Items.RAW_GOLD))
+//                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "gold_ingot_from_smelting_raw_gold"));
+//        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Blocks.GOLD_ORE.asItem()), RecipeCategory.MISC, Items.GOLD_INGOT,
+//                        20.0F, 200)
+//                .unlockedBy("has_gold_ore", has(Blocks.GOLD_ORE.asItem()))
+//                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "gold_ingot_from_smelting_gold_ore"));
+//        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Blocks.DEEPSLATE_GOLD_ORE.asItem()), RecipeCategory.MISC, Items.GOLD_INGOT,
+//                        20.0F, 200)
+//                .unlockedBy("has_deepslate_gold_ore", has(Blocks.DEEPSLATE_GOLD_ORE.asItem()))
+//                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "gold_ingot_from_smelting_deepslate_gold_ore"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_GOLD_BLOCK), RecipeCategory.MISC, Items.GOLD_BLOCK,
+                        180.0F, 1000)
+                .unlockedBy("has_raw_gold_block", has(Items.RAW_GOLD_BLOCK))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "gold_block_from_smelting_raw_gold_block"));
+
+//        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_IRON), RecipeCategory.MISC, Items.IRON_INGOT,
+//                        10.0F, 200)
+//                .unlockedBy("has_raw_iron", has(Items.RAW_IRON))
+//                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "iron_ingot_from_smelting_raw_iron"));
+//        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Blocks.IRON_ORE.asItem()), RecipeCategory.MISC, Items.IRON_INGOT,
+//                        10.0F, 200)
+//                .unlockedBy("has_iron_ore", has(Blocks.IRON_ORE.asItem()))
+//                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "iron_ingot_from_smelting_iron_ore"));
+//        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Blocks.DEEPSLATE_IRON_ORE.asItem()), RecipeCategory.MISC, Items.IRON_INGOT,
+//                        10.0F, 200)
+//                .unlockedBy("has_deepslate_iron_ore", has(Blocks.DEEPSLATE_IRON_ORE.asItem()))
+//                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "iron_ingot_from_smelting_deepslate_iron_ore"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_IRON_BLOCK), RecipeCategory.MISC, Items.IRON_BLOCK,
+                        90.0F, 1000)
+                .unlockedBy("has_raw_iron_block", has(Items.RAW_IRON_BLOCK))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("minecraft", "iron_block_from_smelting_raw_iron_block"));
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_mithril.get()), RecipeCategory.MISC, IFWItems.mithril_ingot.get(),
                         40.0F, 200)
-                .unlockedBy("has_raw_mithril", has(IFWItems.raw_mithril))
-                .save(recipeOutput);
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_adamantium), RecipeCategory.MISC, IFWItems.adamantium_ingot,
+                .unlockedBy("has_raw_mithril", has(IFWItems.raw_mithril.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "mithril_ingot_from_smelting_raw_mithril"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWBlocks.mithril_ore.get().asItem()), RecipeCategory.MISC, IFWItems.mithril_ingot.get(),
+                        40.0F, 200)
+                .unlockedBy("has_mithril_ore", has(IFWBlocks.mithril_ore.get().asItem()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "mithril_ingot_from_smelting_mithril_ore"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWBlocks.deepslate_mithril_ore.get().asItem()), RecipeCategory.MISC, IFWItems.mithril_ingot.get(),
+                        40.0F, 200)
+                .unlockedBy("has_deepslate_mithril_ore", has(IFWBlocks.deepslate_mithril_ore.get().asItem()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "mithril_ingot_from_smelting_deepslate_mithril_ore"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWBlocks.raw_mithril_block_item.get()), RecipeCategory.MISC, IFWBlocks.mithril_block.get(),
+                        360.0F, 1000)
+                .unlockedBy("has_raw_mithril_block", has(IFWBlocks.raw_mithril_block_item.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "mithril_block_from_smelting_raw_mithril_block"));
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.raw_adamantium.get()), RecipeCategory.MISC, IFWItems.adamantium_ingot.get(),
                         100.0F, 200)
-                .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium))
-                .save(recipeOutput);
+                .unlockedBy("has_raw_adamantium", has(IFWItems.raw_adamantium.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "adamantium_ingot_from_smelting_raw_adamantium"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWBlocks.adamantium_ore.get().asItem()), RecipeCategory.MISC, IFWItems.adamantium_ingot.get(),
+                        100.0F, 200)
+                .unlockedBy("has_adamantium_ore", has(IFWBlocks.adamantium_ore.get().asItem()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "adamantium_ingot_from_smelting_adamantium_ore"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWBlocks.deepslate_adamantium_ore.get().asItem()), RecipeCategory.MISC, IFWItems.adamantium_ingot.get(),
+                        100.0F, 200)
+                .unlockedBy("has_deepslate_adamantium_ore", has(IFWBlocks.deepslate_adamantium_ore.get().asItem()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "adamantium_ingot_from_smelting_deepslate_adamantium_ore"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWBlocks.raw_adamantium_block_item.get()), RecipeCategory.MISC, IFWBlocks.adamantium_block_item.get(),
+                        900.0F, 1000)
+                .unlockedBy("has_raw_adamantium_block", has(IFWBlocks.raw_adamantium_block_item.get()))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "adamantium_block_from_smelting_raw_adamantium_block"));
+
+
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(IFWItems.dough), RecipeCategory.FOOD, Items.BREAD,
                         1.0F, 200)
                 .unlockedBy("has_dough", has(IFWItems.dough)).save(recipeOutput, "ifw_bread");
@@ -730,60 +818,60 @@ public class IFWRecipeProvider extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.BOWL, 1)
                 .requires(IFWItems.water_bowl.get(),1)
                 .unlockedBy("has_water_bowl", has(IFWItems.water_bowl.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "water_bowl_to_bowl"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "water_bowl_to_bowl"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.ENCHANTED_GOLDEN_APPLE, 1)
                 .requires(Items.EXPERIENCE_BOTTLE,1)
                 .requires(Items.GOLDEN_APPLE,1)
                 .unlockedBy("has_experience_bottle", has(Items.EXPERIENCE_BOTTLE))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "crafting_enchanted_golden_apple"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "crafting_enchanted_golden_apple"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.copper_bucket.get(), 1)
                 .requires(IFWItems.stone_copper_bucket.get(), 1)
                 .unlockedBy("has_stone_copper_bucket", has(IFWItems.stone_copper_bucket.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "copper_bucket_filled_with_stone"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "copper_bucket_filled_with_stone"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.silver_bucket.get(), 1)
                 .requires(IFWItems.stone_silver_bucket.get(), 1)
                 .unlockedBy("has_stone_silver_bucket", has(IFWItems.stone_silver_bucket.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "silver_bucket_filled_with_stone"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "silver_bucket_filled_with_stone"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.gold_bucket.get(), 1)
                 .requires(IFWItems.stone_gold_bucket.get(), 1)
                 .unlockedBy("has_stone_gold_bucket", has(IFWItems.stone_gold_bucket.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "gold_bucket_filled_with_stone"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "gold_bucket_filled_with_stone"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, Items.BUCKET, 1)
                 .requires(IFWItems.stone_iron_bucket.get(), 1)
                 .unlockedBy("has_stone_iron_bucket", has(IFWItems.stone_iron_bucket.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "iron_bucket_filled_with_stone"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "iron_bucket_filled_with_stone"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.ancient_metal_bucket.get(), 1)
                 .requires(IFWItems.stone_ancient_metal_bucket.get(), 1)
                 .unlockedBy("has_stone_ancient_metal_bucket", has(IFWItems.stone_ancient_metal_bucket.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "ancient_metal_bucket_filled_with_stone"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "ancient_metal_bucket_filled_with_stone"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.mithril_bucket.get(), 1)
                 .requires(IFWItems.stone_mithril_bucket.get(), 1)
                 .unlockedBy("has_stone_mithril_bucket", has(IFWItems.stone_mithril_bucket.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "mithril_bucket_filled_with_stone"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "mithril_bucket_filled_with_stone"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, IFWItems.adamantium_bucket.get(), 1)
                 .requires(IFWItems.stone_adamantium_bucket.get(), 1)
                 .unlockedBy("has_stone_adamantium_bucket", has(IFWItems.stone_adamantium_bucket.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "adamantium_bucket_filled_with_stone"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "adamantium_bucket_filled_with_stone"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, IFWItems.wither_bone_handle.get(), 1)
                 .requires(Items.STRING, 1)
                 .requires(Items.STICK, 1)
                 .requires(IFWItems.wither_bone.get(), 1)
                 .unlockedBy("has_wither_bone", has(IFWItems.wither_bone.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "wither_bone_handle"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "wither_bone_handle"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, IFWItems.blazing_wither_bone.get(), 1)
                 .requires(Items.BONE, 1)
                 .unlockedBy("has_bone", has(Items.BONE))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("infinity_way", "blazing_wither_bone"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "blazing_wither_bone"));
 
     }
 }

@@ -14,7 +14,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -100,12 +102,34 @@ public class IFWLoading {
         ReplaceHelper.cookingLevel(IFWItems.manure.get(), 1);
 
         ReplaceHelper.beCookLevel(Items.RAW_COPPER, 3);
-        ReplaceHelper.beCookLevel(IFWItems.raw_silver.get(), 3);
-        ReplaceHelper.beCookLevel(Items.RAW_GOLD, 3);
-        ReplaceHelper.beCookLevel(Items.RAW_IRON, 3);
-        ReplaceHelper.beCookLevel(IFWItems.raw_mithril.get(), 4);
-        ReplaceHelper.beCookLevel(IFWItems.raw_adamantium.get(), 5);
+        ReplaceHelper.beCookLevel(Items.RAW_COPPER_BLOCK, 3);
+        ReplaceHelper.beCookLevel(Item.byBlock(Blocks.COPPER_ORE), 3);
+        ReplaceHelper.beCookLevel(Item.byBlock(Blocks.DEEPSLATE_COPPER_ORE), 3);
 
+        ReplaceHelper.beCookLevel(IFWItems.raw_silver.get(), 3);
+        ReplaceHelper.beCookLevel(IFWBlocks.raw_silver_block_item.get(), 3);
+        ReplaceHelper.beCookLevel(Item.byBlock(IFWBlocks.silver_ore.get()), 3);
+        ReplaceHelper.beCookLevel(Item.byBlock(IFWBlocks.deepslate_silver_ore.get()), 3);
+
+        ReplaceHelper.beCookLevel(Items.RAW_GOLD, 3);
+        ReplaceHelper.beCookLevel(Items.RAW_GOLD_BLOCK, 3);
+        ReplaceHelper.beCookLevel(Item.byBlock(Blocks.GOLD_ORE), 3);
+        ReplaceHelper.beCookLevel(Item.byBlock(Blocks.DEEPSLATE_GOLD_ORE), 3);
+
+        ReplaceHelper.beCookLevel(Items.RAW_IRON, 3);
+        ReplaceHelper.beCookLevel(Items.RAW_IRON_BLOCK, 3);
+        ReplaceHelper.beCookLevel(Item.byBlock(Blocks.IRON_ORE), 3);
+        ReplaceHelper.beCookLevel(Item.byBlock(Blocks.DEEPSLATE_IRON_ORE), 3);
+
+        ReplaceHelper.beCookLevel(IFWItems.raw_mithril.get(), 4);
+        ReplaceHelper.beCookLevel(IFWBlocks.raw_mithril_block_item.get(), 4);
+        ReplaceHelper.beCookLevel(Item.byBlock(IFWBlocks.mithril_ore.get()), 4);
+        ReplaceHelper.beCookLevel(Item.byBlock(IFWBlocks.deepslate_mithril_ore.get()), 4);
+
+        ReplaceHelper.beCookLevel(IFWItems.raw_adamantium.get(), 5);
+        ReplaceHelper.beCookLevel(IFWBlocks.raw_adamantium_block_item.get(), 5);
+        ReplaceHelper.beCookLevel(Item.byBlock(IFWBlocks.adamantium_ore.get()), 5);
+        ReplaceHelper.beCookLevel(Item.byBlock(IFWBlocks.deepslate_adamantium_ore.get()), 5);
     }
 
     public static void injectAnvil() {

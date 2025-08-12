@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 1000,
+  "experience": 135.0,
+  "ingredient": {
+    "item": "ifw:raw_silver_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "ifw:silver_block"
+  }
+}

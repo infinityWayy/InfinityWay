@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-28T17:46:20.5359571	Advancements
+// 1.21.1	2025-08-13T02:49:33.0983845	Advancements
 2991c089adb0ce4236d85e83f02961c54e187c9e data/ifw/advancement/brew_potion.json
 4db18a8e7de4d2e6f39dd9eb265a34353ddcd69e data/ifw/advancement/craft_cake.json
 0a8f54d32ad2d873543637b0c24794eac8dd8a4b data/ifw/advancement/craft_netherrack_furnace.json
@@ -17,6 +17,7 @@ a470a556f6ed129383dafa5f259041791a976725 data/ifw/advancement/get_stick.json
 4aaee5eedf44c580393430a6e177cf61801ef9f3 data/ifw/advancement/get_wood.json
 807e56bd1f93065c04c3b2594f1b73d56fd0fdf6 data/ifw/advancement/get_wooden_mallet.json
 3ee6c7d0f40c9ec0cc25f56d1df475672f916069 data/ifw/advancement/kill_ghast.json
+faddd3758a109aa3b15a9750159cb082739e8a8c data/ifw/advancement/kill_one_of_three.json
 e48c3afce2d1a1ec7c3530b4d5a281ffc6ee20d5 data/ifw/advancement/make_any_advanced_hoe.json
 afb653b30e673e626a16856db548f2b4364deed6 data/ifw/advancement/make_any_advanced_sickle.json
 c884ec3d5e73932944bd11799282e3f0e824d528 data/ifw/advancement/make_better_crafting_table.json
@@ -50,4 +51,3 @@ ab4a515755fc714ba2892f40fedb4f01968d96eb data/ifw/advancement/smelt_iron_ingot.j
 37aa11424f91112059f94016449db961f010ee28 data/ifw/advancement/wear_full_iron_armor.json
 eb90c85c3bd7ccab2a262cc70d8576f2b563b184 data/ifw/advancement/wear_leather_armor.json
 fdd45e1d4fea83444c96c65ed90a8c5db56ea12d data/ifw/advancement/when_pigs_fly.json
-c6ec633f2252e3275345d895e35a261f0ce36d06 data/yourmodid/advancement/kill_one_of_three.json

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_experience_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:experience_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ifw:crafting_enchanted_golden_apple"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_experience_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ifw:crafting_enchanted_golden_apple"
+    ]
+  }
+}

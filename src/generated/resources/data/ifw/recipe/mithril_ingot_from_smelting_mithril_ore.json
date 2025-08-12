@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 40.0,
+  "ingredient": {
+    "item": "ifw:mithril_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "ifw:mithril_ingot"
+  }
+}

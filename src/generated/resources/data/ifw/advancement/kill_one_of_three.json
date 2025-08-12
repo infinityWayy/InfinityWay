@@ -1,0 +1,67 @@
+{
+  "parent": "ifw:open_inventory",
+  "criteria": {
+    "kill_creeper": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:creeper"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "kill_skeleton": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:skeleton"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "kill_zombie": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:zombie"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.kill_monster.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:iron_sword"
+    },
+    "title": {
+      "translate": "advancement.ifw.kill_monster"
+    }
+  },
+  "requirements": [
+    [
+      "kill_zombie",
+      "kill_creeper",
+      "kill_skeleton"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

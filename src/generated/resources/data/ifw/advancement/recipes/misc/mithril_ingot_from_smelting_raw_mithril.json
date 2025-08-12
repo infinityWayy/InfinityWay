@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_mithril": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:raw_mithril"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ifw:mithril_ingot_from_smelting_raw_mithril"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_mithril"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ifw:mithril_ingot_from_smelting_raw_mithril"
+    ]
+  }
+}
