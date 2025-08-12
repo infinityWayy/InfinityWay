@@ -438,13 +438,24 @@ public class IFWBlockStateProvider extends BlockStateProvider {
         generateChestModels("mithril_private_chest");
         generateChestModels("adamantium_private_chest");
     }
+
     private void generateChestModels(String chestName) {
+        // 单箱子模型（用于物品栏和 blockstates）
         ModelFile singleChest = models().withExistingParent(chestName, mcLoc("block/chest"))
-                .texture("particle", modLoc("entity/chest/" + chestName));
+                .texture("body", modLoc("block/" + chestName))
+                .texture("top", modLoc("block/" + chestName))
+                .texture("particle", modLoc("block/" + chestName));
+        // 双箱左
         ModelFile doubleChestLeft = models().withExistingParent(chestName + "_left", mcLoc("block/chest"))
-                .texture("particle", modLoc("entity/chest/" + chestName + "_left"));
+                .texture("body", modLoc("block/" + chestName + "_left"))
+                .texture("top", modLoc("block/" + chestName + "_left"))
+                .texture("particle", modLoc("block/" + chestName + "_left"));
+        // 双箱右
         ModelFile doubleChestRight = models().withExistingParent(chestName + "_right", mcLoc("block/chest"))
-                .texture("particle", modLoc("entity/chest/" + chestName + "_right"));
+                .texture("body", modLoc("block/" + chestName + "_right"))
+                .texture("top", modLoc("block/" + chestName + "_right"))
+                .texture("particle", modLoc("block/" + chestName + "_right"));
+
         Block chestBlock = getChestBlock(chestName);
         if (chestBlock != null) {
             getVariantBuilder(chestBlock)
@@ -475,9 +486,11 @@ public class IFWBlockStateProvider extends BlockStateProvider {
                     .partialState().with(ChestBlock.TYPE, ChestType.RIGHT).with(ChestBlock.FACING, Direction.WEST)
                     .modelForState().modelFile(doubleChestRight).rotationY(270).addModel();
 
+            // 物品模型依然采用单箱体3D模型
             simpleBlockItem(chestBlock, singleChest);
         }
     }
+
     private Block getChestBlock(String chestName) {
         return switch (chestName) {
             case "copper_private_chest" -> IFWBlocks.copper_private_chest.get();

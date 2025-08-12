@@ -1,0 +1,42 @@
+{
+  "parent": "ifw:make_chain_armor",
+  "criteria": {
+    "has_full_iron_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_helmet"
+          },
+          {
+            "items": "minecraft:iron_chestplate"
+          },
+          {
+            "items": "minecraft:iron_leggings"
+          },
+          {
+            "items": "minecraft:iron_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.wear_full_iron_armor.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:iron_chestplate"
+    },
+    "title": {
+      "translate": "advancement.ifw.wear_full_iron_armor"
+    }
+  },
+  "requirements": [
+    [
+      "has_full_iron_armor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:make_emerald_enchanting_table",
+  "criteria": {
+    "has_bookshelf": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bookshelf"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.make_bookshelf.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:bookshelf"
+    },
+    "title": {
+      "translate": "advancement.ifw.make_bookshelf"
+    }
+  },
+  "requirements": [
+    [
+      "has_bookshelf"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

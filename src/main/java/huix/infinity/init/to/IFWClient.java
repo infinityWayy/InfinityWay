@@ -99,7 +99,6 @@ public final class IFWClient {
                     return 1.0f;
                 });
 
-        BlockEntityRenderers.register(IFWBlockEntityTypes.private_chest.get(), ChestRenderer::new);
         BlockEntityRenderers.register(IFWBlockEntityTypes.emerald_enchanting_table.get(), EmeraldEnchantTableRenderer::new);
         BlockEntityRenderers.register(IFWBlockEntityTypes.private_chest.get(), PrivateChestRenderer::new);
         NeoForge.EVENT_BUS.addListener(IFWClient::onHandRender);

@@ -1,3 +1,6 @@
 {
-  "parent": "ifw:block/copper_private_chest"
+  "parent": "minecraft:builtin/entity",
+  "textures": {
+    "particle": "ifw:block/copper_private_chest"
+  }
 }

@@ -1,0 +1,29 @@
+{
+  "parent": "ifw:get_obsidian",
+  "criteria": {
+    "stand_on_mantle": {
+      "conditions": {
+        "block": "ifw:mantle"
+      },
+      "trigger": "minecraft:enter_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.touch_mantle.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "ifw:mantle"
+    },
+    "title": {
+      "translate": "advancement.ifw.touch_mantle"
+    }
+  },
+  "requirements": [
+    [
+      "stand_on_mantle"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

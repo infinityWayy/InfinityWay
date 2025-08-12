@@ -1,3 +1,6 @@
 {
-  "parent": "ifw:block/ancient_metal_private_chest"
+  "parent": "minecraft:builtin/entity",
+  "textures": {
+    "particle": "ifw:block/ancient_metal_private_chest"
+  }
 }

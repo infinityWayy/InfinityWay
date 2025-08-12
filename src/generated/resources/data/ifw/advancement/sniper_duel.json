@@ -1,0 +1,48 @@
+{
+  "parent": "ifw:get_wooden_mallet",
+  "criteria": {
+    "sniper_duel": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:skeleton",
+              "distance": {
+                "horizontal": {
+                  "min": 50.0
+                }
+              },
+              "equipment": {
+                "mainhand": {
+                  "items": "minecraft:bow"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.sniper_duel.desc"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:bow"
+    },
+    "title": {
+      "translate": "advancement.ifw.sniper_duel"
+    }
+  },
+  "requirements": [
+    [
+      "sniper_duel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_adamantium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:adamantium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ifw:private_chest/adamantium_private_chest"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_adamantium_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ifw:private_chest/adamantium_private_chest"
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-30T15:08:09.0957426	Recipes
+// 1.21.1	2025-08-12T23:36:51.7495766	Recipes
 8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
@@ -116,6 +116,13 @@ eb2f9463bb65c5b254918348c1fd2565340be2fe data/ifw/advancement/recipes/combat/sil
 6d443a65a5642eefe35f7f37126de0b87a0ea587 data/ifw/advancement/recipes/combat/silver_fishing_rod.json
 0859d8caf7470d5ccf8c56aed4c96224f30c5d63 data/ifw/advancement/recipes/combat/silver_helmet.json
 5e43c3e092fde2754c7c92c98cb22880f4889f30 data/ifw/advancement/recipes/combat/silver_leggings.json
+a4be70d623b32cfa3dd2f2e05866945fe88335b1 data/ifw/advancement/recipes/decorations/private_chest/adamantium_private_chest.json
+6fc7e488a4f50deec7a2776fb1bdc86f0d6c9812 data/ifw/advancement/recipes/decorations/private_chest/ancient_metal_private_chest.json
+823d1073f66a047935b162e257b4f9d454d42667 data/ifw/advancement/recipes/decorations/private_chest/copper_private_chest.json
+3ad1e9ceb850b98e2afdb7b2ba718659f01ef230 data/ifw/advancement/recipes/decorations/private_chest/gold_private_chest.json
+8dc4339a538898650115a372df635da8b1239f61 data/ifw/advancement/recipes/decorations/private_chest/iron_private_chest.json
+4d6a734fe07ae0a5e7016b925ccae2a86b0c0a20 data/ifw/advancement/recipes/decorations/private_chest/mithril_private_chest.json
+345735286f0bcd9fb48e882e67faafa8ded6d59f data/ifw/advancement/recipes/decorations/private_chest/silver_private_chest.json
 7ab15d5af6412292825f8942bb774d983f225d84 data/ifw/advancement/recipes/food/beef_stew.json
 1745d3c9a5fd6e810074dda8f4c642971ce4e81c data/ifw/advancement/recipes/food/cereal.json
 30af5fe934a4c8b48446213659104af2db08fe57 data/ifw/advancement/recipes/food/cheese.json
@@ -388,6 +395,13 @@ e3ece92fe595af10268cb0ce3155b3127c6251ac data/ifw/recipe/mithril_war_hammer.json
 c7aaa7d0f93f0d23e758b254534ee4816de2c3bc data/ifw/recipe/netherrack_furnace.json
 255177c5c76b467be48c4d90d6983c9d0260157b data/ifw/recipe/obsidian_fishing_rod.json
 4acf8b2eace2b25fbb563079c3d6421488985adc data/ifw/recipe/obsidian_furnace.json
+ba423661d4bd30385dd77b0a8c252c34d33b8673 data/ifw/recipe/private_chest/adamantium_private_chest.json
+602418ac26ff262165dae9cebef967c545cab26b data/ifw/recipe/private_chest/ancient_metal_private_chest.json
+3de8cded01a19ee84ed904f1faf7bbc0f4ac754d data/ifw/recipe/private_chest/copper_private_chest.json
+368fd7ba98ea658e4833301692ac6afa0a23438d data/ifw/recipe/private_chest/gold_private_chest.json
+09a9608776ac4b2f93c88c8cb312c35be2940914 data/ifw/recipe/private_chest/iron_private_chest.json
+8203e90d3add2f7eb141b4c4f4f90e471b6b8ebd data/ifw/recipe/private_chest/mithril_private_chest.json
+324a9bcc265ee889efd670cc29d3fed44b9a6a18 data/ifw/recipe/private_chest/silver_private_chest.json
 e1abe70f25dd5de6e6f0b1a6de71b93bceb2672f data/ifw/recipe/pumpkin_soup.json
 c1e5a8f80b88737841fe2e31a0b5b629830a15a4 data/ifw/recipe/raw_adamantium_block.json
 98cb807b17c2ccf775c9a9b6d28eee0d9c69a099 data/ifw/recipe/raw_mithril_block.json

@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:make_obsidian_furnace",
+  "criteria": {
+    "has_mithril_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:mithril_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.get_mithril_ingot.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "ifw:mithril_ingot"
+    },
+    "title": {
+      "translate": "advancement.ifw.get_mithril_ingot"
+    }
+  },
+  "requirements": [
+    [
+      "has_mithril_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

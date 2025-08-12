@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-03T13:17:32.8012548	Item Models: ifw
+// 1.21.1	2025-08-12T22:56:30.1909377	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -22,6 +22,7 @@ d48f5a36e28870e1bc8da500db4a866664b382fe assets/ifw/models/item/adamantium_helme
 1ed65a01eabbbbff87019a62190fba0969f252e8 assets/ifw/models/item/adamantium_nugget.json
 64475cda8e30547c4dd4a9fd3db5846c837a6e02 assets/ifw/models/item/adamantium_ore.json
 c7cec22c49b51252cf0ea7e975384ccba4cc0a4d assets/ifw/models/item/adamantium_pickaxe.json
+0adcffd34d07f5a3beb29170ebc103370b2a2391 assets/ifw/models/item/adamantium_private_chest.json
 dbdbcb7c71b3d4b0af0e9d8ff4c2255888944d05 assets/ifw/models/item/adamantium_runestone_an.json
 6a83c4afa930091a539e260e26ae66227d011141 assets/ifw/models/item/adamantium_runestone_corp.json
 e8386f97f685e68bac2888ea93b62065e769a5ee assets/ifw/models/item/adamantium_runestone_des.json
@@ -66,6 +67,7 @@ bb66eb2f1f2056f58dcbd699e7639e31d67558ff assets/ifw/models/item/ancient_metal_ho
 9f247b9246ac86fe654ff027153de1ffd9901b0f assets/ifw/models/item/ancient_metal_mattock.json
 3ba1b3405d6df733a1d711de48ddbab61548961c assets/ifw/models/item/ancient_metal_nugget.json
 51b9bf9a256094a2b1603992b6c0becce5a79191 assets/ifw/models/item/ancient_metal_pickaxe.json
+9fa991a448d77115c1f162b4094f41df1b5a5237 assets/ifw/models/item/ancient_metal_private_chest.json
 da6d2d919a37b255d230757a78693b434413eda1 assets/ifw/models/item/ancient_metal_scythe.json
 bb8b0c97a5c7bc47de98ad831465ef8111a65b5a assets/ifw/models/item/ancient_metal_shears.json
 f5badf213ce4584b5747fd2e8df0794dde78c251 assets/ifw/models/item/ancient_metal_shovel.json
@@ -119,6 +121,7 @@ f6743e48ef4a71e6d3e27bb4bb0bc9c25ae5c350 assets/ifw/models/item/copper_leggings.
 d08ebf266731bc04ddd4daee055639064e5ce9c3 assets/ifw/models/item/copper_mattock.json
 19b9572f513ea1f2286e22339a447968609a29a8 assets/ifw/models/item/copper_nugget.json
 0d105c2ef5fa2a061a203a08cfe45a6722e9058e assets/ifw/models/item/copper_pickaxe.json
+b78af853ecaa5af80d81db63b2054d16917f0ffc assets/ifw/models/item/copper_private_chest.json
 536a99f3d82b99401a4168a20bd4dccb29dc0a8f assets/ifw/models/item/copper_scythe.json
 68726389e936be2821cf7bf58cbbc8dc9760fe0d assets/ifw/models/item/copper_shears.json
 837795b6726a103a0b28064b19d9c16bc36ec878 assets/ifw/models/item/copper_shovel.json
@@ -167,6 +170,7 @@ d316cbfeb6987f2ce67da7a73f075ac3b529ec44 assets/ifw/models/item/gold_pan_full.js
 25b528cccb20956e73191448625996125847abea assets/ifw/models/item/gold_pan_gravel.json
 10fa1d12f934cd33d72ba1882c17b27447fede7b assets/ifw/models/item/gold_pan_half.json
 ac65f666200817e6f63bb2ee5d4be88674014252 assets/ifw/models/item/gold_pan_result.json
+264c1e52f97664c627dcae962889e0bd78fca2ce assets/ifw/models/item/gold_private_chest.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/hellhound_spawn_egg.json
 6e1b24d388884ee48afb4e19595cad3003885c1a assets/ifw/models/item/ice_cream.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/inferno_creeper_spawn_egg.json
@@ -179,6 +183,7 @@ b59d81db6f38930f9186b5ddf15ae5264bf7ffe8 assets/ifw/models/item/iron_fishing_rod
 da4476ce90d0cdfff7545052c83d2f24f640c0f4 assets/ifw/models/item/iron_hoe.json
 a493c9ef22ad24aa10189a2a80d1dc23647e729e assets/ifw/models/item/iron_mattock.json
 e092dcd707580cdacdc591211fe1fc1fad62c3d5 assets/ifw/models/item/iron_pickaxe.json
+cac222d1d89d170ffb41ffbf45b655c71648e8c9 assets/ifw/models/item/iron_private_chest.json
 276fa47b2ddce7089127ebca834812655faaf726 assets/ifw/models/item/iron_scythe.json
 bf7de59da97791a0c8f20311574e5773be76b904 assets/ifw/models/item/iron_shears.json
 4b1d4353cc6cdc7006b1c07a39e98bfc7b2c08b4 assets/ifw/models/item/iron_shovel.json
@@ -228,6 +233,7 @@ e5c6ceeecca120d4f3e25381549f21382da76958 assets/ifw/models/item/mithril_mattock.
 8afb6f5b40619399b7a7d8d908f06fb783853dda assets/ifw/models/item/mithril_nugget.json
 ced196a0afc5feb514d967c9b6c52277d8d3b6eb assets/ifw/models/item/mithril_ore.json
 e20364f5acc17798c7293e795360d2d11ffe376f assets/ifw/models/item/mithril_pickaxe.json
+e2d5e93d0263b25bda5dbebb387bdc47bc884e20 assets/ifw/models/item/mithril_private_chest.json
 5e9231d6c69e8b739438c89695c1f13653d67ab8 assets/ifw/models/item/mithril_runestone_an.json
 c2d173e5ce4eaf933e59a29c9c42614d88a4b789 assets/ifw/models/item/mithril_runestone_corp.json
 b2bbc74a22563cd1b455495e5183896860268666 assets/ifw/models/item/mithril_runestone_des.json
@@ -336,6 +342,7 @@ b6616ed87f975f8d01e61e462451dd3dfd9dbb74 assets/ifw/models/item/silver_ingot.jso
 261c21e7ac264df1f5f9ec9a32ce62fad86b46f0 assets/ifw/models/item/silver_nugget.json
 43b251c193b50884510894c7fb4abf08640eafe8 assets/ifw/models/item/silver_ore.json
 8d893ed8326f7273ac5cba38c8d6af5957c3c52d assets/ifw/models/item/silver_pickaxe.json
+5b12d3baf9a0809ec33ec0791721697d6c11d31d assets/ifw/models/item/silver_private_chest.json
 5ec96bae399800c3e3cf0c9e62738214e99afc54 assets/ifw/models/item/silver_scythe.json
 261049f3a2c57e757ec3e474295c380e2157603c assets/ifw/models/item/silver_shears.json
 8562a4f8a214967df5d65f8b293417f91fbe4db8 assets/ifw/models/item/silver_shovel.json

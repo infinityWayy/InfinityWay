@@ -8,6 +8,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class IFWItemModelProvider extends ItemModelProvider {
@@ -83,6 +84,33 @@ public class IFWItemModelProvider extends ItemModelProvider {
                 .predicate(mcLoc("cast"), 1)
                 .model(getExistingFile(mcLoc("item/fishing_rod_cast")))
                 .end();
+        getBuilder("copper_private_chest")
+                .parent(new ModelFile.UncheckedModelFile("builtin/entity"))
+                .texture("particle", modLoc("block/copper_private_chest"));
+
+        getBuilder("silver_private_chest")
+                .parent(new ModelFile.UncheckedModelFile("builtin/entity"))
+                .texture("particle", modLoc("block/silver_private_chest"));
+
+        getBuilder("gold_private_chest")
+                .parent(new ModelFile.UncheckedModelFile("builtin/entity"))
+                .texture("particle", modLoc("block/gold_private_chest"));
+
+        getBuilder("iron_private_chest")
+                .parent(new ModelFile.UncheckedModelFile("builtin/entity"))
+                .texture("particle", modLoc("block/iron_private_chest"));
+
+        getBuilder("ancient_metal_private_chest")
+                .parent(new ModelFile.UncheckedModelFile("builtin/entity"))
+                .texture("particle", modLoc("block/ancient_metal_private_chest"));
+
+        getBuilder("mithril_private_chest")
+                .parent(new ModelFile.UncheckedModelFile("builtin/entity"))
+                .texture("particle", modLoc("block/mithril_private_chest"));
+
+        getBuilder("adamantium_private_chest")
+                .parent(new ModelFile.UncheckedModelFile("builtin/entity"))
+                .texture("particle", modLoc("block/adamantium_private_chest"));
         generateGoldPanModels();
         simpleBlockItem(IFWBlocks.mantle.get());
         simpleBlockItem(IFWBlocks.mithril_runestone_nul.get());

@@ -61,6 +61,28 @@ public class IFWRecipeProvider extends RecipeProvider {
                     );
         }
 
+        Object[][] chestData = {
+                { IFWBlocks.copper_private_chest.get(), Items.COPPER_INGOT, "copper" },
+                { IFWBlocks.silver_private_chest.get(), IFWItems.silver_ingot.get(), "silver" },
+                { IFWBlocks.gold_private_chest.get(), Items.GOLD_INGOT, "gold" },
+                { IFWBlocks.iron_private_chest.get(), Items.IRON_INGOT, "iron" },
+                { IFWBlocks.ancient_metal_private_chest.get(), IFWItems.ancient_metal_ingot.get(), "ancient_metal" },
+                { IFWBlocks.mithril_private_chest.get(), IFWItems.mithril_ingot.get(), "mithril" },
+                { IFWBlocks.adamantium_private_chest.get(), IFWItems.adamantium_ingot.get(), "adamantium" }
+        };
+
+        for (Object[] entry : chestData) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, (ItemLike)entry[0])
+                    .pattern("III")
+                    .pattern("I I")
+                    .pattern("III")
+                    .define('I', (ItemLike)entry[1])
+                    .unlockedBy("has_" + entry[2] + "_ingot", has((ItemLike)entry[1]))
+                    .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(
+                            InfinityWay.MOD_ID,
+                            "private_chest/" + entry[2] + "_private_chest"7
+                    ));
+        }
 
         {
             fishingRodRecipe(recipeOutput, IFWItems.obsidian_fishing_rod, IFWItems.obsidian_shard);

@@ -1,0 +1,33 @@
+{
+  "parent": "ifw:make_crafting_table",
+  "criteria": {
+    "has_wooden_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:wooden_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.ifw.make_wooden_shovel.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "ifw:wooden_shovel"
+    },
+    "title": {
+      "translate": "advancement.ifw.make_wooden_shovel"
+    }
+  },
+  "requirements": [
+    [
+      "has_wooden_shovel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

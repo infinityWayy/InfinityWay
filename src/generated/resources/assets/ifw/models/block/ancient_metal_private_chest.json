@@ -1,6 +1,8 @@
 {
   "parent": "minecraft:block/chest",
   "textures": {
-    "particle": "ifw:entity/chest/ancient_metal_private_chest"
+    "body": "ifw:block/ancient_metal_private_chest",
+    "particle": "ifw:block/ancient_metal_private_chest",
+    "top": "ifw:block/ancient_metal_private_chest"
   }
 }

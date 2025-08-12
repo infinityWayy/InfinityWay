@@ -5,7 +5,6 @@
   "refmap": "infinity.refmap.json",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "client.BlockEntityWithoutLevelRendererMixin",
     "inventory.EnchantmentMenuMixin",
     "neoforge.CommonHooksMixin",
     "server.commands.LocateCommandMixin",
@@ -67,7 +66,6 @@
     "world.material.WaterFluidMixin"
   ],
   "client": [
-    "client.ChestRendererMixin",
     "client.GuiMixin",
     "client.render.LevelRendererMoonMixin",
     "client.render.LevelRendererRainMixin",

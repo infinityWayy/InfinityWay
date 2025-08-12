@@ -1,3 +1,6 @@
 {
-  "parent": "ifw:block/mithril_private_chest"
+  "parent": "minecraft:builtin/entity",
+  "textures": {
+    "particle": "ifw:block/mithril_private_chest"
+  }
 }
