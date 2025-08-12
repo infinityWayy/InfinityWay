@@ -52,6 +52,10 @@ public class IFWCNLang extends IFWLanguageProvider {
 //        add("Curses.ifw.fear_of_creepers.desc", "你发现你难以对狼发起有效攻击");
 //        add("Curses.ifw.fear_of_undead.desc", "你发现你难以对亡灵生物发起有效攻击");
 
+        //效果
+        add("effect.ifw.unkonwn.curse", "你已经被诅咒了！");
+        add("effect.ifw.insulin_resistance", "胰岛素抵抗");
+
         // 生物名称
         add(IFWEntityType.CHICKEN.value(), "鸡");
         add(IFWEntityType.SHEEP.value(), "羊");
@@ -550,9 +554,116 @@ public class IFWCNLang extends IFWLanguageProvider {
 
         //附魔书
         add("enchantment.ifw.speed", "速度");
-        //Effect
-        add("effect.ifw.unkonwn.curse", "你已经被诅咒了！");
-        add("effect.ifw.insulin_resistance", "胰岛素抵抗");
+
+        //成就
+        add("advancement.ifw.root", "踏上IFW征程！");
+        add("advancement.ifw.root.desc", "以坚韧不拔的意志攀登巅峰");
+        add("advancement.ifw.open_inventory", "初探物品栏");
+        add("advancement.ifw.open_inventory.desc", "按E键打开你的物品栏");
+        add("advancement.ifw.kill_monster", "怪物杀手");
+        add("advancement.ifw.kill_monster.desc", "击败并消灭一种怪物，证明你的勇气！");
+        add("advancement.ifw.obtain_clay_furnace", "烹饪中");
+        add("advancement.ifw.obtain_clay_furnace.desc", "合成一个炉子烤肉。");
+        add("advancement.ifw.obtain_wheat_seeds", "觅食者");
+        add("advancement.ifw.obtain_wheat_seeds.desc", "收集种子,蓝莓或虫子填饱肚子。");
+        add("advancement.ifw.eat_egg", "滚蛋");
+        add("advancement.ifw.eat_egg.desc", "吃一个鸡蛋补充饥饿值。");
+        add("advancement.ifw.get_flint", "燧石寻找者");
+        add("advancement.ifw.get_flint.desc", "挖掘砂砾以寻找燧石碎片");
+        add("advancement.ifw.get_stick", "木棍收集者");
+        add("advancement.ifw.get_stick.desc", "收集木棍用来制作工具");
+        add("advancement.ifw.make_flint_hatchet", "尖端科技");
+        add("advancement.ifw.make_flint_hatchet.desc", "伐木时间到");
+        add("advancement.ifw.get_wood", "获得木头");
+        add("advancement.ifw.get_wood.desc", "通过砍树获得一个原木");
+        add("advancement.ifw.make_crafting_table", "制作工具台");
+        add("advancement.ifw.make_crafting_table.desc", "使用碎石和原木合成碎石工作台");
+        add("advancement.ifw.get_wooden_mallet", "出击时间到");
+        add("advancement.ifw.get_wooden_mallet.desc", "用木板和木棍制作木棒");
+        add("advancement.ifw.get_leather", "皮革");
+        add("advancement.ifw.get_leather.desc", "从动物身上收集皮革");
+        add("advancement.ifw.wear_leather_armor", "文明着装");
+        add("advancement.ifw.wear_leather_armor.desc", "装备皮革护甲");
+        add("advancement.ifw.when_pigs_fly", "当猪会飞的时候");
+        add("advancement.ifw.when_pigs_fly.desc", "骑着猪从悬崖上飞下");
+        add("advancement.ifw.sniper_duel", "狙击手的对决");
+        add("advancement.ifw.sniper_duel.desc", "用弓箭从五十米外干掉一只骷髅");
+        add("advancement.ifw.make_stone_axe", "别有用心");
+        add("advancement.ifw.make_stone_axe.desc", "用碎石和木棍合成一把碎石斧");
+        add("advancement.ifw.make_salad", "盛宴");
+        add("advancement.ifw.make_salad.desc", "做一碗汤、炖菜或者是一碗沙拉。");
+        add("advancement.ifw.make_torch", "点亮一切");
+        add("advancement.ifw.make_torch.desc", "制作火把去照亮黑暗");
+        add("advancement.ifw.sleep_on_bed", "休息充沛");
+        add("advancement.ifw.sleep_on_bed.desc", "在温暖的床上一觉睡到天亮吧");
+        add("advancement.ifw.make_wooden_shovel", "有待深入");
+        add("advancement.ifw.make_wooden_shovel.desc", "用木棍和木板制作一个木铲");
+        add("advancement.ifw.get_metal_nugget", "淘金热");
+        add("advancement.ifw.get_metal_nugget.desc", "得到一个金属粒");
+        add("advancement.ifw.make_better_crafting_table", "制作更好的工具");
+        add("advancement.ifw.make_better_crafting_table.desc", "用金属锭、木棍、皮革和木板合成一个更好的工作台");
+        add("advancement.ifw.make_any_advanced_hoe", "农耕时间到");
+        add("advancement.ifw.make_any_advanced_hoe.desc", "使用金属锭和木棍合成锄头");
+        add("advancement.ifw.make_flour", "基础成分");
+        add("advancement.ifw.make_flour.desc", "用三个小麦合成面粉");
+        add("advancement.ifw.get_bread", "面包师");
+        add("advancement.ifw.get_bread.desc", "把面粉和水碗糅合成面团,再放进炉子里烤制");
+        add("advancement.ifw.craft_cake", "蛋糕是个谎言");
+        add("advancement.ifw.craft_cake.desc", "面粉,糖,鸡蛋,牛奶!");
+        add("advancement.ifw.cure_diseased_crops", "植物医生");
+        add("advancement.ifw.cure_diseased_crops.desc", "使用骨粉治疗生病的作物");
+        add("advancement.ifw.fertilize_land", "土地营养师");
+        add("advancement.ifw.fertilize_land.desc", "给耕地施肥");
+        add("advancement.ifw.plant_mushroom_on_mycelium", "保持黑暗");
+        add("advancement.ifw.plant_mushroom_on_mycelium.desc", "在阴暗,潮湿且肥沃的耕地上种棕色蘑菇");
+        add("advancement.ifw.make_any_advanced_scythe", "你就是死神");
+        add("advancement.ifw.make_any_advanced_scythe.desc", "合成一把镰刀去割小麦");
+        add("advancement.ifw.make_chain_armor", "更好的护甲");
+        add("advancement.ifw.make_chain_armor.desc", "用金属粒制作锁链护甲");
+        add("advancement.ifw.wear_full_iron_armor", "全副武装");
+        add("advancement.ifw.wear_full_iron_armor.desc", "用盔甲从头到脚武装起来");
+        add("advancement.ifw.wear_full_adamant_armor", "世界主宰");
+        add("advancement.ifw.wear_full_adamant_armor.desc", "穿上整套套艾德曼装备");
+        add("advancement.ifw.make_copper_pickaxe", "下矿时间到！");
+        add("advancement.ifw.make_copper_pickaxe.desc", "用铜锭和木棍合成一个铜镐");
+        add("advancement.ifw.make_furnace", "燃起来");
+        add("advancement.ifw.make_furnace.desc", "合成一个石熔炉以使用煤炭烧制");
+        add("advancement.ifw.smelt_iron_ingot", "进入铁器时代");
+        add("advancement.ifw.smelt_iron_ingot.desc", "冶炼出铁锭");
+        add("advancement.ifw.make_iron_pickaxe", "获得升级");
+        add("advancement.ifw.make_iron_pickaxe.desc", "用铁锭制作出更好的镐子");
+        add("advancement.ifw.get_emerald", "绿宝石！");
+        add("advancement.ifw.get_emerald.desc", "用你的铁工具采集绿宝石");
+        add("advancement.ifw.make_obsidian_furnace", "掌控地热");
+        add("advancement.ifw.make_obsidian_furnace.desc", "合成一个黑曜石熔炉。");
+        add("advancement.ifw.get_mithril_ingot", "神话时代");
+        add("advancement.ifw.get_mithril_ingot.desc", "冶炼出一个秘银锭。");
+        add("advancement.ifw.get_diamond", "璀璨钻石！");
+        add("advancement.ifw.get_diamond.desc", "使用你的秘银工具采集钻石。");
+        add("advancement.ifw.make_emerald_enchanting_table", "附魔大师");
+        add("advancement.ifw.make_emerald_enchanting_table.desc", "用书、绿宝石和黑曜石制作一个绿宝石附魔台。");
+        add("advancement.ifw.make_bookshelf", "知识就是力量");
+        add("advancement.ifw.make_bookshelf.desc", "制造一些书架以强化附魔台。");
+        add("advancement.ifw.get_obsidian", "我们需要再深入些");
+        add("advancement.ifw.get_obsidian.desc", "在主世界基岩上建造传送门传入地下。");
+        add("advancement.ifw.craft_runic_portal", "次元工程师");
+        add("advancement.ifw.craft_runic_portal.desc", "通过符文传送门快速前往远方");
+        add("advancement.ifw.touch_mantle", "长路漫漫");
+        add("advancement.ifw.touch_mantle.desc", "一路向下到达地下的最底部。");
+        add("advancement.ifw.get_blaze_rod", "与火共舞");
+        add("advancement.ifw.get_blaze_rod.desc", "获得一根烈焰棒。");
+        add("advancement.ifw.obtain_ender_eye", "结束了?");
+        add("advancement.ifw.obtain_ender_eye.desc", "找到末地");
+        add("advancement.ifw.kill_ghast", "去见鬼吧！");
+        add("advancement.ifw.kill_ghast.desc", "击杀一只恶魂。");
+        add("advancement.ifw.brew_potion", "本地酿造厂");
+        add("advancement.ifw.brew_potion.desc", "酿造药水。");
+        add("advancement.ifw.craft_netherrack_furnace", "终极熔炉");
+        add("advancement.ifw.craft_netherrack_furnace.desc", "合成一个地狱岩熔炉。");
+        add("advancement.ifw.smelt_adamantium_ingot", "最强金属");
+        add("advancement.ifw.smelt_adamantium_ingot.desc", "冶炼出一个艾德曼锭。");
+        add("advancement.ifw.obtain_adamantium_pickaxe", "末影水晶破坏者");
+        add("advancement.ifw.obtain_adamantium_pickaxe.desc", "制作一个足够坚硬的工具以破坏末影水晶。");
     }
 
 }

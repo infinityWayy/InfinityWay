@@ -54,6 +54,12 @@ public class IFWUSLang extends IFWLanguageProvider {
 //        add("Curses.ifw.fear_of_creepers.desc", "You've become fearful of creepers|and have difficulty striking them|in melee combat");
 //        add("Curses.ifw.fear_of_undead.desc", "You've become fearful of undead|and have difficulty striking them|in melee combat");
 
+
+        //Effect
+        add("effect.ifw.unkonwn.curse", "You have been cursed");
+        add("effect.ifw.insulin_resistance", "Insulin Resistance");
+
+
         //Entity
         add(IFWEntityType.CHICKEN.value(), "Chicken");
         add(IFWEntityType.SHEEP.value(), "Sheep");
@@ -557,9 +563,118 @@ public class IFWUSLang extends IFWLanguageProvider {
 
         //Enchanted_Books
         add("enchantment.ifw.speed", "Speed");
-        //Effect
-        add("effect.ifw.unkonwn.curse", "You have been cursed");
-        add("effect.ifw.insulin_resistance", "Insulin Resistance");
+
+
+        // Advancement
+        add("advancement.ifw.root", "Welcome to IFW!");
+        add("advancement.ifw.root.desc", "Reach the peak with your persistence and effort");
+        add("advancement.ifw.open_inventory", "Open Inventory");
+        add("advancement.ifw.open_inventory.desc", "Press E to open your inventory");
+        add("advancement.ifw.kill_monster", "Monster Hunter");
+        add("advancement.ifw.kill_monster.desc", "Defeat and eliminate a monster to prove your courage!");
+        add("advancement.ifw.obtain_clay_furnace", "Cooking in Progress");
+        add("advancement.ifw.obtain_clay_furnace.desc", "Craft a furnace to cook meat.");
+        add("advancement.ifw.obtain_wheat_seeds", "Forager");
+        add("advancement.ifw.obtain_wheat_seeds.desc", "Collect seeds, blueberries or bugs to fill your stomach.");
+        add("advancement.ifw.get_flint", "Flint Seeker");
+        add("advancement.ifw.get_flint.desc", "Mine gravel to find flint shards");
+        add("advancement.ifw.get_stick", "Stick Collector");
+        add("advancement.ifw.get_stick.desc", "Collect sticks to craft tools");
+        add("advancement.ifw.eat_egg", "Eat an Egg");
+        add("advancement.ifw.eat_egg.desc", "Eat an egg to restore hunger.");
+        add("advancement.ifw.make_flint_hatchet", "Cutting Edge Technology");
+        add("advancement.ifw.make_flint_hatchet.desc", "Time to chop wood");
+        add("advancement.ifw.get_wood", "Get Wood");
+        add("advancement.ifw.get_wood.desc", "Obtain a log by chopping trees");
+        add("advancement.ifw.make_crafting_table", "Craft a Crafting Table");
+        add("advancement.ifw.make_crafting_table.desc", "Craft a cobblestone crafting table using cobblestone and logs");
+        add("advancement.ifw.get_wooden_mallet", "Time to Strike");
+        add("advancement.ifw.get_wooden_mallet.desc", "Craft a wooden mallet using planks and sticks");
+        add("advancement.ifw.get_leather", "Leather");
+        add("advancement.ifw.get_leather.desc", "Collect leather from animals");
+        add("advancement.ifw.wear_leather_armor", "Civilized Attire");
+        add("advancement.ifw.wear_leather_armor.desc", "Equip leather armor");
+        add("advancement.ifw.when_pigs_fly", "When Pigs Fly");
+        add("advancement.ifw.when_pigs_fly.desc", "Fly off a cliff while riding a pig");
+        add("advancement.ifw.sniper_duel", "Sniper Duel");
+        add("advancement.ifw.sniper_duel.desc", "Kill a skeleton with a bow from fifty meters away");
+        add("advancement.ifw.make_stone_axe", "Ulterior Motives");
+        add("advancement.ifw.make_stone_axe.desc", "Craft a cobblestone axe using cobblestone and sticks");
+        add("advancement.ifw.make_salad", "Feast");
+        add("advancement.ifw.make_salad.desc", "Make a bowl of soup, stew or salad.");
+        add("advancement.ifw.make_torch", "Light It Up");
+        add("advancement.ifw.make_torch.desc", "Craft torches to illuminate the darkness");
+        add("advancement.ifw.sleep_on_bed", "Well Rested");
+        add("advancement.ifw.sleep_on_bed.desc", "Sleep through the night in a warm bed");
+        add("advancement.ifw.make_wooden_shovel", "Digging Deeper");
+        add("advancement.ifw.make_wooden_shovel.desc", "Craft a wooden shovel using sticks and planks");
+        add("advancement.ifw.get_metal_nugget", "Gold Rush");
+        add("advancement.ifw.get_metal_nugget.desc", "Obtain a metal nugget");
+        add("advancement.ifw.make_better_crafting_table", "Craft Better Tools");
+        add("advancement.ifw.make_better_crafting_table.desc", "Craft a better crafting table using metal ingots, sticks, leather and planks");
+        add("advancement.ifw.make_any_advanced_hoe", "Time to Farm");
+        add("advancement.ifw.make_any_advanced_hoe.desc", "Craft a hoe using metal ingots and sticks");
+        add("advancement.ifw.make_flour", "Basic Ingredient");
+        add("advancement.ifw.make_flour.desc", "Craft flour using three wheat");
+        add("advancement.ifw.get_bread", "Baker");
+        add("advancement.ifw.get_bread.desc", "Mix flour and water bowl into dough, then bake it in a furnace");
+        add("advancement.ifw.craft_cake", "The Cake is a Lie");
+        add("advancement.ifw.craft_cake.desc", "Flour, sugar, eggs, milk!");
+        add("advancement.ifw.cure_diseased_crops", "Plant Doctor");
+        add("advancement.ifw.cure_diseased_crops.desc", "Use bone meal to cure diseased crops");
+        add("advancement.ifw.fertilize_land", "Land Nutritionist");
+        add("advancement.ifw.fertilize_land.desc", "Fertilize farmland");
+        add("advancement.ifw.plant_mushroom_on_mycelium", "Keep It Dark");
+        add("advancement.ifw.plant_mushroom_on_mycelium.desc", "Plant brown mushrooms on dark, moist and fertile farmland");
+        add("advancement.ifw.make_any_advanced_scythe", "You Are Death");
+        add("advancement.ifw.make_any_advanced_scythe.desc", "Craft a scythe to harvest wheat");
+        add("advancement.ifw.make_chain_armor", "Better Armor");
+        add("advancement.ifw.make_chain_armor.desc", "Craft chain armor using metal nuggets");
+        add("advancement.ifw.wear_full_iron_armor", "Fully Armed");
+        add("advancement.ifw.wear_full_iron_armor.desc", "Arm yourself from head to toe with armor");
+        add("advancement.ifw.wear_full_adamant_armor", "World Dominator");
+        add("advancement.ifw.wear_full_adamant_armor.desc", "Wear a full set of adamantium armor");
+        add("advancement.ifw.make_copper_pickaxe", "Time to Mine!");
+        add("advancement.ifw.make_copper_pickaxe.desc", "Craft a copper pickaxe using copper ingots and sticks");
+        add("advancement.ifw.make_furnace", "Fire It Up");
+        add("advancement.ifw.make_furnace.desc", "Craft a stone furnace to smelt with coal");
+        add("advancement.ifw.smelt_iron_ingot", "Enter the Iron Age");
+        add("advancement.ifw.smelt_iron_ingot.desc", "Smelt an iron ingot");
+        add("advancement.ifw.make_iron_pickaxe", "Get an Upgrade");
+        add("advancement.ifw.make_iron_pickaxe.desc", "Craft a better pickaxe using iron ingots");
+        add("advancement.ifw.get_emerald", "Emerald!");
+        add("advancement.ifw.get_emerald.desc", "Mine emerald with your iron tools");
+        add("advancement.ifw.make_obsidian_furnace", "Harness Geothermal Power");
+        add("advancement.ifw.make_obsidian_furnace.desc", "Craft an obsidian furnace.");
+        add("advancement.ifw.get_mithril_ingot", "Mythical Age");
+        add("advancement.ifw.get_mithril_ingot.desc", "Smelt a mithril ingot.");
+        add("advancement.ifw.get_diamond", "Diamonds!");
+        add("advancement.ifw.get_diamond.desc", "Mine diamonds with your mithril tools.");
+        add("advancement.ifw.make_emerald_enchanting_table", "Enchanter");
+        add("advancement.ifw.make_emerald_enchanting_table.desc", "Craft an emerald enchanting table using books, emeralds and obsidian.");
+        add("advancement.ifw.make_bookshelf", "Knowledge is Power");
+        add("advancement.ifw.make_bookshelf.desc", "Craft some bookshelves to enhance the enchanting table.");
+        add("advancement.ifw.get_obsidian", "We Need to Go Deeper");
+        add("advancement.ifw.get_obsidian.desc", "Build a portal on bedrock in the overworld to travel underground.");
+        add("advancement.ifw.craft_runic_portal", "Dimensional Engineer");
+        add("advancement.ifw.craft_runic_portal.desc", "Travel to distant places quickly through runic portals");
+        add("advancement.ifw.touch_mantle", "Long Way Down");
+        add("advancement.ifw.touch_mantle.desc", "Travel all the way down to the bottom of the underground.");
+        add("advancement.ifw.get_blaze_rod", "Dance with Fire");
+        add("advancement.ifw.get_blaze_rod.desc", "Obtain a blaze rod.");
+        add("advancement.ifw.obtain_ender_eye", "The End?");
+        add("advancement.ifw.obtain_ender_eye.desc", "Find the End");
+        add("advancement.ifw.kill_ghast", "Go to Hell!");
+        add("advancement.ifw.kill_ghast.desc", "Kill a ghast.");
+        add("advancement.ifw.brew_potion", "Local Brewery");
+        add("advancement.ifw.brew_potion.desc", "Brew a potion.");
+        add("advancement.ifw.craft_netherrack_furnace", "Ultimate Furnace");
+        add("advancement.ifw.craft_netherrack_furnace.desc", "Craft a netherrack furnace.");
+        add("advancement.ifw.smelt_adamantium_ingot", "Strongest Metal");
+        add("advancement.ifw.smelt_adamantium_ingot.desc", "Smelt an adamantium ingot.");
+        add("advancement.ifw.obtain_adamantium_pickaxe", "End Crystal Destroyer");
+        add("advancement.ifw.obtain_adamantium_pickaxe.desc", "Craft a tool hard enough to destroy end crystals.");
+
     }
 
 }

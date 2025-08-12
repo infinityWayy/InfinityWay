@@ -60,12 +60,12 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
                                                 MinMaxBounds.Ints.ANY),
                                         List.of())))
                 .save(saver, "ifw:open_inventory");
-//怪物猎人
+//怪物杀手
         AdvancementHolder killZombie = Advancement.Builder.advancement()
                 .display(
                         Items.IRON_SWORD,
-                        Component.literal("怪物猎人"),
-                        Component.literal("杀死一个僵尸、苦力怕或骷髅"),
+                        Component.translatable("advancement.ifw.kill_monster"),
+                        Component.translatable("advancement.ifw.kill_monster.desc"),
                         null,
                         AdvancementType.TASK,
                         true, true, false)
@@ -89,7 +89,7 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
                                         EntityPredicate.Builder.entity().of(EntityType.SKELETON)
                                 ).triggerInstance()))
                 .requirements(AdvancementRequirements.Strategy.OR)
-                .save(saver, "yourmodid:kill_one_of_three");
+                .save(saver, "ifw:kill_one_of_three");
 //粘土熔炉
         AdvancementHolder obtainClayFurnace = Advancement.Builder.advancement()
                 .display(
@@ -164,7 +164,7 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
                         "has_flint",
                         InventoryChangeTrigger.TriggerInstance.hasItems(Items.FLINT))
                 .save(saver, "ifw:get_flint");
-//碎石短斧
+//燧石短斧
         AdvancementHolder makeFlintHatchet = Advancement.Builder.advancement()
                 .display(
                         IFWItems.flint_hatchet.get(),
@@ -192,7 +192,7 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
                         "has_wood",
                         InventoryChangeTrigger.TriggerInstance.hasItems(Items.OAK_LOG))
                 .save(saver, "ifw:get_wood");
-//碎石工作台
+//燧石工作台
         AdvancementHolder makeCraftingTable = Advancement.Builder.advancement()
                 .display(
                         Items.CRAFTING_TABLE,
@@ -381,7 +381,7 @@ public class IFWAdvancementGenerator implements AdvancementProvider.AdvancementG
                 .addCriterion("has_adamantium_nugget", InventoryChangeTrigger.TriggerInstance.hasItems(IFWItems.adamantium_nugget))
                 .requirements(AdvancementRequirements.Strategy.OR)
                 .save(saver, "ifw:get_metal_nugget");
-//铜工作台
+//金属工作台
         AdvancementHolder makeBetterCraftingTable = Advancement.Builder.advancement()
                 .display(
                         Items.CRAFTING_TABLE,
