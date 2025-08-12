@@ -80,7 +80,7 @@ public class IFWRecipeProvider extends RecipeProvider {
                     .unlockedBy("has_" + entry[2] + "_ingot", has((ItemLike)entry[1]))
                     .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(
                             InfinityWay.MOD_ID,
-                            "private_chest/" + entry[2] + "_private_chest"7
+                            "private_chest/" + entry[2] + "_private_chest"
                     ));
         }
 
