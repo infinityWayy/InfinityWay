@@ -45,6 +45,7 @@
     "world.entity.animal.ThrownEggMixin",
     "world.entity.animal.TropicalMixin",
     "world.entity.projectile.FishingHookMixin",
+    "world.entity.WanderingTraderMixin",
     "world.food.FoodDataMixin",
     "world.food.FoodProperties$BuilderMixin",
     "world.food.FoodsMixin",
