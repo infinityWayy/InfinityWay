@@ -445,17 +445,17 @@ public class IFWItems {
             ITEMS.register("adamantium_chainmail_boots", item -> new ArmorItem(IFWArmorMaterials.adamantium_chainmail, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(DurabilityHelper.Armor.BOOTS.getDurability(96))));
     public static final DeferredItem<Item> flint_shard =
-            ITEMS.registerSimpleItem("flint_shard", new Item.Properties().stacksTo(16));
+            ITEMS.registerSimpleItem("flint_shard", new Item.Properties().stacksTo(64));
     public static final DeferredItem<Item> obsidian_shard =
-            ITEMS.registerSimpleItem("obsidian_shard", new Item.Properties().stacksTo(16));
+            ITEMS.registerSimpleItem("obsidian_shard", new Item.Properties().stacksTo(64));
     public static final DeferredItem<Item> emerald_shard =
-            ITEMS.registerSimpleItem("emerald_shard", new Item.Properties().stacksTo(16));
+            ITEMS.registerSimpleItem("emerald_shard", new Item.Properties().stacksTo(64));
     public static final DeferredItem<Item> diamond_shard =
-            ITEMS.registerSimpleItem("diamond_shard", new Item.Properties().stacksTo(16));
+            ITEMS.registerSimpleItem("diamond_shard", new Item.Properties().stacksTo(64));
     public static final DeferredItem<Item> glass_shard =
-            ITEMS.registerSimpleItem("glass_shard", new Item.Properties().stacksTo(16));
+            ITEMS.registerSimpleItem("glass_shard", new Item.Properties().stacksTo(64));
     public static final DeferredItem<Item> quartz_shard =
-            ITEMS.registerSimpleItem("quartz_shard", new Item.Properties().stacksTo(16));
+            ITEMS.registerSimpleItem("quartz_shard", new Item.Properties().stacksTo(64));
     public static final DeferredItem<Item> sinew =
             ITEMS.registerSimpleItem("sinew", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> wooden_shovel =

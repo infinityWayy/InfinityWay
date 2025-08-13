@@ -374,9 +374,9 @@ public class IFWRecipeProvider extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.EMERALD, 1)
                 .requires(IFWItems.emerald_shard, 9)
                 .unlockedBy("has_emerald_shard", has(IFWItems.emerald_shard)).save(recipeOutput);
-//        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.QUARTZ, 1)
-//                .requires(IFWItems.quartz_shard, 9)
-//                .unlockedBy("has_quartz_shard", has(IFWItems.quartz_shard)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.QUARTZ, 1)
+                .requires(IFWItems.quartz_shard, 9)
+                .unlockedBy("has_quartz_shard", has(IFWItems.quartz_shard)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.FLINT, 1)
                 .requires(IFWItems.flint_shard, 4)
                 .unlockedBy("has_flint_shard", has(IFWItems.flint_shard)).save(recipeOutput);

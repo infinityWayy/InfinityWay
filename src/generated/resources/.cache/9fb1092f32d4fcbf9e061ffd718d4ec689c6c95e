@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-13T02:40:42.2016685	Recipes
+// 1.21.1	2025-08-13T15:50:27.9383416	Recipes
 8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
@@ -559,6 +559,7 @@ ce0d7d4c103321f83a94bbded87f6aa8e35a0c26 data/minecraft/advancement/recipes/misc
 740b1099fe60a12b53e7c0a31ad75e7da5f032ee data/minecraft/advancement/recipes/misc/mithril_ingot.json
 7f5fbde2187b4941e4d251823a5ce78396c100ea data/minecraft/advancement/recipes/misc/mithril_ingot_from_nugget.json
 fae4656177f2d8aaa0df363640bf830cf77a874a data/minecraft/advancement/recipes/misc/mithril_nugget.json
+f6b226b99182c025e25ed2a5c36ac145979e63eb data/minecraft/advancement/recipes/misc/quartz.json
 be684e8e53c736af36a46936691661cc4832cd27 data/minecraft/advancement/recipes/misc/silver_ingot.json
 cf5054f5754f12a4d9b6f8055b380e1dcb9fc4df data/minecraft/advancement/recipes/misc/silver_ingot_from_nugget.json
 646879e23ac9c2e5387e64a9a5cfda988aa993cc data/minecraft/advancement/recipes/misc/silver_nugget.json
@@ -602,6 +603,7 @@ c72b0cda2864db0926cccf1adf35ee1e4bf6c578 data/minecraft/recipe/mushroom_stew.jso
 ce85de452d95391cf4e86ae2b0b4af09a02938bf data/minecraft/recipe/obsidian.json
 6a55553eacd395fccaaf4637e9d2f305f3ac5a78 data/minecraft/recipe/pumpkin_pie.json
 943b84918dd5d69e10a77d6c370b2bc84e98064f data/minecraft/recipe/pumpkin_seeds.json
+dc94f2f7ac2bee573f0b08a15b2f7c2a2f2627eb data/minecraft/recipe/quartz.json
 75ad2cb43aa57e536c5bd627ade96d301f2fdd42 data/minecraft/recipe/saddle.json
 27c05da26ab5a4bb9e4de8cd64ea8379cdacc976 data/minecraft/recipe/silver_block_from_ingot.json
 aeae77b4e3c7e16f93d4b0b9e88a821d1b84cad1 data/minecraft/recipe/silver_ingot.json
