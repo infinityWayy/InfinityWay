@@ -38,8 +38,9 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlock
         boolean flag1 = false;
         if (blockEntity.isLit()) {
             blockEntity.litTime--;
-        } else
+        } else {
             ifw_cookingLevel(0, blockEntity);
+        }
 
         ItemStack fuel = blockEntity.items.get(1);
         ItemStack itemstack1 = blockEntity.items.get(0);
@@ -103,42 +104,65 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlock
 
     @Unique
     private static boolean ifw_levelEnoughFromItem(AbstractFurnaceBlockEntity blockEntity, BlockState state) {
-
         if (state.getBlock() == Blocks.FURNACE) {
             return false;
         }
         if (state.getBlock() == Blocks.BLAST_FURNACE) {
-            return true;
+            ItemStack fuel = blockEntity.getItem(1);
+            ItemStack input = blockEntity.getItem(0);
+            if (fuel.isEmpty() || input.isEmpty()) {
+                return false;
+            }
+            return fuel.ifw_cookingLevel() >= input.ifw_beCookingLevel();
         }
         if (state.getBlock() instanceof IFWFurnaceBlock block) {
-            return block.furnaceLevel() >= blockEntity.getItem(1).ifw_cookingLevel()
-                    && blockEntity.getItem(1).ifw_cookingLevel() >= ifw_recipeCookingLevel(blockEntity);
+            ItemStack fuel = blockEntity.getItem(1);
+            ItemStack input = blockEntity.getItem(0);
+            if (fuel.isEmpty() || input.isEmpty()) {
+                return false;
+            }
+            return block.furnaceLevel() >= fuel.ifw_cookingLevel()
+                    && fuel.ifw_cookingLevel() >= input.ifw_beCookingLevel();
         }
         return false;
     }
+
     @Unique
     private static boolean ifw_levelEnough(AbstractFurnaceBlockEntity blockEntity) {
-
-        if (blockEntity.getBlockState().getBlock() == Blocks.FURNACE) {
+        BlockState state = blockEntity.getBlockState();
+        if (state.getBlock() == Blocks.FURNACE) {
             return false;
         }
-        if (blockEntity.getBlockState().getBlock() == Blocks.BLAST_FURNACE) {
-            return true;
+        if (state.getBlock() == Blocks.BLAST_FURNACE) {
+            ItemStack input = blockEntity.getItem(0);
+            if (input.isEmpty()) {
+                return false;
+            }
+            int storedLevel = ifw_cookingLevel(blockEntity);
+            int requiredLevel = input.ifw_beCookingLevel();
+            return storedLevel >= requiredLevel;
         }
-        return ifw_cookingLevel(blockEntity) >= ifw_recipeCookingLevel(blockEntity);
+        if (state.getBlock() instanceof IFWFurnaceBlock) {
+            return ifw_cookingLevel(blockEntity) >= ifw_recipeCookingLevel(blockEntity);
+        }
+        return false;
     }
+
     @Unique
     private static int ifw_cookingLevel(AbstractFurnaceBlockEntity blockEntity) {
         return blockEntity.getData(IFWAttachments.cooking_level.get());
     }
+
     @Unique
     private static void ifw_cookingLevel(int level, AbstractFurnaceBlockEntity blockEntity) {
         blockEntity.setData(IFWAttachments.cooking_level.get(), level);
     }
+
     @Unique
     private static int ifw_recipeCookingLevel(AbstractFurnaceBlockEntity blockEntity) {
         return blockEntity.getItem(0).ifw_beCookingLevel();
     }
+
     protected AbstractFurnaceBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
@@ -154,18 +178,12 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlock
     public static boolean canBurn(RegistryAccess registryAccess, @Nullable RecipeHolder<?> recipe, NonNullList<ItemStack> inventory, int maxStackSize, AbstractFurnaceBlockEntity furnace) {
         ItemStack input = inventory.getFirst();
         Item item = input.getItem();
-        ItemStack fuel = inventory.get(1);
 
         if (furnace.getBlockState().getBlock() == Blocks.FURNACE) {
             return false;
         }
         if (furnace.getBlockState().getBlock() == Blocks.BLAST_FURNACE) {
             if (!(item instanceof ArmorItem || item instanceof TieredItem)) {
-                return false;
-            }
-            int equipLevel = input.ifw_beCookingLevel();
-            int fuelLevel = fuel.ifw_cookingLevel();
-            if (fuelLevel < equipLevel) {
                 return false;
             }
             if (recipe == null) return false;

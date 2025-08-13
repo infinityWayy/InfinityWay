@@ -32,7 +32,7 @@ public interface ItemExtension {
     @ApiStatus.Internal
     default void ifw_modifyDefaultComponentsFrom(DataComponentPatch patch) {
         Item instance = (Item) this;
-        if (instance.components().has(DataComponents.MAX_DAMAGE)) return;
+//         if (instance.components().has(DataComponents.MAX_DAMAGE)) return;
         DataComponentMap.Builder builder = DataComponentMap.builder().addAll(instance.components);
         patch.entrySet().forEach((entry) -> builder.set((DataComponentType)entry.getKey(), ((Optional)entry.getValue()).orElse(null)));
         instance.components = Item.Properties.COMPONENT_INTERNER.intern(Item.Properties.validateComponents(builder.build()));
