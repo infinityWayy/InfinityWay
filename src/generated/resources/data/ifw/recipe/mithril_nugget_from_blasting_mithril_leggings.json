@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 6.0,
+  "ingredient": {
+    "item": "ifw:mithril_leggings"
+  },
+  "result": {
+    "count": 6,
+    "id": "ifw:mithril_nugget"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 6.0,
+  "ingredient": {
+    "item": "minecraft:golden_leggings"
+  },
+  "result": {
+    "count": 6,
+    "id": "minecraft:gold_nugget"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_golden_scythe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:golden_scythe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ifw:gold_nugget_from_blasting_golden_scythe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_golden_scythe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ifw:gold_nugget_from_blasting_golden_scythe"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mithril_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:mithril_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ifw:mithril_nugget_from_blasting_mithril_hoe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mithril_hoe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ifw:mithril_nugget_from_blasting_mithril_hoe"
+    ]
+  }
+}

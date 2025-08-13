@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 3.0,
+  "ingredient": {
+    "item": "ifw:mithril_pickaxe"
+  },
+  "result": {
+    "count": 3,
+    "id": "ifw:mithril_nugget"
+  }
+}

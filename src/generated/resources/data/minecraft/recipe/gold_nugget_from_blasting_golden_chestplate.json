@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 8.0,
+  "ingredient": {
+    "item": "minecraft:golden_chestplate"
+  },
+  "result": {
+    "count": 8,
+    "id": "minecraft:gold_nugget"
+  }
+}

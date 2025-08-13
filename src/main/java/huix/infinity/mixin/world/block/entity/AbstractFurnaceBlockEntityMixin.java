@@ -6,11 +6,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -24,7 +28,10 @@ import org.spongepowered.asm.mixin.Unique;
 @Mixin(AbstractFurnaceBlockEntity.class)
 public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlockEntity {
 
-
+    /**
+     * @author Inf1nlty
+     * @reason Overwrite to ensure the custom furnace tick logic is properly integrated, reflecting new rules for input validation and burning items.
+     */
     @Overwrite
     public static void serverTick(Level level, BlockPos pos, BlockState state, AbstractFurnaceBlockEntity blockEntity) {
         boolean flag = blockEntity.isLit();
@@ -96,41 +103,91 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlock
 
     @Unique
     private static boolean ifw_levelEnoughFromItem(AbstractFurnaceBlockEntity blockEntity, BlockState state) {
+
+        if (state.getBlock() == Blocks.FURNACE) {
+            return false;
+        }
+        if (state.getBlock() == Blocks.BLAST_FURNACE) {
+            return true;
+        }
         if (state.getBlock() instanceof IFWFurnaceBlock block) {
             return block.furnaceLevel() >= blockEntity.getItem(1).ifw_cookingLevel()
                     && blockEntity.getItem(1).ifw_cookingLevel() >= ifw_recipeCookingLevel(blockEntity);
         }
         return false;
     }
-
     @Unique
     private static boolean ifw_levelEnough(AbstractFurnaceBlockEntity blockEntity) {
+
+        if (blockEntity.getBlockState().getBlock() == Blocks.FURNACE) {
+            return false;
+        }
+        if (blockEntity.getBlockState().getBlock() == Blocks.BLAST_FURNACE) {
+            return true;
+        }
         return ifw_cookingLevel(blockEntity) >= ifw_recipeCookingLevel(blockEntity);
     }
-
     @Unique
     private static int ifw_cookingLevel(AbstractFurnaceBlockEntity blockEntity) {
         return blockEntity.getData(IFWAttachments.cooking_level.get());
     }
-
     @Unique
     private static void ifw_cookingLevel(int level, AbstractFurnaceBlockEntity blockEntity) {
         blockEntity.setData(IFWAttachments.cooking_level.get(), level);
     }
-
     @Unique
     private static int ifw_recipeCookingLevel(AbstractFurnaceBlockEntity blockEntity) {
-       return blockEntity.getItem(0).ifw_beCookingLevel();
+        return blockEntity.getItem(0).ifw_beCookingLevel();
     }
-
-
     protected AbstractFurnaceBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
-    @Shadow
+    /**
+     * @author Inf1nlty
+     * @reason Implement different burning rules for different furnace types:
+     * - Vanilla furnaces: cannot burn anything
+     * - Custom furnaces: can burn non-equipment items only
+     * - Blast furnaces: can burn only equipment items, such as armor, weapons, and tools.
+     */
+    @Overwrite
     public static boolean canBurn(RegistryAccess registryAccess, @Nullable RecipeHolder<?> recipe, NonNullList<ItemStack> inventory, int maxStackSize, AbstractFurnaceBlockEntity furnace) {
-        return false;
+        ItemStack input = inventory.getFirst();
+        Item item = input.getItem();
+        ItemStack fuel = inventory.get(1);
+
+        if (furnace.getBlockState().getBlock() == Blocks.FURNACE) {
+            return false;
+        }
+        if (furnace.getBlockState().getBlock() == Blocks.BLAST_FURNACE) {
+            if (!(item instanceof ArmorItem || item instanceof TieredItem)) {
+                return false;
+            }
+            int equipLevel = input.ifw_beCookingLevel();
+            int fuelLevel = fuel.ifw_cookingLevel();
+            if (fuelLevel < equipLevel) {
+                return false;
+            }
+            if (recipe == null) return false;
+            ItemStack output = recipe.value().getResultItem(registryAccess);
+            if (output.isEmpty()) return false;
+            ItemStack outputSlot = inventory.get(2);
+            if (outputSlot.isEmpty()) return true;
+            if (!outputSlot.is(output.getItem())) return false;
+            int resultCount = outputSlot.getCount() + output.getCount();
+            return resultCount <= outputSlot.getMaxStackSize() && resultCount <= maxStackSize;
+        }
+        if (item instanceof ArmorItem || item instanceof TieredItem) {
+            return false;
+        }
+        if (recipe == null) return false;
+        ItemStack output = recipe.value().getResultItem(registryAccess);
+        if (output.isEmpty()) return false;
+        ItemStack outputSlot = inventory.get(2);
+        if (outputSlot.isEmpty()) return true;
+        if (!outputSlot.is(output.getItem())) return false;
+        int resultCount = outputSlot.getCount() + output.getCount();
+        return resultCount <= outputSlot.getMaxStackSize() && resultCount <= maxStackSize;
     }
 
     @Shadow

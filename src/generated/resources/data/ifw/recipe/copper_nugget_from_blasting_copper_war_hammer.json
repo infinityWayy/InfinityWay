@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 5.0,
+  "ingredient": {
+    "item": "ifw:copper_war_hammer"
+  },
+  "result": {
+    "count": 5,
+    "id": "ifw:copper_nugget"
+  }
+}

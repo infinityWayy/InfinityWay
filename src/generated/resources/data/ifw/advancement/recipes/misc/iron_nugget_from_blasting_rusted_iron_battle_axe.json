@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rusted_iron_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ifw:rusted_iron_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ifw:iron_nugget_from_blasting_rusted_iron_battle_axe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rusted_iron_battle_axe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ifw:iron_nugget_from_blasting_rusted_iron_battle_axe"
+    ]
+  }
+}

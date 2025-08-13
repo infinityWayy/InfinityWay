@@ -4,11 +4,13 @@ import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -329,6 +331,158 @@ public class IFWRecipeProvider extends RecipeProvider {
                     .unlockedBy("has_plank", has(ItemTags.PLANKS))
                     .save(recipeOutput);
         }
+
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_chainmail_helmet.get(), IFWItems.copper_nugget.get(), 2, 2.0f, 100, "ifw", "copper_nugget_from_blasting_copper_chainmail_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_chainmail_chestplate.get(), IFWItems.copper_nugget.get(), 4, 4.0f, 100, "ifw", "copper_nugget_from_blasting_copper_chainmail_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_chainmail_leggings.get(), IFWItems.copper_nugget.get(), 3, 3.0f, 100, "ifw", "copper_nugget_from_blasting_copper_chainmail_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_chainmail_boots.get(), IFWItems.copper_nugget.get(), 1, 1.0f, 100, "ifw", "copper_nugget_from_blasting_copper_chainmail_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_helmet.get(), IFWItems.copper_nugget.get(), 4, 4.0f, 100, "ifw", "copper_nugget_from_blasting_copper_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_chestplate.get(), IFWItems.copper_nugget.get(), 8, 8.0f, 100, "ifw", "copper_nugget_from_blasting_copper_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_leggings.get(), IFWItems.copper_nugget.get(), 6, 6.0f, 100, "ifw", "copper_nugget_from_blasting_copper_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_boots.get(), IFWItems.copper_nugget.get(), 2, 2.0f, 100, "ifw", "copper_nugget_from_blasting_copper_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_sword.get(), IFWItems.copper_nugget.get(), 2, 2.0f, 100, "ifw", "copper_nugget_from_blasting_copper_sword");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_pickaxe.get(), IFWItems.copper_nugget.get(), 3, 3.0f, 100, "ifw", "copper_nugget_from_blasting_copper_pickaxe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_axe.get(), IFWItems.copper_nugget.get(), 3, 3.0f, 100, "ifw", "copper_nugget_from_blasting_copper_axe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_shovel.get(), IFWItems.copper_nugget.get(), 1, 1.0f, 100, "ifw", "copper_nugget_from_blasting_copper_shovel");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_hoe.get(), IFWItems.copper_nugget.get(), 2, 2.0f, 100, "ifw", "copper_nugget_from_blasting_copper_hoe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_mattock.get(), IFWItems.copper_nugget.get(), 4, 4.0f, 100, "ifw", "copper_nugget_from_blasting_copper_mattock");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_shears.get(), IFWItems.copper_nugget.get(), 2, 2.0f, 100, "ifw", "copper_nugget_from_blasting_copper_shears");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_scythe.get(), IFWItems.copper_nugget.get(), 2, 2.0f, 100, "ifw", "copper_nugget_from_blasting_copper_scythe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_war_hammer.get(), IFWItems.copper_nugget.get(), 5, 5.0f, 100, "ifw", "copper_nugget_from_blasting_copper_war_hammer");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.copper_battle_axe.get(), IFWItems.copper_nugget.get(), 4, 4.0f, 100, "ifw", "copper_nugget_from_blasting_copper_battle_axe");
+
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_helmet.get(), IFWItems.silver_nugget.get(), 4, 4.0f, 100, "ifw", "silver_nugget_from_blasting_silver_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_chestplate.get(), IFWItems.silver_nugget.get(), 8, 8.0f, 100, "ifw", "silver_nugget_from_blasting_silver_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_leggings.get(), IFWItems.silver_nugget.get(), 6, 6.0f, 100, "ifw", "silver_nugget_from_blasting_silver_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_boots.get(), IFWItems.silver_nugget.get(), 2, 2.0f, 100, "ifw", "silver_nugget_from_blasting_silver_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_chainmail_helmet.get(), IFWItems.silver_nugget.get(), 2, 2.0f, 100, "ifw", "silver_nugget_from_blasting_silver_chainmail_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_chainmail_chestplate.get(), IFWItems.silver_nugget.get(), 4, 4.0f, 100, "ifw", "silver_nugget_from_blasting_silver_chainmail_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_chainmail_leggings.get(), IFWItems.silver_nugget.get(), 3, 3.0f, 100, "ifw", "silver_nugget_from_blasting_silver_chainmail_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_chainmail_boots.get(), IFWItems.silver_nugget.get(), 1, 1.0f, 100, "ifw", "silver_nugget_from_blasting_silver_chainmail_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_sword.get(), IFWItems.silver_nugget.get(), 2, 2.0f, 100, "ifw", "silver_nugget_from_blasting_silver_sword");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_pickaxe.get(), IFWItems.silver_nugget.get(), 3, 3.0f, 100, "ifw", "silver_nugget_from_blasting_silver_pickaxe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_axe.get(), IFWItems.silver_nugget.get(), 3, 3.0f, 100, "ifw", "silver_nugget_from_blasting_silver_axe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_shovel.get(), IFWItems.silver_nugget.get(), 1, 1.0f, 100, "ifw", "silver_nugget_from_blasting_silver_shovel");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_hoe.get(), IFWItems.silver_nugget.get(), 2, 2.0f, 100, "ifw", "silver_nugget_from_blasting_silver_hoe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_shears.get(), IFWItems.silver_nugget.get(), 2, 2.0f, 100, "ifw", "silver_nugget_from_blasting_silver_shears");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_mattock.get(), IFWItems.silver_nugget.get(), 4, 4.0f, 100, "ifw", "silver_nugget_from_blasting_silver_mattock");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_scythe.get(), IFWItems.silver_nugget.get(), 2, 2.0f, 100, "ifw", "silver_nugget_from_blasting_silver_scythe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_war_hammer.get(), IFWItems.silver_nugget.get(), 5, 5.0f, 100, "ifw", "silver_nugget_from_blasting_silver_war_hammer");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.silver_battle_axe.get(), IFWItems.silver_nugget.get(), 4, 4.0f, 100, "ifw", "silver_nugget_from_blasting_silver_battle_axe");
+
+        equipmentBlastingRecipe(recipeOutput, IFWItems.golden_chainmail_helmet.get(), Items.GOLD_NUGGET, 2, 2.0f, 100, "ifw", "gold_nugget_from_blasting_golden_chainmail_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.golden_chainmail_chestplate.get(), Items.GOLD_NUGGET, 4, 4.0f, 100, "ifw", "gold_nugget_from_blasting_golden_chainmail_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.golden_chainmail_leggings.get(), Items.GOLD_NUGGET, 3, 3.0f, 100, "ifw", "gold_nugget_from_blasting_golden_chainmail_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.golden_chainmail_boots.get(), Items.GOLD_NUGGET, 1, 1.0f, 100, "ifw", "gold_nugget_from_blasting_golden_chainmail_boots");
+        equipmentBlastingRecipe(recipeOutput, Items.GOLDEN_HELMET, Items.GOLD_NUGGET, 4, 4.0f, 100, "minecraft", "gold_nugget_from_blasting_golden_helmet");
+        equipmentBlastingRecipe(recipeOutput, Items.GOLDEN_CHESTPLATE, Items.GOLD_NUGGET, 8, 8.0f, 100, "minecraft", "gold_nugget_from_blasting_golden_chestplate");
+        equipmentBlastingRecipe(recipeOutput, Items.GOLDEN_LEGGINGS, Items.GOLD_NUGGET, 6, 6.0f, 100, "minecraft", "gold_nugget_from_blasting_golden_leggings");
+        equipmentBlastingRecipe(recipeOutput, Items.GOLDEN_BOOTS, Items.GOLD_NUGGET, 2, 2.0f, 100, "minecraft", "gold_nugget_from_blasting_golden_boots");
+        equipmentBlastingRecipe(recipeOutput, Items.GOLDEN_SWORD, Items.GOLD_NUGGET, 2, 2.0f, 100, "minecraft", "gold_nugget_from_blasting_golden_sword");
+        equipmentBlastingRecipe(recipeOutput, Items.GOLDEN_PICKAXE, Items.GOLD_NUGGET, 3, 3.0f, 100, "minecraft", "gold_nugget_from_blasting_golden_pickaxe");
+        equipmentBlastingRecipe(recipeOutput, Items.GOLDEN_AXE, Items.GOLD_NUGGET, 3, 3.0f, 100, "minecraft", "gold_nugget_from_blasting_golden_axe");
+        equipmentBlastingRecipe(recipeOutput, Items.GOLDEN_SHOVEL, Items.GOLD_NUGGET, 1, 1.0f, 100, "minecraft", "gold_nugget_from_blasting_golden_shovel");
+        equipmentBlastingRecipe(recipeOutput, Items.GOLDEN_HOE, Items.GOLD_NUGGET, 2, 2.0f, 100, "minecraft", "gold_nugget_from_blasting_golden_hoe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.golden_shears.get(), Items.GOLD_NUGGET, 2, 2.0f, 100, "ifw", "gold_nugget_from_blasting_golden_shears");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.golden_mattock.get(), Items.GOLD_NUGGET, 4, 4.0f, 100, "ifw", "gold_nugget_from_blasting_golden_mattock");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.golden_scythe.get(), Items.GOLD_NUGGET, 2, 2.0f, 100, "ifw", "gold_nugget_from_blasting_golden_scythe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.golden_war_hammer.get(), Items.GOLD_NUGGET, 5, 5.0f, 100, "ifw", "gold_nugget_from_blasting_golden_war_hammer");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.golden_battle_axe.get(), Items.GOLD_NUGGET, 4, 4.0f, 100, "ifw", "gold_nugget_from_blasting_golden_battle_axe");
+
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_chainmail_helmet.get(), Items.IRON_NUGGET, 2, 2.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_chainmail_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_chainmail_chestplate.get(), Items.IRON_NUGGET, 4, 4.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_chainmail_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_chainmail_leggings.get(), Items.IRON_NUGGET, 3, 3.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_chainmail_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_chainmail_boots.get(), Items.IRON_NUGGET, 1, 1.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_chainmail_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_helmet.get(), Items.IRON_NUGGET, 4, 4.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_chestplate.get(), Items.IRON_NUGGET, 8, 8.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_leggings.get(), Items.IRON_NUGGET, 6, 6.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_boots.get(), Items.IRON_NUGGET, 2, 2.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_sword.get(), Items.IRON_NUGGET, 2, 2.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_sword");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_pickaxe.get(), Items.IRON_NUGGET, 3, 3.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_pickaxe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_axe.get(), Items.IRON_NUGGET, 3, 3.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_axe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_shovel.get(), Items.IRON_NUGGET, 1, 1.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_shovel");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_hoe.get(), Items.IRON_NUGGET, 2, 2.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_hoe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_shears.get(), Items.IRON_NUGGET, 2, 2.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_shears");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_mattock.get(), Items.IRON_NUGGET, 4, 4.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_mattock");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_scythe.get(), Items.IRON_NUGGET, 2, 2.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_scythe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_war_hammer.get(), Items.IRON_NUGGET, 5, 5.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_war_hammer");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.rusted_iron_battle_axe.get(), Items.IRON_NUGGET, 4, 4.0f, 100, "ifw", "iron_nugget_from_blasting_rusted_iron_battle_axe");
+        equipmentBlastingRecipe(recipeOutput, Items.CHAINMAIL_HELMET, Items.IRON_NUGGET, 2, 2.0f, 100, "minecraft", "iron_nugget_from_blasting_chainmail_helmet");
+        equipmentBlastingRecipe(recipeOutput, Items.CHAINMAIL_CHESTPLATE, Items.IRON_NUGGET, 4, 4.0f, 100, "minecraft", "iron_nugget_from_blasting_chainmail_chestplate");
+        equipmentBlastingRecipe(recipeOutput, Items.CHAINMAIL_LEGGINGS, Items.IRON_NUGGET, 3, 3.0f, 100, "minecraft", "iron_nugget_from_blasting_chainmail_leggings");
+        equipmentBlastingRecipe(recipeOutput, Items.CHAINMAIL_BOOTS, Items.IRON_NUGGET, 1, 1.0f, 100, "minecraft", "iron_nugget_from_blasting_chainmail_boots");
+        equipmentBlastingRecipe(recipeOutput, Items.IRON_HELMET, Items.IRON_NUGGET, 4, 4.0f, 100, "minecraft", "iron_nugget_from_blasting_iron_helmet");
+        equipmentBlastingRecipe(recipeOutput, Items.IRON_CHESTPLATE, Items.IRON_NUGGET, 8, 8.0f, 100, "minecraft", "iron_nugget_from_blasting_iron_chestplate");
+        equipmentBlastingRecipe(recipeOutput, Items.IRON_LEGGINGS, Items.IRON_NUGGET, 6, 6.0f, 100, "minecraft", "iron_nugget_from_blasting_iron_leggings");
+        equipmentBlastingRecipe(recipeOutput, Items.IRON_BOOTS, Items.IRON_NUGGET, 2, 2.0f, 100, "minecraft", "iron_nugget_from_blasting_iron_boots");
+        equipmentBlastingRecipe(recipeOutput, Items.IRON_SWORD, Items.IRON_NUGGET, 2, 2.0f, 100, "minecraft", "iron_nugget_from_blasting_iron_sword");
+        equipmentBlastingRecipe(recipeOutput, Items.IRON_PICKAXE, Items.IRON_NUGGET, 3, 3.0f, 100, "minecraft", "iron_nugget_from_blasting_iron_pickaxe");
+        equipmentBlastingRecipe(recipeOutput, Items.IRON_AXE, Items.IRON_NUGGET, 3, 3.0f, 100, "minecraft", "iron_nugget_from_blasting_iron_axe");
+        equipmentBlastingRecipe(recipeOutput, Items.IRON_SHOVEL, Items.IRON_NUGGET, 1, 1.0f, 100, "minecraft", "iron_nugget_from_blasting_iron_shovel");
+        equipmentBlastingRecipe(recipeOutput, Items.IRON_HOE, Items.IRON_NUGGET, 2, 2.0f, 100, "minecraft", "iron_nugget_from_blasting_iron_hoe");
+        equipmentBlastingRecipe(recipeOutput, Items.SHEARS, Items.IRON_NUGGET, 2, 2.0f, 100, "minecraft", "iron_nugget_from_blasting_shears");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.iron_mattock.get(), Items.IRON_NUGGET, 4, 4.0f, 100, "ifw", "iron_nugget_from_blasting_iron_mattock");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.iron_scythe.get(), Items.IRON_NUGGET, 2, 2.0f, 100, "ifw", "iron_nugget_from_blasting_iron_scythe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.iron_war_hammer.get(), Items.IRON_NUGGET, 5, 5.0f, 100, "ifw", "iron_nugget_from_blasting_iron_war_hammer");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.iron_battle_axe.get(), Items.IRON_NUGGET, 4, 4.0f, 100, "ifw", "iron_nugget_from_blasting_iron_battle_axe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.iron_dagger.get(), Items.IRON_NUGGET, 2, 2.0f, 100, "ifw", "iron_nugget_from_blasting_iron_dagger");
+
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_chainmail_helmet.get(), IFWItems.ancient_metal_nugget.get(), 2, 2.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_chainmail_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_chainmail_chestplate.get(), IFWItems.ancient_metal_nugget.get(), 4, 4.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_chainmail_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_chainmail_leggings.get(), IFWItems.ancient_metal_nugget.get(), 3, 3.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_chainmail_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_chainmail_boots.get(), IFWItems.ancient_metal_nugget.get(), 1, 1.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_chainmail_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_helmet.get(), IFWItems.ancient_metal_nugget.get(), 4, 4.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_chestplate.get(), IFWItems.ancient_metal_nugget.get(), 8, 8.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_leggings.get(), IFWItems.ancient_metal_nugget.get(), 6, 6.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_boots.get(), IFWItems.ancient_metal_nugget.get(), 2, 2.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_sword.get(), IFWItems.ancient_metal_nugget.get(), 2, 2.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_sword");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_pickaxe.get(), IFWItems.ancient_metal_nugget.get(), 3, 3.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_pickaxe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_axe.get(), IFWItems.ancient_metal_nugget.get(), 3, 3.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_axe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_shovel.get(), IFWItems.ancient_metal_nugget.get(), 1, 1.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_shovel");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_hoe.get(), IFWItems.ancient_metal_nugget.get(), 2, 2.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_hoe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_shears.get(), IFWItems.ancient_metal_nugget.get(), 2, 2.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_shears");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_mattock.get(), IFWItems.ancient_metal_nugget.get(), 4, 4.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_mattock");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_scythe.get(), IFWItems.ancient_metal_nugget.get(), 2, 2.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_scythe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_war_hammer.get(), IFWItems.ancient_metal_nugget.get(), 5, 5.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_war_hammer");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.ancient_metal_battle_axe.get(), IFWItems.ancient_metal_nugget.get(), 4, 4.0f, 100, "ifw", "ancient_metal_nugget_from_blasting_ancient_metal_battle_axe");
+
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_chainmail_helmet.get(), IFWItems.mithril_nugget.get(), 2, 2.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_chainmail_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_chainmail_chestplate.get(), IFWItems.mithril_nugget.get(), 4, 4.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_chainmail_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_chainmail_leggings.get(), IFWItems.mithril_nugget.get(), 3, 3.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_chainmail_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_chainmail_boots.get(), IFWItems.mithril_nugget.get(), 1, 1.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_chainmail_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_helmet.get(), IFWItems.mithril_nugget.get(), 4, 4.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_chestplate.get(), IFWItems.mithril_nugget.get(), 8, 8.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_leggings.get(), IFWItems.mithril_nugget.get(), 6, 6.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_boots.get(), IFWItems.mithril_nugget.get(), 2, 2.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_sword.get(), IFWItems.mithril_nugget.get(), 2, 2.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_sword");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_pickaxe.get(), IFWItems.mithril_nugget.get(), 3, 3.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_pickaxe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_axe.get(), IFWItems.mithril_nugget.get(), 3, 3.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_axe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_shovel.get(), IFWItems.mithril_nugget.get(), 1, 1.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_shovel");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_hoe.get(), IFWItems.mithril_nugget.get(), 2, 2.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_hoe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_shears.get(), IFWItems.mithril_nugget.get(), 2, 2.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_shears");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_mattock.get(), IFWItems.mithril_nugget.get(), 4, 4.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_mattock");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_scythe.get(), IFWItems.mithril_nugget.get(), 2, 2.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_scythe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_war_hammer.get(), IFWItems.mithril_nugget.get(), 5, 5.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_war_hammer");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.mithril_battle_axe.get(), IFWItems.mithril_nugget.get(), 4, 4.0f, 100, "ifw", "mithril_nugget_from_blasting_mithril_battle_axe");
+
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_chainmail_helmet.get(), IFWItems.adamantium_nugget.get(), 2, 2.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_chainmail_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_chainmail_chestplate.get(), IFWItems.adamantium_nugget.get(), 4, 4.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_chainmail_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_chainmail_leggings.get(), IFWItems.adamantium_nugget.get(), 3, 3.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_chainmail_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_chainmail_boots.get(), IFWItems.adamantium_nugget.get(), 1, 1.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_chainmail_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_helmet.get(), IFWItems.adamantium_nugget.get(), 4, 4.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_helmet");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_chestplate.get(), IFWItems.adamantium_nugget.get(), 8, 8.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_chestplate");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_leggings.get(), IFWItems.adamantium_nugget.get(), 6, 6.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_leggings");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_boots.get(), IFWItems.adamantium_nugget.get(), 2, 2.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_boots");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_sword.get(), IFWItems.adamantium_nugget.get(), 2, 2.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_sword");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_pickaxe.get(), IFWItems.adamantium_nugget.get(), 3, 3.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_pickaxe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_axe.get(), IFWItems.adamantium_nugget.get(), 3, 3.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_axe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_shovel.get(), IFWItems.adamantium_nugget.get(), 1, 1.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_shovel");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_hoe.get(), IFWItems.adamantium_nugget.get(), 2, 2.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_hoe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_shears.get(), IFWItems.adamantium_nugget.get(), 2, 2.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_shears");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_mattock.get(), IFWItems.adamantium_nugget.get(), 4, 4.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_mattock");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_scythe.get(), IFWItems.adamantium_nugget.get(), 2, 2.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_scythe");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_war_hammer.get(), IFWItems.adamantium_nugget.get(), 5, 5.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_war_hammer");
+        equipmentBlastingRecipe(recipeOutput, IFWItems.adamantium_battle_axe.get(), IFWItems.adamantium_nugget.get(), 4, 4.0f, 100, "ifw", "adamantium_nugget_from_blasting_adamantium_battle_axe");
     }
 
     private void bucketRecipe(RecipeOutput recipeOutput, ItemLike bucket, ItemLike material) {
@@ -873,5 +1027,26 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_bone", has(Items.BONE))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("ifw", "blazing_wither_bone"));
 
+    }
+
+    private void equipmentBlastingRecipe(
+            RecipeOutput recipeOutput,
+            ItemLike input,
+            ItemLike outputNugget,
+            int outputCount,
+            float xp,
+            int cookTime,
+            String namespace,
+            String recipeName
+    ) {
+        SimpleCookingRecipeBuilder.blasting(
+                        net.minecraft.world.item.crafting.Ingredient.of(input),
+                        net.minecraft.data.recipes.RecipeCategory.MISC,
+                        new ItemStack(outputNugget, outputCount),
+                        xp,
+                        cookTime
+                )
+                .unlockedBy("has_" + BuiltInRegistries.ITEM.getKey(input.asItem()).getPath(), has(input))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(namespace, recipeName));
     }
 }

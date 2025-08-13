@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 4.0,
+  "ingredient": {
+    "item": "ifw:copper_battle_axe"
+  },
+  "result": {
+    "count": 4,
+    "id": "ifw:copper_nugget"
+  }
+}
