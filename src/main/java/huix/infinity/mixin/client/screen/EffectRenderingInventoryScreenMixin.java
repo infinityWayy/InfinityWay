@@ -36,15 +36,33 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
             int j = this.width - renderX;
             if (j >= 32) {
                 boolean flag = j >= 120;
-
                 ScreenEvent.RenderInventoryMobEffects event = ClientHooks.onScreenPotionSize(this, j, !flag, renderX);
                 if (event.isCanceled()) return;
                 flag = !event.isCompact();
                 renderX = event.getHorizontalOffset();
 
+                // 先渲染背景和图标
                 this.renderCurseBackgrounds(guiGraphics, renderX, this.curse_yOffset, flag);
                 this.renderCurseIcons(guiGraphics, renderX, this.curse_yOffset, flag);
-                if (flag) this.renderCurseLabels(guiGraphics, renderX, this.curse_yOffset, player);}
+                if (flag) this.renderCurseLabels(guiGraphics, renderX, this.curse_yOffset, player);
+
+                // 渲染 Tooltip，已识别只显示真实内容，未识别只显示未知内容
+                int iconX = renderX + (flag ? 6 : 7);
+                int iconY = this.topPos + 7;
+                int iconWidth = 18, iconHeight = 18;
+                if (mouseX >= iconX && mouseX <= iconX + iconWidth && mouseY >= iconY && mouseY <= iconY + iconHeight) {
+                    var curse = player.getCurse();
+                    java.util.List<Component> tooltip = new java.util.ArrayList<>();
+                    if (player.knownCurse()) {
+                        tooltip.add(Component.translatable("curse.ifw." + curse.name()));
+                        tooltip.add(Component.translatable("curse.ifw." + curse.name() + ".desc"));
+                    } else {
+                        tooltip.add(Component.translatable("effect.unkonwn.curse"));
+                        tooltip.add(Component.translatable("curse.ifw.unknown.desc"));
+                    }
+                    guiGraphics.renderTooltip(this.font, tooltip, java.util.Optional.empty(), mouseX, mouseY);
+                }
+            }
         }
 
         if (player.suffering_insulinResistance_mild()) {
@@ -53,7 +71,6 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
             int j = this.width - renderX;
             if (j >= 32) {
                 boolean flag = j >= 120;
-
                 ScreenEvent.RenderInventoryMobEffects event = ClientHooks.onScreenPotionSize(this, j, !flag, renderX);
                 if (event.isCanceled()) return;
                 flag = !event.isCompact();
@@ -63,7 +80,6 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
                 this.renderInsulinResponseIcons(guiGraphics, renderX, this.insulin_response_yOffset, flag);
                 if (flag)
                     this.renderInsulinResponseLabels(guiGraphics, renderX, this.insulin_response_yOffset, player);
-
             }
         }
     }
@@ -86,11 +102,12 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
     @Unique
     private void renderCurseLabels(GuiGraphics guiGraphics, int renderX, int yOffset, Player player) {
         Component component = Component.translatable("effect.unkonwn.curse");
-        if (player.knownCurse())
-            component = Component.translatable(player.getCurse().name());
-
+        Component curseDescription = Component.translatable("curse.ifw.unknown.desc");
+        if (player.knownCurse()) {
+            component = Component.translatable("curse.ifw." + player.getCurse().name());
+            curseDescription = Component.translatable("curse.ifw." + player.getCurse().name() + ".desc");
+        }
         guiGraphics.drawString(this.font, component, renderX + 10 + 18, this.topPos + 6, 16777215);
-        Component curseDescription = Component.translatable("curse.ifw." + player.getCurse().name() + ".desc");
         guiGraphics.drawString(this.font, curseDescription, renderX + 10 + 18, this.topPos + 6 + this.font.lineHeight, 16711680);
     }
 
@@ -115,17 +132,15 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
     private void renderInsulinResponseLabels(GuiGraphics guiGraphics, int renderX, int yOffset, Player player) {
         Component component = Component.translatable("effect.insulin_resistance_mild");
         guiGraphics.drawString(this.font, component, renderX + 10 + 18, this.topPos + yOffset + 6, 0xFF55FF);
-//        Component description = UnClearEffect.getDescriptionComponent();
-//        guiGraphics.drawString(this.font, description, renderX + 10 + 18, this.topPos + yOffset + 6 + this.font.lineHeight, 0xCC5500);
+        // Component description = UnClearEffect.getDescriptionComponent();
+        // guiGraphics.drawString(this.font, description, renderX + 10 + 18, this.topPos + yOffset + 6 + this.font.lineHeight, 0xCC5500);
     }
-
 
     @ModifyConstant(constant = @Constant(intValue = 5), method = "renderEffects")
     private int modifyRenderSize(int constant) {
         if (this.minecraft.player.hasCurse()) constant--;
         return constant;
     }
-
 
     @Redirect(at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screens/inventory/EffectRenderingInventoryScreen;topPos:I"),
             method = {"renderBackgrounds", "renderEffects", "renderIcons", "renderLabels"})

@@ -1,15 +1,18 @@
 package huix.infinity.extension.func;
 
-
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.world.curse.CurseType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
 
-
+/**
+ * 玩家扩展接口（Mixin/Attachment）
+ * 修正版：支持诅咒识别机制，推荐使用 Boolean 类型 Attachment
+ */
 public interface PlayerExtension {
     FoodData getFoodData();
+
     default Player instance() {
         return (Player) this;
     }
@@ -18,8 +21,7 @@ public interface PlayerExtension {
         instance().giveExperiencePoints(-expPoints);
     }
 
-    default void ifw_updateTotalExperience() {
-    }
+    default void ifw_updateTotalExperience() {}
 
     default boolean infinityWay$canResetTimeBySleeping() {
         return false;
@@ -37,22 +39,45 @@ public interface PlayerExtension {
         return this.getFoodData().ifw_insulinResponse() > 144000;
     }
 
+    /**
+     * 是否已经识别当前诅咒（用于“未知诅咒”机制）
+     * 需要在 IFWAttachments 注册 player_curse_known（Boolean 类型）
+     */
     default boolean knownCurse() {
-        return false;
+        return instance().getData(IFWAttachments.player_curse_known);
     }
 
+    /**
+     * 设置诅咒是否被识别
+     */
+    default void setKnownCurse(boolean known) {
+        instance().setData(IFWAttachments.player_curse_known, known);
+    }
+
+    /**
+     * 是否有任何诅咒
+     */
     default boolean hasCurse() {
         return getCurse() != CurseType.none;
     }
 
+    /**
+     * 是否拥有特定类型诅咒
+     */
     default boolean hasCurse(CurseType curse) {
-        return hasCurse() && !getCurse().equals(curse);
+        return getCurse() == curse;
     }
 
+    /**
+     * 获取当前诅咒类型
+     */
     default CurseType getCurse() {
         return CurseType.values()[instance().getData(IFWAttachments.player_curse)];
     }
 
+    /**
+     * 设置当前诅咒类型
+     */
     default void setCurse(CurseType curse) {
         instance().setData(IFWAttachments.player_curse, curse.ordinal());
     }
@@ -60,5 +85,4 @@ public interface PlayerExtension {
     default void setCurse(int curseID) {
         setCurse(CurseType.values()[curseID]);
     }
-
 }

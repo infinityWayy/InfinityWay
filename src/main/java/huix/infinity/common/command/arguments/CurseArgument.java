@@ -5,14 +5,15 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import huix.infinity.common.world.curse.CurseType;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.function.Supplier;
-
+import java.util.concurrent.CompletableFuture;
 
 public class CurseArgument implements ArgumentType<CurseType> {
 
@@ -37,9 +38,17 @@ public class CurseArgument implements ArgumentType<CurseType> {
         return new CurseArgument();
     }
 
-
     @Override
     public Collection<String> getExamples() {
         return Arrays.asList("equipment_decays_faster", "cannot_hold_breath");
+    }
+    @Override
+    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
+        for (CurseType type : CurseType.values()) {
+            if (type != CurseType.none) {
+                builder.suggest(type.name());
+            }
+        }
+        return builder.buildFuture();
     }
 }
