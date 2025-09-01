@@ -2,6 +2,7 @@ package huix.infinity.extension.func;
 
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.world.curse.CurseType;
+import huix.infinity.common.world.entity.player.NutritionalStatus;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
@@ -37,6 +38,11 @@ public interface PlayerExtension {
 
     default boolean suffering_insulinResistance_severe() {
         return this.getFoodData().ifw_insulinResponse() > 144000;
+    }
+
+    default boolean sufferingMalnutrition() {
+        NutritionalStatus status = this.getFoodData().ifw_nutritionalStatus();
+        return status == NutritionalStatus.LIGHT || status == NutritionalStatus.SERIOUS;
     }
 
     /**

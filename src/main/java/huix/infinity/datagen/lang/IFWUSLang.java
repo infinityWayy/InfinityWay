@@ -16,10 +16,11 @@ public class IFWUSLang extends IFWLanguageProvider {
     @Override
     protected void addTranslations() {
         //Curses
+        add("effect.ifw.curse", "Curse");
         add("ifw.witch_curse.curse", "You have been cursed!");
         add("ifw.witch_curse.discurse", "The curse has gone");
         add("curse.ifw.none", "Empty");
-        add("effect.ifw.unkonwn.curse", "Unknown Curse");
+        add("effect.ifw.unknown.curse", "Unknown Curse");
         add("curse.ifw.equipment_decays_faster", "Equipment Decay");
         add("curse.ifw.cannot_hold_breath", "Can't Hold Breath");
         add("curse.ifw.cannot_run", "Can't Run");
@@ -37,24 +38,24 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("curse.ifw.fear_of_creepers", "Fear of Creepers");
         add("curse.ifw.fear_of_undead", "Fear of Undead");
         //Curse_Description
-        add("curse.ifw.none.desc", "You are not cursed");
-        add("curse.ifw.unknown.desc", "You have been cursed, but its nature is currently unknown.");
-        add("curse.ifw.equipment_decays_faster.desc", "Your equipment is wearing out faster than usual");
-        add("curse.ifw.cannot_hold_breath.desc", "You seem unable to hold your breath for very long");
-        add("curse.ifw.cannot_run.desc", "You find that your legs don't obey when you try to run");
-        add("curse.ifw.cannot_eat_meats.desc", "You find yourself unable to eat meat or animal products");
-        add("curse.ifw.cannot_eat_plants.desc", "You find yourself unable to eat seeds and other plant foods");
-        add("curse.ifw.cannot_drink.desc", "You find yourself unable to drink liquids");
-        add("curse.ifw.endermen_aggro.desc", "Endermen seem to have taken a strong disliking to you");
-        add("curse.ifw.clumsiness.desc", "Everything feels clumsy in your hands and crafting is difficult");
-        add("curse.ifw.entanglement.desc", "You find yourself having great difficulty moving through vines and other plants");
-        add("curse.ifw.cannot_wear_armor.desc", "You find yourself unable to wear armor of any sort");
-        add("curse.ifw.cannot_open_chests.desc", "You find yourself unable to open chests");
-        add("curse.ifw.cannot_sleep.desc", "You find yourself unable to sleep at night");
-        add("curse.ifw.fear_of_spiders.desc", "You've become fearful of spiders and have difficulty striking them in melee combat");
-        add("curse.ifw.fear_of_wolves.desc", "You've become fearful of wolves and have difficulty striking them in melee combat");
-        add("curse.ifw.fear_of_creepers.desc", "You've become fearful of creepers and have difficulty striking them in melee combat");
-        add("curse.ifw.fear_of_undead.desc", "You've become fearful of undead and have difficulty striking them in melee combat");
+        add("curse.ifw.none.desc", "§cYou are not cursed");
+        add("curse.ifw.unknown.desc", "§cUnknown effect");
+        add("curse.ifw.equipment_decays_faster.desc", "§cYour equipment is wearing out faster than usual");
+        add("curse.ifw.cannot_hold_breath.desc", "§cYou seem unable to hold your breath for very long");
+        add("curse.ifw.cannot_run.desc", "§cYou find that your legs don't obey when you try to run");
+        add("curse.ifw.cannot_eat_meats.desc", "§cYou find yourself unable to eat meat or animal products");
+        add("curse.ifw.cannot_eat_plants.desc", "§cYou find yourself unable to eat seeds and other plant foods");
+        add("curse.ifw.cannot_drink.desc", "§cYou find yourself unable to drink liquids");
+        add("curse.ifw.endermen_aggro.desc", "§cEndermen seem to have taken a strong disliking to you");
+        add("curse.ifw.clumsiness.desc", "§cEverything feels clumsy in your hands and crafting is difficult");
+        add("curse.ifw.entanglement.desc", "§cYou find yourself having great difficulty moving through vines and other plants");
+        add("curse.ifw.cannot_wear_armor.desc", "§cYou find yourself unable to wear armor of any sort");
+        add("curse.ifw.cannot_open_chests.desc", "§cYou find yourself unable to open chests");
+        add("curse.ifw.cannot_sleep.desc", "§cYou find yourself unable to sleep at night");
+        add("curse.ifw.fear_of_spiders.desc", "§cYou've become fearful of spiders and have difficulty striking them in melee combat");
+        add("curse.ifw.fear_of_wolves.desc", "§cYou've become fearful of wolves and have difficulty striking them in melee combat");
+        add("curse.ifw.fear_of_creepers.desc", "§cYou've become fearful of creepers and have difficulty striking them in melee combat");
+        add("curse.ifw.fear_of_undead.desc", "§cYou've become fearful of undead and have difficulty striking them in melee combat");
 
 
         //Effect

@@ -19,6 +19,8 @@ import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Optional;
+
 @Mixin(EffectRenderingInventoryScreen.class)
 public abstract class EffectRenderingInventoryScreenMixin extends AbstractContainerScreen {
 
@@ -42,9 +44,9 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
                 renderX = event.getHorizontalOffset();
 
                 // 先渲染背景和图标
-                this.renderCurseBackgrounds(guiGraphics, renderX, this.curse_yOffset, flag);
+                this.renderCurseBackgrounds(guiGraphics, renderX, this.curse_yOffset, flag, true);
                 this.renderCurseIcons(guiGraphics, renderX, this.curse_yOffset, flag);
-                if (flag) this.renderCurseLabels(guiGraphics, renderX, this.curse_yOffset, player);
+                this.renderCurseLabels(guiGraphics, renderX, this.curse_yOffset, player);
 
                 // 渲染 Tooltip，已识别只显示真实内容，未识别只显示未知内容
                 int iconX = renderX + (flag ? 6 : 7);
@@ -54,13 +56,11 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
                     var curse = player.getCurse();
                     java.util.List<Component> tooltip = new java.util.ArrayList<>();
                     if (player.knownCurse()) {
-                        tooltip.add(Component.translatable("curse.ifw." + curse.name()));
                         tooltip.add(Component.translatable("curse.ifw." + curse.name() + ".desc"));
                     } else {
-                        tooltip.add(Component.translatable("effect.unkonwn.curse"));
                         tooltip.add(Component.translatable("curse.ifw.unknown.desc"));
                     }
-                    guiGraphics.renderTooltip(this.font, tooltip, java.util.Optional.empty(), mouseX, mouseY);
+                    guiGraphics.renderTooltip(this.font, tooltip, Optional.empty(), mouseX, mouseY);
                 }
             }
         }
@@ -86,29 +86,38 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
 
     //Curse
     @Unique
-    private void renderCurseBackgrounds(GuiGraphics guiGraphics, int renderX, int yOffset, boolean isSmall) {
-        if (isSmall) guiGraphics.blitSprite(EFFECT_BACKGROUND_LARGE_SPRITE, renderX, this.topPos, 120, 32);
-        else guiGraphics.blitSprite(EFFECT_BACKGROUND_SMALL_SPRITE, renderX, this.topPos, 32, 32);
+    private void renderCurseBackgrounds(GuiGraphics guiGraphics, int renderX, int yOffset, boolean isSmall, boolean hasLabel) {
+        if (hasLabel) {
+            guiGraphics.blitSprite(EFFECT_BACKGROUND_LARGE_SPRITE, renderX, this.topPos, 120, 32);
+        } else {
+            guiGraphics.blitSprite(EFFECT_BACKGROUND_SMALL_SPRITE, renderX, this.topPos, 32, 32);
+        }
     }
 
     @Unique
-    private void renderCurseIcons(GuiGraphics guiGraphics, int renderX, int yOffset, boolean isSmall) {
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderTexture(0, IFWConstants.LOCATION_P_EFFECT_TEXTURE_ATLAS);
-        TextureAtlasSprite textureatlassprite = IFWConstants.persistentEffectTextureManager.getCurse();
-        guiGraphics.blit(renderX + (isSmall ? 6 : 7), this.topPos + 7, 0, 18, 18, textureatlassprite);
+    private void renderCurseIcons(GuiGraphics g, int renderX, int yOffset, boolean large) {
+        g.blit(IFWConstants.WITCH_CURSE_ICON,
+                renderX + (large ? 6 : 7),
+                this.topPos + yOffset - 25,
+                0, 0,
+                18, 18,
+                18, 18);
     }
 
     @Unique
     private void renderCurseLabels(GuiGraphics guiGraphics, int renderX, int yOffset, Player player) {
-        Component component = Component.translatable("effect.unkonwn.curse");
-        Component curseDescription = Component.translatable("curse.ifw.unknown.desc");
+        Component label = Component.translatable("effect.ifw.curse");
+        Component curseName;
         if (player.knownCurse()) {
-            component = Component.translatable("curse.ifw." + player.getCurse().name());
-            curseDescription = Component.translatable("curse.ifw." + player.getCurse().name() + ".desc");
+            curseName = Component.translatable("curse.ifw." + player.getCurse().name());
+        } else {
+            curseName = Component.translatable("effect.ifw.unknown.curse");
         }
-        guiGraphics.drawString(this.font, component, renderX + 10 + 18, this.topPos + 6, 16777215);
-        guiGraphics.drawString(this.font, curseDescription, renderX + 10 + 18, this.topPos + 6 + this.font.lineHeight, 16711680);
+        int x = renderX + 10 + 18;
+        int y = this.topPos + 6;
+
+        guiGraphics.drawString(this.font, label, x, y, 0xFFFFFF);
+        guiGraphics.drawString(this.font, curseName, x, y + this.font.lineHeight, 0xAA00FF);
     }
 
     //InsulinResponse
@@ -121,11 +130,11 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
     }
 
     @Unique
-    private void renderInsulinResponseIcons(GuiGraphics guiGraphics, int renderX, int yOffset, boolean isSmall) {
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderTexture(0, IFWConstants.LOCATION_P_EFFECT_TEXTURE_ATLAS);
-        TextureAtlasSprite textureatlassprite = IFWConstants.persistentEffectTextureManager.getInsulinResistance();
-        guiGraphics.blit(renderX + (isSmall ? 6 : 7), this.topPos + yOffset + 7, 0, 18, 18, textureatlassprite);
+    private void renderInsulinResponseIcons(GuiGraphics g, int renderX, int yOffset, boolean large) {
+        g.blit(IFWConstants.INSULIN_RESISTANCE_ICON,
+                renderX + (large ? 6 : 7),
+                this.topPos + yOffset - 25,
+                0, 0, 18, 18, 18, 18);
     }
 
     @Unique

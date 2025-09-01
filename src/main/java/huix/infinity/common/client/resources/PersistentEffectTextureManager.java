@@ -5,7 +5,6 @@ import huix.infinity.util.IFWConstants;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.resources.TextureAtlasHolder;
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -14,7 +13,9 @@ import net.neoforged.api.distmarker.OnlyIn;
 public class PersistentEffectTextureManager extends TextureAtlasHolder {
 
     public PersistentEffectTextureManager(TextureManager textureManager) {
-        super(textureManager, IFWConstants.LOCATION_P_EFFECT_TEXTURE_ATLAS, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "atlases/persistent_effects"));
+        super(textureManager,
+                IFWConstants.PERSISTENT_EFFECTS_ATLAS_LOCATION,
+                IFWConstants.PERSISTENT_EFFECTS_ATLAS_ID);
     }
 
     public TextureAtlasSprite getCurse() {

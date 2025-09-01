@@ -16,9 +16,10 @@ public class IFWCNLang extends IFWLanguageProvider {
     @Override
     protected void addTranslations() {
         //诅咒
+        add("effect.ifw.curse", "诅咒");
         add("ifw.witch_curse.curse", "你已经被诅咒了！");
         add("ifw.witch_curse.discurse","诅咒消逝");
-        add("effect.ifw.unkonwn.curse", "未知诅咒");
+        add("effect.ifw.unknown.curse", "未知诅咒");
         add("curse.ifw.none", "无诅咒");
         add("curse.ifw.equipment_decays_faster", "腐蚀性皮肤");
         add("curse.ifw.cannot_hold_breath", "呼吸困难");
@@ -37,24 +38,24 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("curse.ifw.fear_of_creepers", "苦力怕恐惧");
         add("curse.ifw.fear_of_undead", "亡灵生物恐惧");
         //诅咒描述
-        add("curse.ifw.unknown.desc", "你被诅咒了，但诅咒效果未知.");
-        add("curse.ifw.none.desc", "你没有被诅咒");
-        add("curse.ifw.equipment_decays_faster.desc", "你发现你的装备、武器与工具的耐久度下降得更快");
-        add("curse.ifw.cannot_hold_breath.desc", "你发现你不能屏息很长时间");
-        add("curse.ifw.cannot_run.desc", "你发现你不能疾跑");
-        add("curse.ifw.cannot_eat_meats.desc", "你发现你不能食用任何动物制品");
-        add("curse.ifw.cannot_eat_plants.desc", "你发现你不能食用任何植物制品");
-        add("curse.ifw.cannot_drink.desc", "你发现你不能饮用任何汤、煲类食物");
-        add("curse.ifw.endermen_aggro.desc", "你发现末影人总是对你无缘无故地发起攻击");
-        add("curse.ifw.clumsiness.desc", "你发现制作物品变得十分困难");
-        add("curse.ifw.entanglement.desc", "你发现你很难穿越草、藤蔓等植物");
-        add("curse.ifw.cannot_wear_armor.desc", "你发现你不能穿着盔甲");
-        add("curse.ifw.cannot_open_chests.desc", "你发现你无法打开箱子（我柜子怎么动了）");
-        add("curse.ifw.cannot_sleep.desc", "你发现你在晚上无法入睡");
-        add("curse.ifw.fear_of_spiders.desc", "你发现你难以对蜘蛛发起有效攻击");
-        add("curse.ifw.fear_of_wolves.desc", "你发现你难以对狼发起有效攻击");
-        add("curse.ifw.fear_of_creepers.desc", "你发现你难以对苦力怕发起有效攻击");
-        add("curse.ifw.fear_of_undead.desc", "你发现你难以对亡灵生物发起有效攻击");
+        add("curse.ifw.unknown.desc", "§c未知效果");
+        add("curse.ifw.none.desc", "§c你没有被诅咒");
+        add("curse.ifw.equipment_decays_faster.desc", "§c你发现你的装备、武器与工具的耐久度下降得更快");
+        add("curse.ifw.cannot_hold_breath.desc", "§c你发现你不能屏息很长时间");
+        add("curse.ifw.cannot_run.desc", "§c你发现你不能疾跑");
+        add("curse.ifw.cannot_eat_meats.desc", "§c你发现你不能食用任何动物制品");
+        add("curse.ifw.cannot_eat_plants.desc", "§c你发现你不能食用任何植物制品");
+        add("curse.ifw.cannot_drink.desc", "§c你发现你不能饮用任何汤、煲类食物");
+        add("curse.ifw.endermen_aggro.desc", "§c你发现末影人总是对你无缘无故地发起攻击");
+        add("curse.ifw.clumsiness.desc", "§c你发现制作物品变得十分困难");
+        add("curse.ifw.entanglement.desc", "§c你发现你很难穿越草、藤蔓等植物");
+        add("curse.ifw.cannot_wear_armor.desc", "§c你发现你不能穿着盔甲");
+        add("curse.ifw.cannot_open_chests.desc", "§c你发现你无法打开箱子（我柜子怎么动了）");
+        add("curse.ifw.cannot_sleep.desc", "§c你发现你在晚上无法入睡");
+        add("curse.ifw.fear_of_spiders.desc", "§c你发现你难以对蜘蛛发起有效攻击");
+        add("curse.ifw.fear_of_wolves.desc", "§c你发现你难以对狼发起有效攻击");
+        add("curse.ifw.fear_of_creepers.desc", "§c你发现你难以对苦力怕发起有效攻击");
+        add("curse.ifw.fear_of_undead.desc", "§c你发现你难以对亡灵生物发起有效攻击");
 
         //效果
         add("effect.ifw.insulin_resistance", "胰岛素抵抗");
