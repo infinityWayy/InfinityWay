@@ -17,7 +17,13 @@ public class IFWConstants {
     public static final ResourceLocation INSULIN_RESISTANCE_ICON =
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "textures/gui/sprites/insulin_resistance.png");
 
+    public static final ResourceLocation SUGAR_ICON =
+            ResourceLocation.fromNamespaceAndPath("minecraft",  "textures/item/sugar.png");
+
     public static final ResourceLocation WITCH_CURSE_ICON =
             ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "textures/gui/sprites/curse.png");
+
+    public static final ResourceLocation MALNOURISHED_ICON =
+            ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "textures/gui/sprites/malnourished.png");
 
 }

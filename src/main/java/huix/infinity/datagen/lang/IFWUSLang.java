@@ -59,8 +59,17 @@ public class IFWUSLang extends IFWLanguageProvider {
 
 
         //Effect
-        add("effect.ifw.insulin_resistance", "Insulin Resistance");
-
+        add("effect.ifw.insulin_resistance.stage1", "Mild insulin resistance");
+        add("effect.ifw.insulin_resistance.stage2", "Moderate insulin resistance");
+        add("effect.ifw.insulin_resistance.stage3", "Severe insulin resistance");
+        add("effect.ifw.insulin_resistance.stage1.desc", "You feel sick after eating too much sugary food.");
+        add("effect.ifw.insulin_resistance.stage2.desc", "You can't metabolize sugar!");
+        add("effect.ifw.insulin_resistance.stage3.desc", "You have diabetes!");
+        add("effect.ifw.malnourished", "Malnourished");
+        add("effect.ifw.malnourished.desc", "+50% hunger speed, slows recovery.");
+        add("effect.ifw.malnourished.general", "Eat a balanced diet to avoid malnutrition.");
+        add("effect.ifw.malnourished.protein", "You need to eat more meat and dairy products to balance your diet.");
+        add("effect.ifw.malnourished.phytonutrients", "You need to eat more fruits and vegetables to balance your diet.");
 
         //Entity
         add(IFWEntityType.CHICKEN.value(), "Chicken");

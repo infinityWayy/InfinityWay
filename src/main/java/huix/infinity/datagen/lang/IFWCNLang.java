@@ -58,7 +58,17 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("curse.ifw.fear_of_undead.desc", "§c你发现你难以对亡灵生物发起有效攻击");
 
         //效果
-        add("effect.ifw.insulin_resistance", "胰岛素抵抗");
+        add("effect.ifw.insulin_resistance.stage1", "轻度胰岛素抵抗");
+        add("effect.ifw.insulin_resistance.stage2", "中度胰岛素抵抗");
+        add("effect.ifw.insulin_resistance.stage3", "重度胰岛素抵抗");
+        add("effect.ifw.insulin_resistance.stage1.desc", "你食用了过多含糖的食物后感到不舒服。");
+        add("effect.ifw.insulin_resistance.stage2.desc", "你不能代谢糖！");
+        add("effect.ifw.insulin_resistance.stage3.desc", "你患了糖尿病！");
+        add("effect.ifw.malnourished", "营养不良");
+        add("effect.ifw.malnourished.desc", "+50%饥饿速度，减缓恢复速度。");
+        add("effect.ifw.malnourished.general", "均衡饮食以避免营养不良。");
+        add("effect.ifw.malnourished.protein", "你需要食用更多的肉类与奶制品以均衡饮食。");
+        add("effect.ifw.malnourished.phytonutrients", "你需要食用更多的水果与蔬菜以均衡饮食。");
 
         // 生物名称
         add(IFWEntityType.CHICKEN.value(), "鸡");
