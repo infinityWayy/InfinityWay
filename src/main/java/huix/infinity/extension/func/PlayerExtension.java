@@ -3,6 +3,7 @@ package huix.infinity.extension.func;
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.world.curse.CurseType;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
+import huix.infinity.common.world.food.EnumInsulinResistanceLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
@@ -28,16 +29,18 @@ public interface PlayerExtension {
         return false;
     }
 
+    default EnumInsulinResistanceLevel getInsulinResistanceLevel() {
+        return EnumInsulinResistanceLevel.fromValue(this.getFoodData().ifw_insulinResponse());
+    }
+
     default boolean suffering_insulinResistance_mild() {
-        return this.getFoodData().ifw_insulinResponse() > 48000;
+        return getInsulinResistanceLevel() == EnumInsulinResistanceLevel.MILD;
     }
-
     default boolean suffering_insulinResistance_moderate() {
-        return this.getFoodData().ifw_insulinResponse() > 96000;
+        return getInsulinResistanceLevel() == EnumInsulinResistanceLevel.MODERATE;
     }
-
     default boolean suffering_insulinResistance_severe() {
-        return this.getFoodData().ifw_insulinResponse() > 144000;
+        return getInsulinResistanceLevel() == EnumInsulinResistanceLevel.SEVERE;
     }
 
     default boolean sufferingMalnutrition() {

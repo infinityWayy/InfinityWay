@@ -64,12 +64,12 @@ public class PlayerCommands {
                                 // 上限值
                                 final int PHYTONUTRIENTS_MAX = 160000;
                                 final int PROTEIN_MAX = 160000;
-                                final int INSULIN_RESPONSE_MAX = 192000;
+                                final int INSULIN_RESPONSE_MAX = 144000;
 
                                 // 计算百分比
-                                double phytPercent = (double) phytonutrients / PHYTONUTRIENTS_MAX * 100;
-                                double proteinPercent = (double) protein / PROTEIN_MAX * 100;
-                                double insulinResponsePercent = (double) insulinResponse / INSULIN_RESPONSE_MAX * 100;
+                                double phytPercent = Math.round((double) phytonutrients / PHYTONUTRIENTS_MAX * 1000) / 10.0;
+                                double proteinPercent = Math.round((double) protein / PROTEIN_MAX * 1000) / 10.0;
+                                double insulinResponsePercent = Math.round((double) insulinResponse / INSULIN_RESPONSE_MAX * 1000) / 10.0;
 
                                 // 构建带颜色的 Component
                                 Component phytComponent = Component.translatable(

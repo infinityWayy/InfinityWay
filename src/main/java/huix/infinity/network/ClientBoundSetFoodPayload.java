@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 
-public record ClientBoundSetFoodPayload(int maxFood, int nutritionalStatus, int phytonutrients, int protein) implements CustomPacketPayload {
+public record ClientBoundSetFoodPayload(int maxFood, int nutritionalStatus, int phytonutrients, int protein, int insulinResponse) implements CustomPacketPayload {
 
     public static final Type<ClientBoundSetFoodPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, "health_packet"));
 
@@ -18,6 +18,7 @@ public record ClientBoundSetFoodPayload(int maxFood, int nutritionalStatus, int 
             ByteBufCodecs.VAR_INT, ClientBoundSetFoodPayload::nutritionalStatus,
             ByteBufCodecs.VAR_INT, ClientBoundSetFoodPayload::phytonutrients,
             ByteBufCodecs.VAR_INT, ClientBoundSetFoodPayload::protein,
+            ByteBufCodecs.VAR_INT, ClientBoundSetFoodPayload::insulinResponse,
             ClientBoundSetFoodPayload::new);
 
     @Override

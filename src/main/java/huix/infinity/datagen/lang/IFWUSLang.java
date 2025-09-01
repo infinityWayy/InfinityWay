@@ -1,13 +1,13 @@
 package huix.infinity.datagen.lang;
 
 import huix.infinity.common.world.block.IFWBlocks;
-import huix.infinity.common.world.curse.CurseType;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
 import huix.infinity.util.IFWLanguageProvider;
 import net.minecraft.data.PackOutput;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class IFWUSLang extends IFWLanguageProvider {
     public IFWUSLang(PackOutput output) {
         super(output, InfinityWay.MOD_ID, "en_us");
@@ -66,7 +66,8 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("effect.ifw.insulin_resistance.stage2.desc", "You can't metabolize sugar!");
         add("effect.ifw.insulin_resistance.stage3.desc", "You have diabetes!");
         add("effect.ifw.malnourished", "Malnourished");
-        add("effect.ifw.malnourished.desc", "+50% hunger speed, slows recovery.");
+        add("effect.ifw.malnourished.desc1", "+50% hunger speed.");
+        add("effect.ifw.malnourished.desc2", "Slows recovery.");
         add("effect.ifw.malnourished.general", "Eat a balanced diet to avoid malnutrition.");
         add("effect.ifw.malnourished.protein", "You need to eat more meat and dairy products to balance your diet.");
         add("effect.ifw.malnourished.phytonutrients", "You need to eat more fruits and vegetables to balance your diet.");

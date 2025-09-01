@@ -53,6 +53,8 @@ public abstract class ServerPlayerMixin extends Player implements PlayerExtensio
     private int ifw_lastMaxFoodLevel;
     @Unique
     private NutritionalStatus ifw_lastStats;
+    @Unique
+    private int ifw_lastInsulinResponse;
 
     @Unique
     @Override
@@ -67,10 +69,20 @@ public abstract class ServerPlayerMixin extends Player implements PlayerExtensio
 
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;getHealth()F", ordinal = 0, shift = At.Shift.BEFORE), method = "doTick")
     private void updateHealth(CallbackInfo ci){
-        if (this.ifw_lastMaxFoodLevel !=  this.foodData.ifw_maxFoodLevel() || this.ifw_lastStats != foodData.ifw_nutritionalStatus()) {
-            this.connection.send(new ClientBoundSetFoodPayload(foodData.ifw_maxFoodLevel(), foodData.ifw_nutritionalStatusByINT(), foodData.ifw_phytonutrients(), foodData.ifw_protein()));
-            this.ifw_lastMaxFoodLevel = this.foodData.ifw_maxFoodLevel();
+        if (
+                this.ifw_lastMaxFoodLevel != this.foodData.ifw_maxFoodLevel() ||
+                        this.ifw_lastStats != this.foodData.ifw_nutritionalStatus() ||
+                        this.ifw_lastInsulinResponse != this.foodData.ifw_insulinResponse()) {
+            this.connection.send(new ClientBoundSetFoodPayload(
+                    foodData.ifw_maxFoodLevel(),
+                    foodData.ifw_nutritionalStatusByINT(),
+                    foodData.ifw_phytonutrients(),
+                    foodData.ifw_protein(),
+                    foodData.ifw_insulinResponse()
+            ));
+            this.ifw_lastMaxFoodLevel = foodData.ifw_maxFoodLevel();
             this.ifw_lastStats = foodData.ifw_nutritionalStatus();
+            this.ifw_lastInsulinResponse = foodData.ifw_insulinResponse();
         }
     }
 

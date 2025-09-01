@@ -1,8 +1,8 @@
 package huix.infinity.mixin.world.food;
 
-import huix.infinity.common.world.effect.IFWMobEffects;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.common.world.food.IFWFoodProperties;
+import huix.infinity.common.world.food.EnumInsulinResistanceLevel;
 import huix.infinity.extension.func.FoodDataExtension;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
@@ -182,21 +182,16 @@ public class FoodDataMixin implements FoodDataExtension {
             }
         }
 
-        //insulinResponsea
-        final int stage1 = 115200;
-        final int stage2 = 172800;
+        EnumInsulinResistanceLevel level = EnumInsulinResistanceLevel.fromValue(this.insulinResponse);
         float irExhaustion = 0.0F;
-        if (ifw_irLight()) {
+        if (level != EnumInsulinResistanceLevel.NONE && this.insulinResponse > this.lastInsulinResponse) {
             irExhaustion = 0.1F;
-            if (this.insulinResponse > stage1) {
+            if (level == EnumInsulinResistanceLevel.MODERATE) {
                 irExhaustion = 0.2F;
-                if (this.insulinResponse > stage2) {
-                    irExhaustion = 0.4F;
-                    ifw_addEffect(player, 9000.0F, 5400.0F, 259200, 2);
-                } else
-                    ifw_addEffect(player, 5400.0F, 3600.0F, stage2, 1);
-            } else
-                ifw_addEffect(player, 600.0F, 5400.0F, stage1, 0);
+            }
+            if (level == EnumInsulinResistanceLevel.SEVERE) {
+                irExhaustion = 0.4F;
+            }
         }
 
         if (this.tickTimer % 20 == 0)
@@ -214,22 +209,21 @@ public class FoodDataMixin implements FoodDataExtension {
     }
 
     @Unique
-    private boolean ifw_irLight() {
-        return this.insulinResponse > 76800 && this.insulinResponse > this.lastInsulinResponse;
-    }
-
-    @Unique
     private void ifw_removeIR() {
         if (this.insulinResponse > 0)
             --this.insulinResponse;
     }
 
-    @Unique
-    private void ifw_addEffect(Player player, float start, float times,  float now, int amplifier) {
-        player.addEffect(new MobEffectInstance(IFWMobEffects.insulin_resistance,
-                20 * (int)(start + times * (1.0F - 1.0E-5F * (now - this.insulinResponse))), amplifier, true, false));
-    }
-
+//    @Unique
+//    private boolean ifw_irLight() {
+//        return this.insulinResponse > 76800 && this.insulinResponse > this.lastInsulinResponse;
+//    }
+//
+//    @Unique
+//    private void ifw_addEffect(Player player, float start, float times,  float now, int amplifier) {
+//        player.addEffect(new MobEffectInstance(IFWMobEffects.insulin_resistance,
+//                20 * (int)(start + times * (1.0F - 1.0E-5F * (now - this.insulinResponse))), amplifier, true, false));
+//    }
 
     @Unique
     @Override
@@ -322,7 +316,7 @@ public class FoodDataMixin implements FoodDataExtension {
             result /= 8;
 
         return player.level().getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION)
-                 && this.tickTimer >= result;
+                && this.tickTimer >= result;
     }
     @Unique
     private boolean damageTick() {
@@ -359,6 +353,4 @@ public class FoodDataMixin implements FoodDataExtension {
         float malnourishment_factor = !this.hasNutrition() ? 0.5F : 0.0F;
         return 1.0F + wetness_factor + malnourishment_factor;
     }
-
-
 }

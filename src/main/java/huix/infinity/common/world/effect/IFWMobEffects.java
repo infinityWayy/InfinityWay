@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class IFWMobEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, InfinityWay.MOD_ID);
-
-    public static final DeferredHolder<MobEffect, MobEffect> insulin_resistance = MOB_EFFECTS.register("insulin_resistance",
-            () -> new UnClearEffect(MobEffectCategory.BENEFICIAL, 12171723));
+//
+//    public static final DeferredHolder<MobEffect, MobEffect> insulin_resistance = MOB_EFFECTS.register("insulin_resistance",
+//            () -> new UnClearEffect(MobEffectCategory.BENEFICIAL, 12171723));
 }

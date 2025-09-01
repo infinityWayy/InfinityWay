@@ -19,6 +19,7 @@ public final class ClientPayloadHandler {
         player.getFoodData().ifw_phytonutrients(payload.phytonutrients());
         player.getFoodData().ifw_protein(payload.protein());
         player.getFoodData().ifw_nutritionalStatusByINT(payload.nutritionalStatus());
+        player.getFoodData().ifw_insulinResponse(payload.insulinResponse());
     }
 
     public static void handleCurse(final ClientBoundSetCursePayload payload, final IPayloadContext context) {

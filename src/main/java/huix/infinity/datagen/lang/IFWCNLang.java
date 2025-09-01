@@ -1,7 +1,6 @@
 package huix.infinity.datagen.lang;
 
 import huix.infinity.common.world.block.IFWBlocks;
-import huix.infinity.common.world.curse.CurseType;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.init.InfinityWay;
@@ -65,7 +64,8 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("effect.ifw.insulin_resistance.stage2.desc", "你不能代谢糖！");
         add("effect.ifw.insulin_resistance.stage3.desc", "你患了糖尿病！");
         add("effect.ifw.malnourished", "营养不良");
-        add("effect.ifw.malnourished.desc", "+50%饥饿速度，减缓恢复速度。");
+        add("effect.ifw.malnourished.desc1", "+50%饥饿速度。");
+        add("effect.ifw.malnourished.desc2", "减缓恢复速度。");
         add("effect.ifw.malnourished.general", "均衡饮食以避免营养不良。");
         add("effect.ifw.malnourished.protein", "你需要食用更多的肉类与奶制品以均衡饮食。");
         add("effect.ifw.malnourished.phytonutrients", "你需要食用更多的水果与蔬菜以均衡饮食。");
