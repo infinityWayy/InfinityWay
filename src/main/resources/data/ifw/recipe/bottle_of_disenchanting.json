@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:coal" },
+    { "item": "minecraft:nether_wart" },
+    { "item": "minecraft:potion", "nbt": "{Potion:\"minecraft:water\"}" }
+  ],
+  "result": { "id": "ifw:bottle_of_disenchanting", "count": 1 }
+}
