@@ -169,6 +169,7 @@ public class IFWItemGroups {
                 output.accept(IFWItems.flint_fishing_rod.get());
                 output.accept(IFWItems.obsidian_fishing_rod.get());
                 output.accept(IFWItems.gold_pan.get());
+                output.accept(IFWItems.bottle_of_disenchanting.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tool_tab =

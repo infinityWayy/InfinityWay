@@ -272,6 +272,8 @@ public class IFWItems {
             ITEMS.registerSimpleItem("wither_bone_handle", new Item.Properties().stacksTo(16).fireResistant());
     public static final DeferredItem<Item> blazing_wither_bone =
             ITEMS.registerSimpleItem("blazing_wither_bone", new Item.Properties().stacksTo(16).fireResistant());
+    public static final DeferredItem<Item> bottle_of_disenchanting =
+            ITEMS.register("bottle_of_disenchanting", () -> new BottleOfDisenchantingItem(new Item.Properties().stacksTo(1).craftRemainder(Items.GLASS_BOTTLE)));
     public static final DeferredItem<Item> copper_chain =
             ITEMS.registerSimpleItem("copper_chain", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> silver_chain =

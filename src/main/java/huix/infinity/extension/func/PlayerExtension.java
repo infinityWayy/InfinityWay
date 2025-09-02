@@ -1,12 +1,16 @@
 package huix.infinity.extension.func;
 
 import huix.infinity.attachment.IFWAttachments;
+import huix.infinity.common.world.curse.CurseManager;
 import huix.infinity.common.world.curse.CurseType;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.common.world.food.EnumInsulinResistanceLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.UUID;
 
 /**
  * 玩家扩展接口（Mixin/Attachment）
@@ -70,6 +74,14 @@ public interface PlayerExtension {
         return getCurse() != CurseType.none;
     }
 
+    default boolean hasCursePending() {
+        if (instance() instanceof ServerPlayer serverPlayer) {
+            UUID uuid = serverPlayer.getUUID();
+            return CurseManager.INSTANCE.playerHasCursePending(uuid);
+        }
+        return false;
+    }
+
     /**
      * 是否拥有特定类型诅咒
      */
@@ -87,11 +99,11 @@ public interface PlayerExtension {
     /**
      * 设置当前诅咒类型
      */
-    default void setCurse(CurseType curse) {
+    default void ifw$setCurse(CurseType curse) {
         instance().setData(IFWAttachments.player_curse, curse.ordinal());
     }
 
     default void setCurse(int curseID) {
-        setCurse(CurseType.values()[curseID]);
+        ifw$setCurse(CurseType.values()[curseID]);
     }
 }

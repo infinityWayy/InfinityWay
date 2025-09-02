@@ -17,7 +17,7 @@ public class IFWUSLang extends IFWLanguageProvider {
     protected void addTranslations() {
         //Curses
         add("effect.ifw.curse", "Curse");
-        add("ifw.witch_curse.curse", "You have been cursed!");
+        add("ifw.witch_curse.curse", "%s has cursed you!");
         add("ifw.witch_curse.discurse", "The curse has gone");
         add("curse.ifw.none", "Empty");
         add("effect.ifw.unknown.curse", "Unknown Curse");
@@ -399,6 +399,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.banana.get(), "Banana");
         add(IFWItems.cooked_worm.get(), "Cooked Worm");
         add(IFWItems.worm.get(), "Worm");
+        add(IFWItems.bottle_of_disenchanting.get(), "Bottle of Disenchanting");
         add(IFWItems.flint_shard.get(), "Flint Shard");
         add(IFWItems.obsidian_shard.get(), "Obsidian Shard");
         add(IFWItems.glass_shard.get(), "Glass Shard");

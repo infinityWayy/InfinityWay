@@ -16,7 +16,7 @@ public class IFWCNLang extends IFWLanguageProvider {
     protected void addTranslations() {
         //诅咒
         add("effect.ifw.curse", "诅咒");
-        add("ifw.witch_curse.curse", "你已经被诅咒了！");
+        add("ifw.witch_curse.curse", "%s 已经诅咒了你！");
         add("ifw.witch_curse.discurse","诅咒消逝");
         add("effect.ifw.unknown.curse", "未知诅咒");
         add("curse.ifw.none", "无诅咒");
@@ -391,6 +391,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.banana.get(), "香蕉");
         add(IFWItems.cooked_worm.get(), "熟虫子");
         add(IFWItems.worm.get(), "虫子");
+        add(IFWItems.bottle_of_disenchanting.get(), "祛魔之瓶");
         add(IFWItems.flint_shard.get(), "燧石碎块");
         add(IFWItems.obsidian_shard.get(), "黑曜石碎片");
         add(IFWItems.glass_shard.get(), "玻璃碎片");

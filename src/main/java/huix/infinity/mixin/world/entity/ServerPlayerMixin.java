@@ -9,10 +9,7 @@ import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.network.ClientBoundSetCursePayload;
 import huix.infinity.network.ClientBoundSetFoodPayload;
 import huix.infinity.util.ReflectHelper;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.stats.Stats;
@@ -58,12 +55,8 @@ public abstract class ServerPlayerMixin extends Player implements PlayerExtensio
 
     @Unique
     @Override
-    public void setCurse(CurseType curse) {
-        super.setCurse(curse);
-        if (curse == CurseType.none)
-            this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.discurse").withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD)));
-        else
-            this.connection.send(new ClientboundSetActionBarTextPacket(Component.keybind("ifw.witch_curse.curse").withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.BOLD)));
+    public void ifw$setCurse(CurseType curse) {
+        super.ifw$setCurse(curse);
         PacketDistributor.sendToPlayer(ReflectHelper.dyCast(this), new ClientBoundSetCursePayload(curse.ordinal()));
     }
 

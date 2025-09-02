@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-12T22:56:30.1909377	Item Models: ifw
+// 1.21.1	2025-09-02T08:44:56.6883667	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -88,6 +88,7 @@ aa50639a2f49d36eff86485122cb855251407d54 assets/ifw/models/item/beef_stew.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/blob_spawn_egg.json
 a3348deef0d095298887251ea972b6e4f4de7b08 assets/ifw/models/item/blueberry.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/bone_lord_spawn_egg.json
+0c3a7017adcc2ae33acf12a18686a8bfb3f23759 assets/ifw/models/item/bottle_of_disenchanting.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/cave_spider_spawn_egg.json
 4d4b4c3bf529abe5e355c9810cffb05df656bbb9 assets/ifw/models/item/cereal.json
 c94008cfc66a738ab0539be5f54fbee69cbf4b76 assets/ifw/models/item/cheese.json

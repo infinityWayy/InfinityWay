@@ -311,6 +311,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.wither_bone.get());
         basicItem(IFWItems.wither_bone_handle.get());
         basicItem(IFWItems.blazing_wither_bone.get());
+        basicItem(IFWItems.bottle_of_disenchanting.get());
         basicItem(IFWItems.copper_bucket.get());
         basicItem(IFWItems.water_copper_bucket.get());
         basicItem(IFWItems.lava_copper_bucket.get());
