@@ -57,6 +57,10 @@ public abstract class ServerPlayerMixin extends Player implements PlayerExtensio
     @Override
     public void ifw$setCurse(CurseType curse) {
         super.ifw$setCurse(curse);
+        if (!this.level().isClientSide && this.connection != null) {
+            PacketDistributor.sendToPlayer((ServerPlayer)(Object)this,
+                    new ClientBoundSetCursePayload(curse.ordinal(), this.knownCurse()));
+        }
     }
 
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;getHealth()F", ordinal = 0, shift = At.Shift.BEFORE), method = "doTick")

@@ -28,6 +28,7 @@
     "world.damagesource.CombatRulesMixin",
     "world.enchantment.RemoveBinomialMixin",
     "world.entity.AbstractArrowMixin",
+    "world.entity.EntityMixin",
     "world.entity.LivingEntityMixin",
     "world.entity.MobMixin",
     "world.entity.PlayerMixin",

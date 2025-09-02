@@ -80,14 +80,14 @@ public class CurseManager {
                 for (ServerPlayer player : players) {
                     if (player.getUUID().equals(curse.playerUuid)) {
                         if (player instanceof PlayerExtension ext) {
-                            ext.ifw$setCurse(curse.curseType);
                             ext.setKnownCurse(false);
+                            ext.ifw$setCurse(curse.curseType);
                         }
                         var msg = curse.curseType == CurseType.none
                                 ? Component.translatable("ifw.witch_curse.discurse", curse.witchName).withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD)
                                 : Component.translatable("ifw.witch_curse.curse", curse.witchName).withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.BOLD);
                         player.connection.send(new ClientboundSetActionBarTextPacket(msg));
-                        PacketDistributor.sendToPlayer(player, new ClientBoundSetCursePayload(curse.curseType.ordinal()));
+                        PacketDistributor.sendToPlayer(player, new ClientBoundSetCursePayload(curse.curseType.ordinal(), false));
                         player.level().addParticle(ParticleTypes.WITCH, player.getX(), player.getY() + 1, player.getZ(), 0.0, 0.0, 0.0);
                         player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
                                 curse.curseType == CurseType.none ? SoundEvents.WITCH_AMBIENT : SoundEvents.WITCH_CELEBRATE,
@@ -110,7 +110,7 @@ public class CurseManager {
     public void syncCurseRemoved(ServerPlayer player) {
         var msg = Component.keybind("ifw.witch_curse.discurse").withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD);
         player.connection.send(new ClientboundSetActionBarTextPacket(msg));
-        PacketDistributor.sendToPlayer(player, new ClientBoundSetCursePayload(CurseType.none.ordinal()));
+        PacketDistributor.sendToPlayer(player, new ClientBoundSetCursePayload(CurseType.none.ordinal(), true));
     }
 
 }

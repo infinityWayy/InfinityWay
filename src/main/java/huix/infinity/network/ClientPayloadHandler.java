@@ -23,6 +23,7 @@ public final class ClientPayloadHandler {
         if (player != null) {
             CurseType curseType = CurseType.values()[payload.curseID()];
             player.ifw$setCurse(curseType);
+            player.setKnownCurse(payload.known());
         }
     }
 }

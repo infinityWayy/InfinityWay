@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 
 public enum CurseType implements IExtensibleEnum {
     none,
-    unknown,
     equipment_decays_faster,
     cannot_hold_breath,
     cannot_run,

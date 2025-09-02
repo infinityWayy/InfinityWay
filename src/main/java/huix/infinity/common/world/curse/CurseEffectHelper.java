@@ -56,7 +56,7 @@ public class CurseEffectHelper {
         if (!ext.knownCurse()) {
             ext.setKnownCurse(true);
             if (ext instanceof ServerPlayer sp) {
-                PacketDistributor.sendToPlayer(ReflectHelper.dyCast(sp), new ClientBoundSetCursePayload(sp.getCurse().ordinal()));
+                PacketDistributor.sendToPlayer(ReflectHelper.dyCast(sp), new ClientBoundSetCursePayload(sp.getCurse().ordinal(), true));
             }
         }
     }

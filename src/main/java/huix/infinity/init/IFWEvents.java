@@ -15,6 +15,7 @@ import huix.infinity.compat.farmersdelight.FDFoodAdapter;
 import huix.infinity.extension.func.FoodDataExtension;
 import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.init.event.IFWLoading;
+import huix.infinity.init.event.IFWSoundEvents;
 import huix.infinity.util.IFWEnchantmentHelper;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.ChatFormatting;
@@ -22,12 +23,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -64,7 +68,6 @@ import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.neoforged.neoforge.event.level.SleepFinishedTimeEvent;
 import net.neoforged.neoforge.event.level.block.CropGrowEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 import java.util.*;
@@ -206,8 +209,7 @@ public class IFWEvents {
 
         if (isFood || food != null) {
             compatNutrition = getCompatibilityNutrition(item);
-        }
-        else if (InfinityWay.FarmersDelightLoaded) {
+        } else if (InfinityWay.FarmersDelightLoaded) {
             compatNutrition = getCompatibilityNutrition(item);
         }
         if (!isFood && food == null && ifwFoodData == null && compatNutrition == null) {
@@ -224,6 +226,7 @@ public class IFWEvents {
             showMoreFoodInfo(compatNutrition, event.getToolTip());
         }
     }
+
     private static IFWFoodProperties getCompatibilityNutrition(Item item) {
 
         if (InfinityWay.FarmersDelightLoaded) {
@@ -421,27 +424,19 @@ public class IFWEvents {
     }
 
     @SubscribeEvent
-    public static void onPlayerTick(PlayerTickEvent.Post event) {
-        Player player = event.getEntity();
-        if (!player.level().isClientSide) {
-            int originAir = player.getAirSupply();
-            int restrictedAir = CurseEffectHelper.restrictAir(player, originAir);
-            if (restrictedAir != originAir) {
-                player.setAirSupply(restrictedAir);
-            }
-        }
-    }
-
-    @SubscribeEvent
     public static void onPlayerInteractBlock(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getEntity();
         if (!(player instanceof PlayerExtension ext)) return;
         if (ext.getCurse() == CurseType.cannot_open_chests) {
             Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
             Item item = Item.BY_BLOCK.get(block);
-            if (item != null && item.builtInRegistryHolder().is(IFWItemTags.CHESTS)) {
-                CurseEffectHelper.learnCurseEffect(ext);
-                event.setCanceled(true);
+            if (item != null) {
+                Holder<Item> holder = BuiltInRegistries.ITEM.wrapAsHolder(item);
+                if (holder.is(IFWItemTags.CHESTS)) {
+                    CurseEffectHelper.learnCurseEffect(ext);
+                    player.level().playSound(null, player.getX(), player.getY(), player.getZ(), IFWSoundEvents.CHEST_LOCKED.get(), SoundSource.BLOCKS, 0.2F, 1.0F);
+                    event.setCanceled(true);
+                }
             }
         }
     }

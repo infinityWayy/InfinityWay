@@ -2,7 +2,15 @@
   "classic_hurt": {
     "sounds": [
       {
-        "name": "ifw:classic/classic_hurt",
+        "name": "ifw:random/classic_hurt",
+        "stream": false
+      }
+    ]
+  },
+  "chest_locked": {
+    "sounds": [
+      {
+        "name": "ifw:random/chest_locked",
         "stream": false
       }
     ]

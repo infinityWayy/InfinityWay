@@ -20,6 +20,13 @@ public class IFWSoundEvents {
                     )
             );
 
+    public static final Supplier<SoundEvent> CHEST_LOCKED =
+            SOUND_EVENTS.register("chest_locked", () ->
+                    SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath("ifw", "chest_locked")
+                    )
+            );
+
     public static final Supplier<SoundEvent> REVENANT_AMBIENT =
             SOUND_EVENTS.register("revenant_ambient", () ->
                     SoundEvent.createVariableRangeEvent(
