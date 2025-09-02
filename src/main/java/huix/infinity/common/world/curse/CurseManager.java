@@ -36,6 +36,7 @@ public class CurseManager {
             ServerPlayer online = getOnlinePlayerByUUID(playerUuid, onlinePlayers);
             if (online != null && online instanceof PlayerExtension ext) {
                 ext.ifw$setCurse(CurseType.none);
+                ext.setKnownCurse(false);
                 syncCurseRemoved(online);
             } else {
                 pendingCurseClear.add(playerUuid);
@@ -48,6 +49,7 @@ public class CurseManager {
         curses.removeIf(curse -> curse.playerUuid.equals(uuid));
         if (player instanceof PlayerExtension ext) {
             ext.ifw$setCurse(CurseType.none);
+            ext.setKnownCurse(false);
             syncCurseRemoved(player);
         }
     }

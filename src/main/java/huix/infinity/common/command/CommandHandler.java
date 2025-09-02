@@ -2,6 +2,7 @@ package huix.infinity.common.command;
 
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.world.curse.CurseType;
+import huix.infinity.extension.func.PlayerExtension;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -16,10 +17,15 @@ public class CommandHandler {
     public static int giveCurse(CommandSourceStack stack, CurseType curse, Collection<? extends Entity> entities) {
         for (Entity entity : entities) {
             if (entity instanceof Player player) {
-                if (entities.size() == 1) stack.sendSuccess(() -> Component.translatable("commands.give.curse.player", curse.name(), entity.getDisplayName()), true);
-                else stack.sendSuccess(() -> Component.translatable("commands.give.curse.players", curse.name(), entities.size()), true);
-                player.ifw$setCurse(curse);
+                if (entities.size() == 1)
+                    stack.sendSuccess(() -> Component.translatable("commands.give.curse.player", curse.name(), entity.getDisplayName()), true);
+                else
+                    stack.sendSuccess(() -> Component.translatable("commands.give.curse.players", curse.name(), entities.size()), true);
                 player.setData(IFWAttachments.player_curse_known, false);
+                if (player instanceof PlayerExtension ext) {
+                    ext.setKnownCurse(false);
+                }
+                player.ifw$setCurse(curse);
             }
         }
         return entities.size();
@@ -31,10 +37,16 @@ public class CommandHandler {
     public static int clearCurse(CommandSourceStack stack, Collection<? extends Entity> entities) {
         for (Entity entity : entities) {
             if (entity instanceof Player player) {
-                if (entities.size() == 1) stack.sendSuccess(() -> Component.translatable("commands.clear.curse.player", entity.getDisplayName()), true);
-                else stack.sendSuccess(() -> Component.translatable("commands.clear.curse.players", entities.size()), true);
+                huix.infinity.common.world.curse.CurseManager.INSTANCE.removeCursesFromPlayer((net.minecraft.server.level.ServerPlayer) player);
                 player.ifw$setCurse(CurseType.none);
+                player.setData(IFWAttachments.player_curse_known, false);
+                if (entities.size() == 1) {
+                    stack.sendSuccess(() -> Component.translatable("commands.clear.curse.player", entity.getDisplayName()), true);
+                }
             }
+        }
+        if (entities.size() > 1) {
+            stack.sendSuccess(() -> Component.translatable("commands.clear.curse.players", entities.size()), true);
         }
         return entities.size();
     }

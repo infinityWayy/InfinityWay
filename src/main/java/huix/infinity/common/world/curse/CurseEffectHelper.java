@@ -43,15 +43,6 @@ public class CurseEffectHelper {
         return true;
     }
 
-    public static int restrictAir(Player player, int origin) {
-        if (!(player instanceof PlayerExtension ext)) return origin;
-        if (ext.getCurse() == CurseType.cannot_hold_breath && origin > 90) {
-            learnCurseEffect(ext);
-            return 90;
-        }
-        return origin;
-    }
-
     public static void learnCurseEffect(PlayerExtension ext) {
         if (!ext.knownCurse()) {
             ext.setKnownCurse(true);

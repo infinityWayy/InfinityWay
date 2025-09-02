@@ -1,5 +1,6 @@
 package huix.infinity.mixin.world.entity;
 
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import huix.infinity.extension.func.PlayerExtension;
@@ -20,18 +21,16 @@ public class EntityMixin {
             if (ext.getCurse() == CurseType.cannot_hold_breath) {
                 maxAir = 90;
             }
-            maxAir = CurseEffectHelper.restrictAir(player, maxAir);
             cir.setReturnValue(maxAir);
         }
     }
 
     @Inject(method = "getAirSupply", at = @At("RETURN"), cancellable = true)
     private void ifw$limitAirSupply(CallbackInfoReturnable<Integer> cir) {
-        if ((Object)this instanceof Player player) {
-            int originAir = cir.getReturnValue();
-            int restrictedAir = CurseEffectHelper.restrictAir(player, originAir);
-            if (restrictedAir != originAir) {
-                cir.setReturnValue(restrictedAir);
+        if ((Object)this instanceof Player player && player instanceof PlayerExtension ext) {
+            if (ext.getCurse() == CurseType.cannot_hold_breath && player.isEyeInFluid(FluidTags.WATER)) {
+                CurseEffectHelper.learnCurseEffect(ext);
+                cir.setReturnValue(90);
             }
         }
     }
