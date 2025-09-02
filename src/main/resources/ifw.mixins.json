@@ -46,6 +46,7 @@
     "world.entity.animal.ThrownEggMixin",
     "world.entity.animal.TropicalMixin",
     "world.entity.animal.WolfMixin",
+    "world.entity.monster.EnderManMixin",
     "world.entity.monster.WitchMixin",
     "world.entity.projectile.FishingHookMixin",
     "world.food.FoodDataMixin",

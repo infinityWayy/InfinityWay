@@ -2,6 +2,9 @@ package huix.infinity.init;
 
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.core.component.IFWDataComponents;
+import huix.infinity.common.core.tag.IFWItemTags;
+import huix.infinity.common.world.curse.CurseEffectHelper;
+import huix.infinity.common.world.curse.CurseType;
 import huix.infinity.common.world.effect.UnClearEffect;
 import huix.infinity.common.world.entity.player.LevelBonusStats;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
@@ -10,6 +13,7 @@ import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.compat.farmersdelight.FDEventHandler;
 import huix.infinity.compat.farmersdelight.FDFoodAdapter;
 import huix.infinity.extension.func.FoodDataExtension;
+import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.init.event.IFWLoading;
 import huix.infinity.util.IFWEnchantmentHelper;
 import huix.infinity.util.WorldHelper;
@@ -26,6 +30,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -38,6 +43,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -52,11 +58,13 @@ import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
 import net.neoforged.neoforge.event.TagsUpdatedEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.neoforged.neoforge.event.level.SleepFinishedTimeEvent;
 import net.neoforged.neoforge.event.level.block.CropGrowEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 import java.util.*;
@@ -99,6 +107,26 @@ public class IFWEvents {
                 }
             }
         }
+        //Armor Curse Effect: Remove armor if cursed
+        for (ServerLevel level : event.getServer().getAllLevels()) {
+            for (ServerPlayer player : level.players()) {
+                if (!CurseEffectHelper.canWearArmor(player)) {
+                    EquipmentSlot[] armorSlots = {
+                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET
+                    };
+                    for (EquipmentSlot slot : armorSlots) {
+                        ItemStack armorStack = player.getItemBySlot(slot);
+                        if (!armorStack.isEmpty()) {
+                            boolean added = player.getInventory().add(armorStack);
+                            if (!added) {
+                                player.drop(armorStack, false);
+                            }
+                            player.setItemSlot(slot, ItemStack.EMPTY);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @SubscribeEvent
@@ -116,8 +144,8 @@ public class IFWEvents {
     @SubscribeEvent
     public static void playerLoggedIn(final PlayerEvent.PlayerLoggedInEvent event) {
         Player entity = event.getEntity();
-
-        entity.setCurse(entity.getData(IFWAttachments.player_curse));
+        int curseOrdinal = entity.getData(IFWAttachments.player_curse);
+        entity.ifw$setCurse(CurseType.values()[curseOrdinal]);
     }
 
     @SubscribeEvent
@@ -157,7 +185,8 @@ public class IFWEvents {
     @SubscribeEvent
     public static void playerClone(final PlayerEvent.PlayerRespawnEvent event) {
         final Player player = event.getEntity();
-        player.setCurse(player.getData(IFWAttachments.player_curse));
+        int curseOrdinal = player.getData(IFWAttachments.player_curse);
+        player.ifw$setCurse(CurseType.values()[curseOrdinal]);
     }
 
     @SubscribeEvent
@@ -377,6 +406,42 @@ public class IFWEvents {
                 player.heal(actualHeal);
                 float exhaustionCost = actualHeal * 6.0F;
                 player.getFoodData().addExhaustion(exhaustionCost);
+            }
+        }
+    }
+
+    // Curse Effects
+    @SubscribeEvent
+    public static void onPlayerUseItem(LivingEntityUseItemEvent.Start event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        ItemStack stack = event.getItem();
+        if (CurseEffectHelper.isIngestionForbiddenByCurse(player, stack)) {
+            event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        if (!player.level().isClientSide) {
+            int originAir = player.getAirSupply();
+            int restrictedAir = CurseEffectHelper.restrictAir(player, originAir);
+            if (restrictedAir != originAir) {
+                player.setAirSupply(restrictedAir);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerInteractBlock(PlayerInteractEvent.RightClickBlock event) {
+        Player player = event.getEntity();
+        if (!(player instanceof PlayerExtension ext)) return;
+        if (ext.getCurse() == CurseType.cannot_open_chests) {
+            Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
+            Item item = Item.BY_BLOCK.get(block);
+            if (item != null && item.builtInRegistryHolder().is(IFWItemTags.CHESTS)) {
+                CurseEffectHelper.learnCurseEffect(ext);
+                event.setCanceled(true);
             }
         }
     }

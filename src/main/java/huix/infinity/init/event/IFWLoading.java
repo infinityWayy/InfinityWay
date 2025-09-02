@@ -994,8 +994,8 @@ public class IFWLoading {
         ReplaceHelper.foodOverride(Items.COOKED_MUTTON, RebuildFoods.COOKED_MUTTON);
         ReplaceHelper.foodAdd(Items.COOKED_MUTTON, IFWFoods.cooked_mutton);
         ReplaceHelper.foodOverride(Items.BEETROOT, RebuildFoods.BEETROOT);
-        ReplaceHelper.foodAdd(Items.BEETROOT, IFWFoods.beefroot);
-        ReplaceHelper.foodAdd(Items.BEETROOT_SOUP, IFWFoods.beefroot_soup);
+        ReplaceHelper.foodAdd(Items.BEETROOT, IFWFoods.beetroot);
+        ReplaceHelper.foodAdd(Items.BEETROOT_SOUP, IFWFoods.beetroot_soup);
         ReplaceHelper.foodOverride(Items.SWEET_BERRIES, RebuildFoods.SWEET_BERRIES);
         ReplaceHelper.foodAdd(Items.SWEET_BERRIES, IFWFoods.sweet_berries);
         ReplaceHelper.foodAdd(Items.GLOW_BERRIES, IFWFoods.glow_berries);
@@ -1043,6 +1043,8 @@ public class IFWLoading {
         ReplaceHelper.foodAdd(IFWItems.blueberry.get(), IFWFoods.ifw_blueberry);
         ReplaceHelper.foodAdd(IFWItems.cooked_worm.get(), IFWFoods.ifw_cooked_worm);
         ReplaceHelper.foodAdd(IFWItems.worm.get(), IFWFoods.ifw_worm);
+        ReplaceHelper.foodAdd(IFWItems.horse_meat.get(), IFWFoods.ifw_horse_meat);
+        ReplaceHelper.foodAdd(IFWItems.cooked_horse_meat.get(), IFWFoods.ifw_cooked_horse_meat);
         ReplaceHelper.foodAdd(IFWItems.onion.get(), IFWFoods.ifw_onion);
         ReplaceHelper.foodOverride(Items.CHORUS_FRUIT, RebuildFoods.CHORUS_FRUIT);
         ReplaceHelper.foodOverride(Items.COOKED_CHICKEN, RebuildFoods.COOKED_CHICKEN);

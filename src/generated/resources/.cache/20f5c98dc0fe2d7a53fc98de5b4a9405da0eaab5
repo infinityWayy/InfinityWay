@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-02T19:20:45.6528191	Biome Modifier Registries: ifw
+// 1.21.1	2025-09-02T21:14:11.4892853	Biome Modifier Registries: ifw
 49f499fed8f8f7c797c3124710dff297dfe03998 data/ifw/neoforge/biome_modifier/ifw_add_deepslate_spawns.json
 d3ce835cbe615798480c31acf5200397159fd125 data/ifw/neoforge/biome_modifier/ifw_add_deep_ores.json
 5073fcccdb1b63e1972de71daef79b5d55a8ea59 data/ifw/neoforge/biome_modifier/ifw_add_forest_spawns.json
@@ -8,7 +8,7 @@ d3ce835cbe615798480c31acf5200397159fd125 data/ifw/neoforge/biome_modifier/ifw_ad
 956d62903ec65e1961be03c957e150f715e717ee data/ifw/neoforge/biome_modifier/ifw_add_shallow_cave_spawns.json
 f204760a74278b1d6101ab42521b8ca6074d5010 data/ifw/neoforge/biome_modifier/ifw_add_silverfish_blocks.json
 4ce978fd516237cda2e397b6021e110a6466b02e data/ifw/neoforge/biome_modifier/ifw_modify_spawns.json
-c3c517b6bb5c1a869ec2b8bb6a5895a4eda835c4 data/ifw/neoforge/biome_modifier/ifw_remove_overworld_features.json
+78e29f65210883c5baddabec772009c2be349d3e data/ifw/neoforge/biome_modifier/ifw_remove_overworld_features.json
 d8062a9987536bc654ee223b0460fb6b8c465eb4 data/ifw/neoforge/biome_modifier/ifw_remove_overworld_spawns.json
 e1ad57aee768b341f1e08d868724c970c8f70c9d data/ifw/worldgen/configured_feature/ore_adamantium.json
 4f66ef802aa37f492bcc727cffaa821b4411a8fa data/ifw/worldgen/configured_feature/ore_mithril.json

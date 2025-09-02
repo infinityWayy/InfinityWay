@@ -399,6 +399,8 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.banana.get(), "Banana");
         add(IFWItems.cooked_worm.get(), "Cooked Worm");
         add(IFWItems.worm.get(), "Worm");
+        add(IFWItems.horse_meat.get(), "Horse Meat");
+        add(IFWItems.cooked_horse_meat.get(), "Cooked Horse Meat");
         add(IFWItems.bottle_of_disenchanting.get(), "Bottle of Disenchanting");
         add(IFWItems.flint_shard.get(), "Flint Shard");
         add(IFWItems.obsidian_shard.get(), "Obsidian Shard");

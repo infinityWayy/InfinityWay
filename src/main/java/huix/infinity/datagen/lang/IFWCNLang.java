@@ -391,6 +391,8 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.banana.get(), "香蕉");
         add(IFWItems.cooked_worm.get(), "熟虫子");
         add(IFWItems.worm.get(), "虫子");
+        add(IFWItems.horse_meat.get(), "马肉");
+        add(IFWItems.cooked_horse_meat.get(), "烤马肉");
         add(IFWItems.bottle_of_disenchanting.get(), "祛魔之瓶");
         add(IFWItems.flint_shard.get(), "燧石碎块");
         add(IFWItems.obsidian_shard.get(), "黑曜石碎片");

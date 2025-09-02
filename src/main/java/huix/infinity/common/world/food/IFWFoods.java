@@ -8,8 +8,8 @@ import net.minecraft.world.item.Items;
 public class IFWFoods {
     public static final IFWFoodProperties apple = (new IFWFoodProperties.Builder()).phytonutrients(8000).build();
     public static final IFWFoodProperties beef = (new IFWFoodProperties.Builder()).protein(40000).build();
-    public static final IFWFoodProperties beefroot = (new IFWFoodProperties.Builder()).phytonutrients(3000).insulinResponse(4800).build();
-    public static final IFWFoodProperties beefroot_soup = (new IFWFoodProperties.Builder()).phytonutrients(18000).insulinResponse(9600).soup().build();
+    public static final IFWFoodProperties beetroot = (new IFWFoodProperties.Builder()).phytonutrients(3000).insulinResponse(4800).build();
+    public static final IFWFoodProperties beetroot_soup = (new IFWFoodProperties.Builder()).phytonutrients(18000).insulinResponse(9600).soup().build();
     public static final IFWFoodProperties carrot = (new IFWFoodProperties.Builder()).phytonutrients(16000).build();
     public static final IFWFoodProperties chicken = (new IFWFoodProperties.Builder()).protein(24000).meat().build();
     public static final IFWFoodProperties cod = (new IFWFoodProperties.Builder()).protein(16000).build();
@@ -92,6 +92,10 @@ public class IFWFoods {
     public static final IFWFoodProperties ifw_cooked_worm = (new IFWFoodProperties.Builder()).protein(8000).build();
     public static final FoodProperties worm = (new FoodProperties.Builder()).nutrition(1).build();
     public static final IFWFoodProperties ifw_worm = (new IFWFoodProperties.Builder()).protein(8000).build();
+    public static final FoodProperties horse_meat = (new FoodProperties.Builder()).nutrition(6).saturationModifier(6).build();
+    public static final IFWFoodProperties ifw_horse_meat = (new IFWFoodProperties.Builder()).protein(48000).meat().build();
+    public static final FoodProperties cooked_horse_meat = (new FoodProperties.Builder()).nutrition(12).saturationModifier(12).build();
+    public static final IFWFoodProperties ifw_cooked_horse_meat = (new IFWFoodProperties.Builder()).protein(96000).meat().build();
     public static final FoodProperties blueberry = (new FoodProperties.Builder()).nutrition(1).saturationModifier(1).build();
     public static final IFWFoodProperties ifw_blueberry = (new IFWFoodProperties.Builder()).phytonutrients(8000).insulinResponse(4800).build();
     public static final FoodProperties nether_wart = (new FoodProperties.Builder()).nutrition(1).saturationModifier(1).build();

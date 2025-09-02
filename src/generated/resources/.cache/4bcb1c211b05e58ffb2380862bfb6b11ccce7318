@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-02T08:44:56.6883667	Item Models: ifw
+// 1.21.1	2025-09-02T21:14:11.4827859	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -102,6 +102,7 @@ d7ac285e81588551873010afde1a8d9dbfcc6e4d assets/ifw/models/item/cod_gold_bucket.
 06d4e6eb6ec70ba3f3457ea77ca211e4d408776f assets/ifw/models/item/cod_iron_bucket.json
 c40d547b1047e777f6de324334612b01328dac81 assets/ifw/models/item/cod_mithril_bucket.json
 d3b2fd0a226d7ed24d7761d6ceff8a86951acfd6 assets/ifw/models/item/cod_silver_bucket.json
+9b04d1c00d6fcfc395787e4871be92fee4d3659b assets/ifw/models/item/cooked_horse_meat.json
 72161759e2930a6fb12b25b5dddec70c0686251d assets/ifw/models/item/cooked_worm.json
 516226159ab0f0158c30e9a54fd1d6255f0649da assets/ifw/models/item/copper_axe.json
 ff6ebfb7565315f78f6e6dee61d653833837613d assets/ifw/models/item/copper_battle_axe.json
@@ -173,6 +174,7 @@ d316cbfeb6987f2ce67da7a73f075ac3b529ec44 assets/ifw/models/item/gold_pan_full.js
 ac65f666200817e6f63bb2ee5d4be88674014252 assets/ifw/models/item/gold_pan_result.json
 264c1e52f97664c627dcae962889e0bd78fca2ce assets/ifw/models/item/gold_private_chest.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/hellhound_spawn_egg.json
+f4d19d8b9f9a4bacca15a2ddd62956f59234758b assets/ifw/models/item/horse_meat.json
 6e1b24d388884ee48afb4e19595cad3003885c1a assets/ifw/models/item/ice_cream.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/inferno_creeper_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/invisible_stalker_spawn_egg.json

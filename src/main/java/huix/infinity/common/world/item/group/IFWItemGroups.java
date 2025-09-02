@@ -66,6 +66,8 @@ public class IFWItemGroups {
                 output.accept(IFWItems.banana.get());
                 output.accept(IFWItems.cooked_worm.get());
                 output.accept(IFWItems.worm.get());
+                output.accept(IFWItems.horse_meat.get());
+                output.accept(IFWItems.cooked_horse_meat.get());
                 output.accept(IFWItems.flour.get());
                 output.accept(IFWItems.manure.get());
                 output.accept(IFWItems.wither_bone.get());

@@ -1,6 +1,7 @@
 package huix.infinity.mixin.world.item;
 
 import huix.infinity.common.core.component.IFWDataComponents;
+import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.item.crafting.EnchantingRecipe;
 import huix.infinity.extension.func.ItemStackExtension;
 import net.minecraft.world.item.Item;
@@ -53,4 +54,26 @@ public class ItemStackMixin implements ItemStackExtension {
     public Item getItem() {
         return null;
     }
+
+    @Override
+    public boolean ifw_isAnimalProduct() {
+        return ((ItemStack)(Object)this).is(IFWItemTags.ANIMAL_PRODUCTS);
+    }
+    @Override
+    public boolean ifw_isPlant() {
+        return ((ItemStack)(Object)this).is(IFWItemTags.VEGETABLES);
+    }
+    @Override
+    public boolean ifw_isDrinkable() {
+        return ((ItemStack)(Object)this).is(IFWItemTags.DRINKS);
+    }
+    @Override
+    public boolean ifw_isArmor() {
+        return ((ItemStack)(Object)this).is(IFWItemTags.ARMORS);
+    }
+    @Override
+    public boolean ifw_isChest() {
+        return ((ItemStack)(Object)this).is(IFWItemTags.CHESTS);
+    }
+
 }

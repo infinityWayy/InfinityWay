@@ -8,7 +8,6 @@ import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.entity.monster.Witch;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.*;
@@ -82,6 +81,7 @@ public class CurseManager {
                     if (player.getUUID().equals(curse.playerUuid)) {
                         if (player instanceof PlayerExtension ext) {
                             ext.ifw$setCurse(curse.curseType);
+                            ext.setKnownCurse(false);
                         }
                         var msg = curse.curseType == CurseType.none
                                 ? Component.translatable("ifw.witch_curse.discurse", curse.witchName).withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD)

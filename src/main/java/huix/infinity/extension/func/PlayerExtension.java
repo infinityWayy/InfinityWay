@@ -102,8 +102,4 @@ public interface PlayerExtension {
     default void ifw$setCurse(CurseType curse) {
         instance().setData(IFWAttachments.player_curse, curse.ordinal());
     }
-
-    default void setCurse(int curseID) {
-        ifw$setCurse(CurseType.values()[curseID]);
-    }
 }

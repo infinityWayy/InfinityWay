@@ -2,11 +2,13 @@ package huix.infinity.datagen.tag;
 
 import fuzs.swordblockingmechanics.init.ModRegistry;
 import huix.infinity.common.core.tag.IFWItemTags;
+import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
@@ -119,5 +121,76 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
                 .add(IFWItems.mithril_bucket.get(), IFWItems.mithril_chain.get(), IFWItems.mithril_ingot.get(), IFWItems.mithril_nugget.get())
                 .add(IFWItems.adamantium_bucket.get(), IFWItems.adamantium_chain.get(), IFWItems.adamantium_ingot.get(), IFWItems.adamantium_nugget.get())
                 .add(Items.NETHERITE_INGOT, Items.NETHERITE_SCRAP);
+
+        tag(IFWItemTags.ANIMAL_PRODUCTS).add(
+                // Vanilla
+                Items.BEEF, Items.COOKED_BEEF, Items.PORKCHOP, Items.COOKED_PORKCHOP, Items.CHICKEN, Items.COOKED_CHICKEN,Items.RABBIT_STEW,
+                Items.MUTTON, Items.COOKED_MUTTON, Items.RABBIT, Items.COOKED_RABBIT, Items.COD, Items.COOKED_COD,Items.EGG,
+                Items.SALMON, Items.COOKED_SALMON, Items.TROPICAL_FISH, Items.PUFFERFISH, Items.ROTTEN_FLESH,
+                Items.MILK_BUCKET, Items.HONEY_BOTTLE, Items.PUMPKIN_PIE, Items.SPIDER_EYE,
+                // IFW
+                IFWItems.cheese.get(), IFWItems.cooked_worm.get(), IFWItems.worm.get(), IFWItems.milk_bowl.get(), IFWItems.milk_copper_bucket.get(), IFWItems.milk_silver_bucket.get(),
+                IFWItems.milk_gold_bucket.get(),IFWItems.milk_ancient_metal_bucket.get(), IFWItems.milk_mithril_bucket.get(), IFWItems.milk_adamantium_bucket.get(), IFWItems.cereal.get(),
+                IFWItems.chicken_soup.get(),IFWItems.beef_stew.get(), IFWItems.mushroom_soup_cream.get(), IFWItems.vegetable_soup_cream.get(), IFWItems.mashed_potato.get(), IFWItems.ice_cream.get(),
+                IFWItems.horse_meat.get(),IFWItems.cooked_horse_meat.get()
+        );
+
+        tag(IFWItemTags.VEGETABLES).add(
+                // Vanilla
+                Items.CARROT, Items.POTATO, Items.BAKED_POTATO, Items.BEETROOT, Items.BEETROOT_SOUP, Items.WHEAT, Items.APPLE, Items.BREAD,
+                Items.GOLDEN_APPLE, Items.ENCHANTED_GOLDEN_APPLE, Items.GLOW_BERRIES, Items.SWEET_BERRIES, Items.MELON_SLICE,
+                Items.PUMPKIN, Items.PUMPKIN_PIE, Items.BROWN_MUSHROOM, Items.RED_MUSHROOM, Items.NETHER_WART, Items.SUGAR,
+                Items.SUGAR_CANE, Items.COOKIE, Items.BEETROOT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.GOLDEN_CARROT,
+                // IFW
+                IFWItems.salad.get(), IFWItems.pumpkin_soup.get(), IFWItems.vegetable_soup.get(), IFWItems.vegetable_soup_cream.get(), IFWItems.chicken_soup.get(), IFWItems.beef_stew.get(),
+                IFWItems.porridge.get(), IFWItems.sorbet.get(), IFWItems.orange.get(), IFWItems.banana.get(), IFWItems.blueberry.get(), IFWItems.onion.get()
+                );
+
+        tag(IFWItemTags.DRINKS).add(
+                // Vanilla
+                Items.MILK_BUCKET, Items.POTION, Items.HONEY_BOTTLE, Items.BEETROOT_SOUP, Items.RABBIT_STEW, Items.MUSHROOM_STEW,
+                // IFW
+                IFWItems.milk_copper_bucket.get(), IFWItems.milk_silver_bucket.get(), IFWItems.milk_gold_bucket.get(),
+                IFWItems.milk_ancient_metal_bucket.get(), IFWItems.milk_mithril_bucket.get(), IFWItems.milk_adamantium_bucket.get(),
+                IFWItems.milk_bowl.get(), IFWItems.water_bowl.get(), IFWItems.pumpkin_soup.get(), IFWItems.vegetable_soup.get(),
+                IFWItems.vegetable_soup_cream.get(), IFWItems.chicken_soup.get(), IFWItems.beef_stew.get(),
+                IFWItems.porridge.get(), IFWItems.mushroom_soup_cream.get()
+        );
+
+        tag(IFWItemTags.ARMORS)
+                // Vanilla
+                .addTag(ItemTags.HEAD_ARMOR)
+                .addTag(ItemTags.CHEST_ARMOR)
+                .addTag(ItemTags.LEG_ARMOR)
+                .addTag(ItemTags.FOOT_ARMOR)
+                // IFW
+                .add(
+                IFWItems.copper_helmet.get(), IFWItems.copper_chestplate.get(), IFWItems.copper_leggings.get(), IFWItems.copper_boots.get(),
+                IFWItems.silver_helmet.get(), IFWItems.silver_chestplate.get(), IFWItems.silver_leggings.get(), IFWItems.silver_boots.get(),
+                IFWItems.rusted_iron_helmet.get(), IFWItems.rusted_iron_chestplate.get(), IFWItems.rusted_iron_leggings.get(), IFWItems.rusted_iron_boots.get(),
+                IFWItems.ancient_metal_helmet.get(), IFWItems.ancient_metal_chestplate.get(), IFWItems.ancient_metal_leggings.get(), IFWItems.ancient_metal_boots.get(),
+                IFWItems.mithril_helmet.get(), IFWItems.mithril_chestplate.get(), IFWItems.mithril_leggings.get(), IFWItems.mithril_boots.get(),
+                IFWItems.adamantium_helmet.get(), IFWItems.adamantium_chestplate.get(), IFWItems.adamantium_leggings.get(), IFWItems.adamantium_boots.get(),
+                IFWItems.copper_chainmail_helmet.get(), IFWItems.copper_chainmail_chestplate.get(), IFWItems.copper_chainmail_leggings.get(), IFWItems.copper_chainmail_boots.get(),
+                IFWItems.silver_chainmail_helmet.get(), IFWItems.silver_chainmail_chestplate.get(), IFWItems.silver_chainmail_leggings.get(), IFWItems.silver_chainmail_boots.get(),
+                IFWItems.golden_chainmail_helmet.get(), IFWItems.golden_chainmail_chestplate.get(), IFWItems.golden_chainmail_leggings.get(), IFWItems.golden_chainmail_boots.get(),
+                IFWItems.rusted_iron_chainmail_helmet.get(), IFWItems.rusted_iron_chainmail_chestplate.get(), IFWItems.rusted_iron_chainmail_leggings.get(), IFWItems.rusted_iron_chainmail_boots.get(),
+                IFWItems.ancient_metal_chainmail_helmet.get(), IFWItems.ancient_metal_chainmail_chestplate.get(), IFWItems.ancient_metal_chainmail_leggings.get(), IFWItems.ancient_metal_chainmail_boots.get(),
+                IFWItems.mithril_chainmail_helmet.get(), IFWItems.mithril_chainmail_chestplate.get(), IFWItems.mithril_chainmail_leggings.get(), IFWItems.mithril_chainmail_boots.get(),
+                IFWItems.adamantium_chainmail_helmet.get(), IFWItems.adamantium_chainmail_chestplate.get(), IFWItems.adamantium_chainmail_leggings.get(), IFWItems.adamantium_chainmail_boots.get()
+        );
+
+        tag(IFWItemTags.CHESTS).add(
+                // Vanilla
+                Items.CHEST, Items.TRAPPED_CHEST, Items.ENDER_CHEST, Items.BARREL,
+                Items.SHULKER_BOX, Items.WHITE_SHULKER_BOX, Items.ORANGE_SHULKER_BOX, Items.MAGENTA_SHULKER_BOX,
+                Items.LIGHT_BLUE_SHULKER_BOX, Items.YELLOW_SHULKER_BOX, Items.LIME_SHULKER_BOX, Items.PINK_SHULKER_BOX,
+                Items.GRAY_SHULKER_BOX, Items.LIGHT_GRAY_SHULKER_BOX, Items.CYAN_SHULKER_BOX, Items.PURPLE_SHULKER_BOX,
+                Items.BLUE_SHULKER_BOX, Items.BROWN_SHULKER_BOX, Items.GREEN_SHULKER_BOX, Items.RED_SHULKER_BOX, Items.BLACK_SHULKER_BOX,
+                // IFW
+                IFWBlocks.copper_private_chest_item.get(), IFWBlocks.silver_private_chest_item.get(), IFWBlocks.gold_private_chest_item.get(),
+                IFWBlocks.iron_private_chest_item.get(), IFWBlocks.ancient_metal_private_chest_item.get(),
+                IFWBlocks.mithril_private_chest_item.get(), IFWBlocks.adamantium_private_chest_item.get()
+                );
     }
 }

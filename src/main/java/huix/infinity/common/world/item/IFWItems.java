@@ -811,6 +811,10 @@ public class IFWItems {
             ITEMS.registerSimpleItem("cooked_worm", new Item.Properties().stacksTo(16).food(IFWFoods.cooked_worm));
     public static final DeferredItem<Item> worm =
             ITEMS.registerSimpleItem("worm", new Item.Properties().stacksTo(16).food(IFWFoods.worm));
+    public static final DeferredItem<Item> horse_meat =
+            ITEMS.registerSimpleItem("horse_meat", new Item.Properties().stacksTo(16).food(IFWFoods.horse_meat));
+    public static final DeferredItem<Item> cooked_horse_meat =
+            ITEMS.registerSimpleItem("cooked_horse_meat", new Item.Properties().stacksTo(16).food(IFWFoods.cooked_horse_meat));
     public static final DeferredItem<Item> onion =
             ITEMS.registerSimpleItem("onion", new Item.Properties().stacksTo(16).food(IFWFoods.onion));
 

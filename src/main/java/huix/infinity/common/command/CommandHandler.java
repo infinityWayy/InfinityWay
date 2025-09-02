@@ -19,7 +19,7 @@ public class CommandHandler {
                 if (entities.size() == 1) stack.sendSuccess(() -> Component.translatable("commands.give.curse.player", curse.name(), entity.getDisplayName()), true);
                 else stack.sendSuccess(() -> Component.translatable("commands.give.curse.players", curse.name(), entities.size()), true);
                 player.ifw$setCurse(curse);
-                player.setData(IFWAttachments.player_curse_known, false); // 给予时重置识别状态
+                player.setData(IFWAttachments.player_curse_known, false);
             }
         }
         return entities.size();
@@ -34,7 +34,6 @@ public class CommandHandler {
                 if (entities.size() == 1) stack.sendSuccess(() -> Component.translatable("commands.clear.curse.player", entity.getDisplayName()), true);
                 else stack.sendSuccess(() -> Component.translatable("commands.clear.curse.players", entities.size()), true);
                 player.ifw$setCurse(CurseType.none);
-                // 不需要重置 player_curse_known
             }
         }
         return entities.size();
