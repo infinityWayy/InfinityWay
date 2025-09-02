@@ -49,6 +49,7 @@
     "world.entity.animal.WolfMixin",
     "world.entity.monster.EnderManMixin",
     "world.entity.monster.WitchMixin",
+    "world.entity.projectile.EggItemMixin",
     "world.entity.projectile.FishingHookMixin",
     "world.food.FoodDataMixin",
     "world.food.FoodProperties$BuilderMixin",
