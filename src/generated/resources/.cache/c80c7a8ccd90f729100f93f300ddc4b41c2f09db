@@ -1,6 +1,9 @@
-// 1.21.1	2025-06-07T19:35:43.8564045	Tags for minecraft:block mod id ifw
+// 1.21.1	2025-09-04T00:03:02.7551917	Tags for minecraft:block mod id ifw
 a57428087e9da6acde3be57b776296773fedbbb5 data/ifw/tags/block/acid_degradable.json
+c9cf8fb9f1c7fdeb4c0a355a2a701aaf89e303c7 data/ifw/tags/block/chests.json
 5da647fe8f09b8b9032c0be9a3f63752f470e49a data/ifw/tags/block/corrosive_dirt.json
+be1ae031f59eb6eac18376f0e656cb7f09c77500 data/ifw/tags/block/entangle_plants_60.json
+c03eb1dd14513db935f5dcfe131479942dec7bff data/ifw/tags/block/entangle_plants_80.json
 37a6c3a11450b21a8e0381b726b34e2085dd5d29 data/ifw/tags/block/fallen_dirt.json
 b147fcff5c0b4d72df1cb7809b063b2562180832 data/ifw/tags/block/harvest_level_0_tool.json
 7d3e39787ca0ec017e53abe718814453f9da57c3 data/ifw/tags/block/harvest_level_1_tool.json

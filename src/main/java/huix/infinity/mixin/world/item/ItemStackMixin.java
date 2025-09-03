@@ -59,21 +59,20 @@ public class ItemStackMixin implements ItemStackExtension {
     public boolean ifw_isAnimalProduct() {
         return ((ItemStack)(Object)this).is(IFWItemTags.ANIMAL_PRODUCTS);
     }
+
     @Override
     public boolean ifw_isPlant() {
         return ((ItemStack)(Object)this).is(IFWItemTags.VEGETABLES);
     }
+
     @Override
     public boolean ifw_isDrinkable() {
         return ((ItemStack)(Object)this).is(IFWItemTags.DRINKS);
     }
+
     @Override
     public boolean ifw_isArmor() {
         return ((ItemStack)(Object)this).is(IFWItemTags.ARMORS);
-    }
-    @Override
-    public boolean ifw_isChest() {
-        return ((ItemStack)(Object)this).is(IFWItemTags.CHESTS);
     }
 
 }

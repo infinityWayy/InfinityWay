@@ -132,5 +132,35 @@ public class IFWBlockTagsProvider extends BlockTagsProvider {
                         Blocks.NETHER_SPROUTS, Blocks.NETHER_WART, Blocks.COCOA, Blocks.SWEET_BERRY_BUSH,
                         Blocks.WEEPING_VINES, Blocks.WEEPING_VINES_PLANT, Blocks.TWISTING_VINES, Blocks.TWISTING_VINES_PLANT)
                 .remove(Blocks.WATER);
+
+        tag(IFWBlockTags.CHESTS).add(
+                // Vanilla
+                Blocks.CHEST, Blocks.TRAPPED_CHEST, Blocks.ENDER_CHEST, Blocks.BARREL,
+                Blocks.SHULKER_BOX, Blocks.WHITE_SHULKER_BOX, Blocks.ORANGE_SHULKER_BOX, Blocks.MAGENTA_SHULKER_BOX,
+                Blocks.LIGHT_BLUE_SHULKER_BOX, Blocks.YELLOW_SHULKER_BOX, Blocks.LIME_SHULKER_BOX, Blocks.PINK_SHULKER_BOX,
+                Blocks.GRAY_SHULKER_BOX, Blocks.LIGHT_GRAY_SHULKER_BOX, Blocks.CYAN_SHULKER_BOX, Blocks.PURPLE_SHULKER_BOX,
+                Blocks.BLUE_SHULKER_BOX, Blocks.BROWN_SHULKER_BOX, Blocks.GREEN_SHULKER_BOX, Blocks.RED_SHULKER_BOX, Blocks.BLACK_SHULKER_BOX,
+                // IFW
+                IFWBlocks.copper_private_chest.get(), IFWBlocks.silver_private_chest.get(), IFWBlocks.gold_private_chest.get(),
+                IFWBlocks.iron_private_chest.get(), IFWBlocks.ancient_metal_private_chest.get(),
+                IFWBlocks.mithril_private_chest.get(), IFWBlocks.adamantium_private_chest.get()
+        );
+
+        tag(IFWBlockTags.ENTANGLE_PLANTS_80)
+                .add(Blocks.VINE, Blocks.WEEPING_VINES, Blocks.WEEPING_VINES_PLANT, Blocks.TWISTING_VINES, Blocks.TWISTING_VINES_PLANT, Blocks.CAVE_VINES, Blocks.CAVE_VINES_PLANT);
+
+        tag(IFWBlockTags.ENTANGLE_PLANTS_60)
+                .add(
+                        Blocks.FERN, Blocks.LARGE_FERN, Blocks.TALL_GRASS, Blocks.SHORT_GRASS, Blocks.DEAD_BUSH, Blocks.AZALEA, Blocks.FLOWERING_AZALEA,
+                        Blocks.PINK_PETALS, Blocks.SMALL_DRIPLEAF, Blocks.BIG_DRIPLEAF, Blocks.LILY_PAD, Blocks.SPORE_BLOSSOM, Blocks.TORCHFLOWER, Blocks.TORCHFLOWER_CROP,
+                        Blocks.PITCHER_PLANT, Blocks.PITCHER_CROP, Blocks.SUNFLOWER, Blocks.PEONY, Blocks.ROSE_BUSH, Blocks.OAK_SAPLING, Blocks.SPRUCE_SAPLING,
+                        Blocks.BIRCH_SAPLING, Blocks.JUNGLE_SAPLING, Blocks.ACACIA_SAPLING, Blocks.DARK_OAK_SAPLING, Blocks.CHERRY_SAPLING, Blocks.MANGROVE_PROPAGULE,
+                        Blocks.BAMBOO, Blocks.BAMBOO_SAPLING, Blocks.SUGAR_CANE, Blocks.CRIMSON_FUNGUS, Blocks.WARPED_FUNGUS,Blocks.COCOA,
+                        Blocks.CRIMSON_ROOTS, Blocks.WARPED_ROOTS, Blocks.NETHER_SPROUTS, Blocks.HANGING_ROOTS, Blocks.SEAGRASS, Blocks.TALL_SEAGRASS,
+                        Blocks.RED_MUSHROOM, Blocks.BROWN_MUSHROOM, Blocks.MOSS_BLOCK, Blocks.MOSS_CARPET, Blocks.BLUE_ORCHID, Blocks.ALLIUM,
+                        Blocks.AZURE_BLUET, Blocks.RED_TULIP, Blocks.ORANGE_TULIP, Blocks.WHITE_TULIP, Blocks.PINK_TULIP, Blocks.DANDELION,
+                        Blocks.POPPY, Blocks.CORNFLOWER, Blocks.LILY_OF_THE_VALLEY, Blocks.SWEET_BERRY_BUSH, Blocks.KELP, Blocks.KELP_PLANT,
+                        Blocks.CHORUS_FLOWER, Blocks.CHORUS_PLANT, Blocks.WHEAT, Blocks.CARROTS, Blocks.POTATOES, Blocks.BEETROOTS,
+                        Blocks.MELON_STEM, Blocks.PUMPKIN_STEM, Blocks.ATTACHED_MELON_STEM, Blocks.ATTACHED_PUMPKIN_STEM, Blocks.NETHER_WART);
     }
 }

@@ -2,13 +2,11 @@ package huix.infinity.datagen.tag;
 
 import fuzs.swordblockingmechanics.init.ModRegistry;
 import huix.infinity.common.core.tag.IFWItemTags;
-import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
@@ -179,18 +177,5 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
                 IFWItems.mithril_chainmail_helmet.get(), IFWItems.mithril_chainmail_chestplate.get(), IFWItems.mithril_chainmail_leggings.get(), IFWItems.mithril_chainmail_boots.get(),
                 IFWItems.adamantium_chainmail_helmet.get(), IFWItems.adamantium_chainmail_chestplate.get(), IFWItems.adamantium_chainmail_leggings.get(), IFWItems.adamantium_chainmail_boots.get()
         );
-
-        tag(IFWItemTags.CHESTS).add(
-                // Vanilla
-                Items.CHEST, Items.TRAPPED_CHEST, Items.ENDER_CHEST, Items.BARREL,
-                Items.SHULKER_BOX, Items.WHITE_SHULKER_BOX, Items.ORANGE_SHULKER_BOX, Items.MAGENTA_SHULKER_BOX,
-                Items.LIGHT_BLUE_SHULKER_BOX, Items.YELLOW_SHULKER_BOX, Items.LIME_SHULKER_BOX, Items.PINK_SHULKER_BOX,
-                Items.GRAY_SHULKER_BOX, Items.LIGHT_GRAY_SHULKER_BOX, Items.CYAN_SHULKER_BOX, Items.PURPLE_SHULKER_BOX,
-                Items.BLUE_SHULKER_BOX, Items.BROWN_SHULKER_BOX, Items.GREEN_SHULKER_BOX, Items.RED_SHULKER_BOX, Items.BLACK_SHULKER_BOX,
-                // IFW
-                IFWBlocks.copper_private_chest_item.get(), IFWBlocks.silver_private_chest_item.get(), IFWBlocks.gold_private_chest_item.get(),
-                IFWBlocks.iron_private_chest_item.get(), IFWBlocks.ancient_metal_private_chest_item.get(),
-                IFWBlocks.mithril_private_chest_item.get(), IFWBlocks.adamantium_private_chest_item.get()
-                );
     }
 }

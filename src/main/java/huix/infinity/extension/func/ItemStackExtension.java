@@ -50,8 +50,4 @@ public interface ItemStackExtension {
         return false;
     }
 
-    default boolean ifw_isChest() {
-        return false;
-    }
-
 }

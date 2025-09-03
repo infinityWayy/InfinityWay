@@ -46,8 +46,6 @@ public class IFWAttachments {
             "player_curse", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).copyOnDeath().build()
     );
 
-    // 修正：用于“未知诅咒”机制
-    // changed from 'learned_curse' (bool) to 'player_curse_known' (bool) for consistent naming
     public static final Supplier<AttachmentType<Boolean>> player_curse_known = ATTACHMENT_TYPES.register(
             "player_curse_known", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).copyOnDeath().build()
     );

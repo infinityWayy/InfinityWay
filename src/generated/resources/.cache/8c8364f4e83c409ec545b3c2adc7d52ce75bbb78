@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-03T00:16:39.68161	Tags for minecraft:item mod id vanilla
+// 1.21.1	2025-09-04T00:03:02.758718	Tags for minecraft:item mod id vanilla
 20de0e0f4a475259665e322b8fce4c6dc9bd398e data/c/tags/item/buckets/empty.json
 c8bdd264e6a8f676f43d71732fa26d39c6cb405e data/c/tags/item/buckets/entity_water.json
 443176368149964cb5339e006ca44d79e5343a0e data/c/tags/item/buckets/lava.json
@@ -16,7 +16,6 @@ f15a43877db5554ee1ea3e17e18374d0de62d6b2 data/ifw/tags/item/armors.json
 bdd81346635b7b10de96229750d71f72b3168a47 data/ifw/tags/item/battle_axe.json
 0b14fbac1d0ddc8bc58dbbf25cef44e5b81efd19 data/ifw/tags/item/buckets_stone.json
 090c6c0dba8de4988a2c80904208e91580c23928 data/ifw/tags/item/buckets_tropical_fish.json
-c9cf8fb9f1c7fdeb4c0a355a2a701aaf89e303c7 data/ifw/tags/item/chests.json
 91e6fcd988d4016348a8188dcd9e1c6d02f0f8c2 data/ifw/tags/item/dagger.json
 bedd52b24b6d8a88115a5750382fc77c652cdc3d data/ifw/tags/item/drinks.json
 6807f04f2cbec6fafec09761de05d1251d5bc484 data/ifw/tags/item/has_enchanting_recipe.json

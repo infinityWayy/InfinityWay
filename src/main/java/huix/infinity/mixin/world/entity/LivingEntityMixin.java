@@ -1,6 +1,7 @@
 package huix.infinity.mixin.world.entity;
 
 import huix.infinity.attachment.IFWAttachments;
+import huix.infinity.common.world.curse.CurseEffectHelper;
 import huix.infinity.common.world.entity.LivingEntityAccess;
 import net.minecraft.core.Holder;
 import net.minecraft.util.Mth;
@@ -12,7 +13,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,6 +24,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import javax.annotation.Nullable;
 
@@ -74,6 +78,29 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityAc
     public void tick(CallbackInfo ci) {
         if (this.food_or_repair_item_pickup_cooldown > 0) {
             --this.food_or_repair_item_pickup_cooldown;
+        }
+    }
+
+    // Entanglement Curse
+    @Inject(method = "travel", at = @At("HEAD"))
+    private void onTravel(Vec3 travelVector, CallbackInfo ci) {
+        if ((Object)this instanceof Player player) {
+            float slowdown = CurseEffectHelper.getEntangleCurseSlowdown(player);
+            if (slowdown < 1.0F) {
+                Vec3 motion = player.getDeltaMovement();
+                player.setDeltaMovement(motion.x * slowdown, motion.y, motion.z * slowdown);
+            }
+        }
+    }
+    @Inject(method = "handleOnClimbable", at = @At("RETURN"), cancellable = true)
+    private void patchClimbable(Vec3 deltaMovement, CallbackInfoReturnable<Vec3> cir) {
+        if ((Object)this instanceof Player player) {
+            float slowdown = CurseEffectHelper.getEntangleCurseSlowdown(player);
+            if (slowdown < 1.0F) {
+                Vec3 original = cir.getReturnValue();
+                Vec3 result = new Vec3(original.x * slowdown, original.y, original.z * slowdown);
+                cir.setReturnValue(result);
+            }
         }
     }
 }

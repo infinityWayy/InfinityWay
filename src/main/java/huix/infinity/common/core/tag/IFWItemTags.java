@@ -25,7 +25,6 @@ public class IFWItemTags {
     public static final TagKey<Item> VEGETABLES = bind("vegetables");
     public static final TagKey<Item> DRINKS = bind("drinks");
     public static final TagKey<Item> ARMORS = bind("armors");
-    public static final TagKey<Item> CHESTS = bind("chests");
 
     public static TagKey<Item> bind(String name) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, name));
