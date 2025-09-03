@@ -143,39 +143,5 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
                 IFWItems.salad.get(), IFWItems.pumpkin_soup.get(), IFWItems.vegetable_soup.get(), IFWItems.vegetable_soup_cream.get(), IFWItems.chicken_soup.get(), IFWItems.beef_stew.get(),
                 IFWItems.porridge.get(), IFWItems.sorbet.get(), IFWItems.orange.get(), IFWItems.banana.get(), IFWItems.blueberry.get(), IFWItems.onion.get()
                 );
-
-        tag(IFWItemTags.DRINKS).add(
-                // Vanilla
-                Items.MILK_BUCKET, Items.POTION, Items.HONEY_BOTTLE, Items.BEETROOT_SOUP, Items.RABBIT_STEW, Items.MUSHROOM_STEW,
-                // IFW
-                IFWItems.milk_copper_bucket.get(), IFWItems.milk_silver_bucket.get(), IFWItems.milk_gold_bucket.get(),
-                IFWItems.milk_ancient_metal_bucket.get(), IFWItems.milk_mithril_bucket.get(), IFWItems.milk_adamantium_bucket.get(),
-                IFWItems.milk_bowl.get(), IFWItems.water_bowl.get(), IFWItems.pumpkin_soup.get(), IFWItems.vegetable_soup.get(),
-                IFWItems.vegetable_soup_cream.get(), IFWItems.chicken_soup.get(), IFWItems.beef_stew.get(),
-                IFWItems.porridge.get(), IFWItems.mushroom_soup_cream.get()
-        );
-
-        tag(IFWItemTags.ARMORS)
-                // Vanilla
-                .addTag(ItemTags.HEAD_ARMOR)
-                .addTag(ItemTags.CHEST_ARMOR)
-                .addTag(ItemTags.LEG_ARMOR)
-                .addTag(ItemTags.FOOT_ARMOR)
-                // IFW
-                .add(
-                IFWItems.copper_helmet.get(), IFWItems.copper_chestplate.get(), IFWItems.copper_leggings.get(), IFWItems.copper_boots.get(),
-                IFWItems.silver_helmet.get(), IFWItems.silver_chestplate.get(), IFWItems.silver_leggings.get(), IFWItems.silver_boots.get(),
-                IFWItems.rusted_iron_helmet.get(), IFWItems.rusted_iron_chestplate.get(), IFWItems.rusted_iron_leggings.get(), IFWItems.rusted_iron_boots.get(),
-                IFWItems.ancient_metal_helmet.get(), IFWItems.ancient_metal_chestplate.get(), IFWItems.ancient_metal_leggings.get(), IFWItems.ancient_metal_boots.get(),
-                IFWItems.mithril_helmet.get(), IFWItems.mithril_chestplate.get(), IFWItems.mithril_leggings.get(), IFWItems.mithril_boots.get(),
-                IFWItems.adamantium_helmet.get(), IFWItems.adamantium_chestplate.get(), IFWItems.adamantium_leggings.get(), IFWItems.adamantium_boots.get(),
-                IFWItems.copper_chainmail_helmet.get(), IFWItems.copper_chainmail_chestplate.get(), IFWItems.copper_chainmail_leggings.get(), IFWItems.copper_chainmail_boots.get(),
-                IFWItems.silver_chainmail_helmet.get(), IFWItems.silver_chainmail_chestplate.get(), IFWItems.silver_chainmail_leggings.get(), IFWItems.silver_chainmail_boots.get(),
-                IFWItems.golden_chainmail_helmet.get(), IFWItems.golden_chainmail_chestplate.get(), IFWItems.golden_chainmail_leggings.get(), IFWItems.golden_chainmail_boots.get(),
-                IFWItems.rusted_iron_chainmail_helmet.get(), IFWItems.rusted_iron_chainmail_chestplate.get(), IFWItems.rusted_iron_chainmail_leggings.get(), IFWItems.rusted_iron_chainmail_boots.get(),
-                IFWItems.ancient_metal_chainmail_helmet.get(), IFWItems.ancient_metal_chainmail_chestplate.get(), IFWItems.ancient_metal_chainmail_leggings.get(), IFWItems.ancient_metal_chainmail_boots.get(),
-                IFWItems.mithril_chainmail_helmet.get(), IFWItems.mithril_chainmail_chestplate.get(), IFWItems.mithril_chainmail_leggings.get(), IFWItems.mithril_chainmail_boots.get(),
-                IFWItems.adamantium_chainmail_helmet.get(), IFWItems.adamantium_chainmail_chestplate.get(), IFWItems.adamantium_chainmail_leggings.get(), IFWItems.adamantium_chainmail_boots.get()
-        );
     }
 }

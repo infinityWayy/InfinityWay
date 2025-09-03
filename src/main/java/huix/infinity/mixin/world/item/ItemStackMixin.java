@@ -4,8 +4,12 @@ import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.item.crafting.EnchantingRecipe;
 import huix.infinity.extension.func.ItemStackExtension;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -55,24 +59,37 @@ public class ItemStackMixin implements ItemStackExtension {
         return null;
     }
 
+    @Shadow
+    public boolean is(TagKey<Item> tag) {
+        throw new AssertionError("Shadow stub called!");
+    }
+
     @Override
     public boolean ifw_isAnimalProduct() {
-        return ((ItemStack)(Object)this).is(IFWItemTags.ANIMAL_PRODUCTS);
+        return this.is(IFWItemTags.ANIMAL_PRODUCTS)
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "meat")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", "meat")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "meat")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("croptopia", "meats")));
     }
 
     @Override
     public boolean ifw_isPlant() {
-        return ((ItemStack)(Object)this).is(IFWItemTags.VEGETABLES);
+        return this.is(IFWItemTags.VEGETABLES)
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "vegetable")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", "vegetable")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "vegetable")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "foods/onion")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "foods/tomato")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "foods/cabbage")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "foods/cabbage_leaf")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("croptopia", "vegetables")));
     }
 
     @Override
-    public boolean ifw_isDrinkable() {
-        return ((ItemStack)(Object)this).is(IFWItemTags.DRINKS);
+    public boolean ifw_isDrink() {
+        ItemStack stack = (ItemStack) (Object) this;
+        Item item = stack.getItem();
+        return item.getUseAnimation(stack) == UseAnim.DRINK;
     }
-
-    @Override
-    public boolean ifw_isArmor() {
-        return ((ItemStack)(Object)this).is(IFWItemTags.ARMORS);
-    }
-
 }

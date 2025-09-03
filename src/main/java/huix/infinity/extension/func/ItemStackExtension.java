@@ -42,11 +42,7 @@ public interface ItemStackExtension {
         return false;
     }
 
-    default boolean ifw_isDrinkable() {
-        return false;
-    }
-
-    default boolean ifw_isArmor() {
+    default boolean ifw_isDrink() {
         return false;
     }
 

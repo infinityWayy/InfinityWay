@@ -34,9 +34,6 @@ public class IFWBlockTags {
     public static final TagKey<Block> CORROSIVE_DIRT = create("corrosive_dirt");
     public static final TagKey<Block> SLOW_CORROSION = create("slow_corrosion");
     public static final TagKey<Block> ACID_DEGRADABLE = create("acid_degradable");
-    public static final TagKey<Block> CHESTS = create("chests");
-    public static final TagKey<Block> ENTANGLE_PLANTS_80 = create("entangle_plants_80");
-    public static final TagKey<Block> ENTANGLE_PLANTS_60 = create("entangle_plants_60");
 
     public static TagKey<Block> create(String name) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(InfinityWay.MOD_ID, name));

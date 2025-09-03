@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-04T00:03:02.758718	Tags for minecraft:item mod id vanilla
+// 1.21.1	2025-09-04T05:06:01.5330294	Tags for minecraft:item mod id vanilla
 20de0e0f4a475259665e322b8fce4c6dc9bd398e data/c/tags/item/buckets/empty.json
 c8bdd264e6a8f676f43d71732fa26d39c6cb405e data/c/tags/item/buckets/entity_water.json
 443176368149964cb5339e006ca44d79e5343a0e data/c/tags/item/buckets/lava.json
@@ -12,12 +12,10 @@ b0b74270bcd293fe8797cfa8541ee7752d9776f2 data/c/tags/item/strings.json
 09eca58a299bf3bd85e9f646b4fb136dd7548dba data/ifw/tags/item/acid_immune.json
 c0e265034d8fbae18048ff0071d6b4e462641392 data/ifw/tags/item/animal_products.json
 96f50b5a6a3bf46756af20ca13251571d3e39bec data/ifw/tags/item/anvil.json
-f15a43877db5554ee1ea3e17e18374d0de62d6b2 data/ifw/tags/item/armors.json
 bdd81346635b7b10de96229750d71f72b3168a47 data/ifw/tags/item/battle_axe.json
 0b14fbac1d0ddc8bc58dbbf25cef44e5b81efd19 data/ifw/tags/item/buckets_stone.json
 090c6c0dba8de4988a2c80904208e91580c23928 data/ifw/tags/item/buckets_tropical_fish.json
 91e6fcd988d4016348a8188dcd9e1c6d02f0f8c2 data/ifw/tags/item/dagger.json
-bedd52b24b6d8a88115a5750382fc77c652cdc3d data/ifw/tags/item/drinks.json
 6807f04f2cbec6fafec09761de05d1251d5bc484 data/ifw/tags/item/has_enchanting_recipe.json
 48b2817554b707fbe61227fa136541f66a3677f5 data/ifw/tags/item/mattock.json
 268ef79988c8844763d231174b9d9d019b24c0f0 data/ifw/tags/item/no_mining_tools.json

@@ -28,7 +28,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -107,21 +106,7 @@ public class IFWEvents {
         //Armor Curse Effect: Remove armor if cursed
         for (ServerLevel level : event.getServer().getAllLevels()) {
             for (ServerPlayer player : level.players()) {
-                if (!CurseEffectHelper.canWearArmor(player)) {
-                    EquipmentSlot[] armorSlots = {
-                            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET
-                    };
-                    for (EquipmentSlot slot : armorSlots) {
-                        ItemStack armorStack = player.getItemBySlot(slot);
-                        if (!armorStack.isEmpty()) {
-                            boolean added = player.getInventory().add(armorStack);
-                            if (!added) {
-                                player.drop(armorStack, false);
-                            }
-                            player.setItemSlot(slot, ItemStack.EMPTY);
-                        }
-                    }
-                }
+                CurseEffectHelper.handleArmorCurse(player);
             }
         }
     }
