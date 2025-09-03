@@ -51,6 +51,8 @@ public class IFWCNLang extends IFWLanguageProvider {
         add("curse.ifw.cannot_wear_armor.desc", "§c你发现你不能穿着盔甲");
         add("curse.ifw.cannot_open_chests.desc", "§c你发现你无法打开箱子（我柜子怎么动了）");
         add("curse.ifw.cannot_sleep.desc", "§c你发现你在晚上无法入睡");
+        add("block.minecraft.bed.sleep.other_problem", "§c你发现你难以入眠");
+        add("curse.ifw.someone_cannot_sleep.desc", "§e玩家 %s 被诅咒失眠，夜晚无法跳过");
         add("curse.ifw.fear_of_spiders.desc", "§c你发现你难以对蜘蛛发起有效攻击");
         add("curse.ifw.fear_of_wolves.desc", "§c你发现你难以对狼发起有效攻击");
         add("curse.ifw.fear_of_creepers.desc", "§c你发现你难以对苦力怕发起有效攻击");

@@ -29,7 +29,7 @@ public interface PlayerExtension {
 
     default void ifw_updateTotalExperience() {}
 
-    default boolean infinityWay$canResetTimeBySleeping() {
+    default boolean ifw$canResetTimeBySleeping() {
         return false;
     }
 

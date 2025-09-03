@@ -186,7 +186,7 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerExtensio
 
     @Unique
     @Override
-    public boolean infinityWay$canResetTimeBySleeping() {
+    public boolean ifw$canResetTimeBySleeping() {
         long hour = WorldHelper.worldHour(this.level().dayTime());
         return this.isSleeping() && this.sleepCounter >= 100 && (hour <= 5 || hour >= 21);
     }

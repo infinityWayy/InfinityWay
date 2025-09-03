@@ -95,6 +95,10 @@ public abstract class ServerPlayerMixin extends Player implements PlayerExtensio
         return Either.right(Unit.INSTANCE);
     }
 
+    @Override
+    public boolean ifw$canResetTimeBySleeping() {
+        return getCurse() != CurseType.cannot_sleep;
+    }
 
     public ServerPlayerMixin(Level level, BlockPos pos, float yRot, GameProfile gameProfile) {
         super(level, pos, yRot, gameProfile);

@@ -337,6 +337,14 @@ public class IFWEvents {
         ServerPlayer player = event.getEntity();
 
         if (event.getProblem() == null) {
+            if (CurseEffectHelper.shouldBlockSleep(player)) {
+                player.displayClientMessage(Component.translatable("curse.ifw.cannot_sleep.desc"), true);
+                for (Player other : player.level().players()) {
+                    if (other != player && other.isSleeping()) {
+                        other.displayClientMessage(Component.translatable("curse.ifw.someone_cannot_sleep.desc", player.getDisplayName()), true);
+                    }
+                }
+            }
             long currentTime = player.level().getDayTime();
             playerSleepStartTime.put(player.getUUID(), currentTime);
         }

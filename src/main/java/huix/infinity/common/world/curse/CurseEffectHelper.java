@@ -132,4 +132,13 @@ public class CurseEffectHelper {
             }
         }
     }
+
+    public static boolean shouldBlockSleep(Player player) {
+        if (!(player instanceof PlayerExtension ext)) return false;
+        if (ext.getCurse() == CurseType.cannot_sleep) {
+            learnCurseEffect(ext);
+            return true;
+        }
+        return false;
+    }
 }

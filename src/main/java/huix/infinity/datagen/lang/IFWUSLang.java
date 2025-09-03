@@ -52,6 +52,8 @@ public class IFWUSLang extends IFWLanguageProvider {
         add("curse.ifw.cannot_wear_armor.desc", "§cYou find yourself unable to wear armor of any sort");
         add("curse.ifw.cannot_open_chests.desc", "§cYou find yourself unable to open chests");
         add("curse.ifw.cannot_sleep.desc", "§cYou find yourself unable to sleep at night");
+        add("block.minecraft.bed.sleep.other_problem", "§cYou find you have trouble sleeping");
+        add("curse.ifw.someone_cannot_sleep.desc", "§ePlayer %s is cursed with insomnia, night cannot be skipped");
         add("curse.ifw.fear_of_spiders.desc", "§cYou've become fearful of spiders and have difficulty striking them in melee combat");
         add("curse.ifw.fear_of_wolves.desc", "§cYou've become fearful of wolves and have difficulty striking them in melee combat");
         add("curse.ifw.fear_of_creepers.desc", "§cYou've become fearful of creepers and have difficulty striking them in melee combat");
