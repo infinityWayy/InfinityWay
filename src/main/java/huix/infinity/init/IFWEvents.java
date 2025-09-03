@@ -2,7 +2,6 @@ package huix.infinity.init;
 
 import huix.infinity.attachment.IFWAttachments;
 import huix.infinity.common.core.component.IFWDataComponents;
-import huix.infinity.common.core.tag.IFWItemTags;
 import huix.infinity.common.world.curse.CurseEffectHelper;
 import huix.infinity.common.world.curse.CurseType;
 import huix.infinity.common.world.effect.UnClearEffect;
@@ -13,9 +12,7 @@ import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.compat.farmersdelight.FDEventHandler;
 import huix.infinity.compat.farmersdelight.FDFoodAdapter;
 import huix.infinity.extension.func.FoodDataExtension;
-import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.init.event.IFWLoading;
-import huix.infinity.init.event.IFWSoundEvents;
 import huix.infinity.util.IFWEnchantmentHelper;
 import huix.infinity.util.WorldHelper;
 import net.minecraft.ChatFormatting;
@@ -23,15 +20,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -426,18 +420,9 @@ public class IFWEvents {
     @SubscribeEvent
     public static void onPlayerInteractBlock(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getEntity();
-        if (!(player instanceof PlayerExtension ext)) return;
-        if (ext.getCurse() == CurseType.cannot_open_chests) {
-            Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
-            Item item = Item.BY_BLOCK.get(block);
-            if (item != null) {
-                Holder<Item> holder = BuiltInRegistries.ITEM.wrapAsHolder(item);
-                if (holder.is(IFWItemTags.CHESTS)) {
-                    CurseEffectHelper.learnCurseEffect(ext);
-                    player.level().playSound(null, player.getX(), player.getY(), player.getZ(), IFWSoundEvents.CHEST_LOCKED.get(), SoundSource.BLOCKS, 0.2F, 1.0F);
-                    event.setCanceled(true);
-                }
-            }
+        Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
+        if (CurseEffectHelper.handleChestCurse(player, block)) {
+            event.setCanceled(true);
         }
     }
 }

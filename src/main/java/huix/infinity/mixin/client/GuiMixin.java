@@ -2,8 +2,7 @@ package huix.infinity.mixin.client;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.systems.RenderSystem;
-import huix.infinity.common.world.curse.CurseType;
-import huix.infinity.extension.func.PlayerExtension;
+import huix.infinity.common.world.curse.CurseEffectHelper;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -66,13 +65,10 @@ public abstract class GuiMixin {
             int i1 = p_283143_.guiWidth() / 2 + 91;
             int i3 = player.getMaxAirSupply();
             int j3 = Math.min(player.getAirSupply(), i3);
+
             if (player.isEyeInFluid(net.minecraft.tags.FluidTags.WATER) || j3 < i3) {
-                int bubblesMax = 10;
-                if (player instanceof PlayerExtension ext
-                        && ext.getCurse() == CurseType.cannot_hold_breath) {
-                    bubblesMax = Math.max(1, i3 / 30);
-                }
-                int bubblesCurrent = Mth.ceil((double)j3 * bubblesMax / (double)i3);
+                int bubblesMax = CurseEffectHelper.getCursedBubbleMax(player, 10, i3);
+                int bubblesCurrent = Mth.ceil((double) j3 * bubblesMax / (double) i3);
                 int j2 = p_283143_.guiHeight() - this.rightHeight;
                 RenderSystem.enableBlend();
                 for (int j4 = 0; j4 < bubblesCurrent; ++j4) {

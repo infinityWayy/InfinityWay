@@ -34,7 +34,7 @@ public class CurseManager {
         curses.removeIf(curse -> curse.witchUuid.equals(witchUuid));
         for (UUID playerUuid : affectedPlayers) {
             ServerPlayer online = getOnlinePlayerByUUID(playerUuid, onlinePlayers);
-            if (online != null && online instanceof PlayerExtension ext) {
+            if (online instanceof PlayerExtension ext) {
                 ext.ifw$setCurse(CurseType.none);
                 ext.setKnownCurse(false);
                 syncCurseRemoved(online);
@@ -72,6 +72,21 @@ public class CurseManager {
             }
         }
         return false;
+    }
+
+    public void processPendingCurseClear(Collection<ServerPlayer> players) {
+        Iterator<UUID> iter = pendingCurseClear.iterator();
+        while (iter.hasNext()) {
+            UUID uuid = iter.next();
+            for (ServerPlayer player : players) {
+                if (player.getUUID().equals(uuid) && player instanceof PlayerExtension ext) {
+                    ext.ifw$setCurse(CurseType.none);
+                    INSTANCE.syncCurseRemoved(player);
+                    iter.remove();
+                    break;
+                }
+            }
+        }
     }
 
     public void tick(Collection<ServerPlayer> players) {
