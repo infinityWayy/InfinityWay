@@ -14,6 +14,7 @@
     import huix.infinity.datagen.tag.IFWEntityTypeTagsProvider;
     import huix.infinity.datagen.tag.IFWItemTagsProvider;
     import huix.infinity.datagen.worldgen.IFWBiomeModifiers;
+    import huix.infinity.datagen.worldgen.IFWDimensionDataGen;
     import huix.infinity.init.InfinityWay;
     import net.minecraft.data.DataProvider;
     import net.neoforged.bus.api.SubscribeEvent;
@@ -56,5 +57,7 @@
             generator.addProvider(event.includeServer(), (DataProvider.Factory<IFWDataEnchantments>) packOutput -> new IFWDataEnchantments(packOutput, lookupProvider));
 
             generator.addProvider(event.includeServer(), new IFWAdvancementProvider(output, lookupProvider, existingFileHelper));
+
+            generator.addProvider(event.includeServer(), new IFWDimensionDataGen(output, lookupProvider));
         }
     }

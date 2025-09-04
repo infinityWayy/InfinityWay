@@ -2,6 +2,7 @@ package huix.infinity.util;
 
 import huix.infinity.common.core.tag.IFWBlockTags;
 import huix.infinity.common.world.block.RunePortalBlock;
+import huix.infinity.common.world.dimension.IFWDimensionTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -267,6 +268,8 @@ public class RunePortalUtil {
             return level.getSharedSpawnPos();
         } else if (level.dimension() == Level.NETHER) {
             return findSafeLocationInNether(level);
+        } else if (level.dimension() == IFWDimensionTypes.UNDERWORLD_LEVEL) {
+            return findSafeLocationInUnderworld(level);
         } else {
             return findSafeLocationInDimension(level);
         }

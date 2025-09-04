@@ -1,0 +1,50 @@
+{
+  "carvers": {},
+  "downfall": 0.0,
+  "effects": {
+    "ambient_sound": "minecraft:ambient.cave",
+    "fog_color": 4864827,
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "minecraft:music.nether.nether_wastes"
+    },
+    "sky_color": 5917258,
+    "water_color": 4135450,
+    "water_fog_color": 3344392
+  },
+  "features": [],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 100
+      },
+      {
+        "type": "minecraft:cave_spider",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 80
+      },
+      {
+        "type": "minecraft:skeleton",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 60
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.8
+}

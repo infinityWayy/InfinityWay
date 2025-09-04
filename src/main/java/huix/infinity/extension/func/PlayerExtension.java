@@ -5,10 +5,12 @@ import huix.infinity.common.world.curse.CurseManager;
 import huix.infinity.common.world.curse.CurseType;
 import huix.infinity.common.world.entity.player.NutritionalStatus;
 import huix.infinity.common.world.food.EnumInsulinResistanceLevel;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.portal.DimensionTransition;
 
 import java.util.UUID;
 
@@ -102,4 +104,7 @@ public interface PlayerExtension {
     default void ifw$setCurse(CurseType curse) {
         instance().setData(IFWAttachments.player_curse, curse.ordinal());
     }
+
+    void changeDimension(ServerLevel targetLevel, DimensionTransition dimensionTransition);
+
 }

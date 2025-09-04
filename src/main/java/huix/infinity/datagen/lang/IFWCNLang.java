@@ -364,6 +364,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWBlocks.deepslate_mithril_ore_item.get(), "深层秘银矿石");
         add(IFWBlocks.deepslate_silver_ore_item.get(), "深层银矿石");
         add(IFWBlocks.rune_portal.get(), "符文传送门");
+        add(IFWBlocks.cross_dimension_portal.get(), "维度传送门");
         add(IFWBlocks.copper_private_chest.get(), "铜保险箱");
         add(IFWBlocks.silver_private_chest.get(), "银保险箱");
         add(IFWBlocks.gold_private_chest.get(), "金保险箱");

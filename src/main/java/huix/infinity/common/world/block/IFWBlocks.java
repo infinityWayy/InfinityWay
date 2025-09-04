@@ -456,8 +456,8 @@ public class IFWBlocks {
     public static final DeferredBlock<Block> rune_portal = BLOCKS.registerBlock("rune_portal",
             block -> new RunePortalBlock(BlockBehaviour.Properties.of()));
 
-//    public static final DeferredBlock<Block> cross_dimension_portal = BLOCKS.register("cross_dimension_portal",
-//            () -> new CrossDimensionPortalBlock(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> cross_dimension_portal = BLOCKS.register("cross_dimension_portal",
+            () -> new CrossDimensionPortalBlock(BlockBehaviour.Properties.of()));
 
     public static final DeferredBlock<MantleBlock> mantle = BLOCKS.registerBlock("mantle",
             block -> new MantleBlock(BlockBehaviour.Properties.of()

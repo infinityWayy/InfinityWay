@@ -371,6 +371,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWBlocks.deepslate_mithril_ore_item.get(), "Deepslate Mithril Ore");
         add(IFWBlocks.deepslate_silver_ore_item.get(), "Deepslate Silver Ore");
         add(IFWBlocks.rune_portal.get(), "Rune Portal");
+        add(IFWBlocks.cross_dimension_portal.get(), "Dimension Portal");
         add(IFWBlocks.copper_private_chest.get(), "Copper Private Chest");
         add(IFWBlocks.silver_private_chest.get(), "Silver Private Chest");
         add(IFWBlocks.gold_private_chest.get(), "Gold Private Chest");

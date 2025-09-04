@@ -1,0 +1,9 @@
+{
+  "type": "ifw:underworld",
+  "generator": {
+    "type": "ifw:underworld",
+    "biome_source": {
+      "type": "ifw:underworld"
+    }
+  }
+}
