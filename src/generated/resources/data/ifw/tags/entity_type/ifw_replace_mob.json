@@ -8,6 +8,7 @@
     "minecraft:skeleton",
     "minecraft:spider",
     "minecraft:cave_spider",
-    "minecraft:slime"
+    "minecraft:slime",
+    "minecraft:witch"
   ]
 }

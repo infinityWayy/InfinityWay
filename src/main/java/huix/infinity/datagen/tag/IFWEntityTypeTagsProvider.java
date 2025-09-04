@@ -21,10 +21,10 @@ public class IFWEntityTypeTagsProvider extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
-        // 替换标签
+        // 移除标签
         tag(IFWEntityTypeTags.REPLACE).add(
                 EntityType.CHICKEN, EntityType.SHEEP, EntityType.PIG, EntityType.COW,
-                EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.CAVE_SPIDER, EntityType.SLIME
+                EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.CAVE_SPIDER, EntityType.SLIME, EntityType.WITCH
         );
 
         // 基础标签
