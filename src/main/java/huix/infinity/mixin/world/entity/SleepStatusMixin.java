@@ -1,4 +1,4 @@
-package huix.infinity.mixin.server.player;
+package huix.infinity.mixin.world.entity;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.SleepStatus;

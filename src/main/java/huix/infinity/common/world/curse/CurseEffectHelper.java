@@ -1,5 +1,9 @@
 package huix.infinity.common.world.curse;
 
+import huix.infinity.common.world.entity.monster.Ghoul;
+import huix.infinity.common.world.entity.monster.InfernoCreeper;
+import huix.infinity.common.world.entity.monster.arachnid.IFWArachnid;
+import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.item.IFWItems;
 import huix.infinity.extension.func.PlayerExtension;
 import huix.infinity.init.event.IFWSoundEvents;
@@ -11,8 +15,13 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -188,4 +197,49 @@ public class CurseEffectHelper {
         }
         return 1.0F;
     }
+
+    public static boolean shouldPreventCurseAttack(LivingEntity target, DamageSource source) {
+        Entity attacker = source.getEntity();
+        if (!(attacker instanceof PlayerExtension ext)) return false;
+
+        boolean prevented = false;
+
+        if (ext.hasCurse(CurseType.fear_of_wolves)) {
+            if (target instanceof Wolf) {
+                learnCurseEffect(ext);
+                prevented = target.getRandom().nextInt(4) > 0;
+            }
+        }
+
+        if (ext.hasCurse(CurseType.fear_of_spiders)) {
+            if (target instanceof Spider || target instanceof IFWArachnid) {
+                learnCurseEffect(ext);
+                prevented = target.getRandom().nextInt(4) > 0;
+            }
+        }
+
+        if (ext.hasCurse(CurseType.fear_of_creepers)) {
+            if (target instanceof Creeper || target instanceof InfernoCreeper) {
+                learnCurseEffect(ext);
+                prevented = target.getRandom().nextInt(4) > 0;
+            }
+        }
+
+        if (ext.hasCurse(CurseType.fear_of_undead)) {
+            if (!(target instanceof Ghoul)) {
+                if (target instanceof IFWZombie || target instanceof WitherBoss || target instanceof Phantom || target instanceof Zombie || target instanceof Drowned
+                        || target instanceof AbstractSkeleton) {
+                    learnCurseEffect(ext);
+                    prevented = target.getRandom().nextInt(4) > 0;
+                }
+            }
+        }
+
+        if (prevented) {
+            float volume = 0.3F + target.getRandom().nextFloat() * 0.7F; // 0.3 ~ 1.0
+            target.playSound(IFWSoundEvents.CLASSIC_HURT.get(), volume, 1.0F);
+        }
+        return prevented;
+    }
+
 }

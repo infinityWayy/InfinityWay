@@ -5,6 +5,7 @@ import huix.infinity.common.world.curse.CurseEffectHelper;
 import huix.infinity.common.world.entity.LivingEntityAccess;
 import net.minecraft.core.Holder;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -101,6 +102,14 @@ public abstract class LivingEntityMixin extends Entity implements LivingEntityAc
                 Vec3 result = new Vec3(original.x * slowdown, original.y, original.z * slowdown);
                 cir.setReturnValue(result);
             }
+        }
+    }
+
+    @Inject(method = "hurt", at = @At("HEAD"), cancellable = true)
+    public void ifw$curse_hurtIntercept(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if (CurseEffectHelper.shouldPreventCurseAttack((LivingEntity)(Object)this, source)) {
+            cir.setReturnValue(false);
+            cir.cancel();
         }
     }
 }

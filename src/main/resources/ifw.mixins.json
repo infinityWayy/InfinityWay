@@ -9,7 +9,7 @@
     "neoforge.CommonHooksMixin",
     "server.commands.LocateCommandMixin",
     "server.commands.SpawnArmorTrimsCommandMixin",
-    "server.player.SleepStatusMixin",
+    "world.entity.SleepStatusMixin",
     "world.block.BlockBehaviourMixin",
     "world.block.BlockFenceMixin",
     "world.block.BlockMixin",
