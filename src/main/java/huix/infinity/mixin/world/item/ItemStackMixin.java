@@ -2,17 +2,22 @@ package huix.infinity.mixin.world.item;
 
 import huix.infinity.common.core.component.IFWDataComponents;
 import huix.infinity.common.core.tag.IFWItemTags;
+import huix.infinity.common.world.curse.CurseEffectHelper;
 import huix.infinity.common.world.item.crafting.EnchantingRecipe;
 import huix.infinity.extension.func.ItemStackExtension;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(ItemStack.class)
 public class ItemStackMixin implements ItemStackExtension {
@@ -62,6 +67,11 @@ public class ItemStackMixin implements ItemStackExtension {
     @Shadow
     public boolean is(TagKey<Item> tag) {
         throw new AssertionError("Shadow stub called!");
+    }
+
+    @ModifyVariable(method = "hurtAndBreak(ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/LivingEntity;Ljava/util/function/Consumer;)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
+    private int ifw$corrosionCurseDamage(int damage, int original, ServerLevel level, LivingEntity entity, java.util.function.Consumer<?> onBreak) {
+        return CurseEffectHelper.handleCorrosionCurseDamage(damage, entity);
     }
 
     @Override

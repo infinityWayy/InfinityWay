@@ -39,60 +39,13 @@ public class CurseEffectHelper {
         }
     }
 
-    public static boolean isIngestionForbiddenByCurse(Player player, ItemStack itemStack) {
-        if (!(player instanceof PlayerExtension ext)) return false;
-        CurseType curse = ext.getCurse();
 
-        if (itemStack.ifw_isEdible()) {
-            if (itemStack.ifw_isAnimalProduct() && curse == CurseType.cannot_eat_meats) {
-                learnCurseEffect(ext);
-                return true;
-            }
-            if (itemStack.ifw_isPlantProduct() && curse == CurseType.cannot_eat_plants) {
-                learnCurseEffect(ext);
-                return true;
-            }
-        }
-        if (itemStack.ifw_isDrink() && curse == CurseType.cannot_drink) {
-            if (itemStack.getItem() != IFWItems.bottle_of_disenchanting.get()) {
-                learnCurseEffect(ext);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static boolean canWearArmor(Player player) {
-        if (!(player instanceof PlayerExtension ext)) return true;
-        if (ext.getCurse() == CurseType.cannot_wear_armor) {
+    public static int handleCorrosionCurseDamage(int damage, LivingEntity entity) {
+        if (entity instanceof PlayerExtension ext && ext.hasCurse(CurseType.equipment_decays_faster)) {
             learnCurseEffect(ext);
-            return false;
+            return damage * 2;
         }
-        return true;
-    }
-    public static void handleArmorCurse(Player player) {
-        if (!canWearArmor(player)) {
-            EquipmentSlot[] armorSlots = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
-            for (EquipmentSlot slot : armorSlots) {
-                ItemStack armorStack = player.getItemBySlot(slot);
-                if (!armorStack.isEmpty()) {
-                    boolean added = player.getInventory().add(armorStack);
-                    if (!added) {
-                        player.drop(armorStack, false);
-                    }
-                    player.setItemSlot(slot, ItemStack.EMPTY);
-                }
-            }
-        }
-    }
-
-    public static boolean shouldBlockSprint(Player player) {
-        if (!(player instanceof PlayerExtension ext)) return false;
-        if (ext.getCurse() == CurseType.cannot_run) {
-            learnCurseEffect(ext);
-            return true;
-        }
-        return false;
+        return damage;
     }
 
     public static int getCursedMaxAirSupply(Player player, int vanillaMaxAir) {
@@ -118,17 +71,39 @@ public class CurseEffectHelper {
         return vanillaBubbleMax;
     }
 
-    public static boolean handleChestCurse(Player player, Block block) {
+
+    public static boolean shouldBlockSprint(Player player) {
         if (!(player instanceof PlayerExtension ext)) return false;
-        if (ext.getCurse() == CurseType.cannot_open_chests) {               // MITE does not prohibit these
-            if (block instanceof ChestBlock || block instanceof BarrelBlock /* || block instanceof ShulkerBoxBlock || block instanceof EnderChestBlock */) {
+        if (ext.getCurse() == CurseType.cannot_run) {
+            learnCurseEffect(ext);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isIngestionForbiddenByCurse(Player player, ItemStack itemStack) {
+        if (!(player instanceof PlayerExtension ext)) return false;
+        CurseType curse = ext.getCurse();
+
+        if (itemStack.ifw_isEdible()) {
+            if (itemStack.ifw_isAnimalProduct() && curse == CurseType.cannot_eat_meats) {
                 learnCurseEffect(ext);
-                player.level().playSound(null, player.getX(), player.getY(), player.getZ(), IFWSoundEvents.CHEST_LOCKED.get(), SoundSource.BLOCKS, 0.2F, 1.0F);
+                return true;
+            }
+            if (itemStack.ifw_isPlantProduct() && curse == CurseType.cannot_eat_plants) {
+                learnCurseEffect(ext);
+                return true;
+            }
+        }
+        if (itemStack.ifw_isDrink() && curse == CurseType.cannot_drink) {
+            if (itemStack.getItem() != IFWItems.bottle_of_disenchanting.get()) {
+                learnCurseEffect(ext);
                 return true;
             }
         }
         return false;
     }
+
 
     public static void handleEndermanAggro(EnderMan enderman) {
         Player nearestPlayer = null;
@@ -159,14 +134,9 @@ public class CurseEffectHelper {
         }
     }
 
-    public static boolean shouldBlockSleep(Player player) {
-        if (!(player instanceof PlayerExtension ext)) return false;
-        if (ext.getCurse() == CurseType.cannot_sleep) {
-            learnCurseEffect(ext);
-            return true;
-        }
-        return false;
-    }
+
+    // Clumsiness
+
 
     public static float getEntangleCurseSlowdown(Player player) {
         if (!(player instanceof PlayerExtension ext) || ext.getCurse() != CurseType.entanglement) return 1.0F;
@@ -197,6 +167,54 @@ public class CurseEffectHelper {
         }
         return 1.0F;
     }
+
+    public static boolean canWearArmor(Player player) {
+        if (!(player instanceof PlayerExtension ext)) return true;
+        if (ext.getCurse() == CurseType.cannot_wear_armor) {
+            learnCurseEffect(ext);
+            return false;
+        }
+        return true;
+    }
+    public static void handleArmorCurse(Player player) {
+        if (!canWearArmor(player)) {
+            EquipmentSlot[] armorSlots = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
+            for (EquipmentSlot slot : armorSlots) {
+                ItemStack armorStack = player.getItemBySlot(slot);
+                if (!armorStack.isEmpty()) {
+                    boolean added = player.getInventory().add(armorStack);
+                    if (!added) {
+                        player.drop(armorStack, false);
+                    }
+                    player.setItemSlot(slot, ItemStack.EMPTY);
+                }
+            }
+        }
+    }
+
+
+    public static boolean handleChestCurse(Player player, Block block) {
+        if (!(player instanceof PlayerExtension ext)) return false;
+        if (ext.getCurse() == CurseType.cannot_open_chests) {               // MITE does not prohibit these
+            if (block instanceof ChestBlock || block instanceof BarrelBlock /* || block instanceof ShulkerBoxBlock || block instanceof EnderChestBlock */) {
+                learnCurseEffect(ext);
+                player.level().playSound(null, player.getX(), player.getY(), player.getZ(), IFWSoundEvents.CHEST_LOCKED.get(), SoundSource.BLOCKS, 0.2F, 1.0F);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public static boolean shouldBlockSleep(Player player) {
+        if (!(player instanceof PlayerExtension ext)) return false;
+        if (ext.getCurse() == CurseType.cannot_sleep) {
+            learnCurseEffect(ext);
+            return true;
+        }
+        return false;
+    }
+
 
     public static boolean shouldPreventCurseAttack(LivingEntity target, DamageSource source) {
         Entity attacker = source.getEntity();
