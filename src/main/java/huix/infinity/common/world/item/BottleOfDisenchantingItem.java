@@ -29,6 +29,11 @@ public class BottleOfDisenchantingItem extends Item {
     }
 
     @Override
+    public boolean isFoil(@NotNull ItemStack stack) {
+        return true;
+    }
+
+    @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(player.getItemInHand(hand));

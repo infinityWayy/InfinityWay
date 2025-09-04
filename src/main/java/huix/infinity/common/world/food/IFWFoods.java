@@ -64,6 +64,8 @@ public class IFWFoods {
     public static final IFWFoodProperties ifw_chocolate = (new IFWFoodProperties.Builder()).insulinResponse(4800).build();
     public static final FoodProperties cereal = (new FoodProperties.Builder()).nutrition(4).saturationModifier(2).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_cereal = (new IFWFoodProperties.Builder()).protein(16000).build();
+    public static final FoodProperties blueberry_porridge = (new FoodProperties.Builder()).nutrition(4).saturationModifier(2).usingConvertsTo(Items.BOWL).build();
+    public static final IFWFoodProperties ifw_blueberry_porridge = (new IFWFoodProperties.Builder()).phytonutrients(16000).insulinResponse(9600).soup().build();
     public static final FoodProperties pumpkin_soup = (new FoodProperties.Builder()).nutrition(1).saturationModifier(2).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_pumpkin_soup = (new IFWFoodProperties.Builder()).phytonutrients(16000).soup().build();
     public static final FoodProperties mushroom_soup_cream = (new FoodProperties.Builder()).nutrition(3).saturationModifier(5).usingConvertsTo(Items.BOWL).build();
@@ -76,8 +78,6 @@ public class IFWFoods {
     public static final IFWFoodProperties ifw_chicken_soup = (new IFWFoodProperties.Builder()).protein(80000).phytonutrients(80000).soup().build();
     public static final FoodProperties beef_stew = (new FoodProperties.Builder()).nutrition(16).saturationModifier(16).usingConvertsTo(Items.BOWL).build();
     public static final IFWFoodProperties ifw_beef_stew = (new IFWFoodProperties.Builder()).protein(128000).phytonutrients(128000).soup().build();
-    public static final FoodProperties porridge = (new FoodProperties.Builder()).nutrition(4).saturationModifier(2).build();
-    public static final IFWFoodProperties ifw_porridge = (new IFWFoodProperties.Builder()).phytonutrients(16000).insulinResponse(9600).soup().build();
     public static final FoodProperties sorbet = (new FoodProperties.Builder()).nutrition(4).saturationModifier(2).build();
     public static final IFWFoodProperties ifw_sorbet = (new IFWFoodProperties.Builder()).phytonutrients(16000).insulinResponse(9600).build();
     public static final FoodProperties mashed_potato = (new FoodProperties.Builder()).nutrition(12).saturationModifier(8).build();

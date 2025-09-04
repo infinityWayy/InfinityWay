@@ -379,13 +379,13 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.dough.get(), "面团");
         add(IFWItems.chocolate.get(), "巧克力");
         add(IFWItems.cereal.get(), "麦片粥");
+        add(IFWItems.blueberry_porridge.get(), "蓝莓粥");
         add(IFWItems.pumpkin_soup.get(), "南瓜汤");
         add(IFWItems.mushroom_soup_cream.get(), "奶油蘑菇汤");
         add(IFWItems.vegetable_soup.get(), "蔬菜汤");
         add(IFWItems.vegetable_soup_cream.get(), "奶油蔬菜汤");
         add(IFWItems.chicken_soup.get(), "鸡汤");
         add(IFWItems.beef_stew.get(), "牛肉汤");
-        add(IFWItems.porridge.get(), "燕麦粥");
         add(IFWItems.sorbet.get(), "雪糕");
         add(IFWItems.mashed_potato.get(), "马铃薯泥");
         add(IFWItems.ice_cream.get(), "冰淇淋");

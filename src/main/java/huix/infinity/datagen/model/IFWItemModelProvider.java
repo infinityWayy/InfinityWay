@@ -290,13 +290,13 @@ public class IFWItemModelProvider extends ItemModelProvider {
         basicItem(IFWItems.dough.get());
         basicItem(IFWItems.chocolate.get());
         basicItem(IFWItems.cereal.get());
+        basicItem(IFWItems.blueberry_porridge.get());
         basicItem(IFWItems.pumpkin_soup.get());
         basicItem(IFWItems.mushroom_soup_cream.get());
         basicItem(IFWItems.vegetable_soup.get());
         basicItem(IFWItems.vegetable_soup_cream.get());
         basicItem(IFWItems.chicken_soup.get());
         basicItem(IFWItems.beef_stew.get());
-        basicItem(IFWItems.porridge.get());
         basicItem(IFWItems.sorbet.get());
         basicItem(IFWItems.mashed_potato.get());
         basicItem(IFWItems.ice_cream.get());

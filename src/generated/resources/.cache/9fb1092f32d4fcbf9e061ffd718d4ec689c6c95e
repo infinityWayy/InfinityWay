@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-02T08:44:56.6968709	Recipes
+// 1.21.1	2025-09-04T14:40:45.112458	Recipes
 8b121b827b1b9657f5f6e233bbec2659875f4afe data/ifw/advancement/recipes/building_blocks/adamantium_anvil.json
 8095e32c2e0106f3ba40a10c204f6043d8dabfeb data/ifw/advancement/recipes/building_blocks/adamantium_bars.json
 9d5e5fb6ff22512e12565ce8c70ec8434a2d5448 data/ifw/advancement/recipes/building_blocks/adamantium_door.json
@@ -124,6 +124,7 @@ a4be70d623b32cfa3dd2f2e05866945fe88335b1 data/ifw/advancement/recipes/decoration
 4d6a734fe07ae0a5e7016b925ccae2a86b0c0a20 data/ifw/advancement/recipes/decorations/private_chest/mithril_private_chest.json
 345735286f0bcd9fb48e882e67faafa8ded6d59f data/ifw/advancement/recipes/decorations/private_chest/silver_private_chest.json
 7ab15d5af6412292825f8942bb774d983f225d84 data/ifw/advancement/recipes/food/beef_stew.json
+fba364241f7f3ff45981eead2677e72424356d24 data/ifw/advancement/recipes/food/blueberry_porridge.json
 1745d3c9a5fd6e810074dda8f4c642971ce4e81c data/ifw/advancement/recipes/food/cereal.json
 30af5fe934a4c8b48446213659104af2db08fe57 data/ifw/advancement/recipes/food/cheese.json
 7ad29fd5c08dc497157b0890727573f3cc99eb20 data/ifw/advancement/recipes/food/chicken_soup.json
@@ -474,6 +475,7 @@ eaa669b2adcb1b55e20fe237681ff1f63782219f data/ifw/recipe/ancient_metal_sword.jso
 b9fbaf59fa5e4c57d4e0b47ec8860bcfdedf195e data/ifw/recipe/ancient_metal_war_hammer.json
 a7255732ee9adad74d4c44c9536037f98c5c6191 data/ifw/recipe/beef_stew.json
 eea9abba6ac9bfa33c73fe98d55e12695f776e3a data/ifw/recipe/blazing_wither_bone.json
+9fe8541157ec7282ce746b67a1d707c735c99bde data/ifw/recipe/blueberry_porridge.json
 d09091ca0c1a17b3b2eff529488ded93a503da24 data/ifw/recipe/cereal.json
 3520157847239b5055449da21fb4c665cf0c54ee data/ifw/recipe/cheese.json
 703a62dada2194c91803dea1d1f0c5c44a673cf0 data/ifw/recipe/chicken_soup.json

@@ -770,9 +770,9 @@ public class IFWItems {
     public static final DeferredItem<Item> salad =
             ITEMS.registerSimpleItem("salad", new Item.Properties().stacksTo(4).food(IFWFoods.salad));
     public static final DeferredItem<Item> milk_bowl =
-            ITEMS.registerSimpleItem("milk_bowl", new Item.Properties().stacksTo(4).food(IFWFoods.milk_bowl));
+            ITEMS.register("milk_bowl", () -> new DrinkBowlItem(new Item.Properties().stacksTo(4).food(IFWFoods.milk_bowl)));
     public static final DeferredItem<Item> water_bowl =
-            ITEMS.registerSimpleItem("water_bowl", new Item.Properties().stacksTo(4).food(IFWFoods.water_bowl));
+            ITEMS.register("water_bowl", () -> new DrinkBowlItem(new Item.Properties().stacksTo(4).food(IFWFoods.water_bowl)));
     public static final DeferredItem<Item> cheese =
             ITEMS.registerSimpleItem("cheese", new Item.Properties().stacksTo(8).food(IFWFoods.cheese));
     public static final DeferredItem<Item> dough =
@@ -780,21 +780,21 @@ public class IFWItems {
     public static final DeferredItem<Item> chocolate =
             ITEMS.registerSimpleItem("chocolate", new Item.Properties().stacksTo(16).food(IFWFoods.chocolate));
     public static final DeferredItem<Item> cereal =
-            ITEMS.registerSimpleItem("cereal", new Item.Properties().stacksTo(4).food(IFWFoods.cereal));
+            ITEMS.register("cereal", () -> new DrinkBowlItem(new Item.Properties().stacksTo(4).food(IFWFoods.cereal)));
+    public static final DeferredItem<Item> blueberry_porridge =
+            ITEMS.register("blueberry_porridge", () -> new DrinkBowlItem(new Item.Properties().stacksTo(4).food(IFWFoods.blueberry_porridge)));
     public static final DeferredItem<Item> pumpkin_soup =
-            ITEMS.registerSimpleItem("pumpkin_soup", new Item.Properties().stacksTo(4).food(IFWFoods.pumpkin_soup));
+            ITEMS.register("pumpkin_soup", () -> new DrinkBowlItem(new Item.Properties().stacksTo(4).food(IFWFoods.pumpkin_soup)));
     public static final DeferredItem<Item> mushroom_soup_cream =
-            ITEMS.registerSimpleItem("mushroom_soup_cream", new Item.Properties().stacksTo(4).food(IFWFoods.mushroom_soup_cream));
+            ITEMS.register("mushroom_soup_cream", () -> new DrinkBowlItem(new Item.Properties().stacksTo(4).food(IFWFoods.mushroom_soup_cream)));
     public static final DeferredItem<Item> vegetable_soup =
-            ITEMS.registerSimpleItem("vegetable_soup", new Item.Properties().stacksTo(4).food(IFWFoods.vegetable_soup));
+            ITEMS.register("vegetable_soup", () -> new DrinkBowlItem(new Item.Properties().stacksTo(4).food(IFWFoods.vegetable_soup)));
     public static final DeferredItem<Item> vegetable_soup_cream =
-            ITEMS.registerSimpleItem("vegetable_soup_cream", new Item.Properties().stacksTo(4).food(IFWFoods.vegetable_soup_cream));
+            ITEMS.register("vegetable_soup_cream", () -> new DrinkBowlItem(new Item.Properties().stacksTo(4).food(IFWFoods.vegetable_soup_cream)));
     public static final DeferredItem<Item> chicken_soup =
-            ITEMS.registerSimpleItem("chicken_soup", new Item.Properties().stacksTo(4).food(IFWFoods.chicken_soup));
+            ITEMS.register("chicken_soup", () -> new DrinkBowlItem(new Item.Properties().stacksTo(4).food(IFWFoods.chicken_soup)));
     public static final DeferredItem<Item> beef_stew =
-            ITEMS.registerSimpleItem("beef_stew", new Item.Properties().stacksTo(4).food(IFWFoods.beef_stew));
-    public static final DeferredItem<Item> porridge =
-            ITEMS.registerSimpleItem("porridge", new Item.Properties().stacksTo(4).food(IFWFoods.porridge));
+            ITEMS.register("beef_stew", () -> new DrinkBowlItem(new Item.Properties().stacksTo(4).food(IFWFoods.beef_stew)));
     public static final DeferredItem<Item> sorbet =
             ITEMS.registerSimpleItem("sorbet", new Item.Properties().stacksTo(4).food(IFWFoods.sorbet));
     public static final DeferredItem<Item> mashed_potato =

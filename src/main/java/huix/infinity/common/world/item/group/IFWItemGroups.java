@@ -50,13 +50,13 @@ public class IFWItemGroups {
                 output.accept(IFWItems.dough.get());
                 output.accept(IFWItems.chocolate.get());
                 output.accept(IFWItems.cereal.get());
+                output.accept(IFWItems.blueberry_porridge.get());
                 output.accept(IFWItems.pumpkin_soup.get());
                 output.accept(IFWItems.mushroom_soup_cream.get());
                 output.accept(IFWItems.vegetable_soup.get());
                 output.accept(IFWItems.vegetable_soup_cream.get());
                 output.accept(IFWItems.chicken_soup.get());
                 output.accept(IFWItems.beef_stew.get());
-                output.accept(IFWItems.porridge.get());
                 output.accept(IFWItems.sorbet.get());
                 output.accept(IFWItems.mashed_potato.get());
                 output.accept(IFWItems.ice_cream.get());

@@ -387,13 +387,13 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.dough.get(), "Dough");
         add(IFWItems.chocolate.get(), "Chocolate");
         add(IFWItems.cereal.get(), "Cereal");
+        add(IFWItems.blueberry_porridge.get(), "Blueberry Porridge");
         add(IFWItems.pumpkin_soup.get(), "Pumpkin Soup");
         add(IFWItems.mushroom_soup_cream.get(), "Mushroom Soup Cream");
         add(IFWItems.vegetable_soup.get(), "Vegetable Soup");
         add(IFWItems.vegetable_soup_cream.get(), "Vegetable Soup Cream");
         add(IFWItems.chicken_soup.get(), "Chicken Soup");
         add(IFWItems.beef_stew.get(), "Beef Stew");
-        add(IFWItems.porridge.get(), "Porridge");
         add(IFWItems.sorbet.get(), "Sorbet");
         add(IFWItems.mashed_potato.get(), "Mashed Potato");
         add(IFWItems.ice_cream.get(), "Ice Cream");

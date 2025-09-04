@@ -651,6 +651,13 @@ public class IFWRecipeProvider extends RecipeProvider {
                 .requires(Items.WHEAT, 1)
                 .requires(Items.SUGAR, 1)
                 .unlockedBy("has_milk_bowl", has(IFWItems.milk_bowl)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.blueberry_porridge, 1)
+                .requires(IFWItems.blueberry, 1)
+                .requires(Items.SUGAR, 1)
+                .requires(Items.WHEAT_SEEDS, 1)
+                .requires(IFWItems.water_bowl, 1)
+                .unlockedBy("has_blueberry", has(IFWItems.blueberry))
+                .save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, IFWItems.chocolate, 1)
                 .requires(Items.COCOA_BEANS, 1)
                 .requires(Items.SUGAR, 1)

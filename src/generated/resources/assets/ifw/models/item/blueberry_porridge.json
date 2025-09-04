@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "ifw:item/porridge"
+    "layer0": "ifw:item/blueberry_porridge"
   }
 }

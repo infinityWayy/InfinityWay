@@ -38,7 +38,7 @@ public interface ItemStackExtension {
         return false;
     }
 
-    default boolean ifw_isPlant() {
+    default boolean ifw_isPlantProduct() {
         return false;
     }
 

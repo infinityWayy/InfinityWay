@@ -170,7 +170,7 @@ public abstract class EffectRenderingInventoryScreenMixin extends AbstractContai
         g.drawString(this.font, Component.translatable("effect.ifw.curse"), tx, ty, 0xFFFFFF);
         Component line = p.knownCurse()
                 ? Component.translatable("curse.ifw." + p.getCurse().name())
-                : Component.translatable("effect.ifw.unknown.curse");
+                : Component.translatable("curse.ifw.unknown.curse");
         g.drawString(this.font, line, tx, ty + this.font.lineHeight, 0xAA00FF);
 
         if (ifw$iconHovered(mouseX, mouseY, ix, iy)) {

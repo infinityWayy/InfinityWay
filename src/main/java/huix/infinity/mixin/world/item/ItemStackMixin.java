@@ -68,16 +68,18 @@ public class ItemStackMixin implements ItemStackExtension {
     public boolean ifw_isAnimalProduct() {
         return this.is(IFWItemTags.ANIMAL_PRODUCTS)
                 || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "meat")))
-                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", "meat")))
-                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "meat")))
-                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("croptopia", "meats")));
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "foods/raw_meet")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("croptopia", "meats")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "fish")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "foods/raw_fish")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "foods/cooked_fish")));
     }
 
     @Override
-    public boolean ifw_isPlant() {
+    public boolean ifw_isPlantProduct() {
         return this.is(IFWItemTags.VEGETABLES)
-                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "vegetable")))
-                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", "vegetable")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "vegetables")))
+                || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "foods/vegetable")))
                 || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "vegetable")))
                 || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "foods/onion")))
                 || this.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "foods/tomato")))

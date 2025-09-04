@@ -39,7 +39,7 @@ public class CurseEffectHelper {
                 learnCurseEffect(ext);
                 return true;
             }
-            if (itemStack.ifw_isPlant() && curse == CurseType.cannot_eat_plants) {
+            if (itemStack.ifw_isPlantProduct() && curse == CurseType.cannot_eat_plants) {
                 learnCurseEffect(ext);
                 return true;
             }

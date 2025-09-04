@@ -129,19 +129,21 @@ public class IFWItemTagsProvider extends ItemTagsProvider {
                 // IFW
                 IFWItems.cheese.get(), IFWItems.cooked_worm.get(), IFWItems.worm.get(), IFWItems.milk_bowl.get(), IFWItems.milk_copper_bucket.get(), IFWItems.milk_silver_bucket.get(),
                 IFWItems.milk_gold_bucket.get(),IFWItems.milk_ancient_metal_bucket.get(), IFWItems.milk_mithril_bucket.get(), IFWItems.milk_adamantium_bucket.get(), IFWItems.cereal.get(),
-                IFWItems.chicken_soup.get(),IFWItems.beef_stew.get(), IFWItems.mushroom_soup_cream.get(), IFWItems.vegetable_soup_cream.get(), IFWItems.mashed_potato.get(), IFWItems.ice_cream.get(),
+                IFWItems.chicken_soup.get(),IFWItems.beef_stew.get(), IFWItems.mushroom_soup_cream.get(), IFWItems.vegetable_soup_cream.get(), IFWItems.mashed_potato.get(),
                 IFWItems.horse_meat.get(),IFWItems.cooked_horse_meat.get()
         );
 
         tag(IFWItemTags.VEGETABLES).add(
                 // Vanilla
-                Items.CARROT, Items.POTATO, Items.BAKED_POTATO, Items.BEETROOT, Items.BEETROOT_SOUP, Items.WHEAT, Items.APPLE, Items.BREAD,
-                Items.GOLDEN_APPLE, Items.ENCHANTED_GOLDEN_APPLE, Items.GLOW_BERRIES, Items.SWEET_BERRIES, Items.MELON_SLICE,
-                Items.PUMPKIN, Items.PUMPKIN_PIE, Items.BROWN_MUSHROOM, Items.RED_MUSHROOM, Items.NETHER_WART, Items.SUGAR,
-                Items.SUGAR_CANE, Items.COOKIE, Items.BEETROOT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.GOLDEN_CARROT,
+                Items.CARROT, Items.POTATO, Items.BAKED_POTATO, Items.BEETROOT, Items.BEETROOT_SOUP, Items.WHEAT, Items.APPLE, Items.BREAD, Items.SUGAR,
+                Items.GOLDEN_APPLE, Items.ENCHANTED_GOLDEN_APPLE, Items.GLOW_BERRIES, Items.SWEET_BERRIES, Items.MELON_SLICE, Items.CHORUS_FRUIT,
+                Items.PUMPKIN, Items.PUMPKIN_PIE, Items.BROWN_MUSHROOM, Items.RED_MUSHROOM, Items.NETHER_WART, Items.POISONOUS_POTATO,
+                Items.SUGAR_CANE, Items.COOKIE, Items.WHEAT_SEEDS, Items.BEETROOT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS,
+                Items.GOLDEN_CARROT, Items.DRIED_KELP, Items.MUSHROOM_STEW, Items.RABBIT_STEW, Items.SUSPICIOUS_STEW,
                 // IFW
                 IFWItems.salad.get(), IFWItems.pumpkin_soup.get(), IFWItems.vegetable_soup.get(), IFWItems.vegetable_soup_cream.get(), IFWItems.chicken_soup.get(), IFWItems.beef_stew.get(),
-                IFWItems.porridge.get(), IFWItems.sorbet.get(), IFWItems.orange.get(), IFWItems.banana.get(), IFWItems.blueberry.get(), IFWItems.onion.get()
+                IFWItems.blueberry_porridge.get(), IFWItems.sorbet.get(), IFWItems.orange.get(), IFWItems.banana.get(), IFWItems.blueberry.get(), IFWItems.onion.get(), IFWItems.cereal.get(),
+                IFWItems.mushroom_soup_cream.get(), IFWItems.mashed_potato.get(), IFWItems.ice_cream.get(), IFWItems.chocolate.get(), IFWItems.dough.get()
                 );
     }
 }

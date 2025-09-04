@@ -1028,13 +1028,13 @@ public class IFWLoading {
         ReplaceHelper.foodAdd(IFWItems.cheese.get(), IFWFoods.ifw_cheese);
         ReplaceHelper.foodAdd(IFWItems.chocolate.get(), IFWFoods.ifw_chocolate);
         ReplaceHelper.foodAdd(IFWItems.cereal.get(), IFWFoods.ifw_cereal);
+        ReplaceHelper.foodAdd(IFWItems.blueberry_porridge.get(), IFWFoods.ifw_blueberry_porridge);
         ReplaceHelper.foodAdd(IFWItems.pumpkin_soup.get(), IFWFoods.ifw_pumpkin_soup);
         ReplaceHelper.foodAdd(IFWItems.mushroom_soup_cream.get(), IFWFoods.ifw_mushroom_soup_cream);
         ReplaceHelper.foodAdd(IFWItems.vegetable_soup.get(), IFWFoods.ifw_vegetable_soup);
         ReplaceHelper.foodAdd(IFWItems.vegetable_soup_cream.get(), IFWFoods.ifw_vegetable_soup_cream);
         ReplaceHelper.foodAdd(IFWItems.chicken_soup.get(), IFWFoods.ifw_chicken_soup);
         ReplaceHelper.foodAdd(IFWItems.beef_stew.get(), IFWFoods.ifw_beef_stew);
-        ReplaceHelper.foodAdd(IFWItems.porridge.get(), IFWFoods.ifw_porridge);
         ReplaceHelper.foodAdd(IFWItems.sorbet.get(), IFWFoods.ifw_sorbet);
         ReplaceHelper.foodAdd(IFWItems.mashed_potato.get(), IFWFoods.ifw_mashed_potato);
         ReplaceHelper.foodAdd(IFWItems.ice_cream.get(), IFWFoods.ifw_ice_cream);
