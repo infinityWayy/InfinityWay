@@ -57,9 +57,9 @@ public class IFWDimensionDataGen extends DatapackBuiltinEntriesProvider {
                     1.0, // coordinateScale - 坐标缩放比例 1.0 = 与主世界同步
                     false, // bedWorks - 床是否能工作
                     false, // respawnAnchorWorks - 重生锚是否工作
-                    0, // minY - 最小Y坐标
-                    256, // height - 世界高度
-                    256, // logicalHeight - 逻辑高度
+                    -64, // minY - 最小Y坐标
+                    384, // height - 世界高度
+                    384, // logicalHeight - 逻辑高度
                     // 使用主世界的燃烧方块标签
                     TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("minecraft", "infiniburn_overworld")),
                     ResourceLocation.fromNamespaceAndPath("minecraft", "overworld"), // effectsLocation - 效果位置

@@ -20,4 +20,9 @@ public class LocalPlayerMixin extends AbstractClientPlayer {
     public LocalPlayerMixin(ClientLevel clientLevel, GameProfile gameProfile) {
         super(clientLevel, gameProfile);
     }
+
+    @Override
+    public void changeDimension(ServerLevel targetLevel, DimensionTransition dimensionTransition) {
+
+    }
 }

@@ -2,6 +2,7 @@ package huix.infinity.common.world.dimension;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import huix.infinity.common.world.block.IFWBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.util.RandomSource;
@@ -24,332 +25,455 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Underworld generator – MITE faithful upper band + noise‑driven bedrock strata.
+ *
+ * Fixes:
+ *  - ArrayIndexOutOfBoundsException caused by strata noise arrays sized 16 while generator filled 16*16.
+ *    Now uses 256-length (16x16) arrays with (x + z*16) indexing.
+ *
+ * Mapping:
+ *  - Dimension assumed: -64 .. 319 (height 384). (Make sure DataGen dimension type matches runtime!)
+ *  - MITE local 0..255 mapped to world 64..319.
+ *
+ * Upper band:
+ *  - MITE original density interpolation.
+ *  - Water zone localY < 24 (world 64..87): density<=0 => water else solid.
+ *  - Stone replaced with Deepslate.
+ *  - Bedrock top/bottom EXACT rule: localY >= 255 - rand(5) || localY <= rand(5).
+ *
+ * Lower band (-64..63):
+ *  - Blackstone masses via density.
+ *  - Mantle only at -64 (100%) and -63/-62 (65% mantle / 35% bedrock).
+ *  - Bedrock strata (MITE style multi-noise) applied only in two bands:
+ *      * Upper interface band: top 16 layers of lower zone (63 downward).
+ *      * Lower strata band: from -61 upward for 24 vertical layers (configurable).
+ *
+ * Strata noise & thresholds adapted from earlier MITE-inspired code you provided.
+ */
 public class UnderworldChunkGenerator extends ChunkGenerator {
+
+    /* ========================== Dimension / Mapping ========================== */
+    private static final int DIM_MIN_Y = -64;
+    private static final int DIM_HEIGHT = 384;
+    private static final int DIM_TOP_Y = DIM_MIN_Y + DIM_HEIGHT - 1; // 319
+
+    private static final int MITE_LOCAL_HEIGHT = 256;
+    private static final int MITE_BAND_BASE_WORLD_Y = DIM_TOP_Y - (MITE_LOCAL_HEIGHT - 1); // 64
+    private static final int MITE_BAND_TOP_WORLD_Y = DIM_TOP_Y;                             // 319
+
+    private static final int MITE_WATER_LOCAL_THRESHOLD = 24; // localY < 24 => water zone
+    private static final int MITE_LOWEST_LAND_LOCAL = 144;
+    private static final int LOWEST_LAND_WORLD_Y = MITE_BAND_BASE_WORLD_Y + MITE_LOWEST_LAND_LOCAL; // 208
+
+    /* ========================== Materials ========================== */
+    private static final BlockState UPPER_SOLID = Blocks.DEEPSLATE.defaultBlockState();
+    private static final BlockState LOWER_SOLID = Blocks.BLACKSTONE.defaultBlockState();
+
+    /* ========================== Lower zone ========================== */
+    private static final int LOWER_ZONE_TOP_WORLD_Y = MITE_BAND_BASE_WORLD_Y - 1; // 63
+    private static final int LOWER_ZONE_BOTTOM_WORLD_Y = DIM_MIN_Y;               // -64
+    private static final int LOWER_ZONE_HEIGHT = LOWER_ZONE_TOP_WORLD_Y - LOWER_ZONE_BOTTOM_WORLD_Y + 1; // 128
+
+    /* ========================== Mantle / Bedrock Base ========================== */
+    private static final int MANTLE_FULL_Y = -64;
+    private static final int MANTLE_MIX_MIN_Y = -63;
+    private static final int MANTLE_MIX_MAX_Y = -62;
+
+    /* ========================== Lattice segmentation ========================== */
+    private static final int H_NOISE_RES = 4;
+    private static final int V_SLICE_UPPER = 8;
+    private static final int V_SLICE_LOWER = 8;
+
+    /* ========================== Bedrock random window ========================== */
+    private static final int BEDROCK_RANDOM_WINDOW = 5;
+
+    /* ========================== Strata bands config ========================== */
+    private static final int LOWER_STRATA_TOP_DEPTH = 16;     // top 16 layers of lower zone (63..48)
+    private static final int LOWER_STRATA_BOTTOM_HEIGHT = 24; // from -61 up to -38
+
+    /* ========================== Strata thresholds (tuned) ========================== */
+    private static final double STRATA_1A_THRESH = 0.20;
+    private static final double STRATA_1B_THRESH = 0.20;
+    private static final double STRATA_2_THRESH  = 0.30;
+    private static final double STRATA_3_THRESH  = 0.25;
+    private static final double STRATA_4_THRESH  = 0.25;
+    private static final double STRATA_1C_BUMP   = 0.40;
+
+    /* ========================== Seeds for XOR ========================== */
+    private static final long SEED_COLUMN_XOR_LOWER_BEDROCK = 0x4BED0001L;
+    private static final long SEED_COLUMN_XOR_MANTLE       = 0x13579BDF2468ACEFL;
+
+    /* ========================== Terrain noise generators ========================== */
+    private final MiteNoiseGeneratorOctaves netherNoiseGen1;
+    private final MiteNoiseGeneratorOctaves netherNoiseGen2;
+    private final MiteNoiseGeneratorOctaves netherNoiseGen3;
+    private final MiteNoiseGeneratorOctaves netherNoiseGen6;
+    private final MiteNoiseGeneratorOctaves netherNoiseGen7;
+
+    private final MiteNoiseGeneratorOctaves lowerNoiseGen1;
+    private final MiteNoiseGeneratorOctaves lowerNoiseGen2;
+    private final MiteNoiseGeneratorOctaves lowerNoiseGen3;
+    private final MiteNoiseGeneratorOctaves lowerNoiseGen6;
+    private final MiteNoiseGeneratorOctaves lowerNoiseGen7;
+
+    /* ========================== Strata noise generators ========================== */
+    private final MiteNoiseGeneratorOctaves noise_strata_1a;
+    private final MiteNoiseGeneratorOctaves noise_strata_1b;
+    private final MiteNoiseGeneratorOctaves noise_strata_2;
+    private final MiteNoiseGeneratorOctaves noise_strata_3;
+    private final MiteNoiseGeneratorOctaves noise_strata_4;
+    private final MiteNoiseGeneratorOctaves noise_strata_1a_bump;
+    private final MiteNoiseGeneratorOctaves noise_strata_1b_bump;
+    private final MiteNoiseGeneratorOctaves noise_strata_1c_bump;
+    private final MiteNoiseGeneratorOctaves noise_strata_2_bump;
+    private final MiteNoiseGeneratorOctaves noise_strata_3_bump;
+    private final MiteNoiseGeneratorOctaves noise_strata_4_bump;
+
+    /* ========================== Codec ========================== */
     public static final MapCodec<UnderworldChunkGenerator> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance.group(
-                    BiomeSource.CODEC.fieldOf("biome_source").forGetter(ChunkGenerator::getBiomeSource)
-            ).apply(instance, UnderworldChunkGenerator::new)
+            inst -> inst.group(BiomeSource.CODEC.fieldOf("biome_source").forGetter(ChunkGenerator::getBiomeSource))
+                    .apply(inst, UnderworldChunkGenerator::new)
     );
-
-    // MITE风格的噪声生成器 - 重新实现
-    private final MiteNoiseGeneratorOctaves netherNoiseGen1;  // 16 octaves
-    private final MiteNoiseGeneratorOctaves netherNoiseGen2;  // 16 octaves
-    private final MiteNoiseGeneratorOctaves netherNoiseGen3;  // 8 octaves
-    private final MiteNoiseGeneratorOctaves netherNoiseGen6;  // 10 octaves
-    private final MiteNoiseGeneratorOctaves netherNoiseGen7;  // 16 octaves
-
-    // 修正的MITE常量 - 256层！
-    private static final double NOISE_SCALE_XZ = 684.412;
-    private static final double NOISE_SCALE_Y = 2053.236;
-    private static final int MITE_HEIGHT = 256; // 修正！MITE是256层
-    private static final int MODERN_HEIGHT = 256; // 使用完整的256层
-    private static final int LIQUID_LEVEL = 32;
-
-    // 调试
-    private static final boolean DEBUG_MODE = true;
-    private static int debugChunkCount = 0;
 
     public UnderworldChunkGenerator(BiomeSource biomeSource) {
         super(biomeSource);
         long baseSeed = 2384752984L;
-        RandomSource hellRNG = RandomSource.create(baseSeed);
+        RandomSource rng = RandomSource.create(baseSeed);
 
-        if (DEBUG_MODE) {
-            System.out.println("=== Initializing UnderworldChunkGenerator (MITE 256-layer) ===");
-            System.out.println("Base seed: " + baseSeed);
-        }
+        this.netherNoiseGen1 = new MiteNoiseGeneratorOctaves(rng, 16);
+        this.netherNoiseGen2 = new MiteNoiseGeneratorOctaves(rng, 16);
+        this.netherNoiseGen3 = new MiteNoiseGeneratorOctaves(rng, 8);
+        this.netherNoiseGen6 = new MiteNoiseGeneratorOctaves(rng, 10);
+        this.netherNoiseGen7 = new MiteNoiseGeneratorOctaves(rng, 16);
 
-        // 创建MITE风格的噪声生成器
-        this.netherNoiseGen1 = new MiteNoiseGeneratorOctaves(hellRNG, 16);
-        this.netherNoiseGen2 = new MiteNoiseGeneratorOctaves(hellRNG, 16);
-        this.netherNoiseGen3 = new MiteNoiseGeneratorOctaves(hellRNG, 8);
-        this.netherNoiseGen6 = new MiteNoiseGeneratorOctaves(hellRNG, 10);
-        this.netherNoiseGen7 = new MiteNoiseGeneratorOctaves(hellRNG, 16);
+        RandomSource rngLower = RandomSource.create(baseSeed ^ 0x5A17F00DL);
+        this.lowerNoiseGen1 = new MiteNoiseGeneratorOctaves(rngLower, 16);
+        this.lowerNoiseGen2 = new MiteNoiseGeneratorOctaves(rngLower, 16);
+        this.lowerNoiseGen3 = new MiteNoiseGeneratorOctaves(rngLower, 8);
+        this.lowerNoiseGen6 = new MiteNoiseGeneratorOctaves(rngLower, 10);
+        this.lowerNoiseGen7 = new MiteNoiseGeneratorOctaves(rngLower, 16);
 
-        if (DEBUG_MODE) {
-            System.out.println("MITE-style noise generators initialized with proper octaves");
-        }
+        // Strata noise – reuse original RNG for consistency
+        this.noise_strata_1a = new MiteNoiseGeneratorOctaves(rng, 4);
+        this.noise_strata_1b = new MiteNoiseGeneratorOctaves(rng, 4);
+        this.noise_strata_2  = new MiteNoiseGeneratorOctaves(rng, 4);
+        this.noise_strata_3  = new MiteNoiseGeneratorOctaves(rng, 4);
+        this.noise_strata_4  = new MiteNoiseGeneratorOctaves(rng, 4);
+        this.noise_strata_1a_bump = new MiteNoiseGeneratorOctaves(rng, 4);
+        this.noise_strata_1b_bump = new MiteNoiseGeneratorOctaves(rng, 4);
+        this.noise_strata_1c_bump = new MiteNoiseGeneratorOctaves(rng, 4);
+        this.noise_strata_2_bump  = new MiteNoiseGeneratorOctaves(rng, 4);
+        this.noise_strata_3_bump  = new MiteNoiseGeneratorOctaves(rng, 4);
+        this.noise_strata_4_bump  = new MiteNoiseGeneratorOctaves(rng, 4);
     }
 
     @Override
-    protected @NotNull MapCodec<? extends ChunkGenerator> codec() {
-        return CODEC;
+    protected @NotNull MapCodec<? extends ChunkGenerator> codec() { return CODEC; }
+
+    /* ========================== Vanilla Hooks (unused) ========================== */
+    @Override public void applyCarvers(WorldGenRegion region, long seed, RandomState randomState, BiomeManager biomeManager,
+                                       StructureManager structureManager, ChunkAccess chunk, GenerationStep.Carving step) {}
+    @Override public void buildSurface(WorldGenRegion region, StructureManager structureManager, RandomState randomState, ChunkAccess chunk) {}
+    @Override public void spawnOriginalMobs(WorldGenRegion region) {}
+
+    /* ========================== Height API ========================== */
+    @Override public int getGenDepth() { return DIM_HEIGHT; }
+    @Override public int getMinY() { return DIM_MIN_Y; }
+    @Override public int getSeaLevel() { return MITE_BAND_BASE_WORLD_Y + MITE_WATER_LOCAL_THRESHOLD - 1; }
+    @Override public int getBaseHeight(int x, int z, Heightmap.Types type, LevelHeightAccessor accessor, RandomState randomState) {
+        return LOWEST_LAND_WORLD_Y;
+    }
+    @Override public NoiseColumn getBaseColumn(int x, int z, LevelHeightAccessor accessor, RandomState randomState) {
+        BlockState[] arr = new BlockState[accessor.getHeight()];
+        Arrays.fill(arr, Blocks.AIR.defaultBlockState());
+        return new NoiseColumn(accessor.getMinBuildHeight(), arr);
+    }
+    @Override public void addDebugScreenInfo(List<String> list, RandomState randomState, BlockPos pos) {
+        list.add("[Underworld Gen]");
+        list.add("MITE band: " + MITE_BAND_BASE_WORLD_Y + ".." + MITE_BAND_TOP_WORLD_Y);
+        list.add("Lower zone: " + LOWER_ZONE_BOTTOM_WORLD_Y + ".." + LOWER_ZONE_TOP_WORLD_Y);
+        list.add("Water zone local < 24 => world " + MITE_BAND_BASE_WORLD_Y + ".." + (MITE_BAND_BASE_WORLD_Y + 23));
     }
 
+    /* ========================== Main generation ========================== */
     @Override
-    public @NotNull CompletableFuture<ChunkAccess> fillFromNoise(@NotNull Blender blender, @NotNull RandomState randomState,
-                                                                 @NotNull StructureManager structureManager, @NotNull ChunkAccess chunk) {
+    public @NotNull CompletableFuture<ChunkAccess> fillFromNoise(@NotNull Blender blender,
+                                                                 @NotNull RandomState randomState,
+                                                                 @NotNull StructureManager structureManager,
+                                                                 @NotNull ChunkAccess chunk) {
         return CompletableFuture.supplyAsync(() -> {
-            generateNetherTerrain(chunk);
-            replaceBlocksForBiome(chunk);
-            generateCobwebs(chunk);
+            generateUpperMiteTerrain(chunk);
+            applyMiteBedrockTopBottom(chunk);
+            generateLowerBlackstoneMasses(chunk);
+            generateMantleBase(chunk);
+            // Strata passes (MITE-style noise) – now using correct 256-length arrays
+            StrataPack strata = generateStrataNoisePack(chunk);
+            generateStrataUpperInterface(chunk, strata);
+            generateStrataLowerBands(chunk, strata);
             return chunk;
         }, net.minecraft.Util.backgroundExecutor());
     }
 
-    /**
-     * MITE原版的generateNetherTerrain方法 - 完全重写
-     */
-    private void generateNetherTerrain(ChunkAccess chunk) {
+    /* ========================== Upper band (MITE faithful) ========================== */
+    private void generateUpperMiteTerrain(ChunkAccess chunk) {
+        int noiseSizeX = H_NOISE_RES + 1;
+        int noiseSizeZ = H_NOISE_RES + 1;
+        int noiseSizeY = (MITE_LOCAL_HEIGHT / V_SLICE_UPPER) + 1;
+
         int chunkX = chunk.getPos().x;
         int chunkZ = chunk.getPos().z;
 
-        debugChunkCount++;
-        boolean shouldDebug = DEBUG_MODE && debugChunkCount <= 2;
+        double[] noiseField = buildDensityField(
+                netherNoiseGen1, netherNoiseGen2, netherNoiseGen3,
+                netherNoiseGen6, netherNoiseGen7,
+                chunkX * H_NOISE_RES, 0, chunkZ * H_NOISE_RES,
+                noiseSizeX, noiseSizeY, noiseSizeZ
+        );
 
-        if (shouldDebug) {
-            System.out.println("\n=== Generating terrain for chunk [" + chunkX + ", " + chunkZ + "] ===");
-        }
+        for (int nx = 0; nx < H_NOISE_RES; ++nx) {
+            for (int nz = 0; nz < H_NOISE_RES; ++nz) {
+                for (int ny = 0; ny < MITE_LOCAL_HEIGHT / V_SLICE_UPPER; ++ny) {
+                    double stepY = 0.125;
+                    int i000 = ((nx) * noiseSizeZ + nz) * noiseSizeY + ny;
+                    int i010 = ((nx) * noiseSizeZ + (nz + 1)) * noiseSizeY + ny;
+                    int i100 = ((nx + 1) * noiseSizeZ + nz) * noiseSizeY + ny;
+                    int i110 = ((nx + 1) * noiseSizeZ + (nz + 1)) * noiseSizeY + ny;
 
-        int var4 = 4;  // noiseRes
-        int var5 = 32; // liquidLevel
-        int var6 = var4 + 1; // noiseSizeX = 5
-        int var7 = 33; // noiseSizeY = 33 (for 256 layers: 256/8 + 1 = 33)
-        int var8 = var4 + 1; // noiseSizeZ = 5
+                    double n000 = noiseField[i000];
+                    double n010 = noiseField[i010];
+                    double n100 = noiseField[i100];
+                    double n110 = noiseField[i110];
 
-        // 生成噪声场
-        double[] noiseField = initializeNoiseField(null, chunkX * var4, 0, chunkZ * var4, var6, var7, var8, shouldDebug);
+                    double d000 = (noiseField[i000 + 1] - n000) * stepY;
+                    double d010 = (noiseField[i010 + 1] - n010) * stepY;
+                    double d100 = (noiseField[i100 + 1] - n100) * stepY;
+                    double d110 = (noiseField[i110 + 1] - n110) * stepY;
 
-        int worldBaseY = chunk.getMinBuildHeight() + 64;
-        int maxGenerationY = worldBaseY + MODERN_HEIGHT;
+                    for (int sy = 0; sy < V_SLICE_UPPER; ++sy) {
+                        double v000 = n000;
+                        double v010 = n010;
+                        double v100 = n100;
+                        double v110 = n110;
+                        double dv100 = (v100 - v000) * 0.25;
+                        double dv110 = (v110 - v010) * 0.25;
 
-        int stoneCount = 0, airCount = 0, waterCount = 0;
+                        for (int sx = 0; sx < 4; ++sx) {
+                            double val = v000;
+                            double dv010 = (v010 - v000) * 0.25;
 
-        // MITE原版的完整逻辑 - 但适配256层
-        for (int var9 = 0; var9 < var4; ++var9) {
-            for (int var10 = 0; var10 < var4; ++var10) {
-                for (int var11 = 0; var11 < 32; ++var11) { // 256/8 = 32层噪声分片
-                    double var12 = 0.125; // 1/8
+                            for (int sz = 0; sz < 4; ++sz) {
+                                int localY = ny * V_SLICE_UPPER + sy;
+                                int worldY = MITE_BAND_BASE_WORLD_Y + localY;
+                                if (worldY < chunk.getMinBuildHeight() || worldY > chunk.getMaxBuildHeight()) break;
 
-                    // 获取8个顶点
-                    double var14 = noiseField[((var9 + 0) * var8 + var10 + 0) * var7 + var11 + 0];
-                    double var16 = noiseField[((var9 + 0) * var8 + var10 + 1) * var7 + var11 + 0];
-                    double var18 = noiseField[((var9 + 1) * var8 + var10 + 0) * var7 + var11 + 0];
-                    double var20 = noiseField[((var9 + 1) * var8 + var10 + 1) * var7 + var11 + 0];
+                                BlockPos pos = new BlockPos(sx + nx * 4, worldY, sz + nz * 4);
+                                BlockState state = Blocks.AIR.defaultBlockState();
 
-                    double var22 = (noiseField[((var9 + 0) * var8 + var10 + 0) * var7 + var11 + 1] - var14) * var12;
-                    double var24 = (noiseField[((var9 + 0) * var8 + var10 + 1) * var7 + var11 + 1] - var16) * var12;
-                    double var26 = (noiseField[((var9 + 1) * var8 + var10 + 0) * var7 + var11 + 1] - var18) * var12;
-                    double var28 = (noiseField[((var9 + 1) * var8 + var10 + 1) * var7 + var11 + 1] - var20) * var12;
-
-                    for (int var30 = 0; var30 < 8; ++var30) {
-                        double var31 = 0.25;
-                        double var33 = var14;
-                        double var35 = var16;
-                        double var37 = (var18 - var14) * var31;
-                        double var39 = (var20 - var16) * var31;
-
-                        for (int var41 = 0; var41 < 4; ++var41) {
-                            double var44 = 0.25;
-                            double var46 = var33;
-                            double var48 = (var35 - var33) * var44;
-
-                            for (int var50 = 0; var50 < 4; ++var50) {
-                                int blockX = var41 + var9 * 4;
-                                int miteY = var11 * 8 + var30;
-                                int blockZ = var50 + var10 * 4;
-
-                                int worldY = worldBaseY + miteY;
-
-                                if (worldY >= worldBaseY && worldY < maxGenerationY &&
-                                        worldY >= chunk.getMinBuildHeight() && worldY < chunk.getMaxBuildHeight()) {
-
-                                    BlockPos pos = new BlockPos(blockX, worldY, blockZ);
-
-                                    // MITE原版逻辑
-                                    int var51 = 0;
-                                    if (miteY < var5 - 8) { // Y < 24
-                                        var51 = 8; // water
-                                    }
-
-                                    if (var46 > 0.0) {
-                                        var51 = 1; // stone
-                                    }
-
-                                    if (shouldDebug && var9 == 0 && var10 == 0 && var11 < 3 && var30 < 2 && var41 < 2 && var50 < 2) {
-                                        System.out.printf("Block[%d,%d,%d] (world Y=%d) density=%.6f -> blockId=%d%n",
-                                                blockX, miteY, blockZ, worldY, var46, var51);
-                                    }
-
-                                    BlockState blockState = getBlockStateFromId(var51);
-                                    chunk.setBlockState(pos, blockState, false);
-
-                                    if (var51 == 1) stoneCount++;
-                                    else if (var51 == 8) waterCount++;
-                                    else airCount++;
+                                if (localY < MITE_WATER_LOCAL_THRESHOLD) {
+                                    state = (val > 0.0) ? UPPER_SOLID : Blocks.WATER.defaultBlockState();
+                                } else {
+                                    if (val > 0.0) state = UPPER_SOLID;
                                 }
-
-                                var46 += var48;
+                                chunk.setBlockState(pos, state, false);
+                                val += dv010;
                             }
-
-                            var33 += var37;
-                            var35 += var39;
+                            v000 += dv100;
+                            v010 += dv110;
                         }
-
-                        var14 += var22;
-                        var16 += var24;
-                        var18 += var26;
-                        var20 += var28;
+                        n000 += d000; n010 += d010; n100 += d100; n110 += d110;
                     }
                 }
-            }
-        }
-
-        if (shouldDebug) {
-            System.out.printf("Block counts - Stone: %d, Air: %d, Water: %d%n", stoneCount, airCount, waterCount);
-            double totalBlocks = stoneCount + airCount + waterCount;
-            if (totalBlocks > 0) {
-                System.out.printf("Percentages - Stone: %.1f%%, Air: %.1f%%, Water: %.1f%%%n",
-                        stoneCount/totalBlocks*100, airCount/totalBlocks*100, waterCount/totalBlocks*100);
             }
         }
     }
 
-    /**
-     * MITE的initializeNoiseField - 适配256层
-     */
-    private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4,
-                                          int par5, int par6, int par7, boolean debug) {
-        if (par1ArrayOfDouble == null) {
-            par1ArrayOfDouble = new double[par5 * par6 * par7];
-        }
-
-        if (debug) {
-            System.out.printf("initializeNoiseField: offset[%d,%d,%d] size[%d,%d,%d]%n",
-                    par2, par3, par4, par5, par6, par7);
-        }
-
-        double var8 = 684.412;
-        double var10 = 2053.236;
-
-        // 生成噪声数据
-        double[] noiseData4 = netherNoiseGen6.generateNoiseOctaves(null, par2, par3, par4, par5, 1, par7, 1.0, 0.0, 1.0);
-        double[] noiseData5 = netherNoiseGen7.generateNoiseOctaves(null, par2, par3, par4, par5, 1, par7, 100.0, 0.0, 100.0);
-        double[] noiseData1 = netherNoiseGen3.generateNoiseOctaves(null, par2, par3, par4, par5, par6, par7,
-                var8 / 80.0, var10 / 60.0, var8 / 80.0);
-        double[] noiseData2 = netherNoiseGen1.generateNoiseOctaves(null, par2, par3, par4, par5, par6, par7,
-                var8, var10, var8);
-        double[] noiseData3 = netherNoiseGen2.generateNoiseOctaves(null, par2, par3, par4, par5, par6, par7,
-                var8, var10, var8);
-
-        if (debug) {
-            System.out.println("Noise data generated. Checking for variation...");
-            System.out.printf("noiseData1 range: %.6f to %.6f%n", Arrays.stream(noiseData1).min().orElse(0), Arrays.stream(noiseData1).max().orElse(0));
-            System.out.printf("noiseData2 range: %.6f to %.6f%n", Arrays.stream(noiseData2).min().orElse(0), Arrays.stream(noiseData2).max().orElse(0));
-            System.out.printf("noiseData3 range: %.6f to %.6f%n", Arrays.stream(noiseData3).min().orElse(0), Arrays.stream(noiseData3).max().orElse(0));
-        }
-
-        int var12 = 0;
-        int var13 = 0;
-
-        // 高度衰减因子
-        double[] var14 = new double[par6];
-        for (int var15 = 0; var15 < par6; ++var15) {
-            var14[var15] = Math.cos((double)var15 * Math.PI * 6.0 / (double)par6) * 2.0;
-            double var16 = (double)var15;
-            if (var15 > par6 / 2) {
-                var16 = (double)(par6 - 1 - var15);
-            }
-            if (var16 < 4.0) {
-                var16 = 4.0 - var16;
-                var14[var15] -= var16 * var16 * var16 * 10.0;
+    /* ========================== Bedrock top/bottom (original rule) ========================== */
+    private void applyMiteBedrockTopBottom(ChunkAccess chunk) {
+        for (int x = 0; x < 16; ++x) {
+            for (int z = 0; z < 16; ++z) {
+                RandomSource rand = RandomSource.create(columnSeed(chunk, x, z));
+                rand.nextDouble(); rand.nextDouble(); rand.nextDouble();
+                for (int localY = 0; localY < MITE_LOCAL_HEIGHT; ++localY) {
+                    int worldY = MITE_BAND_BASE_WORLD_Y + localY;
+                    if (worldY < chunk.getMinBuildHeight() || worldY > chunk.getMaxBuildHeight()) continue;
+                    boolean top = localY >= (MITE_LOCAL_HEIGHT - 1) - rand.nextInt(BEDROCK_RANDOM_WINDOW);
+                    boolean bottom = localY <= rand.nextInt(BEDROCK_RANDOM_WINDOW);
+                    if (top || bottom) {
+                        chunk.setBlockState(new BlockPos(x, worldY, z), Blocks.BEDROCK.defaultBlockState(), false);
+                    }
+                }
             }
         }
+    }
 
-        // 主噪声合成循环
-        for (int var36 = 0; var36 < par5; ++var36) {
-            for (int var37 = 0; var37 < par7; ++var37) {
-                double var17 = (noiseData4[var13] + 256.0) / 512.0;
-                if (var17 > 1.0) {
-                    var17 = 1.0;
-                }
+    /* ========================== Lower blackstone masses ========================== */
+    private void generateLowerBlackstoneMasses(ChunkAccess chunk) {
+        int lowerHeight = LOWER_ZONE_HEIGHT;
+        int noiseSizeX = H_NOISE_RES + 1;
+        int noiseSizeZ = H_NOISE_RES + 1;
+        int noiseSizeY = (lowerHeight / V_SLICE_LOWER) + 1;
 
-                double var19 = 0.0;
-                double var21 = noiseData5[var13] / 8000.0;
-                if (var21 < 0.0) {
-                    var21 = -var21;
-                }
+        int chunkX = chunk.getPos().x;
+        int chunkZ = chunk.getPos().z;
 
-                var21 = var21 * 3.0 - 3.0;
-                if (var21 < 0.0) {
-                    var21 /= 2.0;
-                    if (var21 < -1.0) {
-                        var21 = -1.0;
+        double[] density = buildDensityField(
+                lowerNoiseGen1, lowerNoiseGen2, lowerNoiseGen3,
+                lowerNoiseGen6, lowerNoiseGen7,
+                chunkX * H_NOISE_RES, 0, chunkZ * H_NOISE_RES,
+                noiseSizeX, noiseSizeY, noiseSizeZ
+        );
+
+        for (int nx = 0; nx < H_NOISE_RES; ++nx) {
+            for (int nz = 0; nz < H_NOISE_RES; ++nz) {
+                for (int ny = 0; ny < lowerHeight / V_SLICE_LOWER; ++ny) {
+                    double stepY = 0.125;
+                    int i000 = ((nx) * noiseSizeZ + nz) * noiseSizeY + ny;
+                    int i010 = ((nx) * noiseSizeZ + (nz + 1)) * noiseSizeY + ny;
+                    int i100 = ((nx + 1) * noiseSizeZ + nz) * noiseSizeY + ny;
+                    int i110 = ((nx + 1) * noiseSizeZ + (nz + 1)) * noiseSizeY + ny;
+
+                    double n000 = density[i000];
+                    double n010 = density[i010];
+                    double n100 = density[i100];
+                    double n110 = density[i110];
+
+                    double d000 = (density[i000 + 1] - n000) * stepY;
+                    double d010 = (density[i010 + 1] - n010) * stepY;
+                    double d100 = (density[i100 + 1] - n100) * stepY;
+                    double d110 = (density[i110 + 1] - n110) * stepY;
+
+                    for (int sy = 0; sy < V_SLICE_LOWER; ++sy) {
+                        double v000 = n000;
+                        double v010 = n010;
+                        double v100 = n100;
+                        double v110 = n110;
+                        double dv100 = (v100 - v000) * 0.25;
+                        double dv110 = (v110 - v010) * 0.25;
+
+                        for (int sx = 0; sx < 4; ++sx) {
+                            double val = v000;
+                            double dv010 = (v010 - v000) * 0.25;
+                            for (int sz = 0; sz < 4; ++sz) {
+                                int localLowerY = ny * V_SLICE_LOWER + sy;
+                                int worldY = LOWER_ZONE_BOTTOM_WORLD_Y + localLowerY;
+                                if (worldY < chunk.getMinBuildHeight() || worldY > LOWER_ZONE_TOP_WORLD_Y) {
+                                    val += dv010;
+                                    continue;
+                                }
+                                if (worldY >= MITE_BAND_BASE_WORLD_Y) {
+                                    val += dv010;
+                                    continue;
+                                }
+                                if (val > 0.0) {
+                                    chunk.setBlockState(new BlockPos(sx + nx * 4, worldY, sz + nz * 4), LOWER_SOLID, false);
+                                }
+                                val += dv010;
+                            }
+                            v000 += dv100;
+                            v010 += dv110;
+                        }
+                        n000 += d000; n010 += d010; n100 += d100; n110 += d110;
                     }
-                    var21 /= 1.4;
-                    var21 /= 2.0;
-                    var17 = 0.0;
-                } else {
-                    if (var21 > 1.0) {
-                        var21 = 1.0;
-                    }
-                    var21 /= 6.0;
                 }
+            }
+        }
+    }
 
-                var17 += 0.5; // 关键偏移
-                var21 = var21 * (double)par6 / 16.0;
-                ++var13;
-
-                for (int var23 = 0; var23 < par6; ++var23) {
-                    double var24 = 0.0;
-                    double var26 = var14[var23];
-                    double var28 = noiseData2[var12] / 512.0;
-                    double var30 = noiseData3[var12] / 512.0;
-                    double var32 = (noiseData1[var12] / 10.0 + 1.0) / 2.0;
-
-                    if (var32 < 0.0) {
-                        var24 = var28;
-                    } else if (var32 > 1.0) {
-                        var24 = var30;
+    /* ========================== Mantle base (-64..-62) ========================== */
+    private void generateMantleBase(ChunkAccess chunk) {
+        for (int x = 0; x < 16; ++x) {
+            for (int z = 0; z < 16; ++z) {
+                RandomSource rand = RandomSource.create(columnSeed(chunk, x, z) ^ SEED_COLUMN_XOR_MANTLE);
+                for (int y = MANTLE_FULL_Y; y <= MANTLE_MIX_MAX_Y; ++y) {
+                    if (y < chunk.getMinBuildHeight()) continue;
+                    BlockPos pos = new BlockPos(x, y, z);
+                    if (y == MANTLE_FULL_Y) {
+                        chunk.setBlockState(pos, mantleBlock(), false);
                     } else {
-                        var24 = var28 + (var30 - var28) * var32;
+                        if (rand.nextDouble() < 0.65)
+                            chunk.setBlockState(pos, mantleBlock(), false);
+                        else
+                            chunk.setBlockState(pos, Blocks.BEDROCK.defaultBlockState(), false);
                     }
-
-                    var24 -= var26;
-
-                    if (var23 > par6 - 4) {
-                        double var34 = (double)(var23 - (par6 - 4)) / 3.0;
-                        var24 = var24 * (1.0 - var34) + (-10.0) * var34;
-                    }
-
-                    if ((double)var23 < var19) {
-                        double var34 = (var19 - (double)var23) / 4.0;
-                        if (var34 < 0.0) {
-                            var34 = 0.0;
-                        }
-                        if (var34 > 1.0) {
-                            var34 = 1.0;
-                        }
-                        var24 = var24 * (1.0 - var34) + (-10.0) * var34;
-                    }
-
-                    par1ArrayOfDouble[var12] = var24;
-                    ++var12;
                 }
             }
         }
-
-        return par1ArrayOfDouble;
     }
 
-    /**
-     * MITE风格基岩层生成
-     */
-    private void replaceBlocksForBiome(ChunkAccess chunk) {
-        RandomSource random = RandomSource.create(chunk.getPos().toLong());
-        int worldBaseY = chunk.getMinBuildHeight() + 64;
+    /* ========================== Strata noise pack ========================== */
+    private record StrataPack(
+            double[] s1a, double[] s1b, double[] s2, double[] s3, double[] s4,
+            double[] s1aB, double[] s1bB, double[] s1cB, double[] s2B, double[] s3B, double[] s4B
+    ) {
+        int idx(int x, int z) { return x + (z << 4); } // 0..255
+    }
 
-        for (int var7 = 0; var7 < 16; ++var7) {
-            for (int var8 = 0; var8 < 16; ++var8) {
-                random.nextDouble(); // MITE的额外随机调用
-                random.nextDouble();
-                random.nextDouble();
+    private StrataPack generateStrataNoisePack(ChunkAccess chunk) {
+        int baseX = chunk.getPos().x * 16;
+        int baseZ = chunk.getPos().z * 16;
 
-                for (int var15 = 255; var15 >= 0; --var15) { // 256层：0-255
-                    int worldY = worldBaseY + var15;
-                    if (worldY >= chunk.getMinBuildHeight() && worldY < chunk.getMaxBuildHeight()) {
-                        if (var15 >= 255 - random.nextInt(5) || var15 <= 0 + random.nextInt(5)) {
-                            BlockPos pos = new BlockPos(var7, worldY, var8);
+        // Each call with sizeX=16,sizeZ=16,sizeY=1 => array length 16*1*16=256
+        double[] a1  = noise_strata_1a.generateNoiseOctaves(null, baseX, 0, baseZ, 16,1,16, 1.0,0.0,1.0);
+        double[] b1  = noise_strata_1b.generateNoiseOctaves(null, baseX, 0, baseZ, 16,1,16, 1.0,0.0,1.0);
+        double[] a2  = noise_strata_2 .generateNoiseOctaves(null, baseX, 0, baseZ, 16,1,16, 1.0,0.0,1.0);
+        double[] a3  = noise_strata_3 .generateNoiseOctaves(null, baseX, 0, baseZ, 16,1,16, 1.0,0.0,1.0);
+        double[] a4  = noise_strata_4 .generateNoiseOctaves(null, baseX, 0, baseZ, 16,1,16, 1.0,0.0,1.0);
+
+        double[] a1B = noise_strata_1a_bump.generateNoiseOctaves(null, baseX,0,baseZ,16,1,16,1.0,0.0,1.0);
+        double[] b1B = noise_strata_1b_bump.generateNoiseOctaves(null, baseX,0,baseZ,16,1,16,1.0,0.0,1.0);
+        double[] c1B = noise_strata_1c_bump.generateNoiseOctaves(null, baseX,0,baseZ,16,1,16,1.0,0.0,1.0);
+        double[] a2B = noise_strata_2_bump .generateNoiseOctaves(null, baseX,0,baseZ,16,1,16,1.0,0.0,1.0);
+        double[] a3B = noise_strata_3_bump .generateNoiseOctaves(null, baseX,0,baseZ,16,1,16,1.0,0.0,1.0);
+        double[] a4B = noise_strata_4_bump .generateNoiseOctaves(null, baseX,0,baseZ,16,1,16,1.0,0.0,1.0);
+
+        return new StrataPack(a1,b1,a2,a3,a4,a1B,b1B,c1B,a2B,a3B,a4B);
+    }
+
+    /* ========================== Interface strata (top of lower zone) ========================== */
+    private void generateStrataUpperInterface(ChunkAccess chunk, StrataPack pack) {
+        int startY = LOWER_ZONE_TOP_WORLD_Y; // 63
+        int endY = Math.max(LOWER_ZONE_TOP_WORLD_Y - LOWER_STRATA_TOP_DEPTH + 1, LOWER_ZONE_BOTTOM_WORLD_Y);
+        final int zoneHeight = LOWER_ZONE_HEIGHT;
+
+        for (int x = 0; x < 16; ++x) {
+            for (int z = 0; z < 16; ++z) {
+                int idx = pack.idx(x,z);
+                RandomSource rand = RandomSource.create(columnSeed(chunk, x, z) ^ SEED_COLUMN_XOR_LOWER_BEDROCK);
+                rand.nextDouble(); rand.nextDouble(); rand.nextDouble();
+
+                double n1a = pack.s1a()[idx] + pack.s1aB()[idx];
+                double n1b = pack.s1b()[idx] + pack.s1bB()[idx];
+                double n2  = pack.s2()[idx]  + pack.s2B()[idx];
+                double n3  = pack.s3()[idx]  + pack.s3B()[idx];
+                double n4  = pack.s4()[idx]  + pack.s4B()[idx];
+                double n1cB= pack.s1cB()[idx];
+
+                for (int y = startY; y >= endY; --y) {
+                    if (y < chunk.getMinBuildHeight()) break;
+                    if (y >= MITE_BAND_BASE_WORLD_Y) continue; // do not intrude into upper band
+
+                    int localLowerY = y - LOWER_ZONE_BOTTOM_WORLD_Y;
+                    int distFromBottom = localLowerY;
+                    int distFromTop    = zoneHeight - 1 - localLowerY;
+
+                    boolean makeBedrock = false;
+                    if (distFromTop < BEDROCK_RANDOM_WINDOW && rand.nextInt(BEDROCK_RANDOM_WINDOW) > distFromTop - 1)
+                        makeBedrock = true;
+                    if (distFromBottom < BEDROCK_RANDOM_WINDOW && rand.nextInt(BEDROCK_RANDOM_WINDOW) > distFromBottom - 1)
+                        makeBedrock = true;
+
+                    if (!makeBedrock) {
+                        if (localLowerY < 6 && (n1a > STRATA_1A_THRESH || n1b > STRATA_1B_THRESH)) makeBedrock = true;
+                        if (localLowerY < 10 && (n2 > STRATA_2_THRESH)) makeBedrock = true;
+                        if (localLowerY > zoneHeight - 6 && (n3 > STRATA_3_THRESH || n4 > STRATA_4_THRESH)) makeBedrock = true;
+                        if ((localLowerY < 16 || localLowerY > zoneHeight - 16) && n1cB > STRATA_1C_BUMP) makeBedrock = true;
+                    }
+
+                    if (makeBedrock) {
+                        BlockPos pos = new BlockPos(x, y, z);
+                        BlockState old = chunk.getBlockState(pos);
+                        if (old.isAir() || old.is(Blocks.BLACKSTONE)) {
                             chunk.setBlockState(pos, Blocks.BEDROCK.defaultBlockState(), false);
                         }
                     }
@@ -358,229 +482,262 @@ public class UnderworldChunkGenerator extends ChunkGenerator {
         }
     }
 
-    private void generateCobwebs(ChunkAccess chunk) {
-        RandomSource random = RandomSource.create(chunk.getPos().toLong() + 42L);
-        int worldBaseY = chunk.getMinBuildHeight() + 64;
+    /* ========================== Lower strata band (above mantle) ========================== */
+    private void generateStrataLowerBands(ChunkAccess chunk, StrataPack pack) {
+        int strataStart = MANTLE_MIX_MAX_Y + 1; // -61
+        int strataEnd   = Math.min(strataStart + LOWER_STRATA_BOTTOM_HEIGHT - 1, LOWER_ZONE_TOP_WORLD_Y);
+        final int zoneHeight = LOWER_ZONE_HEIGHT;
 
-        for (int i = 0; i < 128; i++) {
-            int x = random.nextInt(16);
-            int miteY = random.nextInt(246) + 5; // 256层：Y=5-250
-            int z = random.nextInt(16);
+        for (int x = 0; x < 16; ++x) {
+            for (int z = 0; z < 16; ++z) {
+                int idx = pack.idx(x,z);
+                RandomSource rand = RandomSource.create(columnSeed(chunk, x, z) ^ (SEED_COLUMN_XOR_LOWER_BEDROCK >>> 1));
+                rand.nextDouble(); rand.nextDouble(); rand.nextDouble();
 
-            int worldY = worldBaseY + miteY;
+                double n1a = pack.s1a()[idx] + pack.s1aB()[idx];
+                double n1b = pack.s1b()[idx] + pack.s1bB()[idx];
+                double n2  = pack.s2()[idx]  + pack.s2B()[idx];
+                double n3  = pack.s3()[idx]  + pack.s3B()[idx];
+                double n4  = pack.s4()[idx]  + pack.s4B()[idx];
+                double n1cB= pack.s1cB()[idx];
 
-            if (worldY >= chunk.getMinBuildHeight() && worldY < chunk.getMaxBuildHeight()) {
-                BlockPos pos = new BlockPos(x, worldY, z);
-                if (chunk.getBlockState(pos).isAir()) {
-                    BlockPos below = pos.below();
-                    if (chunk.getBlockState(below).isSolidRender(chunk, below) && random.nextInt(8) == 0) {
-                        chunk.setBlockState(pos, Blocks.COBWEB.defaultBlockState(), false);
+                for (int y = strataStart; y <= strataEnd; ++y) {
+                    if (y < chunk.getMinBuildHeight()) continue;
+                    if (y >= MITE_BAND_BASE_WORLD_Y) break;
+
+                    int localLowerY = y - LOWER_ZONE_BOTTOM_WORLD_Y;
+                    int distFromBottom = localLowerY;
+                    int distFromTop    = zoneHeight - 1 - localLowerY;
+
+                    boolean makeBedrock = false;
+                    if (distFromTop < BEDROCK_RANDOM_WINDOW && rand.nextInt(BEDROCK_RANDOM_WINDOW) > distFromTop - 1)
+                        makeBedrock = true;
+                    if (distFromBottom < BEDROCK_RANDOM_WINDOW && rand.nextInt(BEDROCK_RANDOM_WINDOW) > distFromBottom - 1)
+                        makeBedrock = true;
+
+                    if (!makeBedrock) {
+                        if (localLowerY < 6 && (n1a > STRATA_1A_THRESH || n1b > STRATA_1B_THRESH)) makeBedrock = true;
+                        if (localLowerY < 10 && n2 > STRATA_2_THRESH) makeBedrock = true;
+                        if (localLowerY > zoneHeight - 6 && (n3 > STRATA_3_THRESH || n4 > STRATA_4_THRESH)) makeBedrock = true;
+                        if ((localLowerY < 16 || localLowerY > zoneHeight - 16) && n1cB > STRATA_1C_BUMP) makeBedrock = true;
+                    }
+
+                    if (makeBedrock) {
+                        BlockPos pos = new BlockPos(x, y, z);
+                        BlockState old = chunk.getBlockState(pos);
+                        if (old.isAir() || old.is(Blocks.BLACKSTONE) || old.is(Blocks.DEEPSLATE)) {
+                            chunk.setBlockState(pos, Blocks.BEDROCK.defaultBlockState(), false);
+                        }
                     }
                 }
             }
         }
     }
 
-    private BlockState getBlockStateFromId(int blockId) {
-        return switch (blockId) {
-            case 1 -> Blocks.STONE.defaultBlockState();
-            case 8 -> Blocks.WATER.defaultBlockState();
-            default -> Blocks.AIR.defaultBlockState();
-        };
-    }
+    /* ========================== Density field (shared) ========================== */
+    private double[] buildDensityField(
+            MiteNoiseGeneratorOctaves gen1,
+            MiteNoiseGeneratorOctaves gen2,
+            MiteNoiseGeneratorOctaves gen3,
+            MiteNoiseGeneratorOctaves gen6,
+            MiteNoiseGeneratorOctaves gen7,
+            int offX, int offY, int offZ,
+            int sizeX, int sizeY, int sizeZ) {
 
-    @Override
-    public @NotNull NoiseColumn getBaseColumn(int x, int z, @NotNull LevelHeightAccessor levelHeightAccessor, @NotNull RandomState randomState) {
-        BlockState[] column = new BlockState[levelHeightAccessor.getHeight()];
-        Arrays.fill(column, Blocks.AIR.defaultBlockState());
-        return new NoiseColumn(levelHeightAccessor.getMinBuildHeight(), column);
-    }
+        double base = 684.412;
+        double baseY = 2053.236;
 
-    @Override
-    public void applyCarvers(@NotNull WorldGenRegion region, long seed, @NotNull RandomState randomState,
-                             @NotNull BiomeManager biomeManager, @NotNull StructureManager structureManager,
-                             @NotNull ChunkAccess chunk, @NotNull GenerationStep.Carving step) {}
+        double[] noise4 = gen6.generateNoiseOctaves(null, offX, offY, offZ, sizeX, 1, sizeZ, 1.0, 0.0, 1.0);
+        double[] noise5 = gen7.generateNoiseOctaves(null, offX, offY, offZ, sizeX, 1, sizeZ, 100.0, 0.0, 100.0);
+        double[] noise1 = gen3.generateNoiseOctaves(null, offX, offY, offZ, sizeX, sizeY, sizeZ,
+                base / 80.0, baseY / 60.0, base / 80.0);
+        double[] noise2 = gen1.generateNoiseOctaves(null, offX, offY, offZ, sizeX, sizeY, sizeZ,
+                base, baseY, base);
+        double[] noise3 = gen2.generateNoiseOctaves(null, offX, offY, offZ, sizeX, sizeY, sizeZ,
+                base, baseY, base);
 
-    @Override
-    public void buildSurface(@NotNull WorldGenRegion region, @NotNull StructureManager structureManager,
-                             @NotNull RandomState randomState, @NotNull ChunkAccess chunk) {}
+        double[] out = new double[sizeX * sizeY * sizeZ];
+        int idx3D = 0;
+        int idx2D = 0;
 
-    @Override
-    public void spawnOriginalMobs(@NotNull WorldGenRegion region) {}
-
-    @Override
-    public int getGenDepth() {
-        return MODERN_HEIGHT;
-    }
-
-    @Override
-    public int getSeaLevel() {
-        return getMinY() + 64 + LIQUID_LEVEL - 8;
-    }
-
-    @Override
-    public int getMinY() {
-        return 0;
-    }
-
-    @Override
-    public int getBaseHeight(int x, int z, @NotNull Heightmap.Types heightmapType,
-                             @NotNull LevelHeightAccessor levelHeightAccessor, @NotNull RandomState randomState) {
-        return getMinY() + 140 + 114; // 中间高度
-    }
-
-    @Override
-    public void addDebugScreenInfo(@NotNull List<String> list, @NotNull RandomState randomState, @NotNull BlockPos pos) {
-        list.add("[IFW] Underworld Generator (MITE 256-layer Faithful Port)");
-        list.add("MITE Height: 0-256 → World Y: " + (getMinY() + 64) + "-" + (getMinY() + 64 + MODERN_HEIGHT));
-        list.add("Sea Level: " + getSeaLevel());
-    }
-
-    /**
-     * MITE风格的噪声生成器实现
-     */
-    private static class MiteNoiseGeneratorOctaves {
-        private final MiteNoiseGeneratorPerlin[] generatorCollection;
-        private final int octaves;
-
-        public MiteNoiseGeneratorOctaves(RandomSource random, int octaves) {
-            this.octaves = octaves;
-            this.generatorCollection = new MiteNoiseGeneratorPerlin[octaves];
-
-            for (int i = 0; i < octaves; i++) {
-                this.generatorCollection[i] = new MiteNoiseGeneratorPerlin(random);
+        double[] verticalShape = new double[sizeY];
+        for (int y = 0; y < sizeY; ++y) {
+            verticalShape[y] = Math.cos(y * Math.PI * 6.0 / sizeY) * 2.0;
+            double m = y;
+            if (y > sizeY / 2) m = sizeY - 1 - y;
+            if (m < 4.0) {
+                m = 4.0 - m;
+                verticalShape[y] -= m * m * m * 10.0;
             }
         }
 
-        public double[] generateNoiseOctaves(double[] result, int offsetX, int offsetY, int offsetZ,
-                                             int sizeX, int sizeY, int sizeZ,
-                                             double scaleX, double scaleY, double scaleZ) {
-            if (result == null) {
-                result = new double[sizeX * sizeY * sizeZ];
-            } else {
-                Arrays.fill(result, 0.0);
+        for (int x = 0; x < sizeX; ++x) {
+            for (int z = 0; z < sizeZ; ++z) {
+                double d4 = (noise4[idx2D] + 256.0) / 512.0;
+                if (d4 > 1.0) d4 = 1.0;
+
+                double d5 = noise5[idx2D] / 8000.0;
+                if (d5 < 0.0) d5 = -d5;
+                d5 = d5 * 3.0 - 3.0;
+                if (d5 < 0.0) {
+                    d5 /= 2.0;
+                    if (d5 < -1.0) d5 = -1.0;
+                    d5 /= 1.4;
+                    d5 /= 2.0;
+                    d4 = 0.0;
+                } else {
+                    if (d5 > 1.0) d5 = 1.0;
+                    d5 /= 6.0;
+                }
+                d4 += 0.5;
+                ++idx2D;
+
+                for (int y = 0; y < sizeY; ++y) {
+                    double n2 = noise2[idx3D] / 512.0;
+                    double n3 = noise3[idx3D] / 512.0;
+                    double blend = (noise1[idx3D] / 10.0 + 1.0) / 2.0;
+                    double val;
+                    if (blend < 0.0) val = n2;
+                    else if (blend > 1.0) val = n3;
+                    else val = n2 + (n3 - n2) * blend;
+                    val -= verticalShape[y];
+                    if (y > sizeY - 4) {
+                        double t = (y - (sizeY - 4)) / 3.0;
+                        val = val * (1.0 - t) + (-10.0) * t;
+                    }
+                    out[idx3D++] = val;
+                }
             }
+        }
+        return out;
+    }
 
+    /* ========================== Seeds / Mantle helper ========================== */
+    private long columnSeed(ChunkAccess chunk, int x, int z) {
+        long cx = chunk.getPos().x;
+        long cz = chunk.getPos().z;
+        return (cx * 341873128712L) ^ (cz * 132897987541L) ^ (x * 734287L) ^ (z * 912931L);
+    }
+
+    private BlockState mantleBlock() {
+        try { return IFWBlocks.mantle.get().defaultBlockState(); }
+        catch (Throwable t) { return Blocks.BEDROCK.defaultBlockState(); }
+    }
+
+    /* ========================== Perlin / Octaves ========================== */
+    private static class MiteNoiseGeneratorOctaves {
+        private final MiteNoiseGeneratorPerlin[] octaves;
+        private final int count;
+        MiteNoiseGeneratorOctaves(RandomSource random, int count) {
+            this.count = count;
+            this.octaves = new MiteNoiseGeneratorPerlin[count];
+            for (int i = 0; i < count; i++) {
+                this.octaves[i] = new MiteNoiseGeneratorPerlin(random);
+            }
+        }
+        double[] generateNoiseOctaves(double[] result, int ox, int oy, int oz,
+                                      int sx, int sy, int sz,
+                                      double scx, double scy, double scz) {
+            if (result == null) result = new double[sx * sy * sz];
+            else Arrays.fill(result, 0.0);
             double amplitude = 1.0;
+            for (int o = 0; o < count; o++) {
+                double dx = ox * scx * amplitude;
+                double dy = oy * scy * amplitude;
+                double dz = oz * scz * amplitude;
 
-            for (int octave = 0; octave < this.octaves; octave++) {
-                double currentScaleX = offsetX * amplitude * scaleX;
-                double currentScaleY = offsetY * amplitude * scaleY;
-                double currentScaleZ = offsetZ * amplitude * scaleZ;
+                long lx = (long)Math.floor(dx);
+                long lz = (long)Math.floor(dz);
+                dx -= lx; dz -= lz;
+                lx %= 16777216L; lz %= 16777216L;
+                dx += lx; dz += lz;
 
-                // MITE的坐标处理
-                long xLong = (long) currentScaleX;
-                long zLong = (long) currentScaleZ;
-                currentScaleX -= xLong;
-                currentScaleZ -= zLong;
-                xLong %= 16777216L;
-                zLong %= 16777216L;
-                currentScaleX += xLong;
-                currentScaleZ += zLong;
+                octaves[o].populate(result, dx, dy, dz, sx, sy, sz,
+                        scx * amplitude, scy * amplitude, scz * amplitude, amplitude);
 
-                this.generatorCollection[octave].populateNoiseArray(result, currentScaleX, currentScaleY, currentScaleZ,
-                        sizeX, sizeY, sizeZ,
-                        scaleX * amplitude, scaleY * amplitude, scaleZ * amplitude,
-                        amplitude);
                 amplitude /= 2.0;
             }
-
             return result;
         }
     }
 
-    /**
-     * 简化的MITE Perlin噪声实现
-     */
     private static class MiteNoiseGeneratorPerlin {
-        private final int[] permutations;
-        private final double xCoord, yCoord, zCoord;
-
-        public MiteNoiseGeneratorPerlin(RandomSource random) {
-            this.permutations = new int[512];
-            this.xCoord = random.nextDouble() * 256.0;
-            this.yCoord = random.nextDouble() * 256.0;
-            this.zCoord = random.nextDouble() * 256.0;
-
+        private final int[] perm;
+        private final double xOff, yOff, zOff;
+        MiteNoiseGeneratorPerlin(RandomSource rand) {
+            perm = new int[512];
+            xOff = rand.nextDouble() * 256.0;
+            yOff = rand.nextDouble() * 256.0;
+            zOff = rand.nextDouble() * 256.0;
+            for (int i = 0; i < 256; i++) perm[i] = i;
             for (int i = 0; i < 256; i++) {
-                this.permutations[i] = i;
-            }
-
-            for (int i = 0; i < 256; i++) {
-                int j = random.nextInt(256 - i) + i;
-                int temp = this.permutations[i];
-                this.permutations[i] = this.permutations[j];
-                this.permutations[j] = temp;
-                this.permutations[i + 256] = this.permutations[i];
+                int j = rand.nextInt(256 - i) + i;
+                int tmp = perm[i];
+                perm[i] = perm[j];
+                perm[j] = tmp;
+                perm[i + 256] = perm[i];
             }
         }
-
-        public void populateNoiseArray(double[] result, double offsetX, double offsetY, double offsetZ,
-                                       int sizeX, int sizeY, int sizeZ,
-                                       double scaleX, double scaleY, double scaleZ, double amplitude) {
-            int index = 0;
-            double amplitudeRecip = 1.0 / amplitude;
-
-            for (int x = 0; x < sizeX; x++) {
-                for (int z = 0; z < sizeZ; z++) {
-                    for (int y = 0; y < sizeY; y++) {
-                        double sampleX = offsetX + x * scaleX + this.xCoord;
-                        double sampleY = offsetY + y * scaleY + this.yCoord;
-                        double sampleZ = offsetZ + z * scaleZ + this.zCoord;
-
-                        // 简化的Perlin噪声计算
-                        double noise = simplexNoise(sampleX, sampleY, sampleZ);
-                        result[index++] += noise * amplitudeRecip;
+        void populate(double[] out, double ox, double oy, double oz,
+                      int sx, int sy, int sz,
+                      double scx, double scy, double scz,
+                      double amplitude) {
+            int idx = 0;
+            double invAmp = 1.0 / amplitude;
+            for (int x = 0; x < sx; ++x) {
+                double px = ox + x * scx + xOff;
+                for (int z = 0; z < sz; ++z) {
+                    double pz = oz + z * scz + zOff;
+                    for (int y = 0; y < sy; ++y) {
+                        double py = oy + y * scy + yOff;
+                        double n = perlin(px, py, pz);
+                        out[idx++] += n * invAmp;
                     }
                 }
             }
         }
-
-        private double simplexNoise(double x, double y, double z) {
-            // 这里使用一个简化的3D噪声实现
-            // 实际的MITE实现更复杂，但这应该足够产生变化
-            int xi = (int) Math.floor(x) & 255;
-            int yi = (int) Math.floor(y) & 255;
-            int zi = (int) Math.floor(z) & 255;
-
-            double xf = x - Math.floor(x);
-            double yf = y - Math.floor(y);
-            double zf = z - Math.floor(z);
+        private double perlin(double x, double y, double z) {
+            int xi = fastFloor(x) & 255;
+            int yi = fastFloor(y) & 255;
+            int zi = fastFloor(z) & 255;
+            double xf = x - fastFloor(x);
+            double yf = y - fastFloor(y);
+            double zf = z - fastFloor(z);
 
             double u = fade(xf);
             double v = fade(yf);
             double w = fade(zf);
 
-            int a = permutations[xi] + yi;
-            int aa = permutations[a] + zi;
-            int ab = permutations[a + 1] + zi;
-            int b = permutations[xi + 1] + yi;
-            int ba = permutations[b] + zi;
-            int bb = permutations[b + 1] + zi;
+            int a = perm[xi] + yi;
+            int aa = perm[a] + zi;
+            int ab = perm[a + 1] + zi;
+            int b = perm[xi + 1] + yi;
+            int ba = perm[b] + zi;
+            int bb = perm[b + 1] + zi;
 
-            return lerp(w, lerp(v, lerp(u, grad(permutations[aa], xf, yf, zf),
-                                    grad(permutations[ba], xf - 1, yf, zf)),
-                            lerp(u, grad(permutations[ab], xf, yf - 1, zf),
-                                    grad(permutations[bb], xf - 1, yf - 1, zf))),
-                    lerp(v, lerp(u, grad(permutations[aa + 1], xf, yf, zf - 1),
-                                    grad(permutations[ba + 1], xf - 1, yf, zf - 1)),
-                            lerp(u, grad(permutations[ab + 1], xf, yf - 1, zf - 1),
-                                    grad(permutations[bb + 1], xf - 1, yf - 1, zf - 1))));
+            return lerp(w,
+                    lerp(v,
+                            lerp(u, grad(perm[aa], xf, yf, zf),
+                                    grad(perm[ba], xf - 1, yf, zf)),
+                            lerp(u, grad(perm[ab], xf, yf - 1, zf),
+                                    grad(perm[bb], xf - 1, yf - 1, zf))
+                    ),
+                    lerp(v,
+                            lerp(u, grad(perm[aa + 1], xf, yf, zf - 1),
+                                    grad(perm[ba + 1], xf - 1, yf, zf - 1)),
+                            lerp(u, grad(perm[ab + 1], xf, yf - 1, zf - 1),
+                                    grad(perm[bb + 1], xf - 1, yf - 1, zf - 1))
+                    )
+            );
         }
-
-        private double fade(double t) {
-            return t * t * t * (t * (t * 6 - 15) + 10);
-        }
-
-        private double lerp(double t, double a, double b) {
-            return a + t * (b - a);
-        }
-
+        private int fastFloor(double d) { return d >= 0 ? (int)d : (int)d - 1; }
+        private double fade(double t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+        private double lerp(double t, double a, double b) { return a + t * (b - a); }
         private double grad(int hash, double x, double y, double z) {
             int h = hash & 15;
             double u = h < 8 ? x : y;
-            double v = h < 4 ? y : h == 12 || h == 14 ? x : z;
-            return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
+            double v = (h < 4) ? y : (h == 12 || h == 14 ? x : z);
+            return ((h & 1)==0?u:-u) + ((h & 2)==0?v:-v);
         }
     }
 }
