@@ -91,6 +91,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.BONE_LORD.value(), "Bone Lord");
         add(IFWEntityType.ANCIENT_BONE_LORD.value(), "Ancient Bone Lord");
         add(IFWEntityType.INFERNO_CREEPER.value(), "Inferno Creeper");
+        add(IFWEntityType.DIRE_WOLF.value(), "Dire Wolf");
         add(IFWEntityType.HELL_HOUND.value(), "Hell Hound");
         add(IFWEntityType.SPIDER.value(), "Spider");
         add(IFWEntityType.WOOD_SPIDER.value(), "Wood Spider");
@@ -123,6 +124,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.bone_lord_spawn_egg.get(), "Bone Lord Spawn Egg");
         add(IFWItems.ancient_bone_lord_spawn_egg.get(), "Ancient Bone Lord Spawn Egg");
         add(IFWItems.inferno_creeper_spawn_egg.get(), "Inferno Creeper Spawn Egg");
+        add(IFWItems.dire_wolf_spawn_egg.get(), "Dire Wolf Spawn Egg");
         add(IFWItems.hellhound_spawn_egg.get(), "HellHound Spawn Egg");
         add(IFWItems.spider_spawn_egg.get(), "Spider Spawn Egg");
         add(IFWItems.wood_spider_spawn_egg.get(), "Wood Spider Spawn Egg");

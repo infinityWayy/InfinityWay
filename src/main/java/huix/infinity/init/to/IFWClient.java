@@ -9,10 +9,7 @@ import huix.infinity.common.client.screen.EmeraldEnchantmentScreen;
 import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import huix.infinity.common.world.entity.IFWEntityType;
-import huix.infinity.common.world.entity.render.animal.IFWChickenRenderer;
-import huix.infinity.common.world.entity.render.animal.IFWCowRenderer;
-import huix.infinity.common.world.entity.render.animal.IFWPigRenderer;
-import huix.infinity.common.world.entity.render.animal.IFWSheepRenderer;
+import huix.infinity.common.world.entity.render.animal.*;
 import huix.infinity.common.world.entity.render.gelatinous.GelatinousCubeRenderer;
 import huix.infinity.common.world.entity.render.hound.HellHoundRenderer;
 import huix.infinity.common.world.entity.render.hound.HellHoundModel;
@@ -36,7 +33,6 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
@@ -124,6 +120,7 @@ public final class IFWClient {
     @SubscribeEvent
     static void registerLayerDefinitions(final EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModelLayers.HELLHOUND, HellHoundModel::createBodyLayer);
+        event.registerLayerDefinition(ModelLayers.DIRE_WOLF, DireWolfModel::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -133,6 +130,7 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.SHEEP.get(), IFWSheepRenderer::new);
         event.registerEntityRenderer(IFWEntityType.PIG.get(), IFWPigRenderer::new);
         event.registerEntityRenderer(IFWEntityType.COW.get(), IFWCowRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.DIRE_WOLF.get(), IFWDireWolfRenderer::new);
 
         // 怪物渲染器
         event.registerEntityRenderer(IFWEntityType.ZOMBIE.get(), IFWZombieRenderer::new);

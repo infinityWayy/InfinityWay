@@ -3,6 +3,7 @@ package huix.infinity.mixin.world.entity.monster;
 import huix.infinity.common.world.curse.CurseManager;
 import huix.infinity.common.world.curse.CurseType;
 import huix.infinity.common.world.entity.bridge.WitchDuck;
+import huix.infinity.common.world.entity.bridge.WolfDuck;
 import huix.infinity.extension.func.PlayerExtension;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.*;
@@ -92,6 +93,7 @@ public abstract class WitchMixin extends Raider implements WitchDuck {
                 wolf.moveTo(dx, dy, dz, world.random.nextFloat() * 360.0F, 0.0F);
                 wolf.setTarget(target);
                 wolf.getPersistentData().putUUID("witch_ally", this.getUUID());
+                ((WolfDuck)wolf).ifw$setWitchAlly(true);
                 world.addFreshEntity(wolf);
                 spawned++;
             }

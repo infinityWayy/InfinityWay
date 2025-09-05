@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-04T14:40:45.0932348	Item Models: ifw
+// 1.21.1	2025-09-05T23:45:53.2309291	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -136,6 +136,7 @@ b78af853ecaa5af80d81db63b2054d16917f0ffc assets/ifw/models/item/copper_private_c
 bdf58386b051960f0d26eeac6c1c261ab5c4070f assets/ifw/models/item/deepslate_silver_ore.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/demon_spider_spawn_egg.json
 0955c32d3a2cc0cf31a008e92cb33d5343ef2eb5 assets/ifw/models/item/diamond_shard.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/dire_wolf_spawn_egg.json
 daf6346ca531b34d4767b2afbcfc25245933aa70 assets/ifw/models/item/dough.json
 efa8ef12d6bfc417aa334d6db1a6a5e54836f9c8 assets/ifw/models/item/emerald_enchanting_table.json
 def1fa39cdc255f8288f173b3bf26d5754a443ce assets/ifw/models/item/emerald_shard.json

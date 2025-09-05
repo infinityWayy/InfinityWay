@@ -89,6 +89,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.BONE_LORD.value(), "亡骸领主");
         add(IFWEntityType.ANCIENT_BONE_LORD.value(), "远古亡骸领主");
         add(IFWEntityType.INFERNO_CREEPER.value(), "地狱苦力怕");
+        add(IFWEntityType.DIRE_WOLF.value(), "恐狼");
         add(IFWEntityType.HELL_HOUND.value(), "地狱犬");
         add(IFWEntityType.SPIDER.value(), "蜘蛛");
         add(IFWEntityType.WOOD_SPIDER.value(), "木蜘蛛");
@@ -120,6 +121,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.bone_lord_spawn_egg.get(), "亡骸领主刷怪蛋");
         add(IFWItems.ancient_bone_lord_spawn_egg.get(), "远古亡骸领主刷怪蛋");
         add(IFWItems.inferno_creeper_spawn_egg.get(), "地狱苦力怕刷怪蛋");
+        add(IFWItems.dire_wolf_spawn_egg.get(), "恐狼刷怪蛋");
         add(IFWItems.hellhound_spawn_egg.get(), "地狱犬刷怪蛋");
         add(IFWItems.spider_spawn_egg.get(), "蜘蛛刷怪蛋");
         add(IFWItems.wood_spider_spawn_egg.get(), "木蜘蛛刷怪蛋");

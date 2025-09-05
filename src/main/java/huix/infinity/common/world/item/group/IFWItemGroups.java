@@ -474,6 +474,7 @@ public class IFWItemGroups {
                         output.accept(IFWItems.bone_lord_spawn_egg.get());
                         output.accept(IFWItems.ancient_bone_lord_spawn_egg.get());
                         output.accept(IFWItems.inferno_creeper_spawn_egg.get());
+                        output.accept(IFWItems.dire_wolf_spawn_egg.get());
                         output.accept(IFWItems.hellhound_spawn_egg.get());
                         output.accept(IFWItems.spider_spawn_egg.get());
                         output.accept(IFWItems.wood_spider_spawn_egg.get());

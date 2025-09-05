@@ -477,6 +477,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         spawnEggItem(IFWItems.bone_lord_spawn_egg.get());
         spawnEggItem(IFWItems.ancient_bone_lord_spawn_egg.get());
         spawnEggItem(IFWItems.inferno_creeper_spawn_egg.get());
+        spawnEggItem(IFWItems.dire_wolf_spawn_egg.get());
         spawnEggItem(IFWItems.hellhound_spawn_egg.get());
         spawnEggItem(IFWItems.spider_spawn_egg.get());
         spawnEggItem(IFWItems.wood_spider_spawn_egg.get());

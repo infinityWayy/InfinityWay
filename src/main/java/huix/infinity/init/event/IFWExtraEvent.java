@@ -27,6 +27,7 @@ public class IFWExtraEvent {
         event.put(IFWEntityType.SHEEP.get(), IFWSheep.createAttributes().build());
         event.put(IFWEntityType.PIG.get(), IFWPig.createAttributes().build());
         event.put(IFWEntityType.COW.get(), IFWCow.createAttributes().build());
+        event.put(IFWEntityType.DIRE_WOLF.get(), IFWDireWolf.createAttributes().build());
 
         // 怪物实体属性注册
         event.put(IFWEntityType.ZOMBIE.get(), IFWZombie.createAttributes().build());

@@ -63,6 +63,14 @@ public class IFWEntityType {
                             .build("cow")
             );
 
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWDireWolf>> DIRE_WOLF =
+            ENTITIES.register("dire_wolf",
+                    () -> EntityType.Builder.of(IFWDireWolf::new, MobCategory.MONSTER)
+                            .sized(0.6F, 0.8F)
+                            .clientTrackingRange(8)
+                            .build("dire_wolf")
+            );
+
     public static final DeferredHolder<EntityType<?>, EntityType<IFWZombie>> ZOMBIE =
             ENTITIES.register("zombie",
                     () -> EntityType.Builder.<IFWZombie>of(IFWZombie::new, MobCategory.MONSTER)
