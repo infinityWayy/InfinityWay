@@ -94,6 +94,7 @@ public abstract class WitchMixin extends Raider implements WitchDuck {
                 wolf.setTarget(target);
                 wolf.getPersistentData().putUUID("witch_ally", this.getUUID());
                 ((WolfDuck)wolf).ifw$setWitchAlly(true);
+                ((WolfDuck)wolf).ifw$setHostileToPlayers(9999999);
                 world.addFreshEntity(wolf);
                 spawned++;
             }

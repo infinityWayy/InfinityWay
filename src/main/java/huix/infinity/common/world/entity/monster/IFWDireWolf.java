@@ -2,6 +2,7 @@ package huix.infinity.common.world.entity.monster;
 
 import huix.infinity.common.world.entity.ai.HostileToPlayersTargetGoal;
 import huix.infinity.common.world.entity.ai.NonTamedTargetGoal;
+import huix.infinity.common.world.entity.bridge.WolfDuck;
 import huix.infinity.common.world.entity.mob.IFWChicken;
 import huix.infinity.common.world.entity.mob.IFWCow;
 import huix.infinity.common.world.entity.mob.IFWPig;
@@ -39,7 +40,37 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
-public class IFWDireWolf extends TamableAnimal implements NeutralMob {
+public class IFWDireWolf extends TamableAnimal implements NeutralMob, WolfDuck {
+
+    @Override
+    public boolean ifw$isHostileToPlayers() {
+        return false;
+    }
+
+    @Override
+    public void ifw$setHostileToPlayers(int ticks) {
+
+    }
+
+    @Override
+    public void ifw$setWitchAlly(boolean flag) {
+
+    }
+
+    @Override
+    public boolean ifw$isWitchAlly() {
+        return false;
+    }
+
+    @Override
+    public void ifw$setIsAttacking(boolean attack) {
+
+    }
+
+    @Override
+    public boolean ifw$isAttacking() {
+        return false;
+    }
 
     private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(IFWDireWolf.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Optional<UUID>> DATA_ANGER_TARGET = SynchedEntityData.defineId(IFWDireWolf.class, EntityDataSerializers.OPTIONAL_UUID);
