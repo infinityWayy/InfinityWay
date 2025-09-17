@@ -908,4 +908,17 @@ public class IFWItems {
 
     public static final DeferredItem<Item> magma_cube_spawn_egg = ITEMS.register("magma_cube_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.MAGMA_CUBE, 0x340000, 0xFF2000, new Item.Properties()));
+
+    public static final DeferredItem<Item> silverfish_spawn_egg = ITEMS.register("silverfish_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.SILVERFISH, 0x6B6B6B, 0xA3A3A3, new Item.Properties()));
+
+    public static final DeferredItem<Item> copperspine_spawn_egg = ITEMS.register("copperspine_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.COPPERSPINE, 0xB87333, 0x3C3C3C, new Item.Properties()));
+
+    public static final DeferredItem<Item> hoary_silverfish_spawn_egg = ITEMS.register("hoary_silverfish_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.HOARY_SILVERFISH, 0xEEEEEE, 0xA3A3A3, new Item.Properties()));
+
+    public static final DeferredItem<Item> nether_silverfish_spawn_egg = ITEMS.register("nether_silverfish_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.NETHER_SILVERFISH, 0xC04040, 0x300000, new Item.Properties()));
+
 }

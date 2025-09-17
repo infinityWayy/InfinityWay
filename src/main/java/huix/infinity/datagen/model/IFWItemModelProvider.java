@@ -492,6 +492,10 @@ public class IFWItemModelProvider extends ItemModelProvider {
         spawnEggItem(IFWItems.pudding_spawn_egg.get());
         spawnEggItem(IFWItems.ooze_spawn_egg.get());
         spawnEggItem(IFWItems.magma_cube_spawn_egg.get());
+        spawnEggItem(IFWItems.silverfish_spawn_egg.get());
+        spawnEggItem(IFWItems.copperspine_spawn_egg.get());
+        spawnEggItem(IFWItems.hoary_silverfish_spawn_egg.get());
+        spawnEggItem(IFWItems.nether_silverfish_spawn_egg.get());
     }
 
     /**

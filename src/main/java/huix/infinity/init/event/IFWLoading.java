@@ -1070,13 +1070,22 @@ public class IFWLoading {
         event.register(IFWEntityType.WIGHT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(IFWEntityType.INVISIBLE_STALKER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(IFWEntityType.SHADOW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+
         event.register(IFWEntityType.SKELETON.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkUniversalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(IFWEntityType.LONGDEAD.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(IFWEntityType.LONGDEAD_GUARDIAN.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(IFWEntityType.BONE_LORD.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+
         event.register(IFWEntityType.ANCIENT_BONE_LORD.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+
         event.register(IFWEntityType.INFERNO_CREEPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+
         event.register(IFWEntityType.HELL_HOUND.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+
+        event.register(IFWEntityType.SILVERFISH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.COPPERSPINE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.HOARY_SILVERFISH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(IFWEntityType.NETHER_SILVERFISH.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 
         event.register(IFWEntityType.SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkUniversalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(IFWEntityType.WOOD_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, HeightSpawnHandler::checkWoodSpiderSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);

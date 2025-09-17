@@ -105,6 +105,10 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.PUDDING.value(), "Pudding");
         add(IFWEntityType.OOZE.value(), "Ooze");
         add(IFWEntityType.MAGMA_CUBE.value(), "Magma Cube");
+        add(IFWEntityType.SILVERFISH.value(), "Silverfish");
+        add(IFWEntityType.COPPERSPINE.value(), "Copperspine");
+        add(IFWEntityType.HOARY_SILVERFISH.value(), "Hoary Silverfish");
+        add(IFWEntityType.NETHER_SILVERFISH.value(), "Nether Silverfish");
 
 
         // Spawn Egg
@@ -138,6 +142,10 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.pudding_spawn_egg.get(), "Pudding Spawn Egg");
         add(IFWItems.ooze_spawn_egg.get(), "Ooze Spawn Egg");
         add(IFWItems.magma_cube_spawn_egg.get(), "Magma Cube Spawn Egg");
+        add(IFWItems.silverfish_spawn_egg.get(), "Silverfish Spawn Egg");
+        add(IFWItems.copperspine_spawn_egg.get(), "Copperspine Spawn Egg");
+        add(IFWItems.hoary_silverfish_spawn_egg.get(), "Hoary Silverfish Spawn Egg");
+        add(IFWItems.nether_silverfish_spawn_egg.get(), "Nether Silverfish Spawn Egg");
 
         //Commands
         add("commands.exp.message", "You have %s experience");

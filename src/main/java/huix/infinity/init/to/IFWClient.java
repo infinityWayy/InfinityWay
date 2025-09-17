@@ -14,6 +14,7 @@ import huix.infinity.common.world.entity.render.gelatinous.GelatinousCubeRendere
 import huix.infinity.common.world.entity.render.hound.HellHoundRenderer;
 import huix.infinity.common.world.entity.render.hound.HellHoundModel;
 import huix.infinity.common.world.entity.render.projectile.ThrownSlimeBallRenderer;
+import huix.infinity.common.world.entity.render.silverfish.IFWSilverfishRenderer;
 import huix.infinity.common.world.entity.render.skeleton.IFWSkeletonRenderer;
 import huix.infinity.common.world.entity.render.zombie.HumanoidTypeRenderer;
 import huix.infinity.common.world.entity.render.creeper.InfernoCreeperRenderer;
@@ -164,6 +165,11 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.PUDDING.get(), GelatinousCubeRenderer::new);
         event.registerEntityRenderer(IFWEntityType.OOZE.get(), GelatinousCubeRenderer::new);
         event.registerEntityRenderer(IFWEntityType.MAGMA_CUBE.get(), GelatinousCubeRenderer::new);
+
+        event.registerEntityRenderer(IFWEntityType.SILVERFISH.get(), IFWSilverfishRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.COPPERSPINE.get(), IFWSilverfishRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.HOARY_SILVERFISH.get(), IFWSilverfishRenderer::new);
+        event.registerEntityRenderer(IFWEntityType.NETHER_SILVERFISH.get(), IFWSilverfishRenderer::new);
 
         // 投射物渲染器
         event.registerEntityRenderer(IFWEntityType.WEB_PROJECTILE.get(), IFWWebProjectileRenderer::new);

@@ -11,6 +11,10 @@ import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
 import huix.infinity.common.world.entity.monster.gelatinous.GelatinousCube;
 import huix.infinity.common.world.entity.monster.gelatinous.Ooze;
+import huix.infinity.common.world.entity.monster.silverfish.Copperspine;
+import huix.infinity.common.world.entity.monster.silverfish.HoarySilverfish;
+import huix.infinity.common.world.entity.monster.silverfish.IFWSilverfish;
+import huix.infinity.common.world.entity.monster.silverfish.NetherSilverFish;
 import huix.infinity.common.world.entity.monster.skeleton.*;
 import huix.infinity.init.InfinityWay;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -60,6 +64,11 @@ public class IFWExtraEvent {
         event.put(IFWEntityType.MAGMA_CUBE.get(), GelatinousCube.createAttributes().build());
 
         event.put(IFWEntityType.HELL_HOUND.get(), HellHound.createAttributes().build());
+
+        event.put(IFWEntityType.SILVERFISH.get(), IFWSilverfish.createAttributes().build());
+        event.put(IFWEntityType.COPPERSPINE.get(), Copperspine.createAttributes().build());
+        event.put(IFWEntityType.HOARY_SILVERFISH.get(), HoarySilverfish.createAttributes().build());
+        event.put(IFWEntityType.NETHER_SILVERFISH.get(), NetherSilverFish.createAttributes().build());
 
     }
 

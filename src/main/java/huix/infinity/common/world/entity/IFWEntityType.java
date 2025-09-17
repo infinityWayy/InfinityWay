@@ -10,6 +10,7 @@ import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
 import huix.infinity.common.world.entity.monster.gelatinous.*;
 import huix.infinity.common.world.entity.monster.skeleton.*;
+import huix.infinity.common.world.entity.monster.silverfish.*;
 import huix.infinity.common.world.entity.projectile.IFWWebProjectileEntity;
 import huix.infinity.common.world.entity.projectile.ThrownSlimeBall;
 import huix.infinity.init.InfinityWay;
@@ -317,4 +318,38 @@ public class IFWEntityType {
                             .fireImmune()
                             .clientTrackingRange(8)
                             .build("hell_hound"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IFWSilverfish>> SILVERFISH =
+            ENTITIES.register("ifw_silverfish",
+                    () -> EntityType.Builder.of(IFWSilverfish::new, MobCategory.MONSTER)
+                            .sized(0.3F, 0.7F)
+                            .clientTrackingRange(8)
+                            .build("ifw_silverfish")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Copperspine>> COPPERSPINE =
+            ENTITIES.register("copperspine_silverfish",
+                    () -> EntityType.Builder.of(Copperspine::new, MobCategory.MONSTER)
+                            .sized(0.3F, 0.7F)
+                            .clientTrackingRange(8)
+                            .build("copperspine_silverfish")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<HoarySilverfish>> HOARY_SILVERFISH =
+            ENTITIES.register("hoary_silverfish",
+                    () -> EntityType.Builder.of(HoarySilverfish::new, MobCategory.MONSTER)
+                            .sized(0.3F, 0.7F)
+                            .clientTrackingRange(8)
+                            .build("hoary_silverfish")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<NetherSilverFish>> NETHER_SILVERFISH =
+            ENTITIES.register("nether_silverfish",
+                    () -> EntityType.Builder.of(NetherSilverFish::new, MobCategory.MONSTER)
+                            .sized(0.3F, 0.7F)
+                            .fireImmune()
+                            .clientTrackingRange(8)
+                            .build("nether_silverfish")
+            );
+
 }

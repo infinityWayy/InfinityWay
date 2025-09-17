@@ -103,6 +103,10 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.PUDDING.value(), "布丁怪");
         add(IFWEntityType.OOZE.value(), "软泥怪");
         add(IFWEntityType.MAGMA_CUBE.value(), "岩浆怪");
+        add(IFWEntityType.SILVERFISH.value(), "蠹虫");
+        add(IFWEntityType.COPPERSPINE.value(), "铜毒蠹虫");
+        add(IFWEntityType.HOARY_SILVERFISH.value(), "远古蠹虫");
+        add(IFWEntityType.NETHER_SILVERFISH.value(), "地狱蠹虫");
 
         // 刷怪蛋
         add(IFWItems.chicken_spawn_egg.get(), "鸡刷怪蛋");
@@ -135,6 +139,10 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.pudding_spawn_egg.get(), "布丁刷怪蛋");
         add(IFWItems.ooze_spawn_egg.get(), "软泥刷怪蛋");
         add(IFWItems.magma_cube_spawn_egg.get(), "岩浆怪刷怪蛋");
+        add(IFWItems.silverfish_spawn_egg.get(), "蠹虫刷怪蛋");
+        add(IFWItems.copperspine_spawn_egg.get(), "铜毒蠹虫刷怪蛋");
+        add(IFWItems.hoary_silverfish_spawn_egg.get(), "远古蠹虫刷怪蛋");
+        add(IFWItems.nether_silverfish_spawn_egg.get(), "地狱蠹虫刷怪蛋");
 
         add("commands.exp.message", "你当前的经验值为 %s");
         add("commands.day.message", "今天是第 %s 天");

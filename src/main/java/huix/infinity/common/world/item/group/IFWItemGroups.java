@@ -489,6 +489,10 @@ public class IFWItemGroups {
                         output.accept(IFWItems.pudding_spawn_egg.get());
                         output.accept(IFWItems.ooze_spawn_egg.get());
                         output.accept(IFWItems.magma_cube_spawn_egg.get());
+                        output.accept(IFWItems.silverfish_spawn_egg.get());
+                        output.accept(IFWItems.copperspine_spawn_egg.get());
+                        output.accept(IFWItems.hoary_silverfish_spawn_egg.get());
+                        output.accept(IFWItems.nether_silverfish_spawn_egg.get());
 
 
                     }).build());
