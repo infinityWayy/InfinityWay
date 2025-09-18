@@ -10,6 +10,7 @@ import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.entity.render.animal.*;
+import huix.infinity.common.world.entity.render.elemental.RenderFireElemental;
 import huix.infinity.common.world.entity.render.gelatinous.GelatinousCubeRenderer;
 import huix.infinity.common.world.entity.render.hound.HellHoundRenderer;
 import huix.infinity.common.world.entity.render.hound.HellHoundModel;
@@ -170,6 +171,8 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.COPPERSPINE.get(), IFWSilverfishRenderer::new);
         event.registerEntityRenderer(IFWEntityType.HOARY_SILVERFISH.get(), IFWSilverfishRenderer::new);
         event.registerEntityRenderer(IFWEntityType.NETHER_SILVERFISH.get(), IFWSilverfishRenderer::new);
+
+        event.registerEntityRenderer(IFWEntityType.FIRE_ELEMENTAL.get(), RenderFireElemental::new);
 
         // 投射物渲染器
         event.registerEntityRenderer(IFWEntityType.WEB_PROJECTILE.get(), IFWWebProjectileRenderer::new);

@@ -8,6 +8,7 @@ import huix.infinity.common.world.entity.monster.*;
 import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
+import huix.infinity.common.world.entity.monster.elemental.EntityFireElemental;
 import huix.infinity.common.world.entity.monster.gelatinous.*;
 import huix.infinity.common.world.entity.monster.skeleton.*;
 import huix.infinity.common.world.entity.monster.silverfish.*;
@@ -350,6 +351,15 @@ public class IFWEntityType {
                             .fireImmune()
                             .clientTrackingRange(8)
                             .build("nether_silverfish")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<EntityFireElemental>> FIRE_ELEMENTAL =
+            ENTITIES.register("fire_elemental",
+                    () -> EntityType.Builder.of(EntityFireElemental::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.8F)
+                            .fireImmune()
+                            .clientTrackingRange(8)
+                            .build("fire_elemental")
             );
 
 }

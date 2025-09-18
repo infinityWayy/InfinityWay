@@ -493,6 +493,7 @@ public class IFWItemGroups {
                         output.accept(IFWItems.copperspine_spawn_egg.get());
                         output.accept(IFWItems.hoary_silverfish_spawn_egg.get());
                         output.accept(IFWItems.nether_silverfish_spawn_egg.get());
+                        output.accept(IFWItems.fire_elemental_spawn_egg.get());
 
 
                     }).build());

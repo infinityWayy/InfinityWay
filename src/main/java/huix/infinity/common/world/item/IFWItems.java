@@ -921,4 +921,7 @@ public class IFWItems {
     public static final DeferredItem<Item> nether_silverfish_spawn_egg = ITEMS.register("nether_silverfish_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.NETHER_SILVERFISH, 0xC04040, 0x300000, new Item.Properties()));
 
+    public static final DeferredItem<Item> fire_elemental_spawn_egg = ITEMS.register("fire_elemental_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.FIRE_ELEMENTAL, 0xFF7300, 0xFFD800, new Item.Properties()));
+
 }

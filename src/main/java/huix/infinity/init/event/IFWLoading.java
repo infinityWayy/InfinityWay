@@ -1093,5 +1093,9 @@ public class IFWLoading {
         event.register(IFWEntityType.PHASE_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(IFWEntityType.CAVE_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(IFWEntityType.DEMON_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeightSpawnHandler::checkDeepSlateLayerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+
+        event.register(IFWEntityType.FIRE_ELEMENTAL.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+
     }
+
 }

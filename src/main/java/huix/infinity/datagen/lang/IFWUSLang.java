@@ -109,6 +109,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.COPPERSPINE.value(), "Copperspine");
         add(IFWEntityType.HOARY_SILVERFISH.value(), "Hoary Silverfish");
         add(IFWEntityType.NETHER_SILVERFISH.value(), "Nether Silverfish");
+        add(IFWEntityType.FIRE_ELEMENTAL.value(), "Fire Elemental");
 
 
         // Spawn Egg
@@ -146,6 +147,7 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.copperspine_spawn_egg.get(), "Copperspine Spawn Egg");
         add(IFWItems.hoary_silverfish_spawn_egg.get(), "Hoary Silverfish Spawn Egg");
         add(IFWItems.nether_silverfish_spawn_egg.get(), "Nether Silverfish Spawn Egg");
+        add(IFWItems.fire_elemental_spawn_egg.get(), "Fire Elemental Spawn Egg");
 
         //Commands
         add("commands.exp.message", "You have %s experience");

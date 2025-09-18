@@ -496,6 +496,7 @@ public class IFWItemModelProvider extends ItemModelProvider {
         spawnEggItem(IFWItems.copperspine_spawn_egg.get());
         spawnEggItem(IFWItems.hoary_silverfish_spawn_egg.get());
         spawnEggItem(IFWItems.nether_silverfish_spawn_egg.get());
+        spawnEggItem(IFWItems.fire_elemental_spawn_egg.get());
     }
 
     /**

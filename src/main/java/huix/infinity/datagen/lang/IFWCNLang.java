@@ -107,6 +107,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.COPPERSPINE.value(), "铜毒蠹虫");
         add(IFWEntityType.HOARY_SILVERFISH.value(), "远古蠹虫");
         add(IFWEntityType.NETHER_SILVERFISH.value(), "地狱蠹虫");
+        add(IFWEntityType.FIRE_ELEMENTAL.value(), "火元素");
 
         // 刷怪蛋
         add(IFWItems.chicken_spawn_egg.get(), "鸡刷怪蛋");
@@ -143,6 +144,7 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.copperspine_spawn_egg.get(), "铜毒蠹虫刷怪蛋");
         add(IFWItems.hoary_silverfish_spawn_egg.get(), "远古蠹虫刷怪蛋");
         add(IFWItems.nether_silverfish_spawn_egg.get(), "地狱蠹虫刷怪蛋");
+        add(IFWItems.fire_elemental_spawn_egg.get(), "火元素刷怪蛋");
 
         add("commands.exp.message", "你当前的经验值为 %s");
         add("commands.day.message", "今天是第 %s 天");

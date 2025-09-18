@@ -9,6 +9,7 @@ import huix.infinity.common.world.entity.monster.*;
 import huix.infinity.common.world.entity.monster.arachnid.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
+import huix.infinity.common.world.entity.monster.elemental.EntityFireElemental;
 import huix.infinity.common.world.entity.monster.gelatinous.GelatinousCube;
 import huix.infinity.common.world.entity.monster.gelatinous.Ooze;
 import huix.infinity.common.world.entity.monster.silverfish.Copperspine;
@@ -69,6 +70,8 @@ public class IFWExtraEvent {
         event.put(IFWEntityType.COPPERSPINE.get(), Copperspine.createAttributes().build());
         event.put(IFWEntityType.HOARY_SILVERFISH.get(), HoarySilverfish.createAttributes().build());
         event.put(IFWEntityType.NETHER_SILVERFISH.get(), NetherSilverFish.createAttributes().build());
+
+        event.put(IFWEntityType.FIRE_ELEMENTAL.get(), EntityFireElemental.createAttributes().build());
 
     }
 
