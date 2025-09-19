@@ -924,4 +924,13 @@ public class IFWItems {
     public static final DeferredItem<Item> fire_elemental_spawn_egg = ITEMS.register("fire_elemental_spawn_egg",
             () -> new DeferredSpawnEggItem(IFWEntityType.FIRE_ELEMENTAL, 0xFF7300, 0xFFD800, new Item.Properties()));
 
+    public static final DeferredItem<Item> vampire_bat_spawn_egg = ITEMS.register("vampire_bat_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.VAMPIRE_BAT, 0x2B1A1A, 0x4D3232, new Item.Properties()));
+
+    public static final DeferredItem<Item> nightwing_bat_spawn_egg = ITEMS.register("nightwing_bat_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.NIGHTWING_BAT, 0x1A1A2B, 0x4D4D70, new Item.Properties()));
+
+    public static final DeferredItem<Item> giant_vampire_bat_spawn_egg = ITEMS.register("giant_vampire_bat_spawn_egg",
+            () -> new DeferredSpawnEggItem(IFWEntityType.GIANT_VAMPIRE_BAT, 0x3D2323, 0xA81A1A, new Item.Properties()));
+
 }

@@ -47,7 +47,8 @@ public class IFWEntityTypeTagsProvider extends EntityTypeTagsProvider {
                 .add(IFWEntityType.LONGDEAD.get())
                 .add(IFWEntityType.LONGDEAD_GUARDIAN.get())
                 .add(IFWEntityType.BONE_LORD.get())
-                .add(IFWEntityType.ANCIENT_BONE_LORD.get());
+                .add(IFWEntityType.ANCIENT_BONE_LORD.get())
+                .add(IFWEntityType.NIGHTWING_BAT.get());
 
         // 节肢动物标签
         this.tag(EntityTypeTags.ARTHROPOD)

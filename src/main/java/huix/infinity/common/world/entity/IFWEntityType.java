@@ -6,6 +6,9 @@ import huix.infinity.common.world.entity.mob.IFWPig;
 import huix.infinity.common.world.entity.mob.IFWSheep;
 import huix.infinity.common.world.entity.monster.*;
 import huix.infinity.common.world.entity.monster.arachnid.*;
+import huix.infinity.common.world.entity.monster.bat.EntityGiantVampireBat;
+import huix.infinity.common.world.entity.monster.bat.EntityNightwing;
+import huix.infinity.common.world.entity.monster.bat.EntityVampireBat;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
 import huix.infinity.common.world.entity.monster.elemental.EntityFireElemental;
@@ -360,6 +363,30 @@ public class IFWEntityType {
                             .fireImmune()
                             .clientTrackingRange(8)
                             .build("fire_elemental")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<EntityVampireBat>> VAMPIRE_BAT =
+            ENTITIES.register("vampire_bat",
+                    () -> EntityType.Builder.of(EntityVampireBat::new, MobCategory.MONSTER)
+                            .sized(0.9F, 0.5F)
+                            .clientTrackingRange(8)
+                            .build("vampire_bat")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<EntityNightwing>> NIGHTWING_BAT =
+            ENTITIES.register("nightwing_bat",
+                    () -> EntityType.Builder.of(EntityNightwing::new, MobCategory.MONSTER)
+                            .sized(0.9F, 0.5F)
+                            .clientTrackingRange(8)
+                            .build("nightwing_bat")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<EntityGiantVampireBat>> GIANT_VAMPIRE_BAT =
+            ENTITIES.register("giant_vampire_bat",
+                    () -> EntityType.Builder.of(EntityGiantVampireBat::new, MobCategory.MONSTER)
+                            .sized(1.8F, 1.0F)
+                            .clientTrackingRange(8)
+                            .build("giant_vampire_bat")
             );
 
 }

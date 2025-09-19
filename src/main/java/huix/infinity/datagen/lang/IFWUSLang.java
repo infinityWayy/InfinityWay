@@ -110,6 +110,9 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWEntityType.HOARY_SILVERFISH.value(), "Hoary Silverfish");
         add(IFWEntityType.NETHER_SILVERFISH.value(), "Nether Silverfish");
         add(IFWEntityType.FIRE_ELEMENTAL.value(), "Fire Elemental");
+        add(IFWEntityType.VAMPIRE_BAT.value(), "Vampire Bat");
+        add(IFWEntityType.NIGHTWING_BAT.value(), "Nightwing Bat");
+        add(IFWEntityType.GIANT_VAMPIRE_BAT.value(), "Giant Vampire Bat");
 
 
         // Spawn Egg
@@ -148,6 +151,9 @@ public class IFWUSLang extends IFWLanguageProvider {
         add(IFWItems.hoary_silverfish_spawn_egg.get(), "Hoary Silverfish Spawn Egg");
         add(IFWItems.nether_silverfish_spawn_egg.get(), "Nether Silverfish Spawn Egg");
         add(IFWItems.fire_elemental_spawn_egg.get(), "Fire Elemental Spawn Egg");
+        add(IFWItems.vampire_bat_spawn_egg.get(), "Vampire Bat Spawn Egg");
+        add(IFWItems.nightwing_bat_spawn_egg.get(), "Nightwing Bat Spawn Egg");
+        add(IFWItems.giant_vampire_bat_spawn_egg.get(), "Giant Vampire Bat Spawn Egg");
 
         //Commands
         add("commands.exp.message", "You have %s experience");

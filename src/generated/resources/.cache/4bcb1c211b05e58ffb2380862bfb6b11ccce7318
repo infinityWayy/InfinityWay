@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-18T15:11:01.791342	Item Models: ifw
+// 1.21.1	2025-09-18T16:37:52.124993	Item Models: ifw
 9ab6010cac42ea73553903db669fc5c01da3210b assets/ifw/models/item/adamantium_axe.json
 3e249b9ae88c47d265a6ad92dba33dd7b78a34b9 assets/ifw/models/item/adamantium_battle_axe.json
 76e201d75e58d642af30ed859a4d320fe680b55d assets/ifw/models/item/adamantium_block.json
@@ -150,6 +150,7 @@ cb414e841673adbd3efae70839c2905968c6618e assets/ifw/models/item/flint_knife.json
 a1e0d77948f528e09e69d1dde3c9375abe845732 assets/ifw/models/item/flint_shovel.json
 95fbbee886ce84d3c574697e4b72e871126bc9b5 assets/ifw/models/item/flour.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/ghoul_spawn_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/giant_vampire_bat_spawn_egg.json
 507aecd05385c0f3f9087233c7fc2aa5dd269150 assets/ifw/models/item/glass_shard.json
 57ae440ab64b95bab4b92b3129d1d6a9df583e2e assets/ifw/models/item/gold_bucket.json
 37d51f90d897bddc8a9db76709d485a70aff72ba assets/ifw/models/item/gold_door.json
@@ -265,6 +266,7 @@ e7e5e99b90e689830029c1329d84dc8b2f584384 assets/ifw/models/item/mithril_sword.js
 0b0da527055273db8644826d3a44aef2a23031f1 assets/ifw/models/item/mithril_war_hammer.json
 64ce3ba5dc98a947e871808aa0cc25bd0c2bf50b assets/ifw/models/item/mushroom_soup_cream.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/nether_silverfish_spawn_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/nightwing_bat_spawn_egg.json
 3a1275b37bbbcd5ddc4a8e0b0a330f0ac922e0b9 assets/ifw/models/item/obsidian_fishing_rod.json
 4cb0fc2b77fa53b56d5ec1355a47c62ca7cb6832 assets/ifw/models/item/obsidian_shard.json
 91ba90af7c0c8342ea9ca0fa1ea5b092c936d923 assets/ifw/models/item/onion.json
@@ -383,6 +385,7 @@ b318bbd10c14398d0fe2ea421e9d91d6d539ab62 assets/ifw/models/item/tadpole_mithril_
 6a11789b296c5a0d979bac501e2a6d212003f70d assets/ifw/models/item/tropical_iron_bucket.json
 680a3a8c79759ddcec816ffe348404d41ecf00cf assets/ifw/models/item/tropical_mithril_bucket.json
 ed4de7badbafc7d0840c7928dd2e0f17a26b7446 assets/ifw/models/item/tropical_silver_bucket.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/ifw/models/item/vampire_bat_spawn_egg.json
 e5c8a514e54c5724c4f735b05f02c174d2814ef4 assets/ifw/models/item/vegetable_soup.json
 f8893cd0eac291b1c26a809404cba152d5937a91 assets/ifw/models/item/vegetable_soup_cream.json
 a840ba510d7ddffcd2abc22da1fb0772f4207d91 assets/ifw/models/item/water_adamantium_bucket.json

@@ -494,7 +494,9 @@ public class IFWItemGroups {
                         output.accept(IFWItems.hoary_silverfish_spawn_egg.get());
                         output.accept(IFWItems.nether_silverfish_spawn_egg.get());
                         output.accept(IFWItems.fire_elemental_spawn_egg.get());
-
+                        output.accept(IFWItems.vampire_bat_spawn_egg.get());
+                        output.accept(IFWItems.nightwing_bat_spawn_egg.get());
+                        output.accept(IFWItems.giant_vampire_bat_spawn_egg.get());
 
                     }).build());
 }

@@ -108,6 +108,9 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWEntityType.HOARY_SILVERFISH.value(), "远古蠹虫");
         add(IFWEntityType.NETHER_SILVERFISH.value(), "地狱蠹虫");
         add(IFWEntityType.FIRE_ELEMENTAL.value(), "火元素");
+        add(IFWEntityType.VAMPIRE_BAT.value(), "吸血蝙蝠");
+        add(IFWEntityType.NIGHTWING_BAT.value(), "夜翼蝙蝠");
+        add(IFWEntityType.GIANT_VAMPIRE_BAT.value(), "吸血巨蝠");
 
         // 刷怪蛋
         add(IFWItems.chicken_spawn_egg.get(), "鸡刷怪蛋");
@@ -145,6 +148,9 @@ public class IFWCNLang extends IFWLanguageProvider {
         add(IFWItems.hoary_silverfish_spawn_egg.get(), "远古蠹虫刷怪蛋");
         add(IFWItems.nether_silverfish_spawn_egg.get(), "地狱蠹虫刷怪蛋");
         add(IFWItems.fire_elemental_spawn_egg.get(), "火元素刷怪蛋");
+        add(IFWItems.vampire_bat_spawn_egg.get(), "吸血蝙蝠刷怪蛋");
+        add(IFWItems.nightwing_bat_spawn_egg.get(), "夜翼刷怪蛋");
+        add(IFWItems.giant_vampire_bat_spawn_egg.get(), "吸血巨蝠刷怪蛋");
 
         add("commands.exp.message", "你当前的经验值为 %s");
         add("commands.day.message", "今天是第 %s 天");

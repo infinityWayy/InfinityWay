@@ -7,6 +7,7 @@ import huix.infinity.common.world.entity.mob.IFWPig;
 import huix.infinity.common.world.entity.mob.IFWSheep;
 import huix.infinity.common.world.entity.monster.*;
 import huix.infinity.common.world.entity.monster.arachnid.*;
+import huix.infinity.common.world.entity.monster.bat.*;
 import huix.infinity.common.world.entity.monster.digger.IFWZombie;
 import huix.infinity.common.world.entity.monster.digger.Revenant;
 import huix.infinity.common.world.entity.monster.elemental.EntityFireElemental;
@@ -72,6 +73,10 @@ public class IFWExtraEvent {
         event.put(IFWEntityType.NETHER_SILVERFISH.get(), NetherSilverFish.createAttributes().build());
 
         event.put(IFWEntityType.FIRE_ELEMENTAL.get(), EntityFireElemental.createAttributes().build());
+
+        event.put(IFWEntityType.VAMPIRE_BAT.get(), EntityVampireBat.createAttributes().build());
+        event.put(IFWEntityType.NIGHTWING_BAT.get(), EntityNightwing.createAttributes().build());
+        event.put(IFWEntityType.GIANT_VAMPIRE_BAT.get(), EntityGiantVampireBat.createAttributes().build());
 
     }
 

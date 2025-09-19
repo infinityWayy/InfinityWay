@@ -10,6 +10,9 @@ import huix.infinity.common.world.block.IFWBlocks;
 import huix.infinity.common.world.entity.IFWBlockEntityTypes;
 import huix.infinity.common.world.entity.IFWEntityType;
 import huix.infinity.common.world.entity.render.animal.*;
+import huix.infinity.common.world.entity.render.bat.RenderGiantVampireBat;
+import huix.infinity.common.world.entity.render.bat.RenderVampireBat;
+import huix.infinity.common.world.entity.render.bat.VampireBatModel;
 import huix.infinity.common.world.entity.render.elemental.RenderFireElemental;
 import huix.infinity.common.world.entity.render.gelatinous.GelatinousCubeRenderer;
 import huix.infinity.common.world.entity.render.hound.HellHoundRenderer;
@@ -123,6 +126,8 @@ public final class IFWClient {
     static void registerLayerDefinitions(final EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModelLayers.HELLHOUND, HellHoundModel::createBodyLayer);
         event.registerLayerDefinition(ModelLayers.DIRE_WOLF, DireWolfModel::createBodyLayer);
+        event.registerLayerDefinition(ModelLayers.VAMPIRE_BAT, VampireBatModel::createBodyLayer);
+        event.registerLayerDefinition(ModelLayers.GIANT_VAMPIRE_BAT, VampireBatModel::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -173,6 +178,10 @@ public final class IFWClient {
         event.registerEntityRenderer(IFWEntityType.NETHER_SILVERFISH.get(), IFWSilverfishRenderer::new);
 
         event.registerEntityRenderer(IFWEntityType.FIRE_ELEMENTAL.get(), RenderFireElemental::new);
+
+        event.registerEntityRenderer(IFWEntityType.VAMPIRE_BAT.get(), RenderVampireBat::new);
+        event.registerEntityRenderer(IFWEntityType.NIGHTWING_BAT.get(), RenderVampireBat::new);
+        event.registerEntityRenderer(IFWEntityType.GIANT_VAMPIRE_BAT.get(), RenderGiantVampireBat::new);
 
         // 投射物渲染器
         event.registerEntityRenderer(IFWEntityType.WEB_PROJECTILE.get(), IFWWebProjectileRenderer::new);
